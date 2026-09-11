@@ -1,0 +1,1972 @@
+{
+  "id": "ar-long-division",
+  "idea": {
+    "body": "Long division asks one question over and over: how many times does the divisor fit, and what is left over. Divide 84 by 4: 4 fits into 84 exactly 21 times, since 4 times 21 is 84. When it does not fit evenly, like 53 divided by 6, find the biggest multiple of 6 at or under 53. That is 48, so the quotient is 8 and the remainder is 5. Checking a division is easy: multiply the quotient by the divisor and add any remainder, landing back on the number you started with."
+  },
+  "workedExample": {
+    "prompt": "A robot's parts crate holds 156 bolts, packed into boxes of 12. How many full boxes, and how many bolts are left over?",
+    "steps": [
+      "Find the biggest multiple of 12 at or under 156.",
+      "12 times 13 is 156.",
+      "That divides exactly, so there are 13 full boxes and nothing left over.",
+      "Check: 12 times 13 is 156, which matches the total."
+    ]
+  },
+  "ways": [
+    {
+      "id": "ar-long-division-w1",
+      "name": "Biggest-multiple search",
+      "when": "Use this when the numbers are small enough to try a round guess.",
+      "steps": [
+        "Ask how many times 4 fits into 84.",
+        "Try a round multiple: 4 times 20 is 80, close to 84.",
+        "84 minus 80 leaves 4, exactly one more group of 4.",
+        "Add that extra group: 20 plus 1 is 21."
+      ],
+      "example": "84 divided by 4",
+      "answer": "21",
+      "trap": "Stopping at the rounded guess and forgetting the leftover group."
+    },
+    {
+      "id": "ar-long-division-w2",
+      "name": "Chunking",
+      "when": "Use this when you would rather subtract easy chunks than guess the exact quotient.",
+      "steps": [
+        "Subtract an easy chunk of 12s from 156: 12 times 10 is 120, leaving 36.",
+        "Subtract another chunk: 12 times 3 is 36, leaving 0.",
+        "Add up the chunks used: 10 plus 3 is 13.",
+        "156 divided by 12 is 13, with nothing left over."
+      ],
+      "example": "156 divided by 12",
+      "answer": "13",
+      "trap": "Forgetting to add up all the chunks used at the end."
+    },
+    {
+      "id": "ar-long-division-w3",
+      "name": "Short division",
+      "when": "Use this when dividing digit by digit with a small carried remainder.",
+      "steps": [
+        "Divide the first digit: 9 divided by 4 is 2, remainder 1.",
+        "Write the 2 above the 9 and carry the remainder 1 to the next digit.",
+        "Combine the carried 1 with the next digit: 1 and 2 makes 12.",
+        "Divide again: 12 divided by 4 is 3, remainder 0.",
+        "Reading the digits above gives the answer: 23."
+      ],
+      "example": "92 divided by 4",
+      "answer": "23",
+      "trap": "Forgetting to carry the remainder into the next digit before dividing again."
+    },
+    {
+      "id": "ar-long-division-w4",
+      "name": "Divide by factors",
+      "when": "Use this when the divisor splits neatly into two smaller factors.",
+      "steps": [
+        "Break the divisor into two smaller factors: 12 is 3 times 4.",
+        "Divide by the first factor: 144 divided by 3 is 48.",
+        "Divide that result by the second factor: 48 divided by 4 is 12.",
+        "Dividing by the factors in two steps gives the same answer as dividing by 12."
+      ],
+      "example": "144 divided by 12",
+      "answer": "12",
+      "trap": "Picking factors that do not multiply back to the original divisor."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-ar-long-division-p01",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a robot's parts crate, 84 items are shared evenly into groups of 4. How many groups?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "Find how many times the group size fits into the total.",
+        "4 times 21 is 84.",
+        "That matches 84 exactly, so 84 divided by 4 is 21."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a total is split evenly into equal groups and you need to know how many groups.",
+      "hints": [
+        "Think about what number times the group size gives the total.",
+        "Check your answer by multiplying it back by the group size."
+      ],
+      "socraticHint": "How can you check a division answer using multiplication?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a print shop's paper stack, 88 items are shared evenly into groups of 4. How many groups?",
+        "answer": {
+          "kind": "number",
+          "value": "22"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p02",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a garden's seed packets, 96 items are shared evenly into groups of 8. How many groups?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Find how many times the group size fits into the total.",
+        "8 times 12 is 96.",
+        "That matches 96 exactly, so 96 divided by 8 is 12."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a total is split evenly into equal groups and you need to know how many groups.",
+      "hints": [
+        "Think about what number times the group size gives the total.",
+        "Check your answer by multiplying it back by the group size."
+      ],
+      "socraticHint": "How can you check a division answer using multiplication?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On an aquarium's feeding schedule, 104 items are shared evenly into groups of 8. How many groups?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a workshop's screw jars, 72 items are shared evenly into groups of 6. How many groups?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Find how many times the group size fits into the total.",
+        "6 times 12 is 72.",
+        "That matches 72 exactly, so 72 divided by 6 is 12."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a total is split evenly into equal groups and you need to know how many groups.",
+      "hints": [
+        "Think about what number times the group size gives the total.",
+        "Check your answer by multiplying it back by the group size."
+      ],
+      "socraticHint": "How can you check a division answer using multiplication?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a bakery's muffin batch, 78 items are shared evenly into groups of 6. How many groups?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p04",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a game's card deck, 108 items are shared evenly into groups of 9. How many groups?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Find how many times the group size fits into the total.",
+        "9 times 12 is 108.",
+        "That matches 108 exactly, so 108 divided by 9 is 12."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a total is split evenly into equal groups and you need to know how many groups.",
+      "hints": [
+        "Think about what number times the group size gives the total.",
+        "Check your answer by multiplying it back by the group size."
+      ],
+      "socraticHint": "How can you check a division answer using multiplication?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a coding club's sticker haul, 117 items are shared evenly into groups of 9. How many groups?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p05",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On an aquarium's feeding schedule, some total was split into groups of 6, making exactly 12 groups. What was the total?",
+      "answer": {
+        "kind": "number",
+        "value": "72"
+      },
+      "explanation": [
+        "Division and multiplication undo each other.",
+        "6 times 12 is 72."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when you know how many equal groups there are and the size of each, but need the whole total.",
+      "hints": [
+        "Turn the division around into a multiplication to find the total.",
+        "Multiply the group size by the number of groups."
+      ],
+      "socraticHint": "If you know the group size and the number of groups, which operation finds the total?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a bakery's muffin batch, some total was split into groups of 6, making exactly 14 groups. What was the total?",
+        "answer": {
+          "kind": "number",
+          "value": "84"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a bakery's muffin batch, some total was split into groups of 7, making exactly 9 groups. What was the total?",
+      "answer": {
+        "kind": "number",
+        "value": "63"
+      },
+      "explanation": [
+        "Division and multiplication undo each other.",
+        "7 times 9 is 63."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when you know how many equal groups there are and the size of each, but need the whole total.",
+      "hints": [
+        "Turn the division around into a multiplication to find the total.",
+        "Multiply the group size by the number of groups."
+      ],
+      "socraticHint": "If you know the group size and the number of groups, which operation finds the total?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a coding club's sticker haul, some total was split into groups of 7, making exactly 11 groups. What was the total?",
+        "answer": {
+          "kind": "number",
+          "value": "77"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p07",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coding club's sticker haul has 90 seeds split evenly among 5 bins. How many seeds in each bin?",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "Divide the total by the number of bins.",
+        "90 divided by 5 is 18 exactly."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a total needs to be split evenly among a number of equal groups.",
+      "hints": [
+        "Divide the total count by the number of equal groups.",
+        "Multiply your answer by the number of groups to check it."
+      ],
+      "socraticHint": "Does splitting evenly always use division, even when the story says something else?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A comic shop's box of issues has 95 seeds split evenly among 5 bins. How many seeds in each bin?",
+        "answer": {
+          "kind": "number",
+          "value": "19"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A comic shop's box of issues has 77 bolts split evenly among 7 bins. How many bolts in each bin?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "Divide the total by the number of bins.",
+        "77 divided by 7 is 11 exactly."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a total needs to be split evenly among a number of equal groups.",
+      "hints": [
+        "Divide the total count by the number of equal groups.",
+        "Multiply your answer by the number of groups to check it."
+      ],
+      "socraticHint": "Does splitting evenly always use division, even when the story says something else?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine's snack delivery has 84 bolts split evenly among 7 bins. How many bolts in each bin?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a vending machine's snack delivery, what is 340 divided by 10?",
+      "answer": {
+        "kind": "number",
+        "value": "34"
+      },
+      "explanation": [
+        "Dividing by 10 shifts every digit right by the same number of places.",
+        "340 divided by 10 is 34."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a number is divided by 10 or 100 and ends in enough zeros to make it exact.",
+      "hints": [
+        "Dividing by 10 removes the same number of zeros that 10 has.",
+        "Make sure the leftover digits keep their places."
+      ],
+      "socraticHint": "Why does dividing by a ten move every digit one place to the right?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a model train set's rail pieces, what is 2,600 divided by 100?",
+        "answer": {
+          "kind": "number",
+          "value": "26"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p10",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a robotics club's badge order, what is 63 divided by 9?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "9 times 7 is 63, exactly 63.",
+        "A quotient one too high or too low overshoots or undershoots the total."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a listed quotient looks close but is one or more off.",
+      "hints": [
+        "Multiply your answer by the divisor to check it lands on or just under the total.",
+        "Being one off in either direction is a common slip; check your answer carefully."
+      ],
+      "socraticHint": "If your quotient were one too big, what would happen when you multiplied it back by the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "options": [
+        "6",
+        "7",
+        "8",
+        "17"
+      ],
+      "variant": {
+        "prompt": "On a robot's parts crate, what is 72 divided by 9?",
+        "options": [
+          "7",
+          "9",
+          "8",
+          "18"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p11",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a robot's parts crate, what is 56 divided by 8?",
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "8 times 7 is 56, exactly 56.",
+        "A quotient one too high or too low overshoots or undershoots the total."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a listed quotient looks close but is one or more off.",
+      "hints": [
+        "Multiply your answer by the divisor to check it lands on or just under the total.",
+        "Being one off in either direction is a common slip; check your answer carefully."
+      ],
+      "socraticHint": "If your quotient were one too big, what would happen when you multiplied it back by the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "options": [
+        "6",
+        "8",
+        "17",
+        "7"
+      ],
+      "variant": {
+        "prompt": "On a garden's seed packets, what is 64 divided by 8?",
+        "options": [
+          "8",
+          "7",
+          "9",
+          "18"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p12",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a garden's seed packets, what is 45 divided by 5?",
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "5 times 9 is 45, exactly 45.",
+        "A quotient one too high or too low overshoots or undershoots the total."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a listed quotient looks close but is one or more off.",
+      "hints": [
+        "Multiply your answer by the divisor to check it lands on or just under the total.",
+        "Being one off in either direction is a common slip; check your answer carefully."
+      ],
+      "socraticHint": "If your quotient were one too big, what would happen when you multiplied it back by the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "options": [
+        "8",
+        "10",
+        "19",
+        "9"
+      ],
+      "variant": {
+        "prompt": "On a workshop's screw jars, what is 50 divided by 5?",
+        "options": [
+          "9",
+          "11",
+          "10",
+          "20"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p13",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a workshop's screw jars, what is 81 divided by 9?",
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "9 times 9 is 81, exactly 81.",
+        "A quotient one too high or too low overshoots or undershoots the total."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a listed quotient looks close but is one or more off.",
+      "hints": [
+        "Multiply your answer by the divisor to check it lands on or just under the total.",
+        "Being one off in either direction is a common slip; check your answer carefully."
+      ],
+      "socraticHint": "If your quotient were one too big, what would happen when you multiplied it back by the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "options": [
+        "9",
+        "8",
+        "10",
+        "19"
+      ],
+      "variant": {
+        "prompt": "On a game's card deck, what is 90 divided by 9?",
+        "options": [
+          "9",
+          "10",
+          "11",
+          "20"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p14",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "On a game's card deck: 72 divided by 8 equals 9 exactly. True or false?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "8 times 9 is 72.",
+        "Compare that to 72.",
+        "The statement is true."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when you are checking someone else's division claim.",
+      "hints": [
+        "Multiply the claimed quotient by the divisor to check it.",
+        "Compare the result to the original total exactly."
+      ],
+      "socraticHint": "Is checking with multiplication faster than doing the division over again?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a print shop's paper stack: 63 divided by 7 equals 8 exactly. True or false?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p15",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "On an aquarium's feeding schedule: 63 / 9, 30 / 6, 63 / 7, 32 / 4. Order these quotients from least to greatest.",
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0,
+          3,
+          2
+        ]
+      },
+      "explanation": [
+        "Work out each quotient first.",
+        "From least to greatest: 5, 7, 8, 9."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when several divisions need to be lined up by their quotients.",
+      "hints": [
+        "Divide each pair before comparing.",
+        "Compare the actual quotients, not the size of the dividends."
+      ],
+      "socraticHint": "Can a division with a bigger dividend still give a smaller quotient?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "items": [
+        "63 / 9",
+        "30 / 6",
+        "63 / 7",
+        "32 / 4"
+      ],
+      "variant": {
+        "prompt": "On a bakery's muffin batch: 36 / 6, 72 / 9, 28 / 4, 63 / 7. Order these quotients from least to greatest.",
+        "items": [
+          "36 / 6",
+          "72 / 9",
+          "28 / 4",
+          "63 / 7"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            0,
+            2,
+            1,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p16",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a coding club's sticker haul, what is the whole-number quotient when 53 is divided by 6?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "6 times 8 is 48, the closest multiple of 6 at or under 53.",
+        "53 minus 48 leaves 5.",
+        "So the quotient is 8 and the remainder is 5."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a division does not come out even and leaves something over.",
+      "hints": [
+        "Find the biggest multiple of the divisor that still fits under the total.",
+        "Subtract that multiple from the total to find what is left over."
+      ],
+      "socraticHint": "Why must the remainder always be smaller than the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a comic shop's box of issues, what is the whole-number quotient when 59 is divided by 6?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p17",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a comic shop's box of issues, what is the remainder when 67 is divided by 8?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "8 times 8 is 64, the closest multiple of 8 at or under 67.",
+        "67 minus 64 leaves 3.",
+        "So the quotient is 8 and the remainder is 3."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a division does not come out even and leaves something over.",
+      "hints": [
+        "Find the biggest multiple of the divisor that still fits under the total.",
+        "Subtract that multiple from the total to find what is left over."
+      ],
+      "socraticHint": "Why must the remainder always be smaller than the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a vending machine's snack delivery, what is the remainder when 75 is divided by 8?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p18",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a vending machine's snack delivery, what is the whole-number quotient when 79 is divided by 9?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "9 times 8 is 72, the closest multiple of 9 at or under 79.",
+        "79 minus 72 leaves 7.",
+        "So the quotient is 8 and the remainder is 7."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a division does not come out even and leaves something over.",
+      "hints": [
+        "Find the biggest multiple of the divisor that still fits under the total.",
+        "Subtract that multiple from the total to find what is left over."
+      ],
+      "socraticHint": "Why must the remainder always be smaller than the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a model train set's rail pieces, what is the whole-number quotient when 88 is divided by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p19",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a model train set's rail pieces, 288 items are packed into boxes of 12. How many full boxes?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "Find the biggest multiple of 12 at or under 288.",
+        "12 times 24 is 288.",
+        "That divides evenly, so there are 24 full boxes."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a two-digit divisor splits a total into full groups, maybe with some left over.",
+      "hints": [
+        "Try multiples of the divisor until you get close to the total without going over.",
+        "The number of times it fits evenly is the quotient."
+      ],
+      "socraticHint": "Once you find the biggest multiple that fits, how do you know how much is left over?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a robotics club's badge order, 300 items are packed into boxes of 12. How many full boxes?",
+        "answer": {
+          "kind": "number",
+          "value": "25"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p20",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a robotics club's badge order, 391 items are packed into boxes of 17. How many full boxes?",
+      "answer": {
+        "kind": "number",
+        "value": "23"
+      },
+      "explanation": [
+        "Find the biggest multiple of 17 at or under 391.",
+        "17 times 23 is 391.",
+        "That divides evenly, so there are 23 full boxes."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a two-digit divisor splits a total into full groups, maybe with some left over.",
+      "hints": [
+        "Try multiples of the divisor until you get close to the total without going over.",
+        "The number of times it fits evenly is the quotient."
+      ],
+      "socraticHint": "Once you find the biggest multiple that fits, how do you know how much is left over?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a robot's parts crate, 408 items are packed into boxes of 17. How many full boxes?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p21",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a robot's parts crate, 504 items are packed into boxes of 21. How many full boxes?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "Find the biggest multiple of 21 at or under 504.",
+        "21 times 24 is 504.",
+        "That divides evenly, so there are 24 full boxes."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a two-digit divisor splits a total into full groups, maybe with some left over.",
+      "hints": [
+        "Try multiples of the divisor until you get close to the total without going over.",
+        "The number of times it fits evenly is the quotient."
+      ],
+      "socraticHint": "Once you find the biggest multiple that fits, how do you know how much is left over?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a garden's seed packets, 525 items are packed into boxes of 21. How many full boxes?",
+        "answer": {
+          "kind": "number",
+          "value": "25"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a garden's seed packets, estimate 482 divided by 8 using the nearby compatible number 480. How far off is the real quotient from that estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "480 divided by 8 is a clean 60.",
+        "The real quotient of 482 divided by 8 is 60.",
+        "The estimate is off by 0."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a nearby number that divides evenly gives a fast estimate for a harder division.",
+      "hints": [
+        "Use the compatible number to get a quick, clean estimate first.",
+        "Then divide the real number and compare the two results."
+      ],
+      "socraticHint": "Why is a compatible number chosen to divide evenly by the same divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a workshop's screw jars, estimate 485 divided by 8 using the nearby compatible number 480. How far off is the real quotient from that estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p23",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a workshop's screw jars, estimate 317 divided by 6 using the nearby compatible number 300. How far off is the real quotient from that estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "300 divided by 6 is a clean 50.",
+        "The real quotient of 317 divided by 6 is 52.",
+        "The estimate is off by 2."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a nearby number that divides evenly gives a fast estimate for a harder division.",
+      "hints": [
+        "Use the compatible number to get a quick, clean estimate first.",
+        "Then divide the real number and compare the two results."
+      ],
+      "socraticHint": "Why is a compatible number chosen to divide evenly by the same divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a game's card deck, estimate 320 divided by 6 using the nearby compatible number 300. How far off is the real quotient from that estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p24",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a game's card deck, a total divided by 7 gives a quotient of 12 remainder 4. What was the total?",
+      "answer": {
+        "kind": "number",
+        "value": "88"
+      },
+      "explanation": [
+        "Multiply the divisor by the quotient: 7 times 12 is 84.",
+        "Add back the remainder: 84 plus 4 is 88."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when you know a division's quotient and remainder but need the original total.",
+      "hints": [
+        "Multiply the divisor by the quotient first.",
+        "Then add the remainder back on to undo the division."
+      ],
+      "socraticHint": "Which two steps undo a division with a remainder, in which order?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a print shop's paper stack, a total divided by 8 gives a quotient of 11 remainder 5. What was the total?",
+        "answer": {
+          "kind": "number",
+          "value": "93"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p25",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On an aquarium's feeding schedule, what is 96 divided by 7, rounded down to the whole-number quotient?",
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "7 times 13 is 91, the closest multiple under 96.",
+        "A quotient one too high or too low overshoots or undershoots the total."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a listed quotient looks close but is one or more off.",
+      "hints": [
+        "Multiply your answer by the divisor to check it lands on or just under the total.",
+        "Being one off in either direction is a common slip; check your answer carefully."
+      ],
+      "socraticHint": "If your quotient were one too big, what would happen when you multiplied it back by the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "options": [
+        "12",
+        "14",
+        "13",
+        "23"
+      ],
+      "variant": {
+        "prompt": "On a bakery's muffin batch, what is 103 divided by 7, rounded down to the whole-number quotient?",
+        "options": [
+          "14",
+          "13",
+          "15",
+          "24"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p26",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a bakery's muffin batch, what is 85 divided by 6, rounded down to the whole-number quotient?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "6 times 14 is 84, the closest multiple under 85.",
+        "A quotient one too high or too low overshoots or undershoots the total."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a listed quotient looks close but is one or more off.",
+      "hints": [
+        "Multiply your answer by the divisor to check it lands on or just under the total.",
+        "Being one off in either direction is a common slip; check your answer carefully."
+      ],
+      "socraticHint": "If your quotient were one too big, what would happen when you multiplied it back by the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "options": [
+        "13",
+        "14",
+        "15",
+        "24"
+      ],
+      "variant": {
+        "prompt": "On a coding club's sticker haul, what is 91 divided by 6, rounded down to the whole-number quotient?",
+        "options": [
+          "14",
+          "16",
+          "25",
+          "15"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p27",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a coding club's sticker haul, what is 74 divided by 9, rounded down to the whole-number quotient?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "9 times 8 is 72, the closest multiple under 74.",
+        "A quotient one too high or too low overshoots or undershoots the total."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a listed quotient looks close but is one or more off.",
+      "hints": [
+        "Multiply your answer by the divisor to check it lands on or just under the total.",
+        "Being one off in either direction is a common slip; check your answer carefully."
+      ],
+      "socraticHint": "If your quotient were one too big, what would happen when you multiplied it back by the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "options": [
+        "7",
+        "8",
+        "9",
+        "18"
+      ],
+      "variant": {
+        "prompt": "On a comic shop's box of issues, what is 83 divided by 9, rounded down to the whole-number quotient?",
+        "options": [
+          "8",
+          "10",
+          "19",
+          "9"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p28",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a comic shop's box of issues, what is 112 divided by 8?",
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "8 times 14 is 112, exactly 112.",
+        "A quotient one too high or too low overshoots or undershoots the total."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a listed quotient looks close but is one or more off.",
+      "hints": [
+        "Multiply your answer by the divisor to check it lands on or just under the total.",
+        "Being one off in either direction is a common slip; check your answer carefully."
+      ],
+      "socraticHint": "If your quotient were one too big, what would happen when you multiplied it back by the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "options": [
+        "13",
+        "15",
+        "14",
+        "24"
+      ],
+      "variant": {
+        "prompt": "On a vending machine's snack delivery, what is 120 divided by 8?",
+        "options": [
+          "15",
+          "14",
+          "16",
+          "25"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p29",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "On a vending machine's snack delivery: 156 divided by 12 equals 13 exactly. True or false?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "12 times 13 is 156.",
+        "Compare that to 156.",
+        "The statement is true."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when you are checking someone else's division claim.",
+      "hints": [
+        "Multiply the claimed quotient by the divisor to check it.",
+        "Compare the result to the original total exactly."
+      ],
+      "socraticHint": "Is checking with multiplication faster than doing the division over again?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a model train set's rail pieces: 238 divided by 14 equals 17 exactly. True or false?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p30",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "On a robotics club's badge order: 144 / 12, 162 / 9, 128 / 8, 135 / 15. Order these quotients from least to greatest.",
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          0,
+          2,
+          1
+        ]
+      },
+      "explanation": [
+        "Work out each quotient first.",
+        "From least to greatest: 9, 12, 16, 18."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when several divisions need to be lined up by their quotients.",
+      "hints": [
+        "Divide each pair before comparing.",
+        "Compare the actual quotients, not the size of the dividends."
+      ],
+      "socraticHint": "Can a division with a bigger dividend still give a smaller quotient?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "items": [
+        "144 / 12",
+        "162 / 9",
+        "128 / 8",
+        "135 / 15"
+      ],
+      "variant": {
+        "prompt": "On a robot's parts crate: 154 / 11, 171 / 9, 136 / 8, 144 / 12. Order these quotients from least to greatest.",
+        "items": [
+          "154 / 11",
+          "171 / 9",
+          "136 / 8",
+          "144 / 12"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            0,
+            2,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p31",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a garden's seed packets, what is the whole-number quotient when 275 is divided by 13?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "13 times 21 is 273, the closest multiple of 13 at or under 275.",
+        "275 minus 273 leaves 2.",
+        "So the quotient is 21 and the remainder is 2."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a division does not come out even and leaves something over.",
+      "hints": [
+        "Find the biggest multiple of the divisor that still fits under the total.",
+        "Subtract that multiple from the total to find what is left over."
+      ],
+      "socraticHint": "Why must the remainder always be smaller than the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a workshop's screw jars, what is the remainder when 275 is divided by 13?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p32",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a workshop's screw jars, what is the whole-number quotient when 391 is divided by 15?",
+      "answer": {
+        "kind": "number",
+        "value": "26"
+      },
+      "explanation": [
+        "15 times 26 is 390, the closest multiple of 15 at or under 391.",
+        "391 minus 390 leaves 1.",
+        "So the quotient is 26 and the remainder is 1."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a division does not come out even and leaves something over.",
+      "hints": [
+        "Find the biggest multiple of the divisor that still fits under the total.",
+        "Subtract that multiple from the total to find what is left over."
+      ],
+      "socraticHint": "Why must the remainder always be smaller than the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a game's card deck, what is the remainder when 391 is divided by 15?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a game's card deck, what is the whole-number quotient when 458 is divided by 19?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "19 times 24 is 456, the closest multiple of 19 at or under 458.",
+        "458 minus 456 leaves 2.",
+        "So the quotient is 24 and the remainder is 2."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a division does not come out even and leaves something over.",
+      "hints": [
+        "Find the biggest multiple of the divisor that still fits under the total.",
+        "Subtract that multiple from the total to find what is left over."
+      ],
+      "socraticHint": "Why must the remainder always be smaller than the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a print shop's paper stack, what is the remainder when 458 is divided by 19?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p34",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A print shop's paper stack splits 96 parts evenly into 8 groups, then 3 more are added to every group. How many parts are in each group now?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "96 divided by 8 is 12 parts per group.",
+        "Adding 3 more gives 15 per group."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a story divides first and then adjusts each group by the same amount.",
+      "hints": [
+        "Do the division first to find the starting amount per group.",
+        "Then apply the extra step to that per-group amount."
+      ],
+      "socraticHint": "Does the extra step happen before or after the groups are split?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An aquarium's feeding schedule splits 104 parts evenly into 8 groups, then 3 more are added to every group. How many parts are in each group now?",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "An aquarium's feeding schedule splits 108 badges evenly into 9 groups, then 2 are removed from every group. How many badges are in each group now?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "108 divided by 9 is 12 badges per group.",
+        "Removing 2 gives 10 per group."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a story divides first and then adjusts each group by the same amount.",
+      "hints": [
+        "Do the division first to find the starting amount per group.",
+        "Then apply the extra step to that per-group amount."
+      ],
+      "socraticHint": "Does the extra step happen before or after the groups are split?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bakery's muffin batch splits 117 badges evenly into 9 groups, then 2 are removed from every group. How many badges are in each group now?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bakery's muffin batch splits 144 snacks evenly into 12 groups, then 4 more are added to every group. How many snacks are in each group now?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "144 divided by 12 is 12 snacks per group.",
+        "Adding 4 more gives 16 per group."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a story divides first and then adjusts each group by the same amount.",
+      "hints": [
+        "Do the division first to find the starting amount per group.",
+        "Then apply the extra step to that per-group amount."
+      ],
+      "socraticHint": "Does the extra step happen before or after the groups are split?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A coding club's sticker haul splits 156 snacks evenly into 12 groups, then 4 more are added to every group. How many snacks are in each group now?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a coding club's sticker haul, 100 divided by some number gives a quotient of 12 remainder 4. What is that number?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Subtract the remainder first: 100 minus 4 is 96.",
+        "Divide that by the quotient: 96 divided by 12 is 8."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when the divisor is missing but the quotient and remainder are both known.",
+      "hints": [
+        "Subtract the remainder from the total before doing anything else.",
+        "Then divide what is left by the quotient to find the divisor."
+      ],
+      "socraticHint": "Why must the remainder come off before you divide by the quotient?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a comic shop's box of issues, 124 divided by some number gives a quotient of 12 remainder 4. What is that number?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p38",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a comic shop's box of issues, 137 divided by some number gives a quotient of 15 remainder 2. What is that number?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Subtract the remainder first: 137 minus 2 is 135.",
+        "Divide that by the quotient: 135 divided by 15 is 9."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when the divisor is missing but the quotient and remainder are both known.",
+      "hints": [
+        "Subtract the remainder from the total before doing anything else.",
+        "Then divide what is left by the quotient to find the divisor."
+      ],
+      "socraticHint": "Why must the remainder come off before you divide by the quotient?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a vending machine's snack delivery, 152 divided by some number gives a quotient of 15 remainder 2. What is that number?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p39",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a vending machine's snack delivery, 163 divided by some number gives a quotient of 18 remainder 1. What is that number?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Subtract the remainder first: 163 minus 1 is 162.",
+        "Divide that by the quotient: 162 divided by 18 is 9."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when the divisor is missing but the quotient and remainder are both known.",
+      "hints": [
+        "Subtract the remainder from the total before doing anything else.",
+        "Then divide what is left by the quotient to find the divisor."
+      ],
+      "socraticHint": "Why must the remainder come off before you divide by the quotient?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a model train set's rail pieces, 181 divided by some number gives a quotient of 18 remainder 1. What is that number?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p40",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a model train set's rail pieces, what is 198 divided by 14, rounded down to the whole-number quotient?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "14 times 14 is 196, the closest multiple under 198.",
+        "A quotient one too high or too low overshoots or undershoots the total."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a listed quotient looks close but is one or more off.",
+      "hints": [
+        "Multiply your answer by the divisor to check it lands on or just under the total.",
+        "Being one off in either direction is a common slip; check your answer carefully."
+      ],
+      "socraticHint": "If your quotient were one too big, what would happen when you multiplied it back by the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "options": [
+        "13",
+        "14",
+        "15",
+        "24"
+      ],
+      "variant": {
+        "prompt": "On a robotics club's badge order, what is 212 divided by 14, rounded down to the whole-number quotient?",
+        "options": [
+          "14",
+          "16",
+          "25",
+          "15"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p41",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a robotics club's badge order, what is 243 divided by 17, rounded down to the whole-number quotient?",
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "17 times 14 is 238, the closest multiple under 243.",
+        "A quotient one too high or too low overshoots or undershoots the total."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a listed quotient looks close but is one or more off.",
+      "hints": [
+        "Multiply your answer by the divisor to check it lands on or just under the total.",
+        "Being one off in either direction is a common slip; check your answer carefully."
+      ],
+      "socraticHint": "If your quotient were one too big, what would happen when you multiplied it back by the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "options": [
+        "14",
+        "13",
+        "15",
+        "24"
+      ],
+      "variant": {
+        "prompt": "On a robot's parts crate, what is 260 divided by 17, rounded down to the whole-number quotient?",
+        "options": [
+          "14",
+          "16",
+          "15",
+          "25"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p42",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a robot's parts crate, what is 312 divided by 19, rounded down to the whole-number quotient?",
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "19 times 16 is 304, the closest multiple under 312.",
+        "A quotient one too high or too low overshoots or undershoots the total."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a listed quotient looks close but is one or more off.",
+      "hints": [
+        "Multiply your answer by the divisor to check it lands on or just under the total.",
+        "Being one off in either direction is a common slip; check your answer carefully."
+      ],
+      "socraticHint": "If your quotient were one too big, what would happen when you multiplied it back by the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "options": [
+        "15",
+        "17",
+        "16",
+        "26"
+      ],
+      "variant": {
+        "prompt": "On a garden's seed packets, what is 331 divided by 19, rounded down to the whole-number quotient?",
+        "options": [
+          "17",
+          "16",
+          "18",
+          "27"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p43",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a garden's seed packets, what is 275 divided by 16, rounded down to the whole-number quotient?",
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "16 times 17 is 272, the closest multiple under 275.",
+        "A quotient one too high or too low overshoots or undershoots the total."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a listed quotient looks close but is one or more off.",
+      "hints": [
+        "Multiply your answer by the divisor to check it lands on or just under the total.",
+        "Being one off in either direction is a common slip; check your answer carefully."
+      ],
+      "socraticHint": "If your quotient were one too big, what would happen when you multiplied it back by the divisor?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "options": [
+        "16",
+        "18",
+        "27",
+        "17"
+      ],
+      "variant": {
+        "prompt": "On a workshop's screw jars, what is 291 divided by 16, rounded down to the whole-number quotient?",
+        "options": [
+          "17",
+          "18",
+          "19",
+          "28"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p44",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "On a workshop's screw jars: 437 divided by 19 equals 23 exactly. True or false?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "19 times 23 is 437.",
+        "Compare that to 437.",
+        "The statement is true."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when you are checking someone else's division claim.",
+      "hints": [
+        "Multiply the claimed quotient by the divisor to check it.",
+        "Compare the result to the original total exactly."
+      ],
+      "socraticHint": "Is checking with multiplication faster than doing the division over again?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a game's card deck: 546 divided by 21 equals 26 exactly. True or false?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p45",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "On a print shop's paper stack: 288 / 16, 322 / 14, 255 / 15, 368 / 23, 286 / 13. Order these quotients from least to greatest.",
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          2,
+          0,
+          4,
+          1
+        ]
+      },
+      "explanation": [
+        "Work out each quotient first.",
+        "From least to greatest: 16, 17, 18, 22, 23."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when several divisions need to be lined up by their quotients.",
+      "hints": [
+        "Divide each pair before comparing.",
+        "Compare the actual quotients, not the size of the dividends."
+      ],
+      "socraticHint": "Can a division with a bigger dividend still give a smaller quotient?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "items": [
+        "288 / 16",
+        "322 / 14",
+        "255 / 15",
+        "368 / 23",
+        "286 / 13"
+      ],
+      "variant": {
+        "prompt": "On an aquarium's feeding schedule: 304 / 16, 336 / 14, 270 / 15, 391 / 23, 299 / 13. Order these quotients from least to greatest.",
+        "items": [
+          "304 / 16",
+          "336 / 14",
+          "270 / 15",
+          "391 / 23",
+          "299 / 13"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            2,
+            0,
+            4,
+            1
+          ]
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-ar-long-division-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many whole numbers from 1 to 100 are exactly divisible by 7?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "The multiples of 7 up to 100 are 7, 14, 21, and so on.",
+        "100 divided by 7 tells you how many fit: 14."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when you need to count multiples of a number up to some limit.",
+      "hints": [
+        "List a few multiples of the number to see the pattern.",
+        "Divide the limit by the number to count how many multiples fit."
+      ],
+      "socraticHint": "Why does dividing the limit by the number count the multiples without listing them all?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers from 1 to 150 are exactly divisible by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the greatest whole number that divides evenly into both 24 and 36?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "List the numbers that divide evenly into 24 and into 36.",
+        "The biggest number on both lists is 12."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when you need the biggest number that divides evenly into two different totals.",
+      "hints": [
+        "List the factors of each number separately.",
+        "Find the biggest factor the two lists share."
+      ],
+      "socraticHint": "Does the greatest shared factor have to be smaller than both original numbers?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the greatest whole number that divides evenly into both 18 and 30?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p48",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Which of these divisions comes out exactly, with no remainder: 52 / 7, 63 / 9, 58 / 6, 71 / 8?",
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Check each division for a remainder.",
+        "63 / 9 is the only one that divides exactly."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when you need to spot which of several divisions has no remainder.",
+      "hints": [
+        "Divide each pair and check what is left over.",
+        "Only one of these divisions leaves nothing over."
+      ],
+      "socraticHint": "Is there a quick way to test divisibility before doing the full division?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "options": [
+        "63 / 9",
+        "52 / 7",
+        "58 / 6",
+        "71 / 8"
+      ],
+      "variant": {
+        "prompt": "Which of these divisions comes out exactly, with no remainder: 45 / 6, 54 / 9, 49 / 5, 62 / 7?",
+        "options": [
+          "45 / 6",
+          "49 / 5",
+          "62 / 7",
+          "54 / 9"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p49",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A number divided by 8 gives a quotient of 23 remainder 5. What is the number?",
+      "answer": {
+        "kind": "number",
+        "value": "189"
+      },
+      "explanation": [
+        "Multiply the divisor by the quotient: 8 times 23 is 184.",
+        "Add the remainder: 184 plus 5 is 189."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a division's quotient and remainder are known but the starting number is not.",
+      "hints": [
+        "Multiply the divisor by the quotient first to undo the division.",
+        "Add the remainder back on last."
+      ],
+      "socraticHint": "If you multiplied the divisor by the quotient and stopped there, what would be missing?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A number divided by 9 gives a quotient of 19 remainder 6. What is the number?",
+        "answer": {
+          "kind": "number",
+          "value": "177"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-long-division-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A workshop's screw jars splits 180 parts evenly into 15 groups, then 6 more are added to every group. How many parts are in each group now?",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "180 divided by 15 is 12 parts per group.",
+        "Adding 6 more gives 18 per group."
+      ],
+      "ideaId": "ar-long-division",
+      "useAgain": "when a story divides first and then adjusts each group by the same amount.",
+      "hints": [
+        "Do the division first to find the starting amount per group.",
+        "Then apply the extra step to that per-group amount."
+      ],
+      "socraticHint": "Does the extra step happen before or after the groups are split?",
+      "skills": [
+        "think.skills.division"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game's card deck splits 210 badges evenly into 14 groups, then 4 are removed from every group. How many badges are in each group now?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    }
+  ]
+}

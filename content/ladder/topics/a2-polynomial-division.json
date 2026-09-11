@@ -1,0 +1,2959 @@
+{
+  "id": "a2-polynomial-division",
+  "idea": {
+    "body": "Dividing a polynomial by (x - r) works like long division of numbers, but a shortcut called synthetic division makes it fast. Write the root r and the polynomial's coefficients in a row. Bring down the first coefficient, multiply it by r, and add that to the next coefficient. Repeat across the row. The last number is the remainder. If it is 0, (x - r) is a factor: that is the factor theorem. Without dividing at all, the remainder theorem says the remainder equals P(r), the polynomial evaluated at the root. For P(x) = x^3 - 4x^2 + x + 6 divided by (x - 2), the bottom row comes out 1, -2, -3, 0. The quotient is x^2 - 2x - 3 and the remainder is 0.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "Synthetic division of the polynomial's coefficients by a root of 2.",
+      "spec": {
+        "w": 258,
+        "h": 112,
+        "items": [
+          {
+            "t": "text",
+            "x": 30,
+            "y": 30,
+            "s": "2",
+            "size": 13,
+            "anchor": "middle"
+          },
+          {
+            "t": "line",
+            "x1": 58,
+            "y1": 8,
+            "x2": 58,
+            "y2": 98
+          },
+          {
+            "t": "line",
+            "x1": 63,
+            "y1": 64,
+            "x2": 245,
+            "y2": 64
+          },
+          {
+            "t": "text",
+            "x": 85,
+            "y": 25,
+            "s": "1",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 85,
+            "y": 87,
+            "s": "1",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 131,
+            "y": 25,
+            "s": "-4",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 131,
+            "y": 50,
+            "s": "2",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 131,
+            "y": 87,
+            "s": "-2",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 177,
+            "y": 25,
+            "s": "1",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 177,
+            "y": 50,
+            "s": "-4",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 177,
+            "y": 87,
+            "s": "-3",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 223,
+            "y": 25,
+            "s": "6",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 223,
+            "y": 50,
+            "s": "-6",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 223,
+            "y": 87,
+            "s": "0",
+            "size": 12,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "P(x) = 2x^3 + 3x^2 - 11x - 6 is divided by (x + 3). Find the quotient and remainder.",
+    "steps": [
+      "Write the root, -3, and the coefficients 2, 3, -11, -6 in a row.",
+      "Bring down the 2. Multiply by -3 to get -6, and add to 3 to get -3.",
+      "Multiply -3 by -3 to get 9, and add to -11 to get -2.",
+      "Multiply -2 by -3 to get 6, and add to -6 to get 0.",
+      "The quotient is 2x^2 - 3x - 2 and the remainder is 0."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "Synthetic division of the polynomial's coefficients by a root of -3.",
+      "spec": {
+        "w": 258,
+        "h": 112,
+        "items": [
+          {
+            "t": "text",
+            "x": 30,
+            "y": 30,
+            "s": "-3",
+            "size": 13,
+            "anchor": "middle"
+          },
+          {
+            "t": "line",
+            "x1": 58,
+            "y1": 8,
+            "x2": 58,
+            "y2": 98
+          },
+          {
+            "t": "line",
+            "x1": 63,
+            "y1": 64,
+            "x2": 245,
+            "y2": 64
+          },
+          {
+            "t": "text",
+            "x": 85,
+            "y": 25,
+            "s": "2",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 85,
+            "y": 87,
+            "s": "2",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 131,
+            "y": 25,
+            "s": "3",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 131,
+            "y": 50,
+            "s": "-6",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 131,
+            "y": 87,
+            "s": "-3",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 177,
+            "y": 25,
+            "s": "-11",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 177,
+            "y": 50,
+            "s": "9",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 177,
+            "y": 87,
+            "s": "-2",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 223,
+            "y": 25,
+            "s": "-6",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 223,
+            "y": 50,
+            "s": "6",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 223,
+            "y": 87,
+            "s": "0",
+            "size": 12,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "a2-polynomial-division-w1",
+      "name": "Long division like numbers",
+      "when": "when you divide a polynomial by (x - r) and want to see all steps.",
+      "steps": [
+        "Divide the leading term of P by the leading term of the divisor.",
+        "Multiply the divisor by that quotient and subtract.",
+        "Bring down the next term and repeat.",
+        "Stop when the remainder has lower degree than the divisor."
+      ],
+      "example": "(x^2 - 5x + 6) divided by (x - 2)",
+      "answer": "Quotient x - 3, remainder 0",
+      "trap": "Forgetting to change signs when subtracting, or bringing down terms incorrectly."
+    },
+    {
+      "id": "a2-polynomial-division-w2",
+      "name": "Synthetic division",
+      "when": "when you divide by (x - r) and want a fast, compact tableau.",
+      "steps": [
+        "Write r and the coefficients of P in a row.",
+        "Bring down the first coefficient.",
+        "Multiply it by r and add to the next coefficient.",
+        "Repeat until you reach the end: the last number is the remainder."
+      ],
+      "example": "(x^3 - 4x^2 + x + 6) divided by (x - 2)",
+      "answer": "Bottom row: 1, -2, -3, 0. Quotient x^2 - 2x - 3, remainder 0.",
+      "trap": "Using the wrong root (forgetting to negate if the divisor is x + r).",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The synthetic division tableau for x^3 - 4x^2 + x + 6 divided by x - 2: the top row 1, -4, 1, 6, the middle row 2, -4, -6, and the bottom row 1, -2, -3, 0.",
+        "spec": {
+          "w": 300,
+          "h": 120,
+          "items": [
+            {
+              "t": "text",
+              "x": 20,
+              "y": 30,
+              "s": "2 |",
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 70,
+              "y": 30,
+              "s": "1",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 130,
+              "y": 30,
+              "s": "-4",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 30,
+              "s": "1",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 250,
+              "y": 30,
+              "s": "6",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 130,
+              "y": 58,
+              "s": "2",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 58,
+              "s": "-4",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 250,
+              "y": 58,
+              "s": "-6",
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 50,
+              "y1": 70,
+              "x2": 280,
+              "y2": 70
+            },
+            {
+              "t": "text",
+              "x": 70,
+              "y": 96,
+              "s": "1",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 130,
+              "y": 96,
+              "s": "-2",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 96,
+              "s": "-3",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 250,
+              "y": 96,
+              "s": "0",
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Divide x^3 - 4x^2 + x + 6 by x - 2.",
+              "set": {
+                "0": {
+                  "hidden": true
+                },
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Write r and the coefficients of P in a row.",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Bring down the first coefficient.",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Multiply by r, add to the next coefficient.",
+              "set": {
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Repeat; the last number is the remainder.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a2-polynomial-division-w3",
+      "name": "The remainder theorem as a shortcut",
+      "when": "when you only need the remainder, not the whole quotient.",
+      "steps": [
+        "P(x) divided by (x - r) leaves remainder P(r).",
+        "You do not need to divide: just evaluate P at r.",
+        "The answer is that single value."
+      ],
+      "example": "P(x) = x^3 + 2x - 5 divided by (x - 2)",
+      "answer": "P(2) = 8 + 4 - 5 = 7. Remainder is 7.",
+      "trap": "Forgetting to evaluate P at the root r, or evaluating at -r instead."
+    },
+    {
+      "id": "a2-polynomial-division-w4",
+      "name": "The box method",
+      "when": "when you want a visual grid to organize the multiplication.",
+      "steps": [
+        "Draw a rectangle divided into cells by the divisor's terms.",
+        "Write P's terms along the top, the divisor's terms along the side.",
+        "Fill in products and add diagonals.",
+        "Read off the quotient and remainder."
+      ],
+      "example": "(x^2 + 5x + 6) divided by (x + 2)",
+      "answer": "Quotient x + 3, remainder 0",
+      "trap": "Misaligning the grid or forgetting to combine like terms after filling it."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-polynomial-division-p01",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 2x^3 - 4x^2 - 4x - 3. What is the remainder when P(x) is divided by x - 2?",
+      "answer": {
+        "kind": "number",
+        "value": "-11"
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root, carrying each result across.",
+        "The last number in the bottom row is the remainder, -11."
+      ],
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Synthetic division of the polynomial's coefficients by a root of 2.",
+        "spec": {
+          "w": 258,
+          "h": 112,
+          "items": [
+            {
+              "t": "text",
+              "x": 30,
+              "y": 30,
+              "s": "2",
+              "size": 13,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 58,
+              "y1": 8,
+              "x2": 58,
+              "y2": 98
+            },
+            {
+              "t": "line",
+              "x1": 63,
+              "y1": 64,
+              "x2": 245,
+              "y2": 64
+            },
+            {
+              "t": "text",
+              "x": 85,
+              "y": 25,
+              "s": "2",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 85,
+              "y": 87,
+              "s": "2",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 25,
+              "s": "-4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 50,
+              "s": "4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 87,
+              "s": "0",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 25,
+              "s": "-4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 50,
+              "s": "0",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 87,
+              "s": "-4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 223,
+              "y": 25,
+              "s": "-3",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 223,
+              "y": 50,
+              "s": "-8",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 223,
+              "y": 87,
+              "s": "-11",
+              "size": 12,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "useAgain": "when you need a division's remainder without writing out the whole quotient.",
+      "hints": [
+        "Set up synthetic division with the root, not the whole divisor.",
+        "The last entry in the bottom row is always the remainder."
+      ],
+      "socraticHint": "What is the last number in the synthetic division's bottom row?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = 4x^3 - 8x^2 - 6x + 1. What is the remainder when P(x) is divided by x + 2?",
+        "answer": {
+          "kind": "number",
+          "value": "-51"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p02",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 9x^3 + 9x^2 - 2x - 4. What is the remainder when P(x) is divided by x - 1?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root, carrying each result across.",
+        "The last number in the bottom row is the remainder, 12."
+      ],
+      "useAgain": "when you need a division's remainder without writing out the whole quotient.",
+      "hints": [
+        "Set up synthetic division with the root, not the whole divisor.",
+        "The last entry in the bottom row is always the remainder."
+      ],
+      "socraticHint": "What is the last number in the synthetic division's bottom row?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = -3x^3 - 3x^2 - 9x - 7. What is the remainder when P(x) is divided by x - 6?",
+        "answer": {
+          "kind": "number",
+          "value": "-817"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p03",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 7x^3 - 5x^2 + 4x - 3. What is the remainder when P(x) is divided by x + 5?",
+      "answer": {
+        "kind": "number",
+        "value": "-1023"
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root, carrying each result across.",
+        "The last number in the bottom row is the remainder, -1023."
+      ],
+      "useAgain": "when you need a division's remainder without writing out the whole quotient.",
+      "hints": [
+        "Set up synthetic division with the root, not the whole divisor.",
+        "The last entry in the bottom row is always the remainder."
+      ],
+      "socraticHint": "What is the last number in the synthetic division's bottom row?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = 2x^3 - 9x^2 + 9x - 1. What is the remainder when P(x) is divided by x - 4?",
+        "answer": {
+          "kind": "number",
+          "value": "19"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p04",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 8x^3 + 5x^2 - 9x - 4 is divided by x - 4. What is the leading coefficient of the quotient?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root.",
+        "The first entry in the bottom row is always the same as P(x)'s own leading coefficient, 8."
+      ],
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Synthetic division of the polynomial's coefficients by a root of 4.",
+        "spec": {
+          "w": 258,
+          "h": 112,
+          "items": [
+            {
+              "t": "text",
+              "x": 30,
+              "y": 30,
+              "s": "4",
+              "size": 13,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 58,
+              "y1": 8,
+              "x2": 58,
+              "y2": 98
+            },
+            {
+              "t": "line",
+              "x1": 63,
+              "y1": 64,
+              "x2": 245,
+              "y2": 64
+            },
+            {
+              "t": "text",
+              "x": 85,
+              "y": 25,
+              "s": "8",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 85,
+              "y": 87,
+              "s": "8",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 25,
+              "s": "5",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 50,
+              "s": "32",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 87,
+              "s": "37",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 25,
+              "s": "-9",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 50,
+              "s": "148",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 87,
+              "s": "139",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 223,
+              "y": 25,
+              "s": "-4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 223,
+              "y": 50,
+              "s": "556",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 223,
+              "y": 87,
+              "s": "552",
+              "size": 12,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "useAgain": "when you need one specific coefficient of a division's quotient.",
+      "hints": [
+        "The quotient's degree is one less than P(x)'s.",
+        "The first coefficient never changes in synthetic division."
+      ],
+      "socraticHint": "What is the very first number in the bottom row?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = -9x^3 + 3x^2 + 2x - 7 is divided by x + 3. What is the leading coefficient of the quotient?",
+        "answer": {
+          "kind": "number",
+          "value": "-9"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p05",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 2x^3 - 3x^2 + 3x + 9 is divided by x + 3. What is the leading coefficient of the quotient?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root.",
+        "The first entry in the bottom row is always the same as P(x)'s own leading coefficient, 2."
+      ],
+      "useAgain": "when you need one specific coefficient of a division's quotient.",
+      "hints": [
+        "The quotient's degree is one less than P(x)'s.",
+        "The first coefficient never changes in synthetic division."
+      ],
+      "socraticHint": "What is the very first number in the bottom row?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = 7x^3 - 7x^2 + 8x + 2 is divided by x - 1. What is the leading coefficient of the quotient?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p06",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = -8x^3 + 4x^2 - 4x - 4 is divided by x + 3. What is the leading coefficient of the quotient?",
+      "answer": {
+        "kind": "number",
+        "value": "-8"
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root.",
+        "The first entry in the bottom row is always the same as P(x)'s own leading coefficient, -8."
+      ],
+      "useAgain": "when you need one specific coefficient of a division's quotient.",
+      "hints": [
+        "The quotient's degree is one less than P(x)'s.",
+        "The first coefficient never changes in synthetic division."
+      ],
+      "socraticHint": "What is the very first number in the bottom row?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = -3x^3 + x^2 + 2x + 2 is divided by x - 6. What is the leading coefficient of the quotient?",
+        "answer": {
+          "kind": "number",
+          "value": "-3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p07",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 3x^3 + 3x^2 - 6x - 5. Using the remainder theorem, what is the remainder when P(x) is divided by x - 1?",
+      "answer": {
+        "kind": "number",
+        "value": "-5"
+      },
+      "explanation": [
+        "The remainder theorem says the remainder equals P evaluated at the root.",
+        "P(1) = -5."
+      ],
+      "useAgain": "when you only need a remainder, not the full quotient.",
+      "hints": [
+        "The remainder theorem lets you skip the division entirely.",
+        "Just evaluate P at x = 1."
+      ],
+      "socraticHint": "What is P(1)?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = -5x^3 + 8x^2 + 6x - 7. Using the remainder theorem, what is the remainder when P(x) is divided by x + 2?",
+        "answer": {
+          "kind": "number",
+          "value": "53"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p08",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = -x^3 + x^2 + 5x - 8. Using the remainder theorem, what is the remainder when P(x) is divided by x - 5?",
+      "answer": {
+        "kind": "number",
+        "value": "-83"
+      },
+      "explanation": [
+        "The remainder theorem says the remainder equals P evaluated at the root.",
+        "P(5) = -83."
+      ],
+      "useAgain": "when you only need a remainder, not the full quotient.",
+      "hints": [
+        "The remainder theorem lets you skip the division entirely.",
+        "Just evaluate P at x = 5."
+      ],
+      "socraticHint": "What is P(5)?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = -2x^3 - 7x^2 + 9x + 7. Using the remainder theorem, what is the remainder when P(x) is divided by x - 6?",
+        "answer": {
+          "kind": "number",
+          "value": "-623"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p09",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = -3x^3 + 6x^2 - 6x + 7. Using the remainder theorem, what is the remainder when P(x) is divided by x - 5?",
+      "answer": {
+        "kind": "number",
+        "value": "-248"
+      },
+      "explanation": [
+        "The remainder theorem says the remainder equals P evaluated at the root.",
+        "P(5) = -248."
+      ],
+      "useAgain": "when you only need a remainder, not the full quotient.",
+      "hints": [
+        "The remainder theorem lets you skip the division entirely.",
+        "Just evaluate P at x = 5."
+      ],
+      "socraticHint": "What is P(5)?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = 2x^3 + 8x^2 - 6x + 5. Using the remainder theorem, what is the remainder when P(x) is divided by x + 1?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p10",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "truefalse",
+      "prompt": "P(x) = 7x^3 - 4x^2 - 7x - 2. Is x - 1 a factor of P(x)?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "By the factor theorem, x - 1 is a factor exactly when P(1) is 0.",
+        "P(1) = -6.",
+        "So the statement is false."
+      ],
+      "useAgain": "when you need to check a factor without dividing.",
+      "hints": [
+        "The factor theorem connects a factor to a root.",
+        "Evaluate P at x = 1 and check whether it is 0."
+      ],
+      "socraticHint": "What is P(1)?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = -7x^3 + 4x - 5. Is x + 6 a factor of P(x)?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p11",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "truefalse",
+      "prompt": "P(x) = -3x^3 - 7x^2 - 9x - 14. Is x + 2 a factor of P(x)?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "By the factor theorem, x + 2 is a factor exactly when P(-2) is 0.",
+        "P(-2) = 0.",
+        "So the statement is true."
+      ],
+      "useAgain": "when you need to check a factor without dividing.",
+      "hints": [
+        "The factor theorem connects a factor to a root.",
+        "Evaluate P at x = -2 and check whether it is 0."
+      ],
+      "socraticHint": "What is P(-2)?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = 4x^3 - 8x^2 + 4x + 1. Is x - 4 a factor of P(x)?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p12",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "truefalse",
+      "prompt": "P(x) = 2x^3 - 8x^2 - 8x - 2. Is x - 4 a factor of P(x)?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "By the factor theorem, x - 4 is a factor exactly when P(4) is 0.",
+        "P(4) = -34.",
+        "So the statement is false."
+      ],
+      "useAgain": "when you need to check a factor without dividing.",
+      "hints": [
+        "The factor theorem connects a factor to a root.",
+        "Evaluate P at x = 4 and check whether it is 0."
+      ],
+      "socraticHint": "What is P(4)?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = -6x^3 + 8x^2 + 5x - 7. Is x - 1 a factor of P(x)?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p13",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "choice",
+      "prompt": "P(x) = -2x^2 + x - 4 is divided by x + 5. What is the result, quotient plus remainder over the divisor?",
+      "options": [
+        "-2x + 11",
+        "-2x + 16",
+        "-2x^2 + x - 4",
+        "-2x + 11 - 59/(x + 5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root.",
+        "The bottom row gives the quotient's coefficients, -2x + 11, with remainder -59.",
+        "Written as quotient plus remainder over the divisor, that is -2x + 11 - 59/(x + 5)."
+      ],
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Synthetic division of the polynomial's coefficients by a root of -5.",
+        "spec": {
+          "w": 212,
+          "h": 112,
+          "items": [
+            {
+              "t": "text",
+              "x": 30,
+              "y": 30,
+              "s": "-5",
+              "size": 13,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 58,
+              "y1": 8,
+              "x2": 58,
+              "y2": 98
+            },
+            {
+              "t": "line",
+              "x1": 63,
+              "y1": 64,
+              "x2": 199,
+              "y2": 64
+            },
+            {
+              "t": "text",
+              "x": 85,
+              "y": 25,
+              "s": "-2",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 85,
+              "y": 87,
+              "s": "-2",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 25,
+              "s": "1",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 50,
+              "s": "10",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 87,
+              "s": "11",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 25,
+              "s": "-4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 50,
+              "s": "-55",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 87,
+              "s": "-59",
+              "size": 12,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "useAgain": "when a division does not come out even.",
+      "hints": [
+        "Run synthetic division with the root first.",
+        "The remainder goes over the original divisor, not the root alone."
+      ],
+      "socraticHint": "What are the quotient's coefficients, and what is left over?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = 4x^2 + 6x - 5 is divided by x + 2. What is the result, quotient plus remainder over the divisor?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "4x - 2",
+          "4x",
+          "4x - 2 - 1/(x + 2)",
+          "4x^2 + 6x - 5"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p14",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "choice",
+      "prompt": "P(x) = 4x^2 + 2x + 1 is divided by x + 3. What is the result, quotient plus remainder over the divisor?",
+      "options": [
+        "4x - 10",
+        "4x - 10 + 31/(x + 3)",
+        "4x - 7",
+        "4x^2 + 2x + 1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root.",
+        "The bottom row gives the quotient's coefficients, 4x - 10, with remainder 31.",
+        "Written as quotient plus remainder over the divisor, that is 4x - 10 + 31/(x + 3)."
+      ],
+      "useAgain": "when a division does not come out even.",
+      "hints": [
+        "Run synthetic division with the root first.",
+        "The remainder goes over the original divisor, not the root alone."
+      ],
+      "socraticHint": "What are the quotient's coefficients, and what is left over?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = -6x^2 - 2x + 3 is divided by x + 5. What is the result, quotient plus remainder over the divisor?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "-6x + 28 - 137/(x + 5)",
+          "-6x + 28",
+          "-6x + 33",
+          "-6x^2 - 2x + 3"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p15",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "choice",
+      "prompt": "P(x) = 7x^2 + 7x - 7 is divided by x - 5. What is the result, quotient plus remainder over the divisor?",
+      "options": [
+        "7x + 42",
+        "7x + 42 + 203/(x - 5)",
+        "7x + 37",
+        "7x^2 + 7x - 7"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root.",
+        "The bottom row gives the quotient's coefficients, 7x + 42, with remainder 203.",
+        "Written as quotient plus remainder over the divisor, that is 7x + 42 + 203/(x - 5)."
+      ],
+      "useAgain": "when a division does not come out even.",
+      "hints": [
+        "Run synthetic division with the root first.",
+        "The remainder goes over the original divisor, not the root alone."
+      ],
+      "socraticHint": "What are the quotient's coefficients, and what is left over?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = x^2 + 6x - 1 is divided by x - 2. What is the result, quotient plus remainder over the divisor?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "x + 8 + 15/(x - 2)",
+          "x + 8",
+          "x + 6",
+          "x^2 + 6x - 1"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p16",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "choice",
+      "prompt": "P(x) = -6x^4 + 6x^3 + 2x^2 - 9x + 3 is divided by x - 5. What is the result, quotient plus remainder over the divisor?",
+      "options": [
+        "-6x^3 - 24x^2 - 118x - 599",
+        "-6x^3 - 25x^2 - 119x - 600",
+        "-6x^3 + 6x^2 + 2x - 9",
+        "-6x^3 - 24x^2 - 118x - 599 - 2992/(x - 5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root.",
+        "The bottom row gives the quotient's coefficients, -6x^3 - 24x^2 - 118x - 599, with remainder -2992.",
+        "That gives -6x^3 - 24x^2 - 118x - 599 - 2992/(x - 5)."
+      ],
+      "useAgain": "when dividing a higher degree polynomial by a linear factor.",
+      "hints": [
+        "Run synthetic division with the root, one coefficient at a time.",
+        "The remainder goes over the original divisor."
+      ],
+      "socraticHint": "What are the quotient's coefficients, and what is left over?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = 2x^4 + 3x^3 + 5x^2 - 5x + 4 is divided by x + 5. What is the result, quotient plus remainder over the divisor?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "2x^3 - 7x^2 + 40x - 205",
+          "2x^3 - 8x^2 + 39x - 206",
+          "2x^3 - 7x^2 + 40x - 205 + 1029/(x + 5)",
+          "2x^3 + 3x^2 + 5x - 5"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p17",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "choice",
+      "prompt": "P(x) = 6x^4 + 2x^3 - 9x^2 - 7x - 6 is divided by x + 6. What is the result, quotient plus remainder over the divisor?",
+      "options": [
+        "6x^3 - 34x^2 + 195x - 1177",
+        "6x^3 - 35x^2 + 194x - 1178",
+        "6x^3 + 2x^2 - 9x - 7",
+        "6x^3 - 34x^2 + 195x - 1177 + 7056/(x + 6)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root.",
+        "The bottom row gives the quotient's coefficients, 6x^3 - 34x^2 + 195x - 1177, with remainder 7056.",
+        "That gives 6x^3 - 34x^2 + 195x - 1177 + 7056/(x + 6)."
+      ],
+      "useAgain": "when dividing a higher degree polynomial by a linear factor.",
+      "hints": [
+        "Run synthetic division with the root, one coefficient at a time.",
+        "The remainder goes over the original divisor."
+      ],
+      "socraticHint": "What are the quotient's coefficients, and what is left over?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = -x^4 - 2x^3 - 2x^2 - 5x + 5 is divided by x - 1. What is the result, quotient plus remainder over the divisor?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "-x^3 - 3x^2 - 5x - 10",
+          "-x^3 - 4x^2 - 6x - 11",
+          "-x^3 - 3x^2 - 5x - 10 - 5/(x - 1)",
+          "-x^3 - 2x^2 - 2x - 5"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p18",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "choice",
+      "prompt": "P(x) = -3x^4 - 5x^3 - 7x^2 + 2x - 6 is divided by x + 1. What is the result, quotient plus remainder over the divisor?",
+      "options": [
+        "-3x^3 - 2x^2 - 5x + 7 - 13/(x + 1)",
+        "-3x^3 - 2x^2 - 5x + 7",
+        "-3x^3 - 3x^2 - 6x + 6",
+        "-3x^3 - 5x^2 - 7x + 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root.",
+        "The bottom row gives the quotient's coefficients, -3x^3 - 2x^2 - 5x + 7, with remainder -13.",
+        "That gives -3x^3 - 2x^2 - 5x + 7 - 13/(x + 1)."
+      ],
+      "useAgain": "when dividing a higher degree polynomial by a linear factor.",
+      "hints": [
+        "Run synthetic division with the root, one coefficient at a time.",
+        "The remainder goes over the original divisor."
+      ],
+      "socraticHint": "What are the quotient's coefficients, and what is left over?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = 4x^4 - 6x^3 - x^2 + 2x + 3 is divided by x + 1. What is the result, quotient plus remainder over the divisor?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "4x^3 - 10x^2 + 9x - 7",
+          "4x^3 - 10x^2 + 9x - 7 + 10/(x + 1)",
+          "4x^3 - 11x^2 + 8x - 8",
+          "4x^3 - 6x^2 - x + 2"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p19",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "5x^3 + kx^2 - 8x - 5 = 0 has x - 4 as a factor. What is k?",
+      "answer": {
+        "kind": "number",
+        "value": "-283/16"
+      },
+      "explanation": [
+        "By the factor theorem, plugging the root into the polynomial must give 0.",
+        "Substituting x = 4 and solving for k gives k = -283/16."
+      ],
+      "useAgain": "when a factor is known but one coefficient is not.",
+      "hints": [
+        "Substitute the root for x, leaving k as the only unknown.",
+        "Set the result equal to 0 and solve for k."
+      ],
+      "socraticHint": "What equation do you get after substituting x = 4?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "3x^3 + kx^2 - x + 7 = 0 has x + 1 as a factor. What is k?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p20",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "x^3 - 4x^2 + kx - 7 = 0 has x + 4 as a factor. What is k?",
+      "answer": {
+        "kind": "number",
+        "value": "-135/4"
+      },
+      "explanation": [
+        "By the factor theorem, plugging the root into the polynomial must give 0.",
+        "Substituting x = -4 and solving for k gives k = -135/4."
+      ],
+      "useAgain": "when a factor is known but one coefficient is not.",
+      "hints": [
+        "Substitute the root for x, leaving k as the only unknown.",
+        "Set the result equal to 0 and solve for k."
+      ],
+      "socraticHint": "What equation do you get after substituting x = -4?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "-x^3 - 4x^2 + 2x + k = 0 has x - 5 as a factor. What is k?",
+        "answer": {
+          "kind": "number",
+          "value": "215"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p21",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "x^3 + kx^2 + x - 5 = 0 has x + 2 as a factor. What is k?",
+      "answer": {
+        "kind": "number",
+        "value": "15/4"
+      },
+      "explanation": [
+        "By the factor theorem, plugging the root into the polynomial must give 0.",
+        "Substituting x = -2 and solving for k gives k = 15/4."
+      ],
+      "useAgain": "when a factor is known but one coefficient is not.",
+      "hints": [
+        "Substitute the root for x, leaving k as the only unknown.",
+        "Set the result equal to 0 and solve for k."
+      ],
+      "socraticHint": "What equation do you get after substituting x = -2?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "-7x^3 + 9x^2 + kx + 1 = 0 has x + 1 as a factor. What is k?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p22",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 7x^4 + 3x^3 + 2x^2 + 6x + 3 is divided by x + 1. What is the third coefficient of the quotient, reading from the highest power?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root, one at a time.",
+        "The quotient's coefficients, in order, are 7, -4, 6, 0.",
+        "The third one is 6."
+      ],
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Synthetic division of the polynomial's coefficients by a root of -1.",
+        "spec": {
+          "w": 304,
+          "h": 112,
+          "items": [
+            {
+              "t": "text",
+              "x": 30,
+              "y": 30,
+              "s": "-1",
+              "size": 13,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 58,
+              "y1": 8,
+              "x2": 58,
+              "y2": 98
+            },
+            {
+              "t": "line",
+              "x1": 63,
+              "y1": 64,
+              "x2": 291,
+              "y2": 64
+            },
+            {
+              "t": "text",
+              "x": 85,
+              "y": 25,
+              "s": "7",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 85,
+              "y": 87,
+              "s": "7",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 25,
+              "s": "3",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 50,
+              "s": "-7",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 87,
+              "s": "-4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 25,
+              "s": "2",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 50,
+              "s": "4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 87,
+              "s": "6",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 223,
+              "y": 25,
+              "s": "6",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 223,
+              "y": 50,
+              "s": "-6",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 223,
+              "y": 87,
+              "s": "0",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 269,
+              "y": 25,
+              "s": "3",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 269,
+              "y": 50,
+              "s": "0",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 269,
+              "y": 87,
+              "s": "3",
+              "size": 12,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "useAgain": "when you need one particular coefficient from a longer division.",
+      "hints": [
+        "Work through the synthetic division one column at a time.",
+        "Count the quotient's coefficients from the highest power down."
+      ],
+      "socraticHint": "What are all of the quotient's coefficients, in order?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = 9x^4 - 7x^3 + 2x^2 - 4x + 9 is divided by x - 6. What is the third coefficient of the quotient, reading from the highest power?",
+        "answer": {
+          "kind": "number",
+          "value": "284"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p23",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = -5x^4 + 6x^3 + 2x^2 - 7x - 4 is divided by x + 6. What is the third coefficient of the quotient, reading from the highest power?",
+      "answer": {
+        "kind": "number",
+        "value": "-214"
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root, one at a time.",
+        "The quotient's coefficients, in order, are -5, 36, -214, 1277.",
+        "The third one is -214."
+      ],
+      "useAgain": "when you need one particular coefficient from a longer division.",
+      "hints": [
+        "Work through the synthetic division one column at a time.",
+        "Count the quotient's coefficients from the highest power down."
+      ],
+      "socraticHint": "What are all of the quotient's coefficients, in order?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = -8x^4 - x^3 - 8x^2 + 8x - 8 is divided by x - 2. What is the third coefficient of the quotient, reading from the highest power?",
+        "answer": {
+          "kind": "number",
+          "value": "-42"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p24",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 7x^4 + 5x^3 - 2x^2 + 7x + 6 is divided by x + 3. What is the third coefficient of the quotient, reading from the highest power?",
+      "answer": {
+        "kind": "number",
+        "value": "46"
+      },
+      "explanation": [
+        "Divide the coefficients synthetically by the root, one at a time.",
+        "The quotient's coefficients, in order, are 7, -16, 46, -131.",
+        "The third one is 46."
+      ],
+      "useAgain": "when you need one particular coefficient from a longer division.",
+      "hints": [
+        "Work through the synthetic division one column at a time.",
+        "Count the quotient's coefficients from the highest power down."
+      ],
+      "socraticHint": "What are all of the quotient's coefficients, in order?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = -4x^4 - 4x^3 - 6x^2 + 7x + 1 is divided by x + 3. What is the third coefficient of the quotient, reading from the highest power?",
+        "answer": {
+          "kind": "number",
+          "value": "-30"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p25",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 4x^4 + 6x^3 - x^2 - 2x + 5. What is the remainder when P(x) is divided by x - 6?",
+      "answer": {
+        "kind": "number",
+        "value": "6437"
+      },
+      "explanation": [
+        "The remainder theorem says the remainder equals P evaluated at the root.",
+        "P(6) = 6437."
+      ],
+      "useAgain": "when a quick remainder is all a problem needs.",
+      "hints": [
+        "You do not need to divide at all here.",
+        "Just evaluate P at x = 6."
+      ],
+      "socraticHint": "What is P(6)?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = -5x^4 - 7x^3 - 5x^2 - 6x + 2. What is the remainder when P(x) is divided by x + 3?",
+        "answer": {
+          "kind": "number",
+          "value": "-241"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p26",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = -x^4 - 6x^3 + 8x^2 + 6x - 2. What is the remainder when P(x) is divided by x + 1?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The remainder theorem says the remainder equals P evaluated at the root.",
+        "P(-1) = 5."
+      ],
+      "useAgain": "when a quick remainder is all a problem needs.",
+      "hints": [
+        "You do not need to divide at all here.",
+        "Just evaluate P at x = -1."
+      ],
+      "socraticHint": "What is P(-1)?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = 7x^4 - 2x + 8. What is the remainder when P(x) is divided by x - 5?",
+        "answer": {
+          "kind": "number",
+          "value": "4373"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p27",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 4x^4 - 8x^3 - x^2 - 4x - 8. What is the remainder when P(x) is divided by x - 1?",
+      "answer": {
+        "kind": "number",
+        "value": "-17"
+      },
+      "explanation": [
+        "The remainder theorem says the remainder equals P evaluated at the root.",
+        "P(1) = -17."
+      ],
+      "useAgain": "when a quick remainder is all a problem needs.",
+      "hints": [
+        "You do not need to divide at all here.",
+        "Just evaluate P at x = 1."
+      ],
+      "socraticHint": "What is P(1)?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = 5x^4 - 2x^2 - 3. What is the remainder when P(x) is divided by x - 4?",
+        "answer": {
+          "kind": "number",
+          "value": "1245"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p28",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "choice",
+      "prompt": "P(x) = 6x^4 - 6x^3 - 2x^2 + 2x + 4, and P(x) = (x - 6)Q(x) + R for some remainder R. What is Q(x)?",
+      "options": [
+        "6x^3 - 6x^2 - 2x + 2",
+        "6x^3 + 30x^2 + 178x + 1070",
+        "6x^3 + 36x^2 + 184x + 1076",
+        "6x^3 + 30x^2 + 178x + 1070 + 6424"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Q(x) is the quotient from dividing P(x) by the linear factor.",
+        "Synthetic division by the root gives Q(x) = 6x^3 + 30x^2 + 178x + 1070, with R = 6424."
+      ],
+      "useAgain": "when a division is written as P(x) equals divisor times quotient plus remainder.",
+      "hints": [
+        "Q(x) is one degree lower than P(x).",
+        "Divide synthetically by the root to get Q(x)'s coefficients."
+      ],
+      "socraticHint": "What are the coefficients of the quotient alone, without the remainder?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = -7x^4 - 2x^3 - 9x^2 + 9x - 6, and P(x) = (x - 5)Q(x) + R for some remainder R. What is Q(x)?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "-7x^3 - 2x^2 - 9x + 9",
+          "-7x^3 - 32x^2 - 189x - 956",
+          "-7x^3 - 37x^2 - 194x - 961 - 4811",
+          "-7x^3 - 37x^2 - 194x - 961"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p29",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "choice",
+      "prompt": "P(x) = 2x^4 + 9x^3 - 8x^2 - x + 7, and P(x) = (x - 6)Q(x) + R for some remainder R. What is Q(x)?",
+      "options": [
+        "2x^3 + 9x^2 - 8x - 1",
+        "2x^3 + 27x^2 + 124x + 713",
+        "2x^3 + 21x^2 + 118x + 707",
+        "2x^3 + 21x^2 + 118x + 707 + 4249"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Q(x) is the quotient from dividing P(x) by the linear factor.",
+        "Synthetic division by the root gives Q(x) = 2x^3 + 21x^2 + 118x + 707, with R = 4249."
+      ],
+      "useAgain": "when a division is written as P(x) equals divisor times quotient plus remainder.",
+      "hints": [
+        "Q(x) is one degree lower than P(x).",
+        "Divide synthetically by the root to get Q(x)'s coefficients."
+      ],
+      "socraticHint": "What are the coefficients of the quotient alone, without the remainder?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = 8x^4 - 7x^3 + 6x^2 - 7x + 5, and P(x) = (x + 6)Q(x) + R for some remainder R. What is Q(x)?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "8x^3 - 55x^2 + 336x - 2023",
+          "8x^3 - 7x^2 + 6x - 7",
+          "8x^3 - 61x^2 + 330x - 2029",
+          "8x^3 - 55x^2 + 336x - 2023 + 12143"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p30",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "choice",
+      "prompt": "P(x) = -2x^4 + 2x^3 - x^2 - 4x + 3, and P(x) = (x - 1)Q(x) + R for some remainder R. What is Q(x)?",
+      "options": [
+        "-2x^3 + 2x^2 - x - 4",
+        "-2x^3 - x - 5",
+        "-2x^3 + x^2 - 4",
+        "-2x^3 - x - 5 - 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Q(x) is the quotient from dividing P(x) by the linear factor.",
+        "Synthetic division by the root gives Q(x) = -2x^3 - x - 5, with R = -2."
+      ],
+      "useAgain": "when a division is written as P(x) equals divisor times quotient plus remainder.",
+      "hints": [
+        "Q(x) is one degree lower than P(x).",
+        "Divide synthetically by the root to get Q(x)'s coefficients."
+      ],
+      "socraticHint": "What are the coefficients of the quotient alone, without the remainder?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = 4x^4 - 6x^3 - 8x^2 - 7x + 9, and P(x) = (x + 2)Q(x) + R for some remainder R. What is Q(x)?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "4x^3 - 6x^2 - 8x - 7",
+          "4x^3 - 16x^2 + 18x - 49",
+          "4x^3 - 14x^2 + 20x - 47 + 103",
+          "4x^3 - 14x^2 + 20x - 47"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p31",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = x^3 + 6x^2 - 6x + 6 is divided by (4x + 5). What is the remainder?",
+      "answer": {
+        "kind": "number",
+        "value": "1339/64"
+      },
+      "explanation": [
+        "The divisor is 0 when x = -5/4, which is -5/4.",
+        "By the remainder theorem, the remainder is P(-5/4).",
+        "That is 1339/64."
+      ],
+      "useAgain": "when the divisor's leading coefficient is not 1.",
+      "hints": [
+        "Find the value of x that makes the divisor 0, even though its leading coefficient is not 1.",
+        "Then evaluate P at that value."
+      ],
+      "socraticHint": "What value of x makes the divisor equal to 0?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = -x^3 + 2x^2 + 4x - 4 is divided by (-2x - 3). What is the remainder?",
+        "answer": {
+          "kind": "number",
+          "value": "-17/8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p32",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 4x^3 + 7x^2 - 3x - 1 is divided by (2x - 5). What is the remainder?",
+      "answer": {
+        "kind": "number",
+        "value": "391/4"
+      },
+      "explanation": [
+        "The divisor is 0 when x = 5/2, which is 5/2.",
+        "By the remainder theorem, the remainder is P(5/2).",
+        "That is 391/4."
+      ],
+      "useAgain": "when the divisor's leading coefficient is not 1.",
+      "hints": [
+        "Find the value of x that makes the divisor 0, even though its leading coefficient is not 1.",
+        "Then evaluate P at that value."
+      ],
+      "socraticHint": "What value of x makes the divisor equal to 0?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = -4x^3 - 2x^2 + 1 is divided by (2x + 3). What is the remainder?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p33",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 3x^3 + x^2 - 2x - 7 is divided by (-3x - 6). What is the remainder?",
+      "answer": {
+        "kind": "number",
+        "value": "-23"
+      },
+      "explanation": [
+        "The divisor is 0 when x = 6/-3, which is -2.",
+        "By the remainder theorem, the remainder is P(-2).",
+        "That is -23."
+      ],
+      "useAgain": "when the divisor's leading coefficient is not 1.",
+      "hints": [
+        "Find the value of x that makes the divisor 0, even though its leading coefficient is not 1.",
+        "Then evaluate P at that value."
+      ],
+      "socraticHint": "What value of x makes the divisor equal to 0?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = 3x^3 + 4x - 2 is divided by (-3x + 8). What is the remainder?",
+        "answer": {
+          "kind": "number",
+          "value": "590/9"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p34",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "choice",
+      "prompt": "P(x) = -2x^4 + 6x^3 + 2x^2 + 3x - 5 is divided by x^2 - x + 1. What is the remainder?",
+      "options": [
+        "7x - 14",
+        "-7x - 13",
+        "7x - 13",
+        "4x + 8"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Divide term by term, subtracting a multiple of the divisor at each step, as with long division of numbers.",
+        "After dividing out every term with degree 2 or higher, what is left is 7x - 13."
+      ],
+      "useAgain": "when the divisor itself is not linear.",
+      "hints": [
+        "Match the leading terms first, subtract, then bring down the next term.",
+        "Stop once what remains has a lower degree than the divisor."
+      ],
+      "socraticHint": "What degree must the remainder be, compared to the divisor?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = 3x^4 + 5x^3 - 4x^2 + x - 5 is divided by x^2 + 4x - 6. What is the remainder?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "-209x + 247",
+          "-209x + 251",
+          "209x + 247",
+          "-7x + 42"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p35",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "choice",
+      "prompt": "P(x) = -2x^4 - 3x^3 + 6x^2 - x + 4 is divided by x^2 - 3x - 1. What is the remainder?",
+      "options": [
+        "-79x - 19",
+        "-79x - 22",
+        "79x - 19",
+        "-9x - 23"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Divide term by term, subtracting a multiple of the divisor at each step, as with long division of numbers.",
+        "After dividing out every term with degree 2 or higher, what is left is -79x - 19."
+      ],
+      "useAgain": "when the divisor itself is not linear.",
+      "hints": [
+        "Match the leading terms first, subtract, then bring down the next term.",
+        "Stop once what remains has a lower degree than the divisor."
+      ],
+      "socraticHint": "What degree must the remainder be, compared to the divisor?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = -6x^4 + 4x^3 - 2x^2 + 3x + 6 is divided by x^2 + 5x - 4. What is the remainder?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "1119x - 773",
+          "-1119x - 778",
+          "34x - 196",
+          "1119x - 778"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p36",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "choice",
+      "prompt": "P(x) = 3x^4 - 3x^2 + 5x - 2 is divided by x^2 + 2x + 1. What is the remainder?",
+      "options": [
+        "-x - 6",
+        "x - 8",
+        "-x - 8",
+        "-6x + 6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Divide term by term, subtracting a multiple of the divisor at each step, as with long division of numbers.",
+        "After dividing out every term with degree 2 or higher, what is left is -x - 8."
+      ],
+      "useAgain": "when the divisor itself is not linear.",
+      "hints": [
+        "Match the leading terms first, subtract, then bring down the next term.",
+        "Stop once what remains has a lower degree than the divisor."
+      ],
+      "socraticHint": "What degree must the remainder be, compared to the divisor?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = -x^4 - 2x^3 - x^2 - 2x + 1 is divided by x^2 - 5x - 1. What is the remainder?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "-194x - 41",
+          "-194x - 36",
+          "194x - 36",
+          "-7x - 37"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p37",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = x^3 + j1 x^2 + j2 x + 6 has both x + 1 and x + 3 as factors. What is j1 + j2?",
+      "answer": {
+        "kind": "number",
+        "value": "17"
+      },
+      "explanation": [
+        "Each root gives one equation: P(-1) = 0 and P(-3) = 0.",
+        "Solving that system of two equations gives both unknown coefficients.",
+        "Here j1 = 6 and j2 = 11, so their sum is 17."
+      ],
+      "useAgain": "when two factors are known but two coefficients are not.",
+      "hints": [
+        "Substitute each root to get one linear equation per unknown.",
+        "Solve the resulting system of two equations together."
+      ],
+      "socraticHint": "What two equations do the two roots give you?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = x^3 + j1 x^2 + j2 x - 1 has both x + 5 and x + 1 as factors. What is j1 + j2?",
+        "answer": {
+          "kind": "number",
+          "value": "48/5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p38",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = x^3 + j1 x^2 + j2 x + 1 has both x - 4 and x + 2 as factors. What is j1 + j2?",
+      "answer": {
+        "kind": "number",
+        "value": "-79/8"
+      },
+      "explanation": [
+        "Each root gives one equation: P(4) = 0 and P(-2) = 0.",
+        "Solving that system of two equations gives both unknown coefficients.",
+        "Here j1 = -17/8 and j2 = -31/4, so their sum is -79/8."
+      ],
+      "useAgain": "when two factors are known but two coefficients are not.",
+      "hints": [
+        "Substitute each root to get one linear equation per unknown.",
+        "Solve the resulting system of two equations together."
+      ],
+      "socraticHint": "What two equations do the two roots give you?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = x^3 + j1 x^2 + j2 x - 6 has both x - 2 and x - 6 as factors. What is j1 + j2?",
+        "answer": {
+          "kind": "number",
+          "value": "15/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p39",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = x^3 + j1 x^2 + j2 x + 1 has both x - 1 and x + 3 as factors. What is j1 + j2?",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Each root gives one equation: P(1) = 0 and P(-3) = 0.",
+        "Solving that system of two equations gives both unknown coefficients.",
+        "Here j1 = 1 and j2 = -3, so their sum is -2."
+      ],
+      "useAgain": "when two factors are known but two coefficients are not.",
+      "hints": [
+        "Substitute each root to get one linear equation per unknown.",
+        "Solve the resulting system of two equations together."
+      ],
+      "socraticHint": "What two equations do the two roots give you?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = x^3 + j1 x^2 + j2 x - 5 has both x + 3 and x - 1 as factors. What is j1 + j2?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p40",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 4x^3 + x^2 - 5x. What is the remainder when P(x) is divided by x - 6, plus the remainder when P(x) is divided by x + 4?",
+      "answer": {
+        "kind": "number",
+        "value": "650"
+      },
+      "explanation": [
+        "Each remainder is just P evaluated at that root.",
+        "P(6) + P(-4) = 870 + (-220).",
+        "That totals 650."
+      ],
+      "useAgain": "when a problem combines more than one division's remainder.",
+      "hints": [
+        "Each remainder is one evaluation of P, by the remainder theorem.",
+        "Add the two evaluations together at the end."
+      ],
+      "socraticHint": "What are P(6) and P(-4) separately?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = -2x^3 + 5x^2 + 4x - 6. What is the remainder when P(x) is divided by x + 1, plus the remainder when P(x) is divided by x - 1?",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p41",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = -2x^3 + 3x^2 + 6x - 6. What is the remainder when P(x) is divided by x - 2, plus the remainder when P(x) is divided by x - 1?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Each remainder is just P evaluated at that root.",
+        "P(2) + P(1) = 2 + 1.",
+        "That totals 3."
+      ],
+      "useAgain": "when a problem combines more than one division's remainder.",
+      "hints": [
+        "Each remainder is one evaluation of P, by the remainder theorem.",
+        "Add the two evaluations together at the end."
+      ],
+      "socraticHint": "What are P(2) and P(1) separately?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = -x^3 - 4x^2 + 2. What is the remainder when P(x) is divided by x - 5, plus the remainder when P(x) is divided by x - 3?",
+        "answer": {
+          "kind": "number",
+          "value": "-284"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p42",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = 5x^3 + 5x^2 - 7x - 3. What is the remainder when P(x) is divided by x + 5, plus the remainder when P(x) is divided by x + 3?",
+      "answer": {
+        "kind": "number",
+        "value": "-540"
+      },
+      "explanation": [
+        "Each remainder is just P evaluated at that root.",
+        "P(-5) + P(-3) = -468 + (-72).",
+        "That totals -540."
+      ],
+      "useAgain": "when a problem combines more than one division's remainder.",
+      "hints": [
+        "Each remainder is one evaluation of P, by the remainder theorem.",
+        "Add the two evaluations together at the end."
+      ],
+      "socraticHint": "What are P(-5) and P(-3) separately?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = 2x^3 - 5x^2 + x + 5. What is the remainder when P(x) is divided by x + 3, plus the remainder when P(x) is divided by x + 6?",
+        "answer": {
+          "kind": "number",
+          "value": "-710"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p43",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = x^3 - 4x^2 - 10x + 25, and x - 5 is a factor. What is the sum of the other two roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "Divide P(x) synthetically by the known root to get a quadratic factor.",
+        "That quadratic is x^2 + x - 5.",
+        "Its two roots sum to -p/a, which is -1, real or not."
+      ],
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Synthetic division of the polynomial's coefficients by a root of 5.",
+        "spec": {
+          "w": 258,
+          "h": 112,
+          "items": [
+            {
+              "t": "text",
+              "x": 30,
+              "y": 30,
+              "s": "5",
+              "size": 13,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 58,
+              "y1": 8,
+              "x2": 58,
+              "y2": 98
+            },
+            {
+              "t": "line",
+              "x1": 63,
+              "y1": 64,
+              "x2": 245,
+              "y2": 64
+            },
+            {
+              "t": "text",
+              "x": 85,
+              "y": 25,
+              "s": "1",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 85,
+              "y": 87,
+              "s": "1",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 25,
+              "s": "-4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 50,
+              "s": "5",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 131,
+              "y": 87,
+              "s": "1",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 25,
+              "s": "-10",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 50,
+              "s": "5",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 177,
+              "y": 87,
+              "s": "-5",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 223,
+              "y": 25,
+              "s": "25",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 223,
+              "y": 50,
+              "s": "-25",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 223,
+              "y": 87,
+              "s": "0",
+              "size": 12,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "useAgain": "when one root of a cubic is known and you need the other two, or just their sum.",
+      "hints": [
+        "Remove the known root with synthetic division first.",
+        "The quadratic that is left gives the other two roots' sum directly."
+      ],
+      "socraticHint": "What is the quadratic quotient once the known root is removed?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = x^3 - 2x^2 - x + 14, and x + 2 is a factor. What is the sum of the other two roots?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p44",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = x^3 + 7x^2 + 8x - 4, and x + 2 is a factor. What is the sum of the other two roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-5"
+      },
+      "explanation": [
+        "Divide P(x) synthetically by the known root to get a quadratic factor.",
+        "That quadratic is x^2 + 5x - 2.",
+        "Its two roots sum to -p/a, which is -5, real or not."
+      ],
+      "useAgain": "when one root of a cubic is known and you need the other two, or just their sum.",
+      "hints": [
+        "Remove the known root with synthetic division first.",
+        "The quadratic that is left gives the other two roots' sum directly."
+      ],
+      "socraticHint": "What is the quadratic quotient once the known root is removed?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = x^3 + 7x^2 + 11x - 3, and x + 3 is a factor. What is the sum of the other two roots?",
+        "answer": {
+          "kind": "number",
+          "value": "-4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p45",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = x^3 - 9x^2 + 19x - 6, and x - 6 is a factor. What is the sum of the other two roots?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Divide P(x) synthetically by the known root to get a quadratic factor.",
+        "That quadratic is x^2 - 3x + 1.",
+        "Its two roots sum to -p/a, which is 3, real or not."
+      ],
+      "useAgain": "when one root of a cubic is known and you need the other two, or just their sum.",
+      "hints": [
+        "Remove the known root with synthetic division first.",
+        "The quadratic that is left gives the other two roots' sum directly."
+      ],
+      "socraticHint": "What is the quadratic quotient once the known root is removed?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = x^3 - 19x - 12, and x + 4 is a factor. What is the sum of the other two roots?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-polynomial-division-p46",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "By the rational root theorem, how many different possible rational roots does 6x^3 - 3x^2 + 2x + 20 have?",
+      "answer": {
+        "kind": "number",
+        "value": "32"
+      },
+      "explanation": [
+        "Every candidate is a divisor of 20 over a divisor of 6, in lowest terms, with either sign.",
+        "The constant 20 has divisors [1, 2, 4, 5, 10, 20], and the leading coefficient 6 has divisors [1, 2, 3, 6].",
+        "Counting every distinct reduced fraction with either sign gives 32."
+      ],
+      "useAgain": "when you need every candidate a polynomial's rational roots could be.",
+      "hints": [
+        "List the divisors of the constant term and of the leading coefficient separately.",
+        "Every candidate pairs one over the other, with either sign."
+      ],
+      "socraticHint": "What are the divisors of the constant term, and of the leading coefficient?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "By the rational root theorem, how many different possible rational roots does 4x^3 + 5x^2 - x + 18 have?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p47",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = x^3 - 2x^2 - 5x + 6. Among the rational root theorem's candidates, how many are actual roots of P(x)?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "List every candidate: a divisor of 6 over a divisor of 1, either sign.",
+        "Test each candidate in P(x) and keep only the ones that give 0.",
+        "That leaves 3 actual root(s)."
+      ],
+      "useAgain": "when the rational root theorem's list needs to be tested, not just written down.",
+      "hints": [
+        "The rational root theorem only narrows down candidates; it does not guarantee they work.",
+        "Test each candidate in the polynomial itself."
+      ],
+      "socraticHint": "How do you check whether a candidate is an actual root?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = x^3 - 7x + 6. Among the rational root theorem's candidates, how many are actual roots of P(x)?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p48",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) = x^4 + 2x^3 - 9x^2 - 10x + 24, and both x - 2 and x + 3 are factors. What is the sum of the other two roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "Divide out both known factors, once each, to leave a quadratic factor.",
+        "That quadratic is x^2 + x - 4.",
+        "Its two roots sum to -p/a, which is -1, real or not."
+      ],
+      "useAgain": "when a quartic has two known roots and you need facts about the rest.",
+      "hints": [
+        "Divide out both known roots, one after the other, or at once as a product.",
+        "What remains is a quadratic whose roots' sum is quick to read off."
+      ],
+      "socraticHint": "What quadratic factor is left once both known roots are divided out?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = x^4 - 5x^3 + 5x^2 - x - 12, and both x + 1 and x - 4 are factors. What is the sum of the other two roots?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p49",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "P(x) leaves remainder 5 when divided by x - 1, and remainder -4 when divided by x + 2. What is the remainder when P(x) is divided by (x - 1)(x + 2), evaluated at x = 4?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "The remainder on dividing by a quadratic is a linear function L(x) = mx + b.",
+        "L(1) = 5 and L(-2) = -4 pin down m and b.",
+        "Evaluating that line at x = 4 gives 14."
+      ],
+      "useAgain": "when two linear remainders need to be combined into one quadratic division's remainder.",
+      "hints": [
+        "The remainder on division by a quadratic is a line, not a single number.",
+        "Use the two known remainders to pin down that line's equation."
+      ],
+      "socraticHint": "What line passes through both known remainder values?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) leaves remainder -3 when divided by x - 2, and remainder 6 when divided by x + 1. What is the remainder when P(x) is divided by (x - 2)(x + 1), evaluated at x = 5?",
+        "answer": {
+          "kind": "number",
+          "value": "-12"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-division-p50",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-division",
+      "kind": "number",
+      "prompt": "A monic cubic with integer coefficients has constant term 24. By the rational root theorem, how many integers could be one of its roots?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "An integer root must divide the constant term 24 exactly.",
+        "24 has 8 positive divisors, and each also works with a negative sign.",
+        "That gives 16 possible integer roots."
+      ],
+      "useAgain": "when only integer roots are possible, not all rational ones.",
+      "hints": [
+        "An integer root has to divide the constant term evenly.",
+        "Do not forget the negative divisors count too."
+      ],
+      "socraticHint": "What are all the divisors of the constant term, positive and negative?",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A monic cubic with integer coefficients has constant term 18. By the rational root theorem, how many integers could be one of its roots?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    }
+  ]
+}

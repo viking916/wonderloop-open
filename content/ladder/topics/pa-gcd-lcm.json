@@ -1,0 +1,3473 @@
+{
+  "id": "pa-gcd-lcm",
+  "idea": {
+    "body": "Breaking a number down into its prime factors, one division at a time, makes a factor ladder. 84 divides by 2 to give 42, then 42 divides by 2 to give 21. Then 21 divides by 3 to give 7, a prime. So 84 is 2 x 2 x 3 x 7. Do the same for a second number. The greatest common divisor is the primes both ladders share, multiplied together. The least common multiple is every prime from both ladders, each used as many times as its busiest ladder needs it. For any two numbers, the greatest common divisor times the least common multiple equals the two numbers multiplied together. That is a fast check once you know one of the two.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A factor ladder for 84: each step divides by a prime until only a prime is left.",
+      "spec": {
+        "w": 220,
+        "h": 128,
+        "items": [
+          {
+            "t": "text",
+            "x": 16,
+            "y": 22,
+            "s": "84 = 2 x 42",
+            "size": 13,
+            "anchor": "start"
+          },
+          {
+            "t": "text",
+            "x": 16,
+            "y": 50,
+            "s": "42 = 2 x 21",
+            "size": 13,
+            "anchor": "start"
+          },
+          {
+            "t": "text",
+            "x": 16,
+            "y": 78,
+            "s": "21 = 3 x 7",
+            "size": 13,
+            "anchor": "start"
+          },
+          {
+            "t": "text",
+            "x": 16,
+            "y": 106,
+            "s": "7 is prime",
+            "size": 13,
+            "anchor": "start"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "Find the greatest common divisor and the least common multiple of 36 and 60.",
+    "steps": [
+      "36 breaks down into primes as 2 x 2 x 3 x 3.",
+      "60 breaks down into primes as 2 x 2 x 3 x 5.",
+      "Both ladders share a 2, a 2, and a 3, so the greatest common divisor is 2 x 2 x 3 = 12.",
+      "Every prime either ladder needs, at its busiest, is 2, 2, 3, 3, and 5, so the least common multiple is 180.",
+      "Check: 12 times 180 is 2160, and 36 times 60 is 2160, and they match."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "Two factor ladders, one above the other, for 36 and 60.",
+      "spec": {
+        "w": 220,
+        "h": 268,
+        "items": [
+          {
+            "t": "text",
+            "x": 16,
+            "y": 22,
+            "s": "36 = 2 x 18",
+            "size": 13,
+            "anchor": "start"
+          },
+          {
+            "t": "text",
+            "x": 16,
+            "y": 50,
+            "s": "18 = 2 x 9",
+            "size": 13,
+            "anchor": "start"
+          },
+          {
+            "t": "text",
+            "x": 16,
+            "y": 78,
+            "s": "9 = 3 x 3",
+            "size": 13,
+            "anchor": "start"
+          },
+          {
+            "t": "text",
+            "x": 16,
+            "y": 106,
+            "s": "3 is prime",
+            "size": 13,
+            "anchor": "start"
+          },
+          {
+            "t": "text",
+            "x": 16,
+            "y": 162,
+            "s": "60 = 2 x 30",
+            "size": 13,
+            "anchor": "start"
+          },
+          {
+            "t": "text",
+            "x": 16,
+            "y": 190,
+            "s": "30 = 2 x 15",
+            "size": 13,
+            "anchor": "start"
+          },
+          {
+            "t": "text",
+            "x": 16,
+            "y": 218,
+            "s": "15 = 3 x 5",
+            "size": 13,
+            "anchor": "start"
+          },
+          {
+            "t": "text",
+            "x": 16,
+            "y": 246,
+            "s": "5 is prime",
+            "size": 13,
+            "anchor": "start"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "pa-gcd-lcm-w1",
+      "name": "The prime factor ladder",
+      "when": "Use this for any two numbers when you can find their prime factors quickly.",
+      "steps": [
+        "42 breaks down into primes as 2 x 3 x 7.",
+        "70 breaks down into primes as 2 x 5 x 7.",
+        "Both ladders share a 2 and a 7, so the greatest common divisor is 2 x 7 = 14.",
+        "Every prime either ladder needs, at its busiest, is 2, 3, 5, and 7, so the least common multiple is 210."
+      ],
+      "example": "Find the greatest common divisor and the least common multiple of 42 and 70.",
+      "answer": "GCD is 14, LCM is 210.",
+      "trap": "Multiplying every prime from both ladders instead of only the ones both share.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two stacked prime factor ladders, one for 42 and one for 70, then the GCD and LCM computed from them.",
+        "spec": {
+          "w": 220,
+          "h": 270,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "42 = 2 x 21",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "21 = 3 x 7",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "70 = 2 x 35",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "35 = 5 x 7",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 224,
+              "s": "GCD = 2 x 7 = 14",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 250,
+              "s": "LCM = 2 x 3 x 5 x 7 = 210",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Find the GCD and LCM of 42, 70.",
+              "set": {
+                "0": {
+                  "s": "42"
+                },
+                "3": {
+                  "s": "70"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "42's primes: 2 x 3 x 7.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "s": "70"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "70's primes: 2 x 5 x 7.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": false
+                },
+                "5": {
+                  "hidden": false
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Shared primes 2 and 7: GCD 14.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": false
+                },
+                "5": {
+                  "hidden": false
+                },
+                "6": {
+                  "hidden": false
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "LCM of every prime needed: 210.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": false
+                },
+                "5": {
+                  "hidden": false
+                },
+                "6": {
+                  "hidden": false
+                },
+                "7": {
+                  "hidden": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pa-gcd-lcm-w2",
+      "name": "The factor lists",
+      "when": "Use this for small numbers where writing out every factor is quick.",
+      "steps": [
+        "List every factor of 16: 1, 2, 4, 8, 16.",
+        "List every factor of 24: 1, 2, 3, 4, 6, 8, 12, 24.",
+        "The factors both lists share are 1, 2, 4, and 8, so the greatest common divisor is 8.",
+        "List multiples of 24 until one also divides evenly by 16: 24 does not, but 48 does, so the least common multiple is 48."
+      ],
+      "example": "Find the greatest common divisor and the least common multiple of 16 and 24 using lists.",
+      "answer": "GCD is 8, LCM is 48.",
+      "trap": "Stopping the multiples list too early and missing the first common multiple."
+    },
+    {
+      "id": "pa-gcd-lcm-w3",
+      "name": "The Euclidean algorithm",
+      "when": "Use this when the numbers are too large to factor quickly by hand.",
+      "steps": [
+        "Divide the bigger number by the smaller: 252 divided by 105 is 2 remainder 42.",
+        "Replace the pair with the smaller number and that remainder: now find the greatest common divisor of 105 and 42.",
+        "105 divided by 42 is 2 remainder 21, so now find the greatest common divisor of 42 and 21.",
+        "42 divided by 21 is exactly 2 with remainder 0, so the greatest common divisor is 21."
+      ],
+      "example": "Find the greatest common divisor of 252 and 105 using the Euclidean algorithm.",
+      "answer": "21",
+      "trap": "Stopping at the first remainder instead of continuing until the remainder reaches 0.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Three division facts for the Euclidean algorithm on 252 and 105, ending at a remainder of 0.",
+        "spec": {
+          "w": 290,
+          "h": 128,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "252 = 2 x 105 + 42",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "105 = 2 x 42 + 21",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "42 = 2 x 21 + 0",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 106,
+              "s": "GCD is 21, the last remainder before 0",
+              "size": 12,
+              "anchor": "start",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "Now compare 105 and 42.",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Find the GCD of 252 and 105.",
+              "set": {
+                "0": {
+                  "s": "252 and 105"
+                },
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "252 divided by 105: remainder 42.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Now find the GCD of 105, 42.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "105 divided by 42: remainder 21.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Remainder 0: GCD is 21.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pa-gcd-lcm-w4",
+      "name": "The product rule",
+      "when": "Use this when one of the two, the greatest common divisor or the least common multiple, is already easy to spot.",
+      "steps": [
+        "18 and 24 share the factor 6, and 3 and 4 have nothing else in common, so 6 is the greatest common divisor.",
+        "For any two numbers, the greatest common divisor times the least common multiple equals the numbers multiplied together.",
+        "18 times 24 is 432.",
+        "432 divided by the greatest common divisor, 6, gives 72, the least common multiple."
+      ],
+      "example": "18 and 24 share the factor 6. Use that to find their least common multiple.",
+      "answer": "72",
+      "trap": "Multiplying by the greatest common divisor instead of dividing by it."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-pa-gcd-lcm-p01",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 18 and 24?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "18 is 2 x 3 x 3.",
+        "24 is 2 x 2 x 2 x 3.",
+        "Both ladders share 2 x 3.",
+        "2 x 3 = 6, the greatest common divisor."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the biggest number that divides both of two given numbers.",
+      "hints": [
+        "Break both 18 and 24 down into their prime factors.",
+        "Multiply the shared primes together."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 23 and 33?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 18 and 24.",
+        "spec": {
+          "w": 220,
+          "h": 240,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "18 = 2 x 9",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "9 = 3 x 3",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "3 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "24 = 2 x 12",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "12 = 2 x 6",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "6 = 2 x 3",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 218,
+              "s": "3 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p02",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the least common multiple of 20 and 30?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "20 is 2 x 2 x 5.",
+        "30 is 2 x 3 x 5.",
+        "Take each prime as many times as its busiest ladder needs it: 2 x 2 x 3 x 5.",
+        "That multiplies to 60, the least common multiple."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the smallest number that both of two given numbers divide into evenly.",
+      "hints": [
+        "Break both 20 and 30 down into their prime factors.",
+        "Multiply every prime either number needs, at its busiest count."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the least common multiple of 24 and 40?",
+        "answer": {
+          "kind": "number",
+          "value": "120"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 20 and 30.",
+        "spec": {
+          "w": 220,
+          "h": 212,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "20 = 2 x 10",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "10 = 2 x 5",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "5 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "30 = 2 x 15",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "15 = 3 x 5",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "5 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 16 and 40?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "16 is 2 x 2 x 2 x 2.",
+        "40 is 2 x 2 x 2 x 5.",
+        "Both ladders share 2 x 2 x 2.",
+        "2 x 2 x 2 = 8, the greatest common divisor."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the biggest number that divides both of two given numbers.",
+      "hints": [
+        "Break both 16 and 40 down into their prime factors.",
+        "Multiply the shared primes together."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 21 and 49?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 16 and 40.",
+        "spec": {
+          "w": 220,
+          "h": 268,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "16 = 2 x 8",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "8 = 2 x 4",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "4 = 2 x 2",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 106,
+              "s": "2 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "40 = 2 x 20",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "20 = 2 x 10",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 218,
+              "s": "10 = 2 x 5",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 246,
+              "s": "5 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p04",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the least common multiple of 21 and 28?",
+      "answer": {
+        "kind": "number",
+        "value": "84"
+      },
+      "explanation": [
+        "21 is 3 x 7.",
+        "28 is 2 x 2 x 7.",
+        "Take each prime as many times as its busiest ladder needs it: 2 x 2 x 3 x 7.",
+        "That multiplies to 84, the least common multiple."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the smallest number that both of two given numbers divide into evenly.",
+      "hints": [
+        "Break both 21 and 28 down into their prime factors.",
+        "Multiply every prime either number needs, at its busiest count."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the least common multiple of 14 and 35?",
+        "answer": {
+          "kind": "number",
+          "value": "70"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 21 and 28.",
+        "spec": {
+          "w": 220,
+          "h": 184,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "21 = 3 x 7",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 106,
+              "s": "28 = 2 x 14",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "14 = 2 x 7",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p05",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 15 and 45?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "15 is 3 x 5.",
+        "45 is 3 x 3 x 5.",
+        "Both ladders share 3 x 5.",
+        "3 x 5 = 15, the greatest common divisor."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the biggest number that divides both of two given numbers.",
+      "hints": [
+        "Break both 15 and 45 down into their prime factors.",
+        "Multiply the shared primes together."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 20 and 54?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 15 and 45.",
+        "spec": {
+          "w": 220,
+          "h": 184,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "15 = 3 x 5",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "5 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 106,
+              "s": "45 = 3 x 15",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "15 = 3 x 5",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "5 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the least common multiple of 24 and 36?",
+      "answer": {
+        "kind": "number",
+        "value": "72"
+      },
+      "explanation": [
+        "24 is 2 x 2 x 2 x 3.",
+        "36 is 2 x 2 x 3 x 3.",
+        "Take each prime as many times as its busiest ladder needs it: 2 x 2 x 2 x 3 x 3.",
+        "That multiplies to 72, the least common multiple."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the smallest number that both of two given numbers divide into evenly.",
+      "hints": [
+        "Break both 24 and 36 down into their prime factors.",
+        "Multiply every prime either number needs, at its busiest count."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the least common multiple of 30 and 45?",
+        "answer": {
+          "kind": "number",
+          "value": "90"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 24 and 36.",
+        "spec": {
+          "w": 220,
+          "h": 268,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "24 = 2 x 12",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "12 = 2 x 6",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "6 = 2 x 3",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 106,
+              "s": "3 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "36 = 2 x 18",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "18 = 2 x 9",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 218,
+              "s": "9 = 3 x 3",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 246,
+              "s": "3 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p07",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 14 and 35?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "14 is 2 x 7.",
+        "35 is 5 x 7.",
+        "Both ladders share 7.",
+        "So the greatest common divisor is 7."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the biggest number that divides both of two given numbers.",
+      "hints": [
+        "Break both 14 and 35 down into their prime factors.",
+        "Multiply the shared primes together."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 19 and 44?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 14 and 35.",
+        "spec": {
+          "w": 220,
+          "h": 156,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "14 = 2 x 7",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 106,
+              "s": "35 = 5 x 7",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the least common multiple of 27 and 63?",
+      "answer": {
+        "kind": "number",
+        "value": "189"
+      },
+      "explanation": [
+        "27 is 3 x 3 x 3.",
+        "63 is 3 x 3 x 7.",
+        "Take each prime as many times as its busiest ladder needs it: 3 x 3 x 3 x 7.",
+        "That multiplies to 189, the least common multiple."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the smallest number that both of two given numbers divide into evenly.",
+      "hints": [
+        "Break both 27 and 63 down into their prime factors.",
+        "Multiply every prime either number needs, at its busiest count."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the least common multiple of 32 and 72?",
+        "answer": {
+          "kind": "number",
+          "value": "288"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 27 and 63.",
+        "spec": {
+          "w": 220,
+          "h": 212,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "27 = 3 x 9",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "9 = 3 x 3",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "3 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "63 = 3 x 21",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "21 = 3 x 7",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 22 and 33?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "22 is 2 x 11.",
+        "33 is 3 x 11.",
+        "Both ladders share 11.",
+        "So the greatest common divisor is 11."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the biggest number that divides both of two given numbers.",
+      "hints": [
+        "Break both 22 and 33 down into their prime factors.",
+        "Multiply the shared primes together."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 27 and 42?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 22 and 33.",
+        "spec": {
+          "w": 220,
+          "h": 156,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "22 = 2 x 11",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "11 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 106,
+              "s": "33 = 3 x 11",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "11 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p10",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the least common multiple of 20 and 50?",
+      "answer": {
+        "kind": "number",
+        "value": "100"
+      },
+      "explanation": [
+        "20 is 2 x 2 x 5.",
+        "50 is 2 x 5 x 5.",
+        "Take each prime as many times as its busiest ladder needs it: 2 x 2 x 5 x 5.",
+        "That multiplies to 100, the least common multiple."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the smallest number that both of two given numbers divide into evenly.",
+      "hints": [
+        "Break both 20 and 50 down into their prime factors.",
+        "Multiply every prime either number needs, at its busiest count."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the least common multiple of 25 and 40?",
+        "answer": {
+          "kind": "number",
+          "value": "200"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 20 and 50.",
+        "spec": {
+          "w": 220,
+          "h": 212,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "20 = 2 x 10",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "10 = 2 x 5",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "5 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "50 = 2 x 25",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "25 = 5 x 5",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "5 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p11",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 28 and 42?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "28 is 2 x 2 x 7.",
+        "42 is 2 x 3 x 7.",
+        "Both ladders share 2 x 7.",
+        "2 x 7 = 14, the greatest common divisor."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the biggest number that divides both of two given numbers.",
+      "hints": [
+        "Break both 28 and 42 down into their prime factors.",
+        "Multiply the shared primes together."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 33 and 51?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 28 and 42.",
+        "spec": {
+          "w": 220,
+          "h": 212,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "28 = 2 x 14",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "14 = 2 x 7",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "42 = 2 x 21",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "21 = 3 x 7",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p12",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the least common multiple of 18 and 30?",
+      "answer": {
+        "kind": "number",
+        "value": "90"
+      },
+      "explanation": [
+        "18 is 2 x 3 x 3.",
+        "30 is 2 x 3 x 5.",
+        "Take each prime as many times as its busiest ladder needs it: 2 x 3 x 3 x 5.",
+        "That multiplies to 90, the least common multiple."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the smallest number that both of two given numbers divide into evenly.",
+      "hints": [
+        "Break both 18 and 30 down into their prime factors.",
+        "Multiply every prime either number needs, at its busiest count."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the least common multiple of 16 and 24?",
+        "answer": {
+          "kind": "number",
+          "value": "48"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 18 and 30.",
+        "spec": {
+          "w": 220,
+          "h": 212,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "18 = 2 x 9",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "9 = 3 x 3",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "3 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "30 = 2 x 15",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "15 = 3 x 5",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "5 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p13",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "The greatest common divisor of two numbers always divides both of them evenly.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Take a real pair, like 12 and 18: their greatest common divisor is 6.",
+        "6 divides 12 evenly (12 is 2 times 6) and 6 divides 18 evenly (18 is 3 times 6).",
+        "That is true of any pair, since a greatest common divisor is chosen from the numbers that divide both, so it always divides both."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need to reason about what a greatest common divisor or least common multiple must satisfy.",
+      "hints": [
+        "Try the statement on a real pair, like 9 and 15.",
+        "By definition, every common divisor of two numbers divides each of them evenly. Where does the greatest one fit in that list?"
+      ],
+      "socraticHint": "Does a small example that breaks the statement come to mind, or does it always hold?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "8 is the greatest common divisor of 24 and 40, and 8 divides both of them evenly.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p14",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "The least common multiple of two numbers is always smaller than both of them.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Take a real pair, like 12 and 18: their least common multiple is 36.",
+        "36 is bigger than both 12 and 18, not smaller than either one.",
+        "A least common multiple is always at least as big as the larger of the two numbers, so it can never be smaller than both."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need to reason about what a greatest common divisor or least common multiple must satisfy.",
+      "hints": [
+        "Try the statement on a real pair, like 6 and 10.",
+        "A common multiple of two numbers is never smaller than the larger of the two. Can the least one ever be smaller than the smaller number too?"
+      ],
+      "socraticHint": "Does a small example that breaks the statement come to mind, or does it always hold?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "20 is the least common multiple of 4 and 5, and 20 is smaller than both of them.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p15",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "If one number divides another evenly, their greatest common divisor is the smaller number.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Take a real pair where one divides the other, like 4 and 20: 20 is 5 times 4.",
+        "The greatest common divisor of 4 and 20 is 4 itself, which is the smaller number.",
+        "That holds whenever one number divides the other evenly, since the smaller number is already a common divisor and nothing bigger can be."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need to reason about what a greatest common divisor or least common multiple must satisfy.",
+      "hints": [
+        "Try the statement on a real pair, like 5 and 15.",
+        "If a divides b evenly, is a itself one of the common divisors of a and b?"
+      ],
+      "socraticHint": "Does a small example that breaks the statement come to mind, or does it always hold?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "6 divides 24 evenly, and the greatest common divisor of 6 and 24 is 6.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p16",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 40 and 60?",
+      "options": [
+        "20",
+        "120",
+        "40",
+        "10"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "40 is 2 x 2 x 2 x 5.",
+        "60 is 2 x 2 x 3 x 5.",
+        "The shared primes multiply to 20, the greatest common divisor.",
+        "120 is their least common multiple, not their greatest common divisor.",
+        "2400 is their product, which is neither."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when the greatest common divisor gets confused with the least common multiple or the product.",
+      "hints": [
+        "List each number's prime factors.",
+        "Multiply only the primes both lists share."
+      ],
+      "socraticHint": "A common factor and the greatest common divisor are not always the same number. Why not?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 48 and 72?",
+        "options": [
+          "144",
+          "48",
+          "24",
+          "12"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p17",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 45 and 75?",
+      "options": [
+        "225",
+        "15",
+        "45",
+        "5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "45 is 3 x 3 x 5.",
+        "75 is 3 x 5 x 5.",
+        "The shared primes multiply to 15, the greatest common divisor.",
+        "225 is their least common multiple, not their greatest common divisor.",
+        "3375 is their product, which is neither."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when the greatest common divisor gets confused with the least common multiple or the product.",
+      "hints": [
+        "List each number's prime factors.",
+        "Multiply only the primes both lists share."
+      ],
+      "socraticHint": "A common factor and the greatest common divisor are not always the same number. Why not?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 54 and 90?",
+        "options": [
+          "270",
+          "54",
+          "9",
+          "18"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p18",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 56 and 84?",
+      "options": [
+        "28",
+        "56",
+        "14",
+        "168"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "56 is 2 x 2 x 2 x 7.",
+        "84 is 2 x 2 x 3 x 7.",
+        "The shared primes multiply to 28, the greatest common divisor.",
+        "168 is their least common multiple, not their greatest common divisor.",
+        "4704 is their product, which is neither."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when the greatest common divisor gets confused with the least common multiple or the product.",
+      "hints": [
+        "List each number's prime factors.",
+        "Multiply only the primes both lists share."
+      ],
+      "socraticHint": "A common factor and the greatest common divisor are not always the same number. Why not?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 64 and 96?",
+        "options": [
+          "192",
+          "64",
+          "32",
+          "16"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p19",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "What is the least common multiple of 18 and 24?",
+      "options": [
+        "6",
+        "24",
+        "432",
+        "72"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "18 is 2 x 3 x 3.",
+        "24 is 2 x 2 x 2 x 3.",
+        "Every prime either one needs, at its busiest count, multiplies to 72.",
+        "6 is their greatest common divisor, not their least common multiple.",
+        "432 is their product, which counts the shared primes twice."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when the least common multiple gets confused with the greatest common divisor or the plain product.",
+      "hints": [
+        "List each number's prime factors.",
+        "Take every prime at the higher count either list needs, then multiply."
+      ],
+      "socraticHint": "Multiplying the two numbers together counts their shared primes twice. How does the least common multiple avoid that?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the least common multiple of 20 and 36?",
+        "options": [
+          "4",
+          "180",
+          "720",
+          "36"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p20",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "What is the least common multiple of 15 and 20?",
+      "options": [
+        "5",
+        "60",
+        "20",
+        "300"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "15 is 3 x 5.",
+        "20 is 2 x 2 x 5.",
+        "Every prime either one needs, at its busiest count, multiplies to 60.",
+        "5 is their greatest common divisor, not their least common multiple.",
+        "300 is their product, which counts the shared primes twice."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when the least common multiple gets confused with the greatest common divisor or the plain product.",
+      "hints": [
+        "List each number's prime factors.",
+        "Take every prime at the higher count either list needs, then multiply."
+      ],
+      "socraticHint": "Multiplying the two numbers together counts their shared primes twice. How does the least common multiple avoid that?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the least common multiple of 18 and 33?",
+        "options": [
+          "198",
+          "33",
+          "594",
+          "3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p21",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "What is the least common multiple of 28 and 42?",
+      "options": [
+        "42",
+        "1176",
+        "84",
+        "14"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "28 is 2 x 2 x 7.",
+        "42 is 2 x 3 x 7.",
+        "Every prime either one needs, at its busiest count, multiplies to 84.",
+        "14 is their greatest common divisor, not their least common multiple.",
+        "1176 is their product, which counts the shared primes twice."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when the least common multiple gets confused with the greatest common divisor or the plain product.",
+      "hints": [
+        "List each number's prime factors.",
+        "Take every prime at the higher count either list needs, then multiply."
+      ],
+      "socraticHint": "Multiplying the two numbers together counts their shared primes twice. How does the least common multiple avoid that?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the least common multiple of 33 and 44?",
+        "options": [
+          "11",
+          "1452",
+          "44",
+          "132"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two numbers are 48 and 60. Their greatest common divisor is 12. What is their least common multiple?",
+      "answer": {
+        "kind": "number",
+        "value": "240"
+      },
+      "explanation": [
+        "For any two numbers, their greatest common divisor times their least common multiple equals the numbers multiplied together.",
+        "48 times 60 is 2880.",
+        "2880 divided by the greatest common divisor, 12, gives 240."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when the greatest common divisor and the two numbers are known but the least common multiple is missing.",
+      "hints": [
+        "The product of two numbers always equals their greatest common divisor times their least common multiple.",
+        "Divide the product of the two numbers by the one you already know."
+      ],
+      "socraticHint": "If you multiply the two numbers, what does that product equal in terms of the two answers you are choosing between?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two numbers are 50 and 66. Their greatest common divisor is 2. What is their least common multiple?",
+        "answer": {
+          "kind": "number",
+          "value": "1650"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p23",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two numbers are 36 and 54. Their greatest common divisor is 18. What is their least common multiple?",
+      "answer": {
+        "kind": "number",
+        "value": "108"
+      },
+      "explanation": [
+        "For any two numbers, their greatest common divisor times their least common multiple equals the numbers multiplied together.",
+        "36 times 54 is 1944.",
+        "1944 divided by the greatest common divisor, 18, gives 108."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when the greatest common divisor and the two numbers are known but the least common multiple is missing.",
+      "hints": [
+        "The product of two numbers always equals their greatest common divisor times their least common multiple.",
+        "Divide the product of the two numbers by the one you already know."
+      ],
+      "socraticHint": "If you multiply the two numbers, what does that product equal in terms of the two answers you are choosing between?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two numbers are 38 and 60. Their greatest common divisor is 2. What is their least common multiple?",
+        "answer": {
+          "kind": "number",
+          "value": "1140"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p24",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two numbers are 30 and 42. Their least common multiple is 210. What is their greatest common divisor?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "For any two numbers, their greatest common divisor times their least common multiple equals the numbers multiplied together.",
+        "30 times 42 is 1260.",
+        "1260 divided by the least common multiple, 210, gives 6."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when the least common multiple and the two numbers are known but the greatest common divisor is missing.",
+      "hints": [
+        "The product of two numbers always equals their greatest common divisor times their least common multiple.",
+        "Divide the product of the two numbers by the one you already know."
+      ],
+      "socraticHint": "If you multiply the two numbers, what does that product equal in terms of the two answers you are choosing between?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two numbers are 32 and 48. Their least common multiple is 96. What is their greatest common divisor?",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p25",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 72 and 90?",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "72 is 2 x 2 x 2 x 3 x 3.",
+        "90 is 2 x 3 x 3 x 5.",
+        "Both ladders share 2 x 3 x 3.",
+        "2 x 3 x 3 = 18, the greatest common divisor."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the biggest number that divides both of two given numbers.",
+      "hints": [
+        "Break both 72 and 90 down into their prime factors.",
+        "Multiply the shared primes together."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 77 and 99?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 72 and 90.",
+        "spec": {
+          "w": 220,
+          "h": 296,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "72 = 2 x 36",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "36 = 2 x 18",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "18 = 2 x 9",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 106,
+              "s": "9 = 3 x 3",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "3 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "90 = 2 x 45",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 218,
+              "s": "45 = 3 x 15",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 246,
+              "s": "15 = 3 x 5",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 274,
+              "s": "5 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p26",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 63 and 105?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "63 is 3 x 3 x 7.",
+        "105 is 3 x 5 x 7.",
+        "Both ladders share 3 x 7.",
+        "3 x 7 = 21, the greatest common divisor."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the biggest number that divides both of two given numbers.",
+      "hints": [
+        "Break both 63 and 105 down into their prime factors.",
+        "Multiply the shared primes together."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 68 and 114?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 63 and 105.",
+        "spec": {
+          "w": 220,
+          "h": 212,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "63 = 3 x 21",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "21 = 3 x 7",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "105 = 3 x 35",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "35 = 5 x 7",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p27",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the least common multiple of 36 and 48?",
+      "answer": {
+        "kind": "number",
+        "value": "144"
+      },
+      "explanation": [
+        "36 is 2 x 2 x 3 x 3.",
+        "48 is 2 x 2 x 2 x 2 x 3.",
+        "Take each prime as many times as its busiest ladder needs it: 2 x 2 x 2 x 2 x 3 x 3.",
+        "That multiplies to 144, the least common multiple."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the smallest number that both of two given numbers divide into evenly.",
+      "hints": [
+        "Break both 36 and 48 down into their prime factors.",
+        "Multiply every prime either number needs, at its busiest count."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the least common multiple of 40 and 60?",
+        "answer": {
+          "kind": "number",
+          "value": "120"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 36 and 48.",
+        "spec": {
+          "w": 220,
+          "h": 296,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "36 = 2 x 18",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "18 = 2 x 9",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "9 = 3 x 3",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 106,
+              "s": "3 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "48 = 2 x 24",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "24 = 2 x 12",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 218,
+              "s": "12 = 2 x 6",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 246,
+              "s": "6 = 2 x 3",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 274,
+              "s": "3 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p28",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the least common multiple of 42 and 56?",
+      "answer": {
+        "kind": "number",
+        "value": "168"
+      },
+      "explanation": [
+        "42 is 2 x 3 x 7.",
+        "56 is 2 x 2 x 2 x 7.",
+        "Take each prime as many times as its busiest ladder needs it: 2 x 2 x 2 x 3 x 7.",
+        "That multiplies to 168, the least common multiple."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the smallest number that both of two given numbers divide into evenly.",
+      "hints": [
+        "Break both 42 and 56 down into their prime factors.",
+        "Multiply every prime either number needs, at its busiest count."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the least common multiple of 45 and 60?",
+        "answer": {
+          "kind": "number",
+          "value": "180"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 42 and 56.",
+        "spec": {
+          "w": 220,
+          "h": 240,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "42 = 2 x 21",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "21 = 3 x 7",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "56 = 2 x 28",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "28 = 2 x 14",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "14 = 2 x 7",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 218,
+              "s": "7 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p29",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "Two numbers can share more than one common factor but only one greatest common divisor.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "12 and 18 share the common factors 1, 2, 3, and 6.",
+        "All four of those numbers divide both 12 and 18 evenly.",
+        "Only one of them, 6, is the greatest, so 6 is the greatest common divisor even though there are four common factors in total."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need to reason about what a greatest common divisor or least common multiple must satisfy.",
+      "hints": [
+        "List every common factor of a pair like 12 and 18.",
+        "How many of those common factors can be the single greatest one?"
+      ],
+      "socraticHint": "Does a small example that breaks the statement come to mind, or does it always hold?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "24 and 36 share more than one common factor, but only one greatest common divisor.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p30",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "If two numbers share no common factor bigger than 1, their least common multiple is just the two multiplied together.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "4 and 9 share no prime factors, so their only common factor is 1.",
+        "With no primes to share, the least common multiple needs every prime from both numbers in full.",
+        "That makes their least common multiple exactly 4 times 9, which is 36."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need to reason about what a greatest common divisor or least common multiple must satisfy.",
+      "hints": [
+        "Try the statement on a coprime pair, like 5 and 8.",
+        "With no shared prime factors, does the least common multiple ever need to reuse a prime twice?"
+      ],
+      "socraticHint": "Does a small example that breaks the statement come to mind, or does it always hold?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "7 and 9 share no common factor bigger than 1, so their least common multiple is 63.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p31",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A workshop has 24 bolts, 36 screws and 60 washers to pack into identical kits, with none left over. What is the largest number of kits it can make?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "24 is 2 x 2 x 2 x 3.",
+        "36 is 2 x 2 x 3 x 3.",
+        "60 is 2 x 2 x 3 x 5.",
+        "Every kit gets the same share of each pile, so the number of kits must divide 24, 36 and 60.",
+        "The primes all three share are 2 x 2 x 3, so the largest number of kits is 12."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when three amounts must all split into the same size of equal group.",
+      "hints": [
+        "The number of kits has to divide every pile evenly.",
+        "Break all three numbers into primes and keep the primes they all share."
+      ],
+      "socraticHint": "If every kit or tray must get the same share, what must the number of them divide?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop has 28 bolts, 42 screws and 68 washers to pack into identical kits, with none left over. What is the largest number of kits it can make?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p32",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A garden club has 18 tomato, 30 pepper and 42 bean seedlings to share into identical trays, with none left over. What is the largest number of trays?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "18 is 2 x 3 x 3.",
+        "30 is 2 x 3 x 5.",
+        "42 is 2 x 3 x 7.",
+        "Every tray gets the same share of each kind, so the number of trays must divide 18, 30 and 42.",
+        "The primes all three share are 2 x 3, so the largest number of trays is 6."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when three amounts must all split into the same size of equal group.",
+      "hints": [
+        "The number of trays has to divide every count evenly.",
+        "Break all three numbers into primes and keep the primes they all share."
+      ],
+      "socraticHint": "If every kit or tray must get the same share, what must the number of them divide?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A garden club has 22 tomato, 36 pepper and 50 bean seedlings to share into identical trays, with none left over. What is the largest number of trays?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot has three gears that click back to zero every 4, 6, and 9 seconds. All three just clicked to zero together. In how many seconds do all three click to zero together again?",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "4 is 2 x 2.",
+        "6 is 2 x 3.",
+        "9 is 3 x 3.",
+        "Every prime any of the three needs, at its busiest count, multiplied together, gives the least common multiple.",
+        "That comes to 36 seconds."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when three repeating events must all land together again at once.",
+      "hints": [
+        "Break all three numbers down into their prime factors.",
+        "Multiply every prime any of the three needs, at its busiest count."
+      ],
+      "socraticHint": "With three numbers instead of two, does the method for combining their prime factors actually change?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot has three gears that click back to zero every 8, 12, and 17 seconds. All three just clicked to zero together. In how many seconds do all three click to zero together again?",
+        "answer": {
+          "kind": "number",
+          "value": "408"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p34",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover has three sensors that ping every 6, 8, and 10 seconds. All three just pinged at the same moment. How many seconds until all three ping at the same moment again?",
+      "answer": {
+        "kind": "number",
+        "value": "120"
+      },
+      "explanation": [
+        "6 is 2 x 3.",
+        "8 is 2 x 2 x 2.",
+        "10 is 2 x 5.",
+        "Every prime any of the three needs, at its busiest count, multiplied together, gives the least common multiple.",
+        "That comes to 120 seconds."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when three repeating events must all land together again at once.",
+      "hints": [
+        "Break all three numbers down into their prime factors.",
+        "Multiply every prime any of the three needs, at its busiest count."
+      ],
+      "socraticHint": "With three numbers instead of two, does the method for combining their prime factors actually change?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover has three sensors that ping every 10, 14, and 18 seconds. All three just pinged at the same moment. How many seconds until all three ping at the same moment again?",
+        "answer": {
+          "kind": "number",
+          "value": "630"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game spawns three power-ups, one every 3 seconds, one every 5 seconds, and one every 8 seconds. All three just spawned together. How many seconds until all three spawn together again?",
+      "answer": {
+        "kind": "number",
+        "value": "120"
+      },
+      "explanation": [
+        "3 is 3.",
+        "5 is 5.",
+        "8 is 2 x 2 x 2.",
+        "Every prime any of the three needs, at its busiest count, multiplied together, gives the least common multiple.",
+        "That comes to 120 seconds."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when three repeating events must all land together again at once.",
+      "hints": [
+        "Break all three numbers down into their prime factors.",
+        "Multiply every prime any of the three needs, at its busiest count."
+      ],
+      "socraticHint": "With three numbers instead of two, does the method for combining their prime factors actually change?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game spawns three power-ups, one every 7 seconds, one every 11 seconds, and one every 16 seconds. All three just spawned together. How many seconds until all three spawn together again?",
+        "answer": {
+          "kind": "number",
+          "value": "1232"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone's camera clicks and its beacon flashes. One repeats every 18 seconds and the other every 24 seconds, starting together. After how many seconds do they next line up together?",
+      "answer": {
+        "kind": "number",
+        "value": "72"
+      },
+      "explanation": [
+        "They line up again on the least common multiple of 18 and 24.",
+        "18 is 2 x 3 x 3.",
+        "24 is 2 x 2 x 2 x 3.",
+        "Combining every prime either one needs, at its busiest count, gives 72 seconds."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when two repeating events start together and you need the next time they both land at once.",
+      "hints": [
+        "Break 18 and 24 down into their prime factors.",
+        "Multiply every prime either one needs, at its busiest count."
+      ],
+      "socraticHint": "The two events also lined up at the very start. What are you really looking for now?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A drone's camera clicks and its beacon flashes. One repeats every 20 seconds and the other every 27 seconds, starting together. After how many seconds do they next line up together?",
+        "answer": {
+          "kind": "number",
+          "value": "540"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D printer's nozzle cleans and its bed levels. One repeats every 20 seconds and the other every 35 seconds, starting together. After how many seconds do they next line up together?",
+      "answer": {
+        "kind": "number",
+        "value": "140"
+      },
+      "explanation": [
+        "They line up again on the least common multiple of 20 and 35.",
+        "20 is 2 x 2 x 5.",
+        "35 is 5 x 7.",
+        "Combining every prime either one needs, at its busiest count, gives 140 seconds."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when two repeating events start together and you need the next time they both land at once.",
+      "hints": [
+        "Break 20 and 35 down into their prime factors.",
+        "Multiply every prime either one needs, at its busiest count."
+      ],
+      "socraticHint": "The two events also lined up at the very start. What are you really looking for now?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printer's nozzle cleans and its bed levels. One repeats every 22 seconds and the other every 38 seconds, starting together. After how many seconds do they next line up together?",
+        "answer": {
+          "kind": "number",
+          "value": "418"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p38",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A kitchen scale zeroes and a timer resets. One repeats every 15 seconds and the other every 40 seconds, starting together. After how many seconds do they next line up together?",
+      "answer": {
+        "kind": "number",
+        "value": "120"
+      },
+      "explanation": [
+        "They line up again on the least common multiple of 15 and 40.",
+        "15 is 3 x 5.",
+        "40 is 2 x 2 x 2 x 5.",
+        "Combining every prime either one needs, at its busiest count, gives 120 seconds."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when two repeating events start together and you need the next time they both land at once.",
+      "hints": [
+        "Break 15 and 40 down into their prime factors.",
+        "Multiply every prime either one needs, at its busiest count."
+      ],
+      "socraticHint": "The two events also lined up at the very start. What are you really looking for now?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen scale zeroes and a timer resets. One repeats every 17 seconds and the other every 43 seconds, starting together. After how many seconds do they next line up together?",
+        "answer": {
+          "kind": "number",
+          "value": "731"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p39",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two numbers are 84 and 126. Their greatest common divisor is 42. What is their least common multiple?",
+      "answer": {
+        "kind": "number",
+        "value": "252"
+      },
+      "explanation": [
+        "For any two numbers, their greatest common divisor times their least common multiple equals the numbers multiplied together.",
+        "84 times 126 is 10584.",
+        "10584 divided by the greatest common divisor, 42, gives 252."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when the greatest common divisor and the two numbers are known but the least common multiple is missing.",
+      "hints": [
+        "The product of two numbers always equals their greatest common divisor times their least common multiple.",
+        "Divide the product of the two numbers by the one you already know."
+      ],
+      "socraticHint": "If you multiply the two numbers, what does that product equal in terms of the two answers you are choosing between?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Two numbers are 90 and 126. Their greatest common divisor is 18. What is their least common multiple?",
+        "answer": {
+          "kind": "number",
+          "value": "630"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p40",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two numbers are 96 and 144. Their least common multiple is 288. What is their greatest common divisor?",
+      "answer": {
+        "kind": "number",
+        "value": "48"
+      },
+      "explanation": [
+        "For any two numbers, their greatest common divisor times their least common multiple equals the numbers multiplied together.",
+        "96 times 144 is 13824.",
+        "13824 divided by the least common multiple, 288, gives 48."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when the least common multiple and the two numbers are known but the greatest common divisor is missing.",
+      "hints": [
+        "The product of two numbers always equals their greatest common divisor times their least common multiple.",
+        "Divide the product of the two numbers by the one you already know."
+      ],
+      "socraticHint": "If you multiply the two numbers, what does that product equal in terms of the two answers you are choosing between?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Two numbers are 96 and 120. Their least common multiple is 480. What is their greatest common divisor?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p41",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 90 and 120?",
+      "options": [
+        "15",
+        "360",
+        "30",
+        "90"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "90 is 2 x 3 x 3 x 5.",
+        "120 is 2 x 2 x 2 x 3 x 5.",
+        "The shared primes multiply to 30, the greatest common divisor.",
+        "360 is their least common multiple, not their greatest common divisor.",
+        "10800 is their product, which is neither."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when the greatest common divisor gets confused with the least common multiple or the product.",
+      "hints": [
+        "List each number's prime factors.",
+        "Multiply only the primes both lists share."
+      ],
+      "socraticHint": "A common factor and the greatest common divisor are not always the same number. Why not?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 96 and 132?",
+        "options": [
+          "12",
+          "1056",
+          "96",
+          "6"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p42",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "Three numbers can have a greatest common divisor found the same way two numbers can, by combining all three prime factor lists.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "8 is 2 x 2 x 2, 12 is 2 x 2 x 3, and 20 is 2 x 2 x 5.",
+        "All three share two factors of 2 and nothing else.",
+        "So their greatest common divisor is 2 x 2, which is 4.",
+        "That is the same method as for two numbers, just with a third list to compare."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need to reason about what a greatest common divisor or least common multiple must satisfy.",
+      "hints": [
+        "Try the statement on a small, concrete trio of numbers, like 8, 12, and 20.",
+        "For two numbers you keep only the primes both lists share. What changes when a third list joins in?"
+      ],
+      "socraticHint": "Does a small example that breaks the statement come to mind, or does it always hold?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The greatest common divisor of 12, 18, and 30 is 6.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p43",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "The least common multiple of three numbers is always the product of all three.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "2, 4, and 8 have least common multiple 8, since 8 is already a multiple of both 2 and 4.",
+        "The product of all three is 2 times 4 times 8, which is 64.",
+        "8 does not equal 64, so the least common multiple of three numbers is not always their product."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need to reason about what a greatest common divisor or least common multiple must satisfy.",
+      "hints": [
+        "Try the statement on a small, concrete trio of numbers, like 2, 4, and 8.",
+        "If one of the numbers already divides another, does multiplying all three still give the smallest common multiple?"
+      ],
+      "socraticHint": "Does a small example that breaks the statement come to mind, or does it always hold?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The least common multiple of 4, 6, and 8 is 24, and 24 is the product of all three.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p44",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 108 and 144?",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "108 is 2 x 2 x 3 x 3 x 3.",
+        "144 is 2 x 2 x 2 x 2 x 3 x 3.",
+        "Both ladders share 2 x 2 x 3 x 3.",
+        "2 x 2 x 3 x 3 = 36, the greatest common divisor."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the biggest number that divides both of two given numbers.",
+      "hints": [
+        "Break both 108 and 144 down into their prime factors.",
+        "Multiply the shared primes together."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 120 and 168?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 108 and 144.",
+        "spec": {
+          "w": 220,
+          "h": 352,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "108 = 2 x 54",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "54 = 2 x 27",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "27 = 3 x 9",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 106,
+              "s": "9 = 3 x 3",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "3 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "144 = 2 x 72",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 218,
+              "s": "72 = 2 x 36",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 246,
+              "s": "36 = 2 x 18",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 274,
+              "s": "18 = 2 x 9",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 302,
+              "s": "9 = 3 x 3",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 330,
+              "s": "3 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p45",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the greatest common divisor of 78 and 130?",
+      "answer": {
+        "kind": "number",
+        "value": "26"
+      },
+      "explanation": [
+        "78 is 2 x 3 x 13.",
+        "130 is 2 x 5 x 13.",
+        "Both ladders share 2 x 13.",
+        "2 x 13 = 26, the greatest common divisor."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when you need the biggest number that divides both of two given numbers.",
+      "hints": [
+        "Break both 78 and 130 down into their prime factors.",
+        "Multiply the shared primes together."
+      ],
+      "socraticHint": "Once both numbers are broken into primes, which primes actually matter for this answer?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the greatest common divisor of 84 and 126?",
+        "answer": {
+          "kind": "number",
+          "value": "42"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "Two factor ladders, one above the other, for 78 and 130.",
+        "spec": {
+          "w": 220,
+          "h": 212,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "78 = 2 x 39",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "39 = 3 x 13",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "13 is prime",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 134,
+              "s": "130 = 2 x 65",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 162,
+              "s": "65 = 5 x 13",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 190,
+              "s": "13 is prime",
+              "size": 13,
+              "anchor": "start"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-pa-gcd-lcm-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "The greatest common divisor of two numbers is 12 and their least common multiple is 240. If one of the numbers is 48, what is the other?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "The greatest common divisor times the least common multiple equals the two numbers multiplied together.",
+        "12 times 240 is 2880.",
+        "2880 divided by 48 gives 60, the other number."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when a greatest common divisor, a least common multiple, and one number are known but the other number is missing.",
+      "hints": [
+        "Use the rule that gcd times lcm equals the product of the two numbers.",
+        "Divide that product by the number you already know."
+      ],
+      "socraticHint": "If you know the product of the two numbers and one of them, how do you find the other?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "45"
+        },
+        "prompt": "The greatest common divisor of two numbers is 9 and their least common multiple is 180. If one of the numbers is 36, what is the other?"
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many pairs of positive integers x and y, with x at most y, have greatest common divisor 6 and least common multiple 180?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Write x = 6p and y = 6q, where p and q share no common factor bigger than 1.",
+        "The least common multiple is then 6pq, so pq = 180 divided by 6 = 30.",
+        "30 splits as 1 x 30, 2 x 15, 3 x 10 and 5 x 6, and each of those pairs shares no factor.",
+        "So there are 4 pairs: 6 and 180, 12 and 90, 18 and 60, 30 and 36."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when a gcd and an lcm are given and you need to count every pair of numbers that could produce them.",
+      "hints": [
+        "Divide both the gcd and the lcm by the gcd itself to shrink the problem.",
+        "Find every pair of factors of the shrunk number that share no common factor bigger than 1."
+      ],
+      "socraticHint": "If you divide both numbers by their greatest common divisor, what do you know about what is left?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        },
+        "prompt": "How many pairs of positive integers x and y, with x at most y, have greatest common divisor 8 and least common multiple 240?"
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p48",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "The sum of two positive integers is 60 and their greatest common divisor is 12. The larger number is a multiple of the smaller one. What is the larger number?",
+      "answer": {
+        "kind": "number",
+        "value": "48"
+      },
+      "explanation": [
+        "Both numbers are multiples of 12, so write them as 12 times two smaller numbers that add to 5.",
+        "60 divided by 12 is 5, and the two smaller numbers must share no common factor bigger than 1.",
+        "Only 1 and 4 also have the larger one dividing evenly by the smaller, so the numbers are 12 and 48."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when a sum and a greatest common divisor are known and the two numbers themselves are missing.",
+      "hints": [
+        "Both numbers are multiples of their greatest common divisor, 12.",
+        "Divide the sum by 12, then find two smaller numbers adding to that where one divides the other."
+      ],
+      "socraticHint": "If both numbers are multiples of 12, what do you get when you divide the whole sum by 12?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "63"
+        },
+        "prompt": "The sum of two positive integers is 72 and their greatest common divisor is 9. The larger number is a multiple of the smaller one. What is the larger number?"
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p49",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot's three arms complete a full cycle every 8, 12, and 18 seconds. If all three start together, how many full cycles has the 8-second arm completed the next time all three line up?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "All three line up again on the least common multiple of 8, 12, and 18.",
+        "8 is 2 x 2 x 2, 12 is 2 x 2 x 3, and 18 is 2 x 3 x 3.",
+        "Combining every prime each one needs, at its busiest count, gives 72 seconds.",
+        "72 divided by 8 is 9 full cycles for the 8-second arm."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when a least common multiple answers a lining-up question, but a follow-up asks for a count instead of a time.",
+      "hints": [
+        "Find the least common multiple of 8, 12, and 18 first.",
+        "Divide that least common multiple by 8 to count the cycles."
+      ],
+      "socraticHint": "Once you know when all three line up, how do you turn that into a cycle count for just one of them?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        },
+        "prompt": "A robot's three arms complete a full cycle every 10, 15, and 6 seconds. If all three start together, how many full cycles has the 6-second arm completed the next time all three line up?"
+      }
+    },
+    {
+      "id": "ladder-pa-gcd-lcm-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two gears have 18 and 30 teeth. A mark on each gear starts lined up at the top. After how many turns of the smaller gear do both marks next line up at the top together?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The marks line up again once each gear has turned a whole number of times and covered the same total number of teeth.",
+        "That total is the least common multiple of 18 and 30, which is 90 teeth.",
+        "90 teeth divided by the smaller gear's 18 teeth is 5 turns."
+      ],
+      "ideaId": "pa-gcd-lcm",
+      "useAgain": "when a least common multiple in teeth or steps needs converting into a number of turns for one gear.",
+      "hints": [
+        "Find the least common multiple of the two teeth counts first.",
+        "Divide that least common multiple by the smaller gear's teeth count."
+      ],
+      "socraticHint": "What has to be true about the total number of teeth that have passed for both marks to reach the top together?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        },
+        "prompt": "Two gears have 20 and 24 teeth. A mark on each gear starts lined up at the top. After how many turns of the smaller gear do both marks next line up at the top together?"
+      }
+    }
+  ]
+}

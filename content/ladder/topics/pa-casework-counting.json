@@ -1,0 +1,2564 @@
+{
+  "id": "pa-casework-counting",
+  "idea": {
+    "body": "Some counting questions do not have one clean rule for the whole thing, but they split neatly into a few cases that do not overlap. Count each case on its own, then add the cases together for the total. A game lets you pick one accessory for a robot: one of 4 hat styles, or one of 6 badge styles, never both at once. A hat pick and a badge pick can never be the same choice, so the two cases do not overlap. The total is 4 plus 6, which is 10 accessories in all. The two traps are forgetting a case, and adding two cases that actually share some outcomes.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A root labelled all outcomes branching into case 1 and case 2, with a note to add the cases.",
+      "spec": {
+        "w": 300,
+        "h": 152,
+        "items": [
+          {
+            "t": "box",
+            "x": 75,
+            "y": 10,
+            "w": 150,
+            "h": 32,
+            "label": "All outcomes"
+          },
+          {
+            "t": "line",
+            "x1": 150,
+            "y1": 42,
+            "x2": 80,
+            "y2": 70
+          },
+          {
+            "t": "box",
+            "x": 20,
+            "y": 70,
+            "w": 120,
+            "h": 32,
+            "label": "Case 1"
+          },
+          {
+            "t": "line",
+            "x1": 150,
+            "y1": 42,
+            "x2": 220,
+            "y2": 70
+          },
+          {
+            "t": "box",
+            "x": 160,
+            "y": 70,
+            "w": 120,
+            "h": 32,
+            "label": "Case 2"
+          },
+          {
+            "t": "text",
+            "x": 150,
+            "y": 132,
+            "s": "Add the cases for the total",
+            "size": 13,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A game lets player one pick one of 3 avatar shapes: circle, square, or triangle. Player two then picks a different shape from the remaining two. How many pairs of shapes are possible?",
+    "steps": [
+      "Split the count into 3 cases, one for each shape player one could pick.",
+      "In every case, player two then has exactly 2 remaining shapes to choose from.",
+      "Each of the 3 cases contributes 2 pairs, so the cases add to 3 times 2.",
+      "3 times 2 is 6 possible pairs of shapes."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "A root labelled player one branching into circle, square and triangle, each leading to 2 choices, totalling 6 pairs.",
+      "spec": {
+        "w": 380,
+        "h": 212,
+        "items": [
+          {
+            "t": "box",
+            "x": 115,
+            "y": 10,
+            "w": 150,
+            "h": 32,
+            "label": "Player one"
+          },
+          {
+            "t": "line",
+            "x1": 190,
+            "y1": 42,
+            "x2": 70,
+            "y2": 70
+          },
+          {
+            "t": "box",
+            "x": 20,
+            "y": 70,
+            "w": 100,
+            "h": 32,
+            "label": "Circle"
+          },
+          {
+            "t": "line",
+            "x1": 190,
+            "y1": 42,
+            "x2": 190,
+            "y2": 70
+          },
+          {
+            "t": "box",
+            "x": 140,
+            "y": 70,
+            "w": 100,
+            "h": 32,
+            "label": "Square"
+          },
+          {
+            "t": "line",
+            "x1": 190,
+            "y1": 42,
+            "x2": 310,
+            "y2": 70
+          },
+          {
+            "t": "box",
+            "x": 260,
+            "y": 70,
+            "w": 100,
+            "h": 32,
+            "label": "Triangle"
+          },
+          {
+            "t": "line",
+            "x1": 70,
+            "y1": 102,
+            "x2": 70,
+            "y2": 130
+          },
+          {
+            "t": "box",
+            "x": 20,
+            "y": 130,
+            "w": 100,
+            "h": 32,
+            "label": "2 choices"
+          },
+          {
+            "t": "line",
+            "x1": 190,
+            "y1": 102,
+            "x2": 190,
+            "y2": 130
+          },
+          {
+            "t": "box",
+            "x": 140,
+            "y": 130,
+            "w": 100,
+            "h": 32,
+            "label": "2 choices"
+          },
+          {
+            "t": "line",
+            "x1": 310,
+            "y1": 102,
+            "x2": 310,
+            "y2": 130
+          },
+          {
+            "t": "box",
+            "x": 260,
+            "y": 130,
+            "w": 100,
+            "h": 32,
+            "label": "2 choices"
+          },
+          {
+            "t": "text",
+            "x": 190,
+            "y": 192,
+            "s": "3 cases, 2 each: 6 pairs",
+            "size": 13,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "pa-casework-counting-w1",
+      "name": "Split and add the cases",
+      "when": "Use this when a choice comes from one non-overlapping group or another, never both.",
+      "steps": [
+        "A rover's tool bay offers one attachment: 5 scoop types or 3 drill types.",
+        "No attachment belongs to both groups, so the two cases never overlap.",
+        "Count each case on its own: 5 scoops, 3 drills.",
+        "Add the cases together: 5 plus 3 is 8 choices in all."
+      ],
+      "example": "A rover picks one attachment: 5 scoop types or 3 drill types. How many choices in all?",
+      "answer": "8",
+      "trap": "Multiplying the two case counts together instead of adding them.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A root labelled all attachments branching into scoops worth 5 and drills worth 3, adding to 8.",
+        "spec": {
+          "w": 300,
+          "h": 152,
+          "items": [
+            {
+              "t": "box",
+              "x": 75,
+              "y": 10,
+              "w": 150,
+              "h": 32,
+              "label": "All attachments"
+            },
+            {
+              "t": "line",
+              "x1": 150,
+              "y1": 42,
+              "x2": 80,
+              "y2": 70,
+              "hidden": true
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 70,
+              "w": 120,
+              "h": 32,
+              "label": "Scoops: 5",
+              "hidden": true
+            },
+            {
+              "t": "line",
+              "x1": 150,
+              "y1": 42,
+              "x2": 220,
+              "y2": 70,
+              "hidden": true
+            },
+            {
+              "t": "box",
+              "x": 160,
+              "y": 70,
+              "w": 120,
+              "h": 32,
+              "label": "Drills: 3",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 132,
+              "s": "Add the cases: 5 + 3 = 8",
+              "size": 13,
+              "anchor": "middle",
+              "hidden": true
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "A rover picks one attachment.",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "5 scoop types or 3 drill types.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": false
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "The two cases never overlap.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false,
+                  "fill": "green"
+                },
+                "3": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": false,
+                  "fill": "green"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Each case counted alone: 5, 3.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": false
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Add: 5 plus 3 is 8.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": false
+                },
+                "5": {
+                  "hidden": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pa-casework-counting-w2",
+      "name": "The case-by-case table",
+      "when": "Use this when each case has its own separate rule, not one multiplication for everything.",
+      "steps": [
+        "Split two-digit numbers with digits adding to 16 by the tens digit.",
+        "Tens digit 7 needs ones digit 9, giving 79.",
+        "Tens digit 8 needs ones digit 8, giving 88.",
+        "Tens digit 9 needs ones digit 7, giving 97.",
+        "That is 3 cases, one number each, so 3 in all."
+      ],
+      "example": "How many two-digit numbers have digits that add up to 16?",
+      "answer": "3",
+      "trap": "Trying tens digits below 7, which would need a ones digit bigger than 9.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Three stacked lines showing tens digit, ones digit and the resulting number for each case, then the total.",
+        "spec": {
+          "w": 220,
+          "h": 128,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "Tens 7, ones 9: 79",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "Tens 8, ones 8: 88",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "Tens 9, ones 7: 97",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 106,
+              "s": "3 cases, 3 numbers",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Digits add to 16.",
+              "set": {
+                "0": {
+                  "s": "Digits add to 16."
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Split by the tens digit.",
+              "set": {
+                "0": {
+                  "s": "Digits add to 16."
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Tens 7 needs ones 9: 79.",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "Tens 8 needs ones 8: 88.",
+              "set": {
+                "1": {
+                  "hidden": false
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Tens 9 needs ones 7: 97.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "3 cases, 3 numbers in all.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "hidden": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pa-casework-counting-w3",
+      "name": "The case tree",
+      "when": "Use this when you want to see every case branch out before counting the leaves.",
+      "steps": [
+        "Split by what the first die shows, 1 to 4, since higher values leave no valid second die.",
+        "First die 1 needs second die 4; first die 2 needs 3; first die 3 needs 2; first die 4 needs 1.",
+        "Each of the 4 branches contributes exactly 1 way.",
+        "4 cases, 1 each: 4 ways in all."
+      ],
+      "example": "Two dice are rolled. In how many ways can the two numbers add up to 5?",
+      "answer": "4",
+      "trap": "Counting first die 5 or 6 as a branch, even though no valid second die exists for them.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A tree with root first die branching into 1, 2, 3, 4, each leading to 1 way, totalling 4 ways.",
+        "spec": {
+          "w": 380,
+          "h": 212,
+          "items": [
+            {
+              "t": "box",
+              "x": 115,
+              "y": 10,
+              "w": 150,
+              "h": 32,
+              "label": "First die"
+            },
+            {
+              "t": "line",
+              "x1": 190,
+              "y1": 42,
+              "x2": 50,
+              "y2": 70,
+              "hidden": true
+            },
+            {
+              "t": "line",
+              "x1": 190,
+              "y1": 42,
+              "x2": 140,
+              "y2": 70,
+              "hidden": true
+            },
+            {
+              "t": "line",
+              "x1": 190,
+              "y1": 42,
+              "x2": 230,
+              "y2": 70,
+              "hidden": true
+            },
+            {
+              "t": "line",
+              "x1": 190,
+              "y1": 42,
+              "x2": 320,
+              "y2": 70,
+              "hidden": true
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 70,
+              "w": 80,
+              "h": 32,
+              "label": "1",
+              "hidden": true
+            },
+            {
+              "t": "box",
+              "x": 100,
+              "y": 70,
+              "w": 80,
+              "h": 32,
+              "label": "2",
+              "hidden": true
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 70,
+              "w": 80,
+              "h": 32,
+              "label": "3",
+              "hidden": true
+            },
+            {
+              "t": "box",
+              "x": 280,
+              "y": 70,
+              "w": 80,
+              "h": 32,
+              "label": "4",
+              "hidden": true
+            },
+            {
+              "t": "line",
+              "x1": 50,
+              "y1": 102,
+              "x2": 50,
+              "y2": 130,
+              "hidden": true
+            },
+            {
+              "t": "line",
+              "x1": 140,
+              "y1": 102,
+              "x2": 140,
+              "y2": 130,
+              "hidden": true
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 102,
+              "x2": 230,
+              "y2": 130,
+              "hidden": true
+            },
+            {
+              "t": "line",
+              "x1": 320,
+              "y1": 102,
+              "x2": 320,
+              "y2": 130,
+              "hidden": true
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 130,
+              "w": 80,
+              "h": 32,
+              "label": "1 way",
+              "hidden": true
+            },
+            {
+              "t": "box",
+              "x": 100,
+              "y": 130,
+              "w": 80,
+              "h": 32,
+              "label": "1 way",
+              "hidden": true
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 130,
+              "w": 80,
+              "h": 32,
+              "label": "1 way",
+              "hidden": true
+            },
+            {
+              "t": "box",
+              "x": 280,
+              "y": 130,
+              "w": 80,
+              "h": 32,
+              "label": "1 way",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 192,
+              "s": "4 cases, 1 each: 4 ways",
+              "size": 13,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Roll two dice for a sum of 5.",
+              "set": {
+                "17": {
+                  "s": ""
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Split by what the first die shows.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": false
+                },
+                "5": {
+                  "hidden": false
+                },
+                "6": {
+                  "hidden": false
+                },
+                "7": {
+                  "hidden": false
+                },
+                "8": {
+                  "hidden": false
+                },
+                "17": {
+                  "s": ""
+                }
+              }
+            },
+            {
+              "ms": 1400,
+              "caption": "Each first die pairs with one second.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": false
+                },
+                "5": {
+                  "hidden": false
+                },
+                "6": {
+                  "hidden": false
+                },
+                "7": {
+                  "hidden": false
+                },
+                "8": {
+                  "hidden": false
+                },
+                "17": {
+                  "s": "1 with 4, 2 with 3, 3 with 2, 4 with 1."
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Each of the 4 branches gives 1 way.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": false
+                },
+                "5": {
+                  "hidden": false
+                },
+                "6": {
+                  "hidden": false
+                },
+                "7": {
+                  "hidden": false
+                },
+                "8": {
+                  "hidden": false
+                },
+                "9": {
+                  "hidden": false
+                },
+                "10": {
+                  "hidden": false
+                },
+                "11": {
+                  "hidden": false
+                },
+                "12": {
+                  "hidden": false
+                },
+                "13": {
+                  "hidden": false
+                },
+                "14": {
+                  "hidden": false
+                },
+                "15": {
+                  "hidden": false
+                },
+                "16": {
+                  "hidden": false
+                },
+                "17": {
+                  "s": "Each branch contributes 1 way."
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "4 cases, 1 each: 4 ways total.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": false
+                },
+                "5": {
+                  "hidden": false
+                },
+                "6": {
+                  "hidden": false
+                },
+                "7": {
+                  "hidden": false
+                },
+                "8": {
+                  "hidden": false
+                },
+                "9": {
+                  "hidden": false
+                },
+                "10": {
+                  "hidden": false
+                },
+                "11": {
+                  "hidden": false
+                },
+                "12": {
+                  "hidden": false
+                },
+                "13": {
+                  "hidden": false
+                },
+                "14": {
+                  "hidden": false
+                },
+                "15": {
+                  "hidden": false
+                },
+                "16": {
+                  "hidden": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-pa-casework-counting-p01",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game lets you pick a robot accessory: 4 hat styles or 6 badge styles. You pick exactly one, never both. How many choices are there in all?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "4 hat choices.",
+        "6 badge choices.",
+        "No choice belongs to more than one group, so the cases add: 4 plus 6 is 10."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a choice comes from one group or another, never both, and the groups do not overlap.",
+      "hints": [
+        "Count each group of choices on its own first.",
+        "Since picking from one group rules out the other, add the group counts together."
+      ],
+      "socraticHint": "Can any single choice belong to more than one of these groups at once?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game lets you pick a robot accessory: 6 hat styles or 8 badge styles. You pick exactly one, never both. How many choices are there in all?",
+        "answer": {
+          "kind": "number",
+          "value": "14"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p02",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D print queue has 5 tray designs or 3 base designs to start a job. You pick exactly one, never both. How many choices are there in all?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "5 tray choices.",
+        "3 base choices.",
+        "No choice belongs to more than one group, so the cases add: 5 plus 3 is 8."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a choice comes from one group or another, never both, and the groups do not overlap.",
+      "hints": [
+        "Count each group of choices on its own first.",
+        "Since picking from one group rules out the other, add the group counts together."
+      ],
+      "socraticHint": "Can any single choice belong to more than one of these groups at once?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A 3D print queue has 7 tray designs or 5 base designs to start a job. You pick exactly one, never both. How many choices are there in all?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone's paint shop offers 7 body colors or 2 wing patterns for one custom finish. You pick exactly one, never both. How many choices are there in all?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "7 body color choices.",
+        "2 wing pattern choices.",
+        "No choice belongs to more than one group, so the cases add: 7 plus 2 is 9."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a choice comes from one group or another, never both, and the groups do not overlap.",
+      "hints": [
+        "Count each group of choices on its own first.",
+        "Since picking from one group rules out the other, add the group counts together."
+      ],
+      "socraticHint": "Can any single choice belong to more than one of these groups at once?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A drone's paint shop offers 9 body colors or 4 wing patterns for one custom finish. You pick exactly one, never both. How many choices are there in all?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p04",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A piano app offers 6 practice songs or 8 warm-up drills for one session. You pick exactly one, never both. How many choices are there in all?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "6 song choices.",
+        "8 drill choices.",
+        "No choice belongs to more than one group, so the cases add: 6 plus 8 is 14."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a choice comes from one group or another, never both, and the groups do not overlap.",
+      "hints": [
+        "Count each group of choices on its own first.",
+        "Since picking from one group rules out the other, add the group counts together."
+      ],
+      "socraticHint": "Can any single choice belong to more than one of these groups at once?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A piano app offers 8 practice songs or 10 warm-up drills for one session. You pick exactly one, never both. How many choices are there in all?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p05",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket sim lets you pick one launch site from 4 desert pads or 5 coastal pads. You pick exactly one, never both. How many choices are there in all?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "4 desert pad choices.",
+        "5 coastal pad choices.",
+        "No choice belongs to more than one group, so the cases add: 4 plus 5 is 9."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a choice comes from one group or another, never both, and the groups do not overlap.",
+      "hints": [
+        "Count each group of choices on its own first.",
+        "Since picking from one group rules out the other, add the group counts together."
+      ],
+      "socraticHint": "Can any single choice belong to more than one of these groups at once?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rocket sim lets you pick one launch site from 6 desert pads or 7 coastal pads. You pick exactly one, never both. How many choices are there in all?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover's toolkit lets you attach one arm: 3 gripper types or 4 scoop types. You pick exactly one, never both. How many choices are there in all?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "3 gripper choices.",
+        "4 scoop choices.",
+        "No choice belongs to more than one group, so the cases add: 3 plus 4 is 7."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a choice comes from one group or another, never both, and the groups do not overlap.",
+      "hints": [
+        "Count each group of choices on its own first.",
+        "Since picking from one group rules out the other, add the group counts together."
+      ],
+      "socraticHint": "Can any single choice belong to more than one of these groups at once?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover's toolkit lets you attach one arm: 5 gripper types or 6 scoop types. You pick exactly one, never both. How many choices are there in all?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p07",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers have digits that add up to 8?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Split by the tens digit, from 1 to 9. Each tens digit leaves exactly one ones digit to make the sum, if that digit is 0 to 9.",
+        "Tens digit 1 needs 7, and so on up to tens digit 8, which needs 0.",
+        "The working numbers are 17, 26, 35, 44, 53, 62, 71, 80.",
+        "That is 8 cases with one number each, so 8."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a digit-sum condition splits naturally into one case per digit choice.",
+      "hints": [
+        "Split the count into cases by the tens digit.",
+        "For each tens digit, check whether a matching ones digit from 0 to 9 exists."
+      ],
+      "socraticHint": "For a two-digit number with digit sum 8, does every choice of tens digit give a valid ones digit?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many two-digit numbers have digits that add up to 9?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers have digits that add up to 6?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Split by the tens digit, from 1 to 9. Each tens digit leaves exactly one ones digit to make the sum, if that digit is 0 to 9.",
+        "Tens digit 1 needs 5, and so on up to tens digit 6, which needs 0.",
+        "The working numbers are 15, 24, 33, 42, 51, 60.",
+        "That is 6 cases with one number each, so 6."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a digit-sum condition splits naturally into one case per digit choice.",
+      "hints": [
+        "Split the count into cases by the tens digit.",
+        "For each tens digit, check whether a matching ones digit from 0 to 9 exists."
+      ],
+      "socraticHint": "For a two-digit number with digit sum 6, does every choice of tens digit give a valid ones digit?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many two-digit numbers have digits that add up to 7?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers have digits that add up to 4?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Split by the tens digit, from 1 to 9. Each tens digit leaves exactly one ones digit to make the sum, if that digit is 0 to 9.",
+        "Tens digit 1 needs 3, and so on up to tens digit 4, which needs 0.",
+        "The working numbers are 13, 22, 31, 40.",
+        "That is 4 cases with one number each, so 4."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a digit-sum condition splits naturally into one case per digit choice.",
+      "hints": [
+        "Split the count into cases by the tens digit.",
+        "For each tens digit, check whether a matching ones digit from 0 to 9 exists."
+      ],
+      "socraticHint": "For a two-digit number with digit sum 4, does every choice of tens digit give a valid ones digit?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many two-digit numbers have digits that add up to 5?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p10",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers have digits that add up to 15?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Split by the tens digit, from 1 to 9. Each tens digit leaves exactly one ones digit to make the sum, if that digit is 0 to 9.",
+        "Tens digit 6 needs 9, and so on up to tens digit 9, which needs 6.",
+        "The working numbers are 69, 78, 87, 96.",
+        "That is 4 cases with one number each, so 4."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a digit-sum condition splits naturally into one case per digit choice.",
+      "hints": [
+        "Split the count into cases by the tens digit.",
+        "For each tens digit, check whether a matching ones digit from 0 to 9 exists."
+      ],
+      "socraticHint": "For a two-digit number with digit sum 15, does every choice of tens digit give a valid ones digit?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many two-digit numbers have digits that add up to 14?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p11",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game controller offers 3 arcade modes, 5 puzzle modes, or 2 race modes. You pick exactly one, never more than one group. How many choices are there in all?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The three groups have 3, 5, and 2 choices.",
+        "None of the three groups shares a choice with another.",
+        "3 plus 5 plus 2 is 10."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a choice comes from exactly one of several non-overlapping groups.",
+      "hints": [
+        "Count each of the three groups on its own.",
+        "Add all three counts together, since none of the groups overlap."
+      ],
+      "socraticHint": "With three separate groups instead of two, does the adding rule still work the same way?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game controller offers 4 arcade modes, 6 puzzle modes, or 3 race modes. You pick exactly one, never more than one group. How many choices are there in all?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p12",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A kitchen scale has 4 gram settings, 3 kilogram settings, or 2 carat settings. You pick exactly one, never more than one group. How many choices are there in all?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "The three groups have 4, 3, and 2 choices.",
+        "None of the three groups shares a choice with another.",
+        "4 plus 3 plus 2 is 9."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a choice comes from exactly one of several non-overlapping groups.",
+      "hints": [
+        "Count each of the three groups on its own.",
+        "Add all three counts together, since none of the groups overlap."
+      ],
+      "socraticHint": "With three separate groups instead of two, does the adding rule still work the same way?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A kitchen scale has 5 gram settings, 4 kilogram settings, or 3 carat settings. You pick exactly one, never more than one group. How many choices are there in all?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p13",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot's sound bank has 6 beeps, 4 chirps, or 5 clicks. You pick exactly one, never more than one group. How many choices are there in all?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "The three groups have 6, 4, and 5 choices.",
+        "None of the three groups shares a choice with another.",
+        "6 plus 4 plus 5 is 15."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a choice comes from exactly one of several non-overlapping groups.",
+      "hints": [
+        "Count each of the three groups on its own.",
+        "Add all three counts together, since none of the groups overlap."
+      ],
+      "socraticHint": "With three separate groups instead of two, does the adding rule still work the same way?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A robot's sound bank has 7 beeps, 5 chirps, or 6 clicks. You pick exactly one, never more than one group. How many choices are there in all?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p14",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone's flight log sorts by 3 weather tags, 6 location tags, or 4 mission tags. You pick exactly one, never more than one group. How many choices are there in all?",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "The three groups have 3, 6, and 4 choices.",
+        "None of the three groups shares a choice with another.",
+        "3 plus 6 plus 4 is 13."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a choice comes from exactly one of several non-overlapping groups.",
+      "hints": [
+        "Count each of the three groups on its own.",
+        "Add all three counts together, since none of the groups overlap."
+      ],
+      "socraticHint": "With three separate groups instead of two, does the adding rule still work the same way?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A drone's flight log sorts by 4 weather tags, 7 location tags, or 5 mission tags. You pick exactly one, never more than one group. How many choices are there in all?",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p15",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket's fuel log sorts by 5 tank sizes, 3 mix types, or 6 batch codes. You pick exactly one, never more than one group. How many choices are there in all?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "The three groups have 5, 3, and 6 choices.",
+        "None of the three groups shares a choice with another.",
+        "5 plus 3 plus 6 is 14."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a choice comes from exactly one of several non-overlapping groups.",
+      "hints": [
+        "Count each of the three groups on its own.",
+        "Add all three counts together, since none of the groups overlap."
+      ],
+      "socraticHint": "With three separate groups instead of two, does the adding rule still work the same way?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rocket's fuel log sorts by 6 tank sizes, 4 mix types, or 7 batch codes. You pick exactly one, never more than one group. How many choices are there in all?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p16",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. In how many ways can the two numbers add up to 5?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Split by what the first die shows, 1 to 6. Each case leaves exactly one value for the second die, if that value is 1 to 6.",
+        "The pairs that work are 1 and 4, 2 and 3, 3 and 2, 4 and 1.",
+        "That is 4 cases with one pair each, so 4.",
+        "The trap is counting 2 and 3 as the same as 3 and 2; they are different rolls."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a two-part total splits naturally into one case per value of the first part.",
+      "hints": [
+        "Try every value from 1 to 6 for the first die.",
+        "For each one, check if 5 minus that value is also a value from 1 to 6."
+      ],
+      "socraticHint": "Do all six cases for the first die give a valid second-die value, or only some?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two dice are rolled. In how many ways can the two numbers add up to 8?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p17",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A board game opens a door on a total of 9 from two dice. In how many ways can two dice show a total of 9?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Split by what the first die shows, 1 to 6. Each case leaves exactly one value for the second die, if that value is 1 to 6.",
+        "The pairs that work are 3 and 6, 4 and 5, 5 and 4, 6 and 3.",
+        "That is 4 cases with one pair each, so 4.",
+        "The trap is counting 2 and 3 as the same as 3 and 2; they are different rolls."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a two-part total splits naturally into one case per value of the first part.",
+      "hints": [
+        "Try every value from 1 to 6 for the first die.",
+        "For each one, check if 9 minus that value is also a value from 1 to 6."
+      ],
+      "socraticHint": "Do all six cases for the first die give a valid second-die value, or only some?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A board game opens a door on a total of 4 from two dice. In how many ways can two dice show a total of 4?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p18",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot rolls two dice and adds them. In how many ways can the sum be 4?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Split by what the first die shows, 1 to 6. Each case leaves exactly one value for the second die, if that value is 1 to 6.",
+        "The pairs that work are 1 and 3, 2 and 2, 3 and 1.",
+        "That is 3 cases with one pair each, so 3.",
+        "The trap is counting 2 and 3 as the same as 3 and 2; they are different rolls."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a two-part total splits naturally into one case per value of the first part.",
+      "hints": [
+        "Try every value from 1 to 6 for the first die.",
+        "For each one, check if 4 minus that value is also a value from 1 to 6."
+      ],
+      "socraticHint": "Do all six cases for the first die give a valid second-die value, or only some?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A robot rolls two dice and adds them. In how many ways can the sum be 9?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p19",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. In how many ways can the two numbers add up to 10?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Split by what the first die shows, 1 to 6. Each case leaves exactly one value for the second die, if that value is 1 to 6.",
+        "The pairs that work are 4 and 6, 5 and 5, 6 and 4.",
+        "That is 3 cases with one pair each, so 3.",
+        "The trap is counting 2 and 3 as the same as 3 and 2; they are different rolls."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a two-part total splits naturally into one case per value of the first part.",
+      "hints": [
+        "Try every value from 1 to 6 for the first die.",
+        "For each one, check if 10 minus that value is also a value from 1 to 6."
+      ],
+      "socraticHint": "Do all six cases for the first die give a valid second-die value, or only some?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two dice are rolled. In how many ways can the two numbers add up to 3?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p20",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3-letter code uses different letters from A, B, C and D, no letter repeated. How many such codes start with A or B?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Split by the first letter: one case for each letter the code is allowed to start with.",
+        "Once the first letter is fixed, 3 letters remain for the second spot and 2 for the third.",
+        "Each starting-letter case contributes 6 codes, and there are 2 such cases.",
+        "2 times 6 is 12."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a restriction on the first pick still leaves the same count of choices for every case.",
+      "hints": [
+        "Split into one case for each allowed starting letter.",
+        "In every case, count how many ways the remaining letters can fill the other spots."
+      ],
+      "socraticHint": "Once the first letter is fixed, does the count for the rest of the code change from case to case?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3-letter code uses different letters from A, B, C and D, no letter repeated. How many such codes start with C or D?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p21",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3-letter code uses different letters from A, B, C, D and E, no letter repeated. How many such codes start with A, C or E?",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "Split by the first letter: one case for each letter the code is allowed to start with.",
+        "Once the first letter is fixed, 4 letters remain for the second spot and 3 for the third.",
+        "Each starting-letter case contributes 12 codes, and there are 3 such cases.",
+        "3 times 12 is 36."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a restriction on the first pick still leaves the same count of choices for every case.",
+      "hints": [
+        "Split into one case for each allowed starting letter.",
+        "In every case, count how many ways the remaining letters can fill the other spots."
+      ],
+      "socraticHint": "Once the first letter is fixed, does the count for the rest of the code change from case to case?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3-letter code uses different letters from A, B, C, D and E, no letter repeated. How many such codes start with B or D?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game archives its saved levels by starting digit. Numbers run from 100 to 399, split into three cases by the first digit. Numbers starting with 1 count if they are even. Numbers starting with 2 count if they are a multiple of 3. Numbers starting with 3 count if they are a multiple of 5. How many numbers in total fit their case's rule?",
+      "answer": {
+        "kind": "number",
+        "value": "103"
+      },
+      "explanation": [
+        "Numbers starting with 1 that are even: 50.",
+        "Numbers starting with 2 that are multiples of 3: 33.",
+        "Numbers starting with 3 that are multiples of 5: 20.",
+        "Adding the three cases gives 103."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when different cases each need their own separate rule, not one rule for the whole count.",
+      "hints": [
+        "Split the count into three cases, one for each starting digit.",
+        "Each case has its own rule, so count it on its own before adding."
+      ],
+      "socraticHint": "Since each starting digit has a different rule, can one multiplication cover all three cases at once?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game archives its saved levels by starting digit. Numbers run from 100 to 399, split into three cases by the first digit. Numbers starting with 1 count if they are a multiple of 3. Numbers starting with 2 count if they are a multiple of 5. Numbers starting with 3 count if they are even. How many numbers in total fit their case's rule?",
+        "answer": {
+          "kind": "number",
+          "value": "103"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p23",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers have digits that add up to 11?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Split by the tens digit, from 1 to 9. Each tens digit leaves exactly one ones digit to make the sum, if that digit is 0 to 9.",
+        "Tens digit 2 needs 9, and so on up to tens digit 9, which needs 2.",
+        "The working numbers are 29, 38, 47, 56, 65, 74, 83, 92.",
+        "That is 8 cases with one number each, so 8."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a digit-sum condition splits naturally into one case per digit choice.",
+      "hints": [
+        "Split the count into cases by the tens digit.",
+        "For each tens digit, check whether a matching ones digit from 0 to 9 exists."
+      ],
+      "socraticHint": "For a two-digit number with digit sum 11, does every choice of tens digit give a valid ones digit?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many two-digit numbers have digits that add up to 10?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p24",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers have digits that add up to 13?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Split by the tens digit, from 1 to 9. Each tens digit leaves exactly one ones digit to make the sum, if that digit is 0 to 9.",
+        "Tens digit 4 needs 9, and so on up to tens digit 9, which needs 4.",
+        "The working numbers are 49, 58, 67, 76, 85, 94.",
+        "That is 6 cases with one number each, so 6."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a digit-sum condition splits naturally into one case per digit choice.",
+      "hints": [
+        "Split the count into cases by the tens digit.",
+        "For each tens digit, check whether a matching ones digit from 0 to 9 exists."
+      ],
+      "socraticHint": "For a two-digit number with digit sum 13, does every choice of tens digit give a valid ones digit?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many two-digit numbers have digits that add up to 12?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p25",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Three dice are rolled. In how many ways can the three numbers add up to 6?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Split by what the first die shows, 1 to 6. In each case the other two dice must make up the rest of the total.",
+        "First die 1: 4 ways, 2: 3 ways, 3: 2 ways, 4: 1 ways, 5: 0 ways, 6: 0 ways.",
+        "Adding the six cases: 4 + 3 + 2 + 1 + 0 + 0 = 10."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a case, once split off, turns into a smaller version of a problem you already know how to count.",
+      "hints": [
+        "Fix the first die's value, then count the ways the other two can finish the sum.",
+        "Do that for every value from 1 to 6, then add the cases."
+      ],
+      "socraticHint": "Once the first die is fixed, the problem is really a two-dice sum problem you have already solved. How does that help?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Three dice are rolled. In how many ways can the three numbers add up to 15?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p26",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Three dice are rolled. In how many ways can the three numbers add up to 16?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Split by what the first die shows, 1 to 6. In each case the other two dice must make up the rest of the total.",
+        "First die 1: 0 ways, 2: 0 ways, 3: 0 ways, 4: 1 ways, 5: 2 ways, 6: 3 ways.",
+        "Adding the six cases: 0 + 0 + 0 + 1 + 2 + 3 = 6."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a case, once split off, turns into a smaller version of a problem you already know how to count.",
+      "hints": [
+        "Fix the first die's value, then count the ways the other two can finish the sum.",
+        "Do that for every value from 1 to 6, then add the cases."
+      ],
+      "socraticHint": "Once the first die is fixed, the problem is really a two-dice sum problem you have already solved. How does that help?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Three dice are rolled. In how many ways can the three numbers add up to 5?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p27",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In a race game you move the total of two dice. In how many ways can the total be 6?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Split by what the first die shows, 1 to 6. Each case leaves exactly one value for the second die, if that value is 1 to 6.",
+        "The pairs that work are 1 and 5, 2 and 4, 3 and 3, 4 and 2, 5 and 1.",
+        "That is 5 cases with one pair each, so 5.",
+        "The trap is counting 2 and 3 as the same as 3 and 2; they are different rolls."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a two-part total splits naturally into one case per value of the first part.",
+      "hints": [
+        "Try every value from 1 to 6 for the first die.",
+        "For each one, check if 6 minus that value is also a value from 1 to 6."
+      ],
+      "socraticHint": "Do all six cases for the first die give a valid second-die value, or only some?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In a race game you move the total of two dice. In how many ways can the total be 7?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p28",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone launches when two dice show a total of 8. In how many ways can that total come up?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Split by what the first die shows, 1 to 6. Each case leaves exactly one value for the second die, if that value is 1 to 6.",
+        "The pairs that work are 2 and 6, 3 and 5, 4 and 4, 5 and 3, 6 and 2.",
+        "That is 5 cases with one pair each, so 5.",
+        "The trap is counting 2 and 3 as the same as 3 and 2; they are different rolls."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a two-part total splits naturally into one case per value of the first part.",
+      "hints": [
+        "Try every value from 1 to 6 for the first die.",
+        "For each one, check if 8 minus that value is also a value from 1 to 6."
+      ],
+      "socraticHint": "Do all six cases for the first die give a valid second-die value, or only some?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone launches when two dice show a total of 5. In how many ways can that total come up?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p29",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 4-digit passcode uses different digits from 1, 2, 3, 4, 5 and 6, no digit repeated. How many such passcodes start with 1, 3 or 5?",
+      "answer": {
+        "kind": "number",
+        "value": "180"
+      },
+      "explanation": [
+        "Split by the first digit: one case for each digit the code is allowed to start with.",
+        "Once the first digit is fixed, 5 digits remain for the second spot, 4 for the third, and 3 for the fourth.",
+        "Each starting-digit case contributes 60 codes, and there are 3 such cases.",
+        "3 times 60 is 180."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a restriction on the first pick still leaves the same count of choices for every case.",
+      "hints": [
+        "Split into one case for each allowed starting digit.",
+        "In every case, count how many ways the remaining digits can fill the other spots."
+      ],
+      "socraticHint": "Once the first digit is fixed, does the count for the rest of the code change from case to case?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 4-digit passcode uses different digits from 1, 2, 3, 4, 5 and 6, no digit repeated. How many such passcodes start with 2 or 4?",
+        "answer": {
+          "kind": "number",
+          "value": "120"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p30",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D print queue archives finished jobs by starting digit. Numbers run from 400 to 699, split into three cases by the first digit. Numbers starting with 4 count if they are odd. Numbers starting with 5 count if they are a multiple of 4. Numbers starting with 6 count if they are a multiple of 7. How many numbers in total fit their case's rule?",
+      "answer": {
+        "kind": "number",
+        "value": "89"
+      },
+      "explanation": [
+        "Numbers starting with 4 that are odd: 50.",
+        "Numbers starting with 5 that are multiples of 4: 25.",
+        "Numbers starting with 6 that are multiples of 7: 14.",
+        "Adding the three cases gives 89."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when different cases each need their own separate rule, not one rule for the whole count.",
+      "hints": [
+        "Split the count into three cases, one for each starting digit.",
+        "Each case has its own rule, so count it on its own before adding."
+      ],
+      "socraticHint": "Since each starting digit has a different rule, can one multiplication cover all three cases at once?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D print queue archives finished jobs by starting digit. Numbers run from 400 to 699, split into three cases by the first digit. Numbers starting with 4 count if they are a multiple of 4. Numbers starting with 5 count if they are a multiple of 7. Numbers starting with 6 count if they are odd. How many numbers in total fit their case's rule?",
+        "answer": {
+          "kind": "number",
+          "value": "89"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p31",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A kitchen scale is calibrated by stacking weights. 20 grams must be made using 1 gram, 5 gram, and 10 gram weights, any number of each. In how many ways can this be done?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Split by how many 10 gram weights are used, then by how many 5 gram weights; the 1 gram weights always fill the rest.",
+        "10 gram weights 0: 5 ways, 1: 3 ways, 2: 1 ways.",
+        "Adding the cases: 5 + 3 + 1 = 9."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a total splits into cases by the count of the biggest piece first, then the next biggest.",
+      "hints": [
+        "Start by choosing how many 10 gram weights to use.",
+        "For each of those cases, choose how many 5 gram weights fill the rest, before the 1 gram weights finish it off."
+      ],
+      "socraticHint": "Since 1 gram weights can always finish off whatever is left, what actually decides each case?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen scale is calibrated by stacking weights. 25 grams must be made using 1 gram, 5 gram, and 10 gram weights, any number of each. In how many ways can this be done?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p32",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A kitchen scale is calibrated by stacking weights. 30 grams must be made using 1 gram, 5 gram, and 10 gram weights, any number of each. In how many ways can this be done?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "Split by how many 10 gram weights are used, then by how many 5 gram weights; the 1 gram weights always fill the rest.",
+        "10 gram weights 0: 7 ways, 1: 5 ways, 2: 3 ways, 3: 1 ways.",
+        "Adding the cases: 7 + 5 + 3 + 1 = 16."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a total splits into cases by the count of the biggest piece first, then the next biggest.",
+      "hints": [
+        "Start by choosing how many 10 gram weights to use.",
+        "For each of those cases, choose how many 5 gram weights fill the rest, before the 1 gram weights finish it off."
+      ],
+      "socraticHint": "Since 1 gram weights can always finish off whatever is left, what actually decides each case?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen scale is calibrated by stacking weights. 35 grams must be made using 1 gram, 5 gram, and 10 gram weights, any number of each. In how many ways can this be done?",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's bonus round scores points in one run. A total of 20 points is scored using moves worth 2 or 3 points each. In how many ways can this happen, counting only how many of each move was used?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Split by how many 3-point moves were used, from 0 up to 6.",
+        "The leftover points must split evenly into 2-point moves; that works for 0, 2, 4, 6 moves of 3 points.",
+        "That is 4 cases, so 4 ways."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a total splits into cases by the count of one kind of piece, checked against what the other kind can finish off.",
+      "hints": [
+        "Try every possible number of 3-point moves, from 0 upward.",
+        "For each one, check whether what is left divides evenly by 2."
+      ],
+      "socraticHint": "As the number of 3-point moves goes up by one, what has to stay true about the points left for 2-point moves?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game's bonus round scores points in one run. A total of 23 points is scored using moves worth 2 or 3 points each. In how many ways can this happen, counting only how many of each move was used?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p34",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot's obstacle course scores points in one run. A total of 17 points is scored using moves worth 2 or 5 points each. In how many ways can this happen, counting only how many of each move was used?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Split by how many 5-point moves were used, from 0 up to 3.",
+        "The leftover points must split evenly into 2-point moves; that works for 1, 3 moves of 5 points.",
+        "That is 2 cases, so 2 ways."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a total splits into cases by the count of one kind of piece, checked against what the other kind can finish off.",
+      "hints": [
+        "Try every possible number of 5-point moves, from 0 upward.",
+        "For each one, check whether what is left divides evenly by 2."
+      ],
+      "socraticHint": "As the number of 5-point moves goes up by one, what has to stay true about the points left for 2-point moves?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot's obstacle course scores points in one run. A total of 20 points is scored using moves worth 2 or 5 points each. In how many ways can this happen, counting only how many of each move was used?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many three-digit numbers have digits that add up to 10?",
+      "answer": {
+        "kind": "number",
+        "value": "54"
+      },
+      "explanation": [
+        "Split by the hundreds digit, 1 to 9. In each case the tens and ones digits must add to what is left.",
+        "Hundreds . Hundreds .",
+        "Hundreds 6 to 9 give 5, 4, 3 and 2 pairs.",
+        "Adding the cases: 10 + 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 = 54."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a three-part total splits into cases by the first part, then counts the rest within each case.",
+      "hints": [
+        "Fix the hundreds digit first, then find how the remaining sum splits between the other two digits.",
+        "Add up the count from every possible hundreds digit."
+      ],
+      "socraticHint": "Does every hundreds digit leave the same number of ways to finish the rest of the sum?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many three-digit numbers have digits that add up to 12?",
+        "answer": {
+          "kind": "number",
+          "value": "66"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many three-digit numbers have digits that add up to 20?",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "Split by the hundreds digit, 1 to 9. In each case the tens and ones digits must add to what is left.",
+        "Hundreds 2: 1 pairs, 3: 2 pairs, 4: 3 pairs, 5: 4 pairs, 6: 5 pairs. Hundreds 7: 6 pairs, 8: 7 pairs, 9: 8 pairs.",
+        "Adding the cases: 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 36."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a three-part total splits into cases by the first part, then counts the rest within each case.",
+      "hints": [
+        "Fix the hundreds digit first, then find how the remaining sum splits between the other two digits.",
+        "Add up the count from every possible hundreds digit."
+      ],
+      "socraticHint": "Does every hundreds digit leave the same number of ways to finish the rest of the sum?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many three-digit numbers have digits that add up to 22?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Three dice are rolled. In how many ways can the three numbers add up to 8?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "Split by what the first die shows, 1 to 6. In each case the other two dice must make up the rest of the total.",
+        "First die 1: 6 ways, 2: 5 ways, 3: 4 ways, 4: 3 ways, 5: 2 ways, 6: 1 ways.",
+        "Adding the six cases: 6 + 5 + 4 + 3 + 2 + 1 = 21."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a case, once split off, turns into a smaller version of a problem you already know how to count.",
+      "hints": [
+        "Fix the first die's value, then count the ways the other two can finish the sum.",
+        "Do that for every value from 1 to 6, then add the cases."
+      ],
+      "socraticHint": "Once the first die is fixed, the problem is really a two-dice sum problem you have already solved. How does that help?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Three dice are rolled. In how many ways can the three numbers add up to 13?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p38",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Three dice are rolled. In how many ways can the three numbers add up to 12?",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "Split by what the first die shows, 1 to 6. In each case the other two dice must make up the rest of the total.",
+        "First die 1: 2 ways, 2: 3 ways, 3: 4 ways, 4: 5 ways, 5: 6 ways, 6: 5 ways.",
+        "Adding the six cases: 2 + 3 + 4 + 5 + 6 + 5 = 25."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a case, once split off, turns into a smaller version of a problem you already know how to count.",
+      "hints": [
+        "Fix the first die's value, then count the ways the other two can finish the sum.",
+        "Do that for every value from 1 to 6, then add the cases."
+      ],
+      "socraticHint": "Once the first die is fixed, the problem is really a two-dice sum problem you have already solved. How does that help?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Three dice are rolled. In how many ways can the three numbers add up to 9?",
+        "answer": {
+          "kind": "number",
+          "value": "25"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p39",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3-letter code uses different letters from A, B, C, D, E and F, no letter repeated. How many such codes start with A, B or C?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "Split by the first letter: one case for each letter the code is allowed to start with.",
+        "Once the first letter is fixed, 5 letters remain for the second spot and 4 for the third.",
+        "Each starting-letter case contributes 20 codes, and there are 3 such cases.",
+        "3 times 20 is 60."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a restriction on the first pick still leaves the same count of choices for every case.",
+      "hints": [
+        "Split into one case for each allowed starting letter.",
+        "In every case, count how many ways the remaining letters can fill the other spots."
+      ],
+      "socraticHint": "Once the first letter is fixed, does the count for the rest of the code change from case to case?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3-letter code uses different letters from A, B, C, D, E and F, no letter repeated. How many such codes start with D, E or F?",
+        "answer": {
+          "kind": "number",
+          "value": "60"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p40",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coin is flipped 5 times. In how many of the possible outcomes does it land heads exactly 2 times?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Split by which flip is the first heads. The other 1 heads must then come from the flips after it.",
+        "First heads on flip 1: 4 ways, 2: 3 ways, 3: 2 ways, 4: 1 ways.",
+        "Adding the cases: 4 + 3 + 2 + 1 = 10."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a count of exact successes among several tries splits into one case per choice of which tries succeed.",
+      "hints": [
+        "Think of the case as choosing which 2 of the 5 flips land heads.",
+        "List those choices systematically so none are missed or repeated."
+      ],
+      "socraticHint": "Does the order the heads happen in matter, or only which flips end up heads?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A coin is flipped 5 times. In how many of the possible outcomes does it land heads exactly 3 times?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p41",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coin is flipped 6 times. In how many of the possible outcomes does it land heads exactly 3 times?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "Split by which flip is the first heads. The other 2 heads must then come from the flips after it.",
+        "First heads on flip 1: 10 ways, 2: 6 ways, 3: 3 ways, 4: 1 ways.",
+        "Adding the cases: 10 + 6 + 3 + 1 = 20."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a count of exact successes among several tries splits into one case per choice of which tries succeed.",
+      "hints": [
+        "Think of the case as choosing which 3 of the 6 flips land heads.",
+        "List those choices systematically so none are missed or repeated."
+      ],
+      "socraticHint": "Does the order the heads happen in matter, or only which flips end up heads?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A coin is flipped 6 times. In how many of the possible outcomes does it land heads exactly 4 times?",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p42",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover's payload is balanced with counterweights. 25 grams must be made using 1 gram, 2 gram, and 5 gram weights, any number of each. In how many ways can this be done?",
+      "answer": {
+        "kind": "number",
+        "value": "42"
+      },
+      "explanation": [
+        "Split by how many 5 gram weights are used, then by how many 2 gram weights; the 1 gram weights always fill the rest.",
+        "5 gram weights 0: 13 ways, 1: 11 ways, 2: 8 ways, 3: 6 ways, 4: 3 ways, 5: 1 ways.",
+        "Adding the cases: 13 + 11 + 8 + 6 + 3 + 1 = 42."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a total splits into cases by the count of the biggest piece first, then the next biggest.",
+      "hints": [
+        "Start by choosing how many 5 gram weights to use.",
+        "For each of those cases, choose how many 2 gram weights fill the rest, before the 1 gram weights finish it off."
+      ],
+      "socraticHint": "Since 1 gram weights can always finish off whatever is left, what actually decides each case?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover's payload is balanced with counterweights. 30 grams must be made using 1 gram, 2 gram, and 5 gram weights, any number of each. In how many ways can this be done?",
+        "answer": {
+          "kind": "number",
+          "value": "58"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p43",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket sim scores landing points in one attempt. A total of 23 points is scored using moves worth 3 or 4 points each. In how many ways can this happen, counting only how many of each move was used?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Split by how many 4-point moves were used, from 0 up to 5.",
+        "The leftover points must split evenly into 3-point moves; that works for 2, 5 moves of 4 points.",
+        "That is 2 cases, so 2 ways."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a total splits into cases by the count of one kind of piece, checked against what the other kind can finish off.",
+      "hints": [
+        "Try every possible number of 4-point moves, from 0 upward.",
+        "For each one, check whether what is left divides evenly by 3."
+      ],
+      "socraticHint": "As the number of 4-point moves goes up by one, what has to stay true about the points left for 3-point moves?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rocket sim scores landing points in one attempt. A total of 26 points is scored using moves worth 3 or 4 points each. In how many ways can this happen, counting only how many of each move was used?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p44",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many three-digit numbers have digits that add up to 15?",
+      "answer": {
+        "kind": "number",
+        "value": "69"
+      },
+      "explanation": [
+        "Split by the hundreds digit, 1 to 9. In each case the tens and ones digits must add to what is left.",
+        "Hundreds . Hundreds .",
+        "Hundreds 6 to 9 give 10, 9, 8 and 7 pairs.",
+        "Adding the cases: 5 + 6 + 7 + 8 + 9 + 10 + 9 + 8 + 7 = 69."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a three-part total splits into cases by the first part, then counts the rest within each case.",
+      "hints": [
+        "Fix the hundreds digit first, then find how the remaining sum splits between the other two digits.",
+        "Add up the count from every possible hundreds digit."
+      ],
+      "socraticHint": "Does every hundreds digit leave the same number of ways to finish the rest of the sum?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many three-digit numbers have digits that add up to 17?",
+        "answer": {
+          "kind": "number",
+          "value": "61"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p45",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coin is flipped 4 times. In how many of the possible outcomes does it land heads exactly 2 times?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Split by which flip is the first heads. The other 1 heads must then come from the flips after it.",
+        "First heads on flip 1: 3 ways, 2: 2 ways, 3: 1 ways.",
+        "Adding the cases: 3 + 2 + 1 = 6."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a count of exact successes among several tries splits into one case per choice of which tries succeed.",
+      "hints": [
+        "Think of the case as choosing which 2 of the 4 flips land heads.",
+        "List those choices systematically so none are missed or repeated."
+      ],
+      "socraticHint": "Does the order the heads happen in matter, or only which flips end up heads?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A coin is flipped 4 times. In how many of the possible outcomes does it land heads exactly 3 times?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-pa-casework-counting-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Four differently colored balls are placed into three labeled boxes so that no box is left empty. In how many ways can this be done?",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "With no box empty, the only way to split 4 balls into 3 boxes is a 2-1-1 pattern.",
+        "Split the count into cases by which box gets 2 balls.",
+        "In each case, choosing 2 of the 4 balls for that box can be done 6 ways.",
+        "The other 2 balls then fill the other 2 boxes in 2 ways, so each case is 12.",
+        "There are 3 such cases, so 3 times 12 is 36."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a fixed total must split across a few groups with none left empty, forcing one uneven case pattern.",
+      "hints": [
+        "With 4 balls and 3 boxes and none empty, one box must get 2 balls and the other two get 1 each.",
+        "Split into cases by which box is the one that gets 2 balls."
+      ],
+      "socraticHint": "If no box can be empty, what is the only way 4 items can split across 3 boxes?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "150"
+        },
+        "prompt": "Five differently colored balls are placed into three labeled boxes so that no box is left empty. In how many ways can this be done?"
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A team of 3 is chosen from 3 rovers and 4 robots. In how many ways can the team include at least 1 rover?",
+      "answer": {
+        "kind": "number",
+        "value": "31"
+      },
+      "explanation": [
+        "Split the count into cases by exactly how many rovers are on the team: 1, 2, or 3.",
+        "Exactly 1 rover: choose 1 of 3 rovers and 2 of 4 robots, which is 3 times 6, or 18 ways.",
+        "Exactly 2 rovers: choose 2 of 3 rovers and 1 of 4 robots, which is 3 times 4, or 12 ways.",
+        "Exactly 3 rovers: choose all 3 rovers and 0 robots, which is 1 way.",
+        "Adding 18, 12, and 1 gives 31."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when an at-least condition splits naturally into one case per exact count that satisfies it.",
+      "hints": [
+        "Split into cases by the exact number of rovers on the team, from 1 up to 3.",
+        "In each case, count the ways to fill the rovers and the rest with robots separately, then multiply within the case."
+      ],
+      "socraticHint": "At least 1 rover covers several different exact counts of rovers. How many separate cases is that?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "46"
+        },
+        "prompt": "A team of 3 is chosen from 3 rovers and 5 robots. In how many ways can the team include at least 1 rover?"
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p48",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone's light strip has 5 lamps in a row, each lit red, green, or blue. Exactly one lamp is lit red, and it can be any of the 5 positions. Every other lamp is lit green or blue, chosen freely. In how many ways can the strip be lit?",
+      "answer": {
+        "kind": "number",
+        "value": "80"
+      },
+      "explanation": [
+        "Split the count into cases by which lamp is the red one.",
+        "In every case, each of the other 4 lamps can be lit green or blue on its own.",
+        "2 times 2 times 2 times 2 is 16 ways to light the rest in each case.",
+        "There are 5 cases, one for each lamp position, so 5 times 16 is 80."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when exactly one item out of several positions takes a special role, splitting the count into one case per position.",
+      "hints": [
+        "Split into one case for each lamp that could be the one lit red.",
+        "In every case, count the ways the other lamps can each be lit green or blue, then add the cases together."
+      ],
+      "socraticHint": "Does the number of ways to light the other lamps change depending on which lamp is red?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A drone's light strip has 6 lamps in a row, each lit red, green, or blue. Exactly one lamp is lit red, and it can be any of the 6 positions. Every other lamp is lit green or blue, chosen freely. In how many ways can the strip be lit?",
+        "answer": {
+          "kind": "number",
+          "value": "192"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p49",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot climbs a staircase of 6 steps, moving up either 1 step or 2 steps at a time. In how many different ways can it reach the top?",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "Split the count into cases by the robot's very last move: a 1-step or a 2-step.",
+        "If the last move is 1 step, everything before it is a way to climb 5 steps, which is 8 ways.",
+        "If the last move is 2 steps, everything before it is a way to climb 4 steps, which is 5 ways.",
+        "Adding 8 and 5 gives the ways to climb 6 steps, which is 13."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a count for a bigger case can be built by splitting on the last step and reusing smaller counts.",
+      "hints": [
+        "Think about the robot's very last move before reaching the top.",
+        "That move is either a 1-step or a 2-step, splitting the problem into two smaller staircases."
+      ],
+      "socraticHint": "Once you know how many ways there are to climb a shorter staircase, how does that help with a longer one?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        },
+        "prompt": "A robot climbs a staircase of 7 steps, moving up either 1 step or 2 steps at a time. In how many different ways can it reach the top?"
+      }
+    },
+    {
+      "id": "ladder-pa-casework-counting-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A crew of either 2 or 3 is chosen from 6 rover pilots. In how many ways can the crew be chosen?",
+      "answer": {
+        "kind": "number",
+        "value": "35"
+      },
+      "explanation": [
+        "Split the count into two cases: a crew of 2, or a crew of 3.",
+        "Choosing 2 pilots from 6 can be done 15 ways.",
+        "Choosing 3 pilots from 6 can be done 20 ways.",
+        "Adding those two cases gives 35."
+      ],
+      "ideaId": "pa-casework-counting",
+      "useAgain": "when a group size condition allows more than one exact size, splitting the count into one case per size.",
+      "hints": [
+        "Count the crews of exactly 2 pilots on their own.",
+        "Count the crews of exactly 3 pilots on their own, then add the two counts."
+      ],
+      "socraticHint": "A crew of 2 and a crew of 3 can never be the same crew. What does that tell you about adding their counts?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "56"
+        },
+        "prompt": "A crew of either 2 or 3 is chosen from 7 rover pilots. In how many ways can the crew be chosen?"
+      }
+    }
+  ]
+}

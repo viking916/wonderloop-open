@@ -1,0 +1,944 @@
+{
+  "id": "s2-w06-think",
+  "season": 2,
+  "week": 6,
+  "track": "think",
+  "title": "The threshold, and the first meeting",
+  "summary": "Squeeze your robot's own sensor log into mean, median and range and defend the one number that splits bright from dim, then play Euclid's shrinking game and predict the exact second two blinking LEDs first agree.",
+  "minutes": 90,
+  "materials": [
+    "pencil and paper",
+    "graph paper",
+    "your handwritten sensor log and the two thresholds from Build",
+    "micro:bit v2 with battery pack, edge connector, breadboard, two LEDs, two resistors and jumper wires"
+  ],
+  "skills": ["think.skills.statistics", "think.skills.gcd-lcm", "think.number-sense", "think.spatial"],
+  "completion": "all-steps",
+  "steps": [
+    {
+      "kind": "warmup",
+      "id": "s2-w06-think-01",
+      "variant": "fermi",
+      "problems": [
+        {
+          "id": "s2-w06-think-01-p01",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "About how many times do you blink in one day?",
+          "options": ["about 150 times", "about 15,000 times", "about 1.5 million times"],
+          "answer": { "kind": "choice", "index": 1 },
+          "explanation": [
+            "Guess and round: catch a small piece you can measure, then multiply it up.",
+            "Watch a clock for one minute and you blink about 15 times.",
+            "You are awake about 16 hours, and 16 hours of 60 minutes is close to 1,000 minutes.",
+            "15 x 1,000 is 15,000, so about 15,000 blinks is the closest guess."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a total is too big to count directly but one minute of it is easy to measure.",
+          "hints": ["Count blinks for one minute first. A clock with a second hand is all you need.", "Multiply the blinks in one minute by about how many minutes you are awake, using round numbers."],
+          "socraticHint": "Which piece of this could you actually measure right now, sitting in your chair?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "About how many breaths do you take in one day?",
+            "options": ["about 30,000 breaths", "about 300 breaths", "about 3 million breaths"],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        },
+        {
+          "id": "s2-w06-think-01-p02",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "About how many AA batteries, stacked end to end, would reach from the floor to the ceiling?",
+          "options": ["about 50", "about 500", "about 5"],
+          "answer": { "kind": "choice", "index": 0 },
+          "explanation": [
+            "Guess and round: one AA battery is about 5 cm long, close to the length of your thumb.",
+            "A ceiling sits about under three meters up, which is 250 cm.",
+            "250 divided by 5 is 50, so about 50 batteries reach the ceiling."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a big length can be measured in copies of a small thing whose size you know.",
+          "hints": ["How long is one AA battery? Compare it with your thumb.", "Turn the ceiling height into centimeters, then ask how many 5 cm pieces fit into it."],
+          "socraticHint": "What everyday object do you know the length of that could become your measuring stick here?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "About how many micro:bits, laid end to end, would cross your bedroom?",
+            "options": ["about 8", "about 80", "about 800"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s2-w06-think-01-p03",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "About how many words does a grown-up say out loud in one day?",
+          "options": ["about 200 words", "about 2 million words", "about 20,000 words"],
+          "answer": { "kind": "choice", "index": 2 },
+          "explanation": [
+            "Guess and round: chatting runs at about 100 words a minute, the pace of reading aloud.",
+            "Most people talk for about 3 hours of the day in bits and pieces, which is about 200 minutes of real talking.",
+            "100 x 200 is 20,000, so about 20,000 words is the closest guess."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when something happens in scattered bursts and you can estimate the pace and the total time separately.",
+          "hints": ["Estimate the talking pace first: about how many words fit into one minute of chatting?", "Now guess how many minutes of actual talking happen across a whole day, and multiply."],
+          "socraticHint": "A day has 1,440 minutes. Why would multiplying the talking pace by all 1,440 be the wrong move?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "About how many words are in your season book?",
+            "options": ["about 40,000 words", "about 400 words", "about 4 million words"],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "puzzle-of-week",
+      "id": "s2-w06-think-02",
+      "problem": {
+        "id": "s2-w06-think-02-p01",
+        "kind": "number",
+        "lane": "puzzle-of-week",
+        "prompt": "Spatial opener, no picture on purpose: build it in your head, or sketch it on graph paper. A 3 by 3 by 3 cube is glued together from 27 small dice, then the whole big cube is dunked in paint. When it dries and you take it apart, how many small dice have no paint on them at all?",
+        "answer": { "kind": "number", "value": "1", "unit": "dice" },
+        "explanation": [
+          "Paint reaches every face on the outside of the big cube, so any die that shows even one face to the air gets painted.",
+          "A die stays clean only if it hides all six of its faces, with a neighbour pressed against every side.",
+          "Peel away the painted shell, one layer from every direction, and a 3 by 3 by 3 cube shrinks to 1 by 1 by 1.",
+          "Only the single die at the very center comes out clean."
+        ],
+        "ideaId": "count-what-you-cannot-see",
+        "useAgain": "when a solid hides pieces inside it and only the outside layer is easy to count.",
+        "hints": ["Decide which dice the paint can touch. What do a face die, an edge die and a corner die all have in common?", "Strip off every die that shows on the surface. What block shape is left in the middle?"],
+        "socraticHint": "For a die to come out clean, what must be true of all six of its faces?",
+        "skills": ["think.spatial"],
+        "thinkMinutes": 5,
+        "difficulty": 2,
+        "variant": {
+          "prompt": "A 4 by 4 by 4 cube is glued from 64 small dice and dunked in paint. Sketch it on graph paper if that helps. How many small dice come out with no paint at all?",
+          "answer": { "kind": "number", "value": "8", "unit": "dice" }
+        }
+      }
+    },
+    {
+      "kind": "problem-set",
+      "id": "s2-w06-think-03",
+      "title": "Statistics on your own sensor log",
+      "lane": "skills",
+      "problems": [
+        {
+          "id": "s2-w06-think-03-p01",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "In Build you logged the light sensor with the lamp on. Say five of those readings were 96, 88, 91, 85 and 90. The mean is the fair share: add them all, then share the total equally among the five. What is the mean?",
+          "answer": { "kind": "number", "value": "90" },
+          "explanation": [
+            "Squeeze the list: the mean melts all the readings into one number, the fair share.",
+            "Add: 96 + 88 + 91 + 85 + 90 is 450.",
+            "Share among 5: 450 divided by 5 is 90.",
+            "One honest number now stands for the whole lamp-on world."
+          ],
+          "ideaId": "squeeze-the-list",
+          "introducesIdea": true,
+          "useAgain": "when many wobbly readings of the same thing need one number to speak for them all.",
+          "hints": ["Add the five readings first, carefully.", "Divide the total by how many readings there are."],
+          "socraticHint": "If you poured all five readings into one jug and split it evenly back into five cups, what would each cup hold?",
+          "skills": ["think.skills.statistics"],
+          "thinkMinutes": 4,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "Five lamp-off readings from the same log: 12, 9, 15, 8 and 16. What is their mean?",
+            "answer": { "kind": "number", "value": "12" }
+          }
+        },
+        {
+          "id": "s2-w06-think-03-p02",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Your hand-near distance log reads 6, 8, 7, 9 and 55. The 55 happened when your hand tilted and the echo missed. The median is the middle reading once they all stand in order. What is the median?",
+          "answer": { "kind": "number", "value": "8" },
+          "explanation": [
+            "Line them up first: 6, 7, 8, 9, 55.",
+            "The middle one of five is the third in line: 8.",
+            "The wild 55 stands at the end of the line, and the middle does not care how far away the end one stands.",
+            "That shrug is the median's superpower with messy sensor data."
+          ],
+          "ideaId": "squeeze-the-list",
+          "useAgain": "when one wild reading sneaks into a log and you want a middle number it cannot drag.",
+          "hints": ["Put the five readings in order from smallest to biggest first.", "With five in a line, which position is exactly in the middle?"],
+          "socraticHint": "If the 55 grew into 5,000, which of your one-number summaries would change, and which would not budge?",
+          "skills": ["think.skills.statistics"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A different messy log: 5, 7, 6, 61 and 8. What is the median?",
+            "answer": { "kind": "number", "value": "7" }
+          }
+        },
+        {
+          "id": "s2-w06-think-03-p03",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Same log: 6, 8, 7, 9 and 55, where the 55 was an echo miss. The mean works out to 17 and the median to 8, and your hand truly sat about 7 or 8 cm away the whole time. Which number tells the truer story here?",
+          "options": [
+            "The mean 17, because it uses every single reading",
+            "The median 8, because one wild reading cannot drag it away from the crowd",
+            "Both tell the same story here",
+            "Neither, the whole log must be thrown away"
+          ],
+          "answer": { "kind": "choice", "index": 1 },
+          "explanation": [
+            "Four readings crowd between 6 and 9, and one echo miss sits far out at 55.",
+            "The mean must swallow the 55, and it gets dragged up to 17, a distance your hand never was.",
+            "The median only asks who stands in the middle, and the middle stays home at 8.",
+            "One bad reading does not ruin a log; you just pick the summary that shrugs at it."
+          ],
+          "ideaId": "squeeze-the-list",
+          "useAgain": "when you must choose which one-number summary to trust after spotting a weird reading.",
+          "hints": ["Compare 17 and 8 with where the hand really was.", "Ask of each summary: what does the wild 55 do to it?"],
+          "socraticHint": "What would the mean have been without the echo miss, and what does that tell you about who moved it to 17?",
+          "skills": ["think.skills.statistics"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Five honest readings sit close together, then one wild reading joins the list. Which summary moves the most?",
+            "options": ["The mean", "The median", "Neither moves at all"],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        },
+        {
+          "id": "s2-w06-think-03-p04",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Zeke found the range of the log 14, 22, 9, 31 and 18.\nLine 1: The range needs the biggest reading and the smallest reading from the list.\nLine 2: The biggest reading is 31 and the smallest is 9.\nLine 3: The range is the biggest reading minus the smallest, so 31 minus 9.\nLine 4: 31 minus 9 is 20.\nWhich line is wrong?",
+          "options": [
+            "Line 1",
+            "Line 2",
+            "Line 3",
+            "Line 4",
+            "No line is wrong"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 3
+          },
+          "explanation": [
+            "Lines 1 through 3 are correct: the range needs the biggest and smallest readings, which are 31 and 9, and range is their difference.",
+            "Line 4 is wrong: 31 minus 9 is 22, not 20.",
+            "Squeeze the list: the range squeezes the whole list down to one number, how wide the readings wobble.",
+            "The correct range is 22."
+          ],
+          "ideaId": "squeeze-the-list",
+          "useAgain": "when the biggest and smallest readings are picked correctly but the final subtraction still needs its own check.",
+          "hints": [
+            "Do not assume any line is correct just because the ones before it look fine. Recompute each line yourself.",
+            "Squeeze the list: the range only needs the biggest and the smallest reading, so check both of those choices as carefully as the subtraction."
+          ],
+          "socraticHint": "Are the numbers picked out as biggest and smallest really the biggest and smallest in the whole list?",
+          "skills": [
+            "think.skills.statistics",
+            "think.logic"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Farah found the range of the log 45, 12, 38, 50 and 27.\nLine 1: The range needs the biggest reading and the smallest reading from the list.\nLine 2: The biggest reading is 50 and the smallest is 27.\nLine 3: The range is the biggest minus the smallest, so 50 minus 27.\nLine 4: 50 minus 27 is 23.\nWhich line is wrong?",
+            "options": [
+              "Line 1",
+              "Line 2",
+              "Line 3",
+              "Line 4",
+              "No line is wrong"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 1
+            }
+          }
+        },
+        {
+          "id": "s2-w06-think-03-p05",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Time for the split. Your lamp-on mean is 90 and your lamp-off mean is 12. The robot needs one number between the two worlds: the midpoint of the two means. What is the threshold?",
+          "answer": { "kind": "number", "value": "51" },
+          "explanation": [
+            "The threshold is one number that splits two worlds: above it means lamp on, below it means lamp off.",
+            "The midpoint of two numbers is halfway between them: add them, then cut the sum in half.",
+            "90 + 12 is 102, and half of 102 is 51.",
+            "51 stands in the empty gap, a long way from both crowds, which is exactly where a border should live."
+          ],
+          "ideaId": "threshold",
+          "introducesIdea": true,
+          "useAgain": "when a machine must turn two clouds of readings into one clean yes-or-no line.",
+          "hints": ["You want the number exactly halfway between 90 and 12.", "Halfway between two numbers is their sum cut in half."],
+          "socraticHint": "Why should the border between two countries of readings sit in the empty land between them, and not at either crowd's edge?",
+          "skills": ["think.skills.statistics"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Your hand-near mean is 7 cm and your hand-far mean is 40 cm. What threshold is the midpoint of the two means?",
+            "answer": { "kind": "number", "value": "23.5", "unit": "cm" }
+          }
+        },
+        {
+          "id": "s2-w06-think-03-p06",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Your lamp-off readings never rose above 16, and your lamp-on readings never fell below 85. Three thresholds are on offer: 18, 51 and 80. Which is the safest border, and why?",
+          "options": [
+            "18, because it clears every lamp-off reading you saw",
+            "80, because it sits just under every lamp-on reading you saw",
+            "51, because it leaves the widest safety gap on both sides"
+          ],
+          "answer": { "kind": "choice", "index": 2 },
+          "explanation": [
+            "All three numbers separate the readings you already collected, so today they look equally right.",
+            "But tomorrow's readings wobble: noise can push a lamp-off reading a little above 16, and 18 sits close enough to get crossed by accident.",
+            "80 has the same problem on the other side, one dim moment away from a mistake.",
+            "51 keeps the biggest distance from both crowds, so ordinary wobble cannot reach it. Safest border, widest moat."
+          ],
+          "ideaId": "threshold",
+          "useAgain": "when several borders fit today's data and you must pick the one that noise is least likely to cross tomorrow.",
+          "hints": ["Measure each candidate's distance to the nearest reading on each side of it.", "Remember the range: readings wobble, and tomorrow's log will not match today's exactly."],
+          "socraticHint": "If the sensor wobbles by a few units on a bad day, which of the three borders gets crossed by accident first?",
+          "skills": ["think.skills.statistics"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Your hand-near readings never rose above 9 cm and your hand-far readings never fell below 37 cm. Which is the safest distance threshold?",
+            "options": ["10 cm, just past the near crowd", "23 cm, in the middle of the empty gap", "35 cm, just under the far crowd"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s2-w06-think-03-p07",
+          "kind": "truefalse",
+          "lane": "skills",
+          "prompt": "While you logged the lamp-off readings, someone flicked the lamp on for two of them, and you typed those two in without noticing. True or false: your threshold can now land in the wrong place even though your Python program has no bug at all.",
+          "answer": { "kind": "boolean", "value": true },
+          "explanation": [
+            "The program computes exactly what it is told to: the mean of whatever the file holds.",
+            "Two lamp-on readings hiding in the lamp-off file drag the lamp-off mean upward, and the midpoint follows it.",
+            "The machine's smart part came from the examples, so bad examples make a bad machine, with not one line of code at fault.",
+            "That is why people who collect data guard the collecting as carefully as the computing."
+          ],
+          "ideaId": "data-teaches-the-machine",
+          "introducesIdea": true,
+          "useAgain": "when a program's answer looks off and the code checks out, so the suspect becomes the data it was fed.",
+          "hints": ["The program is innocent. Ask instead what the two sneaky readings do to the lamp-off mean.", "Follow the damage forward: if one mean moves, what happens to the midpoint built from it?"],
+          "socraticHint": "Where did the threshold's intelligence actually come from: the lines of Python, or something else you made?",
+          "skills": ["think.skills.statistics"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Your friend's threshold program runs without a single error message. True or false: that proves the threshold it prints is in the right place.",
+            "answer": { "kind": "boolean", "value": false }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "problem-set",
+      "id": "s2-w06-think-08",
+      "title": "A copied angle proven equal, and two more chances combined",
+      "lane": "shape",
+      "problems": [
+        {
+          "id": "s2-w06-think-08-p01",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "Copy angle A onto ray XY:\n1. Draw an arc centered at A's vertex, crossing both of its rays.\n2. Keeping the same compass width, draw an arc centered at X, crossing ray XY.\n3. Open your compass to the distance between the two points where the first arc crossed A's rays.\n4. From where the second arc crosses XY, draw an arc with that new width, crossing the first arc.\n5. Draw a ray from X through that crossing point.\nIf angle A measures 52 degrees, what does the new angle measure?",
+          "answer": {
+            "kind": "number",
+            "value": "52"
+          },
+          "explanation": [
+            "The construction copies angle A exactly, using compass widths instead of a protractor.",
+            "Since every arc width was copied exactly, the new angle is forced to match angle A.",
+            "The new angle measures 52 degrees."
+          ],
+          "ideaId": "equal-radius-equal-distance",
+          "useAgain": "when a compass-copied angle is guaranteed equal to the original, without ever measuring degrees.",
+          "hints": [
+            "Does this construction ever use a protractor to measure degrees?",
+            "A copied angle built this way always equals the original."
+          ],
+          "socraticHint": "If every width in the copy was taken directly from the original angle, could the new angle end up a different size?",
+          "skills": [
+            "think.spatial",
+            "think.logic"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Using the same construction, if angle A measures 78 degrees, what does the new angle measure?",
+            "answer": {
+              "kind": "number",
+              "value": "78"
+            }
+          }
+        },
+        {
+          "id": "s2-w06-think-08-p02",
+          "kind": "text",
+          "lane": "shape",
+          "prompt": "In the angle-copying construction above, why must the new angle be exactly equal to angle A?",
+          "answer": {
+            "kind": "rubric",
+            "mustMention": [
+              "the compass width is never changed for either angle",
+              "the same two arc-crossing distances are copied onto the new angle",
+              "equal side lengths and equal chord force the same angle"
+            ]
+          },
+          "explanation": [
+            "The first arc marks two points on angle A's rays, a fixed distance from the vertex.",
+            "The chord between those two points is measured with the compass and copied exactly onto the new rays.",
+            "Since both angles now have the same two arc lengths and the same chord between them, they are forced to be the same angle.",
+            "Nothing here was measured in degrees; it was all copied with a fixed compass width."
+          ],
+          "ideaId": "equal-radius-equal-distance",
+          "useAgain": "when a construction's result needs justifying by what stayed fixed, not by measuring the outcome afterward.",
+          "hints": [
+            "What three lengths does the construction copy from the original angle onto the new one?",
+            "If two angles have the same two side lengths and the same chord between their ends, what must be true of the angles themselves?"
+          ],
+          "socraticHint": "If a triangle's three side lengths are fixed, is there more than one possible angle between two of those sides?",
+          "skills": [
+            "think.proof",
+            "think.spatial"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3
+        },
+        {
+          "id": "s2-w06-think-08-p03",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "You roll a die and flip a coin. What is the probability, as a fraction in lowest terms, of rolling a number greater than 4 and flipping heads?",
+          "answer": {
+            "kind": "number",
+            "value": "1/6"
+          },
+          "explanation": [
+            "2 of the 6 faces (5 and 6) are greater than 4, and 1 of the 2 coin sides is heads.",
+            "2 times 1 is 2 outcomes you want, out of 12 total.",
+            "2 out of 12 simplifies to 1/6."
+          ],
+          "ideaId": "count-the-ways",
+          "useAgain": "when a combined die-and-coin event needs its outcomes counted before turning the count into a fraction.",
+          "hints": [
+            "How many die faces are greater than 4?",
+            "Multiply that count by the number of coin sides that work, then put it over 12."
+          ],
+          "socraticHint": "Out of the two numbers greater than 4 on the die, how many coin results pair with each one?",
+          "skills": [
+            "think.skills.probability",
+            "think.skills.counting"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "You roll a die and flip a coin. What is the probability, as a fraction in lowest terms, of rolling an odd number and flipping tails?",
+            "answer": {
+              "kind": "number",
+              "value": "1/4"
+            }
+          }
+        },
+        {
+          "id": "s2-w06-think-08-p04",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "You roll a die and flip a coin. What is the probability, as a fraction in lowest terms, of rolling an even number and flipping tails?",
+          "answer": {
+            "kind": "number",
+            "value": "1/4"
+          },
+          "explanation": [
+            "3 of the 6 faces are even, and 1 of the 2 coin sides is tails.",
+            "3 times 1 is 3 outcomes you want, out of 12 total.",
+            "3 out of 12 simplifies to 1/4."
+          ],
+          "ideaId": "count-the-ways",
+          "useAgain": "when a combined event's wanted outcomes are counted from each part separately, then multiplied.",
+          "hints": [
+            "How many die faces are even?",
+            "Multiply that count by the coin sides that work, then simplify the fraction over 12."
+          ],
+          "socraticHint": "Does changing which coin side you want change how many die faces are even?",
+          "skills": [
+            "think.skills.probability",
+            "think.skills.counting"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "You roll a die and flip a coin. What is the probability, as a fraction in lowest terms, of rolling a multiple of 3 and flipping heads?",
+            "answer": {
+              "kind": "number",
+              "value": "1/6"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "warmup",
+      "id": "s2-w06-think-09",
+      "variant": "chess",
+      "problems": [
+        {
+          "id": "s2-w06-think-09-p01",
+          "kind": "choice",
+          "lane": "warmup",
+          "figure": {
+            "kind": "board",
+            "alt": "White to move. A white rook on d1 faces a black queen alone on d6.",
+            "spec": {
+              "fen": "6k1/8/3q4/8/8/8/8/3R3K w - - 0 1"
+            }
+          },
+          "prompt": "White to move. Which move wins the undefended black queen?",
+          "options": [
+            "Rxd6",
+            "Rd3",
+            "Rd8+",
+            "Rc1"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Black's queen sits on d6 with no piece guarding it.",
+            "The white rook already shares the d file with the queen.",
+            "Rxd6 wins the queen for nothing."
+          ],
+          "ideaId": "hanging-piece",
+          "useAgain": "when the biggest piece on the board has nobody watching its back.",
+          "hints": [
+            "Which black piece is worth the most, and does anything defend it?",
+            "Which white piece already shares a file or rank with it?"
+          ],
+          "socraticHint": "Out of everything you could capture, which one wins the most material for free?",
+          "skills": [
+            "think.chess"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "White to move. Which move wins the undefended black rook?",
+            "options": [
+              "Bxf7",
+              "Bc4",
+              "Bd5",
+              "Ba2"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "figure": {
+              "kind": "board",
+              "alt": "White to move. A white bishop on b3 faces a black rook alone on f7.",
+              "spec": {
+                "fen": "3k4/5r2/8/8/8/1B6/8/7K w - - 0 1"
+              }
+            }
+          }
+        },
+        {
+          "id": "s2-w06-think-09-p02",
+          "kind": "choice",
+          "lane": "warmup",
+          "figure": {
+            "kind": "board",
+            "alt": "White to move. Black's lone king sits on h8, white's king on f6 and queen on a7.",
+            "spec": {
+              "fen": "7k/Q7/5K2/8/8/8/8/8 w - - 0 1"
+            }
+          },
+          "prompt": "White to move. Which move gives checkmate?",
+          "options": [
+            "Qh7+",
+            "Qg7#",
+            "Qa8+"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 1
+          },
+          "explanation": [
+            "The white king on f6 already guards the g7 square next to the black king.",
+            "Qg7 checks the king and cannot be captured, because the white king protects the queen.",
+            "The king has no empty square left, so it is mate."
+          ],
+          "ideaId": "king-assisted-mate",
+          "useAgain": "when your own king can guard the exact square your queen needs to land on.",
+          "hints": [
+            "Which square next to the black king does your own king already protect?",
+            "Move the queen onto that same protected square."
+          ],
+          "socraticHint": "If black's king tried to capture the queen, what would stop it?",
+          "skills": [
+            "think.chess"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "White to move. Which move gives checkmate?",
+            "options": [
+              "Qb7#",
+              "Qh8+",
+              "Kb6"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "figure": {
+              "kind": "board",
+              "alt": "White to move. Black's lone king sits on a8, white's king on c6 and queen on h7.",
+              "spec": {
+                "fen": "k7/7Q/2K5/8/8/8/8/8 w - - 0 1"
+              }
+            }
+          },
+          "introducesIdea": true
+        },
+        {
+          "id": "s2-w06-think-09-p03",
+          "kind": "choice",
+          "lane": "warmup",
+          "figure": {
+            "kind": "board",
+            "alt": "White to move. A white knight on c4 faces the black king on e8 and a black rook on c8.",
+            "spec": {
+              "fen": "2r1k3/8/8/8/2N5/8/8/4K3 w - - 0 1"
+            }
+          },
+          "prompt": "White to move. Which move checks the king and attacks a rook at the same time?",
+          "options": [
+            "Nd6+",
+            "Nb6",
+            "Ne5",
+            "Nd2"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "A knight landing on d6 checks the king on e8 and attacks the rook on c8 in the same move.",
+            "Black must deal with the check first, so the rook cannot run away in time.",
+            "White wins the rook next move."
+          ],
+          "ideaId": "fork",
+          "useAgain": "when a knight move can check the king and threaten another piece at the same time.",
+          "hints": [
+            "Look for a knight move that touches the black king's own square.",
+            "Check whether that same square also touches another black piece."
+          ],
+          "socraticHint": "If black must answer check first, does the rook get a turn to escape?",
+          "skills": [
+            "think.chess"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "White to move. Which move attacks the black queen and rook at once?",
+            "options": [
+              "Ne5",
+              "Ng5",
+              "Nd4",
+              "Nh4"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "figure": {
+              "kind": "board",
+              "alt": "White to move. A white knight on f3 faces a black queen on d7 and a black rook on c6.",
+              "spec": {
+                "fen": "4k3/3q4/2r5/8/8/5N2/8/4K3 w - - 0 1"
+              }
+            }
+          }
+        },
+        {
+          "id": "s2-w06-think-09-p04",
+          "kind": "choice",
+          "lane": "warmup",
+          "figure": {
+            "kind": "board",
+            "alt": "White to move. A white rook on b1 faces a black knight on d5, with the black king on d8 behind it on the same file.",
+            "spec": {
+              "fen": "3k4/8/8/3n4/8/8/8/1R5K w - - 0 1"
+            }
+          },
+          "prompt": "White to move. Which move pins the black knight to its king?",
+          "options": [
+            "Re1",
+            "Rc1",
+            "Rd1",
+            "Rb4"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 2
+          },
+          "explanation": [
+            "Black's king on d8 and knight on d5 share the same open file.",
+            "Rd1 lines the rook up behind the knight, so it cannot move off that file.",
+            "The knight is frozen, ready for white to win it next."
+          ],
+          "ideaId": "pin",
+          "useAgain": "when an enemy piece and its king share an open file or rank your rook can reach.",
+          "hints": [
+            "Which file already has both the black king and the black knight on it?",
+            "Move your rook onto that same file."
+          ],
+          "socraticHint": "If the knight moved sideways right now, what would it expose?",
+          "skills": [
+            "think.chess"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "White to move. Which move pins the black knight to its king?",
+            "options": [
+              "Rb1",
+              "Ra1",
+              "Rc1",
+              "Rd4"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "figure": {
+              "kind": "board",
+              "alt": "White to move. A white rook on d1 faces a black knight on b5, with the black king on b8 behind it on the same file.",
+              "spec": {
+                "fen": "1k6/8/8/1n6/8/8/8/3R3K w - - 0 1"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s2-w06-think-04",
+      "title": "Build the meeting machine, but do not power it",
+      "body": "Before the puzzle set, build the rig it talks about. It waits unpowered while you make your predictions.\n\nWire two LED loops on the breadboard from the edge connector. First loop: jumper from pin0 to hole a1, resistor legs into c1 and c4, LED long leg into a4, short leg into a5, jumper from b5 to the blue minus rail. Second loop: jumper from pin1 to hole a10, resistor legs into c10 and c13, LED long leg into a13, short leg into a14, jumper from b14 to the same minus rail. One last jumper from the minus rail to GND on the edge connector, and both loops share their way home.\n\nType this at python.microbit.org and flash it, but leave the battery pack unplugged:\n\n```python\nfrom microbit import *\n\ncount3 = 0\ncount4 = 0\nwhile True:\n    sleep(1000)\n    count3 = count3 + 1\n    count4 = count4 + 1\n    if count3 == 3:\n        pin0.write_digital(1)\n        count3 = 0\n    else:\n        pin0.write_digital(0)\n    if count4 == 4:\n        pin1.write_digital(1)\n        count4 = 0\n    else:\n        pin1.write_digital(0)\n```\n\nEach trip around the loop is one second, one drumbeat. The pin0 LED lights on every third beat: seconds 3, 6, 9 and so on. The pin1 LED lights on every fourth beat: seconds 4, 8, 12 and so on. The problems ask for your prediction first. Power comes later, exactly when a problem says so."
+    },
+    {
+      "kind": "problem-set",
+      "id": "s2-w06-think-05",
+      "title": "The biggest shared piece and the first meeting",
+      "lane": "puzzle",
+      "problems": [
+        {
+          "id": "s2-w06-think-05-p01",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "You have two ribbons, 12 cm and 18 cm. Cut both into pieces that are all the same length, as long as possible, with nothing left over. How long is each piece?",
+          "answer": { "kind": "number", "value": "6", "unit": "cm" },
+          "explanation": [
+            "The piece length must divide 12 exactly and divide 18 exactly: it has to be a shared piece.",
+            "The shared piece sizes of 12 and 18 are 1, 2, 3 and 6.",
+            "The biggest shared piece is 6 cm: two pieces from the short ribbon, three from the long one, nothing wasted.",
+            "The grown-up name is the greatest common divisor, the gcd."
+          ],
+          "ideaId": "gcd-and-lcm",
+          "introducesIdea": true,
+          "useAgain": "when two amounts must be broken into equal chunks with nothing left over and you want the chunks as big as possible.",
+          "hints": ["List the cut lengths that leave no scrap on the 12 cm ribbon.", "Which of those also leaves no scrap on the 18 cm ribbon? Take the biggest."],
+          "socraticHint": "Why must a piece length that works for both ribbons be a divisor of each ribbon's length?",
+          "skills": ["think.skills.gcd-lcm"],
+          "thinkMinutes": 5,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "Two ribbons, 8 cm and 20 cm. Cut both into equal pieces, as long as possible, with nothing left over. How long is each piece?",
+            "answer": { "kind": "number", "value": "4", "unit": "cm" }
+          }
+        },
+        {
+          "id": "s2-w06-think-05-p02",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "Euclid's shrinking game finds the biggest shared piece without any lists. Two numbers stand on the table; on every move, replace the bigger one with bigger minus smaller; stop when the two are equal. Play it on 56 and 21. What number do both end on?",
+          "answer": { "kind": "number", "value": "7" },
+          "explanation": [
+            "56 and 21 becomes 35 and 21, then 14 and 21.",
+            "Now 21 is the bigger one: 14 and 7, then 7 and 7. Stop.",
+            "Both end on 7, and 7 is exactly the biggest shared piece of 56 and 21: 56 is 8 sevens, 21 is 3 sevens.",
+            "The game shrinks the numbers but never loses the piece they share."
+          ],
+          "ideaId": "gcd-and-lcm",
+          "useAgain": "when two numbers are too big for divisor lists and you want their gcd by pure subtraction.",
+          "hints": ["Write the pair, subtract, write the new pair. Keep every step on paper.", "After you reach 14 and 21, look carefully at which number is the bigger one now."],
+          "socraticHint": "Each move throws away one copy of the smaller number. Why does a piece that measures both numbers survive that throw?",
+          "skills": ["think.skills.gcd-lcm"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Play the shrinking game on 40 and 15. What number do both end on?",
+            "answer": { "kind": "number", "value": "5" }
+          }
+        },
+        {
+          "id": "s2-w06-think-05-p03",
+          "kind": "truefalse",
+          "lane": "puzzle",
+          "prompt": "In the shrinking game, true or false: subtracting the smaller number from the bigger can create a brand-new shared divisor that the two starting numbers never had.",
+          "answer": { "kind": "boolean", "value": false },
+          "explanation": [
+            "Picture each number as a wall of equal bricks. Take any brick size that builds both walls exactly.",
+            "The difference is the bigger wall with one copy of the smaller wall removed, so it is still built from that same brick.",
+            "And going the other way, a brick that builds the smaller number and the difference must build their sum, the bigger number.",
+            "So every pair in the game shares exactly the same divisors as the pair before it: none appear, none vanish, which is why the final number can be trusted."
+          ],
+          "ideaId": "gcd-and-lcm",
+          "useAgain": "when you want to check that a shortcut move in a procedure never changes the answer it is hunting.",
+          "hints": ["Try to invent one: hunt for a pair where the difference has a divisor that neither starting number has.", "Think in bricks: if two walls use the same brick size, what is wall minus wall made of?"],
+          "socraticHint": "If both numbers are built from the same size of brick, what must their difference be built from?",
+          "skills": ["think.skills.gcd-lcm", "think.proof"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "True or false: any number that divides both 56 and 21 exactly must also divide 56 minus 21.",
+            "answer": { "kind": "boolean", "value": true }
+          }
+        },
+        {
+          "id": "s2-w06-think-05-p04",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "Your meeting machine is wired and flashed but unpowered. One LED lights on every third second: 3, 6, 9 and so on. The other lights on every fourth: 4, 8, 12 and so on. Predict before you plug in: at which second do they first light in the same second?",
+          "answer": { "kind": "number", "value": "12", "unit": "seconds" },
+          "explanation": [
+            "The 3-second LED lights at 3, 6, 9, 12, 15. The 4-second LED lights at 4, 8, 12, 16.",
+            "The first number on both lists is 12: the first meeting.",
+            "Its grown-up name is the least common multiple, the lcm.",
+            "Now plug in the battery pack, count the beats out loud, and watch your prediction come true in copper and light."
+          ],
+          "ideaId": "gcd-and-lcm",
+          "useAgain": "when two repeating things start together and you need the first moment they line up again.",
+          "hints": ["Write each LED's lit seconds as a count-by list.", "Scan the two lists for the first number they share."],
+          "socraticHint": "What must be true of a second's number for both LEDs to light in it?",
+          "skills": ["think.skills.gcd-lcm"],
+          "thinkMinutes": 5,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "A different pair: one LED lights on every second beat and the other on every fifth beat, starting together. At which second do they first light in the same second?",
+            "answer": { "kind": "number", "value": "10", "unit": "seconds" }
+          }
+        },
+        {
+          "id": "s2-w06-think-05-p05",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "Keep the blinkers running for a whole minute. Counting second 1 through second 60, how many times do the 3-second and 4-second LEDs light in the same second?",
+          "answer": { "kind": "number", "value": "5", "unit": "times" },
+          "explanation": [
+            "They light together exactly at the multiples of their first meeting, 12.",
+            "The multiples of 12 up to 60 are 12, 24, 36, 48 and 60.",
+            "That is 5 shared flashes in the first minute.",
+            "Meetings repeat as steadily as the blinks that make them: every 12 seconds, forever."
+          ],
+          "ideaId": "gcd-and-lcm",
+          "useAgain": "when the first meeting is known and you need every later meeting inside a stretch of time.",
+          "hints": ["First find which seconds hold a meeting at all. They follow one steady drumbeat.", "Count how many of those seconds land between 1 and 60, ends included."],
+          "socraticHint": "After the first meeting at second 12, why is the next one exactly 12 seconds later and never sooner?",
+          "skills": ["think.skills.gcd-lcm"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "The 2-beat and 5-beat blinkers run for a minute. Counting second 1 through second 60, how many times do they light in the same second?",
+            "answer": { "kind": "number", "value": "6", "unit": "times" }
+          }
+        },
+        {
+          "id": "s2-w06-think-05-p06",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "New pair: one LED every 4 seconds, another every 6. A friend says the first meeting must be at second 24, because 4 x 6 is 24. When do the two really first light together?",
+          "options": [
+            "Second 24, because 4 x 6 is 24",
+            "Second 10, because 4 plus 6 is 10",
+            "Second 2, the biggest piece 4 and 6 share",
+            "Second 12, the first number on both count-by lists"
+          ],
+          "answer": { "kind": "choice", "index": 3 },
+          "explanation": [
+            "Count by 4: 4, 8, 12, 16, 20, 24. Count by 6: 6, 12, 18, 24.",
+            "The lists first agree at 12, so the first meeting is second 12.",
+            "24 is a meeting too, just not the first: the multiply trick overshoots exactly when the two numbers share a piece bigger than 1.",
+            "4 and 6 share a 2, and that shared 2 is why they meet early."
+          ],
+          "ideaId": "gcd-and-lcm",
+          "useAgain": "when a quick multiply answer needs checking because the two numbers might share a common piece.",
+          "hints": ["Write out both count-by lists up to 24 before trusting any shortcut.", "4 and 6 are both even. What does that sharing do to their first meeting?"],
+          "socraticHint": "For 3 and 4 the multiply trick landed exactly right. What is different about the pair 4 and 6?",
+          "skills": ["think.skills.gcd-lcm", "think.number-sense"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "One LED every 6 seconds, another every 9. When do they first light together?",
+            "options": ["Second 54, because 6 x 9 is 54", "Second 15, because 6 plus 9 is 15", "Second 18, the first number on both count-by lists"],
+            "answer": { "kind": "choice", "index": 2 }
+          }
+        },
+        {
+          "id": "s2-w06-think-05-p07",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "A secret ties the two ideas together. For 4 and 6: biggest shared piece 2, first meeting 12. For 3 and 4: shared piece 1, meeting 12. In each case, multiply the shared piece by the meeting, and compare what you get with the two numbers multiplied together. Found the secret? Now spend it: the shrinking game says 6 and 15 share a biggest piece of 3. Without listing a single multiple, find the first meeting of 6 and 15.",
+          "answer": { "kind": "number", "value": "30" },
+          "explanation": [
+            "The secret: shared piece x first meeting equals the two numbers multiplied together. Check: 2 x 12 is 24, which is 4 x 6; and 1 x 12 is 12, which is 3 x 4.",
+            "For 6 and 15, the two numbers multiply to 90, and the shared piece is 3.",
+            "So the first meeting is 90 divided by 3, which is 30.",
+            "Check it: 30 is 5 sixes and 2 fifteens, and nothing smaller sits on both count-by lists. Gcd and lcm are dance partners: find one and the other comes free."
+          ],
+          "ideaId": "gcd-and-lcm",
+          "useAgain": "when one of gcd and lcm is easy to get and the other can come free through their product.",
+          "hints": ["Multiply shared piece by meeting in both examples, and set each answer beside 4 x 6 and 3 x 4.", "Once the secret is yours: what do 6 and 15 multiply to, and what does the secret say to divide it by?"],
+          "socraticHint": "In both examples, what do the shared piece and the first meeting multiply to make?",
+          "skills": ["think.skills.gcd-lcm", "think.patterns"],
+          "thinkMinutes": 5,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "The shrinking game says 10 and 12 share a biggest piece of 2. Without listing a single multiple, find the first meeting of 10 and 12.",
+            "answer": { "kind": "number", "value": "60" }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "s2-w06-think-06",
+      "title": "Explain it in writing",
+      "mode": "written",
+      "prompt": "Write five or six sentences for a cousin who thinks you pulled your robot's threshold out of a hat: name the two crowds of readings, tell what the mean, the median and the range each told you about them, and finish with why the midpoint of the two means is the safest border. One idea per sentence."
+    },
+    {
+      "kind": "explain",
+      "id": "s2-w06-think-07",
+      "title": "Explain back",
+      "mode": "voice",
+      "prompt": "Teach the shrinking game out loud to a grown-up: let them pick any two numbers under 60, play the game on paper while you narrate every move, and end by saying why the shared piece can never be lost along the way. Record the whole thing."
+    }
+  ]
+}

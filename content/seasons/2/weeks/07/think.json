@@ -1,0 +1,877 @@
+{
+  "id": "s2-w07-think",
+  "season": 2,
+  "week": 7,
+  "track": "think",
+  "title": "Rates from the robot and clock math",
+  "summary": "Turn tape marks and a stopwatch into the creature's real speed, name what depends on what on your own graphs, then discover clock math and crack a parent's secret Caesar message with a paper wheel.",
+  "minutes": 90,
+  "materials": [
+    "pencil and paper",
+    "graph paper",
+    "measuring tape and a stopwatch or phone timer",
+    "masking tape for floor marks",
+    "the mBot creature from Build",
+    "card stock, scissors and a paper fastener"
+  ],
+  "skills": ["think.skills.ratios", "think.skills.percent", "think.skills.fractions", "think.skills.variables", "think.skills.modular"],
+  "completion": "all-steps",
+  "steps": [
+    {
+      "kind": "warmup",
+      "id": "s2-w07-think-01",
+      "variant": "number-sense",
+      "problems": [
+        {
+          "id": "s2-w07-think-01-p01",
+          "kind": "number",
+          "lane": "warmup",
+          "prompt": "In your head: 4 x 26. Use a friendly 25 to make it quick.",
+          "answer": { "kind": "number", "value": "104" },
+          "explanation": [
+            "Guess and round: 26 is 25 plus 1, and 25s are coins your head already knows.",
+            "4 x 25 is 100, like four quarters making a dollar.",
+            "Then pay back what the rounding skipped: 4 x 1 is 4 more, so 100 plus 4 is 104."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a hard multiplication sits one small step away from a friendly number you know cold.",
+          "hints": ["Is there a number very close to 26 that multiplies by 4 with no work at all?", "You used 25 instead of 26, so each of the 4 groups is short by exactly 1."],
+          "socraticHint": "What number near 26 would make this multiplication instant, and what would you still owe afterwards?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "In your head: 4 x 51. Use a friendly 50 to make it quick.",
+            "answer": { "kind": "number", "value": "204" }
+          }
+        },
+        {
+          "id": "s2-w07-think-01-p02",
+          "kind": "number",
+          "lane": "warmup",
+          "prompt": "A number was tripled, then 5 was added, and it landed on 32. What number did it start as?",
+          "answer": { "kind": "number", "value": "9" },
+          "explanation": [
+            "Work backwards: undo the last step first.",
+            "The last step added 5, so take 5 off: 32 minus 5 is 27.",
+            "Before that the number was tripled, so undo the tripling: 27 split into 3 equal parts is 9.",
+            "Check forwards: 9 tripled is 27, plus 5 is 32."
+          ],
+          "ideaId": "work-backwards",
+          "useAgain": "when you know where a chain of steps ended and need the number it started from.",
+          "hints": ["Which step happened last, the tripling or the adding of 5?", "Undo the steps in reverse order, newest step first."],
+          "socraticHint": "What is the undo move for adding 5, and what is the undo move for tripling?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A number was doubled, then 7 was added, and it landed on 27. What number did it start as?",
+            "answer": { "kind": "number", "value": "10" }
+          }
+        },
+        {
+          "id": "s2-w07-think-01-p03",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "Without working it out exactly: which of these is closest to 195 x 4?",
+          "options": ["400", "600", "800", "1000"],
+          "answer": { "kind": "choice", "index": 2 },
+          "explanation": [
+            "Guess and round: 195 is almost 200.",
+            "200 x 4 is 800, and the rounding only skipped 5 x 4, which is 20.",
+            "The true answer, 780, sits far closer to 800 than to 600 or 1000."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a question only needs the neighbourhood of an answer, not its exact address.",
+          "hints": ["Round 195 to the nearest friendly hundred first.", "How big is the error your rounding made? Is it anywhere near big enough to reach the next option?"],
+          "socraticHint": "At the very most, how far off can a guess built on 200 be here?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "Without working it out exactly: which of these is closest to 61 x 5?",
+            "options": ["250", "300", "350", "400"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s2-w07-think-01-p04",
+          "kind": "truefalse",
+          "lane": "warmup",
+          "prompt": "Count by fives: 5, 10, 15, 20 and keep going. True or false: the 9th number in the count ends in a 5.",
+          "answer": { "kind": "boolean", "value": true },
+          "explanation": [
+            "Find the rule: the ones digits repeat in a loop of two, 5 then 0, 5 then 0.",
+            "Odd positions in the count end in 5 and even positions end in 0.",
+            "The 9th position is odd, and sure enough the 9th number is 45."
+          ],
+          "ideaId": "find-the-rule",
+          "useAgain": "when a list repeats in a short loop and you need to know what sits far down the line.",
+          "hints": ["Write just the ones digits of the first few: 5, 0, 5, 0. What is the loop?", "Does the 9th spot land on the first or the second member of that loop?"],
+          "socraticHint": "What do all the odd-numbered spots in this count share, and why can the pattern never break?",
+          "skills": ["think.patterns"],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Count by fives: 5, 10, 15, 20 and keep going. True or false: the 12th number in the count ends in a 5.",
+            "answer": { "kind": "boolean", "value": false }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "puzzle-of-week",
+      "id": "s2-w07-think-02",
+      "problem": {
+        "id": "s2-w07-think-02-p01",
+        "kind": "number",
+        "lane": "puzzle-of-week",
+        "prompt": "You glance at the wall clock in the bathroom mirror. In the mirror the hands show exactly 3 o'clock: the minute hand straight up at the 12, the hour hand pointing at the 3. What time is it really?",
+        "answer": { "kind": "number", "value": "9", "unit": "o'clock" },
+        "explanation": [
+          "A mirror keeps up and down but trades left and right.",
+          "The minute hand you see at the 12 points straight up, and straight up survives the swap, so it really is at the 12.",
+          "The hour hand you see at the 3 sits on the right side of the face; really it sits at the same height on the other side, which is where the 9 lives.",
+          "So the real clock says 9 o'clock. Check the trick: mirror time and real time always add up to 12."
+        ],
+        "ideaId": "turn-it-in-your-head",
+        "useAgain": "when a shape, clock or word is seen flipped or turned and you must picture the true original.",
+        "hints": ["Which parts of the clock face stay put in a mirror, and which sides trade places?", "Find where the 3 position lands once left and right have swapped."],
+        "socraticHint": "Add the time in the mirror to the real time. What do the two always make together, and why?",
+        "skills": ["think.spatial"],
+        "thinkMinutes": 5,
+        "difficulty": 2,
+        "variant": {
+          "prompt": "In the mirror the clock shows exactly 4 o'clock: the minute hand straight up at the 12, the hour hand pointing at the 4. What time is it really?",
+          "answer": { "kind": "number", "value": "8", "unit": "o'clock" }
+        }
+      }
+    },
+    {
+      "kind": "problem-set",
+      "id": "s2-w07-think-03",
+      "title": "Rates from the robot",
+      "lane": "skills",
+      "problems": [
+        {
+          "id": "s2-w07-think-03-p01",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Diego found the creature's speed after it crossed 200 cm in 8 seconds.\nLine 1: Speed is a unit rate, the distance covered in exactly one second.\nLine 2: Share the 200 cm equally across the 8 seconds.\nLine 3: 200 divided by 8 is 20.\nLine 4: So the creature's speed is 20 cm per second.\nWhich line is wrong?",
+          "options": [
+            "Line 1",
+            "Line 2",
+            "Line 3",
+            "Line 4",
+            "No line is wrong"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 2
+          },
+          "explanation": [
+            "Lines 1 and 2 are correct: speed is the distance for one second, found by sharing the total distance across the seconds.",
+            "Line 3 is wrong: 200 divided by 8 is 25, not 20.",
+            "Unit price: sharing the total equally is the same move whether it is dollars per item or centimeters per second.",
+            "The creature's true speed is 25 cm per second."
+          ],
+          "ideaId": "unit-price",
+          "useAgain": "when a division for a unit rate needs its own check instead of trusting the number that follows it.",
+          "hints": [
+            "Do not assume any line is correct just because the ones before it look fine. Recompute each line yourself, including which number gets divided by which.",
+            "Unit price: sharing the distance across the seconds means dividing distance by time, not the other way around."
+          ],
+          "socraticHint": "Which of the two numbers is being shared out into equal parts here?",
+          "skills": [
+            "think.skills.ratios",
+            "think.logic"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Lena found the creature's speed after it crossed 120 cm in 4 seconds.\nLine 1: Speed is a unit rate, the distance covered in exactly one second.\nLine 2: Share the total across the count, so divide 4 seconds by the 120 cm.\nLine 3: 4 divided by 120 is about 0.033.\nLine 4: So the creature's speed is about 0.033 cm per second.\nWhich line is wrong?",
+            "options": [
+              "Line 1",
+              "Line 2",
+              "Line 3",
+              "Line 4",
+              "No line is wrong"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 1
+            }
+          }
+        },
+        {
+          "id": "s2-w07-think-03-p02",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Robot race, on paper: robot A rolls 90 cm in 3 seconds. Robot B rolls 120 cm in 5 seconds. Which wins on speed?",
+          "options": ["They tie", "B is faster, by 6 cm per second", "A is faster, by 6 cm per second", "A is faster, by 30 cm per second"],
+          "answer": { "kind": "choice", "index": 2 },
+          "explanation": [
+            "A longer distance does not mean faster; only the per-second amounts can be compared fairly.",
+            "A: 90 cm shared over 3 seconds is 30 cm per second.",
+            "B: 120 cm shared over 5 seconds is 24 cm per second.",
+            "30 beats 24 by 6, so A is faster by 6 cm per second."
+          ],
+          "ideaId": "unit-price",
+          "useAgain": "when two deals, speeds or scores cover different amounts and only the per-one number makes them comparable.",
+          "hints": ["120 cm is more than 90 cm, but did B pay more seconds to get it?", "Turn each robot into a per-second number first, then compare those."],
+          "socraticHint": "Why is comparing 90 cm with 120 cm unfair before the seconds have been dealt with?",
+          "skills": ["think.skills.ratios"],
+          "thinkMinutes": 4,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "Robot A rolls 80 cm in 4 seconds. Robot B rolls 90 cm in 3 seconds. Which wins on speed?",
+            "options": ["B is faster, by 10 cm per second", "A is faster, by 10 cm per second", "They tie"],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        },
+        {
+          "id": "s2-w07-think-03-p03",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "You slow the creature to snail mode and measure: it rolls 3/4 of a meter in 1/2 a minute. At that pace, how many meters does it roll in one whole minute?",
+          "answer": { "kind": "number", "value": "1.5", "unit": "meters" },
+          "explanation": [
+            "How many halves of a minute fit in a whole minute? Exactly 2, and that is 3/4 divided by 1/2 doing its job.",
+            "Flip and multiply: 3/4 x 2 is 6/4.",
+            "6/4 is 1 1/2, so the snail covers 1.5 meters each minute.",
+            "Sense check: the answer beats 3/4, because a whole minute holds more rolling than the half minute you measured."
+          ],
+          "ideaId": "flip-and-multiply",
+          "useAgain": "when a rate was measured over a fraction of a unit and you need it for one whole unit.",
+          "hints": ["Your measurement covered only half a minute. How many of those halves make the whole minute?", "Scale the distance by exactly what you scaled the time by."],
+          "socraticHint": "Why must the per-minute answer come out bigger than the distance you actually measured?",
+          "skills": ["think.skills.fractions", "think.skills.ratios"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Snail mode again: the creature rolls 2/3 of a meter in 1/3 of a minute. How many meters does it roll in one whole minute?",
+            "answer": { "kind": "number", "value": "2", "unit": "meters" }
+          }
+        },
+        {
+          "id": "s2-w07-think-03-p04",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "The creature chews through 2 AA batteries every 3 days of play. At that rate, how many batteries will 12 days of play eat?",
+          "answer": { "kind": "number", "value": "8", "unit": "batteries" },
+          "explanation": [
+            "Build a ratio table: 3 days goes with 2 batteries, and the two columns must always grow by the same multiplier.",
+            "12 days is 3 days taken 4 times.",
+            "So the batteries multiply by 4 as well: 2 x 4 is 8 batteries."
+          ],
+          "ideaId": "same-slice",
+          "useAgain": "when two quantities are locked in a ratio and one of them scales up or down.",
+          "hints": ["How many 3-day chunks fit inside 12 days?", "Whatever you did to the days column, the batteries column copies exactly."],
+          "socraticHint": "What must happen to both columns of a ratio table for the ratio to stay the same ratio?",
+          "skills": ["think.skills.ratios"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Same appetite: 2 AA batteries every 3 days of play. How many batteries will 18 days of play eat?",
+            "answer": { "kind": "number", "value": "12", "unit": "batteries" }
+          }
+        },
+        {
+          "id": "s2-w07-think-03-p05",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "You log a 40-minute creature run and find it spent 35 percent of the time in Sleepy mood. How many minutes was that?",
+          "answer": { "kind": "number", "value": "14", "unit": "minutes" },
+          "explanation": [
+            "Percent is per hundred: 35 percent means 35 out of every 100, so 35/100 of the whole run.",
+            "10 percent of 40 minutes is 4 minutes, so 30 percent is 12 minutes.",
+            "5 percent is half of 10 percent, which is 2 minutes.",
+            "12 plus 2 is 14 minutes of snoring."
+          ],
+          "ideaId": "percent-is-per-hundred",
+          "useAgain": "when a percent of a real quantity is needed and tens and fives of it make easy stepping stones.",
+          "hints": ["Find 10 percent of 40 minutes first; it is the friendliest slice.", "Build 35 percent out of slices you already have: three tens and one five."],
+          "socraticHint": "Once you know 10 percent of the run, what else can you build from it without any new dividing?",
+          "skills": ["think.skills.percent"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A 60-minute run spent 45 percent of the time in Sleepy mood. How many minutes was that?",
+            "answer": { "kind": "number", "value": "27", "unit": "minutes" }
+          }
+        },
+        {
+          "id": "s2-w07-think-03-p06",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "You run the creature and, after every second, write down the total distance it has rolled so far. Two quantities are in play: the time that has passed, and the distance rolled. One of them is called the dependent variable, because its value answers to the other. Which one is it here?",
+          "options": [
+            "The distance, because how far it has rolled depends on how much time has passed",
+            "The time, because the seconds depend on how far the robot rolled",
+            "Neither, because the two have nothing to do with each other"
+          ],
+          "answer": { "kind": "choice", "index": 0 },
+          "explanation": [
+            "Find the rule between the two: as the time ticks up, the distance follows.",
+            "Time ticks on its own, whether the robot rolls or sulks: it is the independent variable, the one you let run.",
+            "The distance answers to time: name me a moment and I will tell you how far by then. The answering one is the dependent variable.",
+            "A quick test: could you freeze the distance and force time to obey it? No, so the dependence only runs one way."
+          ],
+          "ideaId": "find-the-rule",
+          "useAgain": "when an experiment has two changing quantities and you must name which one is doing the driving.",
+          "hints": ["Which of the two would keep changing even if the robot never moved at all?", "Ask of each quantity: does this one answer to the other, or run all on its own?"],
+          "socraticHint": "If the robot stops dead for 2 seconds, what happens to each of the two columns in your log?",
+          "skills": ["think.skills.variables"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "You dim the room lamp step by step and, at every step, write down the creature's light sensor reading. Which is the dependent variable?",
+            "options": [
+              "The lamp setting, because it answers to the sensor",
+              "Neither, the two are unrelated",
+              "The sensor reading, because it answers to what you did to the lamp"
+            ],
+            "answer": { "kind": "choice", "index": 2 }
+          }
+        },
+        {
+          "id": "s2-w07-think-03-p07",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "You draw the run as a distance-time graph on graph paper: seconds along the bottom, total centimeters rolled up the side. The line climbs steadily for 3 seconds, runs perfectly flat for 2 seconds, then climbs steadily again. What was the creature doing during the flat stretch?",
+          "options": ["Rolling backwards", "Standing still", "Rolling at its top speed", "Rolling at a slow but steady speed"],
+          "answer": { "kind": "choice", "index": 1 },
+          "explanation": [
+            "Read the graph through its variables: the height of the line is the total distance so far, the dependent one.",
+            "Flat means the height stops changing: seconds keep passing, but the total distance stays put.",
+            "Distance not growing while time grows is a robot that is not moving. That is Sleepy mood, drawn on paper.",
+            "Rolling backwards would need the total rolled to shrink, and a slow roll would still climb, just gently."
+          ],
+          "ideaId": "find-the-rule",
+          "useAgain": "when a graph's shape, flat, climbing or steep, must be translated back into what actually happened.",
+          "hints": ["What does the up-the-side direction of this graph count?", "During those 2 flat seconds, how much new distance got added?"],
+          "socraticHint": "Could the creature be moving while the line stays flat? What would that need the line to do?",
+          "skills": ["think.skills.variables", "think.skills.ratios"],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Same kind of graph: the line climbs gently for 3 seconds, then suddenly climbs much more steeply. What changed at that moment?",
+            "options": ["The creature stopped", "The creature turned around", "The creature slowed down", "The creature sped up"],
+            "answer": { "kind": "choice", "index": 3 }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "problem-set",
+      "id": "s2-w07-think-08",
+      "title": "Area built from two rectangles, and the six that is never due",
+      "lane": "shape",
+      "problems": [
+        {
+          "id": "s2-w07-think-08-p01",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "An L-shaped room is a 6 m by 4 m rectangle with a 2 m by 3 m rectangle cut from one corner (shown shaded). What is the room's area, in square meters?",
+          "answer": {
+            "kind": "number",
+            "value": "18"
+          },
+          "explanation": [
+            "Start with the full rectangle: 6 times 4 is 24 square meters.",
+            "Subtract the cut-out corner: 2 times 3 is 6 square meters.",
+            "24 minus 6 is 18 square meters."
+          ],
+          "ideaId": "area-in-pieces",
+          "useAgain": "when an odd shape is really a full rectangle with a smaller rectangle missing from a corner.",
+          "hints": [
+            "Find the area of the full rectangle before any corner is removed.",
+            "Subtract the area of the missing corner piece."
+          ],
+          "socraticHint": "Is it easier to find this shape's area directly, or to find the full rectangle and take away what is missing?",
+          "skills": [
+            "think.skills.area"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "figure": {
+            "kind": "grid",
+            "alt": "A 6 by 4 grid of squares with the top-right 2 by 3 block of squares left unshaded, showing the L-shaped room with its corner removed.",
+            "spec": {
+              "rows": 4,
+              "cols": 6,
+              "shaded": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  2,
+                  2
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ]
+              ]
+            }
+          },
+          "variant": {
+            "prompt": "An L-shaped room is a 7 m by 5 m rectangle with a 2 m by 3 m rectangle cut from one corner. What is the room's area, in square meters?",
+            "answer": {
+              "kind": "number",
+              "value": "29"
+            }
+          }
+        },
+        {
+          "id": "s2-w07-think-08-p02",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "A step-shaped garden bed is a 5 m by 3 m rectangle with a 2 m by 1 m square cut from one corner (shown shaded). What is its area, in square meters?",
+          "answer": {
+            "kind": "number",
+            "value": "13"
+          },
+          "explanation": [
+            "The full rectangle is 5 times 3, which is 15 square meters.",
+            "The cut-out corner is 2 times 1, which is 2 square meters.",
+            "15 minus 2 is 13 square meters."
+          ],
+          "ideaId": "area-in-pieces",
+          "useAgain": "when a garden bed or floor plan's area is a rectangle minus one smaller rectangle cut from a corner.",
+          "hints": [
+            "Find the full rectangle's area first.",
+            "Subtract the small missing corner's area."
+          ],
+          "socraticHint": "If a piece is missing from a shape, does its area add to the total or take away from it?",
+          "skills": [
+            "think.skills.area"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 1,
+          "figure": {
+            "kind": "grid",
+            "alt": "A 5 by 3 grid of squares with the top-right 2 by 1 block of squares left unshaded, showing the step-shaped bed with its corner removed.",
+            "spec": {
+              "rows": 3,
+              "cols": 5,
+              "shaded": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  2,
+                  2
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ]
+              ]
+            }
+          },
+          "variant": {
+            "prompt": "A step-shaped garden bed is a 6 m by 4 m rectangle with a 3 m by 2 m square cut from one corner. What is its area, in square meters?",
+            "answer": {
+              "kind": "number",
+              "value": "18"
+            }
+          }
+        },
+        {
+          "id": "s2-w07-think-08-p03",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "A fair die is rolled 5 times in a row and shows no 6 at all. What is the probability the next roll is a 6, as a fraction?",
+          "answer": {
+            "kind": "number",
+            "value": "1/6"
+          },
+          "explanation": [
+            "The die has no memory of its past rolls.",
+            "Every single roll, no matter what came before it, still has the same 1 out of 6 chance for each number.",
+            "The streak of no 6s does not make a 6 more likely or overdue on the next roll."
+          ],
+          "ideaId": "the-long-run",
+          "useAgain": "when a streak has just happened and it is tempting to think the next roll is due to break it, but the true chance never changes.",
+          "hints": [
+            "Does the die remember what it rolled five times ago?",
+            "The chance of any single number is always the same, no matter what happened before it."
+          ],
+          "socraticHint": "If the die had no memory at all, could the last five rolls change what the sixth roll is about to do?",
+          "skills": [
+            "think.skills.probability"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A fair die is rolled 10 times in a row and shows no 6 at all. What is the probability the next roll is not a 6, as a fraction?",
+            "answer": {
+              "kind": "number",
+              "value": "5/6"
+            }
+          }
+        },
+        {
+          "id": "s2-w07-think-08-p04",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "About how many times would you expect a fair die to land on 6 in 30 rolls?",
+          "answer": {
+            "kind": "number",
+            "value": "5"
+          },
+          "explanation": [
+            "Each roll has a 1 out of 6 chance of landing on 6.",
+            "Over 30 rolls, that expected share is 30 divided by 6.",
+            "30 divided by 6 is 5 times.",
+            "A real run of 30 rolls might land near 5 but not exactly on it."
+          ],
+          "ideaId": "the-long-run",
+          "useAgain": "when a long-run expected count is needed, by multiplying the number of tries by the chance of one success.",
+          "hints": [
+            "What fraction of all rolls is expected to land on 6?",
+            "Multiply that fraction, or divide 30, by the die's 6 faces."
+          ],
+          "socraticHint": "Does the expected count promise that exactly this many 6s will show up, or just what a fair die tends toward?",
+          "skills": [
+            "think.skills.probability"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "About how many times would you expect a fair die to land on an even number in 30 rolls?",
+            "answer": {
+              "kind": "number",
+              "value": "15"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "problem-set",
+      "id": "s2-w07-think-04",
+      "title": "Clock math",
+      "lane": "puzzle",
+      "problems": [
+        {
+          "id": "s2-w07-think-04-p01",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "It is 10 o'clock in the morning and a movie marathon starts, running for exactly 5 hours. What number will the clock's hour hand point at when it ends?",
+          "answer": { "kind": "number", "value": "3" },
+          "explanation": [
+            "Clock math: on a clock face, 12 is not the end, it is the wrap-around point.",
+            "10 plus 5 is 15, but the face only knows the numbers 1 to 12.",
+            "Throw away one full lap of 12: 15 minus 12 is 3.",
+            "Keep only the remainder and the answer appears: the hand points at 3."
+          ],
+          "ideaId": "clock-math",
+          "introducesIdea": true,
+          "useAgain": "when counting runs around a loop, hours, weekdays or repeating sounds, and only the leftover after full laps matters.",
+          "hints": ["Add the hours as if the clock could count past 12. Where would it land?", "The face starts over after 12. What does one full lap take away from your count?"],
+          "socraticHint": "Why does the clock not care how many full laps of 12 you throw away?",
+          "skills": ["think.skills.modular"],
+          "thinkMinutes": 5,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "It is 9 o'clock and a game marathon runs for exactly 5 hours. What number does the hour hand point at when it ends?",
+            "answer": { "kind": "number", "value": "2" }
+          }
+        },
+        {
+          "id": "s2-w07-think-04-p02",
+          "kind": "text",
+          "lane": "puzzle",
+          "prompt": "Invent your own clock-math puzzle: pick a repeating cycle of your own (not days of the week and not a 12-hour clock), choose how many steps long one full loop is, choose a starting point in the loop, and choose how many steps forward to jump. Write your puzzle, then solve it by finding the remainder after throwing away whole loops, and give the final answer.",
+          "answer": {
+            "kind": "rubric",
+            "mustMention": [
+              "your own cycle",
+              "threw away whole loops",
+              "the remainder"
+            ]
+          },
+          "explanation": [
+            "Pick your own loop first, for example a wheel of 8 colors numbered 0 to 7.",
+            "Choose your own starting color and jump size: say color 3, jumping forward 19 steps.",
+            "Clock math: only the remainder after whole loops matters, so divide the jump by the loop length.",
+            "19 divided by 8 is 2 whole loops with 3 left over.",
+            "Walk only the leftover 3 steps forward from your starting point: color 3 plus 3 is color 6.",
+            "Whole loops always return to where you started, so only the remainder ever decides the final answer."
+          ],
+          "ideaId": "clock-math",
+          "useAgain": "when you want to invent your own repeating-cycle puzzle and solve it using only the remainder.",
+          "hints": [
+            "Choose your loop length before anything else; that number is what you will eventually divide by.",
+            "Once you know how many whole loops fit inside your jump, only the leftover steps matter."
+          ],
+          "socraticHint": "Why does jumping forward by an exact multiple of your loop length always land you back on your starting point?",
+          "skills": [
+            "think.logic",
+            "think.skills.modular"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 3
+        },
+        {
+          "id": "s2-w07-think-04-p03",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "Sleepy mood snores on a loop of three sounds: beep, boop, whistle, then beep, boop, whistle again, forever. Which sound is number 100?",
+          "options": ["boop", "whistle", "beep"],
+          "answer": { "kind": "choice", "index": 2 },
+          "explanation": [
+            "The loop is 3 sounds long, so which sound plays depends only on the remainder after dividing by 3.",
+            "100 is 33 full loops of 3, which covers 99 sounds, with 1 left over.",
+            "A remainder of 1 means the first sound of a fresh loop: beep."
+          ],
+          "ideaId": "clock-math",
+          "useAgain": "when a repeating cycle is asked about far beyond where you would ever count by hand.",
+          "hints": ["How many complete beep-boop-whistle loops finish before sound number 100 arrives?", "After all the complete loops, how many steps into a fresh loop are you?"],
+          "socraticHint": "Which sound numbers all land on beep, and what do those numbers have in common?",
+          "skills": ["think.skills.modular", "think.patterns"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Same loop: beep, boop, whistle, repeated forever. Which sound is number 50?",
+            "options": ["beep", "boop", "whistle"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s2-w07-think-04-p04",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "The ones digits of the powers of 3 march in a loop: 3, 9, 7, 1, then 3, 9, 7, 1 again. What is the ones digit of 3 to the power 10?",
+          "answer": { "kind": "number", "value": "9" },
+          "explanation": [
+            "The loop is 4 steps long, so only the exponent's remainder after dividing by 4 matters.",
+            "10 is 2 full loops of 4 with 2 left over.",
+            "A remainder of 2 picks the second member of the loop, which is 9.",
+            "Check small: 3 to the power 2 is 9, and its exponent also leaves remainder 2. Same spot in the loop, same ones digit."
+          ],
+          "ideaId": "clock-math",
+          "useAgain": "when a power is far too big to compute but only one digit of it is wanted.",
+          "hints": ["The loop is 4 steps long. What about the exponent 10 decides your spot in it?", "Find where exponent 10 lands inside the loop; never compute the power itself."],
+          "socraticHint": "How can two wildly different exponents be guaranteed the very same ones digit?",
+          "skills": ["think.skills.modular", "think.skills.exponents"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Same loop of ones digits: 3, 9, 7, 1 repeating. What is the ones digit of 3 to the power 7?",
+            "answer": { "kind": "number", "value": "7" }
+          }
+        },
+        {
+          "id": "s2-w07-think-04-p05",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "On the Caesar wheel, every letter gets a number: A is 1, B is 2, all the way to Z at 26. A shift of 3 moves each letter 3 steps forward, and past 26 the count wraps back to 1. The letter Y is number 25. What number does Y become under a shift of 3?",
+          "answer": { "kind": "number", "value": "2" },
+          "explanation": [
+            "25 plus 3 is 28, but the alphabet wheel only has 26 stops.",
+            "Past 26 the wheel wraps: 28 minus 26 is 2.",
+            "So Y lands on number 2, which is B. The alphabet is just a clock with 26 hours."
+          ],
+          "ideaId": "clock-math",
+          "useAgain": "when a code, wheel or track wraps around and a step past the end must come back in at the start.",
+          "hints": ["Add the 3 first, as if the alphabet ran on forever. What number do you reach?", "The wheel has only 26 stops. What happens to a count that passes 26?"],
+          "socraticHint": "What single move fixes any count that overshoots the end of a 26-stop wheel?",
+          "skills": ["think.skills.modular"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Same wheel, A at 1 through Z at 26, shift of 3. The letter Z is number 26. What number does Z become?",
+            "answer": { "kind": "number", "value": "3" }
+          }
+        },
+        {
+          "id": "s2-w07-think-04-p06",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "A spy shifted every letter of a message 5 steps forward on the wheel, so the real A shows up as F. In the coded message you spot the letter D, which is number 4. Which real letter was it before the shift? (A is 1, and stepping back past A wraps around to Z at 26.)",
+          "options": ["Y", "X", "I", "E"],
+          "answer": { "kind": "choice", "index": 0 },
+          "explanation": [
+            "Work backwards: the coder walked 5 steps forward, so the decoder walks 5 steps back.",
+            "4 minus 5 is minus 1, which falls off the front of the alphabet.",
+            "Falling off the front means coming back in at the back: add the full loop of 26, and minus 1 becomes 25.",
+            "Number 25 is Y. The wheel agrees: 5 steps back from D lands on Y."
+          ],
+          "ideaId": "work-backwards",
+          "useAgain": "when a code or process moved everything forward and reading it means running the same move in reverse.",
+          "hints": ["The message was pushed 5 forward. Which direction does the decoder walk, and how far?", "If stepping back falls off the front at A, where does the wheel say you come back in?"],
+          "socraticHint": "Why does adding 26 to a negative count land you on the very same stop of the wheel?",
+          "skills": ["think.skills.modular"],
+          "thinkMinutes": 5,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Same code, shift of 5 forward. In the coded message you spot the letter B, which is number 2. Which real letter was it? (Stepping back past A wraps around to Z at 26.)",
+            "options": ["V", "U", "W", "X"],
+            "answer": { "kind": "choice", "index": 2 }
+          }
+        },
+        {
+          "id": "s2-w07-think-04-p07",
+          "kind": "text",
+          "lane": "puzzle",
+          "prompt": "Write it for a friend: today is Tuesday, and you claim you can name the day of the week 1000 days from now without counting through a single calendar page. Explain the whole trick, including the actual day it lands on.",
+          "answer": {
+            "kind": "rubric",
+            "mustMention": ["the days repeat in a loop of 7", "1000 is 142 full weeks with 6 days left over", "only the remainder matters, so it lands on Monday"]
+          },
+          "explanation": [
+            "The weekdays are a 7-step loop, and full loops change nothing: any whole week from Tuesday lands right back on Tuesday.",
+            "So throw away the full weeks hiding in 1000: 7 x 142 is 994, leaving a remainder of 6.",
+            "Only the leftover 6 days walk the weekday forward: Wednesday, Thursday, Friday, Saturday, Sunday, Monday.",
+            "1000 days from Tuesday is a Monday, and you never touched a calendar."
+          ],
+          "ideaId": "clock-math",
+          "useAgain": "when a claim about something far away can be shrunk to a tiny leftover by throwing away full cycles.",
+          "hints": ["What does adding one full week of 7 days do to the day of the week?", "How many complete weeks hide inside 1000 days, and how many days remain after them?"],
+          "socraticHint": "Out of the 1000 days, how many actually matter to the weekday, and why so few?",
+          "skills": ["think.skills.modular", "think.proof"],
+          "thinkMinutes": 5,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Same trick, new claim: today is Saturday. Explain to a friend how to find the weekday exactly 500 days from now without a calendar, including the day it lands on.",
+            "answer": {
+              "kind": "rubric",
+              "mustMention": ["full weeks of 7 change nothing", "500 leaves a remainder of 3", "it lands on Tuesday"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s2-w07-think-05",
+      "title": "Make the Caesar wheel and crack the family message",
+      "body": "Cut two circles from card stock, one clearly smaller, and write the 26 letters evenly around the rim of each, A to Z in order. Push the paper fastener through both centers so the small disc spins inside the big one. Turning the small disc sets the shift: line its A up under the big disc's D and every letter is shifted by 3.\n\nWarm the wheel up: encipher your own name with a shift of 3, letter by letter, and spot-check one letter with clock math, number plus 3, wrap past 26 if needed. The wheel and the numbers must agree; if they do not, one of them is misbuilt and the numbers do not lie.\n\nNow the real game. A parent secretly picks a shift from 1 to 25 and enciphers a short sentence with the wheel, five or six words. You crack it. Brute force is beneath you: count which coded letter appears most in the message and bet it is really E, or maybe A, since those are the most common letters in English. Set the wheel to make that guess true and read the message. Gibberish? Second bet, next guess. Most messages fall in two or three tries, and when the words snap into place you will know.\n\nIf you want more on the weekend, the same wheel can be written as a tiny Python program. Completely optional, and not part of this hour.",
+      "checklist": [
+        "The wheel spins and lines up a whole alphabet against a whole alphabet",
+        "My own name enciphered with shift 3, and one letter checked by clock math agrees with the wheel",
+        "The parent's secret message cracked, and I can name the shift they used",
+        "I can say in one sentence why a shift of 26 would fool nobody"
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "s2-w07-think-06",
+      "title": "Explain it in writing",
+      "mode": "written",
+      "prompt": "Write, one idea per sentence, why the Caesar wheel and the clock face are running the same trick: name what wraps around in each, how long each loop is, and why a shift of 26 on the wheel changes nothing at all. Name the idea you used."
+    },
+    {
+      "kind": "explain",
+      "id": "s2-w07-think-07",
+      "title": "Explain back",
+      "mode": "voice",
+      "prompt": "Teach a grown-up the day-of-week trick tonight: let them pick any number of days from 50 to 1000, name the weekday it lands on, and show them the remainder doing all the work. Then record yourself explaining how the trick works, why full weeks vanish, and how the same wrap-around cracked the family's secret message: which letter gave the shift away?"
+    }
+  ]
+}

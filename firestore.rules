@@ -1,0 +1,76 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Task 3b: authentication with Google stays open to anyone; this is the actual gate.
+    // Anyone may sign in, but only a signed-in address with its own allowedEmails document may
+    // create, join or read anything below. Doc ids are the lowercased address (owner-managed,
+    // see the allowedEmails match block below); Google returns whatever case the user typed,
+    // so the token's email is lowercased before comparing.
+    function emailAllowed() {
+      return signedIn()
+        && request.auth.token.email != null
+        && exists(/databases/$(database)/documents/allowedEmails/$(request.auth.token.email.lower()));
+    }
+
+    function isMember(hid) {
+      return signedIn()
+        && emailAllowed()
+        && exists(/databases/$(database)/documents/households/$(hid))
+        && request.auth.uid in
+          get(/databases/$(database)/documents/households/$(hid)).data.memberUids;
+    }
+
+    // A user's own account document: displayName, householdIds. Nobody else
+    // may read or write it, including other members of the same household.
+    match /users/{uid} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+    }
+
+    // Task 3b: a signed-in user may read their own (lowercased) allowlist document, and no
+    // other -- so the app can tell "not allowed" apart from "something broke" without leaking
+    // who else is on the list. Owner-managed outside the app (scripts/allowlist.ts, or the
+    // console): no client, allowlisted or not, may create, update, delete or list this
+    // collection.
+    match /allowedEmails/{email} {
+      allow get: if signedIn() && request.auth.token.email != null
+        && request.auth.token.email.lower() == email;
+      allow list, write: if false;
+    }
+
+    match /households/{hid} {
+      // A household is created on first sign-in (spec 7.1): the creator names
+      // themselves as owner and lists themselves as a member of the household
+      // they are creating. Nobody can create a household on someone else's
+      // behalf or create themselves out of the member list. Task 3b: also
+      // requires the creator's own address to be allowlisted, so a
+      // non-allowlisted account can create nothing.
+      allow create: if emailAllowed()
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.auth.uid in request.resource.data.memberUids;
+      allow read, update, delete: if isMember(hid);
+
+      // Everything beneath a household (profiles, progress, attempts,
+      // reviewQueue, skills, artifacts, logs, debates, resets, screenTime) is
+      // readable and writable only by that household's members. A kid never
+      // sees another household's data.
+      // Except households/{hid}/private/*: the family's own AI key lives there, written and
+      // read only by the server through the Admin SDK (web/lib/ai/keys.ts). No client, member
+      // or not, may read or write it.
+      match /{document=**} {
+        // request.path is /databases/{db}/documents/households/{hid}/<segment 5>/...; a recursive
+        // wildcard variable is not bound for list queries, so the path itself is inspected.
+        allow read, write: if isMember(hid) && request.path[5] != "private";
+      }
+    }
+
+    // Everything else: no client access at all.
+    match /{other=**} {
+      allow read, write: if false;
+    }
+  }
+}

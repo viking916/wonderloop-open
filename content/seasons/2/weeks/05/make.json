@@ -1,0 +1,432 @@
+{
+  "id": "s2-w05-make",
+  "season": 2,
+  "week": 5,
+  "track": "make",
+  "title": "From calipers to CAD",
+  "summary": "Measure a real mBot part with digital calipers, model it in Tinkercad to those exact numbers, print it, and check how far the print landed from the drawing.",
+  "minutes": 60,
+  "materials": [
+    "digital calipers",
+    "3D printer and PLA filament",
+    "laptop with a Tinkercad account (free, at https://www.tinkercad.com)",
+    "mBot v1.2, a spare sensor bracket or battery holder to measure",
+    "graph paper and pencil",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.fabrication",
+    "make.measurement"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s2-w05-make-01",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A bracket-shaped part is sketched with four features to measure with the calipers before drawing it in CAD: the overall length along the bottom, the overall width along the right side, the width of a hole near the middle, and the wall thickness noted on the left edge.",
+        "spec": {
+          "w": 360,
+          "h": 234,
+          "wide": false,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  100,
+                  60
+                ],
+                [
+                  260,
+                  60
+                ],
+                [
+                  260,
+                  160
+                ],
+                [
+                  100,
+                  160
+                ]
+              ],
+              "fill": "sand"
+            },
+            {
+              "t": "dim",
+              "x1": 100,
+              "y1": 189,
+              "x2": 260,
+              "y2": 189,
+              "label": "length"
+            },
+            {
+              "t": "dim",
+              "x1": 295,
+              "y1": 60,
+              "x2": 295,
+              "y2": 160,
+              "label": "width"
+            },
+            {
+              "t": "circle",
+              "cx": 180,
+              "cy": 125,
+              "r": 18,
+              "fill": "none",
+              "label": "hole"
+            },
+            {
+              "t": "dim",
+              "x1": 162,
+              "y1": 166,
+              "x2": 198,
+              "y2": 166,
+              "label": "hole width"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 65,
+              "s": "wall thickness",
+              "size": 10,
+              "anchor": "start"
+            }
+          ]
+        }
+      },
+      "title": "Ask, imagine, plan",
+      "body": "The design loop opens a new kind of build: ask, imagine, plan, build, test, fix.\n\nAsk: can a drawing become a real part? Up to now this season's machines were bent from existing pieces. Today a part is designed from nothing but numbers and printed into being.\n\nImagine: the mBot's sensor bracket or battery holder, a small plastic part with a handful of measurements: length, width, thickness, the width of a slot or a hole. Model those same numbers in CAD and the printer should make the same part.\n\nPlan: pick four features on the part to measure and later compare against the print, for example overall length, overall width, a hole's width and the wall thickness. Write their names on graph paper now, with a blank space beside each one for the calipers reading."
+    },
+    {
+      "kind": "science",
+      "id": "s2-w05-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The CAD drawing shows a hole at its exact typed size on the left. The printed part on the right shows the same hole coming out slightly smaller after printing and cooling. The difference between the two is the tolerance gap.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  40,
+                  70
+                ],
+                [
+                  140,
+                  70
+                ],
+                [
+                  140,
+                  170
+                ],
+                [
+                  40,
+                  170
+                ]
+              ],
+              "fill": "sand"
+            },
+            {
+              "t": "text",
+              "x": 90,
+              "y": 58,
+              "s": "drawing",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "circle",
+              "cx": 90,
+              "cy": 120,
+              "r": 22,
+              "fill": "none"
+            },
+            {
+              "t": "text",
+              "x": 90,
+              "y": 180,
+              "s": "hole (CAD)",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  220,
+                  70
+                ],
+                [
+                  320,
+                  70
+                ],
+                [
+                  320,
+                  170
+                ],
+                [
+                  220,
+                  170
+                ]
+              ],
+              "fill": "muted"
+            },
+            {
+              "t": "text",
+              "x": 270,
+              "y": 58,
+              "s": "printed part",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "circle",
+              "cx": 270,
+              "cy": 125,
+              "r": 18,
+              "fill": "none"
+            },
+            {
+              "t": "text",
+              "x": 270,
+              "y": 178,
+              "s": "hole (real)",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "dim",
+              "x1": 140,
+              "y1": 195,
+              "x2": 220,
+              "y2": 195,
+              "label": "tolerance gap"
+            }
+          ]
+        }
+      },
+      "title": "Tolerance: the gap between drawn and printed",
+      "ideaId": "tolerance",
+      "body": "Digital calipers read to a hundredth of a millimetre, far finer than a ruler, which is why they measure a small plastic part instead of eyeballing it. CAD software like Tinkercad lets a size be typed as an exact number, so the drawing itself is exact.\n\nThe print never matches that drawing perfectly. Melted plastic shrinks a little as it cools and hardens, and the nozzle that lays it down has its own width. So a thin wall or a small hole often comes out a little different from the number typed into the drawing. The gap between the drawn size and the printed size is called tolerance.\n\nTolerance is not a mistake to fix once and for all. Every real machine that makes physical things, from a 3D printer to a factory press, has some tolerance, and engineers design around it. A part that must fit snugly is drawn slightly bigger or smaller on purpose, to land where it is actually needed once it is really made."
+    },
+    {
+      "kind": "science",
+      "id": "s2-w05-make-08",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A GPS satellite high above Earth sends a radio signal down to a receiver on the surface. The receiver times how long the signal took to arrive and multiplies by the radio speed of about 300,000 kilometres a second to compute its distance from that satellite.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 180,
+              "cy": 190,
+              "r": 40,
+              "fill": "sand",
+              "label": "Earth"
+            },
+            {
+              "t": "dot",
+              "cx": 180,
+              "cy": 140,
+              "label": "receiver",
+              "side": "right"
+            },
+            {
+              "t": "circle",
+              "cx": 180,
+              "cy": 50,
+              "r": 15,
+              "fill": "muted"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 65,
+              "x2": 180,
+              "y2": 140,
+              "arrow": true,
+              "dashed": true,
+              "color": "green",
+              "label": "radio signal"
+            },
+            {
+              "t": "text",
+              "x": 240,
+              "y": 130,
+              "s": "300,000 km/s",
+              "size": 10,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 205,
+              "y": 54,
+              "s": "satellite",
+              "size": 10,
+              "anchor": "start"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 800,
+              "caption": "satellite sends the signal",
+              "set": {
+                "3": {
+                  "y2": 90
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "it travels down at light speed",
+              "set": {
+                "3": {
+                  "y2": 115
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "receiver catches it, times the trip",
+              "set": {}
+            }
+          ]
+        }
+      },
+      "title": "GPS: timing a radio bounce from space",
+      "body": "Your ultrasonic sensor finds distance by timing an echo: send a click, time how long sound takes to return, multiply by sound's speed. A GPS receiver in a phone solves almost the same problem, at a much larger scale.\n\nSatellites broadcast a radio signal carrying the exact instant it was sent. Radio travels at light speed, about 300,000 kilometres a second. A receiver measures how late that signal arrives and multiplies by the speed to get its distance from that satellite. Do this with four satellites at once, and the four distances pin down one point on Earth.\n\nThe timing has to be extraordinarily exact. Being off by one microsecond, one millionth of a second, moves the computed position by about 300 metres. That is why GPS satellites carry atomic clocks rather than ordinary quartz ones.\n\nSame idea as your sensor: time the signal, know the speed, get the distance.",
+      "ideaId": "time-the-radio-bounce"
+    },
+    {
+      "kind": "task",
+      "id": "s2-w05-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The real part is measured with the calipers, its numbers typed into a CAD model, and the model is sent to the printer to make a new copy of the part.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 90,
+              "w": 70,
+              "h": 50,
+              "label": "real part",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 150,
+              "w": 70,
+              "h": 25,
+              "label": "calipers",
+              "fill": "paper"
+            },
+            {
+              "t": "line",
+              "x1": 90,
+              "y1": 110,
+              "x2": 140,
+              "y2": 110,
+              "arrow": true,
+              "color": "ink"
+            },
+            {
+              "t": "box",
+              "x": 145,
+              "y": 90,
+              "w": 90,
+              "h": 50,
+              "label": "CAD model",
+              "sub": "typed mm",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 235,
+              "y1": 110,
+              "x2": 280,
+              "y2": 110,
+              "arrow": true,
+              "color": "ink"
+            },
+            {
+              "t": "box",
+              "x": 285,
+              "y": 90,
+              "w": 65,
+              "h": 50,
+              "label": "printer",
+              "fill": "muted"
+            }
+          ]
+        }
+      },
+      "title": "Measure, model, print",
+      "body": "Measure all four chosen features on the real part with the calipers, closing the jaws gently onto each one and reading the display. Write each number on graph paper next to its feature name.\n\nOpen Tinkercad at https://www.tinkercad.com, start a new design, and build a simple block or bracket shape sized to those exact four numbers. Type the numbers as millimetres in the shape's own size fields rather than dragging shapes by eye. Export it and send it to the 3D printer.\n\nOnce it prints and cools, measure the same four features on the printed part with the calipers, three times each, and write down the middle (median) reading for every feature. Three reads guard against your own hand shaking the calipers a little, which is not the same thing as the printer's real tolerance.",
+      "checklist": [
+        "All four features measured on the real part before anything was drawn",
+        "The Tinkercad model was sized by typing the measured numbers, not by dragging shapes by eye",
+        "The part printed successfully and was measured again after it cooled",
+        "Each printed feature was measured three times and the middle reading recorded"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s2-w05-make-04",
+      "title": "Drawn size versus printed size",
+      "ideaId": "tolerance",
+      "body": "The same four features are measured on the drawing's numbers and on the real printed part. Nothing about the design changes between the two columns, only which object is being measured.\n\nFour rows, one per feature. For each row, write the feature's name, the size typed into the drawing in millimetres, and the middle of three calipers readings on the printed part in millimetres.",
+      "columns": [
+        "Feature",
+        "Drawn size (mm)",
+        "Printed size (mm)"
+      ],
+      "minRows": 4,
+      "question": "Which feature had the biggest gap between drawn and printed size, and how many millimetres was the gap?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s2-w05-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: a feature typed in the wrong unit, so the whole part prints ten times too big or small.\n\nAlso watch for calipers closed too hard, squeezing soft plastic and reading small. And a hole that prints noticeably smaller than drawn is real tolerance, not a mistake to hunt down."
+    },
+    {
+      "kind": "artifact",
+      "id": "s2-w05-make-06",
+      "title": "Show it",
+      "prompt": "Photo of the printed part next to the real part it was modelled on, with the calipers in the shot, plus a screenshot of the Tinkercad model showing the typed dimensions",
+      "accepts": [
+        "photo"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s2-w05-make-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s2-w05-make-x01",
+      "kind": "invent",
+      "title": "Design a stand for a phone or tablet",
+      "minutes": 45,
+      "body": "Starting question: how can a screen be propped up at a comfortable angle for reading, without being held?\n\nConstraints: it must hold the device at an angle between 45 and 70 degrees from flat. It must use no more than three separate printed pieces. It must fit a device between 6 and 10 millimetres thick, measured with the calipers.\n\nSketch it on graph paper first, with real measurements written on the sketch, before opening Tinkercad. Model it, print it, and try it with the real device it was measured for.\n\nHow to know it works: the device stands on its own at a comfortable reading angle without sliding or tipping when gently nudged."
+    }
+  ]
+}

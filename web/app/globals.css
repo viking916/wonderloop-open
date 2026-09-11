@@ -1,0 +1,4854 @@
+@import "tailwindcss";
+
+:root {
+  --kraft: #e6d9bf;
+  --kraft-deep: #d9c7a3;
+  --cream: #fbf6ec;
+  --forest: #274235;
+  --moss: #6b8f5a;
+  --blaze: #d9432b;
+  --blaze-deep: #a92f1c;
+  --ink: #2a2a26;
+  /* verify-ui (Plan 2 Task 14) measured the old #6b6a60 at 3.90:1 on --kraft cards (the Parent
+     view's notes, the quest step list's not-yet-reached steps, the idea box) -- under the
+     4.5:1 floor, even though it read fine on plain white/cream (5.45:1) where most of this
+     app's cards sit. Darkened just enough to clear 4.5:1 against --kraft too (5.05:1) with a
+     safety margin, while comfortably staying under the app's --ink body-text color (7.06:1 on
+     white now, still visibly lighter than --ink's 14.4:1) so it keeps reading as "muted"
+     against ordinary text, not just as darker ink. */
+  --muted: #5a594f;
+  --sky: #b9d3dc;
+  --sun: #f2b632;
+  --led: #f2b632;
+  --led-dim: #efe3c9;
+
+  --radius: 14px;
+  --shadow: 0 2px 0 rgba(42, 42, 38, 0.08), 0 14px 30px -20px rgba(42, 42, 38, 0.5);
+
+  /* Task 12 fix: one shared height for every row-level control -- buttons, <select>s and
+     single-line text inputs -- so a button next to a select next to a typed answer lines up
+     instead of each control setting its own one-off padding/font-size (UX audit findings 1/2:
+     .tr-btn measured 42px, the week-picker <select> 39px, .tr-answer__input taller still).
+     48px matches the demo's own .btn box (design-demos/trail-v2.html: 10px vertical padding +
+     2px border + its inherited 17px/1.45 body line-height computes to 48.64px live-measured in
+     a browser) and clears the 44px touch-target floor with margin for a 9-year-old on a
+     trackpad. Not applied to Sprout's on-hill tap targets (.thing/.sp-*): those are a different,
+     already-larger widget family sized for a 3-year-old's finger, not a button/select/input in
+     a row, so this token would be a mismatch there, not a fit. */
+  --control-height: 48px;
+
+  --font-heading: var(--font-zilla-slab), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-source-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-courier-prime), "Courier New", Courier, monospace;
+
+  /* Text-safe derivative: plain --moss on white/cream measures 3.68:1, below
+     the 4.5:1 floor. This is moss darkened toward forest, used only where
+     moss carries meaning as *text* (moss itself stays available for fills,
+     borders and decorative strokes, where the text contrast rule doesn't apply). */
+  --moss-text: #50704b;
+
+  /* Task 23: a field a person types into (a select, a single-line answer, a textarea) used to
+     share .tr-btn--secondary's exact look -- 2px solid var(--forest), white fill -- so an empty
+     field and a real button read as the same thing (the owner's own words: "buttons and empty
+     fields share a design"). A field is not a button: it never gets the bold 2px --forest line,
+     it gets this thinner, neutral, low-contrast border plus a faint inset shadow (see
+     --field-shadow below) so it reads as a shallow well to type into rather than a raised,
+     pressable box. Border contrast against its own background is not a WCAG text-contrast
+     concern -- verify:ui's 4.5:1 floor only checks text -- so this can stay deliberately quiet;
+     the shape/weight difference from a button's 2px solid --forest line is the point. */
+  --field-border: rgba(42, 42, 38, 0.32);
+  --field-shadow: inset 0 1px 3px rgba(42, 42, 38, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+/* Task 27: the owner photographed real clipping on an iPad Pro in portrait -- "Switch profile"
+   cut to "Switch p", the season strip's "wk 1"/"locked" labels cut mid-word -- that never
+   reproduced in this gate's headless Chromium at the same CSS-pixel viewport (see
+   scripts/verify-ui.mjs's VIEWPORTS comment and the block comment above the horizontal-overflow
+   check for the investigation). The layout math at these widths checks out in Chromium with
+   every measured element comfortably inside its viewport; what differs on the real device is
+   the font size, not the layout -- WebKit's "automatic text-size adjustment" boosts font sizes
+   inside narrower columns for readability, using a heuristic that is sensitive to orientation
+   even at a fixed CSS pixel width (this app never opted out of it, and Chromium has no
+   equivalent behaviour to reproduce). The boosted text then overflows .tr-season__label's
+   nowrap flex row and the header button's own box, and gets silently clipped by the nearest
+   overflow: hidden ancestor (.tr-season's rounded corner, and ultimately html/body's own
+   overflow-x: hidden) -- exactly the truncation the owner photographed. This is the standard,
+   universally-recommended countermeasure: pin text to the size the CSS actually specifies. */
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--kraft);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.45;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blaze);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Trail design system component styles                                   */
+/* ---------------------------------------------------------------------- */
+
+.tr-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+
+/* Button (task 20 rebuild)
+   The owner used the live app and found no system: the rename control and the "already bought
+   this" label were both dashed and button-shaped, some buttons were filled red and others were
+   dashed with no colour, and nothing lined up. This replaces the old two-tier default/ghost
+   split (task 12) with a five-tier taxonomy, each tier meaning one specific thing everywhere it
+   appears -- see components/ui/Button.tsx's own doc comment for the one-line definition of each,
+   and app/style's "Buttons" section for all five side by side.
+
+   The hard rule this rebuild exists to enforce: a dashed border no longer means "button",
+   anywhere in this file. Dashed stays reserved for genuinely empty or placeholder areas (.tr-empty,
+   .tr-patch--locked, .tr-outcome--exhausted) -- every one of those is a non-interactive panel, not
+   a control. (.sp-gate and .sp-bin, Sprout's own dashed "administrative, not a toy" hill widgets,
+   are a deliberate, pre-existing exception -- task 20's brief exempts the Sprout tree entirely,
+   built for a 3-year-old, from this taxonomy.)
+
+   Primary (--blaze-deep fill) is unchanged from task 12: the one thing a screen or section is
+   for -- Start, Resume, Check, Continue -- at most one per group. Secondary is the old bare
+   .tr-btn look (white fill, solid 2px forest border), now given its own explicit name: a real,
+   always-on-the-dashboard action that is not the one thing (Rename, Add activity, Mark as
+   bought, Open as Explorer). Quiet is new: no fill, no border, lighter weight, for a low-stakes,
+   reversible or purely-navigational action (Back, Cancel, Skip for now) that still needs to be a
+   real, keyboard-reachable control, just not one competing for attention. Destructive is new: a
+   reset, which permanently deletes a child's work, and nothing else ever gets this tier (see
+   ConfirmResetButton). It must read as "stop and think" without shouting, and -- because colour
+   blindness is common in boys and a parent may be colour blind too -- it has to be tellable apart
+   from every other tier without relying on colour: a warning-triangle icon (always rendered by
+   Button.tsx, never passed by a caller, so it can never be forgotten on one reset and not
+   another), a double border (a distinct line style, not just a different colour of the same
+   solid line), and a tighter corner radius than every other tier's 10px. Default is untouched
+   from task 12: it exists only so SwitchProfileButton's white fill holds contrast on the dark
+   forest header regardless of what is behind it, never a general-purpose tier -- see that
+   component's own comment. */
+.tr-btn {
+  border: 2px solid transparent;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--forest);
+  line-height: 1.2;
+  height: var(--control-height);
+}
+.tr-btn--default,
+.tr-btn--secondary {
+  border-color: var(--forest);
+  background: #fff;
+  color: var(--forest);
+}
+.tr-btn--primary {
+  /* White on --blaze measures 4.39:1, just under the 4.5:1 floor.
+     --blaze-deep is the same red, darkened enough to clear it (6.75:1). */
+  background: var(--blaze-deep);
+  border-color: var(--blaze-deep);
+  color: #fff;
+}
+.tr-btn--quiet {
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 600;
+}
+.tr-btn--quiet:hover {
+  color: var(--forest);
+}
+/* Task 23: no fill and no border was the whole point of "quiet", but with nothing left to say
+   this is pressable it had nothing at all -- the owner's own report, on the shopping list's
+   "Undo": "plain text, with nothing to say it can be clicked." An underline is the fix, scoped to
+   `button` and never `a`: Button.tsx also renders this same tier as a real anchor in one place
+   (the explorer review "park it" link), and verify:ui's own link-button-underline rule fails any
+   `<a class="tr-btn ...">` that still shows an underline -- so this can never touch that case, by
+   selector, not by discipline. A quiet *button* has no href-driven cues (no status-bar preview, no
+   right-click "open in new tab") to fall back on, so it needs its own affordance more than a
+   quiet link does. */
+button.tr-btn--quiet {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+/* #fbe0da on --blaze-deep measures 5.4:1 (checked directly -- task 24 stopped reusing this pair
+   for .tr-chip--flag, which used to cite this same measurement, so this button's own comment no
+   longer borrows from a chip that has since changed colour). border-style: double (not a
+   thicker solid, not dashed -- dashed is reserved for placeholders on this page, see the block
+   comment above) is the shape-language cue that survives colour blindness; the 6px radius, half
+   every other tier's 10px, is a second one. */
+.tr-btn--destructive {
+  border-width: 4px;
+  border-style: double;
+  border-color: var(--blaze-deep);
+  border-radius: 6px;
+  background: #fbe0da;
+  color: var(--blaze-deep);
+}
+.tr-btn--destructive svg {
+  flex: none;
+}
+.tr-btn:disabled,
+.tr-btn[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+/* Task 24: a disabled control used to just fade its own tier to 50% opacity. For the filled
+   tiers (Primary/Secondary/Default/Destructive) that made a real, deliberately-waiting Check
+   button read as a half-rendered rendering fault -- the owner's own words, "a washed-out pink
+   block" -- rather than a control on pause. A flat, static kraft fill (already measured at
+   5.05:1 for --muted text, see that variable's own comment) reads as "not right now" on
+   purpose, the same way a disabled control looks in the rest of this app's palette, on every
+   background this app puts a button on (5.05:1 on --kraft cards, 7:1+ on white/cream). */
+.tr-btn--primary:disabled,
+.tr-btn--primary[aria-disabled="true"],
+.tr-btn--secondary:disabled,
+.tr-btn--secondary[aria-disabled="true"],
+.tr-btn--default:disabled,
+.tr-btn--default[aria-disabled="true"],
+.tr-btn--destructive:disabled,
+.tr-btn--destructive[aria-disabled="true"] {
+  background: var(--kraft);
+  border-color: var(--kraft-deep);
+  color: var(--muted);
+}
+/* Quiet has no fill of its own to flatten -- its text is the only thing there -- so a disabled
+   Skip/Back keeps its ordinary --muted colour (already clearing 4.5:1 everywhere it appears,
+   see --muted's own comment) rather than the old opacity dimming, which crushed it to roughly
+   2.3:1. The underline (button.tr-btn--quiet's own affordance for "this is clickable") is what
+   drops instead, so disabled still reads as visibly different from active without sacrificing
+   contrast. */
+button.tr-btn--quiet:disabled,
+button.tr-btn--quiet[aria-disabled="true"] {
+  text-decoration: none;
+}
+
+/* Card */
+.tr-card {
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.tr-card--surface {
+  background: #fff;
+  border: 1px solid rgba(42, 42, 38, 0.1);
+}
+.tr-card--kraft {
+  background: var(--kraft);
+}
+.tr-card--forest {
+  background: var(--forest);
+  color: #fff;
+}
+.tr-card--shadow {
+  box-shadow: var(--shadow);
+}
+
+/* Chip */
+.tr-chip {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--kraft);
+  color: var(--forest);
+  padding: 3px 10px;
+  border-radius: 99px;
+  display: inline-block;
+}
+.tr-chip--money {
+  background: #fff0c2;
+  color: #6b4f00;
+}
+/* Something newly needed (a season shopping list item due soon, or a quest material not needed
+   by any earlier week) -- never a problem, just a checklist marker. Task 14 gave it the same
+   #fbe0da/--blaze-deep pair .tr-btn--destructive uses for a permanent-delete warning; the owner's
+   own report (task 24) named the result exactly: a "New" tag on a shopping item read as an
+   alarm. --sky is this app's other established neutral tint (Sprout's own backdrop); --forest on
+   raw --sky measures 7.0:1, checked directly, comfortably over the 4.5:1 floor, and it borrows
+   from neither "positive" (done/satisfied) nor "money" (a cost) nor "progress" (under way) --
+   this is none of those, just "get this ready." */
+.tr-chip--flag {
+  background: var(--sky);
+  color: var(--forest);
+}
+/* Task 20: --moss-text on the base chip's own --kraft background measures only 4.00:1 (checked
+   directly -- --moss-text was calibrated against white/cream, not kraft, see that variable's own
+   comment), under the 4.5:1 floor, so "positive" gets its own light moss tint instead (4.76:1)
+   rather than reusing kraft. "progress" reuses --blaze-deep on the base kraft background --
+   already 4.84:1, checked directly, no new tint needed. */
+.tr-chip--positive {
+  background: #e6f0e0;
+  color: var(--moss-text);
+}
+.tr-chip--progress {
+  color: var(--blaze-deep);
+}
+
+/* ProgressBar */
+.tr-bar-p {
+  height: 8px;
+  background: var(--kraft);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.tr-bar-p > i {
+  display: block;
+  height: 100%;
+  background: var(--blaze);
+  border-radius: 4px;
+}
+.tr-bar-p--moss > i {
+  background: var(--moss);
+}
+
+/* Stamp */
+.tr-stamp {
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.15;
+}
+.tr-stamp--sm {
+  width: 56px;
+  height: 56px;
+  border: 2.5px solid var(--moss);
+  color: var(--moss-text);
+  font-size: 10px;
+  transform: rotate(-12deg);
+}
+.tr-stamp--lg {
+  width: 64px;
+  height: 64px;
+  border: 3px solid var(--blaze);
+  color: var(--blaze-deep);
+  font-size: 10px;
+  transform: rotate(12deg);
+}
+/* Rings stay the identity colour (decorative, not text); stamp text uses the
+   text-safe variant so it clears 4.5:1 on white and cream. */
+.tr-stamp--moss {
+  border-color: var(--moss);
+  color: var(--moss-text);
+}
+.tr-stamp--blaze {
+  border-color: var(--blaze);
+  color: var(--blaze-deep);
+}
+
+/* TrackCard */
+.tr-track {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 250px;
+  border: 1px solid rgba(42, 42, 38, 0.1);
+  position: relative;
+}
+.tr-track .tr-track__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.tr-track h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--forest);
+}
+.tr-track p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+.tr-track .tr-track__meta {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: auto;
+}
+.tr-track--done .tr-track__meta {
+  color: var(--moss-text);
+}
+.tr-track .tr-stamp {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+/* Quest materials checklist (task 14): "what you need on the desk before you start", shown on
+   a track card and on the quest screen's side rail. */
+.tr-materials {
+  margin: 0;
+}
+.tr-materials__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+.tr-materials ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tr-materials li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+/* LED grid (Build track) */
+.tr-led5 {
+  display: grid;
+  grid-template-columns: repeat(5, 7px);
+  gap: 2px;
+}
+.tr-led5 i {
+  width: 7px;
+  height: 7px;
+  border-radius: 1.5px;
+  background: var(--led-dim);
+  display: block;
+}
+.tr-led5 i.on {
+  background: var(--led);
+}
+
+/* Patch: earned renders as a circular medal, locked as a light, non-circular row (task 33 --
+   still never button-shaped; dashed stays reserved for a non-interactive panel). Each sits in a
+   .tr-patch-tile with its own caption below (the date earned, or a one-line invitation), never
+   inside the medal itself, so a full date/time string always has room. */
+.tr-patch-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tr-patch {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.15;
+}
+.tr-patch--earned {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  background: var(--cream);
+  color: var(--forest);
+  border: 4px double var(--sun);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.35);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 108px;
+}
+.tr-patch--locked {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: transparent;
+  border: 2px dashed rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+}
+.tr-patch--locked span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tr-patch svg {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  display: block;
+}
+.tr-patch--earned svg {
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 4px;
+}
+.tr-patch-tile__caption {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.tr-patches-list .tr-patch-tile__caption {
+  text-align: left;
+  padding-left: 2px;
+}
+
+/* SeasonTrail */
+.tr-trail-wrap {
+  width: 100%;
+}
+.tr-trail-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.tr-trail-svg .tr-path {
+  fill: none;
+  stroke: var(--forest);
+  stroke-width: 3;
+  stroke-dasharray: 7 7;
+  opacity: 0.55;
+}
+.tr-trail-svg .tr-walked {
+  fill: none;
+  stroke: var(--blaze);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.tr-trail-svg .tr-wp {
+  fill: var(--cream);
+  stroke: var(--forest);
+  stroke-width: 2.5;
+}
+.tr-trail-svg .tr-wp.on {
+  fill: var(--forest);
+}
+.tr-trail-svg .tr-peak {
+  fill: var(--kraft-deep);
+  stroke: var(--forest);
+  stroke-width: 2.5;
+}
+.tr-trail-svg .tr-peak.on {
+  fill: var(--moss);
+}
+.tr-trail-svg .tr-you {
+  fill: var(--blaze);
+}
+.tr-trail-svg text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--muted);
+}
+.tr-trail-svg .tr-lbl {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  fill: var(--forest);
+  font-weight: 700;
+}
+.tr-trail-svg .tr-flag {
+  fill: var(--blaze);
+}
+.tr-trail-svg .tr-pole {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tr-trail-svg .tr-you {
+    animation: tr-bob 1.6s ease-in-out infinite;
+  }
+}
+@keyframes tr-bob {
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.tr-trail-list {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+.tr-trail-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: var(--ink);
+}
+.tr-trail-list li[data-status="done"] {
+  color: var(--forest);
+}
+.tr-trail-list li[data-status="current"] {
+  color: var(--blaze-deep);
+  font-weight: 700;
+  background: rgba(217, 67, 43, 0.08);
+}
+.tr-trail-list .tr-trail-list__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--forest);
+  background: var(--cream);
+  flex: none;
+}
+.tr-trail-list li[data-status="done"] .tr-trail-list__dot {
+  background: var(--forest);
+}
+.tr-trail-list li[data-status="current"] .tr-trail-list__dot {
+  background: var(--blaze);
+  border-color: var(--blaze);
+}
+
+@media (max-width: 639px) {
+  .tr-trail-svg-wrap {
+    display: none;
+  }
+  .tr-trail-list {
+    display: flex;
+  }
+}
+
+/* Header */
+.tr-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px;
+  background: var(--forest);
+  color: #fff;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.tr-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+}
+.tr-header__brand svg {
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+.tr-header__who {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  gap: 10px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.92);
+}
+.tr-header__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  /* White on --blaze measures 4.39:1 on this small bold text; --blaze-deep clears 4.5:1. */
+  background: var(--blaze-deep);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  flex: none;
+}
+.tr-header__nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 6px;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+.tr-header__nav a {
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.tr-header__nav a:hover {
+  color: #fff;
+}
+.tr-header__nav span[aria-current="page"] {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* EmptyState */
+.tr-empty {
+  border: 2px dashed rgba(42, 42, 38, 0.3);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  /* Solid, not translucent: over --kraft the 50%-alpha cream this used to be
+     brought --muted text down to 4.47:1, just under the 4.5:1 floor. */
+  background: var(--cream);
+}
+.tr-empty__icon {
+  color: var(--forest);
+}
+.tr-empty h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  color: var(--forest);
+}
+.tr-empty p {
+  margin: 0;
+  max-width: 42ch;
+  color: var(--muted);
+}
+
+/* Toast */
+.tr-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--cream);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  border-left: 6px solid var(--forest);
+  color: var(--ink);
+}
+.tr-toast--success {
+  border-left-color: var(--moss);
+}
+.tr-toast--hint {
+  border-left-color: var(--sun);
+}
+.tr-toast__message {
+  flex: 1;
+  font-size: 15px;
+  margin: 0;
+}
+.tr-toast__dismiss {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 2px 4px;
+  line-height: 1;
+  border-radius: 6px;
+}
+
+/* Loading (app/page.tsx's quiet loading state) */
+.tr-loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.tr-loading__text {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--forest);
+  margin: 0;
+}
+
+/* SignIn (spec 7.1 screen 1) */
+.tr-signin {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.tr-signin__card {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.tr-signin__mark {
+  width: 36px;
+  height: 36px;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+.tr-signin__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--forest);
+}
+.tr-signin__lede {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 34ch;
+}
+.tr-signin__error {
+  margin: 0;
+  color: var(--blaze-deep);
+  font-size: 14px;
+}
+
+/* ProfilePicker (spec 7.1 screen 1): Netflix-style tiles, kid tiles and a visibly distinct
+   parent tile. Tiles are real <button>s (keyboard reachable, Enter/Space activates), styled
+   from scratch here rather than as ".tr-btn" -- the layout (avatar over name over kind label)
+   is nothing like a button.*/
+.tr-picker {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 40px 20px;
+  text-align: center;
+}
+.tr-picker__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  color: var(--forest);
+}
+.tr-picker__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 720px;
+}
+.tr-tile {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 160px;
+  padding: 20px 12px;
+  background: #fff;
+  border: 1px solid rgba(42, 42, 38, 0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  /* .tr-tile__name and .tr-tile__kind already set their own color, so today no text actually
+     inherits this -- but verify-ui's button-no-explicit-color check flags any <button> the
+     cascade alone doesn't guarantee a readable color for, on the same reasoning as every other
+     fix on this line: a button that relies on ambient inheritance is one content or layout
+     change away from silently going invisible on whatever surface it next lands on. */
+  color: var(--forest);
+}
+.tr-tile:hover {
+  border-color: var(--forest);
+}
+.tr-tile__avatar {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 38px;
+}
+.tr-tile--kid .tr-tile__avatar {
+  background: var(--blaze-deep);
+  color: #fff;
+}
+/* The parent tile is deliberately unlike the kids' tiles, not a colour variant of them: a
+   forest fill (the app's own brand colour, never used for a kid avatar) plus the sun double
+   ring the earned-patch style already uses to mark "this one is different". */
+.tr-tile--parent .tr-tile__avatar {
+  background: var(--forest);
+  color: #fff;
+  border: 4px double var(--sun);
+}
+.tr-tile__name {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--forest);
+}
+.tr-tile__kind {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.tr-picker__signout {
+  margin-top: 8px;
+}
+
+/* This Week (Explorer home, spec 7.1 screen 2) */
+.tr-this-week {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Season strip: four terrains, current season active, the rest locked */
+.tr-seasons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 22px 24px 0;
+}
+.tr-season {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background: #fff;
+}
+.tr-season--on {
+  border-color: var(--blaze);
+}
+.tr-season svg {
+  width: 100%;
+  height: 64px;
+  display: block;
+}
+.tr-season__label {
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 6px;
+}
+.tr-season--on .tr-season__label {
+  color: var(--forest);
+  font-weight: 700;
+}
+/* Only the terrain illustration dims for a locked season, not the whole card. CSS opacity
+   paints an element and its entire subtree as one group -- a child cannot opt back into full
+   opacity once an ancestor sets opacity < 1, so putting 0.55 on .tr-season--locked itself (as
+   this used to) dimmed .tr-season__label along with the artwork and capped the label's own
+   contrast under 4.5:1 against white no matter how dark its text color was (verify-ui found
+   "Season 2 - Coast, locked" at 2.25:1, later 2.51:1 after darkening --muted, still failing).
+   The label is real informational text (a sighted low-vision reader still needs "locked" to
+   make sense of the trail), not an inactive form control, so it does not get WCAG's
+   disabled-control contrast exemption -- it needs to actually be legible. Scoping the dimming
+   to the svg keeps the "this one is muted" read on the artwork while the label renders at full
+   opacity with its own (already 4.5:1-safe) --muted color. */
+.tr-season--locked svg {
+  opacity: 0.55;
+}
+
+/* Map: the week title, subtitle and season trail */
+.tr-map {
+  padding: 18px 24px 6px;
+}
+.tr-map h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 34px;
+  line-height: 1.08;
+  font-weight: 700;
+  color: var(--forest);
+}
+.tr-map h1 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--muted);
+}
+.tr-map p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+/* Week picker: a parent-facing jump, never mistaken for real progress */
+.tr-week-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+.tr-week-picker label {
+  letter-spacing: 0.04em;
+}
+.tr-week-picker select {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--forest);
+  border: 1px solid var(--field-border);
+  box-shadow: var(--field-shadow);
+  border-radius: 10px;
+  padding: 6px 10px;
+  background: #fff;
+  height: var(--control-height);
+}
+.tr-week-picker__jump {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--blaze-deep);
+  font-weight: 700;
+}
+.tr-week-picker__jump button {
+  /* A small inline chip inside a sentence, not a row-level control next to the select above --
+     opts out of the shared --control-height on purpose so it stays compact. */
+  height: auto;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+/* Showcase banner: weeks 4, 8, 12 */
+.tr-showcase-banner {
+  margin: 16px 24px 0;
+  background: var(--forest);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tr-showcase-banner strong {
+  font-family: var(--font-heading);
+  font-size: 16px;
+}
+.tr-showcase-banner span {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+}
+
+/* Showcase talk outline (Plan 3 Task 3) */
+.tr-talk-outline {
+  margin: 16px 24px 0;
+}
+.tr-talk-outline__sub {
+  margin: 4px 0 14px;
+  color: var(--muted);
+}
+.tr-talk-outline__beats {
+  margin: 0;
+  padding: 0 0 0 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tr-talk-outline__beat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tr-talk-outline__cue {
+  font-weight: 700;
+  color: var(--forest);
+}
+.tr-talk-outline__quotes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tr-talk-outline__quote-text {
+  font-style: italic;
+}
+.tr-talk-outline__quote-meta {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Track cards grid */
+.tr-tracks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding: 14px 24px;
+}
+/* Four cards once the Play track is on: one row on a laptop, two by two on a tablet, so a
+   fourth card is never stranded alone under a row of three. Below 860px everything stacks. */
+.tr-tracks--four {
+  grid-template-columns: repeat(4, 1fr);
+}
+/* Five cards (Make and Play both on): three then two, never one stranded card. */
+.tr-tracks--five {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 1100px) {
+  .tr-tracks--four,
+  .tr-tracks--five {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* The data step's table and chart (components/quest/DataStep.tsx). */
+.tr-data__table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 6px;
+  margin: 12px 0 4px;
+}
+.tr-data__table th {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  padding: 0 6px 2px;
+}
+.tr-data__table td {
+  padding: 0 4px;
+}
+.tr-data__table .tr-input {
+  padding: 8px 10px;
+  font-size: 15px;
+}
+.tr-data__chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 10px 0 4px;
+  background: #fff;
+  border: 1px solid var(--field-border);
+  border-radius: 10px;
+}
+.tr-data__stats {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+.tr-data__question {
+  font-weight: 600;
+  margin: 12px 0 6px;
+}
+
+/* Side strip: monster problem, season book, mistake box */
+.tr-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  padding: 6px 24px 28px;
+}
+.tr-strip--with-monster {
+  grid-template-columns: 1.4fr 1fr 1fr;
+}
+.tr-note h3 {
+  margin: 6px 0 4px;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--forest);
+}
+.tr-note p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+.tr-confidence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 6px;
+}
+.tr-confidence__label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  margin-right: 4px;
+}
+.tr-pill {
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--field-border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.tr-pill--on {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: #fff;
+}
+.tr-calibration {
+  margin-bottom: 18px;
+}
+.tr-calibration p {
+  margin: 4px 0 0;
+}
+.tr-game__rules {
+  margin: 10px 0 8px;
+}
+.tr-game__rules summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--forest);
+}
+.tr-game__rules .tr-step__body,
+.tr-game__rules p {
+  font-size: 14px;
+}
+.tr-game__notice {
+  margin-top: 8px;
+}
+.tr-note--monster h3 {
+  /* .tr-note h3 above sets --forest, meant for the light "surface" note cards; this card is
+     tr-card--forest (a dark surface), so without this override the title is forest-on-forest,
+     effectively invisible (measured ~1:1). White clears 10.95:1. */
+  color: #fff;
+}
+.tr-note--monster .tr-eyebrow {
+  color: #f2c7be;
+}
+.tr-note--monster p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 860px) {
+  .tr-tracks,
+  .tr-strip,
+  .tr-strip--with-monster,
+  .tr-seasons {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Quest screen (spec 7.1 screen 3): waypoint step list on the left, current step on the right */
+.tr-quest {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: 560px;
+}
+.tr-quest__side {
+  background: var(--kraft);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tr-quest__title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  margin: 6px 0 18px;
+  line-height: 1.2;
+  color: var(--forest);
+}
+.tr-quest__materials {
+  margin-bottom: 14px;
+}
+.tr-quest__park {
+  align-self: flex-start;
+  padding-left: 0;
+  padding-right: 0;
+}
+.tr-quest__park-box > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+/* Plan 4 task 35: a light callout so "Stuck, come back later" is easy to notice against the
+   waypoint list above it, without promoting the button itself out of the low-stakes "quiet"
+   tier -- see QuestShell.tsx's own comment. */
+.tr-extras-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  margin: 6px 0 10px;
+  padding: 8px 10px;
+  font: inherit;
+  text-align: left;
+  color: var(--forest);
+  background: transparent;
+  border: 1.5px solid var(--forest);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.tr-extras-link--on {
+  color: #fff;
+  background: var(--forest);
+}
+.tr-extras-link__label {
+  font-weight: 700;
+}
+.tr-extras-link__count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.tr-extra {
+  margin: 14px 0 0;
+  padding: 14px 16px;
+  border: 1px solid var(--field-border);
+  border-radius: 12px;
+  background: var(--cream, #fffdf7);
+}
+.tr-extra--done {
+  opacity: 0.8;
+}
+.tr-extra__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.tr-extra__minutes {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft, var(--ink));
+}
+.tr-extra__title {
+  margin: 0 0 8px;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--forest);
+}
+.pr-weekplan__extras {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft, var(--ink));
+}
+.tr-quest__home {
+  margin: 18px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.tr-quest__home a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+.tr-quest__park-box {
+  margin-top: 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--cream);
+  border-left: 6px solid var(--forest);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.tr-quest__park-icon {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--forest);
+  margin-top: 2px;
+}
+.tr-quest__park-hint {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+/* The break offer (Plan 4 task 35): a suggestion, never a countdown or a lock -- see
+   components/quest/BreakOffer.tsx and lib/domain/breaks.ts for the full reasoning. Styled like
+   the quest screen's other toasts (same cream background, same left-accent-border shape) so it
+   reads as "a normal, low-stakes notice" rather than an alarm. */
+.tr-break {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  background: var(--cream);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  border-left: 6px solid var(--sun);
+  color: var(--ink);
+}
+.tr-break__message {
+  flex: 1;
+  margin: 0;
+  font-size: 15px;
+  min-width: 200px;
+}
+.tr-break__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tr-break {
+    animation: tr-break-in 320ms ease-out;
+  }
+}
+@keyframes tr-break-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.tr-quest__main {
+  padding: 24px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+.tr-quest__nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* Step waypoint list */
+.tr-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.tr-steps:before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  bottom: 12px;
+  border-left: 2px dashed rgba(39, 66, 53, 0.4);
+}
+.tr-steps li {
+  position: relative;
+}
+.tr-step-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 8px 4px;
+  margin: 0;
+  font: inherit;
+  font-size: 15px;
+  text-align: left;
+  color: var(--muted);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.tr-step-btn:hover {
+  background: rgba(39, 66, 53, 0.07);
+}
+.tr-steps li[data-status="now"] .tr-step-btn {
+  color: var(--ink);
+  font-weight: 700;
+}
+.tr-steps li[data-status="ok"] .tr-step-btn {
+  color: var(--forest);
+}
+.tr-wpt {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 2px solid var(--forest);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--forest);
+  flex: none;
+}
+.tr-steps li[data-status="ok"] .tr-wpt {
+  background: var(--forest);
+  color: #fff;
+}
+.tr-steps li[data-status="now"] .tr-wpt {
+  background: var(--blaze-deep);
+  border-color: var(--blaze-deep);
+  color: #fff;
+}
+
+/* Step content: shared shape for every step kind */
+.tr-step {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 640px;
+}
+.tr-step__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 26px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--forest);
+}
+.tr-step__body {
+  margin: 0;
+  white-space: pre-line;
+  color: var(--ink);
+}
+.tr-step__body p {
+  margin: 0 0 12px;
+}
+.tr-step__body p:last-child,
+.tr-step__body ol:last-child {
+  margin-bottom: 0;
+}
+.tr-step__body ol {
+  margin: 0 0 14px;
+  padding-left: 28px;
+  list-style: decimal outside;
+}
+.tr-step__body li {
+  margin: 6px 0;
+  padding-left: 4px;
+}
+.tr-step__body li::marker {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--forest);
+}
+.tr-step__body a {
+  color: var(--forest);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+/* The animated micro:bit (components/quest/LedMatrix.tsx). */
+.tr-led {
+  max-width: 300px;
+}
+.tr-led__board {
+  fill: #1f2a24;
+  stroke: var(--forest);
+  stroke-width: 2;
+}
+.tr-led__button {
+  fill: #3a4a40;
+  stroke: #6b7d72;
+  stroke-width: 1.5;
+}
+.tr-led__label {
+  fill: #e8e2d4;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+}
+.tr-led__dot {
+  fill: #3b2a2a;
+  transition: fill 120ms linear;
+}
+.tr-led__dot--on {
+  fill: #ff3b1f;
+  filter: drop-shadow(0 0 4px rgba(255, 80, 40, 0.9));
+}
+.tr-led__pin {
+  fill: #c9a227;
+}
+.tr-led__caption {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--ink-soft, var(--ink));
+}
+/* The two ways in to a photo (components/quest/PhotoCapture.tsx). */
+.tr-photo__ways {
+  align-items: center;
+}
+.tr-photo__preview {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  background: #000;
+  margin-bottom: 8px;
+}
+.tr-signin__legal {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: var(--ink-soft, var(--ink));
+}
+.tr-signin__legal a,
+.tr-consent a,
+.tr-legal a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.tr-consent__tick {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 16px 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.tr-consent__tick input {
+  margin-top: 4px;
+  width: 18px;
+  height: 18px;
+}
+.tr-legal {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+  color: var(--ink);
+  line-height: 1.55;
+}
+.tr-legal__title {
+  font-family: var(--font-heading);
+  font-size: 34px;
+  margin: 4px 0 4px;
+  color: var(--forest);
+}
+.tr-legal__updated {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  margin: 0 0 20px;
+}
+.tr-legal__body h2 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  margin: 26px 0 8px;
+  color: var(--forest);
+}
+.tr-legal__body p,
+.tr-legal__body li {
+  margin: 0 0 10px;
+}
+.tr-legal__body ul {
+  padding-left: 22px;
+  list-style: disc outside;
+}
+.tr-legal__foot {
+  margin-top: 36px;
+  font-size: 14px;
+}
+.pr-aikey__lede {
+  margin: 6px 0 14px;
+  line-height: 1.5;
+}
+.pr-aikey__status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.pr-aikey__form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 520px;
+}
+.tr-step__body code,
+.tr-step code {
+  font-family: var(--font-mono);
+  background: var(--kraft);
+  color: var(--forest);
+  padding: 1px 5px;
+  border-radius: 5px;
+  font-size: 0.92em;
+}
+.tr-step__note {
+  margin: 0;
+  font-size: 14px;
+  color: var(--moss-text);
+  font-style: italic;
+}
+.tr-step__done {
+  margin: 0;
+  color: var(--moss-text);
+  font-weight: 700;
+}
+.tr-step__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* Task checklist */
+.tr-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tr-checklist li label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--ink);
+}
+.tr-checklist input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  accent-color: var(--blaze-deep);
+  margin-top: 1px;
+}
+
+/* Typing timer */
+.tr-timer {
+  background: #fff;
+  border: 1px solid rgba(42, 42, 38, 0.12);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-align: center;
+  max-width: 260px;
+}
+.tr-timer__big {
+  font-family: var(--font-mono);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--forest);
+  line-height: 1;
+}
+
+/* Text inputs shared by explain / artifact / log / debate steps */
+.tr-input {
+  width: 100%;
+  max-width: 100%;
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--field-border);
+  box-shadow: var(--field-shadow);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.tr-textarea {
+  width: 100%;
+  max-width: 100%;
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--field-border);
+  box-shadow: var(--field-shadow);
+  border-radius: 10px;
+  padding: 10px 12px;
+  resize: vertical;
+}
+.tr-textarea--code {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+}
+
+/* Artifact upload */
+.tr-artifact-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tr-artifact-block__label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+.tr-artifact-preview {
+  max-width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(42, 42, 38, 0.15);
+}
+img.tr-artifact-preview {
+  max-height: 320px;
+  object-fit: contain;
+  background: var(--kraft);
+}
+pre.tr-artifact-preview {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--ink);
+  color: var(--cream);
+  overflow-x: auto;
+  font-size: 13px;
+}
+p.tr-artifact-preview {
+  padding: 10px 12px;
+  background: var(--cream);
+  white-space: pre-line;
+}
+
+/* Recording (components/quest/RecordingBlock.tsx) */
+.tr-recording__preview,
+.tr-recording__playback {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  max-height: 360px;
+  border-radius: 10px;
+  border: 1px solid rgba(42, 42, 38, 0.15);
+  background: var(--ink);
+}
+audio.tr-recording__playback {
+  max-height: none;
+  background: transparent;
+  border: 0;
+}
+.tr-recording__live {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tr-recording__clock,
+.tr-recording__listening {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--blaze);
+}
+.tr-recording__problem {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--cream);
+  border: 1px solid rgba(42, 42, 38, 0.15);
+}
+.tr-recording__pick {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tr-recording__pick-label {
+  font-size: 15px;
+}
+
+/* Maker's Log / Speak log */
+.tr-log {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tr-log__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tr-log__item label {
+  font-weight: 700;
+  color: var(--forest);
+}
+.tr-log__error {
+  margin: 0;
+  color: var(--blaze-deep);
+  font-size: 13px;
+}
+
+/* Debate placeholder */
+.tr-debate__motion {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  color: var(--forest);
+  margin: 0;
+}
+.tr-debate__side-pick {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tr-debate__steelman {
+  background: var(--kraft);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  border-left: 6px solid var(--sun);
+}
+.tr-debate__steelman h4 {
+  margin: 0 0 4px;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--forest);
+}
+.tr-debate__steelman p {
+  margin: 0;
+  color: var(--ink);
+}
+.tr-debate__rounds {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tr-debate__talk {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+  .tr-quest {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Thinnest-possible placeholder landings (/explorer, /sprout, /parent) */
+.tr-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px 28px;
+  max-width: 640px;
+}
+.tr-placeholder h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  color: var(--forest);
+}
+.tr-placeholder p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Problem player (Task 10, spec 7.3 / 7.4)                               */
+/* ---------------------------------------------------------------------- */
+
+.tr-pnum {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.tr-problem-prompt {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 10px 0 4px;
+  white-space: pre-line; /* worked solutions in find-the-mistake problems put each line on its own line */
+  max-width: 640px;
+}
+
+/* Task 31: ProblemFigure -- the inline-SVG diagram some spatial problems now carry (schema.ts's
+   optional `figure`), rendered above the prompt from components/quest/ProblemFigure.tsx. Same
+   pattern SeasonTrail already uses: vector shapes styled through this app's own CSS custom
+   properties, width:100%/height:auto so it scales cleanly from a 390px phone up. Text inside
+   the <svg> is deliberately outside verify:ui's contrast walk (it only walks text whose parent
+   is NOT inside an <svg>, by design -- SVG `fill` and CSS `color` are different properties, so
+   the check cannot evaluate SVG text meaningfully); every fill below is still chosen to read
+   clearly against its own background regardless. */
+.tr-figure {
+  margin: 4px 0 12px;
+  max-width: 420px;
+}
+.tr-figure--wide {
+  max-width: 640px;
+}
+.tr-figure--frames .tr-figure-svg {
+  cursor: pointer;
+}
+.tr-figure__caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+  min-height: 18px;
+}
+.tr-figure__frame-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+.tr-figure__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line, #c9c1b0);
+}
+.tr-figure__dot--on {
+  background: var(--forest);
+}
+.tr-figure__caption-text {
+  color: var(--ink);
+}
+.tr-figure__hint {
+  font-size: 12px;
+}
+.tr-scene {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f3ede0;
+  touch-action: none;
+}
+.tr-scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.tr-scene__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.tr-scene__controls input[type="range"] {
+  flex: 1;
+  accent-color: var(--forest);
+}
+.tr-scene__hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.tr-figure-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.tr-fig-cell {
+  fill: var(--cream);
+  stroke: var(--forest);
+  stroke-width: 2;
+}
+.tr-fig-cell--shaded {
+  fill: var(--sun);
+}
+.tr-fig-cell--empty {
+  fill: transparent;
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+/* Task 39 (fix round): grid mode "bars" -- the dashed boundary around one whole bar's own
+   pieces, distinct from the solid tr-fig-cell borders that mark real cuts between pieces. See
+   ProblemFigure.tsx's renderBarsGrid for why this line means something different from a cut. */
+.tr-fig-bar-outline {
+  fill: none;
+  stroke: var(--forest);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+  opacity: 0.7;
+}
+.tr-fig-street {
+  stroke: var(--forest);
+  stroke-width: 2;
+}
+.tr-fig-axis-label {
+  fill: var(--forest);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+}
+/* plane (9 September 2026): the coordinate plane's grid, axes, ticks and points. The grid is
+   quiet so the axes and the point read first; the tick numbers are small but every one is there. */
+.tr-fig-plane-grid {
+  stroke: var(--forest);
+  stroke-width: 1;
+  opacity: 0.18;
+}
+.tr-fig-plane-axis {
+  stroke: var(--forest);
+  stroke-width: 2;
+}
+.tr-fig-plane-arrowhead {
+  fill: var(--forest);
+}
+.tr-fig-plane-tick {
+  fill: var(--forest);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+.tr-fig-plane-dot {
+  fill: var(--blaze-deep);
+  stroke: var(--paper, #fffdf7);
+  stroke-width: 1.5;
+}
+.tr-fig-plane-label {
+  fill: var(--blaze-deep);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+}
+.tr-fig-plane-poly {
+  fill: var(--blaze-deep);
+  fill-opacity: 0.12;
+  stroke: var(--forest);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+}
+.tr-fig-plane-seg {
+  stroke: var(--forest);
+  stroke-width: 2;
+}
+.tr-fig-plane-curve {
+  fill: none;
+  stroke: var(--blaze-deep);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.tr-fig-marker {
+  stroke: var(--forest);
+  stroke-width: 2;
+}
+.tr-fig-marker--start {
+  fill: var(--blaze-deep);
+}
+.tr-fig-marker--end {
+  fill: var(--forest);
+}
+.tr-fig-marker-label {
+  fill: var(--forest);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+}
+.tr-fig-turn path {
+  fill: none;
+  stroke: var(--blaze-deep);
+  stroke-width: 3;
+}
+.tr-fig-turn polygon {
+  fill: var(--blaze-deep);
+}
+.tr-fig-letter-box {
+  fill: var(--cream);
+  stroke: var(--forest);
+  stroke-width: 2;
+}
+.tr-fig-letter {
+  fill: var(--forest);
+  font-family: var(--font-heading);
+  font-size: 64px;
+  font-weight: 700;
+}
+.tr-fig-net-label {
+  fill: var(--forest);
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+}
+/* Task 36: the A/B/C/D header drawn above each candidate shape in a "which of these" figure
+   (ProblemFigure.tsx's renderNet/renderShapeCandidates). Deliberately identical for every
+   candidate -- nothing about this class may vary by which index is the answer. */
+.tr-fig-choice-label {
+  fill: var(--forest);
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 800;
+}
+.tr-fig-state-box {
+  fill: var(--cream);
+  stroke: var(--forest);
+  stroke-width: 2;
+  rx: 8;
+}
+.tr-fig-state-label {
+  fill: var(--muted);
+  font-family: var(--font-body);
+  font-size: 11px;
+}
+.tr-fig-state-value {
+  fill: var(--forest);
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+}
+.tr-fig-op-box {
+  fill: var(--kraft);
+  stroke: var(--forest);
+  stroke-width: 2;
+}
+.tr-fig-op-label {
+  fill: var(--forest);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+}
+.tr-fig-layer-label {
+  fill: var(--forest);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Task 10 fix, review finding 1: the quiet loading state shown while ProblemPlayer's two
+   independently-syncing sources (attempts, progress) are still settling. */
+.tr-problem__wait {
+  margin-top: 14px;
+}
+.tr-problem__loading {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--muted);
+}
+/* Review round 2, finding 1: shown once the loading state above is no longer honest (a real
+   listener error, or the 10 s timeout) -- reuses --blaze-deep, already checked elsewhere in this
+   file against the 4.5:1 text-contrast floor (see tr-no-msg / tr-btn--primary). */
+.tr-problem__stuck {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--blaze-deep);
+}
+.tr-problem__wait .tr-step__actions {
+  margin-top: 10px;
+}
+.tr-answer__input {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  /* line-height set explicitly (rather than the inherited 1.45 body value, which at this
+     font-size would need more than --control-height to avoid clipping) so the big answer font
+     still fits the same shared control height as the Check button and every select. */
+  line-height: 1.2;
+  padding: 8px 14px;
+  /* Was a 2px solid --blaze-deep border -- the same red this file uses for primary/destructive
+     buttons, so a typed answer read as if it were already flagged urgent or wrong before anyone
+     had typed anything. Task 23's shared field border replaces it: a field, not a warning. */
+  border: 1px solid var(--field-border);
+  box-shadow: var(--field-shadow);
+  border-radius: 10px;
+  /* Task 24: 190px was sized for a short typed answer ("32.40", "3/4"), not for its own
+     placeholder -- "Type your answer" at this font-size and family needs about 230px, so the
+     placeholder itself was clipping mid-word ("Type your an") before anyone had typed a
+     character. Wide enough to show the whole placeholder with room to spare, still capped by
+     max-width so it shrinks to fit a phone-width row instead of forcing overflow. */
+  width: 260px;
+  max-width: 100%;
+  height: var(--control-height);
+  background: #fff;
+  color: var(--ink);
+}
+.tr-answer__row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+/* --blaze on cream/white measures 4.07:1, under the 4.5:1 floor; --blaze-deep (the same red,
+   darkened) clears it at 6.27:1 -- same fix tr-btn--primary already uses. */
+.tr-no-msg {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--blaze-deep);
+}
+/* Plan 4 task 35: a wrong answer is gentle -- an invitation to think again, never a buzzer or a
+   shake. A soft settle-in, same shape and duration family as the correct answer's own (see
+   .tr-outcome--correct above), on purpose: neither one should read as louder or more urgent
+   than the other. React remounts this element fresh on every try (ProblemPlayer.tsx keys it by
+   triesUsed), so the nudge repeats on each miss without ever accumulating into something
+   frantic. */
+@media (prefers-reduced-motion: no-preference) {
+  .tr-no-msg {
+    animation: tr-nudge-in 300ms ease-out;
+  }
+}
+.tr-tries {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+.tr-cool {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 22px;
+  align-items: start;
+}
+.tr-hint {
+  background: var(--kraft);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  border-left: 6px solid var(--sun);
+}
+.tr-hint__item + .tr-hint__item {
+  margin-top: 10px;
+}
+.tr-hint p {
+  margin: 4px 0 0;
+  color: var(--ink);
+}
+/* Each hint tier is its own new element the first time it unlocks (HintPanel.tsx maps
+   hints.slice(0, unlocked), so hint 1 never re-renders when hint 2 arrives) -- the same gentle
+   settle as .tr-no-msg above, so the hint reads as part of the same quiet "try again" moment
+   rather than a separate, competing animation. */
+@media (prefers-reduced-motion: no-preference) {
+  .tr-hint__item {
+    animation: tr-nudge-in 300ms ease-out;
+  }
+}
+@keyframes tr-nudge-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.tr-tried {
+  margin-top: 14px;
+  margin-bottom: 10px;
+}
+.tr-tries--gate {
+  color: var(--forest);
+  font-weight: 600;
+}
+.pr-device-check__intro {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+.pr-device-check__rows {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pr-device-check__rows li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.pr-device-check__ok {
+  color: var(--forest);
+}
+.pr-device-check__fail {
+  color: var(--rust, #a33a2a);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.tr-tried label {
+  display: block;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 6px;
+}
+.tr-tried input {
+  width: 100%;
+  font: inherit;
+  padding: 9px 12px;
+  border: 1px solid var(--field-border);
+  box-shadow: var(--field-shadow);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  height: var(--control-height);
+}
+.tr-tried small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+}
+/* Task 43: what the try-3 gate shows above the input when a working already exists (see
+   ProblemPlayer.tsx's tr-tried block) -- a plain, quiet line, never styled as an alert, since
+   having saved a working is completely ordinary, not a problem being flagged. */
+.tr-tried__has-working {
+  margin: 0 0 8px;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+/* Task 43: the working space -- one quiet button plus the panel it opens. */
+.tr-working {
+  margin: 14px 0;
+}
+.tr-working__panel {
+  margin-top: 10px;
+  padding: 14px 16px;
+  background: var(--kraft);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tr-working__loading {
+  margin: 0;
+  color: var(--muted);
+}
+.tr-working__hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.tr-working__toolbar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tr-working__label {
+  font-weight: 700;
+  color: var(--forest);
+}
+.tr-working__text {
+  width: 100%;
+  font: inherit;
+  padding: 9px 12px;
+  border: 1px solid var(--field-border);
+  box-shadow: var(--field-shadow);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  resize: vertical;
+}
+
+/* Task 43: the pen canvas -- one drawing surface shared by the editable working space and its
+   read-only replays (PastWorking.tsx). Pointer events land on the canvas itself; this wrapper
+   just gives it a bordered, visibly-a-thing-to-draw-on frame, since a plain unbordered canvas
+   would not read as tappable to a child at all (styleguide 5: "every tappable thing visibly
+   tappable"). */
+.tr-pencanvas {
+  border: 1px solid var(--field-border);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+.tr-pencanvas__surface {
+  display: block;
+  width: 100%;
+  cursor: crosshair;
+}
+.tr-pencanvas--readonly .tr-pencanvas__surface {
+  cursor: default;
+}
+
+/* Task 43: a read-only working (the mistake-box "last time" panel, the try-3 gate's existing-
+   working preview, the parent view's Working spaces section). A tint, not a bordered box like a
+   button or a field -- styleguide 1: "read-only values are not controls". */
+.tr-pastworking {
+  margin: 10px 0;
+  padding: 12px 14px;
+  background: var(--kraft);
+  border-radius: var(--radius);
+}
+.tr-pastworking--compact {
+  padding: 8px 10px;
+}
+.tr-pastworking__heading {
+  margin: 0 0 6px;
+  font-weight: 700;
+  color: var(--forest);
+}
+.tr-pastworking__text {
+  margin: 0 0 8px;
+  font-style: italic;
+  color: var(--ink);
+}
+.tr-timer__label {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Task 39 (fix round): a lesson beat's figure, prompt, answer input and Check must all be
+   visible together with no scrolling, at 1280x900, 820x1180 and 390x844 -- inside both the
+   struggle-offer's fixed-height overlay card (max-height 85vh) and the plain quest-step page.
+   ProblemFigure's own sizing (`.tr-figure`, max-width 420px, `.tr-figure-svg`, width 100%/height
+   auto) is tuned for a full problem page with room to spare; stretched to fill that much width,
+   a narrow-aspect figure (few columns, several rows) blows its own height up far past what a
+   lesson beat's tight vertical budget allows -- this was measured directly (beat 1's original
+   6-cell grid rendered over 450px tall at 1280x900, pushing the answer input and Check
+   off-screen). Capping height here, not width, is what fixes it for every figure kind
+   regardless of aspect ratio: preserveAspectRatio's "meet" (ProblemFigure.tsx) always scales the
+   whole drawing down to fit inside whatever box it is given, without cropping or distorting it,
+   so this one rule protects every one of the other 33 lessons' figures too, not just this one's
+   bars/stack shapes. A lesson figure does not need to be large; clarity is not size. */
+.tr-lesson .tr-figure {
+  max-width: 300px;
+  margin: 4px auto 10px;
+}
+.tr-lesson .tr-figure-svg {
+  max-height: 170px;
+}
+
+/* "Meet the idea" lessons (task 4, concept-first prototype). tr-lesson-offer is the struggle
+   offer inside ProblemPlayer's own hint area, styled as a quiet sibling to the hint panel, not a
+   competing call to action -- it sits beside the existing hint flow, never replacing it. */
+.tr-lesson-offer {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--sky);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.tr-lesson-offer p {
+  margin: 0;
+  color: var(--forest);
+  font-weight: 700;
+}
+/* A beat's feedback lines. Deliberately NOT styled as .tr-outcome (ExplanationPanel's real
+   correct/exhausted/revealed bar): a lesson beat is never graded, so its feedback must never
+   visually read as a verdict. onWrong stays the same quiet, italic register as .tr-step__note;
+   onRight is a plain confirmation, not a celebration -- no colour swap, no animation, no badge. */
+.tr-lesson__wrong {
+  margin: 10px 0 0;
+  color: var(--moss-text);
+  font-style: italic;
+}
+.tr-lesson__right {
+  margin: 10px 0 0;
+  color: var(--forest);
+  font-weight: 700;
+}
+/* The struggle-offer overlay: same fixed, centered-card shape as Sprout's .sp-gate-overlay, the
+   only other full-screen dialog this app has, reused here rather than inventing a second pattern. */
+.tr-lesson-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(42, 42, 38, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 20;
+}
+.tr-lesson-card {
+  background: var(--cream);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  max-width: 640px;
+  width: 100%;
+  /* Task 39 (fix round): was 85vh -- at 390x844, the "right" state (figure + prompt + input +
+     onRight feedback + Next button, all at once) measured 37-47px taller than that, forcing an
+     internal scroll the instant a beat was answered even though the "question" state fit fine.
+     92vh clears it with headroom at all three required sizes (checked: 1280x900, 820x1180,
+     390x844) while still leaving the overlay's own 24px inset padding (`.tr-lesson-overlay`)
+     visible on every side, so it still reads as a dialog over the dimmed problem, not a full
+     takeover. */
+  max-height: 92vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tr-lesson-card__close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.tr-lesson-card__close:hover {
+  color: var(--forest);
+}
+
+/* Choice / true-false inputs */
+.tr-choice {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 520px;
+}
+.tr-truefalse {
+  flex-direction: row;
+}
+.tr-choice__option {
+  text-align: left;
+  border: 2px solid var(--forest);
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: var(--ink);
+  cursor: pointer;
+}
+.tr-truefalse .tr-choice__option {
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
+}
+.tr-choice__option--selected {
+  border-color: var(--blaze-deep);
+  background: var(--kraft);
+  color: var(--forest);
+}
+.tr-choice__option:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Order input */
+.tr-order {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 420px;
+}
+.tr-order__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid rgba(42, 42, 38, 0.2);
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+.tr-order__text {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--ink);
+}
+.tr-order__buttons {
+  display: flex;
+  gap: 6px;
+}
+.tr-order__buttons button {
+  border: 2px solid var(--forest);
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 13px;
+  color: var(--forest);
+  cursor: pointer;
+}
+.tr-order__buttons button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Grid input: tri-state cells (blank, tick, cross). Tick uses --forest (not --moss: white on
+   moss measures 3.68:1, under the 4.5:1 floor; white on forest measures 10.95:1). Cross uses
+   --forest text on --kraft-deep (6.6:1; --blaze-deep on --kraft-deep only reaches 4.07:1). */
+.tr-grid-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.tr-grid {
+  border-collapse: collapse;
+  margin-top: 6px;
+}
+.tr-grid th,
+.tr-grid td {
+  padding: 4px;
+  text-align: center;
+}
+.tr-grid th {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--forest);
+  font-weight: 700;
+}
+.tr-grid__cell {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--forest);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--forest);
+}
+.tr-grid__cell--tick {
+  background: var(--forest);
+  color: #fff;
+}
+.tr-grid__cell--cross {
+  background: var(--kraft-deep);
+  color: var(--forest);
+}
+.tr-grid__cell:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Worked explanation and idea card */
+.tr-explanation {
+  margin-top: 22px;
+  background: #fff;
+  border: 1px solid rgba(42, 42, 38, 0.12);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  max-width: 640px;
+}
+/* Task 10 fix (Critical finding 2, ux-audit.md): correct/exhausted/revealed each get their own
+   icon glyph (see ExplanationPanel.tsx's OutcomeIcon), their own border STYLE, and their own
+   label text, not just their own colour -- so the three states stay distinguishable for a
+   colour-blind reader, not only for one who can see the hue difference. */
+.tr-outcome {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  font-size: 15px;
+}
+.tr-outcome__icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+.tr-outcome__icon svg {
+  width: 100%;
+  height: 100%;
+}
+.tr-outcome--correct {
+  background: rgba(107, 143, 90, 0.14);
+  border: 2px solid var(--moss);
+  color: var(--moss-text);
+}
+.tr-outcome--exhausted {
+  background: rgba(242, 182, 50, 0.16);
+  border: 2px dashed var(--sun);
+  color: var(--ink);
+}
+.tr-outcome--revealed {
+  background: rgba(185, 211, 220, 0.4);
+  border: 2px dotted var(--forest);
+  color: var(--forest);
+}
+/* Plan 4 task 35: "quiet and confident" for a correct answer -- see this module's own comment.
+   A small, one-shot settle, not a burst: no confetti, no loop, nothing that would still feel
+   fresh on the twentieth time he sees it. Only the CORRECT bar gets this; exhausted/revealed are
+   not something to greet warmly, so they stay exactly as still as they always were. The bar
+   itself is not new (.tr-outcome--correct was already opacity 1 the instant it renders under
+   prefers-reduced-motion: reduce, since this whole block only exists inside the no-preference
+   query below), so reduced motion shows the finished state immediately with nothing missing. */
+@media (prefers-reduced-motion: no-preference) {
+  .tr-outcome--correct {
+    animation: tr-correct-in 320ms ease-out;
+  }
+  .tr-outcome--correct .tr-outcome__icon {
+    animation: tr-correct-icon-in 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+@keyframes tr-correct-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes tr-correct-icon-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.tr-explanation ol {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--ink);
+}
+.tr-explanation__use-again {
+  margin: 12px 0 0;
+  font-weight: 700;
+  color: var(--forest);
+}
+.tr-explanation__mentions {
+  margin-top: 14px;
+  border-top: 1px dashed rgba(42, 42, 38, 0.25);
+  padding-top: 10px;
+}
+.tr-explanation__mentions ul {
+  margin: 6px 0 0;
+  padding-left: 20px;
+  color: var(--ink);
+}
+.tr-idea-card {
+  margin-top: 14px;
+  background: var(--forest);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  max-width: 640px;
+}
+.tr-idea-card h4 {
+  margin: 4px 0 2px;
+  font-family: var(--font-heading);
+  font-size: 20px;
+}
+.tr-idea-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+.tr-idea-card .tr-eyebrow {
+  color: #cfe0cb;
+}
+.tr-idea-card__count {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+@media (max-width: 860px) {
+  .tr-cool {
+    grid-template-columns: 1fr;
+  }
+  .tr-truefalse {
+    max-width: 320px;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Portfolio: the field journal spread and the patch sash (spec 7.1 screen 5) */
+/* ---------------------------------------------------------------------- */
+.tr-portfolio {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+}
+@media (max-width: 860px) {
+  .tr-portfolio {
+    grid-template-columns: 1fr;
+  }
+}
+.tr-journal {
+  min-width: 0;
+  padding: 24px 24px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.tr-week-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+.tr-week-filter select {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--forest);
+  border: 1px solid var(--field-border);
+  box-shadow: var(--field-shadow);
+  border-radius: 10px;
+  padding: 6px 10px;
+  height: var(--control-height);
+  background: #fff;
+}
+.tr-spread {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fff;
+  border: 1px solid rgba(42, 42, 38, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 0;
+}
+.tr-spread::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  border-left: 2px dashed rgba(42, 42, 38, 0.2);
+}
+@media (max-width: 700px) {
+  .tr-spread {
+    grid-template-columns: 1fr;
+  }
+  .tr-spread::before {
+    display: none;
+  }
+}
+/* Top-right, not the design demo's bottom-right: the demo's placeholder Maker's Log happened
+   to end well short of that corner, but a real log's last line routinely reaches it, so a
+   bottom-anchored stamp ended up sitting on top of real text (both stacked on mobile, where
+   "bottom" means the bottom of however long the log page turns out to be, and side by side on
+   desktop, where the log column's last line can run the column's full width). The top-right
+   corner sits over the artifact page's short heading instead, which stacking or column width
+   can't push arbitrarily long text under. */
+.tr-spread .tr-stamp {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  opacity: 0.9;
+}
+.tr-spread__eyebrow {
+  padding: 16px 24px 0;
+}
+.tr-spread__page {
+  padding: 20px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.tr-spread__page h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 21px;
+  color: var(--forest);
+}
+.tr-spread__cap {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+.tr-spread__photo {
+  max-width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 8px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transform: rotate(-1deg);
+  background: var(--kraft);
+}
+.tr-spread__video {
+  display: block;
+  width: 100%;
+  max-height: 240px;
+  border-radius: 8px;
+  border: 8px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  background: var(--ink);
+}
+.tr-spread__audio {
+  display: block;
+  width: 100%;
+}
+.tr-spread__code {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+  /* A code block that scrolls sideways has no other affordance telling a reader there is more
+     to see (task 12 fold-in fix). Two cues, belt and suspenders: the scrollbar below is kept
+     always visible, thin, on its own track, rather than the OS's overlay style that only
+     appears mid-scroll (real browsers only -- an automated/headless Chromium can still force
+     overlay scrollbars regardless of these rules, which is why the mask fade right below does
+     not depend on the scrollbar rendering at all). tabIndex on the element itself (see
+     JournalSpread.tsx) makes the same overflow reachable by keyboard.
+     The mask fades the box's own right edge to transparent at a fixed distance from the edge,
+     regardless of scroll position -- a persistent "there is more past here" hint that shows up
+     in a plain screenshot the way a same-color overlay scrollbar never would. */
+  scrollbar-width: thin;
+  scrollbar-color: var(--sun) var(--forest);
+}
+/* Only applied once JournalSpread's own overflow check (ResizeObserver-backed) confirms the
+   content is actually wider than the box -- a short snippet that already fits must never fade
+   its own last character, which would falsely promise more is hiding past it. */
+.tr-spread__code--overflow {
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 28px), transparent 100%);
+  mask-image: linear-gradient(to right, black calc(100% - 28px), transparent 100%);
+}
+.tr-spread__code::-webkit-scrollbar {
+  height: 9px;
+}
+.tr-spread__code::-webkit-scrollbar-track {
+  background: var(--forest);
+  border-radius: 8px;
+}
+.tr-spread__code::-webkit-scrollbar-thumb {
+  background: var(--sun);
+  border-radius: 8px;
+}
+.tr-spread__text {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--kraft);
+  border-radius: 8px;
+  white-space: pre-line;
+}
+.tr-spread__log dt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--moss-text);
+  margin-top: 8px;
+}
+.tr-spread__log dt:first-child {
+  margin-top: 0;
+}
+.tr-spread__log dd {
+  margin: 2px 0 0;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+/* The sash: earned patches and locked ones, shown for what is left */
+.tr-sash {
+  background: var(--forest);
+  color: #fff;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tr-sash h3 {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #cfe0cb;
+}
+.tr-sash__section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tr-sash__label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.tr-patches {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 10px;
+}
+.tr-patches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tr-sash > p {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Badge celebration (Plan 4 task 35): the real moment Patch.tsx's own comment reserves for
+   "elsewhere". Bigger and warmer than a routine correct answer -- a genuinely rare, earned thing
+   -- but still a plain dismissible banner, not a modal: see BadgeCelebration.tsx's own comment.
+   The medal styling below deliberately echoes .tr-patch--earned's gold-double-border look, so
+   the celebration and the sash it leads to read as the same idea, just met at different sizes. */
+.tr-celebrate {
+  position: relative;
+  background: var(--cream);
+  border: 3px solid var(--sun);
+  border-radius: var(--radius);
+  padding: 20px 52px 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.tr-celebrate__dismiss {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 4px 8px;
+  line-height: 1;
+  border-radius: 6px;
+}
+.tr-celebrate__eyebrow {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+.tr-celebrate__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.tr-celebrate__badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.tr-celebrate__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 4px double var(--sun);
+  color: var(--forest);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.35);
+}
+.tr-celebrate__icon svg {
+  width: 24px;
+  height: 24px;
+}
+.tr-celebrate__name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--forest);
+}
+/* A single one-shot entrance, never a loop: this is rare enough that it never needs to earn a
+   second look the way a correct answer does, but it should still not be the kind of thing that
+   feels "loopy" or overlong the one time it does show up. */
+@media (prefers-reduced-motion: no-preference) {
+  .tr-celebrate {
+    animation: tr-celebrate-in 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .tr-celebrate__icon {
+    animation: tr-celebrate-pop 460ms cubic-bezier(0.34, 1.56, 0.64, 1) 60ms both;
+  }
+}
+@keyframes tr-celebrate-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes tr-celebrate-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Skills map (spec 7.1 screen 6) */
+/* ---------------------------------------------------------------------- */
+.tr-skill-track {
+  padding: 8px 24px 4px;
+}
+.tr-skill-track h2 {
+  margin: 20px 0 4px;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--forest);
+}
+.tr-skill-track:first-child h2 {
+  margin-top: 4px;
+}
+.tr-skill-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tr-skill-row {
+  background: #fff;
+  border: 1px solid rgba(42, 42, 38, 0.1);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+}
+.tr-skill-row__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.tr-skill-row__head h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--forest);
+}
+.tr-skill-row__level {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--moss-text);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.tr-skill-row__desc {
+  margin: 6px 0 10px;
+  color: var(--ink);
+  font-size: 15px;
+}
+.tr-skill-row__note {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--blaze-deep);
+  font-style: italic;
+}
+.tr-skill-row details {
+  margin-top: 10px;
+}
+.tr-skill-row summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--forest);
+  font-weight: 700;
+}
+.tr-skill-row__evidence {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+/* Idea box (spec 7.4) */
+.tr-idea-box {
+  padding: 8px 24px 28px;
+}
+.tr-idea-box h2 {
+  margin: 20px 0 10px;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--forest);
+}
+.tr-idea-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tr-idea-list__item {
+  background: #fff;
+  border: 1px solid rgba(42, 42, 38, 0.1);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+}
+.tr-idea-list__item h3 {
+  margin: 0 0 2px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--forest);
+}
+.tr-idea-list__item p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 15px;
+}
+.tr-idea-list__problems {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Sprout mode: the hill home and the activity player (spec 6, spec 7.1   */
+/* screen 7; design demo "Screen 4, Sprout home")                         */
+/* ---------------------------------------------------------------------- */
+
+/* Hill (app/sprout/page.tsx, components/sprout/Hill.tsx) */
+.sp-world {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--sky);
+  min-height: 560px;
+}
+.sp-world--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.sp-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.sp-top {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sp-mark {
+  width: 30px;
+  height: 30px;
+}
+.sp-stars {
+  display: flex;
+  gap: 10px;
+  background: rgba(251, 246, 236, 0.75);
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+.sp-thing {
+  position: absolute;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  min-width: 44px;
+  /* Icon-only today (its svg children set their own stroke/fill), so nothing currently
+     inherits this -- explicit anyway, same reasoning as .tr-tile above, and doubly so on
+     Sprout: spec's whole premise is nothing needs reading, so if a label or fallback text is
+     ever added here it must not depend on ambient color to be visible. */
+  color: var(--forest);
+}
+/* Task 15, Part 3 (direction B): a big cream pill behind the icon -- "unmissable against the
+   green" (design-demos/sprout-art-directions.html's Direction B note) -- fixing the old
+   layout's biggest complaint: the activity objects were the least noticeable things on screen.
+   var(--cream), not pure white: every other card surface in this app (the parent gate, the
+   round's own choice cards) already uses --cream, so the pill reads as the same family of
+   surface, not a one-off. */
+.sp-thing__pill {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: var(--cream);
+  border-radius: 36px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease;
+}
+.sp-thing:hover .sp-thing__pill,
+.sp-thing:focus-visible .sp-thing__pill {
+  transform: translateY(-4px);
+}
+.sp-thing__pill > svg {
+  width: clamp(94px, 13vw, 150px);
+  height: clamp(80px, 11vw, 128px);
+  display: block;
+}
+.sp-thing--done .sp-thing__pill > svg {
+  opacity: 0.55;
+}
+/* The done/todo ring now overlaps the pill's own top-right corner like a badge, instead of
+   sitting in a separate row below the icon (Task 15, Part 3 -- more compact, and it reads as
+   part of the same object rather than two stacked things). */
+.sp-thing__ring {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 3px solid var(--forest);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow);
+}
+.sp-thing__ring svg {
+  width: 22px;
+  height: 22px;
+  filter: none;
+}
+/* Not-yet-done things get a sun-coloured ring (design-demos/trail-v2.html:355-358's play-cue
+   ring) instead of the done state's cream one -- still the same size/shape "this is
+   interactive" affordance, but visually distinct from "already finished". */
+.sp-thing__ring--todo {
+  background: var(--sun);
+}
+
+/* The rabbit guide (Task 15, Part 3). aria-hidden and pointer-events: none -- purely decorative,
+   never part of the tap path (spec 6: nothing on screen for the child may require reading or an
+   extra interaction beyond the three things and the exit). */
+.sp-rabbit-spot {
+  position: absolute;
+  pointer-events: none;
+}
+.sp-rabbit {
+  width: clamp(64px, 8vw, 108px);
+  height: clamp(90px, 11.2vw, 151px);
+  filter: drop-shadow(0 5px 0 rgba(39, 66, 53, 0.3));
+}
+.sp-foot {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+}
+
+/* ParentGate (components/sprout/ParentGate.tsx). Task 13: the owner used the live app and could
+   not find this control -- the old version was a 12px mono-caps dashed tag with no icon, easy
+   to miss in a corner. This version keeps the same corner (bottom-right, away from the three
+   things a child taps) and the same dashed-box "this is administrative, not a toy" language
+   from the design demo's `.lock` chip, but makes it an unmistakable button: a padlock icon, a
+   two-line label sized to read at a glance, an opaque cream fill with a real shadow so it lifts
+   off the hill, and a fill meter along the bottom that only appears while holding. */
+.sp-gate {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--forest);
+  background: rgba(251, 246, 236, 0.96);
+  border: 2px dashed var(--forest);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px 16px 16px;
+  min-height: 44px;
+  max-width: 220px;
+  text-align: left;
+}
+.sp-gate__icon {
+  width: 24px;
+  height: 24px;
+  flex: none;
+}
+.sp-gate__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sp-gate__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--moss-text);
+}
+.sp-gate__label {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+/* The hold meter: same track/fill convention as .tr-bar-p elsewhere in the app (kraft track,
+   solid fill), so a parent already familiar with the app's progress bars reads this the same
+   way. The fill's own rule (not the base one) carries the transition, so releasing early snaps
+   it back to 0 instantly -- no lingering animation implying something happened. */
+.sp-gate__meter {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 7px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--kraft);
+  overflow: hidden;
+}
+.sp-gate__meter-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--blaze);
+  border-radius: 2px;
+}
+.sp-gate[data-holding="true"] .sp-gate__meter-fill {
+  width: 100%;
+  transition: width 5000ms linear;
+}
+.sp-gate-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(42, 42, 38, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 20;
+}
+.sp-gate-card {
+  background: var(--cream);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sp-gate-card__q {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 30px;
+  color: var(--forest);
+}
+.sp-gate-card__row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.sp-gate-card__wrong {
+  margin: 0;
+  color: var(--blaze-deep);
+  font-size: 14px;
+}
+.sp-gate-card__minutes {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.sp-gate-card__steps {
+  margin: 4px 0 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--ink);
+}
+.sp-gate-card__notice-label {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--moss-text);
+}
+.sp-gate-card__notice {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+/* Daily-limit screen (spec 2: a friendly "all done for today" screen) */
+.sp-cap {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sky);
+}
+.sp-cap__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: var(--cream);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 48px 56px;
+}
+.sp-cap__label {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  color: var(--forest);
+}
+
+/* ActivityPlayer (components/sprout/ActivityPlayer.tsx) */
+.sp-player {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--sky);
+  min-height: 560px;
+  padding: 20px 24px 32px;
+}
+.sp-player__top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sp-speaker,
+.sp-exit {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 2px solid var(--forest);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  /* Icon-only (the svg children set their own stroke/fill to var(--forest) already); explicit
+     for the same defensive reason as .tr-tile and .sp-thing above. */
+  color: var(--forest);
+}
+.sp-speaker svg,
+.sp-exit svg {
+  width: 26px;
+  height: 26px;
+}
+.sp-exit {
+  margin-left: auto;
+}
+.sp-progress {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+}
+.sp-progress__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(39, 66, 53, 0.25);
+}
+.sp-progress__dot--on {
+  background: var(--forest);
+}
+
+.sp-intro {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Task 15, 1a: enlarged from 140px so it reads unmistakably as "the big thing to press" before
+   anything has been said -- on the 1194/1366px-wide iPad viewports this sits well clear of the
+   44px touch-target floor with room to spare. clamp() keys off the real viewport (Task 15, 1b),
+   never a user-agent guess. */
+.sp-start {
+  width: clamp(140px, 16vw, 200px);
+  height: clamp(140px, 16vw, 200px);
+  border-radius: 50%;
+  background: var(--blaze-deep);
+  border: none;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow);
+  /* Icon-only (its svg fill is already the explicit var(--cream) that reads against this
+     button's --blaze-deep fill); explicit for the same defensive reason as .tr-tile above. */
+  color: var(--cream);
+  /* A slow, gentle breathing scale -- "tap me", not "look at me spin" -- so the one thing on
+     screen before any speech has played is obviously interactive without needing words. Zeroed
+     globally under prefers-reduced-motion (see the blanket rule near the top of this file). */
+  animation: sp-start-pulse 2.2s ease-in-out infinite;
+}
+.sp-start:disabled {
+  animation: none;
+  opacity: 0.85;
+}
+.sp-start svg {
+  width: clamp(56px, 6vw, 76px);
+  height: clamp(56px, 6vw, 76px);
+  transform: translateX(4px);
+}
+@keyframes sp-start-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.sp-round {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 12px 0;
+}
+.sp-choices,
+.sp-order-track,
+.sp-display,
+.sp-bins,
+.sp-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+/* Task 28: a real 3-year-old tapped a trail card (the pattern shown for context) instead of a
+   choice card -- the two used to sit in one undivided flex-wrapped row, told apart only by a
+   little opacity. The trail is now its own dashed, tinted strip: flat where a choice card is
+   raised with a shadow (see .sp-card below), a different KIND of surface rather than a dimmer
+   copy of the same one, with a real margin of its own before .sp-choices starts (on top of
+   .sp-round's own 28px gap between them) so the two groups read as clearly separate zones even
+   before anything is tapped. */
+.sp-trail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  background: rgba(39, 66, 53, 0.06);
+  border: 2px dashed rgba(39, 66, 53, 0.3);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 14px;
+}
+/* Reference material is the same KIND of thing as a pattern trail, so it keeps the flat dashed
+   outline that says "not a choice", but it carries a real job the trail does not: the child counts
+   it to answer. A pattern is glanced at; two cups have to be counted exactly. So it sits on cream
+   rather than on the ground's own tint, which is what the glyphs were washing out against. */
+.sp-trail--reference {
+  background: var(--cream);
+}
+.sp-trail__item {
+  display: grid;
+  place-items: center;
+  opacity: 0.65;
+}
+.sp-card {
+  background: var(--cream);
+  /* Task 28: a persistent, visible border at rest (not just on --armed) -- every card reads as
+     a bounded, tappable thing purely from its own outline, regardless of how faint its glyph's
+     own fill colour turns out to be (a low-contrast card colour, like the clap rounds' grey
+     "pause" card used to be before it got its own dedicated glyph -- see ItemGlyph.tsx -- is
+     exactly the class of "renders as empty and therefore looks untappable" bug task 28 asked to
+     be checked for everywhere, not just fixed once). */
+  border: 3px solid rgba(39, 66, 53, 0.18);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  transition: transform 0.1s ease, border-color 0.1s ease;
+  min-width: 88px;
+  min-height: 88px;
+  display: grid;
+  place-items: center;
+  /* A button does not inherit colour by default, so without this the card's own text colour is
+     whatever the user agent picks. Every glyph here fills itself, which is why this never showed
+     up as a wrong-coloured pixel, but the moment a card carries a word or a number it would. The
+     gate flags the class rather than waiting for the instance. */
+  color: var(--forest);
+}
+.sp-card--armed {
+  border-color: var(--sun);
+  transform: translateY(-4px) scale(1.05);
+}
+/* Task 42: the round-open tour highlights whichever card its sound is naming right now, so a
+   non-reader always knows which spoken line points at which card (styleguide 5: "audio synced to
+   visual pointing"). Deliberately its own modifier, not a reuse of --armed above (a real
+   in-progress pick for `groups`) -- the tour never runs for `groups` rounds, but the two states
+   should never look interchangeable even so. Zeroed to a static state under
+   prefers-reduced-motion by the blanket rule near the top of this file. */
+.sp-card--speaking {
+  border-color: var(--sun);
+  box-shadow: 0 0 0 6px rgba(242, 182, 50, 0.4), var(--shadow);
+  animation: sp-card-speaking-pulse 1s ease-in-out infinite;
+}
+@keyframes sp-card-speaking-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+.sp-order-track {
+  background: rgba(251, 246, 236, 0.6);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  min-height: 70px;
+}
+.sp-display {
+  background: rgba(251, 246, 236, 0.5);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.sp-glyph-group {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+}
+.sp-bin {
+  background: var(--cream);
+  border: 2px dashed var(--forest);
+  border-radius: var(--radius);
+  min-width: 110px;
+  min-height: 90px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+.sp-number {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--cream);
+  font-family: var(--font-heading);
+  font-size: 26px;
+  border: none;
+  display: grid;
+  place-items: center;
+}
+.sp-toast {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sp-star-screen {
+  flex: 1;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-offscreen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  text-align: center;
+  padding: 24px;
+}
+.sp-offscreen__art {
+  width: 120px;
+  height: 120px;
+}
+.sp-offscreen__caption {
+  max-width: 440px;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--forest);
+}
+
+@media (max-width: 700px) {
+  .sp-thing__pill > svg {
+    width: 78px;
+    height: 68px;
+  }
+  .sp-thing__pill {
+    padding: 12px;
+    border-radius: 26px;
+  }
+  .sp-gate-card {
+    padding: 20px;
+  }
+}
+
+/* Task 15, Part 2: the landscape hill (components/sprout/Hill.tsx's LandscapeScene and
+   LANDSCAPE_THING_POSITIONS) has real width to spend -- both iPad Pro landscape sizes (1194x834,
+   1366x1024) clear this floor comfortably, and this floor itself stays well under 700's mobile
+   band above so the two rules can never both apply. Bigger than the portrait ceiling (180x158)
+   on purpose: "large, well separated and comfortable for a small finger", not a portrait layout
+   stretched sideways. Keyed off orientation + width, never a user-agent guess (Task 15, 1b). */
+@media (orientation: landscape) and (min-width: 900px) {
+  /* Direct child of the pill, not the descendant selector .sp-thing svg used elsewhere in this
+     file: a descendant selector here would also match .sp-thing__ring's own nested checkmark/
+     play-arrow svg (later in source order than that ring's own sizing rule, so it would win) and
+     blow the badge up to the same huge size as the main icon -- caught in the Task 15 landscape
+     screenshots, where every ring badge rendered as an oversized checkmark, before the pill
+     wrapper existed. */
+  .sp-thing__pill > svg {
+    width: clamp(120px, 13vw, 190px);
+    height: clamp(104px, 11vw, 164px);
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Parent view (spec 7.1 screen 8)                                        */
+/* ---------------------------------------------------------------------- */
+
+.pr-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pr-paragraph p {
+  margin: 6px 0 0;
+  color: var(--cream);
+  font-family: var(--font-heading);
+  font-size: 18px;
+}
+.pr-paragraph .tr-eyebrow {
+  color: var(--sun);
+}
+
+.pr-invite h3 {
+  margin: 4px 0 0;
+}
+.pr-invite__code-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+/* Task 23: the household invite code is a value to read, not a control -- it used to sit in a
+   box with the exact same border, radius and colour as the "Copy code" button beside it (2px
+   solid var(--forest)), so a parent could not tell which one to press. Closer to a status Chip
+   than a button now: no border at all (Chip's own hard rule -- "never a border, dashed or
+   otherwise" -- applies here too), a filled tint instead, and no attempt to read as pressable.
+   height: var(--control-height) is kept only so the row lines up with the real "Copy code"
+   button beside it, not because this is a control. */
+.pr-invite__code {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  background: var(--kraft-deep);
+  color: var(--forest);
+  border: none;
+  border-radius: 10px;
+  padding: 0 18px;
+  height: var(--control-height);
+  display: inline-flex;
+  align-items: center;
+}
+.pr-invite__note {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.pr-child {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+  border-top: 2px dashed var(--kraft-deep);
+}
+.pr-child:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.pr-kid-card__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.pr-kid-card__head h2 {
+  margin: 0;
+}
+.pr-kid-card__stats {
+  margin: 16px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.pr-kid-card__stats dt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.pr-kid-card__stats dd {
+  margin: 4px 0 0;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--forest);
+}
+
+.pr-weekplan__list {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pr-weekplan__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 14px;
+  background: var(--cream);
+  border-radius: 10px;
+}
+.pr-weekplan__row-main {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+.pr-weekplan__row-main h3,
+.pr-weekplan__row-main h4 {
+  margin: 2px 0 6px;
+}
+.pr-weekplan__meta {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.pr-weekplan__row-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+/* Task 20 symmetry fix: status, then the real action, then -- visibly set apart, never adjacent
+   with only the same 8px everything else gets -- the destructive control, so a reset is never
+   one accidental inch from "Open as Explorer". */
+.pr-weekplan__row-actions .tr-btn--destructive {
+  margin-left: 12px;
+}
+
+.pr-mistakebox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pr-mistakebox__list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pr-mistakebox__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  background: var(--cream);
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+.pr-mistakebox__row--wrap {
+  align-items: flex-start;
+}
+.pr-mistakebox__title {
+  margin: 0;
+  font-weight: 700;
+  color: var(--forest);
+}
+.pr-mistakebox__due {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.pr-mistakebox__idea-count {
+  margin: 8px 0 0;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--forest);
+}
+.pr-mistakebox__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pr-loglist {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+/* Task 43: the parent view's read-only "Working spaces" section reuses .pr-mistakebox__row's
+   card shape (same list as the explain-it section above it); this just gives the PastWorking
+   block inside each row room to sit under the title/date instead of sharing the row's own
+   flex alignment, which is only right for a short answer/date pair. */
+.pr-workings__item {
+  width: 100%;
+}
+.pr-log__answer-text {
+  margin: 6px 0;
+  font-style: italic;
+  color: var(--ink);
+}
+.pr-log__list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pr-log__row {
+  padding: 14px;
+  background: var(--cream);
+  border-radius: 10px;
+}
+.pr-log__row-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pr-log__title {
+  margin: 0;
+  font-weight: 700;
+  color: var(--forest);
+}
+.pr-log__at {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.pr-log__stale {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-style: italic;
+}
+.pr-log__answers {
+  margin: 10px 0 0;
+  padding-left: 20px;
+  color: var(--ink);
+}
+.pr-log__answers li + li {
+  margin-top: 4px;
+}
+.pr-log__comment {
+  margin-top: 12px;
+}
+.pr-log__comment label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.pr-log__comment .tr-answer__input {
+  width: 100%;
+  flex: 1 1 260px;
+  font-size: 15px;
+  font-family: var(--font-body);
+}
+
+.pr-sprout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pr-sprout__card h3 {
+  margin: 4px 0 0;
+}
+.pr-sprout__minutes {
+  margin: 4px 0 12px;
+  color: var(--muted);
+}
+.pr-sprout__steps {
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+.pr-sprout__steps li + li {
+  margin-top: 6px;
+}
+.pr-sprout__notice-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--forest);
+  margin: 0 0 6px;
+}
+.pr-sprout__notice {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pr-sprout__notice label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pr-sprout__stars {
+  display: flex;
+  gap: 4px;
+  margin: 8px 0 14px;
+}
+.pr-sprout__cap {
+  margin: 8px 0 0;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--forest);
+}
+.pr-sprout__cap--over {
+  color: var(--blaze-deep);
+}
+
+.pr-resets__lede {
+  margin: 6px 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.pr-resets__row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pr-confirm {
+  border: none;
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 420px;
+  width: calc(100% - 40px);
+  box-shadow: var(--shadow);
+  background: var(--cream);
+  color: var(--ink);
+}
+.pr-confirm::backdrop {
+  background: rgba(42, 42, 38, 0.55);
+}
+.pr-confirm p {
+  margin: 8px 0 0;
+}
+.pr-confirm__row {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+.pr-confirm__error {
+  margin-top: 12px;
+  color: var(--blaze-deep);
+  font-weight: 700;
+}
+
+.pr-activities__lede {
+  margin: 6px 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.pr-activities__form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 14px;
+}
+.pr-activities__form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.pr-activities__form select,
+.pr-activities__form input[type="date"] {
+  font: inherit;
+  padding: 9px 10px;
+  border: 1px solid var(--field-border);
+  box-shadow: var(--field-shadow);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  height: var(--control-height);
+}
+.pr-activities__form input.tr-answer__input {
+  font-size: 15px;
+  font-family: var(--font-body);
+  width: 260px;
+}
+.pr-activities__list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+.pr-activities__list li {
+  color: var(--ink);
+}
+
+/* ParentPinGate / PinSettings (task 9 feature 1) */
+.pr-pin-gate {
+  max-width: 380px;
+}
+.pr-pin__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+}
+.pr-pin__form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.pr-pin__input {
+  width: 140px;
+  letter-spacing: 0.3em;
+  text-align: center;
+}
+.pr-pin__row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.pr-pin-settings__status {
+  margin: 6px 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.pr-pin-settings__note {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ProfileManager (task 9 feature 2) */
+.pr-profiles__list {
+  list-style: none;
+  margin: 6px 0 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pr-profiles__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pr-profiles__name {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--forest);
+}
+.pr-profiles__kind {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+/* Per-profile season row (components/parent/ProfileManager.tsx): the season a child is on and
+   the control that starts the next one. Its own full-width line beneath the name row so the
+   name, kind and Rename keep their positions on every row. */
+.pr-profiles__season {
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-left: 2px;
+}
+.pr-profiles__season-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+.pr-profiles__rollover {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--cream);
+  border: 1px solid rgba(42, 42, 38, 0.15);
+}
+.pr-profiles__rollover-text {
+  margin: 0;
+}
+.pr-profiles__rename-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pr-profiles__add-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 14px;
+  margin-top: 10px;
+}
+.pr-profiles__add-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.pr-profiles__add-form select {
+  font: inherit;
+  padding: 9px 10px;
+  border: 1px solid var(--field-border);
+  box-shadow: var(--field-shadow);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  height: var(--control-height);
+}
+.pr-profiles__add-form input.tr-answer__input {
+  font-size: 15px;
+  font-family: var(--font-body);
+  width: 200px;
+}
+
+/* Season shopping list (task 14) */
+.pr-shopping__arc {
+  margin: 6px 0 12px;
+  line-height: 1.5;
+}
+.pr-shopping__seasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.pr-shopping__season {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--forest);
+  background: transparent;
+  border: 1.5px solid var(--forest);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+.pr-shopping__season--on {
+  background: var(--forest);
+  color: #fff;
+}
+.pr-shopping__season-cost {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+}
+.pr-shopping__total {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.pr-shopping__section-label {
+  margin: 18px 0 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--forest);
+  font-weight: 700;
+}
+.pr-shopping__section-label--flag {
+  color: var(--blaze-deep);
+}
+.pr-shopping__section-note {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.pr-shopping__list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pr-shopping__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 14px;
+  background: var(--cream);
+  border-radius: 10px;
+}
+/* Task 20 fix: this used to be `opacity: 0.65` on the whole row. Checked directly against
+   verify-ui's own compositing model, that silently took every text color inside a bought row --
+   including --forest, normally 10.2:1 on cream -- under the 4.5:1 floor (3.86:1), because
+   opacity dims foreground AND background together rather than lightening a color in place. It
+   just never got caught, because the seeded household has nothing bought yet, so this state was
+   never actually swept. Fixed by de-emphasizing with real, individually-checked colors instead
+   of opacity: --muted on cream measures 6.55:1 on its own, comfortably over the floor with the
+   line-through still doing the "this is done" work opacity used to. */
+.pr-shopping__row--bought h4 {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+.pr-shopping__row--bought .pr-shopping__why {
+  color: var(--muted);
+}
+.pr-shopping__row-main {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+.pr-shopping__row-main h4 {
+  margin: 0 0 4px;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--forest);
+}
+.pr-shopping__why {
+  margin: 0;
+  color: var(--ink);
+  font-size: 14px;
+}
+.pr-shopping__meta {
+  margin: 6px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+.pr-shopping__row-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pr-shopping__later {
+  margin-top: 18px;
+}
+.pr-shopping__later summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--forest);
+  font-weight: 700;
+}
+.pr-shopping__later .pr-shopping__list {
+  margin-top: 12px;
+}
+
+@media (max-width: 700px) {
+  .pr-kid-card__stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .pr-weekplan__row,
+  .pr-mistakebox__row,
+  .pr-shopping__row {
+    flex-direction: column;
+    align-items: stretch;
+    /* The base rule sets justify-content: space-between, which distributes along the MAIN axis.
+       Once these rows become columns on a phone, that main axis is vertical, so any spare height
+       is dumped between the content and its buttons: the owner saw a card with the controls
+       stranded far below the progress bar. Pack them instead, and space them with a gap. */
+    justify-content: flex-start;
+    gap: 12px;
+  }
+  .pr-activities__form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pr-activities__form input.tr-answer__input {
+    width: 100%;
+  }
+  .pr-profiles__add-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pr-profiles__add-form input.tr-answer__input {
+    width: 100%;
+  }
+}
+
+/* The recording file chooser: the native input stays for the browser's own picker (and the
+   phone's camera app, via capture="user") but is visually hidden; its label wears the secondary
+   button tier so it reads as pressable rather than as the bare "No file chosen" text. */
+.tr-recording__pick {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.tr-recording__pick-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+}
+.tr-recording__pick-label {
+  cursor: pointer;
+}
+.tr-recording__pick-input:focus-visible + .tr-recording__pick-label {
+  outline: 3px solid var(--blaze);
+  outline-offset: 2px;
+}
+
+/* Debate room (components/quest/DebateRoom.tsx) */
+.tr-debate__message {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--cream);
+  border: 1px solid rgba(42, 42, 38, 0.15);
+}
+.tr-debate__log {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tr-debate__round {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 4px;
+}
+.tr-debate__turn {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  max-width: 640px;
+  line-height: 1.45;
+}
+.tr-debate__turn--child {
+  background: var(--cream);
+  border: 1px solid rgba(42, 42, 38, 0.15);
+  align-self: flex-end;
+}
+.tr-debate__turn--rebut {
+  background: var(--kraft);
+  border-left: 6px solid var(--sun);
+  align-self: flex-start;
+}
+.tr-debate__turn--waiting {
+  font-style: italic;
+  color: var(--muted);
+}
+.tr-debate__coach {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--kraft);
+  border-left: 6px solid var(--forest);
+}
+.tr-debate__coach p {
+  margin: 0;
+}
+
+/* Parent view: debates list (components/parent/DebateList.tsx) */
+.pr-debates__empty {
+  margin: 0;
+  color: var(--muted);
+}
+.pr-debates__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pr-debates__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pr-debates__motion {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--forest);
+}
+.pr-debates__meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+.pr-debates__coach {
+  margin: 6px 0 0;
+}
+.pr-debates__details summary {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.pr-debates__transcript {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  white-space: pre-wrap;
+  font-family: var(--font-body, inherit);
+  font-size: 14px;
+  background: var(--cream);
+  border-radius: 10px;
+  border: 1px solid rgba(42, 42, 38, 0.15);
+  overflow-x: auto;
+}
+
+/* The Ladder (8 September 2026): the session screen and the parent card. */
+.ld-main { display: flex; flex-direction: column; gap: 12px; }
+.ld-home, .ld-idea, .ld-round, .ld-break { display: flex; flex-direction: column; gap: 12px; }
+.ld-home__facts, .ld-home__day { color: var(--muted); margin: 0; }
+.ld-home__summary { margin: 0; }
+.ld-round__bar { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.ld-round__clock { font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.ld-break { align-items: flex-start; }
+.ld-break .tr-quest__title { font-family: var(--font-mono); font-size: 44px; }
+.ld-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.ld-worked ol { margin: 6px 0 0; padding-left: 22px; }
+.ld-worked__prompt { margin: 0; font-weight: 600; }
+.pr-ladder__intro, .pr-ladder__facts, .pr-ladder__projection { margin: 0 0 8px; }
+.pr-ladder__risk { margin: 0 0 8px; color: var(--rust, #a33a2a); }
+.pr-ladder__map { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.pr-ladder__stage { display: grid; grid-template-columns: 150px 1fr; gap: 8px; align-items: start; }
+.pr-ladder__stage-name { font-family: var(--font-mono); font-size: 12px; color: var(--muted); padding-top: 3px; }
+.pr-ladder__chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.pr-ladder__chip { font-size: 11px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line, #c9c1b0); background: var(--paper, #fffdf7); color: var(--ink); }
+.pr-ladder__chip--mastered { background: var(--forest); color: #fffdf7; border-color: var(--forest); }
+.pr-ladder__chip--current { background: var(--accent, #f2c14e); border-color: var(--accent, #f2c14e); }
+.pr-ladder__chip--unauthored { opacity: 0.45; border-style: dashed; }
+.pr-ladder__chip--now { outline: 2px solid var(--forest); outline-offset: 1px; }
+
+.ld-ways__intro { margin: 0 0 8px; color: var(--muted); }
+.ld-ways__tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.ld-ways__tab { font: inherit; font-size: 13px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line, #c9c1b0); background: var(--paper, #fffdf7); color: var(--ink); cursor: pointer; }
+.ld-ways__tab--open { background: var(--forest); color: #fffdf7; border-color: var(--forest); }
+.ld-way { display: flex; flex-direction: column; gap: 6px; }
+.ld-way ol { margin: 0; padding-left: 22px; }
+.ld-way__when { margin: 0; color: var(--muted); }
+.ld-way__example { margin: 0; font-weight: 600; }
+.ld-way__answer { margin: 0; }
+.ld-way__trap { margin: 0; color: var(--rust, #a33a2a); }
+
+.ld-way__step { transition: background 200ms; border-radius: 4px; padding: 1px 4px; margin-left: -4px; }
+.ld-way__step--now { background: var(--accent, #f2c14e); }

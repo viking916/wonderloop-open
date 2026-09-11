@@ -1,0 +1,297 @@
+{
+  "id": "s4-w06-build",
+  "season": 4,
+  "week": 6,
+  "track": "build",
+  "title": "The same farm, the same grader, a different tongue",
+  "summary": "Solve Mixing Milk again in C++, alone this time, and send it to the grader that took your Python a year ago. Then translate the pair loops out of your cow gymnastics program, counting the steps on paper before either program runs.",
+  "minutes": 60,
+  "materials": [
+    "laptop with g++ and the editor, installed and verified before the season",
+    "the Mixing Milk problem page on usaco.org, and a grown-up to sign in to the account",
+    "gymnastics.py from last season, and the accepted Python solution beside it",
+    "the Error Bestiary notebook opened in week 1",
+    "paper and a pencil for the three lines and the step count"
+  ],
+  "skills": [
+    "build.cpp",
+    "build.loops",
+    "build.data",
+    "build.debugging"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w06-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop first, same six moves as always: ask, imagine, plan, build, test, fix.\n\nAsk: you already beat this farm. A year ago, in Python, with a grown-up at the keyboard and you calling every move, Mixing Milk came back accepted. So what is left to find out? This: whether the plan was ever made of Python in the first place. If it was not, the same plan in a different tongue should walk up to the same grader and get the same verdict.\n\nImagine: the same verdict screen you have seen before, the same green boxes, the same farm, and the file you send it ends in .cpp.\n\nPlan, three jobs in this order. One, file streams, which is the only genuinely new C++ machinery today and takes about ten minutes. Two, Mixing Milk in C++, built from your own three-line description rather than translated word by word, tested on the page's sample and submitted to the real grader. Three, the pair loops out of your cow gymnastics program, translated into C++ and checked against the Python you already own.\n\nFour rules said out loud before anything is typed.\n\nThe keyboard is yours. Last time this farm was solved, a grown-up sat at the keyboard and typed what you called out. That belay retired in week 1. Today the hands are yours from the first character to the submit button, and a grown-up may sit and watch and be interested.\n\nNo clock on the solving. This is a weekday hour, and weekday hours in this house are untimed, including this one: nothing you work out today is raced. The only mornings this season that put a clock on your solving are the three crossing suns, which have their real dates written on the wall map. Clocks do turn up elsewhere in the week, on the typing drill in a moment, on the crossfire minute in the speaking hour, and on the two minutes you spend explaining on your feet. Every one of those sits on a drill or a speech rather than on a thought, it is part of the exercise, and it has been in this house since last season. This weekend carries nothing, and that is on the map too.\n\nDecember is Python's contest, and C++ never meets a clock this season. Today's grader run is a translation, not a race. If it takes you the whole morning it took you the whole morning.\n\nAnd the one about the machine you are sending it to: the grader does not know your age, your language or your story. It reads the file your program wrote. That is exactly why its yes is worth having, and it is why the same yes for two different languages means something real."
+    },
+    {
+      "kind": "typing",
+      "id": "s4-w06-build-02",
+      "minutes": 5,
+      "body": "Five minutes on your typing site. Home row first, then the punctuation this hour is built out of.\n\nType these three lines ten times each, without looking down:\n\n#include <fstream>\nstd::ifstream fin(\"mixmilk.in\");\nstd::ofstream fout(\"mixmilk.out\");\n\nThen these two, five times each:\n\nfin >> c1 >> m1;\nfout << m1 << \"\\n\";\n\nTwo things to notice while your fingers learn them. The file name sits inside double quotes, not single ones, because in C++ single quotes mean one lone character and a whole file name will not fit in there. And the two chevrons come in pairs that show which way the numbers are travelling: out of fin and into your variables, then out of your variables and into fout. Every one of these goes into a real program in about fifteen minutes, and a key you have to hunt for is a train of thought you have to start again."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w06-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Steps per second for the two languages, from the week 3 stopwatch race: Python's interpreter carries out roughly ten million steps a second, g++'s compiled program roughly a hundred million, because the interpreter re-reads every instruction on every turn while the compiled program runs instructions already decided. Bars are not drawn to exact scale.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 180,
+              "x2": 280,
+              "y2": 180
+            },
+            {
+              "t": "box",
+              "x": 50.9,
+              "y": 140,
+              "w": 78.2,
+              "h": 40,
+              "label": "Python",
+              "sub": "~10,000,000/s",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 168.2,
+              "y": 60,
+              "w": 83.60000000000001,
+              "h": 120,
+              "label": "C++",
+              "sub": "~100,000,000/s",
+              "fill": "accent"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 200,
+              "s": "steps/sec, week 3 numbers (bars not to scale)",
+              "size": 10
+            }
+          ]
+        }
+      },
+      "title": "What time limit exceeded is actually measuring",
+      "body": "You have met the grader's yes. Today, meet its clock.\n\nWhat the T actually is. The grader's own key for a red box splits it up: X for a wrong answer, T for time limit exceeded, an exclamation mark for a runtime error or too much memory, E for an empty output file, and M for a missing one. So T is not a bad mark and it is not a comment on you. It is one measurement of one thing: how long your program took on one secret input case, on the grader's machine, not on your laptop.\n\nThe numbers, off the site's own instructions page. About two seconds per input case for C and C++, and about four seconds for Java and Python, although the page says plainly that a particular contest or problem may use slightly different limits. Memory is capped at roughly 256 megabytes. Read the problem page rather than trusting a number you memorised.\n\nNow the interesting half: why on earth would the same problem give one language twice the time of another? Week 3 answered it before the question existed. Python's interpreter looks at every instruction, works out what it means, and only then does it, every single turn of the loop. C++ did all that looking once, at compile time, and the chip runs instructions that were already decided. Same plan, more time per step.\n\nSo the limit is not a fairness gesture and it is not a handicap. It is a door, built to a particular width. The people who set the problem work out how many steps the intended plan takes, and then set each language's limit so that the intended plan fits through comfortably in any allowed language, and a much worse plan fits through in none of them. The door is measuring the shape of your plan, and the language limits are there so that the shape is the only thing it measures.\n\nWhich is why the honest sentence from last season survives the arrival of a fast language. Season 3 worked out that lining 20 cows up in every possible order would take a laptop something like seven thousand years at Python's ten million steps a second, and it said the rest out loud too: a machine a thousand times quicker still needs seven years. Your own week 3 numbers, about a hundred million steps a second against about ten million, put C++ nearer ten times quicker than a thousand, so seven thousand years becomes seven hundred. Still not an afternoon. A bad plan is still bad at any speed, and no language has ever fixed one.\n\nOne last thing that is true and easy to get wrong. A T on a Bronze problem almost never means the language was too slow. Bronze bounds are small on purpose, and the intended plan is usually the obvious one. A T there nearly always means a loop went somewhere it was not supposed to go, or never came back. Read the T as a message about your plan, not about your tools."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w06-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Data flowing through file streams for Mixing Milk: mixmilk.in is opened by an ifstream called fin, which fills the variables c1 and m1; the pouring plan works on those numbers; the result is written out through an ofstream called fout into mixmilk.out.",
+        "spec": {
+          "w": 380,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 10,
+              "y": 30,
+              "w": 90,
+              "h": 40,
+              "label": "mixmilk.in"
+            },
+            {
+              "t": "line",
+              "x1": 100,
+              "y1": 50,
+              "x2": 150,
+              "y2": 50,
+              "arrow": true,
+              "label": "fin >>"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 30,
+              "w": 80,
+              "h": 40,
+              "label": "c1, m1"
+            },
+            {
+              "t": "line",
+              "x1": 190,
+              "y1": 70,
+              "x2": 190,
+              "y2": 140,
+              "arrow": true,
+              "dashed": true,
+              "label": "pouring plan"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 140,
+              "w": 80,
+              "h": 40,
+              "label": "m1 (answer)"
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 160,
+              "x2": 280,
+              "y2": 160,
+              "arrow": true,
+              "label": "fout <<"
+            },
+            {
+              "t": "box",
+              "x": 280,
+              "y": 140,
+              "w": 90,
+              "h": 40,
+              "label": "mixmilk.out"
+            }
+          ]
+        }
+      },
+      "title": "Mixing Milk again, and this time only your hands",
+      "body": "The account is a grown-up's, so they sign in and then step back. Everything after that is yours.\n\nFind the problem yourself. Past contests list on usaco.org, the December 2018 contest, Bronze, and the first problem is Mixing Milk. Read the whole page out loud, including the boring part about where the input arrives and where the answer goes.\n\nAbout those two file names. This is an older problem, from before the site moved to plain typed input, so the page names an input file and an output file. On this problem they are mixmilk.in and mixmilk.out. Read them off the page yourself anyway and copy them character for character, because a file name taken from a plan instead of from the page is the most expensive kind of typo there is: everything compiles, everything runs, and the grader finds nothing to read.\n\nNow, before you open any old file: do not reopen your Python. Write your three lines on paper from memory, the way week 3 taught you. What the program reads, what it does over and over, what it writes at the end. If you cannot remember the pouring rule, go back to the problem page, not to your own old code. The point of the hour is that the plan lives in you and not in a file.\n\nThe only new machinery today. In C++ a file you read from is an ifstream and a file you write to is an ofstream, and both need #include <fstream> at the top. Here is the whole skeleton, and it is deliberately the whole of what this page will give you:\n\n#include <fstream>\n#include <algorithm>\n\nint main() {\n    std::ifstream fin(\"mixmilk.in\");\n    std::ofstream fout(\"mixmilk.out\");\n\n    int c1, m1;\n    fin >> c1 >> m1;\n\n    // your plan goes here\n\n    fout << m1 << \"\\n\";\n    return 0;\n}\n\nFour notes on it. fin >> c1 >> m1; reads the next two whole numbers out of the file, skipping past spaces and line ends by itself, which is why the shape of the file matters much less than you might fear. That line reads one bucket only, and one line goes out at the end; how many buckets this farm has, and therefore how many of each of those lines you need, is on the problem page and is your first move. #include <algorithm> is there because the smaller of two numbers is std::min(a, b) and that is where it lives. And the line that says your plan goes here is the only instruction you get for the middle: the pouring is not printed on this page and will not be, because you already own it.\n\nOne type question worth asking rather than reflexing. Read the limits off the page. The biggest number in this story is a thousand million. The int wall you measured yourself in week 2 is a bit over two thousand million. So an int genuinely fits here and long long is not needed, and you should be able to say that sentence out loud with both numbers in it. Reaching for long long every time is a habit, and habits are not reasons.\n\nCompile it with a plain g++ mixmilk.cpp -o mixmilk. Under MinGW on Windows that writes mixmilk.exe; under WSL it writes mixmilk with nothing on the end. If your shell says it cannot find the thing you just built, list the folder and use the name that is actually sitting there.\n\nThen test it. Make a file called mixmilk.in in the same folder and type the page's sample into it exactly. Run the program from that same folder, because it asks for the file by its bare name and looks in the folder it was started from, not the folder it was compiled in. Then open mixmilk.out and compare it with the page's sample answer, line by line.\n\nThen submit it, yourself. Untimed. Read the verdict whatever it says, and if it comes back red, find the letter, work out what that letter is telling you, and fix one thing. A rejection you can explain out loud is still a summit reached in weather.",
+      "checklist": [
+        "I found the problem myself and read the two file names off the page, then typed them character for character",
+        "The three-line description was written from memory before I opened any old file of mine",
+        "I chose int or long long by reading the limits on the page, and I can say which I chose and why, with both numbers in the sentence",
+        "The program ran on the page's sample and mixmilk.out matched the page's sample answer line by line",
+        "I pressed submit myself, with nobody else at the keyboard, and read the verdict whatever it said"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s4-w06-build-05",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The pair-loop for cow gymnastics: an outer loop walks cow a from 1 to n, an inner loop walks cow b from 1 to n. At each pair, if a equals b the loop skips straight to the next b, since a cow is never compared against herself; otherwise it compares pos[session][a] against pos[session][b].",
+        "spec": {
+          "w": 360,
+          "h": 240,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 110,
+              "y": 10,
+              "w": 140,
+              "h": 30,
+              "label": "for a = 1..n"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 40,
+              "x2": 180,
+              "y2": 60,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 110,
+              "y": 60,
+              "w": 140,
+              "h": 30,
+              "label": "for b = 1..n"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 90,
+              "x2": 180,
+              "y2": 110,
+              "arrow": true
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  180,
+                  110
+                ],
+                [
+                  225,
+                  140
+                ],
+                [
+                  180,
+                  170
+                ],
+                [
+                  135,
+                  140
+                ]
+              ],
+              "label": "a == b ?"
+            },
+            {
+              "t": "line",
+              "x1": 225,
+              "y1": 140,
+              "x2": 280,
+              "y2": 140,
+              "arrow": true,
+              "label": "yes: skip"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 170,
+              "x2": 180,
+              "y2": 195,
+              "arrow": true,
+              "label": "no"
+            },
+            {
+              "t": "box",
+              "x": 75,
+              "y": 195,
+              "w": 210,
+              "h": 30,
+              "label": "compare pos[s][a], pos[s][b]"
+            }
+          ]
+        }
+      },
+      "title": "Every pair of cows, in the stricter tongue",
+      "body": "Second job, and this one is a translation rather than a rescue.\n\nOpen gymnastics.py from last season, read it all the way through, then close it. Write the three lines on paper: what it reads, what it does over and over, what it writes. Then build the C++ from your three lines. Rebuilding from the plan is the method, and it is the whole reason this is worth an hour: line by line translation teaches you a phrasebook, and rebuilding teaches you that the plan was never made of Python.\n\nTwo pieces of machinery you have not got yet, so here they are.\n\nA list of lists. std::vector<std::vector<int>> pos(k, std::vector<int>(n + 1, 0)); makes k rows, each one a vector of n + 1 ints, all starting at 0. Your Python built the same thing out of two names: each row was a list called rank, and the list of all the rows was called place. One name does both jobs here, pos, and every slot in it holds what rank held, which is a position. That is the thing you sorted out on paper a year ago: a cow's number and a cow's finishing place are two different things.\n\nThe C++ for loop. for (int a = 1; a <= n; a++) has three parts inside the round brackets, separated by semicolons: where the counter starts, how long it keeps going, and what happens to it at the end of each turn. Python's for a in range(1, n + 1): says exactly the same thing more quietly. Reading the C++ line out loud in those three parts is the fastest way to stop being frightened of it.\n\nThe pair loops themselves are yours. Two of those for lines, one inside the other, both walking cow numbers, with an if (a == b) continue; so a cow is never compared against herself. You wrote that shape in Python and you understood why it was right. Write it again.\n\nCount the steps first, on paper, before you compile anything. That law has not been repealed and it never will be. Read the limits off the problem page and use those, not these: the page for this one says at most 10 sessions and at most 20 cows, which makes 20 times 19, or 380 ordered pairs, and each pair walks 10 sessions, so 3800 comparisons. Then say the sentence that matters most today: that is the same 3800 in both languages, because the number of steps belongs to the plan and not to the costume.\n\nTest it properly, and here you have a luxury you will rarely get again. You already own an accepted Python solution to this exact problem. One catch first: both programs write their answer into gymnastics.out, so whichever runs second wipes the other one out. Put the page's sample into gymnastics.in, run the C++, then rename gymnastics.out to from-cpp.out before you touch anything else. Now run the Python on the same gymnastics.in and compare from-cpp.out against the gymnastics.out it has just written, character by character. If they disagree, you have found something genuinely real, and you do not patch either one until you know which of them is lying.\n\nSubmitting this one is optional and costs nothing. Today's line in the ledger is Mixing Milk, in C++, alone.",
+      "checklist": [
+        "I read the Python, closed it, and wrote the three lines before typing any C++",
+        "The two for lines and the skip are mine, written from the plan rather than copied across",
+        "The step count is on paper using the page's own limits, and I said out loud why it is the same number in both languages",
+        "Both programs ran on the same gymnastics.in, I saved the C++ answer under its own name before running the Python, and the two output files match character for character"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w06-build-06",
+      "title": "Bug diary and the Error Bestiary",
+      "body": "The bug diary, and the C++ chapter of it, the Error Bestiary. Three or four entries today. Each one is the message in your own words, what actually caused it, and what you would look at first next time.\n\nThe mirage of the missing input file, and this is the important one. If mixmilk.in is not sitting in the folder your program was started from, the ifstream opens nothing at all. Nothing crashes. On a modern compiler every number you then try to read is quietly set to zero, so the program runs happily on a farm made entirely of zeros, writes an answer, and finishes. It compiled, it ran, and it is wrong. That is the season's signature idea sitting in your own folder.\n\nThe guard costs two lines. Straight after opening, write if (!fin) and print a line saying the input file was not found. Write it into every file-reading program you make from now on, because the day it saves you will be a day you would otherwise have spent hunting a bug that was never in your plan.\n\nThe missing header. Leave out #include <fstream> and the compiler will complain, in a sentence that usually mentions ifstream not being a member of std. Leave out #include <algorithm> and std::min gets a complaint of the same shape. And the twin from week 3 applies to both: sometimes another header you did include drags them in behind your back and the thing compiles anyway. A program that only compiles by accident fails on somebody else's machine, and the fix is to include what you use.\n\nAbout the exact words. Compiler messages vary. GCC, clang and MSVC word the same complaint differently, and two versions of GCC will not always agree either. So write down the sentence your compiler actually printed, not the one this page predicted. Where the words differ the meaning does not, and reading the first line rather than the last is still the whole skill.\n\nE and M, which are grader errors rather than compiler errors. If your program prints its answer with std::cout instead of writing it into mixmilk.out, the grader has nothing to read and reports an empty or a missing output file. That is not a wrong answer. It is a right answer delivered to the wrong address, and on an older file-based problem it is the single most common way a good solution fails.\n\nAnd the one nothing catches at all, which is the one to be afraid of. Ask pos[session][cow] for a cow number bigger than the vector was built for and it compiles, it runs, and it prints something. Nothing warns you. Write pos.at(session).at(cow) while you are testing and the vector checks for you and stops with a message about being out of range. Looking right and being right are different things, and you check against the truth rather than against the look of it."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w06-build-07",
+      "title": "Show it",
+      "prompt": "mixmilk.cpp and a photo of the verdict screen. Then gymnastics.cpp beside gymnastics.py, and the two output files they produced from the same input. Then the step count in your own handwriting, and a photo of today's Bestiary pages.",
+      "accepts": [
+        "code",
+        "photo",
+        "text"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w06-build-08",
+      "variant": "maker"
+    }
+  ]
+}

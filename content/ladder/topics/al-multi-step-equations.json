@@ -1,0 +1,2203 @@
+{
+  "id": "al-multi-step-equations",
+  "idea": {
+    "body": "A multi-step equation changes the unknown more than twice, so solving it takes several moves. Distribute any brackets first, then combine the plain numbers on each side. Next, gather every x term onto one side before undoing the last operation on the unknown. If the unknown sits inside a fraction, multiply both sides by the denominator to clear it before anything else. Take 2(x + 4) = 3x - 1. Distribute to get 2x + 8 = 3x - 1. Subtract 2x from both sides to get 8 = x - 1, then add 1 to get x = 9. A drone's flight log uses that equation, where x counts its charging stops, so the drone made 9 stops. Work outside in: brackets first, then the letter, then the last plain division."
+  },
+  "workedExample": {
+    "prompt": "A game's score formula gives 2(x + 4) = 3x - 1, where x is the number of bonus rounds cleared. Solve for x.",
+    "steps": [
+      "A game's score formula gives 2(x + 4) = 3x - 1, where x counts bonus rounds cleared.",
+      "Distribute the 2 on the left: 2x + 8 = 3x - 1.",
+      "Gather the letter on one side: subtract 2x from both sides to get 8 = x - 1.",
+      "Add 1 to both sides: x = 9.",
+      "The game recorded 9 bonus rounds cleared."
+    ]
+  },
+  "ways": [
+    {
+      "id": "al-multi-step-equations-w1",
+      "name": "The balance",
+      "when": "Use this as the default way for any multi-step equation with a bracket.",
+      "steps": [
+        "2(x + 4) = 3x - 1 has a bracket and x on both sides.",
+        "Distribute the 2: 2x + 8 = 3x - 1.",
+        "Subtract 2x from both sides to keep the balance: 8 = x - 1.",
+        "Add 1 to both sides: x = 9."
+      ],
+      "example": "2(x + 4) = 3x - 1",
+      "answer": "9",
+      "trap": "Subtracting 2x from only one side, which breaks the balance.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A balance showing 2(x + 4) on the left equal to 3x - 1 on the right.",
+        "spec": {
+          "w": 300,
+          "h": 90,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 25,
+              "w": 110,
+              "h": 40,
+              "fill": "paper",
+              "label": "2(x + 4)"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 50,
+              "s": "=",
+              "size": 18,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 25,
+              "w": 90,
+              "h": 40,
+              "fill": "accent",
+              "label": "3x - 1"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "The balance: 2(x + 4) = 3x - 1.",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "2(x + 4) = 3x - 1 has",
+              "set": {
+                "0": {
+                  "fill": "sand"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Distribute the 2: 2x + 8 = 3x",
+              "set": {
+                "0": {
+                  "label": "2x + 8"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Subtract 2x from both sides to keep the",
+              "set": {
+                "0": {
+                  "label": "8"
+                },
+                "2": {
+                  "label": "x - 1"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Add 1 to both sides: x = 9.",
+              "set": {
+                "0": {
+                  "label": "9"
+                },
+                "2": {
+                  "label": "x"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "al-multi-step-equations-w2",
+      "name": "Collect the variable on the positive side",
+      "when": "Use this when x appears on both sides, to avoid dividing by a negative.",
+      "steps": [
+        "3x + 4 = 5x - 8 has more x's on the right side.",
+        "Move the x terms to the right, where they stay positive: subtract 3x from both sides.",
+        "4 = 2x - 8, so add 8 to both sides: 12 = 2x.",
+        "Divide by 2: x = 6."
+      ],
+      "example": "3x + 4 = 5x - 8",
+      "answer": "6",
+      "trap": "Moving x to the side with fewer x's, ending with a negative coefficient to divide by."
+    },
+    {
+      "id": "al-multi-step-equations-w3",
+      "name": "Clear fractions first",
+      "when": "Use this when the unknown sits inside a fraction anywhere in the equation.",
+      "steps": [
+        "x/2 + 3 = x - 1 has the unknown divided by 2.",
+        "Multiply every term by 2 to clear the fraction: x + 6 = 2x - 2.",
+        "Subtract x from both sides: 6 = x - 2.",
+        "Add 2 to both sides: x = 8."
+      ],
+      "example": "x/2 + 3 = x - 1",
+      "answer": "8",
+      "trap": "Multiplying only the fraction term by 2 and forgetting the other terms."
+    },
+    {
+      "id": "al-multi-step-equations-w4",
+      "name": "Undo without distributing",
+      "when": "Use this when the bracket holds the unknown alone on one side, so it can be undone whole.",
+      "steps": [
+        "4(x - 3) = 16 built x by subtracting 3, then multiplying by 4.",
+        "Undo the multiplication first: divide both sides by 4, giving x - 3 = 4.",
+        "Undo the subtraction last: add 3 to both sides.",
+        "x = 7."
+      ],
+      "example": "4(x - 3) = 16",
+      "answer": "7",
+      "trap": "Distributing the 4 first instead of dividing it away, adding an extra step.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A chain showing x with 3 subtracted then multiplied by 4, giving 16.",
+        "spec": {
+          "w": 340,
+          "h": 90,
+          "items": [
+            {
+              "t": "box",
+              "x": 10,
+              "y": 25,
+              "w": 40,
+              "h": 40,
+              "fill": "paper",
+              "label": "x"
+            },
+            {
+              "t": "line",
+              "x1": 50,
+              "y1": 45,
+              "x2": 80,
+              "y2": 45,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 25,
+              "w": 50,
+              "h": 40,
+              "fill": "paper",
+              "label": "-3"
+            },
+            {
+              "t": "line",
+              "x1": 140,
+              "y1": 45,
+              "x2": 170,
+              "y2": 45,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 180,
+              "y": 25,
+              "w": 50,
+              "h": 40,
+              "fill": "paper",
+              "label": "×4"
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 45,
+              "x2": 260,
+              "y2": 45,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 270,
+              "y": 25,
+              "w": 50,
+              "h": 40,
+              "fill": "accent",
+              "label": "16"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Start: x, before any operation.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "4(x - 3) = 16 built x by",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Undo the multiplication first: divide both sides by",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "Undo the subtraction last: add 3 to both",
+              "set": {
+                "2": {
+                  "fill": "green"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "x = 7.",
+              "set": {
+                "0": {
+                  "label": "x=7"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-al-multi-step-equations-p01",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 2(x + 3) = 14.",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Distribute the 2: 2x + 6 = 14.",
+        "Subtract 6 from both sides: 2x = 8.",
+        "Divide both sides by 2: x = 4."
+      ],
+      "useAgain": "when a bracket multiplies the unknown before anything else happens to it.",
+      "hints": [
+        "Distribute the number outside the brackets to both terms inside first.",
+        "Once the brackets are gone, undo the addition or subtraction, then the division."
+      ],
+      "socraticHint": "What do you get when you multiply 2 by everything inside the brackets?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 3(x - 2) = 9.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p02",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 4(x + 1) = 16.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Distribute the 4: 4x + 4 = 16.",
+        "Subtract 4 from both sides: 4x = 12.",
+        "Divide both sides by 4: x = 3."
+      ],
+      "useAgain": "when a bracket multiplies the unknown before anything else happens to it.",
+      "hints": [
+        "Distribute the number outside the brackets to both terms inside first.",
+        "Once the brackets are gone, undo the addition or subtraction, then the division."
+      ],
+      "socraticHint": "What do you get when you multiply 4 by everything inside the brackets?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 2(x - 1) = 10.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p03",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 5(x + 2) = 20.",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Distribute the 5: 5x + 10 = 20.",
+        "Subtract 10 from both sides: 5x = 10.",
+        "Divide both sides by 5: x = 2."
+      ],
+      "useAgain": "when a bracket multiplies the unknown before anything else happens to it.",
+      "hints": [
+        "Distribute the number outside the brackets to both terms inside first.",
+        "Once the brackets are gone, undo the addition or subtraction, then the division."
+      ],
+      "socraticHint": "What do you get when you multiply 5 by everything inside the brackets?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 3(x + 4) = 15.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p04",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 2(x + 5) = 16.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Distribute the 2: 2x + 10 = 16.",
+        "Subtract 10 from both sides: 2x = 6.",
+        "Divide both sides by 2: x = 3."
+      ],
+      "useAgain": "when a bracket multiplies the unknown before anything else happens to it.",
+      "hints": [
+        "Distribute the number outside the brackets to both terms inside first.",
+        "Once the brackets are gone, undo the addition or subtraction, then the division."
+      ],
+      "socraticHint": "What do you get when you multiply 2 by everything inside the brackets?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 4(x - 3) = 16.",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p05",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 3(x - 1) = 9.",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Distribute the 3: 3x - 3 = 9.",
+        "Add 3 to both sides: 3x = 12.",
+        "Divide both sides by 3: x = 4."
+      ],
+      "useAgain": "when a bracket multiplies the unknown before anything else happens to it.",
+      "hints": [
+        "Distribute the number outside the brackets to both terms inside first.",
+        "Once the brackets are gone, undo the addition or subtraction, then the division."
+      ],
+      "socraticHint": "What do you get when you multiply 3 by everything inside the brackets?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 5(x - 2) = 5.",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p06",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 2(x + 2) = 18.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Distribute the 2: 2x + 4 = 18.",
+        "Subtract 4 from both sides: 2x = 14.",
+        "Divide both sides by 2: x = 7."
+      ],
+      "useAgain": "when a bracket multiplies the unknown before anything else happens to it.",
+      "hints": [
+        "Distribute the number outside the brackets to both terms inside first.",
+        "Once the brackets are gone, undo the addition or subtraction, then the division."
+      ],
+      "socraticHint": "What do you get when you multiply 2 by everything inside the brackets?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 6(x + 1) = 18.",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p07",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 5x + 4 = 2x + 13.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Subtract 2x from both sides: 3x + 4 = 13.",
+        "Subtract 4 from both sides: 3x = 9.",
+        "Divide both sides by 3: x = 3."
+      ],
+      "useAgain": "when the unknown appears on both sides of the equation.",
+      "hints": [
+        "Move every x term to one side first, before you touch the plain numbers.",
+        "Once the x terms are together, undo the addition or subtraction, then divide."
+      ],
+      "socraticHint": "If you subtract 2x from both sides, what does the equation become?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 4x + 2 = x + 17.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p08",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 6x + 5 = 3x + 11.",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Subtract 3x from both sides: 3x + 5 = 11.",
+        "Subtract 5 from both sides: 3x = 6.",
+        "Divide both sides by 3: x = 2."
+      ],
+      "useAgain": "when the unknown appears on both sides of the equation.",
+      "hints": [
+        "Move every x term to one side first, before you touch the plain numbers.",
+        "Once the x terms are together, undo the addition or subtraction, then divide."
+      ],
+      "socraticHint": "If you subtract 3x from both sides, what does the equation become?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 5x + 1 = 3x + 9.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p09",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 7x - 2 = 4x + 7.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Subtract 4x from both sides: 3x - 2 = 7.",
+        "Add 2 to both sides: 3x = 9.",
+        "Divide both sides by 3: x = 3."
+      ],
+      "useAgain": "when the unknown appears on both sides of the equation.",
+      "hints": [
+        "Move every x term to one side first, before you touch the plain numbers.",
+        "Once the x terms are together, undo the addition or subtraction, then divide."
+      ],
+      "socraticHint": "If you subtract 4x from both sides, what does the equation become?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 4x - 3 = 2x + 9.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p10",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 3x - 5 = x + 11.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Subtract x from both sides: 2x - 5 = 11.",
+        "Add 5 to both sides: 2x = 16.",
+        "Divide both sides by 2: x = 8."
+      ],
+      "useAgain": "when the unknown appears on both sides of the equation.",
+      "hints": [
+        "Move every x term to one side first, before you touch the plain numbers.",
+        "Once the x terms are together, undo the addition or subtraction, then divide."
+      ],
+      "socraticHint": "If you subtract x from both sides, what does the equation become?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 8x + 3 = 5x + 9.",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p11",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 5x - 1 = 4x + 8.",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Subtract 4x from both sides: x - 1 = 8.",
+        "Add 1 to both sides: x = 9.",
+        "Divide both sides by 1: x = 9."
+      ],
+      "useAgain": "when the unknown appears on both sides of the equation.",
+      "hints": [
+        "Move every x term to one side first, before you touch the plain numbers.",
+        "Once the x terms are together, undo the addition or subtraction, then divide."
+      ],
+      "socraticHint": "If you subtract 4x from both sides, what does the equation become?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 6x - 7 = 2x + 9.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p12",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 9x + 2 = 6x + 11.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Subtract 6x from both sides: 3x + 2 = 11.",
+        "Subtract 2 from both sides: 3x = 9.",
+        "Divide both sides by 3: x = 3."
+      ],
+      "useAgain": "when the unknown appears on both sides of the equation.",
+      "hints": [
+        "Move every x term to one side first, before you touch the plain numbers.",
+        "Once the x terms are together, undo the addition or subtraction, then divide."
+      ],
+      "socraticHint": "If you subtract 6x from both sides, what does the equation become?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 7x - 4 = 3x + 16.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p13",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "choice",
+      "prompt": "Solve for x: 3(x + 2) = 21.",
+      "options": [
+        "19/3",
+        "9",
+        "15",
+        "5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Distribute the 3: 3x + 6 = 21.",
+        "Subtract 6 from both sides: 3x = 15.",
+        "Divide both sides by 3: x = 5."
+      ],
+      "useAgain": "when a bracket multiplies the unknown before anything else happens to it.",
+      "hints": [
+        "Distribute the number outside the brackets to both terms inside first.",
+        "Once the brackets are gone, undo the addition or subtraction, then the division."
+      ],
+      "socraticHint": "Which step comes first: distributing the bracket, or dividing?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 2(x + 5) = 22.",
+        "options": [
+          "17/2",
+          "6",
+          "16",
+          "12"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p14",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "choice",
+      "prompt": "Solve for x: 4(x - 1) = 20.",
+      "options": [
+        "21/4",
+        "4",
+        "6",
+        "24"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Distribute the 4: 4x - 4 = 20.",
+        "Add 4 to both sides: 4x = 24.",
+        "Divide both sides by 4: x = 6."
+      ],
+      "useAgain": "when a bracket multiplies the unknown before anything else happens to it.",
+      "hints": [
+        "Distribute the number outside the brackets to both terms inside first.",
+        "Once the brackets are gone, undo the addition or subtraction, then the division."
+      ],
+      "socraticHint": "Which step comes first: distributing the bracket, or dividing?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 3(x - 2) = 15.",
+        "options": [
+          "7",
+          "17/3",
+          "3",
+          "21"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p15",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "truefalse",
+      "prompt": "True or false: x = 3 solves 5x + 4 = 2x + 13.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute x = 3: the left side is 19 and the right side is 19.",
+        "Those two sides are equal, so x = 3 does solve the equation.",
+        "The equation actually solves to x = 3."
+      ],
+      "useAgain": "when you want to check a solution without solving the equation from scratch.",
+      "hints": [
+        "Move every x term to one side first, before you touch the plain numbers.",
+        "Once the x terms are together, undo the addition or subtraction, then divide."
+      ],
+      "socraticHint": "What do you get on each side when you plug that value in for x?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: x = 5 solves 4x + 2 = x + 17.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p16",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 3(x + 2) = 2(x + 5).",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Distribute both sides: 3x + 6 = 2x + 10.",
+        "Subtract 2x from both sides: x + 6 = 10.",
+        "Subtract 6 from both sides: x = 4.",
+        "Divide both sides by 1: x = 4."
+      ],
+      "useAgain": "when a bracket multiplies the unknown on both sides of the equation.",
+      "hints": [
+        "Distribute both brackets before you move anything across the equals sign.",
+        "Once both brackets are gone, gather the x terms, then the plain numbers."
+      ],
+      "socraticHint": "What does each side look like once both brackets are distributed?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 4(x + 1) = 2(x + 6).",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p17",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 5(x - 1) = 3(x + 2).",
+      "answer": {
+        "kind": "number",
+        "value": "11/2"
+      },
+      "explanation": [
+        "Distribute both sides: 5x - 5 = 3x + 6.",
+        "Subtract 3x from both sides: 2x - 5 = 6.",
+        "Add 5 to both sides: 2x = 11.",
+        "Divide both sides by 2: x = 11/2."
+      ],
+      "useAgain": "when a bracket multiplies the unknown on both sides of the equation.",
+      "hints": [
+        "Distribute both brackets before you move anything across the equals sign.",
+        "Once both brackets are gone, gather the x terms, then the plain numbers."
+      ],
+      "socraticHint": "What does each side look like once both brackets are distributed?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 6(x - 2) = 4(x + 1).",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p18",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 4(x + 3) = 2(x + 7).",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Distribute both sides: 4x + 12 = 2x + 14.",
+        "Subtract 2x from both sides: 2x + 12 = 14.",
+        "Subtract 12 from both sides: 2x = 2.",
+        "Divide both sides by 2: x = 1."
+      ],
+      "useAgain": "when a bracket multiplies the unknown on both sides of the equation.",
+      "hints": [
+        "Distribute both brackets before you move anything across the equals sign.",
+        "Once both brackets are gone, gather the x terms, then the plain numbers."
+      ],
+      "socraticHint": "What does each side look like once both brackets are distributed?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 5(x + 2) = 3(x + 5).",
+        "answer": {
+          "kind": "number",
+          "value": "5/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p19",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 6(x - 2) = 4(x - 3).",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "Distribute both sides: 6x - 12 = 4x - 12.",
+        "Subtract 4x from both sides: 2x - 12 = -12.",
+        "Add 12 to both sides: 2x = 0.",
+        "Divide both sides by 2: x = 0."
+      ],
+      "useAgain": "when a bracket multiplies the unknown on both sides of the equation.",
+      "hints": [
+        "Distribute both brackets before you move anything across the equals sign.",
+        "Once both brackets are gone, gather the x terms, then the plain numbers."
+      ],
+      "socraticHint": "What does each side look like once both brackets are distributed?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 5(x - 4) = 3(x - 1).",
+        "answer": {
+          "kind": "number",
+          "value": "17/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p20",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 7(x + 1) = 5(x - 2).",
+      "answer": {
+        "kind": "number",
+        "value": "-17/2"
+      },
+      "explanation": [
+        "Distribute both sides: 7x + 7 = 5x - 10.",
+        "Subtract 5x from both sides: 2x + 7 = -10.",
+        "Subtract 7 from both sides: 2x = -17.",
+        "Divide both sides by 2: x = -17/2."
+      ],
+      "useAgain": "when a bracket multiplies the unknown on both sides of the equation.",
+      "hints": [
+        "Distribute both brackets before you move anything across the equals sign.",
+        "Once both brackets are gone, gather the x terms, then the plain numbers."
+      ],
+      "socraticHint": "What does each side look like once both brackets are distributed?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 4(x + 3) = 3(x + 2).",
+        "answer": {
+          "kind": "number",
+          "value": "-6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p21",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 8x - 3 = 3x + 9.",
+      "answer": {
+        "kind": "number",
+        "value": "12/5"
+      },
+      "explanation": [
+        "Subtract 3x from both sides: 5x - 3 = 9.",
+        "Add 3 to both sides: 5x = 12.",
+        "Divide both sides by 5: x = 12/5."
+      ],
+      "useAgain": "when the unknown appears on both sides of the equation.",
+      "hints": [
+        "Move every x term to one side first, before you touch the plain numbers.",
+        "Once the x terms are together, undo the addition or subtraction, then divide."
+      ],
+      "socraticHint": "If you subtract 3x from both sides, what does the equation become?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 7x - 5 = 4x + 6.",
+        "answer": {
+          "kind": "number",
+          "value": "11/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p22",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 9x - 6 = 5x - 1.",
+      "answer": {
+        "kind": "number",
+        "value": "5/4"
+      },
+      "explanation": [
+        "Subtract 5x from both sides: 4x - 6 = -1.",
+        "Add 6 to both sides: 4x = 5.",
+        "Divide both sides by 4: x = 5/4."
+      ],
+      "useAgain": "when the unknown appears on both sides of the equation.",
+      "hints": [
+        "Move every x term to one side first, before you touch the plain numbers.",
+        "Once the x terms are together, undo the addition or subtraction, then divide."
+      ],
+      "socraticHint": "If you subtract 5x from both sides, what does the equation become?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 6x - 8 = 2x - 2.",
+        "answer": {
+          "kind": "number",
+          "value": "3/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p23",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 7x + 6 = 3x - 4.",
+      "answer": {
+        "kind": "number",
+        "value": "-5/2"
+      },
+      "explanation": [
+        "Subtract 3x from both sides: 4x + 6 = -4.",
+        "Subtract 6 from both sides: 4x = -10.",
+        "Divide both sides by 4: x = -5/2."
+      ],
+      "useAgain": "when the unknown appears on both sides of the equation.",
+      "hints": [
+        "Move every x term to one side first, before you touch the plain numbers.",
+        "Once the x terms are together, undo the addition or subtraction, then divide."
+      ],
+      "socraticHint": "If you subtract 3x from both sides, what does the equation become?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 8x + 5 = 5x - 3.",
+        "answer": {
+          "kind": "number",
+          "value": "-8/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p24",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 10x - 7 = 4x + 5.",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Subtract 4x from both sides: 6x - 7 = 5.",
+        "Add 7 to both sides: 6x = 12.",
+        "Divide both sides by 6: x = 2."
+      ],
+      "useAgain": "when the unknown appears on both sides of the equation.",
+      "hints": [
+        "Move every x term to one side first, before you touch the plain numbers.",
+        "Once the x terms are together, undo the addition or subtraction, then divide."
+      ],
+      "socraticHint": "If you subtract 4x from both sides, what does the equation become?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 9x - 4 = 3x + 2.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p25",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: x/3 + 4 = 9.",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Subtract 4 from both sides: x/3 = 5.",
+        "Multiply both sides by 3: x = 15."
+      ],
+      "useAgain": "when the unknown is divided by a number before anything else happens to it.",
+      "hints": [
+        "Undo the addition or subtraction before the division.",
+        "Multiply both sides by the denominator to clear the fraction."
+      ],
+      "socraticHint": "Once the plain number is gone, what undoes dividing by 3?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: x/2 - 3 = 5.",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p26",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: x/4 - 2 = 5.",
+      "answer": {
+        "kind": "number",
+        "value": "28"
+      },
+      "explanation": [
+        "Add 2 to both sides: x/4 = 7.",
+        "Multiply both sides by 4: x = 28."
+      ],
+      "useAgain": "when the unknown is divided by a number before anything else happens to it.",
+      "hints": [
+        "Undo the addition or subtraction before the division.",
+        "Multiply both sides by the denominator to clear the fraction."
+      ],
+      "socraticHint": "Once the plain number is gone, what undoes dividing by 4?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: x/5 + 3 = 4.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p27",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "choice",
+      "prompt": "Solve for x: 4(x + 2) = 2(x + 6).",
+      "options": [
+        "2",
+        "-1",
+        "5",
+        "10"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Distribute both sides: 4x + 8 = 2x + 12.",
+        "Subtract 2x from both sides: 2x + 8 = 12.",
+        "Subtract 8 from both sides: 2x = 4.",
+        "Divide both sides by 2: x = 2."
+      ],
+      "useAgain": "when a bracket multiplies the unknown on both sides of the equation.",
+      "hints": [
+        "Distribute both brackets before you move anything across the equals sign.",
+        "Once both brackets are gone, gather the x terms, then the plain numbers."
+      ],
+      "socraticHint": "Did you distribute both brackets before moving anything?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 3(x + 1) = 2(x + 5).",
+        "options": [
+          "2",
+          "9",
+          "7",
+          "13"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p28",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "choice",
+      "prompt": "Solve for x: 5(x - 2) = 3(x + 1).",
+      "options": [
+        "11/2",
+        "13/2",
+        "5/2",
+        "-7/2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Distribute both sides: 5x - 10 = 3x + 3.",
+        "Subtract 3x from both sides: 2x - 10 = 3.",
+        "Add 10 to both sides: 2x = 13.",
+        "Divide both sides by 2: x = 13/2."
+      ],
+      "useAgain": "when a bracket multiplies the unknown on both sides of the equation.",
+      "hints": [
+        "Distribute both brackets before you move anything across the equals sign.",
+        "Once both brackets are gone, gather the x terms, then the plain numbers."
+      ],
+      "socraticHint": "Did you distribute both brackets before moving anything?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 4(x - 1) = 2(x + 5).",
+        "options": [
+          "9/2",
+          "11/2",
+          "3",
+          "7"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p29",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "choice",
+      "prompt": "Solve for x: 6(x + 1) = 4(x - 2).",
+      "options": [
+        "-4",
+        "-7",
+        "-9/2",
+        "-1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Distribute both sides: 6x + 6 = 4x - 8.",
+        "Subtract 4x from both sides: 2x + 6 = -8.",
+        "Subtract 6 from both sides: 2x = -14.",
+        "Divide both sides by 2: x = -7."
+      ],
+      "useAgain": "when a bracket multiplies the unknown on both sides of the equation.",
+      "hints": [
+        "Distribute both brackets before you move anything across the equals sign.",
+        "Once both brackets are gone, gather the x terms, then the plain numbers."
+      ],
+      "socraticHint": "Did you distribute both brackets before moving anything?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 5(x + 2) = 3(x - 1).",
+        "options": [
+          "-11/2",
+          "-5/2",
+          "-13/2",
+          "7/2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p30",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "order",
+      "prompt": "Put these steps in order to solve 3(x + 4) = 2(x + 1) for x.",
+      "items": [
+        "Subtract 12 from both sides: x = -10.",
+        "Distribute both sides: 3x + 12 = 2x + 2.",
+        "Divide both sides by 1 to get x = -10.",
+        "Subtract 2x from both sides: x + 12 = 2."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          3,
+          0,
+          2
+        ]
+      },
+      "explanation": [
+        "Distribute before moving anything across the equals sign.",
+        "Gather the x terms on one side, then the plain numbers.",
+        "Divide by the x term's coefficient last."
+      ],
+      "useAgain": "when a multi-step equation needs its steps done in the right order.",
+      "hints": [
+        "Distribute both brackets before you move anything across the equals sign.",
+        "Once both brackets are gone, gather the x terms, then the plain numbers."
+      ],
+      "socraticHint": "Which has to happen before anything can be moved across the equals sign?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to solve 4(x + 3) = 3(x + 2) for x.",
+        "items": [
+          "Subtract 3x from both sides: x + 12 = 6.",
+          "Divide both sides by 1 to get x = -6.",
+          "Distribute both sides: 4x + 12 = 3x + 6.",
+          "Subtract 12 from both sides: x = -6."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            0,
+            3,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p31",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: (x + 2)/3 + 1 = 4.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Subtract 1 from both sides: (x + 2)/3 = 3.",
+        "Multiply both sides by 3: x + 2 = 9.",
+        "Subtract 2 from both sides: x = 7."
+      ],
+      "useAgain": "when the unknown sits inside a fraction with a number added outside it.",
+      "hints": [
+        "Undo whatever is added or subtracted outside the fraction first.",
+        "Once the fraction stands alone, multiply both sides by its denominator."
+      ],
+      "socraticHint": "What do you get when you multiply both sides by 3?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: (x + 4)/2 + 2 = 6.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p32",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: (x - 3)/4 + 2 = 5.",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Subtract 2 from both sides: (x - 3)/4 = 3.",
+        "Multiply both sides by 4: x - 3 = 12.",
+        "Add 3 to both sides: x = 15."
+      ],
+      "useAgain": "when the unknown sits inside a fraction with a number added outside it.",
+      "hints": [
+        "Undo whatever is added or subtracted outside the fraction first.",
+        "Once the fraction stands alone, multiply both sides by its denominator."
+      ],
+      "socraticHint": "What do you get when you multiply both sides by 4?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: (x - 1)/3 + 3 = 6.",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p33",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: (x + 1)/5 - 2 = 3.",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "Add 2 to both sides: (x + 1)/5 = 5.",
+        "Multiply both sides by 5: x + 1 = 25.",
+        "Subtract 1 from both sides: x = 24."
+      ],
+      "useAgain": "when the unknown sits inside a fraction with a number added outside it.",
+      "hints": [
+        "Undo whatever is added or subtracted outside the fraction first.",
+        "Once the fraction stands alone, multiply both sides by its denominator."
+      ],
+      "socraticHint": "What do you get when you multiply both sides by 5?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: (x + 4)/4 - 1 = 1.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p34",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: (x + 5)/2 + 3 = 7.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Subtract 3 from both sides: (x + 5)/2 = 4.",
+        "Multiply both sides by 2: x + 5 = 8.",
+        "Subtract 5 from both sides: x = 3."
+      ],
+      "useAgain": "when the unknown sits inside a fraction with a number added outside it.",
+      "hints": [
+        "Undo whatever is added or subtracted outside the fraction first.",
+        "Once the fraction stands alone, multiply both sides by its denominator."
+      ],
+      "socraticHint": "What do you get when you multiply both sides by 2?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: (x - 2)/3 + 2 = 4.",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p35",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 20 - 3(x + 2) = 5.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Distribute the 3, remembering the minus sign in front of it: 20 - 3x + 6 = 5.",
+        "Combine the plain numbers on the left: -3x + 14 = 5.",
+        "Subtract 14 from both sides: -3x = -9.",
+        "Divide both sides by -3: x = 3."
+      ],
+      "useAgain": "when a bracket holding the unknown is subtracted rather than added.",
+      "hints": [
+        "The minus sign in front of the bracket flips the sign of everything distributed out of it.",
+        "Combine the plain numbers on the left before you move the x term."
+      ],
+      "socraticHint": "What is 20 - 3 times 2, before x is even involved?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: 15 - 2(x + 3) = 5.",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p36",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 10 - 4(x + 1) = -6.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Distribute the 4, remembering the minus sign in front of it: 10 - 4x + 4 = -6.",
+        "Combine the plain numbers on the left: -4x + 6 = -6.",
+        "Subtract 6 from both sides: -4x = -12.",
+        "Divide both sides by -4: x = 3."
+      ],
+      "useAgain": "when a bracket holding the unknown is subtracted rather than added.",
+      "hints": [
+        "The minus sign in front of the bracket flips the sign of everything distributed out of it.",
+        "Combine the plain numbers on the left before you move the x term."
+      ],
+      "socraticHint": "What is 10 - 4 times 1, before x is even involved?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: 12 - 3(x + 2) = -3.",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p37",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 18 - 5(x + 3) = -12.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Distribute the 5, remembering the minus sign in front of it: 18 - 5x + 15 = -12.",
+        "Combine the plain numbers on the left: -5x + 3 = -12.",
+        "Subtract 3 from both sides: -5x = -15.",
+        "Divide both sides by -5: x = 3."
+      ],
+      "useAgain": "when a bracket holding the unknown is subtracted rather than added.",
+      "hints": [
+        "The minus sign in front of the bracket flips the sign of everything distributed out of it.",
+        "Combine the plain numbers on the left before you move the x term."
+      ],
+      "socraticHint": "What is 18 - 5 times 3, before x is even involved?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: 16 - 4(x + 2) = -8.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p38",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 2(3(x + 1) + 4) = 26.",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Work from the inside out: distribute the 3, giving 3x + 3 + 4 inside the brackets.",
+        "Combine the plain numbers inside: the brackets become 3x + 7.",
+        "Distribute the 2: 6x + 14 = 26.",
+        "Subtract 14 from both sides: 6x = 12.",
+        "Divide both sides by 6: x = 2."
+      ],
+      "useAgain": "when one bracket sits inside another around the unknown.",
+      "hints": [
+        "Work from the innermost brackets outward, one distribution at a time.",
+        "Combine the plain numbers inside the outer brackets before distributing the outer number."
+      ],
+      "socraticHint": "Which brackets are innermost, and what has to happen to them first?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: 3(2(x + 2) + 3) = 21.",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p39",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 3(2(x + 2) - 1) = 17.",
+      "answer": {
+        "kind": "number",
+        "value": "4/3"
+      },
+      "explanation": [
+        "Work from the inside out: distribute the 2, giving 2x + 4 - 1 inside the brackets.",
+        "Combine the plain numbers inside: the brackets become 2x + 3.",
+        "Distribute the 3: 6x + 9 = 17.",
+        "Subtract 9 from both sides: 6x = 8.",
+        "Divide both sides by 6: x = 4/3."
+      ],
+      "useAgain": "when one bracket sits inside another around the unknown.",
+      "hints": [
+        "Work from the innermost brackets outward, one distribution at a time.",
+        "Combine the plain numbers inside the outer brackets before distributing the outer number."
+      ],
+      "socraticHint": "Which brackets are innermost, and what has to happen to them first?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: 2(4(x + 1) - 2) = 22.",
+        "answer": {
+          "kind": "number",
+          "value": "9/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p40",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 4(2(x - 1) + 3) = 19.",
+      "answer": {
+        "kind": "number",
+        "value": "15/8"
+      },
+      "explanation": [
+        "Work from the inside out: distribute the 2, giving 2x - 2 + 3 inside the brackets.",
+        "Combine the plain numbers inside: the brackets become 2x + 1.",
+        "Distribute the 4: 8x + 4 = 19.",
+        "Subtract 4 from both sides: 8x = 15.",
+        "Divide both sides by 8: x = 15/8."
+      ],
+      "useAgain": "when one bracket sits inside another around the unknown.",
+      "hints": [
+        "Work from the innermost brackets outward, one distribution at a time.",
+        "Combine the plain numbers inside the outer brackets before distributing the outer number."
+      ],
+      "socraticHint": "Which brackets are innermost, and what has to happen to them first?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: 3(3(x - 2) + 4) = 25.",
+        "answer": {
+          "kind": "number",
+          "value": "31/9"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p41",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "choice",
+      "prompt": "Solve for x: (x + 3)/2 + 1 = 6.",
+      "options": [
+        "7",
+        "2",
+        "13",
+        "9"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Subtract 1 from both sides: (x + 3)/2 = 5.",
+        "Multiply both sides by 2: x + 3 = 10.",
+        "Subtract 3 from both sides: x = 7."
+      ],
+      "useAgain": "when the unknown sits inside a fraction with a number added outside it.",
+      "hints": [
+        "Undo whatever is added or subtracted outside the fraction first.",
+        "Once the fraction stands alone, multiply both sides by its denominator."
+      ],
+      "socraticHint": "What do both sides become once you multiply by 2?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: (x + 2)/3 + 2 = 5.",
+        "options": [
+          "1",
+          "11",
+          "13",
+          "7"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p42",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "choice",
+      "prompt": "Solve for x: (x - 2)/4 + 3 = 8.",
+      "options": [
+        "7",
+        "18",
+        "22",
+        "34"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Subtract 3 from both sides: (x - 2)/4 = 5.",
+        "Multiply both sides by 4: x - 2 = 20.",
+        "Add 2 to both sides: x = 22."
+      ],
+      "useAgain": "when the unknown sits inside a fraction with a number added outside it.",
+      "hints": [
+        "Undo whatever is added or subtracted outside the fraction first.",
+        "Once the fraction stands alone, multiply both sides by its denominator."
+      ],
+      "socraticHint": "What do both sides become once you multiply by 4?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: (x - 1)/5 + 2 = 7.",
+        "options": [
+          "26",
+          "6",
+          "24",
+          "36"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p43",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "choice",
+      "prompt": "Solve for x: (x + 4)/3 - 1 = 3.",
+      "options": [
+        "0",
+        "16",
+        "5",
+        "8"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Add 1 to both sides: (x + 4)/3 = 4.",
+        "Multiply both sides by 3: x + 4 = 12.",
+        "Subtract 4 from both sides: x = 8."
+      ],
+      "useAgain": "when the unknown sits inside a fraction with a number added outside it.",
+      "hints": [
+        "Undo whatever is added or subtracted outside the fraction first.",
+        "Once the fraction stands alone, multiply both sides by its denominator."
+      ],
+      "socraticHint": "What do both sides become once you multiply by 3?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: (x + 2)/2 - 2 = 3.",
+        "options": [
+          "3",
+          "8",
+          "12",
+          "4"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p44",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "truefalse",
+      "prompt": "True or false: 3(x + 2) = 3x + 6 has infinitely many solutions.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Distribute the left side: 3x + 6 = 3x + 6.",
+        "The x terms match on both sides, so everything depends on the plain numbers: 6 versus 6.",
+        "Since 6 equals 6, the equation has infinitely many solutions."
+      ],
+      "useAgain": "when an equation's x terms cancel out on both sides.",
+      "hints": [
+        "Distribute the bracket and compare it to the right side.",
+        "If the x terms cancel, only the plain numbers decide the answer."
+      ],
+      "socraticHint": "Once you distribute, do the x terms on each side match?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "True or false: 5(x - 1) = 5x - 3 has infinitely many solutions.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p45",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "order",
+      "prompt": "Put these steps in order to solve (x + 2)/3 + 1 = 4 for x.",
+      "items": [
+        "Multiply both sides by 3: x + 2 = 9.",
+        "Subtract 2 from both sides to get x = 7.",
+        "Subtract 1 from both sides: (x + 2)/3 = 3."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Undo whatever is added or subtracted outside the fraction first.",
+        "Clear the fraction next by multiplying both sides by its denominator.",
+        "Undo whatever is left with the unknown last."
+      ],
+      "useAgain": "when a fraction equation needs its steps done in the right order.",
+      "hints": [
+        "Undo whatever is added or subtracted outside the fraction first.",
+        "Once the fraction stands alone, multiply both sides by its denominator."
+      ],
+      "socraticHint": "What comes off the outside of the fraction first?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps in order to solve (x - 1)/3 + 3 = 6 for x.",
+        "items": [
+          "Add 1 to both sides to get x = 10.",
+          "Subtract 3 from both sides: (x - 1)/3 = 3.",
+          "Multiply both sides by 3: x - 1 = 9."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-al-multi-step-equations-p46",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "For a whole number k, 2(x - k) + 5 = 3x - 7. For how many whole-number values of k does the resulting x satisfy 1 < x < 10?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Expand the left side: 2x - 2k + 5 = 3x - 7.",
+        "Move the x terms: -2k + 12 = x, so x = 12 - 2k.",
+        "x is a whole number for every whole number k, so just bound it: 1 < 12 - 2k < 10.",
+        "That gives 1 < k < 5.5, so k can be 2, 3, 4 or 5.",
+        "That is 4 values."
+      ],
+      "useAgain": "when a whole family of equations is solved at once and you need to count how many give a valid answer.",
+      "hints": [
+        "Expand the bracket and gather every x term on one side, treating k as a plain number.",
+        "Once x is written in terms of k, turn the range into an inequality in k."
+      ],
+      "socraticHint": "Once x is written as an expression in k, what inequality in k does the range give you?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For a whole number k, 3(x - k) + 4 = 4x - 6. For how many whole-number values of k does the resulting x satisfy 1 < x < 10?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p47",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "For an integer k, 2(x + k) = x - 5. For how many integer values of k does the resulting x satisfy -5 < x < 15?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Expand the left side: 2x + 2k = x - 5.",
+        "Move the x terms: x = -5 - 2k.",
+        "Turn the range into an inequality in k: -5 < -5 - 2k < 15.",
+        "That gives -10 < k < 0, so k can be -9 through -1.",
+        "That is 9 values."
+      ],
+      "useAgain": "when a whole family of equations is solved at once and you need to count how many give a valid answer.",
+      "hints": [
+        "Expand the bracket and collect the x terms on one side, treating k as a plain number.",
+        "Turn the range for x into a double inequality in k, then count the integers inside it."
+      ],
+      "socraticHint": "Once x is written as an expression in k, how many integers k land inside the range?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For an integer k, 3(x + k) = 2x - 4. For how many integer values of k does the resulting x satisfy -5 < x < 15?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p48",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "For which value of c does 4(x + 3) = 4x + c have infinitely many solutions?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Distribute the left side: 4x + 12 = 4x + c.",
+        "The x terms already match on both sides, so the equation is true for every x only when the plain numbers match too.",
+        "That happens when c = 12."
+      ],
+      "useAgain": "when an equation's x terms already match and only one value of a constant makes it always true.",
+      "hints": [
+        "Distribute the bracket and compare it to the right side term by term.",
+        "The x terms already match, so only the plain numbers decide it."
+      ],
+      "socraticHint": "Once distributed, what value makes the plain numbers on each side equal too?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For which value of c does 5(x + 2) = 5x + c have infinitely many solutions?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p49",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 3(4(x - 2) + 5) = 47.",
+      "answer": {
+        "kind": "number",
+        "value": "14/3"
+      },
+      "explanation": [
+        "Work from the inside out: distribute the 4, giving 4x - 8 + 5 inside the brackets.",
+        "Combine the plain numbers inside: the brackets become 4x - 3.",
+        "Distribute the 3: 12x - 9 = 47.",
+        "Add 9 to both sides: 12x = 56.",
+        "Divide both sides by 12: x = 14/3."
+      ],
+      "useAgain": "when one bracket sits inside another around the unknown.",
+      "hints": [
+        "Work from the innermost brackets outward, one distribution at a time.",
+        "Combine the plain numbers inside the outer brackets before distributing the outer number."
+      ],
+      "socraticHint": "Which brackets are innermost, and what has to happen to them first?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: 2(5(x - 1) + 6) = 41.",
+        "answer": {
+          "kind": "number",
+          "value": "39/10"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-multi-step-equations-p50",
+      "lane": "skills",
+      "ideaId": "al-multi-step-equations",
+      "kind": "number",
+      "prompt": "Solve 3(x - 5) = 2x + 9 for x, then find the sum of the digits of x.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Distribute the left side: 3x - 15 = 2x + 9.",
+        "Subtract 2x from both sides: x - 15 = 9.",
+        "Add 15 to both sides: x = 24.",
+        "Divide both sides by 1: x = 24.",
+        "The digits of 24 add up to 6."
+      ],
+      "useAgain": "when a problem asks something about a solution rather than the solution itself.",
+      "hints": [
+        "Distribute the number outside the brackets to both terms inside first.",
+        "Once the brackets are gone, undo the addition or subtraction, then the division."
+      ],
+      "socraticHint": "Once you know x as a number, what do its digits add up to?",
+      "skills": [
+        "think.skills.equations",
+        "think.skills.expressions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve 4(x - 6) = 3x + 7 for x, then find the sum of the digits of x.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    }
+  ]
+}

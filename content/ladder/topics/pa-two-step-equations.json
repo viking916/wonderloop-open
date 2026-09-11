@@ -1,0 +1,2006 @@
+{
+  "id": "pa-two-step-equations",
+  "idea": {
+    "body": "A two-step equation changes the unknown twice, so it takes two opposite operations, in reverse order, to undo it. Undo the addition or subtraction first, then undo the multiplication or division last, the reverse of how the equation was built. If 3x + 4 = 19, subtract 4 from both sides to get 3x = 15, then divide by 3 to get x = 5. A game gives a starting bonus of 7 points plus 12 points per level cleared. A final score of 91 gives the equation 12x + 7 = 91, and solving it gives x = 7 levels. Always undo the loosest, outermost operation before the one holding the unknown."
+  },
+  "workedExample": {
+    "prompt": "A game gives a starting bonus of 7 points plus 12 points for every level cleared. Its final score is 91. Solve 12x + 7 = 91 for x, the number of levels cleared.",
+    "steps": [
+      "A game gives a starting bonus of 7 points plus 12 points for every level cleared.",
+      "The final score is 91, so 12x + 7 = 91.",
+      "Undo the addition first: subtract 7 from both sides to get 12x = 84.",
+      "Undo the multiplication last: divide both sides by 12.",
+      "x = 7, so the player cleared 7 levels."
+    ]
+  },
+  "ways": [
+    {
+      "id": "pa-two-step-equations-w1",
+      "name": "Undo in reverse order",
+      "when": "Use this for any two-step equation as the default, reliable method.",
+      "steps": [
+        "3x + 4 = 19 was built by multiplying by 3 first, then adding 4.",
+        "Undo the addition first: subtract 4 from both sides to get 3x = 15.",
+        "Undo the multiplication last: divide both sides by 3.",
+        "x = 5."
+      ],
+      "example": "3x + 4 = 19",
+      "answer": "5",
+      "trap": "Dividing by 3 before subtracting 4, undoing the steps out of order."
+    },
+    {
+      "id": "pa-two-step-equations-w2",
+      "name": "Cover-up working backward",
+      "when": "Use this when you want to solve in two quick fact questions instead of formal steps.",
+      "steps": [
+        "Cover the whole multiplication part: [box] - 3 = 17.",
+        "What must the box be? 17 + 3 = 20, so 4x = 20.",
+        "Now cover just x: 4 times [box] = 20, so the box is 5.",
+        "x = 5."
+      ],
+      "example": "4x - 3 = 17",
+      "answer": "5",
+      "trap": "Solving for the covered part but forgetting to divide by 4 to reach x."
+    },
+    {
+      "id": "pa-two-step-equations-w3",
+      "name": "Guess, check and adjust",
+      "when": "Use this when the equation has small, friendly numbers to test.",
+      "steps": [
+        "Guess x = 5 and check: 2 times 5 plus 5 = 15, too small.",
+        "Try a bigger number, x = 7: 2 times 7 plus 5 = 19, too big now.",
+        "Adjust between 5 and 7: try x = 6. 2 times 6 plus 5 = 17, which matches.",
+        "x = 6."
+      ],
+      "example": "2x + 5 = 17",
+      "answer": "6",
+      "trap": "Adjusting by too large a jump and skipping past the answer."
+    },
+    {
+      "id": "pa-two-step-equations-w4",
+      "name": "The function machine",
+      "when": "Use this to picture the equation as steps built forward, then undone backward.",
+      "steps": [
+        "Picture the equation as a machine: x goes in, gets multiplied by 5, then has 2 subtracted, and 13 comes out.",
+        "To undo it, run the machine backward from 13: first add 2, undoing the subtraction, giving 15.",
+        "Then divide by 5, undoing the multiplication, giving 3.",
+        "x = 3."
+      ],
+      "example": "5x - 2 = 13",
+      "answer": "3",
+      "trap": "Running the backward steps in the same order as the forward machine instead of reversed.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A function machine: x goes in, is multiplied by 5, has 2 subtracted, and 13 comes out.",
+        "spec": {
+          "w": 340,
+          "h": 90,
+          "items": [
+            {
+              "t": "box",
+              "x": 10,
+              "y": 25,
+              "w": 40,
+              "h": 40,
+              "fill": "paper",
+              "label": "x"
+            },
+            {
+              "t": "line",
+              "x1": 50,
+              "y1": 45,
+              "x2": 80,
+              "y2": 45,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 25,
+              "w": 50,
+              "h": 40,
+              "fill": "paper",
+              "label": "×5"
+            },
+            {
+              "t": "line",
+              "x1": 140,
+              "y1": 45,
+              "x2": 170,
+              "y2": 45,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 180,
+              "y": 25,
+              "w": 50,
+              "h": 40,
+              "fill": "paper",
+              "label": "- 2"
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 45,
+              "x2": 260,
+              "y2": 45,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 270,
+              "y": 25,
+              "w": 50,
+              "h": 40,
+              "fill": "accent",
+              "label": "13"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "5x - 2 = 13.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Picture the equation as a machine: x goes",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "To undo it, run the machine backward from",
+              "set": {
+                "5": {
+                  "x1": 260,
+                  "y1": 45,
+                  "x2": 230,
+                  "y2": 45
+                },
+                "4": {
+                  "label": "+2"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Then divide by 5, undoing the multiplication,",
+              "set": {
+                "5": {
+                  "x1": 260,
+                  "y1": 45,
+                  "x2": 230,
+                  "y2": 45
+                },
+                "4": {
+                  "label": "+2"
+                },
+                "3": {
+                  "x1": 170,
+                  "y1": 45,
+                  "x2": 140,
+                  "y2": 45
+                },
+                "2": {
+                  "label": "÷5"
+                }
+              }
+            },
+            {
+              "ms": 1200,
+              "caption": "x = 3.",
+              "set": {
+                "5": {
+                  "x1": 260,
+                  "y1": 45,
+                  "x2": 230,
+                  "y2": 45
+                },
+                "4": {
+                  "label": "+2"
+                },
+                "3": {
+                  "x1": 170,
+                  "y1": 45,
+                  "x2": 140,
+                  "y2": 45
+                },
+                "2": {
+                  "label": "÷5"
+                },
+                "1": {
+                  "x1": 80,
+                  "y1": 45,
+                  "x2": 50,
+                  "y2": 45
+                },
+                "0": {
+                  "label": "3"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-pa-two-step-equations-p01",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 3x + 4 = 19.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Undo the addition first: subtract 4 from both sides to get 3x = 15.",
+        "Undo the multiplication: divide both sides by 3.",
+        "x = 5."
+      ],
+      "useAgain": "when an equation adds a number after multiplying the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the multiplication.",
+        "Once 3x = 15, divide by 3."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the addition or the multiplication?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 4x + 3 = 23.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p02",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for y: 2y + 5 = 15.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Undo the addition first: subtract 5 from both sides to get 2y = 10.",
+        "Undo the multiplication: divide both sides by 2.",
+        "y = 5."
+      ],
+      "useAgain": "when an equation adds a number after multiplying the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the multiplication.",
+        "Once 2y = 10, divide by 2."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the addition or the multiplication?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for y: 3y + 4 = 19.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p03",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for n: 4n + 3 = 23.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Undo the addition first: subtract 3 from both sides to get 4n = 20.",
+        "Undo the multiplication: divide both sides by 4.",
+        "n = 5."
+      ],
+      "useAgain": "when an equation adds a number after multiplying the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the multiplication.",
+        "Once 4n = 20, divide by 4."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the addition or the multiplication?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for n: 5n + 2 = 27.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p04",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for t: 5t + 2 = 27.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Undo the addition first: subtract 2 from both sides to get 5t = 25.",
+        "Undo the multiplication: divide both sides by 5.",
+        "t = 5."
+      ],
+      "useAgain": "when an equation adds a number after multiplying the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the multiplication.",
+        "Once 5t = 25, divide by 5."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the addition or the multiplication?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for t: 2t + 5 = 15.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p05",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for k: 3k + 7 = 22.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Undo the addition first: subtract 7 from both sides to get 3k = 15.",
+        "Undo the multiplication: divide both sides by 3.",
+        "k = 5."
+      ],
+      "useAgain": "when an equation adds a number after multiplying the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the multiplication.",
+        "Once 3k = 15, divide by 3."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the addition or the multiplication?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for k: 4k + 6 = 26.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p06",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for m: 2m + 9 = 17.",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Undo the addition first: subtract 9 from both sides to get 2m = 8.",
+        "Undo the multiplication: divide both sides by 2.",
+        "m = 4."
+      ],
+      "useAgain": "when an equation adds a number after multiplying the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the multiplication.",
+        "Once 2m = 8, divide by 2."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the addition or the multiplication?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for m: 3m + 8 = 20.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p07",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 2x - 3 = 11.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Undo the subtraction first: add 3 to both sides to get 2x = 14.",
+        "Undo the multiplication: divide both sides by 2.",
+        "x = 7."
+      ],
+      "useAgain": "when an equation subtracts a number after multiplying the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the multiplication.",
+        "Once 2x = 14, divide by 2."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the subtraction or the multiplication?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: 3x - 2 = 16.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p08",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for y: 3y - 4 = 17.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Undo the subtraction first: add 4 to both sides to get 3y = 21.",
+        "Undo the multiplication: divide both sides by 3.",
+        "y = 7."
+      ],
+      "useAgain": "when an equation subtracts a number after multiplying the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the multiplication.",
+        "Once 3y = 21, divide by 3."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the subtraction or the multiplication?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for y: 4y - 3 = 21.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p09",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for n: 4n - 5 = 19.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Undo the subtraction first: add 5 to both sides to get 4n = 24.",
+        "Undo the multiplication: divide both sides by 4.",
+        "n = 6."
+      ],
+      "useAgain": "when an equation subtracts a number after multiplying the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the multiplication.",
+        "Once 4n = 24, divide by 4."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the subtraction or the multiplication?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for n: 5n - 4 = 26.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p10",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for t: 5t - 6 = 24.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Undo the subtraction first: add 6 to both sides to get 5t = 30.",
+        "Undo the multiplication: divide both sides by 5.",
+        "t = 6."
+      ],
+      "useAgain": "when an equation subtracts a number after multiplying the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the multiplication.",
+        "Once 5t = 30, divide by 5."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the subtraction or the multiplication?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for t: 2t - 7 = 9.",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p11",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for k: 3k - 2 = 13.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Undo the subtraction first: add 2 to both sides to get 3k = 15.",
+        "Undo the multiplication: divide both sides by 3.",
+        "k = 5."
+      ],
+      "useAgain": "when an equation subtracts a number after multiplying the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the multiplication.",
+        "Once 3k = 15, divide by 3."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the subtraction or the multiplication?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for k: 4k - 3 = 17.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p12",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: x/2 + 3 = 9.",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Undo the addition first: subtract 3 from both sides to get x/2 = 6.",
+        "Undo the division: multiply both sides by 2.",
+        "x = 12."
+      ],
+      "useAgain": "when an equation adds a number after dividing the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the division.",
+        "Once x/2 = 6, multiply by 2."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the addition or the division?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for x: x/3 + 2 = 8.",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p13",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for y: y/3 + 4 = 8.",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Undo the addition first: subtract 4 from both sides to get y/3 = 4.",
+        "Undo the division: multiply both sides by 3.",
+        "y = 12."
+      ],
+      "useAgain": "when an equation adds a number after dividing the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the division.",
+        "Once y/3 = 4, multiply by 3."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the addition or the division?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for y: y/4 + 3 = 7.",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p14",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for n: n/4 + 5 = 7.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Undo the addition first: subtract 5 from both sides to get n/4 = 2.",
+        "Undo the division: multiply both sides by 4.",
+        "n = 8."
+      ],
+      "useAgain": "when an equation adds a number after dividing the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the division.",
+        "Once n/4 = 2, multiply by 4."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the addition or the division?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for n: n/2 + 6 = 9.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p15",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for t: t/5 + 2 = 6.",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "Undo the addition first: subtract 2 from both sides to get t/5 = 4.",
+        "Undo the division: multiply both sides by 5.",
+        "t = 20."
+      ],
+      "useAgain": "when an equation adds a number after dividing the unknown.",
+      "hints": [
+        "Undo the addition or subtraction before the division.",
+        "Once t/5 = 4, multiply by 5."
+      ],
+      "socraticHint": "Which comes first when undoing this equation, the addition or the division?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve for t: t/4 + 3 = 5.",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p16",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 3x + 10 = 4.",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Subtract 10 on both sides to get 3x = -6.",
+        "Divide both sides by 3.",
+        "x = -2, and it is fine for that to be negative."
+      ],
+      "useAgain": "when a two-step equation's unknown lands on a negative number.",
+      "hints": [
+        "Subtract 10 first, before dividing by 3.",
+        "The unknown does not need to end up positive."
+      ],
+      "socraticHint": "Once 3x = -6, is -6 positive or negative, and what does that mean for x?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x: 4x + 12 = 4.",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p17",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for y: 2y + 15 = 5.",
+      "answer": {
+        "kind": "number",
+        "value": "-5"
+      },
+      "explanation": [
+        "Subtract 15 on both sides to get 2y = -10.",
+        "Divide both sides by 2.",
+        "y = -5, and it is fine for that to be negative."
+      ],
+      "useAgain": "when a two-step equation's unknown lands on a negative number.",
+      "hints": [
+        "Subtract 15 first, before dividing by 2.",
+        "The unknown does not need to end up positive."
+      ],
+      "socraticHint": "Once 2y = -10, is -10 positive or negative, and what does that mean for y?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for y: 3y + 20 = 5.",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p18",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for n: 4n - 5 = -17.",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "Add 5 on both sides to get 4n = -12.",
+        "Divide both sides by 4.",
+        "n = -3, and it is fine for that to be negative."
+      ],
+      "useAgain": "when a two-step equation's unknown lands on a negative number.",
+      "hints": [
+        "Add 5 first, before dividing by 4.",
+        "The unknown does not need to end up positive."
+      ],
+      "socraticHint": "Once 4n = -12, is -12 positive or negative, and what does that mean for n?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for n: 5n - 6 = -26.",
+        "answer": {
+          "kind": "number",
+          "value": "-4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p19",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for t: 5t + 20 = 5.",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "Subtract 20 on both sides to get 5t = -15.",
+        "Divide both sides by 5.",
+        "t = -3, and it is fine for that to be negative."
+      ],
+      "useAgain": "when a two-step equation's unknown lands on a negative number.",
+      "hints": [
+        "Subtract 20 first, before dividing by 5.",
+        "The unknown does not need to end up positive."
+      ],
+      "socraticHint": "Once 5t = -15, is -15 positive or negative, and what does that mean for t?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for t: 2t + 14 = 6.",
+        "answer": {
+          "kind": "number",
+          "value": "-4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p20",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for k: 3k - 8 = -11.",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "Add 8 on both sides to get 3k = -3.",
+        "Divide both sides by 3.",
+        "k = -1, and it is fine for that to be negative."
+      ],
+      "useAgain": "when a two-step equation's unknown lands on a negative number.",
+      "hints": [
+        "Add 8 first, before dividing by 3.",
+        "The unknown does not need to end up positive."
+      ],
+      "socraticHint": "Once 3k = -3, is -3 positive or negative, and what does that mean for k?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for k: 4k - 9 = -13.",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p21",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "A toy rocket's launch takes a fixed 5 seconds to ignite, then burns 8 seconds for every booster it fires. The whole launch took 45 seconds. Solve 8x + 5 = 45 to find x, the number of boosters.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Subtract 5 from both sides: 8x = 40.",
+        "Divide both sides by 8.",
+        "x = 5."
+      ],
+      "useAgain": "when a story adds a fixed amount on top of a rate times an unknown.",
+      "hints": [
+        "The equation is already given as 8x + 5 = 45.",
+        "Undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "Does the fixed amount 5 get undone before or after the per-unit amount 8?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A toy rocket's launch takes a fixed 4 seconds to ignite, then burns 6 seconds for every booster it fires. The whole launch took 34 seconds. Solve 6x + 4 = 34 to find x, the number of boosters.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p22",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "A video game gives a starting bonus of 7 points, then 12 points for every level you clear. Your final score is 91. Solve 12y + 7 = 91 to find y, the number of levels cleared.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Subtract 7 from both sides: 12y = 84.",
+        "Divide both sides by 12.",
+        "y = 7."
+      ],
+      "useAgain": "when a story adds a fixed amount on top of a rate times an unknown.",
+      "hints": [
+        "The equation is already given as 12y + 7 = 91.",
+        "Undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "Does the fixed amount 7 get undone before or after the per-unit amount 12?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A video game gives a starting bonus of 9 points, then 10 points for every level you clear. Your final score is 79. Solve 10y + 9 = 79 to find y, the number of levels cleared.",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p23",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "A kitchen scale reads 20 grams for the empty container, plus 15 grams for every scoop of flour added. The scale now reads 95 grams. Solve 15n + 20 = 95 to find n, the number of scoops.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Subtract 20 from both sides: 15n = 75.",
+        "Divide both sides by 15.",
+        "n = 5."
+      ],
+      "useAgain": "when a story adds a fixed amount on top of a rate times an unknown.",
+      "hints": [
+        "The equation is already given as 15n + 20 = 95.",
+        "Undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "Does the fixed amount 20 get undone before or after the per-unit amount 15?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A kitchen scale reads 15 grams for the empty container, plus 12 grams for every scoop of flour added. The scale now reads 75 grams. Solve 12n + 15 = 75 to find n, the number of scoops.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p24",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "A piano practice log starts with a 10 minute warmup, then 6 minutes for every song practiced after that. The whole practice took 52 minutes. Solve 6t + 10 = 52 to find t, the number of songs practiced.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Subtract 10 from both sides: 6t = 42.",
+        "Divide both sides by 6.",
+        "t = 7."
+      ],
+      "useAgain": "when a story adds a fixed amount on top of a rate times an unknown.",
+      "hints": [
+        "The equation is already given as 6t + 10 = 52.",
+        "Undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "Does the fixed amount 10 get undone before or after the per-unit amount 6?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A piano practice log starts with an 8 minute warmup, then 5 minutes for every song practiced after that. The whole practice took 43 minutes. Solve 5t + 8 = 43 to find t, the number of songs practiced.",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p25",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "A garden robot starts with 4 leftover seeds in its hopper, then plants 9 seeds in every row it finishes. It has used 76 seeds in total. Solve 9k + 4 = 76 to find k, the number of rows finished.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Subtract 4 from both sides: 9k = 72.",
+        "Divide both sides by 9.",
+        "k = 8."
+      ],
+      "useAgain": "when a story adds a fixed amount on top of a rate times an unknown.",
+      "hints": [
+        "The equation is already given as 9k + 4 = 76.",
+        "Undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "Does the fixed amount 4 get undone before or after the per-unit amount 9?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A garden robot starts with 3 leftover seeds in its hopper, then plants 7 seeds in every row it finishes. It has used 59 seeds in total. Solve 7k + 3 = 59 to find k, the number of rows finished.",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p26",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "truefalse",
+      "prompt": "Is x = 5 a solution to 3x + 4 = 19?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Put 5 in place of x: 3 times 5 plus 4 is 19.",
+        "19 matches the 19 on the right side."
+      ],
+      "useAgain": "when you need to check a claimed solution to a two-step equation.",
+      "hints": [
+        "Substitute 5 into the left side and compute it fully.",
+        "Compare the result to 19."
+      ],
+      "socraticHint": "Does 3 times 5 plus 4 actually equal 19?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Is x = 5 a solution to 4x + 3 = 23?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p27",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "truefalse",
+      "prompt": "Is y = 6 a solution to 2y + 5 = 15?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Put 6 in place of y: 2 times 6 plus 5 is 17.",
+        "17 does not match the 15 on the right side."
+      ],
+      "useAgain": "when you need to check a claimed solution to a two-step equation.",
+      "hints": [
+        "Substitute 6 into the left side and compute it fully.",
+        "Compare the result to 15."
+      ],
+      "socraticHint": "Does 2 times 6 plus 5 actually equal 15?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Is y = 4 a solution to 3y + 4 = 19?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p28",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "truefalse",
+      "prompt": "Is n = 5 a solution to 4n + 3 = 23?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Put 5 in place of n: 4 times 5 plus 3 is 23.",
+        "23 matches the 23 on the right side."
+      ],
+      "useAgain": "when you need to check a claimed solution to a two-step equation.",
+      "hints": [
+        "Substitute 5 into the left side and compute it fully.",
+        "Compare the result to 23."
+      ],
+      "socraticHint": "Does 4 times 5 plus 3 actually equal 23?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Is n = 5 a solution to 2n + 5 = 15?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p29",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "choice",
+      "prompt": "To solve 5x + 3 = 18 for x, what is the first step?",
+      "options": [
+        "Divide both sides by 5",
+        "Add 3 to both sides",
+        "Subtract 3 from both sides",
+        "Multiply both sides by 5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Undo the loosest operation first, the one added on last: 3.",
+        "That means the first step is: subtract 3 from both sides.",
+        "Dividing by 5 has to wait until the 5x term is alone on one side."
+      ],
+      "useAgain": "when deciding which of the two steps in a two-step equation to do first.",
+      "hints": [
+        "The multiplication by 5 is closest to x, so it gets undone last, not first.",
+        "Look for the number that is only added or subtracted, not multiplied."
+      ],
+      "socraticHint": "Which part of 5x + 3 is attached loosest to x?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "To solve 3n + 7 = 25 for n, what is the first step?",
+        "options": [
+          "Subtract 7 from both sides",
+          "Divide both sides by 3",
+          "Add 7 to both sides",
+          "Multiply both sides by 3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p30",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "choice",
+      "prompt": "To solve 4y + 6 = 22 for y, what is the first step?",
+      "options": [
+        "Divide both sides by 4",
+        "Add 6 to both sides",
+        "Multiply both sides by 4",
+        "Subtract 6 from both sides"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Undo the loosest operation first, the one added on last: 6.",
+        "That means the first step is: subtract 6 from both sides.",
+        "Dividing by 4 has to wait until the 4y term is alone on one side."
+      ],
+      "useAgain": "when deciding which of the two steps in a two-step equation to do first.",
+      "hints": [
+        "The multiplication by 4 is closest to y, so it gets undone last, not first.",
+        "Look for the number that is only added or subtracted, not multiplied."
+      ],
+      "socraticHint": "Which part of 4y + 6 is attached loosest to y?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "To solve 6t + 2 = 32 for t, what is the first step?",
+        "options": [
+          "Divide both sides by 6",
+          "Subtract 2 from both sides",
+          "Add 2 to both sides",
+          "Multiply both sides by 6"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p31",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: -2x + 5 = 1.",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Subtract 5 from both sides: -2x = -4.",
+        "Divide both sides by -2, since x carries a negative coefficient.",
+        "x = (-4) / -2 = 2."
+      ],
+      "useAgain": "when the unknown carries a negative coefficient in a two-step equation.",
+      "hints": [
+        "Subtract 5 first, the same as any two-step equation.",
+        "Dividing by a negative number flips the sign of the result."
+      ],
+      "socraticHint": "Once -2x = -4, does dividing by -2 give a positive or negative x?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: -3x + 8 = 2.",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p32",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for y: -3y + 7 = 4.",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Subtract 7 from both sides: -3y = -3.",
+        "Divide both sides by -3, since y carries a negative coefficient.",
+        "y = (-3) / -3 = 1."
+      ],
+      "useAgain": "when the unknown carries a negative coefficient in a two-step equation.",
+      "hints": [
+        "Subtract 7 first, the same as any two-step equation.",
+        "Dividing by a negative number flips the sign of the result."
+      ],
+      "socraticHint": "Once -3y = -3, does dividing by -3 give a positive or negative y?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for y: -2y + 9 = 3.",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p33",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for n: -4n + 9 = 1.",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Subtract 9 from both sides: -4n = -8.",
+        "Divide both sides by -4, since n carries a negative coefficient.",
+        "n = (-8) / -4 = 2."
+      ],
+      "useAgain": "when the unknown carries a negative coefficient in a two-step equation.",
+      "hints": [
+        "Subtract 9 first, the same as any two-step equation.",
+        "Dividing by a negative number flips the sign of the result."
+      ],
+      "socraticHint": "Once -4n = -8, does dividing by -4 give a positive or negative n?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for n: -5n + 11 = 1.",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p34",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for t: -5t + 12 = 2.",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Subtract 12 from both sides: -5t = -10.",
+        "Divide both sides by -5, since t carries a negative coefficient.",
+        "t = (-10) / -5 = 2."
+      ],
+      "useAgain": "when the unknown carries a negative coefficient in a two-step equation.",
+      "hints": [
+        "Subtract 12 first, the same as any two-step equation.",
+        "Dividing by a negative number flips the sign of the result."
+      ],
+      "socraticHint": "Once -5t = -10, does dividing by -5 give a positive or negative t?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for t: -4t + 10 = 2.",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p35",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 20 - 3x = 5.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Subtract 20 from both sides: -3x = -15.",
+        "Divide both sides by -3.",
+        "x = 5.",
+        "Check: 20 - 3 times 5 = 5."
+      ],
+      "useAgain": "when the unknown is subtracted from a number rather than added to it.",
+      "hints": [
+        "x is being subtracted here, not added, so it ends up with a negative coefficient once 20 moves to the other side.",
+        "Divide by a negative number at the last step."
+      ],
+      "socraticHint": "When 20 moves to the right side, what sign does the 3x term carry?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: 22 - 4x = 6.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p36",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for y: 25 - 4y = 9.",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Subtract 25 from both sides: -4y = -16.",
+        "Divide both sides by -4.",
+        "y = 4.",
+        "Check: 25 - 4 times 4 = 9."
+      ],
+      "useAgain": "when the unknown is subtracted from a number rather than added to it.",
+      "hints": [
+        "y is being subtracted here, not added, so it ends up with a negative coefficient once 25 moves to the other side.",
+        "Divide by a negative number at the last step."
+      ],
+      "socraticHint": "When 25 moves to the right side, what sign does the 4y term carry?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for y: 27 - 3y = 6.",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p37",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for n: 18 - 2n = 6.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Subtract 18 from both sides: -2n = -12.",
+        "Divide both sides by -2.",
+        "n = 6.",
+        "Check: 18 - 2 times 6 = 6."
+      ],
+      "useAgain": "when the unknown is subtracted from a number rather than added to it.",
+      "hints": [
+        "n is being subtracted here, not added, so it ends up with a negative coefficient once 18 moves to the other side.",
+        "Divide by a negative number at the last step."
+      ],
+      "socraticHint": "When 18 moves to the right side, what sign does the 2n term carry?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for n: 20 - 2n = 8.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p38",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for t: 30 - 5t = 10.",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Subtract 30 from both sides: -5t = -20.",
+        "Divide both sides by -5.",
+        "t = 4.",
+        "Check: 30 - 5 times 4 = 10."
+      ],
+      "useAgain": "when the unknown is subtracted from a number rather than added to it.",
+      "hints": [
+        "t is being subtracted here, not added, so it ends up with a negative coefficient once 30 moves to the other side.",
+        "Divide by a negative number at the last step."
+      ],
+      "socraticHint": "When 30 moves to the right side, what sign does the 5t term carry?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for t: 32 - 4t = 8.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p39",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for x: 4x + 3 = 12.",
+      "answer": {
+        "kind": "number",
+        "value": "9/4"
+      },
+      "explanation": [
+        "Subtract 3 from both sides: 4x = 9.",
+        "Divide both sides by 4: x = 9/4, already in lowest terms."
+      ],
+      "useAgain": "when solving a two-step equation does not give a whole number.",
+      "hints": [
+        "Subtract 3 before dividing by 4, same as always.",
+        "The answer does not need to be a whole number here."
+      ],
+      "socraticHint": "Does 9 divide evenly by 4, or does the answer need to stay a fraction?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for x: 4x + 5 = 15.",
+        "answer": {
+          "kind": "number",
+          "value": "5/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p40",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for y: 6y + 2 = 11.",
+      "answer": {
+        "kind": "number",
+        "value": "3/2"
+      },
+      "explanation": [
+        "Subtract 2 from both sides: 6y = 9.",
+        "Divide both sides by 6: y = 9/6, which reduces to 3/2."
+      ],
+      "useAgain": "when solving a two-step equation does not give a whole number.",
+      "hints": [
+        "Subtract 2 before dividing by 6, same as always.",
+        "The answer does not need to be a whole number here."
+      ],
+      "socraticHint": "Does 9 divide evenly by 6, or does the answer need to stay a fraction?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for y: 6y + 3 = 10.",
+        "answer": {
+          "kind": "number",
+          "value": "7/6"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p41",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Solve for n: 4n + 5 = 8.",
+      "answer": {
+        "kind": "number",
+        "value": "3/4"
+      },
+      "explanation": [
+        "Subtract 5 from both sides: 4n = 3.",
+        "Divide both sides by 4: n = 3/4, already in lowest terms."
+      ],
+      "useAgain": "when solving a two-step equation does not give a whole number.",
+      "hints": [
+        "Subtract 5 before dividing by 4, same as always.",
+        "The answer does not need to be a whole number here."
+      ],
+      "socraticHint": "Does 3 divide evenly by 4, or does the answer need to stay a fraction?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve for n: 8n + 2 = 9.",
+        "answer": {
+          "kind": "number",
+          "value": "7/8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p42",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "order",
+      "prompt": "Put these steps in order to solve 3x + 4 = 19.",
+      "items": [
+        "Divide both sides by 3 to get x = 5",
+        "Start with 3x + 4 = 19",
+        "Subtract 4 from both sides to get 3x = 15"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Begin with the equation exactly as written.",
+        "Undo the addition first, then the multiplication.",
+        "Dividing last isolates x on its own."
+      ],
+      "useAgain": "when you need to lay out a two-step solution in the right working order.",
+      "hints": [
+        "The equation has to be written down before any step is taken.",
+        "The addition or subtraction always gets undone before the multiplication."
+      ],
+      "socraticHint": "Which operation on the unknown was applied last when building this equation, so should be undone first?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps in order to solve 4n + 3 = 23.",
+        "items": [
+          "Divide both sides by 4 to get n = 5",
+          "Start with 4n + 3 = 23",
+          "Subtract 3 from both sides to get 4n = 20"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p43",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "order",
+      "prompt": "Put these steps in order to solve 2y + 5 = 15.",
+      "items": [
+        "Divide both sides by 2 to get y = 5",
+        "Start with 2y + 5 = 15",
+        "Subtract 5 from both sides to get 2y = 10"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Begin with the equation exactly as written.",
+        "Undo the addition first, then the multiplication.",
+        "Dividing last isolates y on its own."
+      ],
+      "useAgain": "when you need to lay out a two-step solution in the right working order.",
+      "hints": [
+        "The equation has to be written down before any step is taken.",
+        "The addition or subtraction always gets undone before the multiplication."
+      ],
+      "socraticHint": "Which operation on the unknown was applied last when building this equation, so should be undone first?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps in order to solve 5t + 2 = 27.",
+        "items": [
+          "Divide both sides by 5 to get t = 5",
+          "Start with 5t + 2 = 27",
+          "Subtract 2 from both sides to get 5t = 25"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p44",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "truefalse",
+      "prompt": "Is x = -2 a solution to -2x + 5 = 9?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Put -2 in place of x: -2 times -2 is 4, plus 5 is 9.",
+        "9 matches the 9 on the right side."
+      ],
+      "useAgain": "when you need to check a claimed solution that carries a negative coefficient.",
+      "hints": [
+        "Multiply -2 by -2 carefully, keeping the sign.",
+        "Then add 5 and compare to 9."
+      ],
+      "socraticHint": "Does -2 times -2, plus 5, actually equal 9?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Is n = -2 a solution to -4n + 9 = 17?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p45",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "truefalse",
+      "prompt": "Is y = -1 a solution to -3y + 7 = 4?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Put -1 in place of y: -3 times -1 is 3, plus 7 is 10.",
+        "10 does not match the 4 on the right side."
+      ],
+      "useAgain": "when you need to check a claimed solution that carries a negative coefficient.",
+      "hints": [
+        "Multiply -3 by -1 carefully, keeping the sign.",
+        "Then add 7 and compare to 4."
+      ],
+      "socraticHint": "Does -3 times -1, plus 7, actually equal 4?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Is t = -1 a solution to -5t + 12 = 2?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-pa-two-step-equations-p46",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "Two equations share the same x: 2x + 3 = 15 and 3y = x + 1. What is y?",
+      "answer": {
+        "kind": "number",
+        "value": "7/3"
+      },
+      "explanation": [
+        "Solve the first equation: 2x = 12, so x = 6.",
+        "Substitute x = 6 into the second equation: 3y = 6 + 1 = 7.",
+        "Divide both sides by 3: y = 7/3."
+      ],
+      "useAgain": "when a story hides a two-step equation once the pieces are set up.",
+      "hints": [
+        "Solve the first equation completely before touching the second.",
+        "The second equation only needs x plugged in, then solved as one step."
+      ],
+      "socraticHint": "Does the second equation need x found first, or can it be solved on its own?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Two equations share the same x: 3x + 2 = 17 and 2y = x - 1. What is y?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p47",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "A robot's arm extends 4 centimeters for every second of motor time, starting 6 centimeters extended. After how many whole seconds does it first reach at least 30 centimeters?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Try 6 seconds: 4 times 6 plus 6 is 30, which already reaches 30.",
+        "Try 5 seconds: 4 times 5 plus 6 is 26, which is not enough.",
+        "So 6 whole seconds is the first time it reaches at least 30."
+      ],
+      "useAgain": "when a story hides a two-step equation once the pieces are set up.",
+      "hints": [
+        "Test whole numbers of seconds one at a time.",
+        "The extension only needs to reach 30 or more, not exactly 30."
+      ],
+      "socraticHint": "Does the extension need to equal 30 exactly, or just reach that far?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot's arm extends 3 centimeters for every second of motor time, starting 5 centimeters extended. After how many whole seconds does it first reach at least 20 centimeters?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p48",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "For a whole number x, 5x + 2 and 3x + 14 give the same value. What is that shared value?",
+      "answer": {
+        "kind": "number",
+        "value": "32"
+      },
+      "explanation": [
+        "Set the two expressions equal: 5x + 2 = 3x + 14.",
+        "Subtract 3x from both sides: 2x + 2 = 14, then subtract 2: 2x = 12, so x = 6.",
+        "Substitute back: 5 times 6 plus 2 is 32."
+      ],
+      "useAgain": "when a story hides a two-step equation once the pieces are set up.",
+      "hints": [
+        "Set the two expressions equal to each other first.",
+        "Solve for x, then substitute it back into either expression to get the shared value."
+      ],
+      "socraticHint": "Once x is known, does either expression give the same shared value?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For a whole number x, 4x + 5 and 2x + 17 give the same value. What is that shared value?",
+        "answer": {
+          "kind": "number",
+          "value": "29"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p49",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "A 3D print job costs 2 grams of filament to start, plus 3 grams for every completed layer. A second design costs 8 grams to start, plus 1 gram per layer. After how many layers do the two designs use the same amount of filament?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Set the two costs equal: 2 + 3x = 8 + x.",
+        "Subtract x from both sides: 2 + 2x = 8, then subtract 2: 2x = 6, so x = 3."
+      ],
+      "useAgain": "when a story hides a two-step equation once the pieces are set up.",
+      "hints": [
+        "Write each design's total filament as an expression in the number of layers.",
+        "Set the two expressions equal and solve for the number of layers."
+      ],
+      "socraticHint": "At how many layers do the two filament totals become equal?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D print job costs 3 grams of filament to start, plus 2 grams for every completed layer. A second design costs 9 grams to start, plus 1 gram per layer. After how many layers do the two designs use the same amount of filament?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-two-step-equations-p50",
+      "lane": "skills",
+      "ideaId": "pa-two-step-equations",
+      "kind": "number",
+      "prompt": "A number x is doubled, then 5 is added, then the whole result is tripled to give 39. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Undo the tripling: divide 39 by 3 to get 13.",
+        "Undo the adding of 5: subtract 5 from 13 to get 8.",
+        "Undo the doubling: divide 8 by 2 to get 4."
+      ],
+      "useAgain": "when a story hides a two-step equation once the pieces are set up.",
+      "hints": [
+        "Work backward from the final result, undoing the last operation first.",
+        "Undo tripling, then adding, then doubling, in that order."
+      ],
+      "socraticHint": "If the last thing done was tripling, what is the first thing to undo?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A number x is doubled, then 3 is added, then the whole result is quadrupled to give 44. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+{
+  "id": "s4-w01-build",
+  "season": 4,
+  "week": 1,
+  "track": "build",
+  "title": "The forge opens",
+  "summary": "Compile and run your first C++ program on a toolchain a grown-up proved working before the season started, name the compile step for what it is, then break the same program three times on purpose and open the Error Bestiary with the compiler's own words in it.",
+  "minutes": 60,
+  "materials": [
+    "laptop with the g++ toolchain and an editor, installed and verified working by a grown-up before this week",
+    "a terminal window and the editor, both open",
+    "Maker's Log and the bug diary",
+    "a fresh section at the back of the bug diary for the Error Bestiary",
+    "min-max outdoor thermometer, hung outside",
+    "paper and pencil"
+  ],
+  "skills": [
+    "build.cpp",
+    "build.debugging",
+    "build.documentation"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w01-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop runs the same as it always has: ask, imagine, plan, build, test, fix.\n\nAsk: your programs already work. Why write them again in another language?\n\nImagine: a language that refuses to run anything at all until it has read every line you wrote and agreed with all of it. Python already does half of that. Leave a colon off and it reads the whole file, refuses to start and prints nothing, exactly as you have seen. What Python will not check in advance is meaning: a name you never made, a box used as the wrong kind of thing. Those it walks into halfway through, after the earlier lines have already printed. C++ checks those in advance too, and only then performs the whole thing, fast. That checking step has a name, compiling, and it is the whole difference between the two.\n\nPlan, on paper, before any typing. One small program today, compiled and run, and then that same program broken three times on purpose. Nothing else. Write the two lines it will print. If you cannot write them on paper, you are not ready to type them.\n\nTwo things get said out loud before you touch the keyboard.\n\nThe first is the rule for the whole season: December is Python's contest, and C++ is the road past it. Nobody swaps languages a few months before their first real contest, so everything with a clock on it this summer runs in Python, the tongue you have had for a year. C++ starts now for the honest reason: the road past December is long, it is paved in C++, and the way a second language becomes a first one is to start it early and calm. Nothing you write in C++ this season will ever meet a clock.\n\nThe second is a retirement. Since last season a grown-up has sat at your shoulder whenever you submitted anything. That belay ends today, and a grown-up says it out loud, in these words or close to them: from here you drive, and I watch only if you ask me to. Nothing about the work changed. The chair did."
+    },
+    {
+      "kind": "typing",
+      "id": "s4-w01-build-02",
+      "minutes": 5,
+      "body": "Five minutes, and the keys change this season.\n\nHome row for one minute: a s d f and j k l semicolon, fingers resting, eyes up. The semicolon has a real job now. It ends nearly every line you will write.\n\nThen the characters C++ leans on and Python barely touched: the braces { and }, the angle brackets < and >, the hash #, and the double colon ::. Find each one without looking down. Type ten lines of nothing but those.\n\nThen three pieces you are about to need, ten of each, fast:\n\n#include <iostream>\n\nint main() {\n\nstd::cout\n\nLast minute, the line that turns your text into a program. Ten times, exactly as it stands, spaces and all:\n\ng++ forge.cpp -o forge"
+    },
+    {
+      "kind": "science",
+      "id": "s4-w01-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two ways to turn text into a running program. Top row: forge.cpp is compiled once by g++ into forge.exe, machine code the chip then runs on its own with no compiler involved. Bottom row: a Python file is read and translated into actions by the interpreter every single time it runs, one instruction at a time.",
+        "spec": {
+          "w": 460,
+          "h": 220,
+          "wide": true,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 30,
+              "w": 100,
+              "h": 50,
+              "label": "forge.cpp",
+              "sub": "your text"
+            },
+            {
+              "t": "line",
+              "x1": 120,
+              "y1": 55,
+              "x2": 190,
+              "y2": 55,
+              "arrow": true,
+              "label": "g++, once"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 30,
+              "w": 110,
+              "h": 50,
+              "label": "forge.exe",
+              "sub": "machine code"
+            },
+            {
+              "t": "line",
+              "x1": 300,
+              "y1": 55,
+              "x2": 370,
+              "y2": 55,
+              "arrow": true,
+              "label": "runs alone"
+            },
+            {
+              "t": "box",
+              "x": 370,
+              "y": 30,
+              "w": 70,
+              "h": 50,
+              "label": "chip"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 140,
+              "w": 100,
+              "h": 50,
+              "label": "forge.py",
+              "sub": "your text"
+            },
+            {
+              "t": "line",
+              "x1": 120,
+              "y1": 165,
+              "x2": 190,
+              "y2": 165,
+              "arrow": true,
+              "dashed": true,
+              "label": "every run"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 140,
+              "w": 110,
+              "h": 50,
+              "label": "python",
+              "sub": "interpreter"
+            },
+            {
+              "t": "line",
+              "x1": 300,
+              "y1": 165,
+              "x2": 370,
+              "y2": 165,
+              "arrow": true,
+              "label": "runs it"
+            },
+            {
+              "t": "box",
+              "x": 370,
+              "y": 140,
+              "w": 70,
+              "h": 50,
+              "label": "chip"
+            }
+          ]
+        }
+      },
+      "title": "What the compiler actually hands the chip",
+      "body": "Your .cpp file is text and nothing more. Open it in a notes app and it looks like a shopping list.\n\nWhen you run g++, that program reads your text, checks it, and writes out instructions for the exact chip sitting in your laptop. Those instructions are machine code: plain numbers the processor carries out directly, and the only language it actually speaks. Everything else, Python included, is a costume worn on top of that.\n\nYou can see the step just above machine code with your own eyes. Ask g++ for the assembly instead of a program:\n\ng++ -S forge.cpp\n\nThat writes forge.s beside your file. Open it. It is not exactly meant for humans, but it is readable: a long list of tiny instructions, put this number here, add these two, call that. Each line of yours turned into several of them. Assembly is the human spelling of machine code, roughly one line for one instruction the chip runs.\n\nHere is the difference that makes. The program g++ produced runs on its own from now on. g++ is not involved any more, because the translating already happened, once. A .py file is the opposite: the text stays the program, so Python has to be installed and reading it every single time it runs. One is a book translated in advance and printed. The other is a translator standing in the room, reading aloud.\n\nThat is also the reason a compiled program starts faster and runs faster. You are not being asked to believe that. In week 3 you will time both and write the gap down as a number."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w01-build-10",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A day's temperature drawn as two curves. The desert curve climbs to about 45 degrees C at midday, on almost no water-vapour blanket, then falls below 10 degrees C the same night, a swing of about 35 degrees. A humid coastal city at the same latitude stays nearly flat, swinging only about 5 to 10 degrees between its day and its night.",
+        "spec": {
+          "w": 380,
+          "h": 240,
+          "wide": false,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 190,
+              "x2": 350,
+              "y2": 190
+            },
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 150,
+              "x2": 110,
+              "y2": 35,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 110,
+              "y1": 35,
+              "x2": 190,
+              "y2": 150,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 190,
+              "y1": 150,
+              "x2": 270,
+              "y2": 178,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 270,
+              "y1": 178,
+              "x2": 350,
+              "y2": 182,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 135,
+              "x2": 110,
+              "y2": 125,
+              "color": "green"
+            },
+            {
+              "t": "line",
+              "x1": 110,
+              "y1": 125,
+              "x2": 190,
+              "y2": 130,
+              "color": "green"
+            },
+            {
+              "t": "line",
+              "x1": 190,
+              "y1": 130,
+              "x2": 270,
+              "y2": 132,
+              "color": "green"
+            },
+            {
+              "t": "line",
+              "x1": 270,
+              "y1": 132,
+              "x2": 350,
+              "y2": 130,
+              "color": "green"
+            },
+            {
+              "t": "text",
+              "x": 55,
+              "y": 20,
+              "s": "peak ~45°C",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 250,
+              "y": 165,
+              "s": "low <10°C",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 195,
+              "y": 100,
+              "s": "swing ~35°",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 35,
+              "y": 112,
+              "s": "swing 5–10°",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 205,
+              "s": "day →",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 300,
+              "y": 205,
+              "s": "← night",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 225,
+              "s": "desert, dry air",
+              "size": 10
+            },
+            {
+              "t": "text",
+              "x": 210,
+              "y": 225,
+              "s": "coastal, humid",
+              "size": 10
+            }
+          ]
+        }
+      },
+      "title": "Why the desert swings so far between noon and night",
+      "body": "Air holds heat mostly because of the water vapour in it. Vapour traps outgoing infrared the way a blanket traps warmth, keeping the ground from cooling too fast after sunset.\n\nDesert air carries very little water vapour. With almost no blanket overhead, heat radiates straight up into space the instant the sun goes down. The ground and the air above it cool fast and hard.\n\nThe swing can be extreme. Parts of the Sahara reach above 45 C at midday and drop below 10 C the same night. That is a swing of about 35 degrees in one day. A humid coastal city at the same latitude might swing only 5 to 10 degrees between its day and its night.\n\nThe min-max thermometer you hang outside this week will not sit in true desert air. It will still show a bigger day-to-night gap on dry, clear days than on humid or cloudy ones. Watch for the pattern once your log has a few weeks in it.",
+      "ideaId": "dry-air-cannot-hold-heat"
+    },
+    {
+      "kind": "task",
+      "id": "s4-w01-build-04",
+      "title": "The first compile",
+      "body": "A grown-up installed the toolchain before this week and proved it compiles something, so the whole hour is yours.\n\nFirst, ask the compiler who it is:\n\ng++ --version\n\nIt answers with a name and a version number. Copy that first line into the Maker's Log, because the exact wording of every error you meet today depends on it.\n\nNow the program. In your editor, in a folder for this season, a file called forge.cpp:\n\n```cpp\n#include <iostream>\n\nint main() {\n    int coins = 12;\n    std::cout << \"The forge is open.\\n\";\n    std::cout << \"Coins in the circle: \" << coins << \"\\n\";\n    return 0;\n}\n```\n\nFive things worth naming while you type them.\n\n#include <iostream> hands you the toolbox for printing. Leave that line out and the compiler has never heard of cout in its life.\n\nint main() is where a C++ program starts. Not the top of the file. Here.\n\nint coins = 12; says two things at once, and Python only ever said the second of them. It says this box holds whole numbers, and it says put 12 in it.\n\nstd::cout is the screen, and the two angle brackets carry the words to it.\n\nreturn 0; is the program telling whoever ran it that nothing went wrong. Zero means fine, which feels backwards for about a week.\n\nNow the part Python never made you do. Translate the file:\n\ng++ forge.cpp -o forge\n\nNothing prints. That is what success looks like here, and it takes some getting used to. A new file has appeared beside forge.cpp, called forge.exe on Windows or plain forge on WSL, macOS and Linux.\n\nThen run it. On Windows in PowerShell:\n\n.\\forge.exe\n\nOn WSL, macOS or Linux:\n\n./forge\n\nWhich of those two lines is yours depends on which toolchain a grown-up installed. Ask once, write it in the Maker's Log, and stop thinking about it.\n\nTwo lines come back. Two commands, not one, and the gap between them is the entire idea: translate first, then run.",
+      "checklist": [
+        "g++ --version answered, and its first line is written in my log",
+        "The compile command printed nothing at all and a new program file appeared beside forge.cpp",
+        "Running the program printed both lines",
+        "I can say out loud what the first command does that the second one does not"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s4-w01-build-05",
+      "title": "Three deliberate breaks, and the Bestiary opens",
+      "body": "Working code teaches you nothing about errors. So break it, three times, one at a time, and put it back before starting the next one.\n\nBefore each break, guess out loud what the compiler will say. Then read what it actually said and copy it into the Bestiary word for word, including the line number and anything it put inside quote marks. Your own sentence goes underneath, in the words you would use talking to a friend.\n\nBreak one, the missing semicolon. Delete the semicolon at the end of the int coins = 12; line. Compile.\n\nIt refuses, and it complains about a missing semicolon. Look hard at the line number, because it usually points at the line after the one you damaged. The compiler kept reading, and the sentence only stopped making sense when it reached the next line. That is worth knowing forever: the line named in a message is where the compiler noticed, not always where you erred.\n\nThe exact words differ between g++, clang and the Microsoft compiler, and between versions of the same one, which is precisely why this book has to be written in your own copy of them rather than anyone else's. Put the semicolon back and compile again. It works.\n\nBreak two, the misspelled name. In the printing line only, change coins to coin, so the box is called one thing and used by another. Compile.\n\nThis one is stable enough to quote, as long as you expect a tail on it. g++ says: error: 'coin' was not declared in this scope; did you mean 'coins'? Clang says: error: use of undeclared identifier 'coin'; did you mean 'coins'? The same complaint in two accents, and both of them guess the fix, because a name one letter away from a real one is the mistake compilers meet most. Copy the whole line into the Bestiary, tail and all. An older compiler may stop after the first half and leave the guessing to you.\n\nNow sit with what did not happen. In Python this same mistake lets the program start. The first line prints happily and the crash only arrives later, when the walk finally reaches the bad name. Here there is no output at all, not even the line that was perfectly fine. Nothing ran, because nothing was ever translated.\n\nThat is a whole idea and it has earned a name: an error before the run. The strictest reader turns out to be the kindest one, because a bug that cannot compile is a bug that can never reach a grader, a customer or your brother.\n\nPut the spelling back.\n\nBreak three, the missing toolbox. Delete the #include <iostream> line completely. Compile.\n\nIt refuses again, and this time the complaint is about cout not being a member of std. Newer versions of g++ add a note underneath naming the header you forgot; older ones leave you to work it out. Copy whichever one your machine gives you, and do not tidy it up.\n\n#include is not decoration at the top of a file. It is the line where you name the toolbox before you open it.\n\nPut it back, compile, run, and leave the program working.",
+      "checklist": [
+        "Three breaks, one at a time, each one put back before the next one started",
+        "I guessed what the compiler would say before I read what it said",
+        "Every message is copied into the Bestiary word for word, with my own sentence underneath",
+        "I can say why the misspelled name printed nothing at all, when Python would have printed the first line first"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w01-build-06",
+      "title": "Bug diary: the compile-error chapter",
+      "body": "The bug diary gains a chapter this season and it has a name: the Error Bestiary. It is a field guide to compiler messages, and you are the one writing it.\n\nOne page per creature, four things on the page. The message copied exactly. What you had typed to summon it. What it means in your own words. The fix.\n\nNothing else goes on the page, because the point of this book is flipping through it fast on a bad afternoon.\n\nThree creatures went in today. At the summit in week 4 you will pick five favourites and give the family a tour of them, so the pages have to be readable by then, not merely written.\n\nOne habit underneath all of it: never retype a compiler message from memory. Copy it. Half of debugging is recognising a creature you have met before, and you cannot recognise a thing you only half remember."
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w01-build-07",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A min-max thermometer hanging outside, showing a high mark and a low mark since it was last reset. Beside it, the field journal open to today's line: the date, the low reading and the high reading, written before the reset button is pressed.",
+        "spec": {
+          "w": 380,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 20,
+              "w": 150,
+              "h": 140,
+              "label": "min-max thermometer",
+              "sub": "hung outside"
+            },
+            {
+              "t": "dot",
+              "cx": 170,
+              "cy": 50,
+              "label": "high",
+              "side": "right"
+            },
+            {
+              "t": "dot",
+              "cx": 170,
+              "cy": 135,
+              "label": "low",
+              "side": "right"
+            },
+            {
+              "t": "dot",
+              "cx": 95,
+              "cy": 175,
+              "label": "reset",
+              "side": "below"
+            },
+            {
+              "t": "box",
+              "x": 245,
+              "y": 60,
+              "w": 120,
+              "h": 80,
+              "label": "field journal",
+              "sub": "date, low, high"
+            },
+            {
+              "t": "line",
+              "x1": 170,
+              "y1": 90,
+              "x2": 245,
+              "y2": 90,
+              "arrow": true,
+              "label": "read, write"
+            }
+          ]
+        }
+      },
+      "title": "The dawn log begins",
+      "body": "Outside the hour, thirty seconds a day, starting tomorrow morning.\n\nA min-max thermometer hangs outside. It remembers the coldest and the warmest the air has been since it was last reset. Each morning, first thing: read the low, read the high, write the date and the two numbers on one line in the field journal, then press reset.\n\nTwo rules, and they matter more than the readings do.\n\nWrite it the same way every day, so the page becomes a column and not a story.\n\nIf you miss a morning, leave the gap. Do not guess it in afterwards, do not fill it from a weather app, do not tidy it. A missed morning is a true fact about this summer. A made up number is not.\n\nIn week 9 this column becomes the data you do real statistics on, holes and all, and the holes will be part of what it teaches you. That is not a warning about slacking. It is the reason the gaps are allowed to stay."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w01-build-08",
+      "title": "Show it",
+      "prompt": "A photo of the terminal showing the compile command with nothing printed after it and then the program's two lines of output, forge.cpp pasted as code, and the three compiler messages pasted exactly as they appeared on your own screen.",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w01-build-09",
+      "variant": "maker"
+    }
+  ]
+}

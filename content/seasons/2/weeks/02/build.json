@@ -1,0 +1,698 @@
+{
+  "id": "s2-w02-build",
+  "season": 2,
+  "week": 2,
+  "track": "build",
+  "title": "Binary week: count past ten on one hand",
+  "summary": "Count to 31 on five fingers, wire four LEDs into a binary display driven by a Python list, then draw a picture and play a tune that are both just numbers.",
+  "minutes": 60,
+  "materials": [
+    "micro:bit v2",
+    "micro USB cable",
+    "laptop with Chrome",
+    "micro:bit edge connector breakout",
+    "breadboard starter kit",
+    "electronics add-on pack (extra LEDs and resistors)"
+  ],
+  "skills": [
+    "build.python",
+    "build.circuits"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s2-w02-build-01",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A hand drawn as five circles for fingers, labelled left to right with their place values: thumb 1, index 2, middle 4, ring 8, pinky 16, each one double the last. Example sums show raising thumb and middle makes 5, and raising all five makes 31.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 18,
+              "s": "One hand, five places",
+              "size": 13,
+              "anchor": "middle"
+            },
+            {
+              "t": "circle",
+              "cx": 60,
+              "cy": 100,
+              "r": 22,
+              "label": "1",
+              "fill": "accent"
+            },
+            {
+              "t": "circle",
+              "cx": 112,
+              "cy": 78,
+              "r": 22,
+              "label": "2"
+            },
+            {
+              "t": "circle",
+              "cx": 165,
+              "cy": 68,
+              "r": 22,
+              "label": "4"
+            },
+            {
+              "t": "circle",
+              "cx": 218,
+              "cy": 78,
+              "r": 22,
+              "label": "8"
+            },
+            {
+              "t": "circle",
+              "cx": 270,
+              "cy": 100,
+              "r": 22,
+              "label": "16"
+            },
+            {
+              "t": "text",
+              "x": 165,
+              "y": 140,
+              "s": "thumb=1, index=2, middle=4, ring=8, pinky=16",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 165,
+              "y": 170,
+              "s": "Raise thumb + middle: 1 + 4 = 5",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 165,
+              "y": 195,
+              "s": "Raise all five: 1+2+4+8+16 = 31",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Ask, imagine, plan",
+      "body": "The design loop first: ask, imagine, plan, build, test, fix.\n\nAsk: how high can one hand count? Most people say five. By the end of today your answer is 31, and four LEDs on your desk will count the same way your hand does.\n\nImagine: each finger is a switch, up or down, on or off, exactly like the buttons from last week. Here is the trick that makes it work: the fingers are not all worth 1. Your thumb is worth 1, your index finger 2, your middle finger 4, your ring finger 8, your pinky 16, each one double the one before. A raised finger adds its worth. A lowered finger adds nothing. Raise thumb and middle finger: 1 plus 4 is 5. Raise all five: 1 plus 2 plus 4 plus 8 plus 16 is 31.\n\nPractice before you build anything. Spell 3 on your fingers. Spell 10. Spell your age. Then have a grown-up hold up a finger pattern and you read the number back. Two things to notice while you play: no number needs two different recipes, and no number up to 31 is impossible to spell. On and off is enough to write any number, and that is the whole secret of this week.\n\nPlan: the build is your fingers made of light. Four LEDs in a row, each one a place: 8, 4, 2 and 1 from left to right. A lit LED is a raised finger. Four places reach 8 plus 4 plus 2 plus 1, which is 15, and a list of four numbers in Python will decide which LEDs light."
+    },
+    {
+      "kind": "typing",
+      "id": "s2-w02-build-02",
+      "minutes": 5,
+      "body": "Five minutes of typing, hands on the home row, eyes on the screen. Today's words are the ones your code needs: from, microbit, import, bits, pins, range, write. Type each word five times. Then type the line from microbit import * three times without looking at your fingers."
+    },
+    {
+      "kind": "task",
+      "id": "s2-w02-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Four LED boxes in a row, left to right: pin 0 as the 8s place, pin 1 as the 4s place, pin 2 as the 2s place, and pin 8 as the 1s place, shown lit on, on, off, on to spell 8 plus 4 plus 1 equals 13 from the bits list [1, 1, 0, 1]. A note reminds every LED has its own resistor in its loop.",
+        "spec": {
+          "w": 480,
+          "h": 240,
+          "wide": true,
+          "items": [
+            {
+              "t": "text",
+              "x": 240,
+              "y": 18,
+              "s": "Four LEDs, left to right: 8s 4s 2s 1s",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 50,
+              "w": 70,
+              "h": 40,
+              "label": "LED",
+              "sub": "pin 0, 8s place",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 140,
+              "y": 50,
+              "w": 70,
+              "h": 40,
+              "label": "LED",
+              "sub": "pin 1, 4s place"
+            },
+            {
+              "t": "box",
+              "x": 240,
+              "y": 50,
+              "w": 70,
+              "h": 40,
+              "label": "LED",
+              "sub": "pin 2, 2s place"
+            },
+            {
+              "t": "box",
+              "x": 340,
+              "y": 50,
+              "w": 70,
+              "h": 40,
+              "label": "LED",
+              "sub": "pin 8, 1s place"
+            },
+            {
+              "t": "text",
+              "x": 75,
+              "y": 112,
+              "s": "on",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 175,
+              "y": 112,
+              "s": "on",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 275,
+              "y": 112,
+              "s": "off",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 375,
+              "y": 112,
+              "s": "on",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 240,
+              "y": 145,
+              "s": "bits = [1, 1, 0, 1] -> 8 + 4 + 0 + 1 = 13",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 240,
+              "y": 175,
+              "s": "each LED loop: pin -> resistor -> LED long leg -> short leg -> GND",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 240,
+              "y": 205,
+              "s": "Battery unclipped while moving wires",
+              "size": 10,
+              "anchor": "middle",
+              "color": "rust"
+            }
+          ]
+        }
+      },
+      "title": "Wire the binary display",
+      "body": "Clip the micro:bit into the edge connector breakout and seat the breakout on the breadboard. You know this loop from Season 1: pin, jumper wire, resistor, LED long leg in, LED short leg out, jumper wire back to GND. Today you build that same loop four times, side by side, one loop each from pins 0, 1, 2 and 8. Every LED gets its own resistor. Unclip the battery while you move wires.\n\nLay the loops out left to right in pin order: pin 0, pin 1, pin 2, pin 8. The left LED is the 8s place, the next is the 4s, then the 2s, and the right LED is the 1s place. Write the four place values on a strip of paper and tape it under the LEDs.\n\nOpen python.microbit.org, start a new project, and type this program:\n\nfrom microbit import *\n\nbits = [1, 1, 0, 1]\npins = [pin0, pin1, pin2, pin8]\nfor i in range(4):\n    pins[i].write_digital(bits[i])\n\nThe list bits holds the four places in order: 8s, 4s, 2s, 1s. A 1 lights a place, a 0 leaves it dark. So [1, 1, 0, 1] spells 8 plus 4 plus 1, which is 13. Download it over USB and read your display: on, on, off, on.\n\nNow use it. Edit only the bits list to spell 9, download, and have a grown-up check the LEDs against the paper strip. Then pick any number up to 15, write its list on paper first, predict which LEDs will light, and only then download and see if the board agrees.",
+      "checklist": [
+        "Four LED loops light from their own pins, each with its own resistor in the loop",
+        "The display shows 13 as on, on, off, on from left to right",
+        "I spelled 9 and one number of my own by editing only the bits list",
+        "I predicted the lights on paper before downloading, and the board agreed"
+      ]
+    },
+    {
+      "kind": "science",
+      "id": "s2-w02-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two wavy lines representing sound: a slower wiggle labelled 262 Hz for middle C, and a tighter, more tightly packed wiggle labelled 524 Hz, double the frequency, sounding as the same note one octave higher. A caption lists 262 as middle C, 330 as E, and 392 as G.",
+        "spec": {
+          "w": 420,
+          "h": 220,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 16,
+              "s": "A note is a count of wiggles per second",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  20,
+                  80
+                ],
+                [
+                  35,
+                  60
+                ],
+                [
+                  50,
+                  80
+                ],
+                [
+                  65,
+                  100
+                ],
+                [
+                  80,
+                  80
+                ],
+                [
+                  95,
+                  60
+                ],
+                [
+                  110,
+                  80
+                ],
+                [
+                  125,
+                  100
+                ],
+                [
+                  140,
+                  80
+                ]
+              ]
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  180,
+                  150
+                ],
+                [
+                  187,
+                  130
+                ],
+                [
+                  194,
+                  150
+                ],
+                [
+                  201,
+                  170
+                ],
+                [
+                  208,
+                  150
+                ],
+                [
+                  215,
+                  130
+                ],
+                [
+                  222,
+                  150
+                ],
+                [
+                  229,
+                  170
+                ],
+                [
+                  236,
+                  150
+                ],
+                [
+                  243,
+                  130
+                ],
+                [
+                  250,
+                  150
+                ],
+                [
+                  257,
+                  170
+                ],
+                [
+                  264,
+                  150
+                ],
+                [
+                  271,
+                  130
+                ],
+                [
+                  278,
+                  150
+                ],
+                [
+                  285,
+                  170
+                ],
+                [
+                  292,
+                  150
+                ]
+              ]
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 195,
+              "s": "Double the frequency = same note, one octave higher",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 212,
+              "s": "262 = middle C, 330 = E, 392 = G",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 152,
+              "y": 84.0,
+              "s": "262 Hz, middle C",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 304,
+              "y": 154.0,
+              "s": "524 Hz, double",
+              "size": 11,
+              "anchor": "start"
+            }
+          ],
+          "wide": true
+        }
+      },
+      "title": "Sound is a number too",
+      "body": "A sound is air wiggling back and forth very fast, and the number that names a sound is how many wiggles happen each second. 262 wiggles a second is the note musicians call middle C. 330 is E. 392 is G. Double a note's number and you get the same note again, higher up: the musical version of your doubling fingers.\n\nThe micro:bit v2 has a tiny speaker on its back, so it can turn any number you type into real air wiggles. When a program plays the list [262, 330, 392], it is not reading music. It is counting wiggles.\n\nNumbers wear costumes. On the LED matrix, a number dresses up as a glowing pixel. In the speaker, a number dresses up as a note. Strip the costume off and it is numbers all the way down, which is why one small machine can hold your pictures, your songs and your sums at the same time."
+    },
+    {
+      "kind": "task",
+      "id": "s2-w02-build-05",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A 5 by 5 grid with each row shown as five digits from 0 to 9, matching a checkerboard example: 90909, 09090, 90909, 09090, 90909. Below the grid, the Image string is written as those five rows joined by colons, with a note that rows read left to right, top to bottom.",
+        "spec": {
+          "w": 360,
+          "h": 280,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  80,
+                  30
+                ],
+                [
+                  280,
+                  30
+                ],
+                [
+                  280,
+                  230
+                ],
+                [
+                  80,
+                  230
+                ]
+              ]
+            },
+            {
+              "t": "text",
+              "x": 100,
+              "y": 55,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 140,
+              "y": 55,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 55,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 55,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 260,
+              "y": 55,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 100,
+              "y": 95,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 140,
+              "y": 95,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 95,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 95,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 260,
+              "y": 95,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 100,
+              "y": 135,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 140,
+              "y": 135,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 135,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 135,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 260,
+              "y": 135,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 100,
+              "y": 175,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 140,
+              "y": 175,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 175,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 175,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 260,
+              "y": 175,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 100,
+              "y": 215,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 140,
+              "y": 215,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 215,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 215,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 260,
+              "y": 215,
+              "s": "9",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 18,
+              "s": "5x5 grid: 0 (dark) to 9 (brightest)",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 252,
+              "s": "Image('90909:09090:90909:09090:90909')",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 270,
+              "s": "Rows read left to right, top to bottom, joined by colons",
+              "size": 9,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Draw with numbers, then play them",
+      "body": "On graph paper, draw a 5 by 5 grid and design your own picture by writing a number from 0 to 9 in every square. 0 is dark, 9 is the brightest a pixel goes, and the numbers between are dimmer glows. Shade the biggest numbers so you can see the picture on paper before the machine ever does.\n\nType your grid as an Image string: five digits per row, rows joined by colons. This checkerboard is one example, with a five note tune after it:\n\nfrom microbit import *\nimport music\n\ndisplay.show(Image('90909:09090:90909:09090:90909'))\n\nfor f in [262, 294, 330, 349, 392]:\n    music.pitch(f, 300)\n\nSwap the checkerboard digits for your own 25 numbers and download. Your drawing appears on the matrix, then five notes climb out of the speaker, each one a count of wiggles per second held for 300 thousandths of a second.\n\nThen experiment. Change exactly one digit of your picture and say out loud, before you download, which square will change and how. Make one number in the tune list twice as big and listen for where the tune jumps to the same note higher up.",
+      "checklist": [
+        "My picture was designed on graph paper as 25 numbers before I typed anything",
+        "My Image string uses at least three different brightness numbers, not only 0 and 9",
+        "I predicted which pixel would change before changing one digit, and I was right",
+        "I doubled one frequency and heard the same note higher up"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s2-w02-build-06",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. The classics this week: an LED wired backwards lights nothing at all; a bits list typed back to front spells a different number than you meant, so 13 comes out as 11; an Image string missing one of its colons stops the program; and Image typed with a small i stops it too. Write down which one caught you, or the brand new one you found, and what fixed it."
+    },
+    {
+      "kind": "artifact",
+      "id": "s2-w02-build-07",
+      "title": "Show it",
+      "prompt": "Photo of the LED display spelling your chosen number next to your paper place-value strip, and the Python for your picture and tune, pasted or as a share link",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s2-w02-build-08",
+      "variant": "maker"
+    }
+  ]
+}

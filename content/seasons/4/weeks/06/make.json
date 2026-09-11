@@ -1,0 +1,315 @@
+{
+  "id": "s4-w06-make",
+  "season": 4,
+  "week": 6,
+  "track": "make",
+  "title": "A printed quadruped stands",
+  "summary": "Print and wire a four-legged walker on eight metal-gear servos. Get it standing and shifting its weight, then measure how far it can lean before a foot has to lift.",
+  "minutes": 60,
+  "materials": [
+    "printed quadruped legs and body, designed and printed on the 3D printer",
+    "eight metal-gear hobby servos (MG90S class), two per leg across four legs",
+    "16-channel servo driver board (PCA9685 class)",
+    "ESP32 dev board",
+    "breadboard and jumper wires",
+    "tape measure",
+    "small solar cell",
+    "multimeter",
+    "protractor",
+    "a tissue or thin paper, for a dust test",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.mechanisms",
+    "make.fabrication",
+    "make.measurement"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w06-make-01",
+      "figure": {
+        "kind": "scene",
+        "alt": "The printed quadruped: drag to turn it, slide to lift one foot at a time, and watch the support triangle and the red centre of mass.",
+        "spec": {
+          "type": "walker"
+        }
+      },
+      "title": "Ask, imagine, plan",
+      "body": "The arm's driver board takes on a bigger job: ask, imagine, plan, build, test, fix.\n\nAsk: a table with four legs never tips. Does a walking machine keep that same promise while it stands still, or only while it does not move?\n\nImagine: four legs, two joints each, holding a body level. Then shift that body's weight side to side without a single foot lifting by accident.\n\nPlan: model the legs and body to your eight servos' own dimensions before printing. Decide how you will push or command the body to shift, and how you will measure how far it goes."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w06-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two shapes compare a walker's support. On the left, all four feet touching the ground form a wide quadrilateral, and the centre of mass sits well inside it. On the right, one foot is lifted, leaving only three feet, which form a smaller triangle, and the same centre of mass now sits close to its edge, showing why lifting a foot makes tipping easier.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  20,
+                  50
+                ],
+                [
+                  150,
+                  30
+                ],
+                [
+                  150,
+                  170
+                ],
+                [
+                  20,
+                  150
+                ]
+              ],
+              "fill": "none"
+            },
+            {
+              "t": "dot",
+              "cx": 85,
+              "cy": 100,
+              "label": "centre of mass",
+              "side": "above"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 195,
+              "s": "4 feet down: wide support",
+              "size": 11
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  210,
+                  170
+                ],
+                [
+                  340,
+                  50
+                ],
+                [
+                  340,
+                  170
+                ]
+              ],
+              "fill": "none"
+            },
+            {
+              "t": "dot",
+              "cx": 318,
+              "cy": 145,
+              "label": "centre of mass",
+              "side": "left"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 195,
+              "s": "3 feet down: smaller support",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 228,
+              "y": 167,
+              "s": "closer to the edge",
+              "size": 10
+            }
+          ]
+        }
+      },
+      "title": "Stay inside the support triangle",
+      "ideaId": "stay-inside-the-support-triangle",
+      "body": "A standing body balances only while its centre of mass sits above the shape drawn by connecting every foot touching the ground. With all four feet down, that shape is a wide quadrilateral. The body can lean quite far before its centre of mass slips outside it.\n\nLift one foot on purpose to take a step, and only three feet remain. Three points make a triangle, always smaller than the four-foot shape it came from. The same lean that was safe on four feet can now push the centre of mass past the triangle's edge.\n\nOnce the centre of mass crosses that edge, gravity finishes the job on its own. A leg cannot pull the body back once it has already tipped past the line."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w06-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A footprint view from above shows three feet down, forming a support triangle, with the fourth foot lifted and marked to one side, connected to the back foot by a dashed line. The centre of mass starts inside the triangle and an arrow shows it shifting sideways, with a dimension line marking the shift distance in centimetres, the value measured in this test before a foot has to move or the walker tips.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  80,
+                  190
+                ],
+                [
+                  280,
+                  190
+                ],
+                [
+                  180,
+                  80
+                ]
+              ],
+              "fill": "none"
+            },
+            {
+              "t": "dot",
+              "cx": 80,
+              "cy": 190,
+              "label": "foot"
+            },
+            {
+              "t": "dot",
+              "cx": 280,
+              "cy": 190,
+              "label": "foot"
+            },
+            {
+              "t": "dot",
+              "cx": 180,
+              "cy": 80,
+              "label": "foot"
+            },
+            {
+              "t": "dot",
+              "cx": 180,
+              "cy": 30,
+              "label": "lifted foot",
+              "side": "above"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 80,
+              "x2": 180,
+              "y2": 30,
+              "dashed": true
+            },
+            {
+              "t": "dot",
+              "cx": 180,
+              "cy": 140,
+              "label": "centre of mass",
+              "side": "left"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 140,
+              "x2": 230,
+              "y2": 150,
+              "arrow": true,
+              "color": "rust",
+              "label": "shift"
+            },
+            {
+              "t": "dim",
+              "x1": 180,
+              "y1": 170,
+              "x2": 230,
+              "y2": 170,
+              "label": "shift distance (cm)"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 800,
+              "caption": "one foot lifts off the ground",
+              "set": {
+                "4": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "the centre of mass shifts sideways",
+              "set": {
+                "6": {
+                  "fill": "accent"
+                },
+                "7": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "the furthest shift before it tips",
+              "set": {
+                "7": {
+                  "x2": 250,
+                  "y2": 158
+                },
+                "8": {
+                  "x2": 250
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "Stand it, shift it, then find the tipping point",
+      "body": "Print the legs and body, and mount the eight servos through the PCA9685 to the ESP32. Write a sketch that holds all four legs at a standing angle and confirm the walker holds a level pose on its own.\n\nCommand or gently push the body sideways in small steps while it stands on all four feet. Find the furthest shift before a foot lifts on its own. Repeat three times.\n\nNow lift one foot on purpose, balancing on the other three, and repeat the same sideways test to find the furthest shift before it tips. Repeat three times.",
+      "checklist": [
+        "All eight servos moved to a commanded standing angle and held it",
+        "The walker shifted side to side on four feet without falling at small shifts",
+        "The furthest shift before a foot lifted was measured three times on four feet",
+        "The furthest shift before tipping was measured three times balanced on three feet"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s4-w06-make-04",
+      "title": "Feet on the floor versus shift before tipping",
+      "ideaId": "stay-inside-the-support-triangle",
+      "body": "The walker, the surface and the direction of the shift stay the same for every row. Only how many feet are on the floor changes.\n\nTest four feet and three feet, three times each, six rows in total. For each trial, write how many feet were down and the shift distance in centimetres before a foot lifted or it tipped.",
+      "columns": [
+        "Feet on the floor (3 or 4)",
+        "Shift before tipping (cm)"
+      ],
+      "minRows": 6,
+      "question": "Did standing on three feet tip over at a smaller shift than standing on four, and by how many centimetres?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w06-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: one leg's servo mounted a few degrees off from the others, so the walker leans before any shift is even commanded.\n\nAlso watch for a soft or uneven surface changing the tipping point between trials. And watch for a shift measured from a different point on the body each time.\n\nSafety, said plainly: wire the PCA9685's own external power input for all eight servos moving together. The ESP32's own pins cannot supply that much current, even through the driver board."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w06-make-06",
+      "title": "Show it",
+      "prompt": "Photo of the walker standing on four feet and balanced on three, plus your six-row tipping table",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w06-make-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s4-w06-make-x01",
+      "kind": "bonus",
+      "title": "How much does tilt really cost a solar cell",
+      "minutes": 30,
+      "ideaId": "tilt-cuts-the-light",
+      "body": "Find out how much a solar panel loses when it cannot face the sun directly, the way a walker's own body sways as it moves.\n\nPredict first: write in the Maker's Log a guess for how much a solar cell's output drops when tilted 60 degrees from facing the sun.\n\nMeasure it with the week's own kit: wire the solar cell to the multimeter. Read its output flat and facing the sun. Then read it again at 30, 60 and 90 degrees with the protractor, three readings each. Lay a tissue over it at 0 degrees for a dust test.\n\nCompare: line up your 60 degree reading against your prediction and against the cosine of 60 degrees, which is 0.5.\n\nTeach it: explain to the family why tilt and dust both cut output, but for different reasons."
+    }
+  ]
+}

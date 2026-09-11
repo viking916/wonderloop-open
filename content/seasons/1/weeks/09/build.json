@@ -1,0 +1,300 @@
+{
+  "id": "s1-w09-build",
+  "season": 1,
+  "week": 9,
+  "track": "build",
+  "title": "Teach a machine",
+  "summary": "Train an image model in Teachable Machine to tell three hand signs apart, then test what it does with things it has never seen.",
+  "minutes": 60,
+  "materials": ["laptop with a webcam", "Chrome or another browser with camera access", "paper and pencil"],
+  "skills": ["build.ai", "build.data"],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s1-w09-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop again: ask, imagine, plan, build, test, fix. This week nothing gets built out of gears or motors. You teach a computer to recognize something instead, by showing it examples instead of writing rules for it.\n\nAsk: what should the model be able to do? Look at your hand through the webcam and tell which of three hand signs you are holding up right now, and nothing else.\n\nImagine before you build. Pick three hand signs that look clearly different from each other when the camera sees them, not just different to you. A thumbs up, a flat open palm, and a fist look different in almost any light or angle. Two signs that only differ by one finger can trip the model up. Picture holding each sign a little differently each time, closer, farther, tilted, so the model does not just memorize one exact pose.\n\nPlan the pieces before you open the website:\n\n1. Three sign names, written down now, one for each class you will train.\n2. Where you will sit and how you will hold your hand, so all three signs stay clear.\n3. A prediction: about how many example photos of each sign will the model need to learn it well?"
+    },
+    {
+      "kind": "typing",
+      "id": "s1-w09-build-02",
+      "minutes": 5,
+      "body": "Five more minutes on the same site you have been using. Warm up on the home row, a s d f and j k l semicolon, then spend the rest of the time on two more symbols Python code leans on: the pound sign # for writing a comment, a note to yourself the computer skips over, and the underscore _ for joining words together in a name like hand_sign. Try to find both without looking down."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w09-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A photo zooming into a grid of four pixel squares, each labelled with its own red, green and blue numbers from 0 to 255. A caption says each square stores three numbers, R, G and B.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 175,
+              "y": 15,
+              "s": "a photo is a grid of pixel numbers",
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 50,
+              "w": 90,
+              "h": 90,
+              "label": "photo",
+              "sub": "looks smooth"
+            },
+            {
+              "t": "line",
+              "x1": 115,
+              "y1": 95,
+              "x2": 155,
+              "y2": 95,
+              "arrow": true,
+              "label": "zoom in"
+            },
+            {
+              "t": "box",
+              "x": 160,
+              "y": 50,
+              "w": 60,
+              "h": 60,
+              "label": "pixel",
+              "sub": "170,45,30",
+              "fill": "rust"
+            },
+            {
+              "t": "box",
+              "x": 230,
+              "y": 50,
+              "w": 60,
+              "h": 60,
+              "label": "pixel",
+              "sub": "255,255,255",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 160,
+              "y": 120,
+              "w": 60,
+              "h": 60,
+              "label": "pixel",
+              "sub": "10,10,10",
+              "fill": "ink"
+            },
+            {
+              "t": "box",
+              "x": 230,
+              "y": 120,
+              "w": 60,
+              "h": 60,
+              "label": "pixel",
+              "sub": "60,120,60",
+              "fill": "green"
+            },
+            {
+              "t": "text",
+              "x": 175,
+              "y": 200,
+              "s": "each square: three numbers, R G B (0-255)",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "How a camera sees",
+      "body": "A photo on a screen looks like one smooth picture, but to a computer it is really a grid of tiny colored squares called pixels, thousands of them packed edge to edge in rows and columns. Zoom in far enough on any photo and the smooth picture breaks apart into these little squares, each one just a single flat color.\n\nEvery one of those squares is stored as three numbers, one for how much red is in it, one for how much green, and one for how much blue, each somewhere between 0 and 255. Mix those three numbers together and you get the exact color of that one tiny square. A whole photo is really just a giant list of these red, green, blue number triples, one triple per square, nothing more.\n\nWhen you train a model on your hand signs, it never actually looks at a hand the way you do. It looks for patterns in those number grids: which squares tend to be light or dark next to each other, where the numbers jump sharply from one square to the next, which shapes of numbers showed up again and again in the pictures you fed it. The model has never seen a hand. It has only ever seen numbers, and it is only guessing that a new grid of numbers looks like the patterns it saw during training."
+    },
+    {
+      "kind": "task",
+      "id": "s1-w09-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A training flow: three classes, thumbs up, open palm and fist, each with about 30 samples, feed into a trained model. A dashed test arrow shows the live camera feeding the same model, which outputs a prediction of which sign it is.",
+        "spec": {
+          "w": 360,
+          "h": 210,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 12,
+              "s": "samples train the model; live camera tests it",
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 30,
+              "w": 90,
+              "h": 35,
+              "label": "thumbs up",
+              "sub": "~30 samples"
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 75,
+              "w": 90,
+              "h": 35,
+              "label": "open palm",
+              "sub": "~30 samples"
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 120,
+              "w": 90,
+              "h": 35,
+              "label": "fist",
+              "sub": "~30 samples"
+            },
+            {
+              "t": "box",
+              "x": 145,
+              "y": 75,
+              "w": 100,
+              "h": 40,
+              "label": "trained model",
+              "fill": "accent"
+            },
+            {
+              "t": "line",
+              "x1": 100,
+              "y1": 47,
+              "x2": 145,
+              "y2": 85,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 100,
+              "y1": 92,
+              "x2": 145,
+              "y2": 95,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 100,
+              "y1": 137,
+              "x2": 145,
+              "y2": 105,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 270,
+              "y": 75,
+              "w": 80,
+              "h": 40,
+              "label": "your hand",
+              "sub": "live"
+            },
+            {
+              "t": "line",
+              "x1": 270,
+              "y1": 95,
+              "x2": 245,
+              "y2": 95,
+              "arrow": true,
+              "dashed": true,
+              "color": "green",
+              "label": "test"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 145,
+              "w": 110,
+              "h": 35,
+              "label": "prediction",
+              "sub": "which sign?"
+            },
+            {
+              "t": "line",
+              "x1": 195,
+              "y1": 115,
+              "x2": 195,
+              "y2": 145,
+              "arrow": true
+            }
+          ]
+        }
+      },
+      "title": "Train three hand signs in Teachable Machine",
+      "body": "Getting ready:\n\n1. https://teachablemachine.withgoogle.com is a website where you train an image model from photos you take.\n2. Your browser needs webcam access; allow it when asked.\n3. You already wrote down three sign names and a rough guess for how many samples you need.\n\nTrain the model:\n\n1. Go to https://teachablemachine.withgoogle.com, click `Get Started`, then `Image Project`, then `Standard image model`.\n2. Click `Add a class` once, so there are three classes.\n3. Click the pencil next to each class name and rename it to one of your three sign names.\n4. For each class, click `Webcam` and hold up the matching hand sign.\n5. Click and hold `Hold to Record`, moving your hand slightly, closer, farther, tilted, while you record.\n6. Predict first: how many samples per class will be enough? Write the number down.\n7. Record that many samples for each class.\n8. Click `Train Model` and wait for it to finish.\n9. Hold up each of your three signs in the `Preview` panel and watch the bars rise and fall.\n\nTest what it has never seen:\n\n1. On paper, list five things the model has never seen. Your other hand, a darker room, a different person's hand, a sign held far back, and a sign held only half in view.\n2. Next to each, write your prediction: will the model get it right, get it wrong, or seem confused?\n3. Test two of the five against the live preview.\n4. Write down what really happened, next to your prediction, for those two.",
+      "checklist": [
+        "Each of the three classes has about 30 recorded samples",
+        "The trained model correctly names each of the three hand signs most of the time in the live preview",
+        "The paper list names all five untrained situations with a prediction written for each",
+        "Two of the five situations were actually tested, with what really happened written down",
+        "I wrote down how many samples I predicted I would need, and how many I actually used"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w09-build-05",
+      "title": "Bug diary",
+      "body": "Print what it sees does not quite work this week, since you cannot peek inside the model's numbers the way you peeked at a sensor reading with show number. But there is a version of that habit that still works here: look at the training. A model only knows what you showed it.\n\nIf the model got confused by your other hand, or by a darker room, or by a sign held only halfway in the frame, that is not a random glitch. It is because nothing like that ever showed up in the 30 samples you recorded for each class. Look back at how you trained: did you vary the angle and distance, or did every sample look almost the same? Did you train in the same lighting you tested in?\n\nWrite one line for each of the five predictions from the paper exercise, plus what you found for the two you actually tested. Where your prediction was wrong, write what training samples the model would have needed to see to get it right. Also note whether the number of samples you predicted at the start matched about what you actually used, and if not, say why."
+    },
+    {
+      "kind": "artifact",
+      "id": "s1-w09-build-06",
+      "title": "Show it",
+      "prompt": "Photo of the live preview showing the model correctly naming a hand sign, and your written paper exercise: the five predictions and what really happened for the two you tested",
+      "accepts": ["photo", "text"]
+    },
+    {
+      "kind": "log",
+      "id": "s1-w09-build-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s1-w09-build-x01",
+      "kind": "bonus",
+      "title": "Add a background class",
+      "minutes": 15,
+      "body": "Give the model a fourth class for empty space, so it does not force every frame into one of your signs.\n\n1. Open your project at https://teachablemachine.withgoogle.com.\n2. Click `Add a class` again, so there are four classes.\n3. Rename the new class to `Background` using the pencil icon.\n4. Click `Webcam` on the `Background` class and record samples of the empty room.\n5. Click `Train Model` again and wait for it to finish.\n6. Hold your hand out of frame in the `Preview` panel and check the result.\n\nWhat to notice: without a background class, the model always picks one of your three signs."
+    },
+    {
+      "id": "s1-w09-build-x02",
+      "kind": "bonus",
+      "title": "Test with a sign it never saw",
+      "minutes": 15,
+      "body": "Add a fourth hand sign the model was never trained on, and see what it guesses.\n\n1. Pick a fourth hand sign you did not train, like a peace sign or a wave.\n2. On paper, predict which of your three trained classes will win instead.\n3. Hold up the new sign in the `Preview` panel at https://teachablemachine.withgoogle.com.\n4. Watch which of the three trained bars rises the most.\n5. Write down whether your prediction was right, and your best guess for why.\n\nWhat to notice: the model always answers with a class it knows, even for a sign it has never seen."
+    },
+    {
+      "id": "s1-w09-build-x03",
+      "kind": "invent",
+      "title": "Train a model of your own",
+      "minutes": 30,
+      "body": "What could a camera learn to recognize that would be useful around your house?\n\nTrain your own three-class image model on something you choose.\n\nIt must use a Standard image model with at least three classes, the same way as this week's build.\nIt must have one number you choose by testing, like how many samples per class you record.\nIt must be shown correctly recognizing something live, to someone in your house.\n\nSketch your three classes on paper first.\n\nHow to know it works: someone else can trigger each of your three classes correctly, without your help."
+    },
+    {
+      "id": "s1-w09-build-x04",
+      "kind": "bonus",
+      "title": "A pixel is a tiny sensor too",
+      "minutes": 15,
+      "ideaId": "ask-the-world",
+      "body": "Find out how much the webcam's picture changes when the room's light changes.\n\n1. Predict first: guess how much brighter, on a scale from 1 to 10, a lit room will look than a dim one. Write both numbers in the Maker's Log.\n2. Open the webcam page you used to train your model.\n3. Take a snapshot in a normally lit room and rate how bright it looks, from 1 to 10.\n4. Turn off the lights, or move to a dim room, and take a second snapshot.\n5. Rate the second snapshot's brightness from 1 to 10 the same way.\n\nCompare: how far apart were your two ratings, and did the gap match what you predicted?\n\nTeach it: tell a grown-up in two sentences why a camera is really asking every pixel one question, how bright are you here."
+    },
+    {
+      "id": "s1-w09-build-x05",
+      "kind": "bonus",
+      "title": "Beat the model at recognizing a face",
+      "minutes": 15,
+      "ideaId": "your-brain-recognizes-fast",
+      "body": "Find out how fast your own brain does the job Teachable Machine took a whole training run to learn.\n\n1. Ask a partner to hold up a photo of a face you know for less than one second, then hide it again.\n2. Say out loud whether you recognised the face, and who it was if you did.\n3. Repeat with two more quick photo flashes, timing each with a phone stopwatch if you have one.\n4. Compare how sure you felt after a quick flash against a full, unhurried look.\n\nWhat to notice: brain cells tuned specifically to faces respond in about 170 milliseconds, under a fifth of a second. That is long before you can even say a name out loud."
+    }
+  ]
+}

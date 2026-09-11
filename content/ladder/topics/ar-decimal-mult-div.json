@@ -1,0 +1,2099 @@
+{
+  "id": "ar-decimal-mult-div",
+  "idea": {
+    "body": "Multiplying decimals means multiplying the digits as if there were no decimal point, then counting decimal digits to place the point in the answer. Count how many decimal digits the two numbers have together, then put the point that many digits in from the right of the product. Dividing by a decimal number first turns it into a whole number, by moving its decimal point. The number being divided moves its point the same number of places. Cutting 0.3 meters of wire for 0.4 of a job: 3 times 4 is 12, and two decimal digits together makes it 0.12 meters.",
+    "figure": {
+      "kind": "grid",
+      "alt": "A grid of 10 rows and 10 columns, with a 3 by 4 rectangle of 12 squares shaded, showing 0.3 times 0.4 equals 0.12.",
+      "spec": {
+        "rows": 10,
+        "cols": 10,
+        "shaded": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A workshop cuts 2.4 meters of wire per bracket. How much wire does 3 brackets need?",
+    "steps": [
+      "Multiply as if 2.4 were a whole number: 24 times 3 is 72.",
+      "2.4 has one decimal digit, so the answer needs one decimal digit too.",
+      "Counting one place in from the right of 72 gives 7.2.",
+      "Three brackets need 7.2 meters of wire."
+    ]
+  },
+  "ways": [
+    {
+      "id": "ar-decimal-mult-div-w1",
+      "name": "Multiply then place the point",
+      "when": "Use this for any decimal multiplication, no matter how many decimal digits each number has.",
+      "steps": [
+        "Multiply the digits as if there were no decimal points at all.",
+        "Count how many decimal digits the two numbers have altogether.",
+        "Place the decimal point that many digits in from the right of the product."
+      ],
+      "example": "2.4 x 3",
+      "answer": "7.2",
+      "trap": "Counting decimal digits in the answer's own length instead of adding up the original numbers' decimal digits."
+    },
+    {
+      "id": "ar-decimal-mult-div-w2",
+      "name": "Move both decimal points together",
+      "when": "Use this when dividing by a number that has a decimal point.",
+      "steps": [
+        "Count how many places to move the divisor's decimal point to make it a whole number.",
+        "Move the number being divided by that same number of places.",
+        "Divide as usual, now with a whole number divisor."
+      ],
+      "example": "7.2 divided by 0.4",
+      "answer": "18",
+      "trap": "Moving the two decimal points by a different number of places instead of matching them exactly."
+    },
+    {
+      "id": "ar-decimal-mult-div-w3",
+      "name": "Break into friendly parts",
+      "when": "Use this when one of the decimal numbers splits neatly into easier pieces.",
+      "steps": [
+        "Split one number into a whole part and a decimal part.",
+        "Multiply each part by the other number separately.",
+        "Add the two results together."
+      ],
+      "example": "3.2 x 5",
+      "answer": "16",
+      "trap": "Multiplying only the whole part by the other number and forgetting the decimal part."
+    },
+    {
+      "id": "ar-decimal-mult-div-w4",
+      "name": "Double and double again",
+      "when": "Use this when the whole number you are multiplying by is a power of 2, like 2, 4 or 8.",
+      "steps": [
+        "Double the decimal number once for each time you multiply by 2.",
+        "Multiply by 4 by doubling twice; multiply by 8 by doubling three times.",
+        "The last double is your answer."
+      ],
+      "example": "0.6 x 4",
+      "answer": "2.4",
+      "trap": "Doubling one too many or too few times and landing on the wrong power of 2."
+    }
+  ],
+  "bank": [
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. Each part uses 3.2 m. What is the total for 2 parts, in meters?",
+      "answer": {
+        "kind": "number",
+        "value": "6.4"
+      },
+      "explanation": [
+        "Multiply as if 3.2 were a whole number: 32 times 2.",
+        "3.2 has 1 decimal digit, so the product needs the same number of decimal digits.",
+        "3.2 times 2 is 6.4."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine charges the same price for every identical snack. Each snack uses $3.30. What is the total for 3 snacks, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "9.90"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p01",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. Each step uses 1.4 turns. What is the total for 3 steps, in turns?",
+      "answer": {
+        "kind": "number",
+        "value": "4.2"
+      },
+      "explanation": [
+        "Multiply as if 1.4 were a whole number: 14 times 3.",
+        "1.4 has 1 decimal digit, so the product needs the same number of decimal digits.",
+        "1.4 times 3 is 4.2."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. Each bucket uses 1.5 L. What is the total for 4 buckets, in liters?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p02",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop uses the same length of paper for each identical page, in meters. Each page uses 2.5 m. What is the total for 4 pages, in meters?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Multiply as if 2.5 were a whole number: 25 times 4.",
+        "2.5 has 1 decimal digit, so the product needs the same number of decimal digits.",
+        "2.5 times 4 is 10."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. Each bracket uses 2.6 m. What is the total for 5 brackets, in meters?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p03",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. Each batch uses 0.6 kg. What is the total for 5 batchs, in kilograms?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Multiply as if 0.6 were a whole number: 6 times 5.",
+        "0.6 has 1 decimal digit, so the product needs the same number of decimal digits.",
+        "0.6 times 5 is 3."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. Each loop uses 0.7 units. What is the total for 6 loops, in battery units?",
+        "answer": {
+          "kind": "number",
+          "value": "4.2"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p04",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. Each part uses 4.3 m. What is the total for 2 parts, in meters?",
+      "answer": {
+        "kind": "number",
+        "value": "8.6"
+      },
+      "explanation": [
+        "Multiply as if 4.3 were a whole number: 43 times 2.",
+        "4.3 has 1 decimal digit, so the product needs the same number of decimal digits.",
+        "4.3 times 2 is 8.6."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine charges the same price for every identical snack. Each snack uses $4.40. What is the total for 3 snacks, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "13.20"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p05",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. A total of 6.4 turns is split evenly across 2 steps. How much is that for each step, in turns?",
+      "answer": {
+        "kind": "number",
+        "value": "3.2"
+      },
+      "explanation": [
+        "Divide as if 6.4 were a whole number, then place the decimal point in the answer straight up from where it sits in 6.4.",
+        "6.4 divided by 2 is 3.2.",
+        "Check it: 3.2 times 2 should give back 6.4."
+      ],
+      "useAgain": "when a decimal total is split evenly by a whole number of shares.",
+      "hints": [
+        "Divide the digits as if there were no decimal point at all, then bring the point straight down into the answer.",
+        "Check your answer by multiplying it back by the number of shares."
+      ],
+      "socraticHint": "Where does the decimal point in the answer end up compared to where it sits in the total being divided?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. A total of 6.6 L is split evenly across 2 buckets. How much is that for each bucket, in liters?",
+        "answer": {
+          "kind": "number",
+          "value": "3.3"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p06",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop uses the same length of paper for each identical page, in meters. A total of 12.6 m is split evenly across 3 pages. How much is that for each page, in meters?",
+      "answer": {
+        "kind": "number",
+        "value": "4.2"
+      },
+      "explanation": [
+        "Divide as if 12.6 were a whole number, then place the decimal point in the answer straight up from where it sits in 12.6.",
+        "12.6 divided by 3 is 4.2.",
+        "Check it: 4.2 times 3 should give back 12.6."
+      ],
+      "useAgain": "when a decimal total is split evenly by a whole number of shares.",
+      "hints": [
+        "Divide the digits as if there were no decimal point at all, then bring the point straight down into the answer.",
+        "Check your answer by multiplying it back by the number of shares."
+      ],
+      "socraticHint": "Where does the decimal point in the answer end up compared to where it sits in the total being divided?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. A total of 12.9 m is split evenly across 3 brackets. How much is that for each bracket, in meters?",
+        "answer": {
+          "kind": "number",
+          "value": "4.3"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p07",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. A total of 8.4 kg is split evenly across 4 batchs. How much is that for each batch, in kilograms?",
+      "answer": {
+        "kind": "number",
+        "value": "2.1"
+      },
+      "explanation": [
+        "Divide as if 8.4 were a whole number, then place the decimal point in the answer straight up from where it sits in 8.4.",
+        "8.4 divided by 4 is 2.1.",
+        "Check it: 2.1 times 4 should give back 8.4."
+      ],
+      "useAgain": "when a decimal total is split evenly by a whole number of shares.",
+      "hints": [
+        "Divide the digits as if there were no decimal point at all, then bring the point straight down into the answer.",
+        "Check your answer by multiplying it back by the number of shares."
+      ],
+      "socraticHint": "Where does the decimal point in the answer end up compared to where it sits in the total being divided?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. A total of 8.8 units is split evenly across 4 loops. How much is that for each loop, in battery units?",
+        "answer": {
+          "kind": "number",
+          "value": "2.2"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p08",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. A total of 4.5 m is split evenly across 5 parts. How much is that for each part, in meters?",
+      "answer": {
+        "kind": "number",
+        "value": "0.9"
+      },
+      "explanation": [
+        "Divide as if 4.5 were a whole number, then place the decimal point in the answer straight up from where it sits in 4.5.",
+        "4.5 divided by 5 is 0.9.",
+        "Check it: 0.9 times 5 should give back 4.5."
+      ],
+      "useAgain": "when a decimal total is split evenly by a whole number of shares.",
+      "hints": [
+        "Divide the digits as if there were no decimal point at all, then bring the point straight down into the answer.",
+        "Check your answer by multiplying it back by the number of shares."
+      ],
+      "socraticHint": "Where does the decimal point in the answer end up compared to where it sits in the total being divided?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine charges the same price for every identical snack. A total of $5.00 is split evenly across 5 snacks. How much is that for each snack, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "1.00"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p09",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. A total of 15.6 turns is split evenly across 2 steps. How much is that for each step, in turns?",
+      "answer": {
+        "kind": "number",
+        "value": "7.8"
+      },
+      "explanation": [
+        "Divide as if 15.6 were a whole number, then place the decimal point in the answer straight up from where it sits in 15.6.",
+        "15.6 divided by 2 is 7.8.",
+        "Check it: 7.8 times 2 should give back 15.6."
+      ],
+      "useAgain": "when a decimal total is split evenly by a whole number of shares.",
+      "hints": [
+        "Divide the digits as if there were no decimal point at all, then bring the point straight down into the answer.",
+        "Check your answer by multiplying it back by the number of shares."
+      ],
+      "socraticHint": "Where does the decimal point in the answer end up compared to where it sits in the total being divided?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. A total of 15.8 L is split evenly across 2 buckets. How much is that for each bucket, in liters?",
+        "answer": {
+          "kind": "number",
+          "value": "7.9"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p10",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop uses the same length of paper for each identical page, in meters. One log entry reads 2.35 m. What is that times 10, in meters?",
+      "answer": {
+        "kind": "number",
+        "value": "23.5"
+      },
+      "explanation": [
+        "Multiplying by 10 moves the decimal point one place to the right.",
+        "2.35 times 10 is 23.5."
+      ],
+      "useAgain": "when a decimal is multiplied by 10 or 100.",
+      "hints": [
+        "Multiplying or dividing by 10 or 100 never changes the digits, only where the decimal point sits.",
+        "Count how many zeros are in 10, then move the decimal point that many places right."
+      ],
+      "socraticHint": "Do the digits themselves ever change when you multiply or divide by 10 or 100?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. One log entry reads 2.48 m. What is that times 10, in meters?",
+        "answer": {
+          "kind": "number",
+          "value": "24.8"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p11",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. One log entry reads 4.6 kg. What is that times 100, in kilograms?",
+      "answer": {
+        "kind": "number",
+        "value": "460"
+      },
+      "explanation": [
+        "Multiplying by 100 moves the decimal point two places to the right.",
+        "4.6 times 100 is 460."
+      ],
+      "useAgain": "when a decimal is multiplied by 10 or 100.",
+      "hints": [
+        "Multiplying or dividing by 10 or 100 never changes the digits, only where the decimal point sits.",
+        "Count how many zeros are in 100, then move the decimal point that many places right."
+      ],
+      "socraticHint": "Do the digits themselves ever change when you multiply or divide by 10 or 100?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. One log entry reads 4.73 units. What is that times 100, in battery units?",
+        "answer": {
+          "kind": "number",
+          "value": "473"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p12",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. One log entry reads 56.2 m. What is that divided by 10, in meters?",
+      "answer": {
+        "kind": "number",
+        "value": "5.62"
+      },
+      "explanation": [
+        "Dividing by 10 moves the decimal point one place to the left.",
+        "56.2 divided by 10 is 5.62."
+      ],
+      "useAgain": "when a decimal is divided by 10 or 100.",
+      "hints": [
+        "Multiplying or dividing by 10 or 100 never changes the digits, only where the decimal point sits.",
+        "Count how many zeros are in 10, then move the decimal point that many places left."
+      ],
+      "socraticHint": "Do the digits themselves ever change when you multiply or divide by 10 or 100?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine charges the same price for every identical snack. One log entry reads $57.60. What is that divided by 10, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "5.76"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p13",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. One log entry reads 340 turns. What is that divided by 100, in turns?",
+      "answer": {
+        "kind": "number",
+        "value": "3.4"
+      },
+      "explanation": [
+        "Dividing by 100 moves the decimal point two places to the left.",
+        "340 divided by 100 is 3.4."
+      ],
+      "useAgain": "when a decimal is divided by 10 or 100.",
+      "hints": [
+        "Multiplying or dividing by 10 or 100 never changes the digits, only where the decimal point sits.",
+        "Count how many zeros are in 100, then move the decimal point that many places left."
+      ],
+      "socraticHint": "Do the digits themselves ever change when you multiply or divide by 10 or 100?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. One log entry reads 341.4 L. What is that divided by 100, in liters?",
+        "answer": {
+          "kind": "number",
+          "value": "3.414"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p14",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop uses the same length of paper for each identical page, in meters. One log entry reads 1.05 m. What is that times 10, in meters?",
+      "answer": {
+        "kind": "number",
+        "value": "10.5"
+      },
+      "explanation": [
+        "Multiplying by 10 moves the decimal point one place to the right.",
+        "1.05 times 10 is 10.5."
+      ],
+      "useAgain": "when a decimal is multiplied by 10 or 100.",
+      "hints": [
+        "Multiplying or dividing by 10 or 100 never changes the digits, only where the decimal point sits.",
+        "Count how many zeros are in 10, then move the decimal point that many places right."
+      ],
+      "socraticHint": "Do the digits themselves ever change when you multiply or divide by 10 or 100?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. One log entry reads 1.18 m. What is that times 10, in meters?",
+        "answer": {
+          "kind": "number",
+          "value": "11.8"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p15",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. One test run uses 0.3 of a full meter, and only 0.4 of that used part actually gets logged. What decimal part of a full meter gets logged?",
+      "answer": {
+        "kind": "number",
+        "value": "0.12"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 3 times 4 is 12.",
+        "0.3 has one decimal digit and 0.4 has one decimal digit, so the product needs two decimal digits.",
+        "0.3 times 0.4 is 0.12."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. One test run uses 0.4 of a full turn, and only 0.5 of that used part actually gets logged. What decimal part of a full turn gets logged?",
+        "answer": {
+          "kind": "number",
+          "value": "0.2"
+        }
+      },
+      "explanationFigure": {
+        "kind": "grid",
+        "alt": "A grid of 10 rows and 10 columns, with a 3 by 4 rectangle of 12 squares shaded, showing 0.3 times 0.4 equals 0.12.",
+        "spec": {
+          "rows": 10,
+          "cols": 10,
+          "shaded": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p16",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. One test run uses 0.2 of a full liter, and only 0.5 of that used part actually gets logged. What decimal part of a full liter gets logged?",
+      "answer": {
+        "kind": "number",
+        "value": "0.1"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 2 times 5 is 10.",
+        "0.2 has one decimal digit and 0.5 has one decimal digit, so the product needs two decimal digits.",
+        "0.2 times 0.5 is 0.1."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A print shop uses the same length of paper for each identical page, in meters. One test run uses 0.3 of a full meter, and only 0.6 of that used part actually gets logged. What decimal part of a full meter gets logged?",
+        "answer": {
+          "kind": "number",
+          "value": "0.18"
+        }
+      },
+      "explanationFigure": {
+        "kind": "grid",
+        "alt": "A grid of 10 rows and 10 columns, with a 2 by 5 rectangle of 10 squares shaded, showing 0.2 times 0.5 equals 0.1.",
+        "spec": {
+          "rows": 10,
+          "cols": 10,
+          "shaded": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ]
+          ]
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p17",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. One test run uses 0.6 of a full meter, and only 0.3 of that used part actually gets logged. What decimal part of a full meter gets logged?",
+      "answer": {
+        "kind": "number",
+        "value": "0.18"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 6 times 3 is 18.",
+        "0.6 has one decimal digit and 0.3 has one decimal digit, so the product needs two decimal digits.",
+        "0.6 times 0.3 is 0.18."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. One test run uses 0.7 of a full kilogram, and only 0.4 of that used part actually gets logged. What decimal part of a full kilogram gets logged?",
+        "answer": {
+          "kind": "number",
+          "value": "0.28"
+        }
+      },
+      "explanationFigure": {
+        "kind": "grid",
+        "alt": "A grid of 10 rows and 10 columns, with a 6 by 3 rectangle of 18 squares shaded, showing 0.6 times 0.3 equals 0.18.",
+        "spec": {
+          "rows": 10,
+          "cols": 10,
+          "shaded": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ]
+          ]
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p18",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. One test run uses 0.4 of a full battery unit, and only 0.4 of that used part actually gets logged. What decimal part of a full battery unit gets logged?",
+      "answer": {
+        "kind": "number",
+        "value": "0.16"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 4 times 4 is 16.",
+        "0.4 has one decimal digit and 0.4 has one decimal digit, so the product needs two decimal digits.",
+        "0.4 times 0.4 is 0.16."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. One test run uses 0.5 of a full meter, and only 0.5 of that used part actually gets logged. What decimal part of a full meter gets logged?",
+        "answer": {
+          "kind": "number",
+          "value": "0.25"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p19",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. One test run uses 0.7 of a full turn, and only 0.2 of that used part actually gets logged. What decimal part of a full turn gets logged?",
+      "answer": {
+        "kind": "number",
+        "value": "0.14"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 7 times 2 is 14.",
+        "0.7 has one decimal digit and 0.2 has one decimal digit, so the product needs two decimal digits.",
+        "0.7 times 0.2 is 0.14."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. One test run uses 0.8 of a full liter, and only 0.3 of that used part actually gets logged. What decimal part of a full liter gets logged?",
+        "answer": {
+          "kind": "number",
+          "value": "0.24"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p20",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop uses the same length of paper for each identical page, in meters. A total of 4.5 m is split into equal shares of 0.5 m each. How many shares is that?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Move the decimal point in 0.5 right until it is a whole number.",
+        "Move the decimal point in 4.5 the same number of places.",
+        "That turns the problem into 45 divided by 5.",
+        "4.5 divided by 0.5 is 9."
+      ],
+      "useAgain": "when the number you are dividing by has a decimal point in it.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. A total of 5 m is split into equal shares of 0.5 m each. How many shares is that?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p21",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. A total of 6.4 kg is split into equal shares of 0.8 kg each. How many shares is that?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Move the decimal point in 0.8 right until it is a whole number.",
+        "Move the decimal point in 6.4 the same number of places.",
+        "That turns the problem into 64 divided by 8.",
+        "6.4 divided by 0.8 is 8."
+      ],
+      "useAgain": "when the number you are dividing by has a decimal point in it.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. A total of 7.2 units is split into equal shares of 0.8 units each. How many shares is that?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p22",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. A total of 3.6 m is split into equal shares of 0.6 m each. How many shares is that?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Move the decimal point in 0.6 right until it is a whole number.",
+        "Move the decimal point in 3.6 the same number of places.",
+        "That turns the problem into 36 divided by 6.",
+        "3.6 divided by 0.6 is 6."
+      ],
+      "useAgain": "when the number you are dividing by has a decimal point in it.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. A total of 4.2 turns is split into equal shares of 0.6 turns each. How many shares is that?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p23",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. A total of 9.6 L is split into equal shares of 1.2 L each. How many shares is that?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Move the decimal point in 1.2 right until it is a whole number.",
+        "Move the decimal point in 9.6 the same number of places.",
+        "That turns the problem into 96 divided by 12.",
+        "9.6 divided by 1.2 is 8."
+      ],
+      "useAgain": "when the number you are dividing by has a decimal point in it.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A print shop uses the same length of paper for each identical page, in meters. A total of 10.8 m is split into equal shares of 1.2 m each. How many shares is that?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p24",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. A total of 8.1 m is split into equal shares of 0.9 m each. How many shares is that?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Move the decimal point in 0.9 right until it is a whole number.",
+        "Move the decimal point in 8.1 the same number of places.",
+        "That turns the problem into 81 divided by 9.",
+        "8.1 divided by 0.9 is 9."
+      ],
+      "useAgain": "when the number you are dividing by has a decimal point in it.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. A total of 9 kg is split into equal shares of 0.9 kg each. How many shares is that?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p25",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. The price is 1.50 dollars per battery unit. What is the cost for 2.2 battery units, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "3.30"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 15 times 22.",
+        "1.5 has 1 decimal digit and 2.2 has 1, so the product needs 2 decimal digits total.",
+        "1.5 times 2.2 is 3.30."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. The price is 1.60 dollars per meter. What is the cost for 2.5 meters, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "4.00"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p26",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. The price is 2.40 dollars per turn. What is the cost for 1.3 turns, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "3.12"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 24 times 13.",
+        "2.4 has 1 decimal digit and 1.3 has 1, so the product needs 2 decimal digits total.",
+        "2.4 times 1.3 is 3.12."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. The price is 2.55 dollars per liter. What is the cost for 1.6 liters, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "4.08"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p27",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop uses the same length of paper for each identical page, in meters. The price is 3.10 dollars per meter. What is the cost for 1.5 meters, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "4.65"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 31 times 15.",
+        "3.1 has 1 decimal digit and 1.5 has 1, so the product needs 2 decimal digits total.",
+        "3.1 times 1.5 is 4.65."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. The price is 3.25 dollars per meter. What is the cost for 1.8 meters, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "5.85"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p28",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. The price is 0.90 dollars per kilogram. What is the cost for 4.2 kilograms, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "3.78"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 9 times 42.",
+        "0.9 has 1 decimal digit and 4.2 has 1, so the product needs 2 decimal digits total.",
+        "0.9 times 4.2 is 3.78."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. The price is 1.00 dollars per battery unit. What is the cost for 4.5 battery units, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "4.50"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p29",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. The price is 1.80 dollars per meter. What is the cost for 2.6 meters, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "4.68"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 18 times 26.",
+        "1.8 has 1 decimal digit and 2.6 has 1, so the product needs 2 decimal digits total.",
+        "1.8 times 2.6 is 4.68."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. The price is 1.90 dollars per turn. What is the cost for 2.9 turns, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "5.51"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p30",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. The price is 2.35 dollars per liter. What is the cost for 1.2 liters, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "2.82"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 235 times 12.",
+        "2.35 has 2 decimal digits and 1.2 has 1, so the product needs 3 decimal digits total.",
+        "2.35 times 1.2 is 2.82."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A print shop uses the same length of paper for each identical page, in meters. The price is 2.50 dollars per meter. What is the cost for 1.5 meters, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "3.75"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p31",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. The price is 3.45 dollars per meter. What is the cost for 1.6 meters, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "5.52"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 345 times 16.",
+        "3.45 has 2 decimal digits and 1.6 has 1, so the product needs 3 decimal digits total.",
+        "3.45 times 1.6 is 5.52."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. The price is 3.60 dollars per kilogram. What is the cost for 2.4 kilograms, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "8.64"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p32",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. The price is 1.25 dollars per battery unit. What is the cost for 3.6 battery units, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "4.50"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 125 times 36.",
+        "1.25 has 2 decimal digits and 3.6 has 1, so the product needs 3 decimal digits total.",
+        "1.25 times 3.6 is 4.50."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. The price is 1.40 dollars per meter. What is the cost for 3.9 meters, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "5.46"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p33",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. The price is 4.15 dollars per turn. What is the cost for 1.4 turns, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "5.81"
+      },
+      "explanation": [
+        "Multiply as if neither number had a decimal point: 415 times 14.",
+        "4.15 has 2 decimal digits and 1.4 has 1, so the product needs 3 decimal digits total.",
+        "4.15 times 1.4 is 5.81."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. The price is 4.30 dollars per liter. What is the cost for 1.7 liters, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "7.31"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p34",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop uses the same length of paper for each identical page, in meters. A total of 7.2 m is split into equal shares of 1.6 m each. How many shares is that?",
+      "answer": {
+        "kind": "number",
+        "value": "4.5"
+      },
+      "explanation": [
+        "Move the decimal point in 1.6 right until it is a whole number.",
+        "Move the decimal point in 7.2 the same number of places.",
+        "That turns the problem into 72 divided by 16.",
+        "7.2 divided by 1.6 is 4.5."
+      ],
+      "useAgain": "when the number you are dividing by has a decimal point in it.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. A total of 8.8 m is split into equal shares of 1.6 m each. How many shares is that?",
+        "answer": {
+          "kind": "number",
+          "value": "5.5"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p35",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. A total of 9.45 kg is split into equal shares of 2.7 kg each. How many shares is that?",
+      "answer": {
+        "kind": "number",
+        "value": "3.5"
+      },
+      "explanation": [
+        "Move the decimal point in 2.7 right until it is a whole number.",
+        "Move the decimal point in 9.45 the same number of places.",
+        "That turns the problem into 94.5 divided by 27.",
+        "9.45 divided by 2.7 is 3.5."
+      ],
+      "useAgain": "when the number you are dividing by has a decimal point in it.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. A total of 12.15 units is split into equal shares of 2.7 units each. How many shares is that?",
+        "answer": {
+          "kind": "number",
+          "value": "4.5"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p36",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. A total of 12.6 m is split into equal shares of 3.6 m each. How many shares is that?",
+      "answer": {
+        "kind": "number",
+        "value": "3.5"
+      },
+      "explanation": [
+        "Move the decimal point in 3.6 right until it is a whole number.",
+        "Move the decimal point in 12.6 the same number of places.",
+        "That turns the problem into 126 divided by 36.",
+        "12.6 divided by 3.6 is 3.5."
+      ],
+      "useAgain": "when the number you are dividing by has a decimal point in it.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. A total of 16.2 turns is split into equal shares of 3.6 turns each. How many shares is that?",
+        "answer": {
+          "kind": "number",
+          "value": "4.5"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p37",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. A total of 5.25 L is split into equal shares of 1.5 L each. How many shares is that?",
+      "answer": {
+        "kind": "number",
+        "value": "3.5"
+      },
+      "explanation": [
+        "Move the decimal point in 1.5 right until it is a whole number.",
+        "Move the decimal point in 5.25 the same number of places.",
+        "That turns the problem into 52.5 divided by 15.",
+        "5.25 divided by 1.5 is 3.5."
+      ],
+      "useAgain": "when the number you are dividing by has a decimal point in it.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A print shop uses the same length of paper for each identical page, in meters. A total of 6.75 m is split into equal shares of 1.5 m each. How many shares is that?",
+        "answer": {
+          "kind": "number",
+          "value": "4.5"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p38",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. A total cost of 9.60 dollars covers 3.2 meters. What is the price per meter, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "3.00"
+      },
+      "explanation": [
+        "A price for one meter means dividing the total cost by the number of meters: 9.6 divided by 3.2.",
+        "Move both decimal points right until the divisor is a whole number, then divide.",
+        "9.6 divided by 3.2 is 3.00."
+      ],
+      "useAgain": "when a total cost needs to be split by a decimal amount to find the price for one unit.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. A total cost of 11.20 dollars covers 3.2 kilograms. What is the price per kilogram, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "3.50"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p39",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. A total cost of 14.40 dollars covers 4.8 battery units. What is the price per battery unit, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "3.00"
+      },
+      "explanation": [
+        "A price for one battery unit means dividing the total cost by the number of battery units: 14.4 divided by 4.8.",
+        "Move both decimal points right until the divisor is a whole number, then divide.",
+        "14.4 divided by 4.8 is 3.00."
+      ],
+      "useAgain": "when a total cost needs to be split by a decimal amount to find the price for one unit.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. A total cost of 16.80 dollars covers 4.8 meters. What is the price per meter, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "3.50"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p40",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. A total cost of 7.50 dollars covers 2.5 turns. What is the price per turn, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "3.00"
+      },
+      "explanation": [
+        "A price for one turn means dividing the total cost by the number of turns: 7.5 divided by 2.5.",
+        "Move both decimal points right until the divisor is a whole number, then divide.",
+        "7.5 divided by 2.5 is 3.00."
+      ],
+      "useAgain": "when a total cost needs to be split by a decimal amount to find the price for one unit.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. A total cost of 8.75 dollars covers 2.5 liters. What is the price per liter, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "3.50"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p41",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A print shop uses the same length of paper for each identical page, in meters. The price is 2.40 dollars per meter. What is the cost for 1.5 meters, in dollars?",
+      "options": [
+        "36",
+        "0.36",
+        "3.6",
+        "360"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Multiply the digits as if neither number had a decimal point: 360.",
+        "2.4 and 1.5 together have 2 decimal digits, so the product needs 2 decimal digits too.",
+        "Placed correctly, the product is 3.6.",
+        "Counting the decimal digits wrong, by one too many or one too few, moves the point to the wrong spot."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. The price is 2.50 dollars per meter. What is the cost for 1.7 meters, in dollars?",
+        "options": [
+          "42.5",
+          "0.425",
+          "425",
+          "4.25"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p42",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. The price is 3.20 dollars per kilogram. What is the cost for 2.5 kilograms, in dollars?",
+      "options": [
+        "80",
+        "8",
+        "0.8",
+        "800"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Multiply the digits as if neither number had a decimal point: 800.",
+        "3.2 and 2.5 together have 2 decimal digits, so the product needs 2 decimal digits too.",
+        "Placed correctly, the product is 8.",
+        "Counting the decimal digits wrong, by one too many or one too few, moves the point to the wrong spot."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. The price is 3.30 dollars per battery unit. What is the cost for 2.7 battery units, in dollars?",
+        "options": [
+          "8.91",
+          "89.1",
+          "0.891",
+          "891"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p43",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. A total of 6.3 m is split into equal shares of 0.7 m each. How many shares is that?",
+      "options": [
+        "0.9",
+        "9",
+        "4.41",
+        "9.09"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Move the decimal point in 0.7 right until it is whole, then move the point in 6.3 the same number of places.",
+        "Both numbers move together, or the division stops meaning the same thing.",
+        "6.3 divided by 0.7 is 9.",
+        "Moving only one of the two decimal points, or multiplying instead of dividing, both give a wrong answer."
+      ],
+      "useAgain": "when the number you are dividing by has a decimal point in it.",
+      "hints": [
+        "If the divisor has a decimal point, move it right until the divisor is a whole number. Move the dividend's point the same number of places.",
+        "Then divide as if both numbers were whole, and place the decimal point in the answer straight up from the dividend's new point."
+      ],
+      "socraticHint": "Does moving both decimal points the same number of places change what the division actually works out to?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. A total of 7.7 turns is split into equal shares of 0.7 turns each. How many shares is that?",
+        "options": [
+          "1.1",
+          "5.39",
+          "11",
+          "11.06"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p44",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "truefalse",
+      "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. A note says: \"1.5 times 2.4 equals 3.6.\" Is that correct?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Multiply the digits with no decimal point: 15 times 24.",
+        "Count the total decimal digits in 1.5 and 2.4, then place the point that many digits from the right.",
+        "1.5 times 2.4 actually equals 3.6.",
+        "That matches the note, so the claim is correct."
+      ],
+      "useAgain": "when you multiply two numbers that both have digits after the decimal point.",
+      "hints": [
+        "Multiply the two numbers as if neither had a decimal point at all.",
+        "Count the total number of decimal digits in both numbers you multiplied. Put the point that many places from the right in the product."
+      ],
+      "socraticHint": "Does multiplying two numbers smaller than one ever give a product bigger than either of them?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. A note says: \"1.6 times 2.6 equals 4.16.\" Is that correct?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p45",
+      "ideaId": "ar-decimal-mult-div"
+    }
+  ],
+  "stretch": [
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. Each bucket uses 2.5 L. For 4 buckets, that total is then split into shares of 0.5 L each. How many shares is that?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "First multiply: 2.5 times 4 is 10.",
+        "Then divide that total by the share size: 10 divided by 0.5 is 20.",
+        "The multiplication has to happen first, since the division needs the total it produces."
+      ],
+      "useAgain": "when a total is built by multiplying a decimal by a count, then split by dividing by a third number.",
+      "hints": [
+        "Find the total from the multiplication before touching the division at all.",
+        "Use that total, not either original number, as the amount being divided."
+      ],
+      "socraticHint": "Would dividing by the share size before multiplying give the same final answer?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A print shop uses the same length of paper for each identical page, in meters. Each page uses 3.5 m. For 3 pages, that total is then split into shares of 0.6 m each. How many shares is that?",
+        "answer": {
+          "kind": "number",
+          "value": "17.5"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p46",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A workshop cuts the same length of wire for each identical bracket, in meters. A total of 8.4 m comes from multiplying 2.4 m by a second decimal number. What is that second number?",
+      "answer": {
+        "kind": "number",
+        "value": "3.5"
+      },
+      "explanation": [
+        "A product made of two factors means the missing factor is the product divided by the known factor.",
+        "8.4 divided by 2.4 gives 3.5.",
+        "Check it: 2.4 times 3.5 should give back 8.4."
+      ],
+      "useAgain": "when you know a product and one factor, and need the other factor.",
+      "hints": [
+        "Division undoes multiplication, so the missing factor comes from dividing.",
+        "Divide the total by the factor you already know."
+      ],
+      "socraticHint": "Which operation undoes a multiplication when one factor is missing?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen recipe uses the same weight of flour for each identical batch, in kilograms. A total of 12.6 kg comes from multiplying 3.6 kg by a second decimal number. What is that second number?",
+        "answer": {
+          "kind": "number",
+          "value": "3.5"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p47",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A rover uses the same amount of battery charge for each identical loop of its test track. Each loop uses 1.5 units. For 3 loops, that total is split into shares of 0.2 units each. How many shares is that?",
+      "options": [
+        "2.25",
+        "0.9",
+        "26.5",
+        "22.5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "First multiply: 1.5 times 3 is 4.5.",
+        "Then divide by the share size, moving both decimal points until 0.2 is a whole number: 4.5 divided by 0.2 is 22.5.",
+        "Forgetting to shift the dividend's point the same number of places as the divisor gives a wrong, much smaller answer."
+      ],
+      "useAgain": "when a chained multiply-then-divide problem also needs the decimal point shifted for the division step.",
+      "hints": [
+        "Do the multiplication completely before starting the division.",
+        "When you shift the divisor's decimal point, shift the dividend's point by the exact same amount."
+      ],
+      "socraticHint": "If the divisor's point moves one place but the dividend's point does not move at all, is the division still the same problem?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printer uses a fixed length of filament for each identical part it prints, in meters. Each part uses 2.5 m. For 4 parts, that total is split into shares of 0.5 m each. How many shares is that?",
+        "options": [
+          "20",
+          "2",
+          "5",
+          "24"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p48",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "order",
+      "prompt": "Work out each value, then put the four results in order from smallest to largest: A: 2.5 times 1.6. B: 9 divided by 2.5. C: 1.2 times 2.4. D: 15 divided by 4.",
+      "items": [
+        "A: 2.5 times 1.6",
+        "B: 9 divided by 2.5",
+        "C: 1.2 times 2.4",
+        "D: 15 divided by 4"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          3,
+          0
+        ]
+      },
+      "explanation": [
+        "A works out to 4, B to 3.6, C to 2.88, D to 3.75.",
+        "Every value has to be fully worked out before any two of them can be compared.",
+        "Comparing the results in order from smallest to largest gives the final sequence."
+      ],
+      "useAgain": "when several decimal multiplications and divisions need to be worked out before they can be ordered.",
+      "hints": [
+        "Work out all four values before comparing any two of them.",
+        "Line up the decimal digits carefully once every value is worked out, then compare."
+      ],
+      "socraticHint": "Can a multiplication and a division be compared without working either one out first?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Work out each value, then put the four results in order from smallest to largest: A: 3.5 times 1.4. B: 12 divided by 3.2. C: 2.1 times 1.8. D: 20 divided by 5.",
+        "items": [
+          "A: 3.5 times 1.4",
+          "B: 12 divided by 3.2",
+          "C: 2.1 times 1.8",
+          "D: 20 divided by 5"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            3,
+            0
+          ]
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p49",
+      "ideaId": "ar-decimal-mult-div"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A robot arm rotates the same angle fraction for each identical step of its program, in turns. A total cost of 6.40 dollars covers 3.2 turns. At that same price, what would 5 turns cost, in dollars?",
+      "answer": {
+        "kind": "number",
+        "value": "10.00"
+      },
+      "explanation": [
+        "Find the price for one turn first: 6.4 divided by 3.2 is 2.00.",
+        "Then scale that price up to 5 turns: 2.00 times 5 is 10.00.",
+        "The price for one turn has to be found before it can be scaled to a different amount."
+      ],
+      "useAgain": "when a price needs to be found first, then scaled up to a different amount.",
+      "hints": [
+        "Find the cost for exactly one unit before scaling to any other amount.",
+        "Multiply that one-unit price by the new amount."
+      ],
+      "socraticHint": "Could the new total be found without ever working out the price for one unit?",
+      "skills": [
+        "think.skills.decimals"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A garden hose fills each identical bucket with the same amount of water, in liters. A total cost of 9.60 dollars covers 4.8 liters. At that same price, what would 7 liters cost, in dollars?",
+        "answer": {
+          "kind": "number",
+          "value": "14.00"
+        }
+      },
+      "id": "ladder-ar-decimal-mult-div-p50",
+      "ideaId": "ar-decimal-mult-div"
+    }
+  ]
+}

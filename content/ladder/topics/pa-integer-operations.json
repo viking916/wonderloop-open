@@ -1,0 +1,2609 @@
+{
+  "id": "pa-integer-operations",
+  "idea": {
+    "body": "Adding and subtracting signed integers is movement on a number line. Adding a positive number moves right, and adding a negative number moves left. Subtracting a number is the same as adding its opposite. Multiplying or dividing two signed integers follows a sign rule instead: same signs give a positive result, different signs give a negative result. A rover starting at a depth of -5 meters that rises 14 meters ends at -5 + 14 = 9 meters. A drone's altitude of -6 meters multiplied by -3, a scaling factor, gives a positive 18, because the two negative signs cancel.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A number line from -5 to 9: start at -5, jump 14 to the right, land on 9.",
+      "spec": {
+        "w": 280,
+        "h": 130,
+        "items": [
+          {
+            "t": "line",
+            "x1": 30,
+            "y1": 84,
+            "x2": 250,
+            "y2": 84
+          },
+          {
+            "t": "dot",
+            "cx": 30.0,
+            "cy": 84,
+            "side": "below",
+            "label": "-5"
+          },
+          {
+            "t": "dot",
+            "cx": 45.7,
+            "cy": 84,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 61.4,
+            "cy": 84,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 77.1,
+            "cy": 84,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 92.9,
+            "cy": 84,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 108.6,
+            "cy": 84,
+            "side": "below",
+            "label": "0"
+          },
+          {
+            "t": "dot",
+            "cx": 124.3,
+            "cy": 84,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 140.0,
+            "cy": 84,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 155.7,
+            "cy": 84,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 171.4,
+            "cy": 84,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 187.1,
+            "cy": 84,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 202.9,
+            "cy": 84,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 218.6,
+            "cy": 84,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 234.3,
+            "cy": 84,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 250.0,
+            "cy": 84,
+            "side": "below",
+            "label": "9"
+          },
+          {
+            "t": "line",
+            "x1": 30.0,
+            "y1": 46,
+            "x2": 250.0,
+            "y2": 46,
+            "arrow": true,
+            "color": "rust"
+          },
+          {
+            "t": "text",
+            "x": 140.0,
+            "y": 30,
+            "s": "+14",
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A rocket's fuel offset starts at -14 units. It gains 22 units, then a leak costs it 9 units. What is the fuel offset now?",
+    "steps": [
+      "Start at -14, the fuel offset before anything happens.",
+      "The gain of 22 units is a positive change: -14 + 22 = 8.",
+      "The leak of 9 units is a negative change: 8 - 9 = -1.",
+      "The fuel offset now is -1 unit."
+    ]
+  },
+  "ways": [
+    {
+      "id": "pa-integer-operations-w1",
+      "name": "The number line walk",
+      "when": "Use this for adding or subtracting a signed integer.",
+      "steps": [
+        "Start at -5 on the number line.",
+        "Adding a positive number moves right.",
+        "Move 14 steps to the right from -5.",
+        "-5 plus 14 lands on 9."
+      ],
+      "example": "-5 + 14",
+      "answer": "9",
+      "trap": "Moving left instead of right when adding a positive number.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A number line jump from -5 to 9, a jump of positive 14 shown above the line.",
+        "spec": {
+          "w": 280,
+          "h": 110,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 80,
+              "x2": 250,
+              "y2": 80
+            },
+            {
+              "t": "dot",
+              "cx": 30,
+              "cy": 80,
+              "side": "below",
+              "label": "-5"
+            },
+            {
+              "t": "dot",
+              "cx": 105,
+              "cy": 80,
+              "side": "below",
+              "label": "0"
+            },
+            {
+              "t": "dot",
+              "cx": 240,
+              "cy": 80,
+              "side": "below",
+              "label": "9"
+            },
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 50,
+              "x2": 240,
+              "y2": 50,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 135,
+              "y": 40,
+              "s": "+14",
+              "size": 12,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "-5 + 14.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1200,
+              "caption": "Start at -5 on the number line.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Adding a positive number moves right.",
+              "set": {
+                "3": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Move 14 steps to the right from -5.",
+              "set": {
+                "3": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "-5 plus 14 lands on 9.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pa-integer-operations-w2",
+      "name": "Subtracting is adding the opposite",
+      "when": "Use this when a subtraction has a negative number after the minus sign.",
+      "steps": [
+        "Subtracting -11 is the same as adding its opposite, 11.",
+        "Rewrite -6 - (-11) as -6 + 11.",
+        "Adding a positive moves right on the number line.",
+        "-6 + 11 is 5."
+      ],
+      "example": "-6 - (-11)",
+      "answer": "5",
+      "trap": "Keeping the subtraction sign instead of flipping it to addition of the opposite."
+    },
+    {
+      "id": "pa-integer-operations-w3",
+      "name": "The rule of signs table",
+      "when": "Use this for multiplying or dividing two signed integers.",
+      "steps": [
+        "Look up the signs: negative times positive.",
+        "The rule table says different signs give a negative result.",
+        "Multiply the sizes: 6 times 7 is 42.",
+        "Attach the negative sign: -6 x 7 is -42."
+      ],
+      "example": "-6 x 7",
+      "answer": "-42",
+      "trap": "Multiplying the sizes correctly but forgetting to attach the negative sign.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A table of sign rules: matching signs give a positive result, different signs give a negative result.",
+        "spec": {
+          "w": 260,
+          "h": 140,
+          "items": [
+            {
+              "t": "text",
+              "x": 40,
+              "y": 20,
+              "s": "Signs",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 20,
+              "s": "Result",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 40,
+              "y": 45,
+              "s": "+ and +",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 45,
+              "s": "positive",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 40,
+              "y": 70,
+              "s": "+ and -",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 70,
+              "s": "negative",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 40,
+              "y": 95,
+              "s": "- and +",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 95,
+              "s": "negative",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 40,
+              "y": 120,
+              "s": "- and -",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 120,
+              "s": "positive",
+              "size": 12,
+              "anchor": "start"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "-6 x 7.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1200,
+              "caption": "Look up the signs: negative times positive.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "The rule table says different signs give a",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Multiply the sizes: 6 times 7 is 42.",
+              "set": {}
+            },
+            {
+              "ms": 1200,
+              "caption": "Attach the negative sign: -6 x 7 is",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pa-integer-operations-w4",
+      "name": "Counting equal jumps",
+      "when": "Use this to see multiplication by a positive integer as repeated jumps.",
+      "steps": [
+        "Think of -3 x 4 as four jumps of -3 starting at 0.",
+        "The first jump lands on -3, the second on -6.",
+        "The third jump lands on -9, the fourth on -12.",
+        "Four jumps of -3 land on -12, so -3 x 4 is -12."
+      ],
+      "example": "-3 x 4",
+      "answer": "-12",
+      "trap": "Losing count of the jumps and stopping one jump early or late.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A number line showing four jumps of -3 from 0 to -12, the first jump highlighted.",
+        "spec": {
+          "w": 300,
+          "h": 110,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 80,
+              "x2": 270,
+              "y2": 80
+            },
+            {
+              "t": "dot",
+              "cx": 30,
+              "cy": 80,
+              "side": "below",
+              "label": "-12"
+            },
+            {
+              "t": "dot",
+              "cx": 90,
+              "cy": 80,
+              "side": "below",
+              "label": "-9"
+            },
+            {
+              "t": "dot",
+              "cx": 150,
+              "cy": 80,
+              "side": "below",
+              "label": "-6"
+            },
+            {
+              "t": "dot",
+              "cx": 210,
+              "cy": 80,
+              "side": "below",
+              "label": "-3"
+            },
+            {
+              "t": "dot",
+              "cx": 270,
+              "cy": 80,
+              "side": "below",
+              "label": "0"
+            },
+            {
+              "t": "line",
+              "x1": 270,
+              "y1": 50,
+              "x2": 210,
+              "y2": 50,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 240,
+              "y": 40,
+              "s": "-3",
+              "size": 12,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "-3 x 4.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1200,
+              "caption": "Think of -3 x 4 as four jumps",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1400,
+              "caption": "The first jump lands on -3, the second",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "6": {
+                  "x1": 210,
+                  "y1": 50,
+                  "x2": 150,
+                  "y2": 50
+                },
+                "7": {
+                  "x": 180
+                }
+              }
+            },
+            {
+              "ms": 1400,
+              "caption": "The third jump lands on -9, the fourth",
+              "set": {
+                "6": {
+                  "x1": 90,
+                  "y1": 50,
+                  "x2": 30,
+                  "y2": 50
+                },
+                "7": {
+                  "x": 60
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Four jumps of -3 land on -12, so",
+              "set": {}
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-pa-integer-operations-p01",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -5 + 8?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Start at -5 on the number line.",
+        "Move 8 spaces right, since you are adding 8.",
+        "That lands on 3."
+      ],
+      "useAgain": "when you need to add a negative number to another integer.",
+      "hints": [
+        "Adding a positive number moves you right; adding a negative number moves you left.",
+        "Move the number of spaces shown by the size of the number you are adding."
+      ],
+      "socraticHint": "Does adding this number move you right or left on the number line?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is -3 + 10?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A number line from -5 to 3: start at -5, jump 8 to the right, land on 3.",
+        "spec": {
+          "w": 280,
+          "h": 130,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 84,
+              "x2": 250,
+              "y2": 84
+            },
+            {
+              "t": "dot",
+              "cx": 30.0,
+              "cy": 84,
+              "side": "below",
+              "label": "-5"
+            },
+            {
+              "t": "dot",
+              "cx": 57.5,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 85.0,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 112.5,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 140.0,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 167.5,
+              "cy": 84,
+              "side": "below",
+              "label": "0"
+            },
+            {
+              "t": "dot",
+              "cx": 195.0,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 222.5,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 250.0,
+              "cy": 84,
+              "side": "below",
+              "label": "3"
+            },
+            {
+              "t": "line",
+              "x1": 30.0,
+              "y1": 46,
+              "x2": 250.0,
+              "y2": 46,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 140.0,
+              "y": 30,
+              "s": "+8",
+              "anchor": "middle"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p02",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is 7 + (-12)?",
+      "answer": {
+        "kind": "number",
+        "value": "-5"
+      },
+      "explanation": [
+        "Start at 7 on the number line.",
+        "Move 12 spaces left, since you are adding -12.",
+        "That lands on -5."
+      ],
+      "useAgain": "when you need to add a negative number to another integer.",
+      "hints": [
+        "Adding a positive number moves you right; adding a negative number moves you left.",
+        "Move the number of spaces shown by the size of the number you are adding."
+      ],
+      "socraticHint": "Does adding this number move you right or left on the number line?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 9 + (-14)?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A number line from -5 to 7: start at 7, jump 12 to the left, land on -5.",
+        "spec": {
+          "w": 280,
+          "h": 130,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 84,
+              "x2": 250,
+              "y2": 84
+            },
+            {
+              "t": "dot",
+              "cx": 30.0,
+              "cy": 84,
+              "side": "below",
+              "label": "-5"
+            },
+            {
+              "t": "dot",
+              "cx": 48.3,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 66.7,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 85.0,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 103.3,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 121.7,
+              "cy": 84,
+              "side": "below",
+              "label": "0"
+            },
+            {
+              "t": "dot",
+              "cx": 140.0,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 158.3,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 176.7,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 195.0,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 213.3,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 231.7,
+              "cy": 84,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 250.0,
+              "cy": 84,
+              "side": "below",
+              "label": "7"
+            },
+            {
+              "t": "line",
+              "x1": 250.0,
+              "y1": 46,
+              "x2": 30.0,
+              "y2": 46,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 140.0,
+              "y": 30,
+              "s": "-12",
+              "anchor": "middle"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p03",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -9 + (-4)?",
+      "answer": {
+        "kind": "number",
+        "value": "-13"
+      },
+      "explanation": [
+        "Start at -9 on the number line.",
+        "Move 4 spaces left, since you are adding -4.",
+        "That lands on -13."
+      ],
+      "useAgain": "when you need to add a negative number to another integer.",
+      "hints": [
+        "Adding a positive number moves you right; adding a negative number moves you left.",
+        "Move the number of spaces shown by the size of the number you are adding."
+      ],
+      "socraticHint": "Does adding this number move you right or left on the number line?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is -7 + (-8)?",
+        "answer": {
+          "kind": "number",
+          "value": "-15"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p04",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is 6 + (-6)?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "Start at 6 on the number line.",
+        "Move 6 spaces left, since you are adding -6.",
+        "That lands on 0."
+      ],
+      "useAgain": "when you need to add a negative number to another integer.",
+      "hints": [
+        "Adding a positive number moves you right; adding a negative number moves you left.",
+        "Move the number of spaces shown by the size of the number you are adding."
+      ],
+      "socraticHint": "Does adding this number move you right or left on the number line?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 5 + (-5)?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p05",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is 4 - 9?",
+      "answer": {
+        "kind": "number",
+        "value": "-5"
+      },
+      "explanation": [
+        "Subtracting 9 means moving 9 spaces left from 4.",
+        "4 - 9 = 4 + (-9).",
+        "That gives -5."
+      ],
+      "useAgain": "when subtracting a positive number leaves a negative result.",
+      "hints": [
+        "Subtracting a number is the same as adding its opposite.",
+        "Rewrite the subtraction as an addition, then move on the number line."
+      ],
+      "socraticHint": "What happens if you rewrite the subtraction as adding the opposite number?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 6 - 10?",
+        "answer": {
+          "kind": "number",
+          "value": "-4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p06",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -3 - 5?",
+      "answer": {
+        "kind": "number",
+        "value": "-8"
+      },
+      "explanation": [
+        "Subtracting 5 means moving 5 spaces left from -3.",
+        "-3 - 5 = -3 + (-5).",
+        "That gives -8."
+      ],
+      "useAgain": "when subtracting a positive number leaves a negative result.",
+      "hints": [
+        "Subtracting a number is the same as adding its opposite.",
+        "Rewrite the subtraction as an addition, then move on the number line."
+      ],
+      "socraticHint": "What happens if you rewrite the subtraction as adding the opposite number?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is -5 - 7?",
+        "answer": {
+          "kind": "number",
+          "value": "-12"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p07",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is 2 - (-8)?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Subtracting -8 means moving 8 spaces left from 2.",
+        "2 - (-8) = 2 + (8).",
+        "That gives 10."
+      ],
+      "useAgain": "when subtracting a positive number leaves a negative result.",
+      "hints": [
+        "Subtracting a number is the same as adding its opposite.",
+        "Rewrite the subtraction as an addition, then move on the number line."
+      ],
+      "socraticHint": "What happens if you rewrite the subtraction as adding the opposite number?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 3 - (-9)?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p08",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -6 - (-11)?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Subtracting -11 means moving 11 spaces left from -6.",
+        "-6 - (-11) = -6 + (11).",
+        "That gives 5."
+      ],
+      "useAgain": "when subtracting a positive number leaves a negative result.",
+      "hints": [
+        "Subtracting a number is the same as adding its opposite.",
+        "Rewrite the subtraction as an addition, then move on the number line."
+      ],
+      "socraticHint": "What happens if you rewrite the subtraction as adding the opposite number?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is -4 - (-13)?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p09",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "choice",
+      "prompt": "What is -6 x 7?",
+      "options": [
+        "-42",
+        "42",
+        "1",
+        "13"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Multiply the sizes first: 6 x 7 = 42.",
+        "The two numbers have different signs.",
+        "Different signs give a negative result, so the answer is -42."
+      ],
+      "useAgain": "when you need to multiply two signed integers.",
+      "hints": [
+        "Multiply the sizes of the two numbers first, ignoring the signs.",
+        "Same signs give a positive answer; different signs give a negative answer."
+      ],
+      "socraticHint": "Do the two numbers have the same sign or different signs?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is -4 x 9?",
+        "options": [
+          "36",
+          "5",
+          "13",
+          "-36"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p10",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "choice",
+      "prompt": "What is 8 x (-5)?",
+      "options": [
+        "40",
+        "3",
+        "-40",
+        "13"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Multiply the sizes first: 8 x 5 = 40.",
+        "The two numbers have different signs.",
+        "Different signs give a negative result, so the answer is -40."
+      ],
+      "useAgain": "when you need to multiply two signed integers.",
+      "hints": [
+        "Multiply the sizes of the two numbers first, ignoring the signs.",
+        "Same signs give a positive answer; different signs give a negative answer."
+      ],
+      "socraticHint": "Do the two numbers have the same sign or different signs?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 7 x (-6)?",
+        "options": [
+          "42",
+          "-42",
+          "1",
+          "13"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p11",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "choice",
+      "prompt": "What is -9 x (-3)?",
+      "options": [
+        "27",
+        "-27",
+        "-6",
+        "12"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Multiply the sizes first: 9 x 3 = 27.",
+        "The two numbers have the same signs.",
+        "Same signs give a positive result, so the answer is 27."
+      ],
+      "useAgain": "when you need to multiply two signed integers.",
+      "hints": [
+        "Multiply the sizes of the two numbers first, ignoring the signs.",
+        "Same signs give a positive answer; different signs give a negative answer."
+      ],
+      "socraticHint": "Do the two numbers have the same sign or different signs?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is -8 x (-2)?",
+        "options": [
+          "-16",
+          "16",
+          "-6",
+          "10"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p12",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -24 / 6?",
+      "answer": {
+        "kind": "number",
+        "value": "-4"
+      },
+      "explanation": [
+        "Divide the sizes first: 24 / 6 = 4.",
+        "The two numbers have different signs.",
+        "So the answer is -4."
+      ],
+      "useAgain": "when you need to divide one signed integer by another.",
+      "hints": [
+        "Divide the sizes of the two numbers first, ignoring the signs.",
+        "Same signs give a positive answer; different signs give a negative answer."
+      ],
+      "socraticHint": "Do the two numbers have the same sign or different signs?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is -32 / 8?",
+        "answer": {
+          "kind": "number",
+          "value": "-4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p13",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is 36 / (-9)?",
+      "answer": {
+        "kind": "number",
+        "value": "-4"
+      },
+      "explanation": [
+        "Divide the sizes first: 36 / 9 = 4.",
+        "The two numbers have different signs.",
+        "So the answer is -4."
+      ],
+      "useAgain": "when you need to divide one signed integer by another.",
+      "hints": [
+        "Divide the sizes of the two numbers first, ignoring the signs.",
+        "Same signs give a positive answer; different signs give a negative answer."
+      ],
+      "socraticHint": "Do the two numbers have the same sign or different signs?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 48 / (-6)?",
+        "answer": {
+          "kind": "number",
+          "value": "-8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p14",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -45 / (-5)?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Divide the sizes first: 45 / 5 = 9.",
+        "The two numbers have the same signs.",
+        "So the answer is 9."
+      ],
+      "useAgain": "when you need to divide one signed integer by another.",
+      "hints": [
+        "Divide the sizes of the two numbers first, ignoring the signs.",
+        "Same signs give a positive answer; different signs give a negative answer."
+      ],
+      "socraticHint": "Do the two numbers have the same sign or different signs?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is -63 / (-7)?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p15",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "truefalse",
+      "prompt": "True or false: a negative number times a negative number gives a positive result.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Two negative signs multiplied together cancel each other out.",
+        "That leaves a positive result.",
+        "So the statement is true."
+      ],
+      "useAgain": "when you need to recall the sign rule for multiplying two integers.",
+      "hints": [
+        "Think about what happens to the sign when you multiply two negatives.",
+        "Same signs, whether both positive or both negative, always give a positive result."
+      ],
+      "socraticHint": "What sign do you get when you multiply two numbers with the same sign?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: a positive number times a negative number gives a positive result.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p16",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -7 + 12 + (-5)?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "Work left to right: -7 + 12 = 5.",
+        "Then 5 + (-5) = 0.",
+        "The final result is 0."
+      ],
+      "useAgain": "when a chain adds and subtracts several signed numbers in a row.",
+      "hints": [
+        "Combine two numbers at a time, left to right.",
+        "Keep track of the sign at every step, not just at the end."
+      ],
+      "socraticHint": "What do you get after combining just the first two numbers?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is -9 + 15 + (-4)?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p17",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is 9 + (-14) + 3?",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Work left to right: 9 + (-14) = -5.",
+        "Then -5 + 3 = -2.",
+        "The final result is -2."
+      ],
+      "useAgain": "when a chain adds and subtracts several signed numbers in a row.",
+      "hints": [
+        "Combine two numbers at a time, left to right.",
+        "Keep track of the sign at every step, not just at the end."
+      ],
+      "socraticHint": "What do you get after combining just the first two numbers?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is 8 + (-13) + 5?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p18",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -6 + (-8) + 20?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Work left to right: -6 + (-8) = -14.",
+        "Then -14 + 20 = 6.",
+        "The final result is 6."
+      ],
+      "useAgain": "when a chain adds and subtracts several signed numbers in a row.",
+      "hints": [
+        "Combine two numbers at a time, left to right.",
+        "Keep track of the sign at every step, not just at the end."
+      ],
+      "socraticHint": "What do you get after combining just the first two numbers?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is -5 + (-9) + 22?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p19",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -4 x 5 / -2?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Work left to right: -4 x 5 = -20.",
+        "Then -20 / -2 = 10.",
+        "The final result is 10."
+      ],
+      "useAgain": "when a chain multiplies and divides several signed numbers in a row.",
+      "hints": [
+        "Work through a multiply-and-divide chain left to right, one step at a time.",
+        "Track the sign at every step: watch whether each step flips it or keeps it."
+      ],
+      "socraticHint": "After the first multiplication, what sign does the running total have?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is -3 x 6 / -2?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p20",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is 18 x -3 / -2?",
+      "answer": {
+        "kind": "number",
+        "value": "27"
+      },
+      "explanation": [
+        "Work left to right: 18 x -3 = -54.",
+        "Then -54 / -2 = 27.",
+        "The final result is 27."
+      ],
+      "useAgain": "when a chain multiplies and divides several signed numbers in a row.",
+      "hints": [
+        "Work through a multiply-and-divide chain left to right, one step at a time.",
+        "Track the sign at every step: watch whether each step flips it or keeps it."
+      ],
+      "socraticHint": "After the first multiplication, what sign does the running total have?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is 24 x -4 / -3?",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p21",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -6 x -4 / -1?",
+      "answer": {
+        "kind": "number",
+        "value": "-24"
+      },
+      "explanation": [
+        "Work left to right: -6 x -4 = 24.",
+        "Then 24 / -1 = -24.",
+        "The final result is -24."
+      ],
+      "useAgain": "when a chain multiplies and divides several signed numbers in a row.",
+      "hints": [
+        "Work through a multiply-and-divide chain left to right, one step at a time.",
+        "Track the sign at every step: watch whether each step flips it or keeps it."
+      ],
+      "socraticHint": "After the first multiplication, what sign does the running total have?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is -8 x -3 / -1?",
+        "answer": {
+          "kind": "number",
+          "value": "-24"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p22",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -6 - (-9)?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Subtracting -9 is the same as adding 9.",
+        "-6 - (-9) = -6 + 9.",
+        "That gives 3."
+      ],
+      "useAgain": "when a subtraction problem has a negative number right after the minus sign.",
+      "hints": [
+        "Two minus signs next to each other turn into a plus sign.",
+        "Rewrite the subtraction of a negative as an addition first."
+      ],
+      "socraticHint": "What single sign do the two minus signs next to each other turn into?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is -4 - (-11)?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p23",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is 3 - (-8)?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "Subtracting -8 is the same as adding 8.",
+        "3 - (-8) = 3 + 8.",
+        "That gives 11."
+      ],
+      "useAgain": "when a subtraction problem has a negative number right after the minus sign.",
+      "hints": [
+        "Two minus signs next to each other turn into a plus sign.",
+        "Rewrite the subtraction of a negative as an addition first."
+      ],
+      "socraticHint": "What single sign do the two minus signs next to each other turn into?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is 5 - (-9)?",
+        "answer": {
+          "kind": "number",
+          "value": "14"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p24",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -2 - (-14)?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Subtracting -14 is the same as adding 14.",
+        "-2 - (-14) = -2 + 14.",
+        "That gives 12."
+      ],
+      "useAgain": "when a subtraction problem has a negative number right after the minus sign.",
+      "hints": [
+        "Two minus signs next to each other turn into a plus sign.",
+        "Rewrite the subtraction of a negative as an addition first."
+      ],
+      "socraticHint": "What single sign do the two minus signs next to each other turn into?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is -1 - (-12)?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p25",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "A drone starts at an altitude of -12 meters, relative to a hill, and rises 20 meters. What altitude is it at now?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Start at -12.",
+        "The change is +20.",
+        "-12 + 20 = 8."
+      ],
+      "useAgain": "when a word problem describes a rise, a drop, a gain or a cost as a signed change.",
+      "hints": [
+        "Turn the situation into one addition of a signed number.",
+        "A drop, a cost or a descent is a negative change; a rise or a gain is positive."
+      ],
+      "socraticHint": "Is the change in this story a positive number or a negative number?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone starts at an altitude of -15 meters and rises 24 meters. What altitude is it at now?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p26",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "A rover starts at a depth of -18 meters and climbs 11 meters toward the surface. What depth is it at now?",
+      "answer": {
+        "kind": "number",
+        "value": "-7"
+      },
+      "explanation": [
+        "Start at -18.",
+        "The change is +11.",
+        "-18 + 11 = -7."
+      ],
+      "useAgain": "when a word problem describes a rise, a drop, a gain or a cost as a signed change.",
+      "hints": [
+        "Turn the situation into one addition of a signed number.",
+        "A drop, a cost or a descent is a negative change; a rise or a gain is positive."
+      ],
+      "socraticHint": "Is the change in this story a positive number or a negative number?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rover starts at a depth of -22 meters and climbs 13 meters toward the surface. What depth is it at now?",
+        "answer": {
+          "kind": "number",
+          "value": "-9"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p27",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "A game's score starts at -9 points, and a round costs another 6 points. What is the score now?",
+      "answer": {
+        "kind": "number",
+        "value": "-15"
+      },
+      "explanation": [
+        "Start at -9.",
+        "The change is -6.",
+        "-9 - 6 = -15."
+      ],
+      "useAgain": "when a word problem describes a rise, a drop, a gain or a cost as a signed change.",
+      "hints": [
+        "Turn the situation into one addition of a signed number.",
+        "A drop, a cost or a descent is a negative change; a rise or a gain is positive."
+      ],
+      "socraticHint": "Is the change in this story a positive number or a negative number?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game's score starts at -7 points, and a round costs another 8 points. What is the score now?",
+        "answer": {
+          "kind": "number",
+          "value": "-15"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p28",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "choice",
+      "prompt": "Which is equal to 8 - 15?",
+      "options": [
+        "7",
+        "23",
+        "-23",
+        "-7"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "8 - 15 means starting at 8 and moving 15 spaces left.",
+        "That lands on -7.",
+        "Watch the sign: subtracting a bigger number from a smaller one gives a negative result."
+      ],
+      "useAgain": "when a subtraction between two positive numbers still gives a negative result.",
+      "hints": [
+        "Do not just subtract the digits and forget the sign.",
+        "If the number you subtract is bigger, the result lands below zero."
+      ],
+      "socraticHint": "Which of the two numbers is bigger, and what does that tell you about the sign?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which is equal to 6 - 17?",
+        "options": [
+          "11",
+          "23",
+          "-11",
+          "-23"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p29",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "choice",
+      "prompt": "Which is equal to -5 - 9?",
+      "options": [
+        "14",
+        "4",
+        "-14",
+        "-4"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "-5 - 9 means starting at -5 and moving 9 spaces left.",
+        "That lands on -14.",
+        "Watch the sign: subtracting a bigger number from a smaller one gives a negative result."
+      ],
+      "useAgain": "when a subtraction between two positive numbers still gives a negative result.",
+      "hints": [
+        "Do not just subtract the digits and forget the sign.",
+        "If the number you subtract is bigger, the result lands below zero."
+      ],
+      "socraticHint": "Which of the two numbers is bigger, and what does that tell you about the sign?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which is equal to -3 - 8?",
+        "options": [
+          "-11",
+          "11",
+          "5",
+          "-5"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p30",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "truefalse",
+      "prompt": "True or false: subtracting a negative number is the same as adding a positive number.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Subtracting a negative number flips the sign of what you subtract.",
+        "That turns the subtraction into an addition.",
+        "So the statement is true."
+      ],
+      "useAgain": "when you need to recall the rule for subtracting a negative number.",
+      "hints": [
+        "Two minus signs in a row turn into a single plus sign.",
+        "Try it with a small example, like 5 - (-2), and see what it becomes."
+      ],
+      "socraticHint": "What does subtracting a negative number turn into once you rewrite it?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "True or false: adding a negative number is the same as subtracting a positive number.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p31",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -3 x -4 x -2?",
+      "answer": {
+        "kind": "number",
+        "value": "-24"
+      },
+      "explanation": [
+        "Multiply the sizes first: 3 x 4 x 2 = 24.",
+        "There are 3 negative factors in the product.",
+        "An odd number of negative factors makes the product negative, so the answer is -24."
+      ],
+      "useAgain": "when a product has three or more signed factors to multiply together.",
+      "hints": [
+        "Multiply the sizes of all three numbers first, ignoring every sign.",
+        "Count how many of the factors are negative to find the final sign."
+      ],
+      "socraticHint": "Counting only the negative factors, is that count odd or even?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is -2 x -5 x -3?",
+        "answer": {
+          "kind": "number",
+          "value": "-30"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p32",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is 5 x -2 x -3?",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "Multiply the sizes first: 5 x 2 x 3 = 30.",
+        "There are 2 negative factors in the product.",
+        "An even number of negative factors makes the product positive, so the answer is 30."
+      ],
+      "useAgain": "when a product has three or more signed factors to multiply together.",
+      "hints": [
+        "Multiply the sizes of all three numbers first, ignoring every sign.",
+        "Count how many of the factors are negative to find the final sign."
+      ],
+      "socraticHint": "Counting only the negative factors, is that count odd or even?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is 4 x -3 x -2?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p33",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -6 x -1 x -5?",
+      "answer": {
+        "kind": "number",
+        "value": "-30"
+      },
+      "explanation": [
+        "Multiply the sizes first: 6 x 1 x 5 = 30.",
+        "There are 3 negative factors in the product.",
+        "An odd number of negative factors makes the product negative, so the answer is -30."
+      ],
+      "useAgain": "when a product has three or more signed factors to multiply together.",
+      "hints": [
+        "Multiply the sizes of all three numbers first, ignoring every sign.",
+        "Count how many of the factors are negative to find the final sign."
+      ],
+      "socraticHint": "Counting only the negative factors, is that count odd or even?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is -4 x -1 x -6?",
+        "answer": {
+          "kind": "number",
+          "value": "-24"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p34",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "truefalse",
+      "prompt": "True or false: a product of 5 negative numbers is negative.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "5 is odd.",
+        "An odd number of negative factors gives a negative product; an even number gives a positive one.",
+        "So the statement is true."
+      ],
+      "useAgain": "when a problem asks about the sign of a product with many negative factors.",
+      "hints": [
+        "Count the negative factors and check whether that count is odd or even.",
+        "Pairs of negative factors cancel out and leave a positive result."
+      ],
+      "socraticHint": "Is the number of negative factors odd or even?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "True or false: a product of 3 negative numbers is negative.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p35",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "truefalse",
+      "prompt": "True or false: a product of 4 negative numbers is negative.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "4 is even.",
+        "An odd number of negative factors gives a negative product; an even number gives a positive one.",
+        "So the statement is false."
+      ],
+      "useAgain": "when a problem asks about the sign of a product with many negative factors.",
+      "hints": [
+        "Count the negative factors and check whether that count is odd or even.",
+        "Pairs of negative factors cancel out and leave a positive result."
+      ],
+      "socraticHint": "Is the number of negative factors odd or even?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "True or false: a product of 6 negative numbers is negative.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p36",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "truefalse",
+      "prompt": "True or false: a product of 7 negative numbers is negative.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "7 is odd.",
+        "An odd number of negative factors gives a negative product; an even number gives a positive one.",
+        "So the statement is true."
+      ],
+      "useAgain": "when a problem asks about the sign of a product with many negative factors.",
+      "hints": [
+        "Count the negative factors and check whether that count is odd or even.",
+        "Pairs of negative factors cancel out and leave a positive result."
+      ],
+      "socraticHint": "Is the number of negative factors odd or even?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "True or false: a product of 9 negative numbers is negative.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p37",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "A rocket's fuel offset starts at -18 units. It gains 25 units, then uses 10 units. What is the fuel offset now?",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "Start at -18 and apply the first change: -18 + 25 = 7.",
+        "Apply the second change: 7 - 10 = -3.",
+        "The final result is -3."
+      ],
+      "useAgain": "when a word problem describes two changes, one after the other.",
+      "hints": [
+        "Turn the story into two signed changes, applied one after the other.",
+        "Apply the two changes in the order the story gives them."
+      ],
+      "socraticHint": "After only the first change, what value do you land on?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rocket's fuel offset starts at -22 units. It gains 30 units, then uses 12 units. What is the fuel offset now?",
+        "answer": {
+          "kind": "number",
+          "value": "-4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p38",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "A drone's altitude starts at -20 meters. It rises 14 meters, then drops 9 meters. What is the altitude now?",
+      "answer": {
+        "kind": "number",
+        "value": "-15"
+      },
+      "explanation": [
+        "Start at -20 and apply the first change: -20 + 14 = -6.",
+        "Apply the second change: -6 - 9 = -15.",
+        "The final result is -15."
+      ],
+      "useAgain": "when a word problem describes two changes, one after the other.",
+      "hints": [
+        "Turn the story into two signed changes, applied one after the other.",
+        "Apply the two changes in the order the story gives them."
+      ],
+      "socraticHint": "After only the first change, what value do you land on?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A drone's altitude starts at -16 meters. It rises 21 meters, then drops 13 meters. What is the altitude now?",
+        "answer": {
+          "kind": "number",
+          "value": "-8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p39",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "A rover's depth starts at 6 meters. It descends 15 meters, then climbs 4 meters. What is the depth now?",
+      "answer": {
+        "kind": "number",
+        "value": "-5"
+      },
+      "explanation": [
+        "Start at 6 and apply the first change: 6 - 15 = -9.",
+        "Apply the second change: -9 + 4 = -5.",
+        "The final result is -5."
+      ],
+      "useAgain": "when a word problem describes two changes, one after the other.",
+      "hints": [
+        "Turn the story into two signed changes, applied one after the other.",
+        "Apply the two changes in the order the story gives them."
+      ],
+      "socraticHint": "After only the first change, what value do you land on?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover's depth starts at 9 meters. It descends 17 meters, then climbs 5 meters. What is the depth now?",
+        "answer": {
+          "kind": "number",
+          "value": "-3"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p40",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -56 / 7 x -2?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "Work left to right: -56 / 7 = -8.",
+        "Then -8 x -2 = 16.",
+        "The final result is 16."
+      ],
+      "useAgain": "when a chain mixes division and multiplication of signed integers.",
+      "hints": [
+        "Work through the chain left to right, one operation at a time.",
+        "Track the sign after each step rather than guessing at the end."
+      ],
+      "socraticHint": "After the division step, is the running total positive or negative?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is -72 / 8 x -3?",
+        "answer": {
+          "kind": "number",
+          "value": "27"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p41",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is 63 / -9 x -3?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "Work left to right: 63 / -9 = -7.",
+        "Then -7 x -3 = 21.",
+        "The final result is 21."
+      ],
+      "useAgain": "when a chain mixes division and multiplication of signed integers.",
+      "hints": [
+        "Work through the chain left to right, one operation at a time.",
+        "Track the sign after each step rather than guessing at the end."
+      ],
+      "socraticHint": "After the division step, is the running total positive or negative?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is 81 / -9 x -4?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p42",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -48 / -6 x 4?",
+      "answer": {
+        "kind": "number",
+        "value": "32"
+      },
+      "explanation": [
+        "Work left to right: -48 / -6 = 8.",
+        "Then 8 x 4 = 32.",
+        "The final result is 32."
+      ],
+      "useAgain": "when a chain mixes division and multiplication of signed integers.",
+      "hints": [
+        "Work through the chain left to right, one operation at a time.",
+        "Track the sign after each step rather than guessing at the end."
+      ],
+      "socraticHint": "After the division step, is the running total positive or negative?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is -54 / -6 x 5?",
+        "answer": {
+          "kind": "number",
+          "value": "45"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p43",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -15 - (-7) - 12?",
+      "answer": {
+        "kind": "number",
+        "value": "-20"
+      },
+      "explanation": [
+        "Rewrite both subtractions as additions of the opposite: -15 + 7 + (-12).",
+        "Add left to right: -15 + 7 = -8.",
+        "-8 + (-12) = -20."
+      ],
+      "useAgain": "when a chain has several subtractions, some of negative numbers.",
+      "hints": [
+        "Rewrite every subtraction as adding the opposite number first.",
+        "Then just add the three signed numbers left to right."
+      ],
+      "socraticHint": "Once every subtraction is rewritten as an addition, what is the first step's total?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is -18 - (-9) - 14?",
+        "answer": {
+          "kind": "number",
+          "value": "-23"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p44",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is 10 - (-6) - (-9)?",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "Rewrite both subtractions as additions of the opposite: 10 + 6 + 9.",
+        "Add left to right: 10 + 6 = 16.",
+        "16 + 9 = 25."
+      ],
+      "useAgain": "when a chain has several subtractions, some of negative numbers.",
+      "hints": [
+        "Rewrite every subtraction as adding the opposite number first.",
+        "Then just add the three signed numbers left to right."
+      ],
+      "socraticHint": "Once every subtraction is rewritten as an addition, what is the first step's total?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is 12 - (-7) - (-11)?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p45",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "What is -8 - (-13) - (-5)?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Rewrite both subtractions as additions of the opposite: -8 + 13 + 5.",
+        "Add left to right: -8 + 13 = 5.",
+        "5 + 5 = 10."
+      ],
+      "useAgain": "when a chain has several subtractions, some of negative numbers.",
+      "hints": [
+        "Rewrite every subtraction as adding the opposite number first.",
+        "Then just add the three signed numbers left to right."
+      ],
+      "socraticHint": "Once every subtraction is rewritten as an addition, what is the first step's total?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is -6 - (-15) - (-4)?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-pa-integer-operations-p46",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "The product of six integers is negative. At most how many of them can be negative?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "A product is negative only when the count of negative factors is odd.",
+        "The largest odd number that is at most 6 is 5.",
+        "So at most 5 of the six integers can be negative."
+      ],
+      "useAgain": "when a problem asks for the most negative factors a product can have.",
+      "hints": [
+        "An odd count of negative factors gives a negative product.",
+        "Look for the biggest odd number that is still 6 or less."
+      ],
+      "socraticHint": "What is the biggest odd number that does not go over 6?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The product of eight integers is negative. At most how many of them can be negative?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p47",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "How many of the integers from -6 to 6 give a negative result when multiplied by -3?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Multiplying by -3 flips the sign of a positive number to negative.",
+        "So a negative result happens exactly when the original integer is positive.",
+        "The positive integers from -6 to 6 are 1, 2, 3, 4, 5 and 6, so there are 6 of them."
+      ],
+      "useAgain": "when a problem asks how many numbers in a range flip to negative under a rule.",
+      "hints": [
+        "Think about which original numbers end up negative after multiplying by a negative.",
+        "Multiplying a positive number by a negative number gives a negative result."
+      ],
+      "socraticHint": "Which original numbers, once multiplied by -3, land on the negative side?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many of the integers from -8 to 8 give a negative result when multiplied by -2?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p48",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "The sum of two integers is -4 and their product is -12. What is the greater of the two integers?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "List factor pairs of -12: 1 and -12, 2 and -6, 3 and -4, and their reverses.",
+        "Check which pair adds to -4: 2 + (-6) = -4.",
+        "The two integers are 2 and -6, so the greater one is 2."
+      ],
+      "useAgain": "when a problem gives you a sum and a product and asks for the two numbers.",
+      "hints": [
+        "List the factor pairs of the product first, then check each pair's sum.",
+        "One factor in the pair must be positive and the other negative, since the product is negative."
+      ],
+      "socraticHint": "Which factor pair of -12 also adds up to -4?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The sum of two integers is 1 and their product is -12. What is the greater of the two integers?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p49",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "0.6 of a number is -18. What is the number?",
+      "answer": {
+        "kind": "number",
+        "value": "-30"
+      },
+      "explanation": [
+        "0.6 of a number equals that number times 0.6.",
+        "So 0.6 x n = -18.",
+        "Divide both sides by 0.6: n = -30."
+      ],
+      "useAgain": "when a fraction or decimal of an unknown number is given.",
+      "hints": [
+        "Turn the sentence into an equation: 0.6 times the number equals -18.",
+        "Undo the multiplication by dividing both sides by 0.6."
+      ],
+      "socraticHint": "If 0.6 times the number is -18, what do you divide by to undo that?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "0.4 of a number is -28. What is the number?",
+        "answer": {
+          "kind": "number",
+          "value": "-70"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-integer-operations-p50",
+      "lane": "skills",
+      "ideaId": "pa-integer-operations",
+      "kind": "number",
+      "prompt": "The product of three consecutive integers is -60. What is the greatest of the three?",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "Try three consecutive negative integers close together, since the product is negative.",
+        "-5 x -4 x -3 = -60.",
+        "The greatest of -5, -4 and -3 is -3."
+      ],
+      "useAgain": "when a product of consecutive integers is given and you need to find them.",
+      "hints": [
+        "Try a few sets of three consecutive integers near each other and multiply them.",
+        "For the product to be negative, either one or all three of the integers must be negative."
+      ],
+      "socraticHint": "What three consecutive integers, when multiplied, give exactly -60?",
+      "skills": [
+        "think.skills.negatives"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The product of three consecutive integers is -210. What is the greatest of the three?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      }
+    }
+  ]
+}

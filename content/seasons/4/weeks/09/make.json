@@ -1,0 +1,295 @@
+{
+  "id": "s4-w09-make",
+  "season": 4,
+  "week": 9,
+  "track": "make",
+  "title": "What a chip is made of",
+  "summary": "Trace how transistors build a NAND gate, wire up a real 74HC00 chip in place of the season 2 copper gates, and count how many transistors the datasheet implies.",
+  "minutes": 60,
+  "materials": [
+    "74HC00 quad NAND chip",
+    "breadboard starter kit",
+    "multimeter",
+    "laptop, for a datasheet search",
+    "graph paper and pencil",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.electronics",
+    "make.measurement"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w09-make-01",
+      "title": "Ask, imagine, plan",
+      "body": "The season's electronics turn toward what a chip actually is: ask, imagine, plan, build, test, fix.\n\nAsk: season 2's gate was built from copper switches on a breadboard. What is really inside a chip that does the same job?\n\nImagine: a transistor as a tiny switch controlled by voltage instead of a finger, and a handful of them wired together to make a single logic gate.\n\nPlan: look up the 74HC00's datasheet before wiring anything, and find how many separate NAND gates the chip contains and which pins are which."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w09-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A flow from left to right: one transistor, a voltage-controlled on/off switch, feeds into a box for one NAND gate needing about 4 transistors, which feeds into a box for the 74HC00 chip containing 4 such gates. Text below states the multiplication: 4 gates times about 4 transistors each is about 16 transistors at the chip's core.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 10,
+              "y": 80,
+              "w": 85,
+              "h": 50,
+              "label": "transistor",
+              "sub": "on/off switch",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 95,
+              "y1": 105,
+              "x2": 140,
+              "y2": 105,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 140,
+              "y": 70,
+              "w": 100,
+              "h": 70,
+              "label": "1 NAND gate",
+              "sub": "4 transistors",
+              "fill": "accent"
+            },
+            {
+              "t": "line",
+              "x1": 240,
+              "y1": 105,
+              "x2": 280,
+              "y2": 105,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 280,
+              "y": 55,
+              "w": 75,
+              "h": 100,
+              "label": "74HC00",
+              "sub": "4 gates",
+              "fill": "sand"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 190,
+              "s": "4 gates x 4 transistors each",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 205,
+              "s": "is about 16 transistors (core)",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "title": "Transistors add up to gates",
+      "ideaId": "transistors-add-up-to-gates",
+      "body": "A transistor is a switch with no moving parts: a small voltage on one pin decides whether current can flow between the other two. Wire a few of them together the right way and they make a logic gate that always outputs the correct 0 or 1 for its inputs.\n\nA two-input NAND gate, built the common way in a chip like the 74HC00, uses about 4 transistors. Two pull the output high and two pull it low. The right pair switches on for each input combination.\n\nThe 74HC00 packs four separate NAND gates into a single chip. Four gates, about four transistors each, implies roughly 16 transistors doing the core switching. The datasheet does not print that number directly. You get it by multiplying the gate count by what a NAND gate needs. A real chip, once its input protection and output buffering are counted too, generally has more than that bare number."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w09-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The 74HC00 chip drawn as a box with its real pin numbers labelled: pin 1 (1A) and pin 2 (1B) as gate 1's two inputs on the left, pin 3 (1Y) as its output on the right, pin 7 as ground and pin 14 as VCC for power. The output wire runs to an LED and resistor combination whose other end returns to ground, the circuit used to test all four input combinations.",
+        "spec": {
+          "w": 460,
+          "h": 220,
+          "wide": true,
+          "items": [
+            {
+              "t": "box",
+              "x": 150,
+              "y": 40,
+              "w": 140,
+              "h": 160,
+              "label": "74HC00",
+              "sub": "14-pin DIP",
+              "fill": "sand"
+            },
+            {
+              "t": "text",
+              "x": 90,
+              "y": 65,
+              "s": "pin1 1A",
+              "size": 11,
+              "anchor": "end"
+            },
+            {
+              "t": "line",
+              "x1": 95,
+              "y1": 65,
+              "x2": 150,
+              "y2": 65,
+              "color": "ink"
+            },
+            {
+              "t": "text",
+              "x": 90,
+              "y": 100,
+              "s": "pin2 1B",
+              "size": 11,
+              "anchor": "end"
+            },
+            {
+              "t": "line",
+              "x1": 95,
+              "y1": 100,
+              "x2": 150,
+              "y2": 100,
+              "color": "ink"
+            },
+            {
+              "t": "text",
+              "x": 90,
+              "y": 175,
+              "s": "pin7 GND",
+              "size": 11,
+              "anchor": "end"
+            },
+            {
+              "t": "line",
+              "x1": 95,
+              "y1": 175,
+              "x2": 150,
+              "y2": 175,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 370,
+              "y": 65,
+              "s": "pin3 1Y out",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "line",
+              "x1": 290,
+              "y1": 65,
+              "x2": 365,
+              "y2": 65,
+              "color": "green"
+            },
+            {
+              "t": "text",
+              "x": 395,
+              "y": 195,
+              "s": "pin14 VCC",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "line",
+              "x1": 290,
+              "y1": 175,
+              "x2": 365,
+              "y2": 175,
+              "color": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 400,
+              "cy": 110,
+              "r": 24,
+              "label": "LED+R",
+              "fill": "accent"
+            },
+            {
+              "t": "line",
+              "x1": 365,
+              "y1": 65,
+              "x2": 400,
+              "y2": 94,
+              "color": "green"
+            },
+            {
+              "t": "line",
+              "x1": 400,
+              "y1": 126,
+              "x2": 400,
+              "y2": 175,
+              "color": "green"
+            },
+            {
+              "t": "line",
+              "x1": 400,
+              "y1": 175,
+              "x2": 365,
+              "y2": 175,
+              "color": "rust"
+            }
+          ]
+        }
+      },
+      "title": "Wire it, verify it, count the transistors",
+      "body": "Find the 74HC00's datasheet and write down how many gates it contains and its pin layout for one gate's two inputs, its output, and power.\n\nWire one of the chip's four NAND gates on the breadboard, replacing the season 2 copper-switch version, with an LED on the output through a resistor.\n\nTest all four input combinations and confirm each one matches a NAND truth table: output high unless both inputs are high. Measure the output voltage for each combination with the multimeter.\n\nMultiply the gate count from the datasheet by 4 transistors per gate, and write down what that implies for the whole chip's core transistor count.",
+      "checklist": [
+        "The datasheet's gate count and pin layout were found before wiring began",
+        "One NAND gate was wired on the breadboard with an LED output",
+        "All four input combinations were tested and matched the NAND truth table",
+        "The implied transistor count was calculated from the gate count, not looked up directly"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s4-w09-make-04",
+      "title": "Input combination versus output voltage",
+      "ideaId": "transistors-add-up-to-gates",
+      "body": "The chip, the wiring and the supply voltage stay the same for every row. Only the two input values change.\n\nTest four input combinations, twice each, eight rows in total. For each row, write the two inputs and the output voltage the multimeter read.",
+      "columns": [
+        "Inputs (A, B)",
+        "Output voltage (V)"
+      ],
+      "minRows": 8,
+      "question": "Does the measured output match a NAND truth table, and which combination gave the lowest voltage?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w09-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: the chip's power pins wired backward, since a 74HC00's power pins sit at opposite corners rather than the ends.\n\nAlso watch for an unused gate's inputs left floating, which can make the whole chip behave strangely. And watch for a datasheet gate count misread from a different chip in the same family."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w09-make-06",
+      "title": "Show it",
+      "prompt": "Photo of the wired NAND gate with all four input combinations tested, plus your eight-row table and the implied transistor count written down",
+      "accepts": [
+        "photo"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w09-make-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s4-w09-make-x01",
+      "kind": "bonus",
+      "title": "Build an AND gate from two NANDs",
+      "minutes": 30,
+      "body": "1. Wire a second gate on the same 74HC00 chip, feeding both of its inputs from the output of the first gate.\n\n2. Predict what this combination does before testing it: a NAND feeding an inverter should behave like a plain AND gate.\n\n3. Test all four input combinations on the combined circuit and write down the output for each.\n\n4. Compare the results against a plain AND truth table.\n\nNotice that a chip with only NAND gates inside it can still build any other basic gate, one of the reasons NAND chips are so common."
+    }
+  ]
+}

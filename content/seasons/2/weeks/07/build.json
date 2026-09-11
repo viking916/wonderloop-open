@@ -1,0 +1,768 @@
+{
+  "id": "s2-w07-build",
+  "season": 2,
+  "week": 7,
+  "track": "build",
+  "title": "Robot moods: a creature with three states",
+  "summary": "Turn the mBot into a three-mood creature: it roams the taped line on the four line states, startles at a close hand, sleeps when the room goes dim and wakes at the button, with every trigger set by the thresholds your own week 6 data chose.",
+  "minutes": 60,
+  "materials": [
+    "mBot v1.2 with fresh AA batteries",
+    "USB cable",
+    "laptop with mBlock",
+    "black electrical tape and white poster board line course",
+    "desk lamp you can dim or switch off",
+    "graph paper and pencil",
+    "Maker's Log open to the week 6 thresholds"
+  ],
+  "skills": [
+    "build.sensors",
+    "build.conditionals",
+    "build.variables"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "typing",
+      "id": "s2-w07-build-01",
+      "minutes": 5,
+      "body": "Five minutes on your typing site. Warm up on the home row, then drill this week's control words: forever, if, else, repeat, set. Type each one ten times without looking down. Then the creature's three mood words, roam, startled, sleepy, ten times each, and finish with the four digits the line follower speaks, 0 1 2 3, typed from the top number row instead of hunted one by one. Every one of these lands in your project today."
+    },
+    {
+      "kind": "instruction",
+      "id": "s2-w07-build-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A state diagram with three circles, Roam, Startled and Sleepy. An arrow runs from Roam to Startled labelled distance less than threshold, and a dashed arrow back labelled yelp and retreat done. Another arrow runs from Roam to Sleepy labelled light less than threshold, and a dashed arrow back labelled button pressed. A note points out there is no road from Sleepy to Startled, because a sleeping creature does not check distance.",
+        "spec": {
+          "w": 380,
+          "h": 270,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 190,
+              "cy": 55,
+              "r": 38,
+              "label": "Roam"
+            },
+            {
+              "t": "circle",
+              "cx": 60,
+              "cy": 180,
+              "r": 38,
+              "label": "Startled"
+            },
+            {
+              "t": "circle",
+              "cx": 320,
+              "cy": 180,
+              "r": 38,
+              "label": "Sleepy"
+            },
+            {
+              "t": "line",
+              "x1": 165,
+              "y1": 88,
+              "x2": 90,
+              "y2": 148,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 85,
+              "y1": 158,
+              "x2": 160,
+              "y2": 98,
+              "arrow": true,
+              "dashed": true
+            },
+            {
+              "t": "line",
+              "x1": 215,
+              "y1": 88,
+              "x2": 290,
+              "y2": 148,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 295,
+              "y1": 158,
+              "x2": 220,
+              "y2": 98,
+              "arrow": true,
+              "dashed": true
+            },
+            {
+              "t": "text",
+              "x": 90,
+              "y": 108,
+              "s": "distance < threshold",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 70,
+              "y": 125,
+              "s": "yelp+retreat done",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 270,
+              "y": 95,
+              "s": "light < threshold",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 310,
+              "y": 125,
+              "s": "button pressed",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 240,
+              "s": "No road from Sleepy to Startled:",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 253,
+              "s": "a sleeping creature doesn't check distance",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 800,
+              "caption": "roaming, checking distance",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "too close: startled!",
+              "set": {
+                "3": {
+                  "color": "accent"
+                },
+                "1": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "retreat done, back to roam",
+              "set": {
+                "4": {
+                  "color": "green"
+                },
+                "0": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "low light instead: sleepy",
+              "set": {
+                "5": {
+                  "color": "accent"
+                },
+                "2": {
+                  "fill": "accent"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "Ask, imagine, plan",
+      "body": "The design loop runs as always: ask, imagine, plan, build, test, fix.\n\nAsk: can a robot have moods? Last season your mBot had reflexes: see a wall, turn; see the tape, steer. A reflex answers now and forgets instantly. A mood is different, because it is remembered. Poke a sleeping cat and poke a hunting cat: same poke, very different answers, because the cat carries a state inside. This week your creature carries one too.\n\nImagine: three moods. Roam: it rides the taped line, calm and busy. Startled: something looms too close, so it retreats and yelps. Sleepy: the room goes dim, so it stops, dims its lights and snores until the button wakes it.\n\nPlan: draw the state diagram on graph paper before touching any blocks. Three circles labeled Roam, Startled and Sleepy. Then the roads between them, each labeled with its trigger: Roam to Startled when the ultrasonic distance drops under your week 6 distance threshold. Roam to Sleepy when the light reading drops under your week 6 light threshold. Startled back to Roam once the yelp and retreat finish. Sleepy back to Roam when the button is pressed. Notice the road that is not there: nothing runs from Sleepy to Startled, because a sleeping creature does not check the distance. That missing arrow-free road is a design choice, and your diagram makes it visible. This one page is the creature's whole mind, and you will hold it up at next week's showcase."
+    },
+    {
+      "kind": "science",
+      "id": "s2-w07-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two flows compared. Top: Hot pan leads straight to Spinal cord then to Arm moves, labelled reflex, fast and fixed, same every time. Bottom: Dog hears name leads to a Mood or state box, hungry or sleepy, then to Comes or not, labelled decision, same input but a different answer depending on the state. A note ties this to the creature's mood variable deciding which reflexes are even listening.",
+        "spec": {
+          "w": 380,
+          "h": 220,
+          "items": [
+            {
+              "t": "text",
+              "x": 190,
+              "y": 16,
+              "s": "Reflex vs decision",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 45,
+              "w": 70,
+              "h": 26,
+              "label": "Hot pan"
+            },
+            {
+              "t": "line",
+              "x1": 100,
+              "y1": 58,
+              "x2": 165,
+              "y2": 58,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 165,
+              "y": 41.0,
+              "w": 80,
+              "h": 34,
+              "label": "Spinal cord",
+              "sub": "shortcut"
+            },
+            {
+              "t": "line",
+              "x1": 215,
+              "y1": 58,
+              "x2": 250,
+              "y2": 58,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 45,
+              "w": 70,
+              "h": 26,
+              "label": "Arm moves"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 90,
+              "s": "Reflex: fast, fixed, same every time",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 125,
+              "w": 100,
+              "h": 26,
+              "label": "Dog hears name"
+            },
+            {
+              "t": "line",
+              "x1": 130,
+              "y1": 138,
+              "x2": 165,
+              "y2": 138,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 160.5,
+              "y": 121.0,
+              "w": 89.0,
+              "h": 34,
+              "label": "Mood/state",
+              "sub": "hungry? sleepy?"
+            },
+            {
+              "t": "line",
+              "x1": 215,
+              "y1": 138,
+              "x2": 250,
+              "y2": 138,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 125,
+              "w": 95,
+              "h": 26,
+              "label": "Comes, or not"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 170,
+              "s": "Decision: same input, different answer, because state differs",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 195,
+              "s": "The mood variable decides which reflexes are even listening",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 700,
+              "caption": "hot pan signals the spine",
+              "set": {
+                "1": {
+                  "fill": "accent"
+                },
+                "2": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "spine reflexes the arm away",
+              "set": {
+                "3": {
+                  "fill": "accent"
+                },
+                "4": {
+                  "color": "accent"
+                },
+                "5": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "a dog's name checks its mood",
+              "set": {
+                "7": {
+                  "fill": "accent"
+                },
+                "8": {
+                  "color": "accent"
+                },
+                "9": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "mood decides: comes, or not",
+              "set": {
+                "10": {
+                  "color": "accent"
+                },
+                "11": {
+                  "fill": "accent"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "Reflexes versus decisions",
+      "body": "Touch a hot pan and your hand is gone before you feel the heat. The signal takes a shortcut: into the spinal cord, straight back out to the arm muscles, and only afterwards does the news reach the brain. That is a reflex: fast, fixed, and nobody decided anything.\n\nA decision runs longer wiring. A dog hears its name and might come, or might not, depending on what state it is in: hungry, sleepy, sulking. Same sound, different answer, because something inside the dog holds a state, and the state changes which reactions are switched on. When a biologist sees an animal ignore something it would normally jump at, they say its internal state changed.\n\nYour creature now has both floors. Each single check, distance under the threshold, light under the threshold, is a reflex: same input, same reaction, every single time. But the mood variable is a tiny memory, and it decides which reflexes are even listening. In Roam the distance check matters; in Sleepy it is ignored and only the button gets through. Same poke, different answer, and unlike with the cat, you can point at the exact variable that holds the state."
+    },
+    {
+      "kind": "task",
+      "id": "s2-w07-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Four boxes across the top show the line follower's four states: state 0 with both eyes on tape, state 1 with the left eye off, state 2 with the right eye off, and state 3 with both eyes off. Beneath each, the matching action: forward at speed 100, steer toward tape twice, or turn right at speed 80 to hunt. A note says these numbers were measured live by sliding the mBot by hand, not copied from a manual.",
+        "spec": {
+          "w": 420,
+          "h": 220,
+          "wide": true,
+          "items": [
+            {
+              "t": "text",
+              "x": 210,
+              "y": 16,
+              "s": "Line states: two eyes, four pictures",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 50,
+              "w": 80,
+              "h": 60,
+              "label": "state 0",
+              "sub": "both on tape"
+            },
+            {
+              "t": "box",
+              "x": 120,
+              "y": 50,
+              "w": 80,
+              "h": 60,
+              "label": "state 1",
+              "sub": "left eye off"
+            },
+            {
+              "t": "box",
+              "x": 220,
+              "y": 50,
+              "w": 80,
+              "h": 60,
+              "label": "state 2",
+              "sub": "right eye off"
+            },
+            {
+              "t": "box",
+              "x": 320,
+              "y": 50,
+              "w": 80,
+              "h": 60,
+              "label": "state 3",
+              "sub": "both off tape"
+            },
+            {
+              "t": "text",
+              "x": 60,
+              "y": 130,
+              "s": "forward, speed 100",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 130,
+              "s": "steer toward tape",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 260,
+              "y": 130,
+              "s": "steer toward tape",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 360,
+              "y": 130,
+              "s": "turn right 80, hunt",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 210,
+              "y": 170,
+              "s": "Numbers measured live by sliding mBot by hand, not copied from a manual",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 210,
+              "y": 195,
+              "s": "wait 0.1s or less after each action, inside the forever loop",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Roam: ride the tape with states 0 to 3",
+      "body": "Tape a line course, or reuse the week 6 loop: black electrical tape on white poster board, gentle curves. Add one brand-new bend the creature has never driven. A creature that only handles the course it grew up on has memorized, not learned.\n\nConnect mBot in mBlock as always: USB in, Devices, Connect, pick mBot. Last season you asked the line follower yes-or-no questions, one side at a time. It has a second way of speaking: one number for the whole picture. Find the round reader block `line follower sensor port (2) value` in the mBot palette. It reports 0, 1, 2 or 3: two eyes, each seeing tape or floor, make four possible pictures, one number per picture. Which number means which picture? Do not take anyone's word for it, not even a manual's. Build your own decoder table: from Variables make `lineState`, set it to the reader block inside a `forever` loop, tick its checkbox so it shows on the stage, and switch to Live mode. Now slide mBot by hand and write down what the stage shows: both eyes over the tape, both over white, only the left eye off, only the right eye off. Four situations, four numbers, written as a table on graph paper next to your week 1 truth tables. That table is a fact about your robot that you established yourself.\n\nNow build Roam in Upload mode: under `when mBot (mCore) starts up`, a `forever` loop. Inside it, set `lineState` to the reader, then a chain of `if then else` blocks asking about `lineState`. The both-eyes-on-tape number runs `run forward at speed 100`. The two one-eye-off numbers steer back toward the tape: try turn left for one and turn right for the other, and if the creature waggles off the line, swap the two. Which side is which is your robot's fact, and ten seconds of testing settles it. The both-eyes-off number means the tape is lost: `turn right at speed 80`, so it circles slowly and hunts until an eye finds tape again. After each action a short `wait 0.1 seconds`, never longer, so the loop glances at the floor many times a second.\n\nUpload, unplug, set it on the line. It should lap the whole course, new bend included, and recover when you lift it off, set it down crooked, and let it hunt.",
+      "checklist": [
+        "My own four-row table says which number matches which eye picture, measured in Live mode, not copied from anywhere",
+        "The creature laps the whole course, including the bend it never practiced",
+        "When one eye slips off, the creature steers back instead of waggling away, and I swapped the two turns if it did not",
+        "Every wait inside the forever loop is 0.1 seconds or shorter"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s2-w07-build-05",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The mBot in the middle with a hand held near its distance sensor on the right, a dashed line labelled distance less than threshold leading to a note describing the startled action: back up, yelp, flash red LEDs, then return to roam. On the left, a dimmed lamp leads to a note describing the sleepy action: motors off, dim blue LEDs, snore every 2 seconds, and a button below that wakes it back to roam.",
+        "spec": {
+          "w": 420,
+          "h": 260,
+          "wide": true,
+          "items": [
+            {
+              "t": "text",
+              "x": 210,
+              "y": 18,
+              "s": "Both thresholds are your week 6 numbers from the Maker's Log",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 180,
+              "y": 130,
+              "w": 80,
+              "h": 40,
+              "label": "mBot",
+              "sub": "mood variable"
+            },
+            {
+              "t": "box",
+              "x": 320,
+              "y": 90,
+              "w": 50,
+              "h": 26,
+              "label": "Hand"
+            },
+            {
+              "t": "line",
+              "x1": 320,
+              "y1": 116,
+              "x2": 262,
+              "y2": 140,
+              "dashed": true
+            },
+            {
+              "t": "text",
+              "x": 315,
+              "y": 150,
+              "s": "< distance threshold",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 340,
+              "y": 175,
+              "s": "startled: back up 0.5s, yelp,",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 340,
+              "y": 188,
+              "s": "flash red LEDs, then roam",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 50,
+              "y": 90,
+              "w": 82,
+              "h": 26,
+              "label": "Lamp dimmed"
+            },
+            {
+              "t": "line",
+              "x1": 100,
+              "y1": 116,
+              "x2": 178,
+              "y2": 140,
+              "dashed": true
+            },
+            {
+              "t": "text",
+              "x": 100,
+              "y": 150,
+              "s": "< light threshold",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 80,
+              "y": 175,
+              "s": "sleepy: motors 0, dim blue LEDs,",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 80,
+              "y": 188,
+              "s": "snore every 2s",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 215,
+              "w": 60,
+              "h": 24,
+              "label": "Button"
+            },
+            {
+              "t": "line",
+              "x1": 220,
+              "y1": 215,
+              "x2": 220,
+              "y2": 172,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 210,
+              "y": 196,
+              "s": "wakes: mood=roam",
+              "size": 9,
+              "anchor": "end"
+            }
+          ]
+        }
+      },
+      "title": "Startled and Sleepy: a mood it remembers",
+      "body": "Open the Maker's Log to the week 6 page and copy out the two numbers your data chose: the distance threshold that splits near from far, and the light threshold that splits bright from dim. Those exact numbers go into today's blocks. Nobody guesses.\n\nFrom Variables, make `mood`. Right under `when mBot (mCore) starts up`, set `mood` to roam. The `forever` loop now asks one question before anything else: which mood am I in? An `if then else` on whether `mood` says roam wraps everything Roam already does, and gets two new watchers at its top: if `ultrasonic sensor port (3) distance` is less than your distance threshold, set `mood` to startled. If the on-board light sensor's reading is less than your light threshold, set `mood` to sleepy. The light block reads the small sensor on top of the board; find it in the mBot palette, tick its checkbox in Live mode, and cover it with your palm to watch the number dive before you trust it in a rule.\n\nIn the startled branch: back away with the motors reversed for 0.5 seconds, yelp two short high notes on the buzzer, flash the on-board LEDs red, then set `mood` back to roam. The whole act runs to its end before anything is rechecked, which also stops a wobbling distance reading from rapid-firing the yelp.\n\nIn the sleepy branch: motors at speed 0, LEDs down to a dim blue, one long low buzzer note for a snore, then `wait 2 seconds` between snores. Exactly one watcher stays awake inside this branch: if the on-board button is pressed, set `mood` to roam. Nothing else can wake it. Your state diagram said so, and now the blocks say the same thing.\n\nTest every road on the diagram, in order: hand looming in front, yelp and retreat, then back to roaming on its own. Lamp off, snoring. Button, awake. If a mood fires when it should not, do what week 6 taught: take two fresh readings on the spot, one from each world, and move the threshold to their midpoint. The data decides, in this room, today.",
+      "checklist": [
+        "mood is set to roam at startup, and the forever loop asks mood before anything else",
+        "A close hand flips it to startled: it backs up, yelps, flashes, then roams again by itself",
+        "Dim light flips it to sleepy: motors stop, LEDs dim, a snore every 2 seconds",
+        "Only the button wakes it from sleepy, exactly as the state diagram drew it",
+        "Both thresholds are my week 6 numbers from the Maker's Log, moved only by a fresh midpoint measurement"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s2-w07-build-09",
+      "title": "How fast is the startled reflex",
+      "body": "The hand's starting distance and how quickly it moves toward the sensor stay the same for every trial. Only the trial number changes.\n\nUse a phone timer or stopwatch. Move a hand toward the robot the same way five times. For each trial, write down how many seconds passed between the hand crossing the threshold distance and the LEDs flashing red.",
+      "columns": [
+        "Trial",
+        "Reaction time (s)"
+      ],
+      "minRows": 5,
+      "question": "What was the typical reaction time across the five trials, and did any trial take clearly longer than the rest?"
+    },
+    {
+      "kind": "science",
+      "id": "s2-w07-build-10",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Three bars compared: a short bar of about 8 milliseconds for a nerve signal reaching the spinal cord, a long bar of about 200 to 250 milliseconds for a full human reaction of seeing and pressing a button, and a tiny bar of under 1 millisecond for the robot's electronic reflex loop. A note explains most of the human reaction time is the brain deciding, not wire delay.",
+        "spec": {
+          "w": 380,
+          "h": 210,
+          "items": [
+            {
+              "t": "text",
+              "x": 190,
+              "y": 16,
+              "s": "Nerve signal vs reaction vs robot reflex",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 50,
+              "w": 40,
+              "h": 20,
+              "label": "~8ms"
+            },
+            {
+              "t": "text",
+              "x": 60,
+              "y": 85,
+              "s": "signal to spine",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 120,
+              "y": 43,
+              "w": 220,
+              "h": 34,
+              "label": "~200-250ms",
+              "sub": "full human reaction"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 100,
+              "w": 36,
+              "h": 20,
+              "label": "<1ms"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 150,
+              "s": "Nerve travels ~120 m/s; most reaction time is your brain",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 163,
+              "s": "deciding, not wire delay",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 192,
+              "s": "Test: drop a ruler between a partner's fingers, read where they catch it",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 58,
+              "y": 133,
+              "s": "robot reflex loop",
+              "size": 9,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Your own reflex, timed against the robot's",
+      "body": "You just measured how fast the robot notices a hand and reacts. Now compare that with your own nervous system.\n\nA nerve signal in your arm travels up to about 120 metres a second, astonishingly fast but not instant. Your hand sits roughly a metre from your spinal cord, so the raw signal takes only about eight milliseconds to get there.\n\nYet a typical human reaction time, seeing something and pressing a button, runs around 200 to 250 milliseconds. Almost none of that gap is wire delay. Your brain spends most of it deciding what it saw and choosing a response.\n\nThe robot's electronic reflex, by contrast, runs in a fraction of a millisecond, limited only by how often its loop checks the sensor.\n\nTest it: drop a ruler between a partner's open fingers with no warning, and read where they catch it. A longer catch distance means a slower reaction.",
+      "ideaId": "nerves-carry-a-signal"
+    },
+    {
+      "kind": "instruction",
+      "id": "s2-w07-build-06",
+      "title": "Bug diary",
+      "body": "One line per thing that did not work the first time and what you tried. This week's classics: the creature flickers between two moods at the edge of a threshold, which is week 6's wobble in action, so let each mood finish its whole act before rechecking, or move the threshold to a fresh midpoint. The line gets lost on a shiny patch of floor, because shine bounces light back the way white paper does, so keep the course on matte poster board. The buzzer yelps forever, so check that the startled act really ends by setting mood back to roam. The button seems dead while the creature roams, but its check only lives inside the sleepy branch, so that is the diagram working, not a bug. And slow, wandering driving usually means hungry batteries; the v1.2 eats them."
+    },
+    {
+      "kind": "artifact",
+      "id": "s2-w07-build-07",
+      "title": "Show it",
+      "prompt": "One video in a single take: the creature roaming its line, startled by your hand, put to sleep by the lamp going off, and woken by the button. Plus a photo of your state diagram page and the saved project file or a screenshot of the blocks.",
+      "accepts": [
+        "recording",
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s2-w07-build-08",
+      "variant": "maker"
+    }
+  ]
+}

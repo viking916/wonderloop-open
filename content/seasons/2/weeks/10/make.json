@@ -1,0 +1,343 @@
+{
+  "id": "s2-w10-make",
+  "season": 2,
+  "week": 10,
+  "track": "make",
+  "title": "Motors and drivers",
+  "summary": "Find out why a micro:bit pin cannot drive a motor, wire a driver board as the switch that can, and measure motor current at no load, light load and a brief stall.",
+  "minutes": 60,
+  "materials": [
+    "micro:bit v2 and micro USB cable",
+    "motor driver board",
+    "small DC hobby motor",
+    "AA battery pack, separate from the micro:bit's own power",
+    "multimeter",
+    "breadboard starter kit",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.electronics",
+    "make.measurement"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s2-w10-make-01",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The micro:bit sends a small signal into the driver board's control pins. A separate battery and the motor connect to the driver board's power side, so the motor's current never passes through the micro:bit pin.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 30,
+              "y": 60,
+              "w": 90,
+              "h": 50,
+              "label": "micro:bit",
+              "sub": "signal",
+              "fill": "muted"
+            },
+            {
+              "t": "line",
+              "x1": 120,
+              "y1": 85,
+              "x2": 165,
+              "y2": 85,
+              "color": "green",
+              "label": "signal"
+            },
+            {
+              "t": "box",
+              "x": 170,
+              "y": 50,
+              "w": 90,
+              "h": 90,
+              "label": "driver board",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 300,
+              "y": 50,
+              "w": 60,
+              "h": 40,
+              "label": "battery",
+              "fill": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 300,
+              "y1": 70,
+              "x2": 260,
+              "y2": 70,
+              "color": "rust",
+              "label": "power"
+            },
+            {
+              "t": "box",
+              "x": 300,
+              "y": 110,
+              "w": 60,
+              "h": 40,
+              "label": "motor",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 260,
+              "y1": 120,
+              "x2": 300,
+              "y2": 120,
+              "color": "ink"
+            }
+          ]
+        }
+      },
+      "title": "Ask, imagine, plan",
+      "body": "The design loop, one more time: ask, imagine, plan, build, test, fix.\n\nAsk: the micro:bit switched LEDs all season. Can the same pin switch a motor the same way? A motor asks for far more current than an LED ever did.\n\nImagine: the micro:bit's pin as a small hand that can flip a light switch but cannot lift a car battery. A driver board is the strong hand it hires: a tiny signal from the small hand tells the strong hand when to grip.\n\nPlan: wire the micro:bit's small signal into the driver board's control pins, and wire a separate battery pack and the motor into the driver board's power side. The micro:bit and the motor never touch the same wire directly today; the driver sits between them on purpose."
+    },
+    {
+      "kind": "science",
+      "id": "s2-w10-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The micro:bit pin sends only a tiny signal, a few milliamps, into a transistor inside the driver board. That transistor switches the much larger current, one hundred to three hundred milliamps, that flows from a separate battery to the motor, so the two currents never mix.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 90,
+              "w": 60,
+              "h": 30,
+              "label": "pin",
+              "sub": "few mA",
+              "fill": "muted"
+            },
+            {
+              "t": "line",
+              "x1": 80,
+              "y1": 105,
+              "x2": 136,
+              "y2": 105,
+              "color": "green"
+            },
+            {
+              "t": "box",
+              "x": 136,
+              "y": 70,
+              "w": 78,
+              "h": 70,
+              "label": "transistor",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 60,
+              "w": 60,
+              "h": 30,
+              "label": "battery",
+              "fill": "rust"
+            },
+            {
+              "t": "box",
+              "x": 245,
+              "y": 120,
+              "w": 75,
+              "h": 30,
+              "label": "motor",
+              "sub": "100-300 mA",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 250,
+              "y1": 75,
+              "x2": 214,
+              "y2": 90,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 214,
+              "y1": 110,
+              "x2": 245,
+              "y2": 135,
+              "color": "ink"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 700,
+              "caption": "tiny signal reaches the transistor",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                },
+                "1": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "it switches the larger current on",
+              "set": {
+                "2": {
+                  "fill": "accent"
+                },
+                "5": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "power flows to the motor",
+              "set": {
+                "6": {
+                  "color": "accent"
+                },
+                "4": {
+                  "fill": "accent"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "A small signal flips a big switch",
+      "ideaId": "small-signal-big-switch",
+      "body": "A micro:bit pin can safely source only a few milliamps, a tiny trickle of current. A small hobby motor often draws somewhere between 100 and 300 milliamps just spinning freely with nothing attached. It draws a lot more than that the moment it is stalled and cannot turn at all. Wiring a motor straight to a pin would ask for far more current than the pin can safely give.\n\nA driver board solves this by never asking the pin to carry the motor's current at all. The pin's tiny signal switches a transistor inside the driver fully on or off. That transistor is built to handle a much bigger current from a separate, stronger supply, the battery pack feeding the motor.\n\nThis is the same trick as a big stage light controlled by a small wall switch. The switch does not carry the light's real current, it only tells a much bigger circuit elsewhere when to turn on. A tiny signal, a big switch, and the two currents never mix."
+    },
+    {
+      "kind": "task",
+      "id": "s2-w10-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The multimeter is wired in series between the driver board and the motor. Current is read three ways: the motor spinning freely with no load, a light finger drag on the shaft, and a brief stall of no more than a few seconds.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 30,
+              "y": 90,
+              "w": 70,
+              "h": 50,
+              "label": "driver",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 100,
+              "y1": 115,
+              "x2": 140,
+              "y2": 115,
+              "color": "ink"
+            },
+            {
+              "t": "box",
+              "x": 140,
+              "y": 95,
+              "w": 60,
+              "h": 40,
+              "label": "meter",
+              "sub": "series",
+              "fill": "paper"
+            },
+            {
+              "t": "line",
+              "x1": 200,
+              "y1": 115,
+              "x2": 240,
+              "y2": 115,
+              "color": "ink"
+            },
+            {
+              "t": "circle",
+              "cx": 270,
+              "cy": 115,
+              "r": 30,
+              "label": "motor",
+              "fill": "sand"
+            },
+            {
+              "t": "dot",
+              "cx": 270,
+              "cy": 60,
+              "label": "no load",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 205,
+              "cy": 80,
+              "label": "light drag",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 205,
+              "cy": 150,
+              "label": "stall <=3s",
+              "side": "below"
+            }
+          ]
+        }
+      },
+      "title": "Measure current at no load, light load and a brief stall",
+      "body": "With an adult present for this whole step, break the wire between the driver board and the motor and insert the multimeter in series so it reads current. Command the motor on from the micro:bit at a steady speed.\n\nRead the current with the motor spinning freely, no load. Then press a finger lightly against the spinning shaft or wheel to add a light drag, and read the current again. Finally, hold the shaft or wheel still for no more than two or three seconds, a brief stall, and read the current one last time before letting go.\n\nNever hold a stall longer than a few seconds: a stalled motor draws its highest current and can overheat the driver board if it is held there. Test the stall only once for this reason, while no load and light load can each be read twice.",
+      "checklist": [
+        "The multimeter was wired in series between the driver board and the motor",
+        "Current read while spinning freely with no load, twice",
+        "Current read with a light drag applied, twice",
+        "The stall was held for no more than a few seconds and read only once, with an adult present"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s2-w10-make-04",
+      "title": "Load versus motor current",
+      "ideaId": "small-signal-big-switch",
+      "body": "The motor, the driver board and the battery stay the same for every row. Only the load on the shaft changes, and the stall is measured once only, briefly, for safety.\n\nThree rows, one per load setting. For each row, write the load, no load, light load or stalled, and the current in milliamps the multimeter read. For no load and light load, use the second of the two readings, once the motor has settled to a steady speed.",
+      "columns": [
+        "Load",
+        "Current (mA)"
+      ],
+      "minRows": 3,
+      "question": "How many times more current did the stalled motor draw than the same motor spinning with no load?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s2-w10-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: the motor not turning because the driver's control pins were swapped with its power pins.\n\nAlso watch for a multimeter reading that jumps around, usually a loose in-series connection. And a stall reading that looks suspiciously low is often just the meter's current range set too small for the real number."
+    },
+    {
+      "kind": "artifact",
+      "id": "s2-w10-make-06",
+      "title": "Show it",
+      "prompt": "Photo of the driver board wired between the micro:bit and the motor, with the multimeter reading current in series, plus your table of the three current readings",
+      "accepts": [
+        "photo"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s2-w10-make-07",
+      "variant": "maker"
+    }
+  ]
+}

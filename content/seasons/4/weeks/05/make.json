@@ -1,0 +1,285 @@
+{
+  "id": "s4-w05-make",
+  "season": 4,
+  "week": 5,
+  "track": "make",
+  "title": "A 3 degree-of-freedom arm, and a gripper twice",
+  "summary": "Print and wire a small arm on metal-gear servos. Design gripper fingers against one real object, then redesign them from what the first try got wrong.",
+  "minutes": 60,
+  "materials": [
+    "printed 3 degree-of-freedom arm (shoulder, elbow and wrist), designed and printed on the 3D printer",
+    "three metal-gear hobby servos (MG90S class)",
+    "16-channel servo driver board (PCA9685 class)",
+    "ESP32 dev board",
+    "breadboard and jumper wires",
+    "digital calipers",
+    "kitchen scale reading to 1 g",
+    "tape measure",
+    "protractor",
+    "a marker and a small jar, for the gripper test",
+    "cheap digital temperature probe",
+    "four identical small cups or jars with lids",
+    "warm water and a kettle or jug",
+    "bubble wrap, a wool sock, and foil, for wrapping",
+    "stopwatch",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.mechanisms",
+    "make.fabrication",
+    "make.electronics",
+    "make.measurement"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w05-make-01",
+      "figure": {
+        "kind": "scene",
+        "alt": "A three joint arm on a base: drag to turn it, slide to reach out, and read what the 2.2 kg-cm servo can still hold at that reach.",
+        "spec": {
+          "type": "arm",
+          "torqueKgCm": 2.2
+        }
+      },
+      "title": "Ask, imagine, plan",
+      "body": "The scratch rover gets a hand: ask, imagine, plan, build, test, fix.\n\nAsk: three joints, shoulder, elbow and wrist, should reach and turn enough to pick something up. Is three actually enough?\n\nImagine: three metal-gear servos, driven by a board that frees the ESP32 from timing every pulse itself. Together they move a printed arm to a commanded reach and grip.\n\nPlan: model the arm's three links to your servos' own dimensions, measured with calipers, before printing anything. Sketch a first gripper finger shape for one target object, a marker."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w05-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A horizontal arm pivots at the shoulder on the left. At 2 centimetres from the pivot the servo's 2.2 kilogram-centimetre torque rating can hold 1.1 kilograms, marked with a circle. At 10 centimetres from the same pivot, the same servo can only hold 220 grams, marked with a circle further out, showing torque divided by distance falling as the reach grows.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "dot",
+              "cx": 70,
+              "cy": 100,
+              "label": "shoulder (pivot)",
+              "side": "above"
+            },
+            {
+              "t": "line",
+              "x1": 70,
+              "y1": 100,
+              "x2": 134,
+              "y2": 100,
+              "color": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 166,
+              "y1": 100,
+              "x2": 314,
+              "y2": 100,
+              "color": "ink"
+            },
+            {
+              "t": "circle",
+              "cx": 150,
+              "cy": 100,
+              "r": 16,
+              "label": "1.1 kg",
+              "fill": "accent"
+            },
+            {
+              "t": "circle",
+              "cx": 330,
+              "cy": 100,
+              "r": 16,
+              "label": "220 g",
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 70,
+              "y1": 50,
+              "x2": 150,
+              "y2": 50,
+              "label": "2 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 70,
+              "y1": 140,
+              "x2": 330,
+              "y2": 140,
+              "label": "10 cm"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 185,
+              "s": "servo torque: 2.2 kg-cm at the shaft",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 205,
+              "s": "torque = force x distance",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "title": "Torque fades with reach",
+      "ideaId": "torque-fades-with-reach",
+      "body": "A servo's torque rating is a twisting force measured at its shaft, often given in kilogram-centimetres. An MG90S-class servo is typically rated around 2.2 kilogram-centimetres.\n\nTorque equals the force needed times the distance from the shaft it acts at. A longer reach needs less force to stall the same servo. Divide the torque by the distance to find the mass it can just barely hold at that distance.\n\nAt 2 centimetres from the shoulder, 2.2 divided by 2 is 1.1 kilograms. At 10 centimetres, 2.2 divided by 10 is only 0.22 kilograms, about 220 grams. The same servo, the same rating, a very different answer, purely because of where the load sits."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w05-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A horizontal arm pivots at the shoulder, with the gripper holding a hanging mass at its far end. Four dimension lines mark the distances tested from the shoulder: 5, 10, 15 and 20 centimetres, each the point where a known mass is hung to find the mass that stalls the joint.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "dot",
+              "cx": 30,
+              "cy": 60,
+              "label": "shoulder",
+              "side": "above"
+            },
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 60,
+              "x2": 300,
+              "y2": 60,
+              "color": "ink"
+            },
+            {
+              "t": "box",
+              "x": 300,
+              "y": 45,
+              "w": 55,
+              "h": 30,
+              "label": "gripper",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 322,
+              "y1": 75,
+              "x2": 322,
+              "y2": 110,
+              "arrow": true,
+              "color": "rust",
+              "label": "mass"
+            },
+            {
+              "t": "dim",
+              "x1": 30,
+              "y1": 90,
+              "x2": 100,
+              "y2": 90,
+              "label": "5 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 30,
+              "y1": 110,
+              "x2": 170,
+              "y2": 110,
+              "label": "10 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 30,
+              "y1": 130,
+              "x2": 240,
+              "y2": 130,
+              "label": "15 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 30,
+              "y1": 150,
+              "x2": 300,
+              "y2": 150,
+              "label": "20 cm"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 185,
+              "s": "find the stalling mass at each distance",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "title": "Build the arm, then the gripper twice",
+      "body": "Print and mount the arm on its three servos, wired through the PCA9685 to the ESP32. Write a short sketch that commands each joint to a few test angles and confirm all three move correctly.\n\nDesign and print a first gripper, sized to close on the marker. Test it on the marker, then on the small jar. Write down exactly what it failed to do.\n\nRedesign the gripper fingers from that one failure, print version two, and test it again on both objects.\n\nThen measure torque directly. With the arm held level, hang known masses from the gripper at four distances from the shoulder: 5, 10, 15 and 20 centimetres. Find the mass at which the joint stalls at each distance, twice per distance.",
+      "checklist": [
+        "The arm's three servos each moved to a commanded angle from the ESP32 and the PCA9685",
+        "Gripper version 1 was tested on the marker and the jar, and its failure written down",
+        "Gripper version 2 fixed that failure and was tested on the same two objects",
+        "The stalling mass was measured twice at each of four distances from the shoulder"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s4-w05-make-04",
+      "title": "Distance from shoulder versus mass at stall",
+      "ideaId": "torque-fades-with-reach",
+      "body": "The arm, the servo and the joint being tested stay the same for every row. Only the distance from the shoulder changes.\n\nTest four distances, twice each, eight rows in total. For each reading, write the distance in centimetres and the mass at which the joint stalled, in grams.",
+      "columns": [
+        "Distance from shoulder (cm)",
+        "Mass at stall (g)"
+      ],
+      "minRows": 8,
+      "question": "Did the stalling mass drop as the distance grew, roughly the way torque divided by distance predicts?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w05-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: a servo horn mounted a few degrees off centre, throwing off every angle commanded after it.\n\nAlso watch for a PCA9685 wired without its own power feed for the servos, since the ESP32's own pins cannot supply enough current.\n\nSafety, said plainly: a stalled servo under load gets hot and can smell of burning plastic. Cut power the moment you hear a grinding sound and let it cool before touching it."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w05-make-06",
+      "title": "Show it",
+      "prompt": "Photo of gripper version 1 and version 2 side by side holding the jar, plus your eight-row stall table",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w05-make-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s4-w05-make-x01",
+      "kind": "bonus",
+      "title": "Does insulation actually slow the cooling",
+      "minutes": 30,
+      "ideaId": "thermal-mass",
+      "body": "Find out whether wrapping something warm really slows how fast it cools. A stalled servo and a rover's electronics both have to shed or hold heat too.\n\nPredict first: write in the Maker's Log a guess. Will a bare container of warm water lose more or fewer degrees in ten minutes than one wrapped in wool?\n\nMeasure it with the week's own kit. Fill four identical containers with the same warm water. Leave one bare, and wrap the other three in bubble wrap, a wool sock and foil. Read each one's temperature at the start and again after exactly ten minutes.\n\nCompare: line up all four drops in degrees next to your prediction.\n\nTeach it: explain to the family why insulation slows heat loss instead of stopping it."
+    },
+    {
+      "id": "s4-w05-make-x02",
+      "kind": "bonus",
+      "title": "How pulse width sets a servo's angle",
+      "minutes": 20,
+      "ideaId": "pulse-width-sets-the-angle",
+      "body": "Find out how the width of the pulse sent to a servo actually sets the angle it turns to.\n\nPredict first: write in the Maker's Log a guess for the angle a 1.5 millisecond pulse commands. One end of the servo's travel is 1.0 millisecond, the other end is 2.0 milliseconds.\n\nMeasure it with the week's own kit. Command the shoulder servo through the PCA9685 at 1.0, 1.5 and 2.0 milliseconds. Hold the protractor against its horn and read the angle it actually reaches.\n\nCompare: line up your three measured angles against your prediction and against a straight line running from 0 to 180 degrees.\n\nTeach it: explain to the family why a servo needs a repeating pulse to hold its angle, not just one pulse sent once."
+    }
+  ]
+}

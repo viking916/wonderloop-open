@@ -1,0 +1,1978 @@
+{
+  "id": "ar-mental-arithmetic",
+  "idea": {
+    "body": "Mental arithmetic swaps the written method for a friendly-number trick, done in your head. Round a tricky number to a nearby multiple of ten, do the easy calculation, then adjust the result back by however much you rounded. Doubling, breaking a number into tens and ones, and multiplying by 5, 9 or 25 through a shortcut all follow the same idea. Turn the problem into an easier one, then fix up the small difference at the end. Adding 98 and 47: round 98 up to 100, add to get 147, then take back the 2 you added, landing on 145."
+  },
+  "workedExample": {
+    "prompt": "What is 98 plus 47, worked out in your head?",
+    "steps": [
+      "98 is close to 100, just 2 less.",
+      "100 plus 47 is 147.",
+      "You added 2 more than 98 really has, so take that 2 back.",
+      "147 minus 2 is 145."
+    ]
+  },
+  "ways": [
+    {
+      "id": "ar-mental-arithmetic-w1",
+      "name": "Round then adjust back",
+      "when": "Use this when one number is just a little away from a friendly multiple of ten.",
+      "steps": [
+        "Round the tricky number up or down to the nearest ten.",
+        "Do the easier calculation with that rounded number.",
+        "Add back or take away the small amount you rounded by."
+      ],
+      "example": "98 + 47",
+      "answer": "145",
+      "trap": "Adjusting in the wrong direction, adding the rounding amount instead of taking it back."
+    },
+    {
+      "id": "ar-mental-arithmetic-w2",
+      "name": "Bridge through ten",
+      "when": "Use this when adding two numbers whose ones digits pass ten together.",
+      "steps": [
+        "Split the second number into a piece that completes the first to the next ten, and what is left over.",
+        "Add the piece that completes the ten.",
+        "Add the leftover piece to that ten."
+      ],
+      "example": "38 + 26",
+      "answer": "64",
+      "trap": "Splitting the second number by the wrong amount, so the first addition does not land on a whole ten.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A number line from 38 to 64 with a jump of plus 2 to reach 40, then a jump of plus 24 to reach 64.",
+        "spec": {
+          "w": 390,
+          "h": 140,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 100,
+              "x2": 360,
+              "y2": 100
+            },
+            {
+              "t": "dot",
+              "cx": 30,
+              "cy": 100,
+              "side": "below",
+              "label": "38"
+            },
+            {
+              "t": "dot",
+              "cx": 190,
+              "cy": 100,
+              "side": "below",
+              "label": "40"
+            },
+            {
+              "t": "dot",
+              "cx": 360,
+              "cy": 100,
+              "side": "below",
+              "label": "64"
+            },
+            {
+              "t": "dim",
+              "x1": 30,
+              "y1": 70,
+              "x2": 190,
+              "y2": 70,
+              "label": "+2"
+            },
+            {
+              "t": "dim",
+              "x1": 190,
+              "y1": 70,
+              "x2": 360,
+              "y2": 70,
+              "label": "+24"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Split into a piece to reach ten.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Add the piece that completes the ten.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Add the leftover piece to that ten.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ar-mental-arithmetic-w3",
+      "name": "Near doubles",
+      "when": "Use this when two numbers being added are close to each other.",
+      "steps": [
+        "Find the double of the smaller number.",
+        "Work out how much bigger the other number is.",
+        "Add that difference to the double."
+      ],
+      "example": "27 + 29",
+      "answer": "56",
+      "trap": "Doubling the wrong number, or forgetting to add the small difference back on."
+    },
+    {
+      "id": "ar-mental-arithmetic-w4",
+      "name": "Split into tens and ones",
+      "when": "Use this when multiplying a two-digit number by a single digit in your head.",
+      "steps": [
+        "Split the two-digit number into tens and ones.",
+        "Multiply the tens part by the single digit.",
+        "Multiply the ones part by the single digit.",
+        "Add the two results together."
+      ],
+      "example": "34 x 6",
+      "answer": "204",
+      "trap": "Adding the two partial results incorrectly instead of lining up their place values."
+    }
+  ],
+  "bank": [
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover collects rock samples over several days. One count is 47 and another is 29. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "76"
+      },
+      "explanation": [
+        "29 is close to 30, just 1 less.",
+        "47 plus 30 is 77.",
+        "Take back the extra 1 you added: 77 minus 1 is 76."
+      ],
+      "useAgain": "when one number in an addition is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the trickier number to the nearest ten first, and remember by how much you moved it.",
+        "Add the rounded number, then adjust the total back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round a number up to add it, do you then add or take away the extra at the end?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game world tracks points scored across matches. One count is 58 and another is 39. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "97"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p01",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts pages across print jobs. One count is 56 and another is 19. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "75"
+      },
+      "explanation": [
+        "19 is close to 20, just 1 less.",
+        "56 plus 20 is 76.",
+        "Take back the extra 1 you added: 76 minus 1 is 75."
+      ],
+      "useAgain": "when one number in an addition is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the trickier number to the nearest ten first, and remember by how much you moved it.",
+        "Add the rounded number, then adjust the total back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round a number up to add it, do you then add or take away the extra at the end?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A workshop counts screws used across projects. One count is 67 and another is 29. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "96"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p02",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "An aquarium counts fish added across tanks. One count is 34 and another is 38. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "72"
+      },
+      "explanation": [
+        "38 is close to 40, just 2 less.",
+        "34 plus 40 is 74.",
+        "Take back the extra 2 you added: 74 minus 2 is 72."
+      ],
+      "useAgain": "when one number in an addition is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the trickier number to the nearest ten first, and remember by how much you moved it.",
+        "Add the rounded number, then adjust the total back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round a number up to add it, do you then add or take away the extra at the end?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine counts snacks sold across days. One count is 45 and another is 48. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "93"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p03",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen counts eggs used across recipes. One count is 63 and another is 49. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "112"
+      },
+      "explanation": [
+        "49 is close to 50, just 1 less.",
+        "63 plus 50 is 113.",
+        "Take back the extra 1 you added: 113 minus 1 is 112."
+      ],
+      "useAgain": "when one number in an addition is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the trickier number to the nearest ten first, and remember by how much you moved it.",
+        "Add the rounded number, then adjust the total back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round a number up to add it, do you then add or take away the extra at the end?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A garden counts seeds planted across rows. One count is 74 and another is 59. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "133"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p04",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover collects rock samples over several days. One count is 28 and another is 59. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "87"
+      },
+      "explanation": [
+        "59 is close to 60, just 1 less.",
+        "28 plus 60 is 88.",
+        "Take back the extra 1 you added: 88 minus 1 is 87."
+      ],
+      "useAgain": "when one number in an addition is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the trickier number to the nearest ten first, and remember by how much you moved it.",
+        "Add the rounded number, then adjust the total back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round a number up to add it, do you then add or take away the extra at the end?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game world tracks points scored across matches. One count is 39 and another is 69. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "108"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p05",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts pages across print jobs. A count of 82 loses 19. In your head, what is left?",
+      "answer": {
+        "kind": "number",
+        "value": "63"
+      },
+      "explanation": [
+        "19 is close to 20, just 1 less.",
+        "82 minus 20 is 62.",
+        "You took away too much, so add the extra 1 back: 62 plus 1 is 63."
+      ],
+      "useAgain": "when the number being subtracted is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the number you are subtracting to the nearest ten first, and remember by how much you moved it.",
+        "Subtract the rounded number, then adjust the result back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round the number you are subtracting up before subtracting, does the result end up too big or too small?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A workshop counts screws used across projects. A count of 94 loses 29. In your head, what is left?",
+        "answer": {
+          "kind": "number",
+          "value": "65"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p06",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "An aquarium counts fish added across tanks. A count of 95 loses 38. In your head, what is left?",
+      "answer": {
+        "kind": "number",
+        "value": "57"
+      },
+      "explanation": [
+        "38 is close to 40, just 2 less.",
+        "95 minus 40 is 55.",
+        "You took away too much, so add the extra 2 back: 55 plus 2 is 57."
+      ],
+      "useAgain": "when the number being subtracted is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the number you are subtracting to the nearest ten first, and remember by how much you moved it.",
+        "Subtract the rounded number, then adjust the result back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round the number you are subtracting up before subtracting, does the result end up too big or too small?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine counts snacks sold across days. A count of 107 loses 48. In your head, what is left?",
+        "answer": {
+          "kind": "number",
+          "value": "59"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p07",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen counts eggs used across recipes. A count of 71 loses 29. In your head, what is left?",
+      "answer": {
+        "kind": "number",
+        "value": "42"
+      },
+      "explanation": [
+        "29 is close to 30, just 1 less.",
+        "71 minus 30 is 41.",
+        "You took away too much, so add the extra 1 back: 41 plus 1 is 42."
+      ],
+      "useAgain": "when the number being subtracted is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the number you are subtracting to the nearest ten first, and remember by how much you moved it.",
+        "Subtract the rounded number, then adjust the result back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round the number you are subtracting up before subtracting, does the result end up too big or too small?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A garden counts seeds planted across rows. A count of 83 loses 39. In your head, what is left?",
+        "answer": {
+          "kind": "number",
+          "value": "44"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p08",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover collects rock samples over several days. A count of 64 loses 49. In your head, what is left?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "49 is close to 50, just 1 less.",
+        "64 minus 50 is 14.",
+        "You took away too much, so add the extra 1 back: 14 plus 1 is 15."
+      ],
+      "useAgain": "when the number being subtracted is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the number you are subtracting to the nearest ten first, and remember by how much you moved it.",
+        "Subtract the rounded number, then adjust the result back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round the number you are subtracting up before subtracting, does the result end up too big or too small?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game world tracks points scored across matches. A count of 76 loses 59. In your head, what is left?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p09",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts pages across print jobs. A count of 88 loses 59. In your head, what is left?",
+      "answer": {
+        "kind": "number",
+        "value": "29"
+      },
+      "explanation": [
+        "59 is close to 60, just 1 less.",
+        "88 minus 60 is 28.",
+        "You took away too much, so add the extra 1 back: 28 plus 1 is 29."
+      ],
+      "useAgain": "when the number being subtracted is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the number you are subtracting to the nearest ten first, and remember by how much you moved it.",
+        "Subtract the rounded number, then adjust the result back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round the number you are subtracting up before subtracting, does the result end up too big or too small?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A workshop counts screws used across projects. A count of 100 loses 69. In your head, what is left?",
+        "answer": {
+          "kind": "number",
+          "value": "31"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p10",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "An aquarium counts fish added across tanks. A count of 23 doubles overnight. In your head, what is the new count?",
+      "answer": {
+        "kind": "number",
+        "value": "46"
+      },
+      "explanation": [
+        "Split 23 into 20 and 3.",
+        "Double each part: 20 doubles to 40, and 3 doubles to 6.",
+        "Add the doubled parts back together: 40 plus 6 is 46."
+      ],
+      "useAgain": "when doubling a two-digit number in your head.",
+      "hints": [
+        "Split the number into its tens and ones before doubling anything.",
+        "Double each part on its own, then add the two doubled parts back together."
+      ],
+      "socraticHint": "Does doubling the tens and the ones separately, then adding, give the same answer as doubling the whole number at once?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine counts snacks sold across days. A count of 34 doubles overnight. In your head, what is the new count?",
+        "answer": {
+          "kind": "number",
+          "value": "68"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p11",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen counts eggs used across recipes. A count of 34 doubles overnight. In your head, what is the new count?",
+      "answer": {
+        "kind": "number",
+        "value": "68"
+      },
+      "explanation": [
+        "Split 34 into 30 and 4.",
+        "Double each part: 30 doubles to 60, and 4 doubles to 8.",
+        "Add the doubled parts back together: 60 plus 8 is 68."
+      ],
+      "useAgain": "when doubling a two-digit number in your head.",
+      "hints": [
+        "Split the number into its tens and ones before doubling anything.",
+        "Double each part on its own, then add the two doubled parts back together."
+      ],
+      "socraticHint": "Does doubling the tens and the ones separately, then adding, give the same answer as doubling the whole number at once?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A garden counts seeds planted across rows. A count of 45 doubles overnight. In your head, what is the new count?",
+        "answer": {
+          "kind": "number",
+          "value": "90"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p12",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover collects rock samples over several days. A count of 42 doubles overnight. In your head, what is the new count?",
+      "answer": {
+        "kind": "number",
+        "value": "84"
+      },
+      "explanation": [
+        "Split 42 into 40 and 2.",
+        "Double each part: 40 doubles to 80, and 2 doubles to 4.",
+        "Add the doubled parts back together: 80 plus 4 is 84."
+      ],
+      "useAgain": "when doubling a two-digit number in your head.",
+      "hints": [
+        "Split the number into its tens and ones before doubling anything.",
+        "Double each part on its own, then add the two doubled parts back together."
+      ],
+      "socraticHint": "Does doubling the tens and the ones separately, then adding, give the same answer as doubling the whole number at once?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game world tracks points scored across matches. A count of 53 doubles overnight. In your head, what is the new count?",
+        "answer": {
+          "kind": "number",
+          "value": "106"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p13",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts pages across print jobs. A count of 17 doubles overnight. In your head, what is the new count?",
+      "answer": {
+        "kind": "number",
+        "value": "34"
+      },
+      "explanation": [
+        "Split 17 into 10 and 7.",
+        "Double each part: 10 doubles to 20, and 7 doubles to 14.",
+        "Add the doubled parts back together: 20 plus 14 is 34."
+      ],
+      "useAgain": "when doubling a two-digit number in your head.",
+      "hints": [
+        "Split the number into its tens and ones before doubling anything.",
+        "Double each part on its own, then add the two doubled parts back together."
+      ],
+      "socraticHint": "Does doubling the tens and the ones separately, then adding, give the same answer as doubling the whole number at once?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A workshop counts screws used across projects. A count of 28 doubles overnight. In your head, what is the new count?",
+        "answer": {
+          "kind": "number",
+          "value": "56"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p14",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "An aquarium counts fish added across tanks. A count of 28 doubles overnight. In your head, what is the new count?",
+      "answer": {
+        "kind": "number",
+        "value": "56"
+      },
+      "explanation": [
+        "Split 28 into 20 and 8.",
+        "Double each part: 20 doubles to 40, and 8 doubles to 16.",
+        "Add the doubled parts back together: 40 plus 16 is 56."
+      ],
+      "useAgain": "when doubling a two-digit number in your head.",
+      "hints": [
+        "Split the number into its tens and ones before doubling anything.",
+        "Double each part on its own, then add the two doubled parts back together."
+      ],
+      "socraticHint": "Does doubling the tens and the ones separately, then adding, give the same answer as doubling the whole number at once?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine counts snacks sold across days. A count of 39 doubles overnight. In your head, what is the new count?",
+        "answer": {
+          "kind": "number",
+          "value": "78"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p15",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen counts eggs used across recipes. A count of 14 happens 5 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "70"
+      },
+      "explanation": [
+        "Multiplying by 5 is the same as multiplying by 10, then taking half.",
+        "14 times 10 is 140.",
+        "Half of 140 is 70."
+      ],
+      "useAgain": "when multiplying a number by 5 in your head.",
+      "hints": [
+        "Multiply by 10 first, since that only adds a zero.",
+        "Then take exactly half of that result."
+      ],
+      "socraticHint": "Why does multiplying by 10 and then halving give the same result as multiplying by 5 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A garden counts seeds planted across rows. A count of 26 happens 5 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "130"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p16",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover collects rock samples over several days. A count of 22 happens 5 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "110"
+      },
+      "explanation": [
+        "Multiplying by 5 is the same as multiplying by 10, then taking half.",
+        "22 times 10 is 220.",
+        "Half of 220 is 110."
+      ],
+      "useAgain": "when multiplying a number by 5 in your head.",
+      "hints": [
+        "Multiply by 10 first, since that only adds a zero.",
+        "Then take exactly half of that result."
+      ],
+      "socraticHint": "Why does multiplying by 10 and then halving give the same result as multiplying by 5 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game world tracks points scored across matches. A count of 34 happens 5 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "170"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p17",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts pages across print jobs. A count of 36 happens 5 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "180"
+      },
+      "explanation": [
+        "Multiplying by 5 is the same as multiplying by 10, then taking half.",
+        "36 times 10 is 360.",
+        "Half of 360 is 180."
+      ],
+      "useAgain": "when multiplying a number by 5 in your head.",
+      "hints": [
+        "Multiply by 10 first, since that only adds a zero.",
+        "Then take exactly half of that result."
+      ],
+      "socraticHint": "Why does multiplying by 10 and then halving give the same result as multiplying by 5 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A workshop counts screws used across projects. A count of 48 happens 5 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "240"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p18",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "An aquarium counts fish added across tanks. A count of 48 happens 5 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "240"
+      },
+      "explanation": [
+        "Multiplying by 5 is the same as multiplying by 10, then taking half.",
+        "48 times 10 is 480.",
+        "Half of 480 is 240."
+      ],
+      "useAgain": "when multiplying a number by 5 in your head.",
+      "hints": [
+        "Multiply by 10 first, since that only adds a zero.",
+        "Then take exactly half of that result."
+      ],
+      "socraticHint": "Why does multiplying by 10 and then halving give the same result as multiplying by 5 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A vending machine counts snacks sold across days. A count of 60 happens 5 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "300"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p19",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen counts eggs used across recipes. A count of 19 happens 5 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "95"
+      },
+      "explanation": [
+        "Multiplying by 5 is the same as multiplying by 10, then taking half.",
+        "19 times 10 is 190.",
+        "Half of 190 is 95."
+      ],
+      "useAgain": "when multiplying a number by 5 in your head.",
+      "hints": [
+        "Multiply by 10 first, since that only adds a zero.",
+        "Then take exactly half of that result."
+      ],
+      "socraticHint": "Why does multiplying by 10 and then halving give the same result as multiplying by 5 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A garden counts seeds planted across rows. A count of 31 happens 5 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "155"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p20",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover collects rock samples over several days. A count of 13 happens 9 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "117"
+      },
+      "explanation": [
+        "Multiplying by 9 is the same as multiplying by 10, then taking away one copy.",
+        "13 times 10 is 130.",
+        "130 minus 13 is 117."
+      ],
+      "useAgain": "when multiplying a number by 9 in your head.",
+      "hints": [
+        "Multiply by 10 first, since that only adds a zero.",
+        "Then subtract one copy of the original number from that result."
+      ],
+      "socraticHint": "Why does multiplying by 10 and then subtracting one copy give the same result as multiplying by 9 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game world tracks points scored across matches. A count of 26 happens 9 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "234"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p21",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts pages across print jobs. A count of 24 happens 9 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "216"
+      },
+      "explanation": [
+        "Multiplying by 9 is the same as multiplying by 10, then taking away one copy.",
+        "24 times 10 is 240.",
+        "240 minus 24 is 216."
+      ],
+      "useAgain": "when multiplying a number by 9 in your head.",
+      "hints": [
+        "Multiply by 10 first, since that only adds a zero.",
+        "Then subtract one copy of the original number from that result."
+      ],
+      "socraticHint": "Why does multiplying by 10 and then subtracting one copy give the same result as multiplying by 9 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A workshop counts screws used across projects. A count of 37 happens 9 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "333"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p22",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "An aquarium counts fish added across tanks. A count of 37 happens 9 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "333"
+      },
+      "explanation": [
+        "Multiplying by 9 is the same as multiplying by 10, then taking away one copy.",
+        "37 times 10 is 370.",
+        "370 minus 37 is 333."
+      ],
+      "useAgain": "when multiplying a number by 9 in your head.",
+      "hints": [
+        "Multiply by 10 first, since that only adds a zero.",
+        "Then subtract one copy of the original number from that result."
+      ],
+      "socraticHint": "Why does multiplying by 10 and then subtracting one copy give the same result as multiplying by 9 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A vending machine counts snacks sold across days. A count of 50 happens 9 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "450"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p23",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen counts eggs used across recipes. A count of 45 happens 9 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "405"
+      },
+      "explanation": [
+        "Multiplying by 9 is the same as multiplying by 10, then taking away one copy.",
+        "45 times 10 is 450.",
+        "450 minus 45 is 405."
+      ],
+      "useAgain": "when multiplying a number by 9 in your head.",
+      "hints": [
+        "Multiply by 10 first, since that only adds a zero.",
+        "Then subtract one copy of the original number from that result."
+      ],
+      "socraticHint": "Why does multiplying by 10 and then subtracting one copy give the same result as multiplying by 9 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A garden counts seeds planted across rows. A count of 58 happens 9 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "522"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p24",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover collects rock samples over several days. A count of 18 happens 9 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "162"
+      },
+      "explanation": [
+        "Multiplying by 9 is the same as multiplying by 10, then taking away one copy.",
+        "18 times 10 is 180.",
+        "180 minus 18 is 162."
+      ],
+      "useAgain": "when multiplying a number by 9 in your head.",
+      "hints": [
+        "Multiply by 10 first, since that only adds a zero.",
+        "Then subtract one copy of the original number from that result."
+      ],
+      "socraticHint": "Why does multiplying by 10 and then subtracting one copy give the same result as multiplying by 9 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game world tracks points scored across matches. A count of 31 happens 9 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "279"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p25",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts pages across print jobs. One count is 24 and another is 35. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "59"
+      },
+      "explanation": [
+        "Split both numbers into tens and ones: 24 is 20 and 4; 35 is 30 and 5.",
+        "Add the tens together, and the ones together: 20 plus 30 is 50, and 4 plus 5 is 9.",
+        "Add those two totals: 50 plus 9 is 59."
+      ],
+      "useAgain": "when adding two two-digit numbers by splitting each into tens and ones first.",
+      "hints": [
+        "Split both numbers into their tens and ones before adding anything.",
+        "Add the two tens parts together, and the two ones parts together, then combine those two totals."
+      ],
+      "socraticHint": "Does it matter whether the tens or the ones get added together first?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A workshop counts screws used across projects. One count is 35 and another is 47. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "82"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p26",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "An aquarium counts fish added across tanks. One count is 46 and another is 27. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "73"
+      },
+      "explanation": [
+        "Split both numbers into tens and ones: 46 is 40 and 6; 27 is 20 and 7.",
+        "Add the tens together, and the ones together: 40 plus 20 is 60, and 6 plus 7 is 13.",
+        "Add those two totals: 60 plus 13 is 73."
+      ],
+      "useAgain": "when adding two two-digit numbers by splitting each into tens and ones first.",
+      "hints": [
+        "Split both numbers into their tens and ones before adding anything.",
+        "Add the two tens parts together, and the two ones parts together, then combine those two totals."
+      ],
+      "socraticHint": "Does it matter whether the tens or the ones get added together first?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A vending machine counts snacks sold across days. One count is 57 and another is 39. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "96"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p27",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen counts eggs used across recipes. One count is 58 and another is 19. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "77"
+      },
+      "explanation": [
+        "Split both numbers into tens and ones: 58 is 50 and 8; 19 is 10 and 9.",
+        "Add the tens together, and the ones together: 50 plus 10 is 60, and 8 plus 9 is 17.",
+        "Add those two totals: 60 plus 17 is 77."
+      ],
+      "useAgain": "when adding two two-digit numbers by splitting each into tens and ones first.",
+      "hints": [
+        "Split both numbers into their tens and ones before adding anything.",
+        "Add the two tens parts together, and the two ones parts together, then combine those two totals."
+      ],
+      "socraticHint": "Does it matter whether the tens or the ones get added together first?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A garden counts seeds planted across rows. One count is 69 and another is 31. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "100"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p28",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover collects rock samples over several days. One count is 33 and another is 44. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "77"
+      },
+      "explanation": [
+        "Split both numbers into tens and ones: 33 is 30 and 3; 44 is 40 and 4.",
+        "Add the tens together, and the ones together: 30 plus 40 is 70, and 3 plus 4 is 7.",
+        "Add those two totals: 70 plus 7 is 77."
+      ],
+      "useAgain": "when adding two two-digit numbers by splitting each into tens and ones first.",
+      "hints": [
+        "Split both numbers into their tens and ones before adding anything.",
+        "Add the two tens parts together, and the two ones parts together, then combine those two totals."
+      ],
+      "socraticHint": "Does it matter whether the tens or the ones get added together first?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game world tracks points scored across matches. One count is 44 and another is 56. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "100"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p29",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts pages across print jobs. One count is 26 and another is 38. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "64"
+      },
+      "explanation": [
+        "Split both numbers into tens and ones: 26 is 20 and 6; 38 is 30 and 8.",
+        "Add the tens together, and the ones together: 20 plus 30 is 50, and 6 plus 8 is 14.",
+        "Add those two totals: 50 plus 14 is 64."
+      ],
+      "useAgain": "when adding two two-digit numbers by splitting each into tens and ones first.",
+      "hints": [
+        "Split both numbers into their tens and ones before adding anything.",
+        "Add the two tens parts together, and the two ones parts together, then combine those two totals."
+      ],
+      "socraticHint": "Does it matter whether the tens or the ones get added together first?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A workshop counts screws used across projects. One count is 37 and another is 50. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "87"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p30",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "An aquarium counts fish added across tanks. A count of 7 happens 23 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "161"
+      },
+      "explanation": [
+        "Split 23 into 20 and 3.",
+        "Multiply 7 by each part: 7 times 20 is 140, and 7 times 3 is 21.",
+        "Add the two results: 140 plus 21 is 161."
+      ],
+      "useAgain": "when multiplying by a two-digit number by splitting it into tens and ones first.",
+      "hints": [
+        "Split the two-digit factor into its tens and ones before multiplying anything.",
+        "Multiply the other number by each part separately, then add the two results together."
+      ],
+      "socraticHint": "Does splitting the other factor, instead of this one, into tens and ones also work?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine counts snacks sold across days. A count of 9 happens 24 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "216"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p31",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen counts eggs used across recipes. A count of 6 happens 34 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "204"
+      },
+      "explanation": [
+        "Split 34 into 30 and 4.",
+        "Multiply 6 by each part: 6 times 30 is 180, and 6 times 4 is 24.",
+        "Add the two results: 180 plus 24 is 204."
+      ],
+      "useAgain": "when multiplying by a two-digit number by splitting it into tens and ones first.",
+      "hints": [
+        "Split the two-digit factor into its tens and ones before multiplying anything.",
+        "Multiply the other number by each part separately, then add the two results together."
+      ],
+      "socraticHint": "Does splitting the other factor, instead of this one, into tens and ones also work?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A garden counts seeds planted across rows. A count of 8 happens 35 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "280"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p32",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover collects rock samples over several days. A count of 8 happens 27 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "216"
+      },
+      "explanation": [
+        "Split 27 into 20 and 7.",
+        "Multiply 8 by each part: 8 times 20 is 160, and 8 times 7 is 56.",
+        "Add the two results: 160 plus 56 is 216."
+      ],
+      "useAgain": "when multiplying by a two-digit number by splitting it into tens and ones first.",
+      "hints": [
+        "Split the two-digit factor into its tens and ones before multiplying anything.",
+        "Multiply the other number by each part separately, then add the two results together."
+      ],
+      "socraticHint": "Does splitting the other factor, instead of this one, into tens and ones also work?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game world tracks points scored across matches. A count of 10 happens 28 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "280"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p33",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts pages across print jobs. A count of 9 happens 21 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "189"
+      },
+      "explanation": [
+        "Split 21 into 20 and 1.",
+        "Multiply 9 by each part: 9 times 20 is 180, and 9 times 1 is 9.",
+        "Add the two results: 180 plus 9 is 189."
+      ],
+      "useAgain": "when multiplying by a two-digit number by splitting it into tens and ones first.",
+      "hints": [
+        "Split the two-digit factor into its tens and ones before multiplying anything.",
+        "Multiply the other number by each part separately, then add the two results together."
+      ],
+      "socraticHint": "Does splitting the other factor, instead of this one, into tens and ones also work?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop counts screws used across projects. A count of 11 happens 22 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "242"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p34",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "An aquarium counts fish added across tanks. A count of 16 happens 25 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "400"
+      },
+      "explanation": [
+        "Multiplying by 25 is the same as dividing by 4, then multiplying by 100.",
+        "16 divided by 4 is 4.",
+        "4 times 100 is 400."
+      ],
+      "useAgain": "when multiplying a number by 25 in your head.",
+      "hints": [
+        "Divide by 4 first, since 25 is a quarter of 100.",
+        "Then multiply that result by 100, which only adds two zeros."
+      ],
+      "socraticHint": "Why does dividing by 4 and then multiplying by 100 give the same result as multiplying by 25 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine counts snacks sold across days. A count of 24 happens 25 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "600"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p35",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen counts eggs used across recipes. A count of 24 happens 25 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "600"
+      },
+      "explanation": [
+        "Multiplying by 25 is the same as dividing by 4, then multiplying by 100.",
+        "24 divided by 4 is 6.",
+        "6 times 100 is 600."
+      ],
+      "useAgain": "when multiplying a number by 25 in your head.",
+      "hints": [
+        "Divide by 4 first, since 25 is a quarter of 100.",
+        "Then multiply that result by 100, which only adds two zeros."
+      ],
+      "socraticHint": "Why does dividing by 4 and then multiplying by 100 give the same result as multiplying by 25 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A garden counts seeds planted across rows. A count of 32 happens 25 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "800"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p36",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover collects rock samples over several days. A count of 32 happens 25 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "800"
+      },
+      "explanation": [
+        "Multiplying by 25 is the same as dividing by 4, then multiplying by 100.",
+        "32 divided by 4 is 8.",
+        "8 times 100 is 800."
+      ],
+      "useAgain": "when multiplying a number by 25 in your head.",
+      "hints": [
+        "Divide by 4 first, since 25 is a quarter of 100.",
+        "Then multiply that result by 100, which only adds two zeros."
+      ],
+      "socraticHint": "Why does dividing by 4 and then multiplying by 100 give the same result as multiplying by 25 directly?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game world tracks points scored across matches. A count of 40 happens 25 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "1000"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p37",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A print shop counts pages across print jobs. One count is 56 and another is 29. In your head, what is the total?",
+      "options": [
+        "86",
+        "88",
+        "85",
+        "59"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "29 is close to 30.",
+        "56 plus 30 is 86, then adjust back by the 1 you rounded by.",
+        "The total is 85.",
+        "Rounding a number but forgetting to adjust back afterward is the trap here."
+      ],
+      "useAgain": "when one number in an addition is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the trickier number to the nearest ten first, and remember by how much you moved it.",
+        "Add the rounded number, then adjust the total back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round a number up to add it, do you then add or take away the extra at the end?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop counts screws used across projects. One count is 70 and another is 39. In your head, what is the total?",
+        "options": [
+          "109",
+          "110",
+          "112",
+          "79"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p38",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "An aquarium counts fish added across tanks. One count is 73 and another is 38. In your head, what is the total?",
+      "options": [
+        "113",
+        "117",
+        "78",
+        "111"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "38 is close to 40.",
+        "73 plus 40 is 113, then adjust back by the 2 you rounded by.",
+        "The total is 111.",
+        "Rounding a number but forgetting to adjust back afterward is the trap here."
+      ],
+      "useAgain": "when one number in an addition is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the trickier number to the nearest ten first, and remember by how much you moved it.",
+        "Add the rounded number, then adjust the total back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round a number up to add it, do you then add or take away the extra at the end?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine counts snacks sold across days. One count is 87 and another is 48. In your head, what is the total?",
+        "options": [
+          "137",
+          "135",
+          "141",
+          "98"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p39",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A kitchen counts eggs used across recipes. One count is 41 and another is 19. In your head, what is the total?",
+      "options": [
+        "61",
+        "63",
+        "39",
+        "60"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "19 is close to 20.",
+        "41 plus 20 is 61, then adjust back by the 1 you rounded by.",
+        "The total is 60.",
+        "Rounding a number but forgetting to adjust back afterward is the trap here."
+      ],
+      "useAgain": "when one number in an addition is close to a friendly multiple of ten.",
+      "hints": [
+        "Round the trickier number to the nearest ten first, and remember by how much you moved it.",
+        "Add the rounded number, then adjust the total back by that same amount, in the opposite direction."
+      ],
+      "socraticHint": "If you round a number up to add it, do you then add or take away the extra at the end?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A garden counts seeds planted across rows. One count is 55 and another is 29. In your head, what is the total?",
+        "options": [
+          "85",
+          "87",
+          "84",
+          "59"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p40",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "truefalse",
+      "prompt": "A rover collects rock samples over several days. A note claims that 24 times 5 is 120. Is that correct?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "24 times 10 is 240, and half of that is 120.",
+        "That matches the note, so the claim is correct."
+      ],
+      "useAgain": "when checking a claimed mental-math shortcut against the actual value.",
+      "hints": [
+        "Work the shortcut through fully yourself before comparing it to the claim.",
+        "Compare your own result to the number in the claim, digit by digit."
+      ],
+      "socraticHint": "Does a shortcut that looks reasonable always give the exact right answer?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game world tracks points scored across matches. A note claims that 30 times 5 is 150. Is that correct?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p41",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "truefalse",
+      "prompt": "A print shop counts pages across print jobs. A note claims that 16 times 9 is 144. Is that correct?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "16 times 10 is 160, minus one copy of 16 is 144.",
+        "That matches the note, so the claim is correct."
+      ],
+      "useAgain": "when checking a claimed mental-math shortcut against the actual value.",
+      "hints": [
+        "Work the shortcut through fully yourself before comparing it to the claim.",
+        "Compare your own result to the number in the claim, digit by digit."
+      ],
+      "socraticHint": "Does a shortcut that looks reasonable always give the exact right answer?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop counts screws used across projects. A note claims that 22 times 9 is 198. Is that correct?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p42",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "truefalse",
+      "prompt": "An aquarium counts fish added across tanks. A note claims that double 37 is 74. Is that correct?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "37 split into parts and doubled comes to 74.",
+        "That matches the note, so the claim is correct."
+      ],
+      "useAgain": "when checking a claimed mental-math shortcut against the actual value.",
+      "hints": [
+        "Work the shortcut through fully yourself before comparing it to the claim.",
+        "Compare your own result to the number in the claim, digit by digit."
+      ],
+      "socraticHint": "Does a shortcut that looks reasonable always give the exact right answer?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine counts snacks sold across days. A note claims that double 43 is 86. Is that correct?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p43",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "order",
+      "prompt": "Put these steps of the round-and-adjust mental strategy in the order you actually do them, first to last.",
+      "items": [
+        "Adjust the result back by that amount, in the opposite direction.",
+        "Work out how much you rounded by.",
+        "Round the tricky number to the nearest ten.",
+        "Do the easy calculation with the rounded number."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          3,
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "Rounding the tricky number comes first, before any calculating happens.",
+        "The easy calculation uses the rounded number, not the original one.",
+        "The adjustment only happens at the very end, once the easy calculation is done."
+      ],
+      "useAgain": "when using the round-and-adjust strategy for mental addition or subtraction.",
+      "hints": [
+        "The first move changes the tricky number, before any adding or subtracting happens.",
+        "The adjustment always comes last, after the easy calculation is already done."
+      ],
+      "socraticHint": "Could the adjustment be applied before the easy calculation is even done?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps of swapping in a friendly number and adjusting back in the order you actually do them, first to last.",
+        "items": [
+          "Note the size and direction of the rounding you did.",
+          "Move the tricky number to the nearest friendly ten.",
+          "Correct the answer back by undoing that rounding.",
+          "Carry out the calculation using that friendly number."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            3,
+            0,
+            2
+          ]
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p44",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "order",
+      "prompt": "Put these steps of the times-nine mental shortcut in the order you actually do them, first to last.",
+      "items": [
+        "Check the answer feels close to nine times the original number.",
+        "Write down that difference as the final answer.",
+        "Subtract the original number once from that result.",
+        "Multiply the tricky number by ten."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Multiplying the number by ten is the first move, since that part is easy.",
+        "Subtracting the original number once comes next, because ten groups minus one group is nine groups.",
+        "Checking the size of the answer only happens after the subtraction is finished.",
+        "Writing down the final answer always comes last, after the checking step."
+      ],
+      "useAgain": "when using the times-nine mental shortcut to multiply quickly.",
+      "hints": [
+        "The first move changes the tricky number using an easy times-ten step.",
+        "The subtraction of the original number always happens after the times-ten step, before any checking."
+      ],
+      "socraticHint": "Would subtracting the original number before multiplying by ten still give nine times the number?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps of the times-eleven mental shortcut in the order you actually do them, first to last.",
+        "items": [
+          "Add the original number once to that result.",
+          "Check the answer feels close to eleven times the original number.",
+          "Write down that sum as the final answer.",
+          "Multiply the tricky number by ten."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p45",
+      "ideaId": "ar-mental-arithmetic"
+    }
+  ],
+  "stretch": [
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen counts eggs used across recipes. A count of 19 happens 21 times over. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "399"
+      },
+      "explanation": [
+        "19 and 21 sit one below and one above 20.",
+        "Squaring the middle number gives 20 times 20, which is 400.",
+        "One below times one above is always one less than the middle number squared: 400 minus 1 is 399."
+      ],
+      "useAgain": "when two numbers being multiplied sit exactly one below and one above the same friendly middle number.",
+      "hints": [
+        "Find the number exactly halfway between the two numbers being multiplied.",
+        "Square that middle number, then subtract 1 from the result."
+      ],
+      "socraticHint": "Why does one-below times one-above always come out to the middle number squared minus one?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A garden counts seeds planted across rows. A count of 29 happens 31 times over. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "899"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p46",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover collects rock samples over several days. A count of 34 happens twice, then a separate count of 19 joins in. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "87"
+      },
+      "explanation": [
+        "Double 34 first: 34 times 2 is 68.",
+        "19 is close to 20, so add 20 then adjust back by 1.",
+        "68 plus 20 is 88, then minus 1 is 87."
+      ],
+      "useAgain": "when a mental problem needs one strategy for doubling and another for adding a number close to a multiple of ten.",
+      "hints": [
+        "Do the doubling completely first, before touching the other number at all.",
+        "Use round-and-adjust for the second number once the doubled total is ready."
+      ],
+      "socraticHint": "Would doing the round-and-adjust step before the doubling step change the final answer?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game world tracks points scored across matches. A count of 27 happens twice, then a separate count of 39 joins in. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "93"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p47",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A print shop counts pages across print jobs. Which strategy fits 49 plus 6 best?",
+      "options": [
+        "Round 49 up to 50, add, then adjust back by 1.",
+        "Split both numbers into tens and ones and add the parts.",
+        "Double 49 and ignore the 6.",
+        "Round 6 up to 10, add, then adjust back by 4."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "49 sits right next to the friendly number 50, just 1 away.",
+        "Rounding 49 up to 50 makes the addition almost instant, then the answer only needs a small correction.",
+        "Splitting into tens and ones works too, but it takes more steps than rounding the number that is already almost friendly.",
+        "Ignoring part of a number, or rounding the number that is not close to a friendly ten, both throw away information."
+      ],
+      "useAgain": "when deciding which mental strategy fits a pair of numbers best.",
+      "hints": [
+        "Look for the number that already sits close to a friendly multiple of ten.",
+        "The best strategy usually rounds the number that needs the smallest adjustment."
+      ],
+      "socraticHint": "Which of the two numbers is already closer to a friendly ten, 49 or 6?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A print shop counts pages across print jobs. Which strategy fits 38 plus 5 best?",
+        "options": [
+          "Split both numbers into tens and ones and add the parts.",
+          "Round 38 up to 40, add, then adjust back by 2.",
+          "Double 38 and ignore the 5.",
+          "Round 5 up to 10, add, then adjust back by 5."
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p48",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "order",
+      "prompt": "Work out each value in your head, then put the four results in order from smallest to largest: A: 47 plus 29. B: 16 times 5. C: double 34. D: 82 minus 19.",
+      "items": [
+        "A: 47 plus 29",
+        "B: 16 times 5",
+        "C: double 34",
+        "D: 82 minus 19"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "A works out to 76, B to 80, C to 68, D to 63.",
+        "Every value has to be worked out before any two of them can be compared.",
+        "Comparing the results in order from smallest to largest gives the final sequence."
+      ],
+      "useAgain": "when several mental calculations need to be worked out before they can be ordered.",
+      "hints": [
+        "Work out all four values before comparing any two of them.",
+        "Use whichever mental strategy is fastest for each one."
+      ],
+      "socraticHint": "Does using a mental shortcut instead of the written method ever change the actual answer?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Work out each value in your head, then put the four results in order from smallest to largest: A: 56 plus 38. B: 22 times 5. C: double 41. D: 91 minus 29.",
+        "items": [
+          "A: 56 plus 38",
+          "B: 22 times 5",
+          "C: double 41",
+          "D: 91 minus 29"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            2,
+            0,
+            1
+          ]
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p49",
+      "ideaId": "ar-mental-arithmetic"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A workshop counts screws used across projects. One count is 198 and another is 297. In your head, what is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "495"
+      },
+      "explanation": [
+        "198 is close to 200, just 2 less, and 297 is close to 300, just 3 less.",
+        "200 plus 300 is 500.",
+        "Both numbers were rounded up, so take back 2 plus 3, which is 5: 500 minus 5 is 495."
+      ],
+      "useAgain": "when both numbers in an addition are close to friendly hundreds.",
+      "hints": [
+        "Round both numbers up to the nearest hundred, and note how much each one was rounded by.",
+        "Add the two friendly hundreds first, then take back the total amount both numbers were rounded by."
+      ],
+      "socraticHint": "When both numbers get rounded up, does the final adjustment add or take away from the friendly total?",
+      "skills": [
+        "think.number-sense"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An aquarium counts fish added across tanks. One count is 297 and another is 396. In your head, what is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "693"
+        }
+      },
+      "id": "ladder-ar-mental-arithmetic-p50",
+      "ideaId": "ar-mental-arithmetic"
+    }
+  ]
+}

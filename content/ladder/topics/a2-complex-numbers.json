@@ -1,0 +1,2137 @@
+{
+  "id": "a2-complex-numbers",
+  "idea": {
+    "body": "A complex number a + bi has a real part a and an imaginary part b, where i is defined so that i^2 = -1. Adding or subtracting complex numbers combines the real parts together and the imaginary parts together. Multiplying works like multiplying two binomials, using i^2 = -1 to simplify. Every complex number a + bi has a conjugate, a - bi. A number times its own conjugate always gives a real number, a^2 + b^2. This matters for quadratics: when the discriminant is negative, the two roots are a conjugate pair, p + qi and p - qi. Every quadratic has two roots once complex numbers are allowed. A complex number can be plotted as a point, real part on the horizontal axis and imaginary part on the vertical axis.",
+    "figure": {
+      "kind": "plane",
+      "alt": "The point (3, 4) in the complex plane, representing 3 + 4i.",
+      "spec": {
+        "range": 8,
+        "points": [
+          {
+            "x": 3,
+            "y": 4
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "x^2 - 2x + 5 = 0. Find both roots.",
+    "steps": [
+      "Use the quadratic formula: x = (2 +/- sqrt(4 - 20))/2.",
+      "The discriminant is 4 - 20, which is -16, a negative number.",
+      "sqrt(-16) is sqrt(16) times i, which is 4i.",
+      "x = (2 +/- 4i)/2, which simplifies to 1 +/- 2i.",
+      "The two roots are 1 + 2i and 1 - 2i, a conjugate pair."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "The two roots 1 + 2i and 1 - 2i plotted as points in the complex plane.",
+      "spec": {
+        "range": 8,
+        "points": [
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": -2
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "a2-complex-numbers-w1",
+      "name": "The rules of i as a cycle",
+      "when": "when you need a high power of i, like i^25 or i^100.",
+      "steps": [
+        "Remember: i^1 = i, i^2 = -1, i^3 = -i, i^4 = 1.",
+        "The pattern repeats every 4.",
+        "Divide the exponent by 4 and find the remainder.",
+        "Match the remainder to the pattern above."
+      ],
+      "example": "i^17",
+      "answer": "17 divided by 4 is 4 remainder 1, so i^17 = i^1 = i",
+      "trap": "Forgetting that i^2 = -1, not 1, and getting the cycle wrong."
+    },
+    {
+      "id": "a2-complex-numbers-w2",
+      "name": "Multiply like binomials then apply i^2 = -1",
+      "when": "when you multiply two complex numbers a + bi by c + di.",
+      "steps": [
+        "Expand (a + bi)(c + di) like you would (a + b)(c + d).",
+        "Collect real and imaginary parts: ac, ad i, bc i, bd i^2.",
+        "Replace i^2 with -1: bd i^2 becomes -bd.",
+        "Combine: (ac - bd) + (ad + bc)i."
+      ],
+      "example": "(2 + 3i)(1 - i)",
+      "answer": "2 - 2i + 3i - 3i^2 = 2 + i + 3 = 5 + i",
+      "trap": "Forgetting to replace i^2 with -1 and getting an extra i in your answer."
+    },
+    {
+      "id": "a2-complex-numbers-w3",
+      "name": "The conjugate trick",
+      "when": "when you divide by a complex number or need to eliminate i from a denominator.",
+      "steps": [
+        "The conjugate of a + bi is a - bi.",
+        "Multiply numerator and denominator by the conjugate.",
+        "The denominator becomes (a + bi)(a - bi) = a^2 + b^2, which is real.",
+        "The numerator expands and simplifies with the conjugate."
+      ],
+      "example": "1 / (2 + i)",
+      "answer": "(1 times (2 - i)) / ((2 + i)(2 - i)) = (2 - i) / 5",
+      "trap": "Multiplying numerator and denominator by the wrong conjugate, or forgetting the factor."
+    },
+    {
+      "id": "a2-complex-numbers-w4",
+      "name": "The plane picture",
+      "when": "when you visualize complex numbers as points on a coordinate grid.",
+      "steps": [
+        "The horizontal axis is the real part.",
+        "The vertical axis is the imaginary part.",
+        "Plot a + bi as the point (a, b).",
+        "Distance from the origin is the modulus: sqrt(a^2 + b^2)."
+      ],
+      "example": "3 + 4i",
+      "answer": "Plot at (3, 4). Modulus is 5.",
+      "trap": "Confusing the real and imaginary axes, or forgetting the modulus formula.",
+      "figure": {
+        "kind": "plane",
+        "alt": "The complex plane with 3 + 4i plotted at (3, 4) and the segment from the origin, whose length is the modulus 5.",
+        "spec": {
+          "range": 6,
+          "points": [
+            {
+              "x": 3,
+              "y": 4,
+              "label": "3 + 4i"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                4
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-complex-numbers-p01",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(5 - 8i) + (-5 + 8i). What is the real part of the sum?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "Add the real parts: 5 + (-5) = 0.",
+        "Add the imaginary parts separately for the rest of the sum."
+      ],
+      "useAgain": "when you add two complex numbers.",
+      "hints": [
+        "Add the real parts together, and the imaginary parts together, separately.",
+        "The real part never mixes with the imaginary part."
+      ],
+      "socraticHint": "What do the two real parts add up to?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "(-1 - 8i) + (7 - i). What is the real part of the sum?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p02",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(-7 - 8i) + (2 - 7i). What is the real part of the sum?",
+      "answer": {
+        "kind": "number",
+        "value": "-5"
+      },
+      "explanation": [
+        "Add the real parts: -7 + 2 = -5.",
+        "Add the imaginary parts separately for the rest of the sum."
+      ],
+      "useAgain": "when you add two complex numbers.",
+      "hints": [
+        "Add the real parts together, and the imaginary parts together, separately.",
+        "The real part never mixes with the imaginary part."
+      ],
+      "socraticHint": "What do the two real parts add up to?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "(-5 + 7i) + (2 - 8i). What is the real part of the sum?",
+        "answer": {
+          "kind": "number",
+          "value": "-3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p03",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(7 + 4i) + (4 - 4i). What is the real part of the sum?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "Add the real parts: 7 + 4 = 11.",
+        "Add the imaginary parts separately for the rest of the sum."
+      ],
+      "useAgain": "when you add two complex numbers.",
+      "hints": [
+        "Add the real parts together, and the imaginary parts together, separately.",
+        "The real part never mixes with the imaginary part."
+      ],
+      "socraticHint": "What do the two real parts add up to?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "(6 - 4i) + (-9 - 5i). What is the real part of the sum?",
+        "answer": {
+          "kind": "number",
+          "value": "-3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p04",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(4 - 5i) - (8 - 8i). What is the imaginary part of the difference?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Subtract the imaginary parts: -5 - (-8) = 3.",
+        "Subtract the real parts separately for the rest of the difference."
+      ],
+      "useAgain": "when you subtract one complex number from another.",
+      "hints": [
+        "Subtract the real parts, and the imaginary parts, separately.",
+        "Watch the sign on the second number's imaginary part."
+      ],
+      "socraticHint": "What do the two imaginary parts give when subtracted?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "(7 - 2i) - (-2 - 8i). What is the imaginary part of the difference?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p05",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(5 - 3i) - (-1 - 4i). What is the imaginary part of the difference?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Subtract the imaginary parts: -3 - (-4) = 1.",
+        "Subtract the real parts separately for the rest of the difference."
+      ],
+      "useAgain": "when you subtract one complex number from another.",
+      "hints": [
+        "Subtract the real parts, and the imaginary parts, separately.",
+        "Watch the sign on the second number's imaginary part."
+      ],
+      "socraticHint": "What do the two imaginary parts give when subtracted?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "(-8 + 2i) - (6 + 2i). What is the imaginary part of the difference?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p06",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(7 + i) - (1 + 8i). What is the imaginary part of the difference?",
+      "answer": {
+        "kind": "number",
+        "value": "-7"
+      },
+      "explanation": [
+        "Subtract the imaginary parts: 1 - (8) = -7.",
+        "Subtract the real parts separately for the rest of the difference."
+      ],
+      "useAgain": "when you subtract one complex number from another.",
+      "hints": [
+        "Subtract the real parts, and the imaginary parts, separately.",
+        "Watch the sign on the second number's imaginary part."
+      ],
+      "socraticHint": "What do the two imaginary parts give when subtracted?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "(6 - 9i) - (1 + 9i). What is the imaginary part of the difference?",
+        "answer": {
+          "kind": "number",
+          "value": "-18"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p07",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "What is i^34?",
+      "options": [
+        "1",
+        "-1",
+        "i",
+        "-i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The powers of i cycle every 4: i, -1, -i, 1, then repeat.",
+        "34 divided by 4 leaves a remainder of 2.",
+        "That matches i^2, which is -1."
+      ],
+      "useAgain": "when you need a high power of i.",
+      "hints": [
+        "The powers of i repeat in a cycle of 4.",
+        "Find the remainder when the exponent is divided by 4."
+      ],
+      "socraticHint": "What is the remainder when 34 is divided by 4?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is i^17?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "1",
+          "-1",
+          "-i",
+          "i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p08",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "What is i^7?",
+      "options": [
+        "1",
+        "-1",
+        "-i",
+        "i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The powers of i cycle every 4: i, -1, -i, 1, then repeat.",
+        "7 divided by 4 leaves a remainder of 3.",
+        "That matches i^3, which is -i."
+      ],
+      "useAgain": "when you need a high power of i.",
+      "hints": [
+        "The powers of i repeat in a cycle of 4.",
+        "Find the remainder when the exponent is divided by 4."
+      ],
+      "socraticHint": "What is the remainder when 7 is divided by 4?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is i^23?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "-i",
+          "1",
+          "-1",
+          "i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p09",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "What is i^9?",
+      "options": [
+        "1",
+        "-1",
+        "i",
+        "-i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The powers of i cycle every 4: i, -1, -i, 1, then repeat.",
+        "9 divided by 4 leaves a remainder of 1.",
+        "That matches i^1, which is i."
+      ],
+      "useAgain": "when you need a high power of i.",
+      "hints": [
+        "The powers of i repeat in a cycle of 4.",
+        "Find the remainder when the exponent is divided by 4."
+      ],
+      "socraticHint": "What is the remainder when 9 is divided by 4?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is i^35?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "1",
+          "-i",
+          "-1",
+          "i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p10",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "z = -9 - i. What is z times its conjugate?",
+      "answer": {
+        "kind": "number",
+        "value": "82"
+      },
+      "explanation": [
+        "The conjugate of -9 - i is -9 + i.",
+        "Multiplying gives -9^2 + (-1)^2, since the i terms cancel.",
+        "That is 82."
+      ],
+      "useAgain": "when you need to turn a complex number into a real one.",
+      "hints": [
+        "The conjugate flips the sign of the imaginary part only.",
+        "A complex number times its conjugate is always real."
+      ],
+      "socraticHint": "What happens to the imaginary parts when you multiply a complex number by its conjugate?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "z = 9 + 7i. What is z times its conjugate?",
+        "answer": {
+          "kind": "number",
+          "value": "130"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p11",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "z = 9 - 8i. What is z times its conjugate?",
+      "answer": {
+        "kind": "number",
+        "value": "145"
+      },
+      "explanation": [
+        "The conjugate of 9 - 8i is 9 + 8i.",
+        "Multiplying gives 9^2 + (-8)^2, since the i terms cancel.",
+        "That is 145."
+      ],
+      "useAgain": "when you need to turn a complex number into a real one.",
+      "hints": [
+        "The conjugate flips the sign of the imaginary part only.",
+        "A complex number times its conjugate is always real."
+      ],
+      "socraticHint": "What happens to the imaginary parts when you multiply a complex number by its conjugate?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "z = 6 + 3i. What is z times its conjugate?",
+        "answer": {
+          "kind": "number",
+          "value": "45"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p12",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "z = 8 + 7i. What is z times its conjugate?",
+      "answer": {
+        "kind": "number",
+        "value": "113"
+      },
+      "explanation": [
+        "The conjugate of 8 + 7i is 8 - 7i.",
+        "Multiplying gives 8^2 + 7^2, since the i terms cancel.",
+        "That is 113."
+      ],
+      "useAgain": "when you need to turn a complex number into a real one.",
+      "hints": [
+        "The conjugate flips the sign of the imaginary part only.",
+        "A complex number times its conjugate is always real."
+      ],
+      "socraticHint": "What happens to the imaginary parts when you multiply a complex number by its conjugate?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "z = 1 - 8i. What is z times its conjugate?",
+        "answer": {
+          "kind": "number",
+          "value": "65"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p13",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "z = -5 - 2i. What is |z|^2, the square of z's modulus?",
+      "answer": {
+        "kind": "number",
+        "value": "29"
+      },
+      "explanation": [
+        "The modulus squared is the real part squared plus the imaginary part squared.",
+        "That is -5^2 + (-2)^2 = 29."
+      ],
+      "useAgain": "when you need how far a complex number sits from the origin, squared.",
+      "hints": [
+        "Square the real part and the imaginary part, then add.",
+        "The modulus itself would be the square root of that sum."
+      ],
+      "socraticHint": "What is the real part squared plus the imaginary part squared?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "z = -2 - 6i. What is |z|^2, the square of z's modulus?",
+        "answer": {
+          "kind": "number",
+          "value": "40"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p14",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "z = 1 + 6i. What is |z|^2, the square of z's modulus?",
+      "answer": {
+        "kind": "number",
+        "value": "37"
+      },
+      "explanation": [
+        "The modulus squared is the real part squared plus the imaginary part squared.",
+        "That is 1^2 + 6^2 = 37."
+      ],
+      "useAgain": "when you need how far a complex number sits from the origin, squared.",
+      "hints": [
+        "Square the real part and the imaginary part, then add.",
+        "The modulus itself would be the square root of that sum."
+      ],
+      "socraticHint": "What is the real part squared plus the imaginary part squared?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "z = 3 - 3i. What is |z|^2, the square of z's modulus?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p15",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "z = 2 - 2i. What is |z|^2, the square of z's modulus?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "The modulus squared is the real part squared plus the imaginary part squared.",
+        "That is 2^2 + (-2)^2 = 8."
+      ],
+      "useAgain": "when you need how far a complex number sits from the origin, squared.",
+      "hints": [
+        "Square the real part and the imaginary part, then add.",
+        "The modulus itself would be the square root of that sum."
+      ],
+      "socraticHint": "What is the real part squared plus the imaginary part squared?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "z = -6 - 5i. What is |z|^2, the square of z's modulus?",
+        "answer": {
+          "kind": "number",
+          "value": "61"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p16",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(-6 + 7i)(3 - 7i). What is the real part of the product?",
+      "answer": {
+        "kind": "number",
+        "value": "31"
+      },
+      "explanation": [
+        "Multiply like a binomial product, using i^2 = -1.",
+        "The real part comes from (-6)(3) minus (7)(-7).",
+        "That is 31."
+      ],
+      "useAgain": "when you multiply two complex numbers together.",
+      "hints": [
+        "Multiply every term by every term, as with two binomials.",
+        "Replace i^2 with -1 as you go."
+      ],
+      "socraticHint": "Which two products combine to give the real part?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(1 - 2i)(-7 + 7i). What is the real part of the product?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p17",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(-9 + i)(7 - 5i). What is the real part of the product?",
+      "answer": {
+        "kind": "number",
+        "value": "-58"
+      },
+      "explanation": [
+        "Multiply like a binomial product, using i^2 = -1.",
+        "The real part comes from (-9)(7) minus (1)(-5).",
+        "That is -58."
+      ],
+      "useAgain": "when you multiply two complex numbers together.",
+      "hints": [
+        "Multiply every term by every term, as with two binomials.",
+        "Replace i^2 with -1 as you go."
+      ],
+      "socraticHint": "Which two products combine to give the real part?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(3 - 8i)(-2 + 2i). What is the real part of the product?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p18",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(3 - 2i)(-6 - 6i). What is the imaginary part of the product?",
+      "answer": {
+        "kind": "number",
+        "value": "-6"
+      },
+      "explanation": [
+        "Multiply like a binomial product, using i^2 = -1.",
+        "The imaginary part comes from (3)(-6) plus (-2)(-6).",
+        "That is -6."
+      ],
+      "useAgain": "when you multiply two complex numbers together.",
+      "hints": [
+        "Multiply every term by every term, as with two binomials.",
+        "The imaginary part collects every term that keeps its single i."
+      ],
+      "socraticHint": "Which two products combine to give the imaginary part?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(5 + 7i)(1 - 3i). What is the imaginary part of the product?",
+        "answer": {
+          "kind": "number",
+          "value": "-8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p19",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(8 - 5i)(-9 - 9i). What is the imaginary part of the product?",
+      "answer": {
+        "kind": "number",
+        "value": "-27"
+      },
+      "explanation": [
+        "Multiply like a binomial product, using i^2 = -1.",
+        "The imaginary part comes from (8)(-9) plus (-5)(-9).",
+        "That is -27."
+      ],
+      "useAgain": "when you multiply two complex numbers together.",
+      "hints": [
+        "Multiply every term by every term, as with two binomials.",
+        "The imaginary part collects every term that keeps its single i."
+      ],
+      "socraticHint": "Which two products combine to give the imaginary part?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(2 + i)(-7 + 9i). What is the imaginary part of the product?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p20",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "(1 + i)/(3 + 2i). What is the quotient, written in a + bi form?",
+      "options": [
+        "(5/13) - (1/13)i",
+        "(-5/13) + (1/13)i",
+        "(1/13) + (5/13)i",
+        "(5/13) + (1/13)i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Multiply the top and bottom by the conjugate of the denominator, 3 - 2i.",
+        "The denominator becomes 3^2 + 2^2 = 13, a real number.",
+        "That gives (5/13) + (1/13)i."
+      ],
+      "useAgain": "when you divide one complex number by another.",
+      "hints": [
+        "Multiply top and bottom by the denominator's conjugate.",
+        "The denominator always becomes real after that step."
+      ],
+      "socraticHint": "What does multiplying by the conjugate do to the denominator?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(1 - 9i)/(-5 - 5i). What is the quotient, written in a + bi form?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "(4/5) + (1)i",
+          "(4/5) - (1)i",
+          "(-4/5) + (1)i",
+          "(1) + (4/5)i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p21",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "(-4 + 9i)/(-6 - 4i). What is the quotient, written in a + bi form?",
+      "options": [
+        "(-3/13) + (-35/26)i",
+        "(-3/13) - (-35/26)i",
+        "(3/13) + (-35/26)i",
+        "(-35/26) + (-3/13)i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Multiply the top and bottom by the conjugate of the denominator, -6 + 4i.",
+        "The denominator becomes -6^2 + (-4)^2 = 52, a real number.",
+        "That gives (-3/13) + (-35/26)i."
+      ],
+      "useAgain": "when you divide one complex number by another.",
+      "hints": [
+        "Multiply top and bottom by the denominator's conjugate.",
+        "The denominator always becomes real after that step."
+      ],
+      "socraticHint": "What does multiplying by the conjugate do to the denominator?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(-1 + 3i)/(-4 + 3i). What is the quotient, written in a + bi form?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(13/25) - (-9/25)i",
+          "(-13/25) + (-9/25)i",
+          "(13/25) + (-9/25)i",
+          "(-9/25) + (13/25)i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p22",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "(4 - 9i)/(-7 + 6i). What is the quotient, written in a + bi form?",
+      "options": [
+        "(-82/85) - (39/85)i",
+        "(-82/85) + (39/85)i",
+        "(82/85) + (39/85)i",
+        "(39/85) + (-82/85)i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Multiply the top and bottom by the conjugate of the denominator, -7 - 6i.",
+        "The denominator becomes -7^2 + 6^2 = 85, a real number.",
+        "That gives (-82/85) + (39/85)i."
+      ],
+      "useAgain": "when you divide one complex number by another.",
+      "hints": [
+        "Multiply top and bottom by the denominator's conjugate.",
+        "The denominator always becomes real after that step."
+      ],
+      "socraticHint": "What does multiplying by the conjugate do to the denominator?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(3 + i)/(2 - 5i). What is the quotient, written in a + bi form?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "(1/29) - (17/29)i",
+          "(-1/29) + (17/29)i",
+          "(17/29) + (1/29)i",
+          "(1/29) + (17/29)i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p23",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "x^2 - 10x + 26 = 0. What are the roots?",
+      "options": [
+        "5 + i and 5 - i",
+        "-5 + i and -5 - i",
+        "5 + i and 5 + i",
+        "5 + 2i and 5 - 2i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Use the quadratic formula: x = (10 +/- sqrt(-4))/2.",
+        "Since -4 is negative, write sqrt(-4) as 2i.",
+        "That gives x = 5 + i and 5 - i."
+      ],
+      "useAgain": "when a quadratic's discriminant is negative.",
+      "hints": [
+        "Use the quadratic formula, then simplify the negative under the square root.",
+        "A negative discriminant means writing sqrt(-1) as i."
+      ],
+      "socraticHint": "What is the discriminant, and is it negative?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x^2 - 12x + 100 = 0. What are the roots?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "-6 + 8i and -6 - 8i",
+          "6 + 8i and 6 + 8i",
+          "6 + 16i and 6 - 16i",
+          "6 + 8i and 6 - 8i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p24",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "x^2 + 4x + 40 = 0. What are the roots?",
+      "options": [
+        "2 + 6i and 2 - 6i",
+        "-2 + 6i and -2 - 6i",
+        "-2 + 6i and -2 + 6i",
+        "-2 + 12i and -2 - 12i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Use the quadratic formula: x = (-4 +/- sqrt(-144))/2.",
+        "Since -144 is negative, write sqrt(-144) as 12i.",
+        "That gives x = -2 + 6i and -2 - 6i."
+      ],
+      "useAgain": "when a quadratic's discriminant is negative.",
+      "hints": [
+        "Use the quadratic formula, then simplify the negative under the square root.",
+        "A negative discriminant means writing sqrt(-1) as i."
+      ],
+      "socraticHint": "What is the discriminant, and is it negative?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x^2 + 6x + 45 = 0. What are the roots?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "3 + 6i and 3 - 6i",
+          "-3 + 6i and -3 + 6i",
+          "-3 + 6i and -3 - 6i",
+          "-3 + 12i and -3 - 12i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p25",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "x^2 + 2x + 10 = 0. What are the roots?",
+      "options": [
+        "-1 + 3i and -1 - 3i",
+        "1 + 3i and 1 - 3i",
+        "-1 + 3i and -1 + 3i",
+        "-1 + 6i and -1 - 6i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Use the quadratic formula: x = (-2 +/- sqrt(-36))/2.",
+        "Since -36 is negative, write sqrt(-36) as 6i.",
+        "That gives x = -1 + 3i and -1 - 3i."
+      ],
+      "useAgain": "when a quadratic's discriminant is negative.",
+      "hints": [
+        "Use the quadratic formula, then simplify the negative under the square root.",
+        "A negative discriminant means writing sqrt(-1) as i."
+      ],
+      "socraticHint": "What is the discriminant, and is it negative?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x^2 - 14x + 85 = 0. What are the roots?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "-7 + 6i and -7 - 6i",
+          "7 + 6i and 7 - 6i",
+          "7 + 6i and 7 + 6i",
+          "7 + 12i and 7 - 12i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p26",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "x^2 - 16x + 89 = 0 has two complex roots. What is their sum?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "The sum of a quadratic's roots is -b/a, even when the roots are not real.",
+        "Here that is 16.",
+        "The imaginary parts of a conjugate pair always cancel in the sum."
+      ],
+      "useAgain": "when you need a quadratic's roots' sum without solving for them.",
+      "hints": [
+        "The sum of the roots is always -b/a, real or not.",
+        "A conjugate pair's imaginary parts cancel when added."
+      ],
+      "socraticHint": "What does -b/a give here?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x^2 - 2x + 37 = 0 has two complex roots. What is their sum?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p27",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "x^2 + 8x + 17 = 0 has two complex roots. What is their sum?",
+      "answer": {
+        "kind": "number",
+        "value": "-8"
+      },
+      "explanation": [
+        "The sum of a quadratic's roots is -b/a, even when the roots are not real.",
+        "Here that is -8.",
+        "The imaginary parts of a conjugate pair always cancel in the sum."
+      ],
+      "useAgain": "when you need a quadratic's roots' sum without solving for them.",
+      "hints": [
+        "The sum of the roots is always -b/a, real or not.",
+        "A conjugate pair's imaginary parts cancel when added."
+      ],
+      "socraticHint": "What does -b/a give here?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x^2 + 2x + 5 = 0 has two complex roots. What is their sum?",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p28",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "x^2 + 2x + 50 = 0 has two complex roots. What is their sum?",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "The sum of a quadratic's roots is -b/a, even when the roots are not real.",
+        "Here that is -2.",
+        "The imaginary parts of a conjugate pair always cancel in the sum."
+      ],
+      "useAgain": "when you need a quadratic's roots' sum without solving for them.",
+      "hints": [
+        "The sum of the roots is always -b/a, real or not.",
+        "A conjugate pair's imaginary parts cancel when added."
+      ],
+      "socraticHint": "What does -b/a give here?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x^2 + 12x + 85 = 0 has two complex roots. What is their sum?",
+        "answer": {
+          "kind": "number",
+          "value": "-12"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p29",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "A quadratic with real coefficients has one root at 7 + 5i. What is its other root?",
+      "options": [
+        "-7 - 5i",
+        "7 + 5i",
+        "7 - 5i",
+        "-7 + 5i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "A quadratic with real coefficients has complex roots that come in conjugate pairs.",
+        "The conjugate of 7 + 5i is 7 - 5i."
+      ],
+      "useAgain": "when you know one complex root and need the other.",
+      "hints": [
+        "Complex roots of a real quadratic always come in conjugate pairs.",
+        "The conjugate flips only the sign of the imaginary part."
+      ],
+      "socraticHint": "What does the conjugate of that root look like?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A quadratic with real coefficients has one root at 3 + 3i. What is its other root?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "-3 - 3i",
+          "3 + 3i",
+          "-3 + 3i",
+          "3 - 3i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p30",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "A quadratic with real coefficients has one root at 3 + 4i. What is its other root?",
+      "options": [
+        "-3 - 4i",
+        "3 + 4i",
+        "3 - 4i",
+        "-3 + 4i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "A quadratic with real coefficients has complex roots that come in conjugate pairs.",
+        "The conjugate of 3 + 4i is 3 - 4i."
+      ],
+      "useAgain": "when you know one complex root and need the other.",
+      "hints": [
+        "Complex roots of a real quadratic always come in conjugate pairs.",
+        "The conjugate flips only the sign of the imaginary part."
+      ],
+      "socraticHint": "What does the conjugate of that root look like?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A quadratic with real coefficients has one root at -6 + i. What is its other root?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "-6 - i",
+          "6 - i",
+          "-6 + i",
+          "6 + i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p31",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(1 + x) + (-3 + y)i = 9 + 3i, where x and y are real. What is x + y?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "Match the real parts: 1 + x = 9, so x = 8.",
+        "Match the imaginary parts: -3 + y = 3, so y = 6.",
+        "Their sum is 8 + 6 = 14."
+      ],
+      "useAgain": "when a complex equation hides two real equations at once.",
+      "hints": [
+        "Two complex numbers are equal only when their real parts match and their imaginary parts match.",
+        "That gives two separate equations, one for x and one for y."
+      ],
+      "socraticHint": "What real-number equation do you get from just the real parts?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "(-1 + x) + (6 + y)i = 3 - 3i, where x and y are real. What is x + y?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p32",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(3 + x) + (-6 + y)i = 8 - 9i, where x and y are real. What is x + y?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Match the real parts: 3 + x = 8, so x = 5.",
+        "Match the imaginary parts: -6 + y = -9, so y = -3.",
+        "Their sum is 5 + (-3) = 2."
+      ],
+      "useAgain": "when a complex equation hides two real equations at once.",
+      "hints": [
+        "Two complex numbers are equal only when their real parts match and their imaginary parts match.",
+        "That gives two separate equations, one for x and one for y."
+      ],
+      "socraticHint": "What real-number equation do you get from just the real parts?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "(2 + x) + (-1 + y)i = 1 - i, where x and y are real. What is x + y?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p33",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "(-2 + x) + (-4 + y)i = -1 + 9i, where x and y are real. What is x + y?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "Match the real parts: -2 + x = -1, so x = 1.",
+        "Match the imaginary parts: -4 + y = 9, so y = 13.",
+        "Their sum is 1 + 13 = 14."
+      ],
+      "useAgain": "when a complex equation hides two real equations at once.",
+      "hints": [
+        "Two complex numbers are equal only when their real parts match and their imaginary parts match.",
+        "That gives two separate equations, one for x and one for y."
+      ],
+      "socraticHint": "What real-number equation do you get from just the real parts?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "(-4 + x) + (-8 + y)i = -6 + 7i, where x and y are real. What is x + y?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p34",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "z = 3 - 4i. What is z^2?",
+      "options": [
+        "-7 - 12i",
+        "-7 - 24i",
+        "25 - 24i",
+        "-7 + 24i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Expand (3 - 4i)^2 like a binomial squared: 3^2 + 2(3)(-4)i + (-4)^2 i^2.",
+        "Replace i^2 with -1, then combine the real terms.",
+        "That gives -7 - 24i."
+      ],
+      "useAgain": "when you need to square a complex number.",
+      "hints": [
+        "Expand as a binomial square, keeping the i^2 term separate.",
+        "Replace i^2 with -1 before combining like terms."
+      ],
+      "socraticHint": "What do the three expanded terms become once i^2 is replaced with -1?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "z = 8 - 7i. What is z^2?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "15 - 56i",
+          "113 - 112i",
+          "15 + 112i",
+          "15 - 112i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p35",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "z = 7 + 8i. What is z^2?",
+      "options": [
+        "-15 + 112i",
+        "-15 + 56i",
+        "113 + 112i",
+        "-15 - 112i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Expand (7 + 8i)^2 like a binomial squared: 7^2 + 2(7)(8)i + (8)^2 i^2.",
+        "Replace i^2 with -1, then combine the real terms.",
+        "That gives -15 + 112i."
+      ],
+      "useAgain": "when you need to square a complex number.",
+      "hints": [
+        "Expand as a binomial square, keeping the i^2 term separate.",
+        "Replace i^2 with -1 before combining like terms."
+      ],
+      "socraticHint": "What do the three expanded terms become once i^2 is replaced with -1?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "z = -4 - 3i. What is z^2?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "7 + 12i",
+          "25 + 24i",
+          "7 + 24i",
+          "7 - 24i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p36",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "z = -5 - 8i. What is z^2?",
+      "options": [
+        "-39 + 40i",
+        "89 + 80i",
+        "-39 - 80i",
+        "-39 + 80i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Expand (-5 - 8i)^2 like a binomial squared: -5^2 + 2(-5)(-8)i + (-8)^2 i^2.",
+        "Replace i^2 with -1, then combine the real terms.",
+        "That gives -39 + 80i."
+      ],
+      "useAgain": "when you need to square a complex number.",
+      "hints": [
+        "Expand as a binomial square, keeping the i^2 term separate.",
+        "Replace i^2 with -1 before combining like terms."
+      ],
+      "socraticHint": "What do the three expanded terms become once i^2 is replaced with -1?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "z = 6 + i. What is z^2?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "35 + 6i",
+          "35 + 12i",
+          "37 + 12i",
+          "35 - 12i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p37",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "-3x^2 - 6x - 51 = 0. What are the roots?",
+      "options": [
+        "1 + 4i and 1 - 4i",
+        "-1 + 8i and -1 - 8i",
+        "-2 + 4i and -2 - 4i",
+        "-1 + 4i and -1 - 4i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Use the quadratic formula: x = (6 +/- sqrt(-576))/-6.",
+        "The discriminant is negative, so the roots are complex conjugates.",
+        "That gives x = -1 + 4i and -1 - 4i."
+      ],
+      "useAgain": "when a non-monic quadratic has complex roots.",
+      "hints": [
+        "Use the quadratic formula with the leading coefficient included in the denominator.",
+        "A negative discriminant gives a conjugate pair."
+      ],
+      "socraticHint": "What is -b/(2a) here, and what is the discriminant?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "-3x^2 - 18x - 135 = 0. What are the roots?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "-3 + 6i and -3 - 6i",
+          "3 + 6i and 3 - 6i",
+          "-3 + 12i and -3 - 12i",
+          "-6 + 6i and -6 - 6i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p38",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "-2x^2 + 24x - 144 = 0. What are the roots?",
+      "options": [
+        "-6 + 6i and -6 - 6i",
+        "6 + 6i and 6 - 6i",
+        "6 + 12i and 6 - 12i",
+        "12 + 6i and 12 - 6i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Use the quadratic formula: x = (-24 +/- sqrt(-576))/-4.",
+        "The discriminant is negative, so the roots are complex conjugates.",
+        "That gives x = 6 + 6i and 6 - 6i."
+      ],
+      "useAgain": "when a non-monic quadratic has complex roots.",
+      "hints": [
+        "Use the quadratic formula with the leading coefficient included in the denominator.",
+        "A negative discriminant gives a conjugate pair."
+      ],
+      "socraticHint": "What is -b/(2a) here, and what is the discriminant?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "-2x^2 + 16x - 40 = 0. What are the roots?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "-4 + 2i and -4 - 2i",
+          "4 + 4i and 4 - 4i",
+          "4 + 2i and 4 - 2i",
+          "8 + 2i and 8 - 2i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p39",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "3x^2 + 18x + 54 = 0. What are the roots?",
+      "options": [
+        "3 + 3i and 3 - 3i",
+        "-3 + 6i and -3 - 6i",
+        "-6 + 3i and -6 - 3i",
+        "-3 + 3i and -3 - 3i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Use the quadratic formula: x = (-18 +/- sqrt(-324))/6.",
+        "The discriminant is negative, so the roots are complex conjugates.",
+        "That gives x = -3 + 3i and -3 - 3i."
+      ],
+      "useAgain": "when a non-monic quadratic has complex roots.",
+      "hints": [
+        "Use the quadratic formula with the leading coefficient included in the denominator.",
+        "A negative discriminant gives a conjugate pair."
+      ],
+      "socraticHint": "What is -b/(2a) here, and what is the discriminant?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "-2x^2 - 24x - 104 = 0. What are the roots?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "6 + 4i and 6 - 4i",
+          "-6 + 4i and -6 - 4i",
+          "-6 + 8i and -6 - 8i",
+          "-12 + 4i and -12 - 4i"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p40",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "z1 = 3 - 4i and z2 = 5 - 12i. What is |z1 z2|, the modulus of their product?",
+      "answer": {
+        "kind": "number",
+        "value": "65"
+      },
+      "explanation": [
+        "|z1| = sqrt(3^2 + 4^2) = 5, and |z2| = sqrt(5^2 + 12^2) = 13.",
+        "The modulus of a product equals the product of the moduli.",
+        "So |z1 z2| = 5 times 13 = 65."
+      ],
+      "useAgain": "when you need a product's modulus without multiplying the complex numbers out.",
+      "hints": [
+        "Find each modulus separately first.",
+        "The modulus of a product is the product of the two moduli."
+      ],
+      "socraticHint": "What are |z1| and |z2| separately?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "z1 = 8 + 15i and z2 = 5 - 12i. What is |z1 z2|, the modulus of their product?",
+        "answer": {
+          "kind": "number",
+          "value": "221"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p41",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "z1 = 9 - 12i and z2 = 9 + 12i. What is |z1 z2|, the modulus of their product?",
+      "answer": {
+        "kind": "number",
+        "value": "225"
+      },
+      "explanation": [
+        "|z1| = sqrt(9^2 + 12^2) = 15, and |z2| = sqrt(9^2 + 12^2) = 15.",
+        "The modulus of a product equals the product of the moduli.",
+        "So |z1 z2| = 15 times 15 = 225."
+      ],
+      "useAgain": "when you need a product's modulus without multiplying the complex numbers out.",
+      "hints": [
+        "Find each modulus separately first.",
+        "The modulus of a product is the product of the two moduli."
+      ],
+      "socraticHint": "What are |z1| and |z2| separately?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "z1 = 3 - 4i and z2 = 7 + 24i. What is |z1 z2|, the modulus of their product?",
+        "answer": {
+          "kind": "number",
+          "value": "125"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p42",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "z1 = 3 + 4i and z2 = 8 - 15i. What is |z1 z2|, the modulus of their product?",
+      "answer": {
+        "kind": "number",
+        "value": "85"
+      },
+      "explanation": [
+        "|z1| = sqrt(3^2 + 4^2) = 5, and |z2| = sqrt(8^2 + 15^2) = 17.",
+        "The modulus of a product equals the product of the moduli.",
+        "So |z1 z2| = 5 times 17 = 85."
+      ],
+      "useAgain": "when you need a product's modulus without multiplying the complex numbers out.",
+      "hints": [
+        "Find each modulus separately first.",
+        "The modulus of a product is the product of the two moduli."
+      ],
+      "socraticHint": "What are |z1| and |z2| separately?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "z1 = 8 + 15i and z2 = 7 - 24i. What is |z1 z2|, the modulus of their product?",
+        "answer": {
+          "kind": "number",
+          "value": "425"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p43",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "The marked point sits on the complex plane, real axis horizontal and imaginary axis vertical. What complex number does it represent?",
+      "options": [
+        "2 - 6i",
+        "6 + 2i",
+        "-6 + 2i",
+        "-6 - 2i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The point's x-coordinate is the real part and its y-coordinate is the imaginary part's coefficient.",
+        "That point gives -6 + 2i."
+      ],
+      "figure": {
+        "kind": "plane",
+        "alt": "A point in the complex plane.",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": -6,
+              "y": 2
+            }
+          ]
+        }
+      },
+      "useAgain": "when a complex number is shown as a point rather than written out.",
+      "hints": [
+        "The horizontal coordinate is the real part.",
+        "The vertical coordinate is the coefficient of i."
+      ],
+      "socraticHint": "Which coordinate is the real part, and which is the imaginary part's coefficient?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The marked point sits on the complex plane, real axis horizontal and imaginary axis vertical. What complex number does it represent?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "-7 - 5i",
+          "-5 - 7i",
+          "7 - 5i",
+          "-7 + 5i"
+        ],
+        "figure": {
+          "kind": "plane",
+          "alt": "A point in the complex plane.",
+          "spec": {
+            "range": 8,
+            "points": [
+              {
+                "x": -7,
+                "y": -5
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p44",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "The marked point sits on the complex plane, real axis horizontal and imaginary axis vertical. What complex number does it represent?",
+      "options": [
+        "4 - 5i",
+        "-5 + 4i",
+        "5 + 4i",
+        "-5 - 4i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The point's x-coordinate is the real part and its y-coordinate is the imaginary part's coefficient.",
+        "That point gives -5 + 4i."
+      ],
+      "figure": {
+        "kind": "plane",
+        "alt": "A point in the complex plane.",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": -5,
+              "y": 4
+            }
+          ]
+        }
+      },
+      "useAgain": "when a complex number is shown as a point rather than written out.",
+      "hints": [
+        "The horizontal coordinate is the real part.",
+        "The vertical coordinate is the coefficient of i."
+      ],
+      "socraticHint": "Which coordinate is the real part, and which is the imaginary part's coefficient?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The marked point sits on the complex plane, real axis horizontal and imaginary axis vertical. What complex number does it represent?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "-7 - 6i",
+          "6 - 7i",
+          "-6 + 7i",
+          "-6 - 7i"
+        ],
+        "figure": {
+          "kind": "plane",
+          "alt": "A point in the complex plane.",
+          "spec": {
+            "range": 8,
+            "points": [
+              {
+                "x": -6,
+                "y": -7
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p45",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "choice",
+      "prompt": "The marked point sits on the complex plane, real axis horizontal and imaginary axis vertical. What complex number does it represent?",
+      "options": [
+        "1 - 4i",
+        "4 + i",
+        "-4 + i",
+        "-4 - i"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The point's x-coordinate is the real part and its y-coordinate is the imaginary part's coefficient.",
+        "That point gives -4 + i."
+      ],
+      "figure": {
+        "kind": "plane",
+        "alt": "A point in the complex plane.",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": -4,
+              "y": 1
+            }
+          ]
+        }
+      },
+      "useAgain": "when a complex number is shown as a point rather than written out.",
+      "hints": [
+        "The horizontal coordinate is the real part.",
+        "The vertical coordinate is the coefficient of i."
+      ],
+      "socraticHint": "Which coordinate is the real part, and which is the imaginary part's coefficient?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The marked point sits on the complex plane, real axis horizontal and imaginary axis vertical. What complex number does it represent?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "7 - 3i",
+          "-3 + 7i",
+          "-7 - 3i",
+          "7 + 3i"
+        ],
+        "figure": {
+          "kind": "plane",
+          "alt": "A point in the complex plane.",
+          "spec": {
+            "range": 8,
+            "points": [
+              {
+                "x": 7,
+                "y": -3
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-complex-numbers-p46",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "For how many integers n from 1 to 24 is i^n a real number?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "i^n is real exactly when n is even, since odd powers land on i or -i.",
+        "Among 1 to 24, 12 values of n are even."
+      ],
+      "useAgain": "when counting how often a power of i lands on a real number.",
+      "hints": [
+        "Think about which remainder mod 4 gives a real value.",
+        "Even powers of i are always real."
+      ],
+      "socraticHint": "Which powers of i come out real?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For how many integers n from 1 to 36 is i^n a real number?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p47",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "z = 3 + 3i. What is z^4?",
+      "answer": {
+        "kind": "number",
+        "value": "-324"
+      },
+      "explanation": [
+        "z^2 = (3)^2 - (3)^2 + 2(3)(3)i, which is 18i.",
+        "z^4 = (z^2)^2 = (18i)^2, and squaring a pure imaginary number gives a real number.",
+        "That works out to -324."
+      ],
+      "useAgain": "when a complex number's power collapses to a real number.",
+      "hints": [
+        "Square z first, then square the result.",
+        "Squaring a pure imaginary number always gives a real number."
+      ],
+      "socraticHint": "What is z^2, and is it real or imaginary?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "z = -2 - 2i. What is z^4?",
+        "answer": {
+          "kind": "number",
+          "value": "-64"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p48",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "x^2 + kx + 20 = 0 has complex roots, and the sum of the squares of the roots is 24. What is k^2?",
+      "answer": {
+        "kind": "number",
+        "value": "64"
+      },
+      "explanation": [
+        "For roots p + qi and p - qi, the sum of their squares is k^2 - 2(20).",
+        "Setting that equal to 24 gives k^2 - 40 = 24.",
+        "Solving gives k^2 = 64."
+      ],
+      "useAgain": "when a problem gives the sum of the squares of a pair of complex roots.",
+      "hints": [
+        "Write the sum of the squares of a conjugate pair in terms of k and c.",
+        "Then solve the resulting equation for k^2."
+      ],
+      "socraticHint": "What is (p + qi)^2 + (p - qi)^2 in terms of k and c?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "x^2 + kx + 15 = 0 has complex roots, and the sum of the squares of the roots is 6. What is k^2?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p49",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "x^2 - 6x + 25 = 0 has complex roots p + qi and p - qi. What is p^2 + q^2?",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "The product of the roots is (p + qi)(p - qi) = p^2 + q^2.",
+        "By the quadratic formula, that product is also c/a, which here is 25.",
+        "So p^2 + q^2 = 25."
+      ],
+      "useAgain": "when a conjugate pair's product is needed and the roots themselves are not.",
+      "hints": [
+        "The product of a conjugate pair equals c/a directly.",
+        "You never need to find p and q separately."
+      ],
+      "socraticHint": "What does the quadratic formula say the product of the roots equals?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "x^2 - 10x + 41 = 0 has complex roots p + qi and p - qi. What is p^2 + q^2?",
+        "answer": {
+          "kind": "number",
+          "value": "41"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-complex-numbers-p50",
+      "lane": "skills",
+      "ideaId": "a2-complex-numbers",
+      "kind": "number",
+      "prompt": "What is the real part of i^1 + i^2 + i^3 + ... + i^53?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "The powers of i cycle every four terms: i, -1, -i, 1, summing to 0 over each full cycle.",
+        "Add the real parts of the leftover terms after the last full cycle.",
+        "That real part totals 0."
+      ],
+      "useAgain": "when a long sum of powers of i can be shortened using its 4-term cycle.",
+      "hints": [
+        "Group the powers into complete cycles of four, which sum to 0.",
+        "Only the leftover terms past the last full cycle matter."
+      ],
+      "socraticHint": "How many terms are left over after the last complete cycle of four?",
+      "skills": [
+        "think.skills.complex-numbers"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the real part of i^1 + i^2 + i^3 + ... + i^46?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      }
+    }
+  ]
+}

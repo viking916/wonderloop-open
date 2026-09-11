@@ -1,0 +1,2030 @@
+{
+  "id": "ar-rounding-estimation",
+  "idea": {
+    "body": "Rounding a number means asking which friendly number it is closest to. Find the digit in the place you are rounding to, then look at the single digit right after it. That next digit is the only one that matters: 5 or more means round up, anything less means keep the rounding digit the same. Every digit after the rounding place becomes a zero, or gets dropped for decimals. This makes estimation fast: round each number in a calculation first, then work with the friendly numbers instead of the exact ones. A rover reading of 347 meters rounds to 350 to the nearest ten, since the digit after the tens place is 7."
+  },
+  "workedExample": {
+    "prompt": "A print shop printed 3,482 pages this month. What is that rounded to the nearest hundred?",
+    "steps": [
+      "The hundreds digit is 4, in \"3,482\".",
+      "The digit right after it, in the tens place, is 8.",
+      "8 is 5 or more, so round the hundreds digit up from 4 to 5.",
+      "Replace the tens and ones digits with zero.",
+      "3,482 rounds to 3,500."
+    ]
+  },
+  "ways": [
+    {
+      "id": "ar-rounding-estimation-w1",
+      "name": "Round to the nearest place",
+      "when": "Use this when a problem asks you to round one number to a stated place.",
+      "steps": [
+        "Find the digit in the place you are rounding to.",
+        "Look at the single digit right after it.",
+        "5 or more rounds that digit up by one; less than 5 leaves it the same.",
+        "Replace every digit after the rounding place with zero."
+      ],
+      "example": "Round 3,482 to the nearest hundred",
+      "answer": "3,500",
+      "trap": "Rounding based on a digit two places away instead of the single digit right after the rounding place.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A number line from 3400 to 3500 with 3482 marked closer to the 3500 end, showing it rounds up to 3500.",
+        "spec": {
+          "w": 390,
+          "h": 140,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 100,
+              "x2": 360,
+              "y2": 100
+            },
+            {
+              "t": "dot",
+              "cx": 30,
+              "cy": 100,
+              "side": "below",
+              "label": "3400"
+            },
+            {
+              "t": "dot",
+              "cx": 290,
+              "cy": 100,
+              "side": "below",
+              "label": "3482"
+            },
+            {
+              "t": "dot",
+              "cx": 360,
+              "cy": 100,
+              "side": "below",
+              "label": "3500"
+            },
+            {
+              "t": "text",
+              "x": 290,
+              "y": 60,
+              "s": "closer to 3500",
+              "size": 12,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Find the digit in the rounding place.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Look at the single digit right after it.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "5 or more rounds up by one.",
+              "set": {
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Replace digits after it with zero.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ar-rounding-estimation-w2",
+      "name": "Front-end estimation",
+      "when": "Use this for a fast estimate of a total, when exactness does not matter yet.",
+      "steps": [
+        "Keep only the leading digit of each number and replace the rest with zeros.",
+        "Add or subtract those leading-digit numbers.",
+        "That rough total is your front-end estimate."
+      ],
+      "example": "Estimate 3,482 + 2,913",
+      "answer": "5,000",
+      "trap": "Treating the front-end estimate as exact instead of a fast, rough total."
+    },
+    {
+      "id": "ar-rounding-estimation-w3",
+      "name": "Round both, then adjust",
+      "when": "Use this when you rounded first but need a total closer to the exact answer.",
+      "steps": [
+        "Round each number to the nearest hundred and note how much each rounding changed it.",
+        "Add the rounded numbers together.",
+        "Take back what a rounding added, and add back what a rounding removed.",
+        "That adjusted total is close to the exact answer."
+      ],
+      "example": "Estimate 3,482 + 2,913, then adjust",
+      "answer": "6,395",
+      "trap": "Adjusting in the wrong direction, adding back what should be taken away."
+    },
+    {
+      "id": "ar-rounding-estimation-w4",
+      "name": "Compatible numbers",
+      "when": "Use this when the numbers are close to ones that combine cleanly.",
+      "steps": [
+        "Change each number slightly to a nearby one that pairs nicely with the other.",
+        "Do the easy calculation with those compatible numbers.",
+        "Use that as your estimate, without adjusting further."
+      ],
+      "example": "Estimate 297 + 152",
+      "answer": "450",
+      "trap": "Picking compatible numbers so far from the originals that the estimate is not useful."
+    }
+  ],
+  "bank": [
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover odometer tracks total distance driven, in meters. One reading is 23 meters. What is that rounded to the nearest ten?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "The digit in the tens place is followed by 3.",
+        "3 is less than 5, so the tens digit stays the same.",
+        "Replace every digit after the tens place with zero: 23 rounds to 20."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest ten.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game world counts every creature spawned so far. One reading is 55 creatures. What is that rounded to the nearest ten?",
+        "answer": {
+          "kind": "number",
+          "value": "60"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p01",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts total pages printed this month. One reading is 47 pages. What is that rounded to the nearest ten?",
+      "answer": {
+        "kind": "number",
+        "value": "50"
+      },
+      "explanation": [
+        "The digit in the tens place is followed by 7.",
+        "7 is 5 or more, so round up.",
+        "Replace every digit after the tens place with zero: 47 rounds to 50."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest ten.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A workshop counts screws left in a bulk bin. One reading is 79 screws. What is that rounded to the nearest ten?",
+        "answer": {
+          "kind": "number",
+          "value": "80"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p02",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A weather station logs total rainfall for the season, in millimeters. One reading is 65 millimeters. What is that rounded to the nearest ten?",
+      "answer": {
+        "kind": "number",
+        "value": "70"
+      },
+      "explanation": [
+        "The digit in the tens place is followed by 5.",
+        "5 is 5 or more, so round up.",
+        "Replace every digit after the tens place with zero: 65 rounds to 70."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest ten.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "An aquarium counts total fish across all its tanks. One reading is 97 fish. What is that rounded to the nearest ten?",
+        "answer": {
+          "kind": "number",
+          "value": "100"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p03",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer logs total print time this week, in minutes. One reading is 82 minutes. What is that rounded to the nearest ten?",
+      "answer": {
+        "kind": "number",
+        "value": "80"
+      },
+      "explanation": [
+        "The digit in the tens place is followed by 2.",
+        "2 is less than 5, so the tens digit stays the same.",
+        "Replace every digit after the tens place with zero: 82 rounds to 80."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest ten.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine counts total snacks sold this month. One reading is 114 snacks. What is that rounded to the nearest ten?",
+        "answer": {
+          "kind": "number",
+          "value": "110"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p04",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover odometer tracks total distance driven, in meters. One reading is 34 meters. What is that rounded to the nearest ten?",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "The digit in the tens place is followed by 4.",
+        "4 is less than 5, so the tens digit stays the same.",
+        "Replace every digit after the tens place with zero: 34 rounds to 30."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest ten.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game world counts every creature spawned so far. One reading is 66 creatures. What is that rounded to the nearest ten?",
+        "answer": {
+          "kind": "number",
+          "value": "70"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p05",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts total pages printed this month. One reading is 340 pages. What is that rounded to the nearest hundred?",
+      "answer": {
+        "kind": "number",
+        "value": "300"
+      },
+      "explanation": [
+        "The digit in the hundreds place is followed by 4.",
+        "4 is less than 5, so the hundreds digit stays the same.",
+        "Replace every digit after the hundreds place with zero: 340 rounds to 300."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest hundred.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A workshop counts screws left in a bulk bin. One reading is 660 screws. What is that rounded to the nearest hundred?",
+        "answer": {
+          "kind": "number",
+          "value": "700"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p06",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A weather station logs total rainfall for the season, in millimeters. One reading is 651 millimeters. What is that rounded to the nearest hundred?",
+      "answer": {
+        "kind": "number",
+        "value": "700"
+      },
+      "explanation": [
+        "The digit in the hundreds place is followed by 5.",
+        "5 is 5 or more, so round up.",
+        "Replace every digit after the hundreds place with zero: 651 rounds to 700."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest hundred.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "An aquarium counts total fish across all its tanks. One reading is 971 fish. What is that rounded to the nearest hundred?",
+        "answer": {
+          "kind": "number",
+          "value": "1000"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p07",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer logs total print time this week, in minutes. One reading is 275 minutes. What is that rounded to the nearest hundred?",
+      "answer": {
+        "kind": "number",
+        "value": "300"
+      },
+      "explanation": [
+        "The digit in the hundreds place is followed by 7.",
+        "7 is 5 or more, so round up.",
+        "Replace every digit after the hundreds place with zero: 275 rounds to 300."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest hundred.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine counts total snacks sold this month. One reading is 595 snacks. What is that rounded to the nearest hundred?",
+        "answer": {
+          "kind": "number",
+          "value": "600"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p08",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover odometer tracks total distance driven, in meters. One reading is 428 meters. What is that rounded to the nearest hundred?",
+      "answer": {
+        "kind": "number",
+        "value": "400"
+      },
+      "explanation": [
+        "The digit in the hundreds place is followed by 2.",
+        "2 is less than 5, so the hundreds digit stays the same.",
+        "Replace every digit after the hundreds place with zero: 428 rounds to 400."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest hundred.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game world counts every creature spawned so far. One reading is 748 creatures. What is that rounded to the nearest hundred?",
+        "answer": {
+          "kind": "number",
+          "value": "700"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p09",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts total pages printed this month. One reading is 519 pages. What is that rounded to the nearest hundred?",
+      "answer": {
+        "kind": "number",
+        "value": "500"
+      },
+      "explanation": [
+        "The digit in the hundreds place is followed by 1.",
+        "1 is less than 5, so the hundreds digit stays the same.",
+        "Replace every digit after the hundreds place with zero: 519 rounds to 500."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest hundred.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A workshop counts screws left in a bulk bin. One reading is 839 screws. What is that rounded to the nearest hundred?",
+        "answer": {
+          "kind": "number",
+          "value": "800"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p10",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A weather station logs total rainfall for the season, in millimeters. One reading is 4.6 millimeters. What is that rounded to the nearest whole number?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Look at the digit right after the whole numbers place in 4.6.",
+        "If that digit is 5 or more, round up; otherwise keep the digits before it the same.",
+        "4.6 rounds to 5."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest whole number.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A watering can measures water poured into a planter, in liters. One reading is 8.8 liters. What is that rounded to the nearest whole number?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p11",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer logs total print time this week, in minutes. One reading is 7.2 minutes. What is that rounded to the nearest whole number?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Look at the digit right after the whole numbers place in 7.2.",
+        "If that digit is 5 or more, round up; otherwise keep the digits before it the same.",
+        "7.2 rounds to 7."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest whole number.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A kitchen scale weighs a scoop of flour, in grams. One reading is 11.4 grams. What is that rounded to the nearest whole number?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p12",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover odometer tracks total distance driven, in meters. One reading is 12.5 meters. What is that rounded to the nearest whole number?",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "Look at the digit right after the whole numbers place in 12.5.",
+        "If that digit is 5 or more, round up; otherwise keep the digits before it the same.",
+        "12.5 rounds to 13."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest whole number.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A watering can measures water poured into a planter, in liters. One reading is 16.7 liters. What is that rounded to the nearest whole number?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p13",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen scale weighs a scoop of flour, in grams. One reading is 3.4 grams. What is that rounded to the nearest whole number?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Look at the digit right after the whole numbers place in 3.4.",
+        "If that digit is 5 or more, round up; otherwise keep the digits before it the same.",
+        "3.4 rounds to 3."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest whole number.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A watering can measures water poured into a planter, in liters. One reading is 7.6 liters. What is that rounded to the nearest whole number?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p14",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A weather station logs total rainfall for the season, in millimeters. One reading is 8.9 millimeters. What is that rounded to the nearest whole number?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Look at the digit right after the whole numbers place in 8.9.",
+        "If that digit is 5 or more, round up; otherwise keep the digits before it the same.",
+        "8.9 rounds to 9."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest whole number.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A kitchen scale weighs a scoop of flour, in grams. One reading is 13.1 grams. What is that rounded to the nearest whole number?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p15",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer logs total print time this week, in minutes. One reading is 3420 minutes. What is that rounded to the nearest thousand?",
+      "answer": {
+        "kind": "number",
+        "value": "3000"
+      },
+      "explanation": [
+        "The digit in the thousands place is followed by 4.",
+        "4 is less than 5, so the thousands digit stays the same.",
+        "Replace every digit after the thousands place with zero: 3420 rounds to 3000."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest thousand.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A vending machine counts total snacks sold this month. One reading is 6620 snacks. What is that rounded to the nearest thousand?",
+        "answer": {
+          "kind": "number",
+          "value": "7000"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p16",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover odometer tracks total distance driven, in meters. One reading is 6750 meters. What is that rounded to the nearest thousand?",
+      "answer": {
+        "kind": "number",
+        "value": "7000"
+      },
+      "explanation": [
+        "The digit in the thousands place is followed by 7.",
+        "7 is 5 or more, so round up.",
+        "Replace every digit after the thousands place with zero: 6750 rounds to 7000."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest thousand.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game world counts every creature spawned so far. One reading is 9950 creatures. What is that rounded to the nearest thousand?",
+        "answer": {
+          "kind": "number",
+          "value": "10000"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p17",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts total pages printed this month. One reading is 2380 pages. What is that rounded to the nearest thousand?",
+      "answer": {
+        "kind": "number",
+        "value": "2000"
+      },
+      "explanation": [
+        "The digit in the thousands place is followed by 3.",
+        "3 is less than 5, so the thousands digit stays the same.",
+        "Replace every digit after the thousands place with zero: 2380 rounds to 2000."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest thousand.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A workshop counts screws left in a bulk bin. One reading is 5580 screws. What is that rounded to the nearest thousand?",
+        "answer": {
+          "kind": "number",
+          "value": "6000"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p18",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A weather station logs total rainfall for the season, in millimeters. One reading is 9125 millimeters. What is that rounded to the nearest thousand?",
+      "answer": {
+        "kind": "number",
+        "value": "9000"
+      },
+      "explanation": [
+        "The digit in the thousands place is followed by 1.",
+        "1 is less than 5, so the thousands digit stays the same.",
+        "Replace every digit after the thousands place with zero: 9125 rounds to 9000."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest thousand.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "An aquarium counts total fish across all its tanks. One reading is 12325 fish. What is that rounded to the nearest thousand?",
+        "answer": {
+          "kind": "number",
+          "value": "12000"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p19",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer logs total print time this week, in minutes. One reading is 4499 minutes. What is that rounded to the nearest thousand?",
+      "answer": {
+        "kind": "number",
+        "value": "4000"
+      },
+      "explanation": [
+        "The digit in the thousands place is followed by 4.",
+        "4 is less than 5, so the thousands digit stays the same.",
+        "Replace every digit after the thousands place with zero: 4499 rounds to 4000."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest thousand.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A vending machine counts total snacks sold this month. One reading is 7699 snacks. What is that rounded to the nearest thousand?",
+        "answer": {
+          "kind": "number",
+          "value": "8000"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p20",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover odometer tracks total distance driven, in meters. One reading is 4.65 meters. What is that rounded to the nearest tenth?",
+      "answer": {
+        "kind": "number",
+        "value": "4.7"
+      },
+      "explanation": [
+        "Look at the digit right after the tenths place in 4.65.",
+        "If that digit is 5 or more, round up; otherwise keep the digits before it the same.",
+        "4.65 rounds to 4.7."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest tenth.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A watering can measures water poured into a planter, in liters. One reading is 5.07 liters. What is that rounded to the nearest tenth?",
+        "answer": {
+          "kind": "number",
+          "value": "5.1"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p21",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A kitchen scale weighs a scoop of flour, in grams. One reading is 7.23 grams. What is that rounded to the nearest tenth?",
+      "answer": {
+        "kind": "number",
+        "value": "7.2"
+      },
+      "explanation": [
+        "Look at the digit right after the tenths place in 7.23.",
+        "If that digit is 5 or more, round up; otherwise keep the digits before it the same.",
+        "7.23 rounds to 7.2."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest tenth.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A watering can measures water poured into a planter, in liters. One reading is 7.65 liters. What is that rounded to the nearest tenth?",
+        "answer": {
+          "kind": "number",
+          "value": "7.7"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p22",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A weather station logs total rainfall for the season, in millimeters. One reading is 12.58 millimeters. What is that rounded to the nearest tenth?",
+      "answer": {
+        "kind": "number",
+        "value": "12.6"
+      },
+      "explanation": [
+        "Look at the digit right after the tenths place in 12.58.",
+        "If that digit is 5 or more, round up; otherwise keep the digits before it the same.",
+        "12.58 rounds to 12.6."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest tenth.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rover odometer tracks total distance driven, in meters. One reading is 9.55 meters. What is that rounded to the nearest tenth?",
+        "answer": {
+          "kind": "number",
+          "value": "9.6"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p23",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer logs total print time this week, in minutes. One reading is 3.44 minutes. What is that rounded to the nearest tenth?",
+      "answer": {
+        "kind": "number",
+        "value": "3.4"
+      },
+      "explanation": [
+        "Look at the digit right after the tenths place in 3.44.",
+        "If that digit is 5 or more, round up; otherwise keep the digits before it the same.",
+        "3.44 rounds to 3.4."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest tenth.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A kitchen scale weighs a scoop of flour, in grams. One reading is 3.86 grams. What is that rounded to the nearest tenth?",
+        "answer": {
+          "kind": "number",
+          "value": "3.9"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p24",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover odometer tracks total distance driven, in meters. One reading is 8.96 meters. What is that rounded to the nearest tenth?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Look at the digit right after the tenths place in 8.96.",
+        "If that digit is 5 or more, round up; otherwise keep the digits before it the same.",
+        "8.96 rounds to 9."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest tenth.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A watering can measures water poured into a planter, in liters. One reading is 9.38 liters. What is that rounded to the nearest tenth?",
+        "answer": {
+          "kind": "number",
+          "value": "9.4"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p25",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts total pages printed this month. Two readings are 287 and 415 pages. Estimate the total by rounding each reading to the nearest hundred first, then adding. What is the estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "700"
+      },
+      "explanation": [
+        "Round each number first: 287 rounds to 300, and 415 rounds to 400.",
+        "Add the rounded numbers: 300 plus 400 is 700.",
+        "Rounding before adding makes the addition quick, at the cost of a small amount of accuracy."
+      ],
+      "useAgain": "when an exact total is not needed and rounding first makes the addition fast.",
+      "hints": [
+        "Round both numbers to the stated place before adding anything.",
+        "Add the two rounded numbers, not the original numbers."
+      ],
+      "socraticHint": "Would rounding the exact total instead of rounding each number first ever give a different estimate?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A workshop counts screws left in a bulk bin. Two readings are 487 and 715 screws. Estimate the total by rounding each reading to the nearest hundred first, then adding. What is the estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "1200"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p26",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A weather station logs total rainfall for the season, in millimeters. Two readings are 523 and 168 millimeters. Estimate the total by rounding each reading to the nearest hundred first, then adding. What is the estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "700"
+      },
+      "explanation": [
+        "Round each number first: 523 rounds to 500, and 168 rounds to 200.",
+        "Add the rounded numbers: 500 plus 200 is 700.",
+        "Rounding before adding makes the addition quick, at the cost of a small amount of accuracy."
+      ],
+      "useAgain": "when an exact total is not needed and rounding first makes the addition fast.",
+      "hints": [
+        "Round both numbers to the stated place before adding anything.",
+        "Add the two rounded numbers, not the original numbers."
+      ],
+      "socraticHint": "Would rounding the exact total instead of rounding each number first ever give a different estimate?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "An aquarium counts total fish across all its tanks. Two readings are 723 and 468 fish. Estimate the total by rounding each reading to the nearest hundred first, then adding. What is the estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "1200"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p27",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer logs total print time this week, in minutes. Two readings are 64 and 38 minutes. Estimate the total by rounding each reading to the nearest ten first, then adding. What is the estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "100"
+      },
+      "explanation": [
+        "Round each number first: 64 rounds to 60, and 38 rounds to 40.",
+        "Add the rounded numbers: 60 plus 40 is 100.",
+        "Rounding before adding makes the addition quick, at the cost of a small amount of accuracy."
+      ],
+      "useAgain": "when an exact total is not needed and rounding first makes the addition fast.",
+      "hints": [
+        "Round both numbers to the stated place before adding anything.",
+        "Add the two rounded numbers, not the original numbers."
+      ],
+      "socraticHint": "Would rounding the exact total instead of rounding each number first ever give a different estimate?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A vending machine counts total snacks sold this month. Two readings are 84 and 68 snacks. Estimate the total by rounding each reading to the nearest ten first, then adding. What is the estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "150"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p28",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover odometer tracks total distance driven, in meters. Two readings are 712 and 249 meters. Estimate the total by rounding each reading to the nearest hundred first, then adding. What is the estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "900"
+      },
+      "explanation": [
+        "Round each number first: 712 rounds to 700, and 249 rounds to 200.",
+        "Add the rounded numbers: 700 plus 200 is 900.",
+        "Rounding before adding makes the addition quick, at the cost of a small amount of accuracy."
+      ],
+      "useAgain": "when an exact total is not needed and rounding first makes the addition fast.",
+      "hints": [
+        "Round both numbers to the stated place before adding anything.",
+        "Add the two rounded numbers, not the original numbers."
+      ],
+      "socraticHint": "Would rounding the exact total instead of rounding each number first ever give a different estimate?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game world counts every creature spawned so far. Two readings are 912 and 549 creatures. Estimate the total by rounding each reading to the nearest hundred first, then adding. What is the estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "1400"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p29",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts total pages printed this month. Two readings are 156 and 227 pages. Estimate the total by rounding each reading to the nearest ten first, then adding. What is the estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "390"
+      },
+      "explanation": [
+        "Round each number first: 156 rounds to 160, and 227 rounds to 230.",
+        "Add the rounded numbers: 160 plus 230 is 390.",
+        "Rounding before adding makes the addition quick, at the cost of a small amount of accuracy."
+      ],
+      "useAgain": "when an exact total is not needed and rounding first makes the addition fast.",
+      "hints": [
+        "Round both numbers to the stated place before adding anything.",
+        "Add the two rounded numbers, not the original numbers."
+      ],
+      "socraticHint": "Would rounding the exact total instead of rounding each number first ever give a different estimate?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A workshop counts screws left in a bulk bin. Two readings are 176 and 257 screws. Estimate the total by rounding each reading to the nearest ten first, then adding. What is the estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "440"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p30",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A weather station logs total rainfall for the season, in millimeters. One reading is 3450 millimeters. What is that rounded to the nearest hundred?",
+      "options": [
+        "3400",
+        "3000",
+        "3600",
+        "3500"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Look at the digit right after the hundreds place in 3450.",
+        "If that digit is 5 or more, round up; if it is less than 5, keep the rounding digit the same.",
+        "3450 rounds to 3500.",
+        "Always rounding down, or rounding to the wrong place entirely, both give a wrong answer here."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest hundred.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An aquarium counts total fish across all its tanks. One reading is 3975 fish. What is that rounded to the nearest hundred?",
+        "options": [
+          "4000",
+          "3900",
+          "4100",
+          "4300"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p31",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A 3D printer logs total print time this week, in minutes. One reading is 650 minutes. What is that rounded to the nearest hundred?",
+      "options": [
+        "600",
+        "700",
+        "1000",
+        "800"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Look at the digit right after the hundreds place in 650.",
+        "If that digit is 5 or more, round up; if it is less than 5, keep the rounding digit the same.",
+        "650 rounds to 700.",
+        "Always rounding down, or rounding to the wrong place entirely, both give a wrong answer here."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest hundred.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine counts total snacks sold this month. One reading is 1175 snacks. What is that rounded to the nearest hundred?",
+        "options": [
+          "1100",
+          "1000",
+          "1200",
+          "1300"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p32",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A rover odometer tracks total distance driven, in meters. One reading is 1250 meters. What is that rounded to the nearest thousand?",
+      "options": [
+        "1000",
+        "0",
+        "2000",
+        "4000"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Look at the digit right after the thousands place in 1250.",
+        "If that digit is 5 or more, round up; if it is less than 5, keep the rounding digit the same.",
+        "1250 rounds to 1000.",
+        "Always rounding down, or rounding to the wrong place entirely, both give a wrong answer here."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest thousand.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game world counts every creature spawned so far. One reading is 6500 creatures. What is that rounded to the nearest thousand?",
+        "options": [
+          "6000",
+          "10000",
+          "7000",
+          "8000"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p33",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A print shop counts total pages printed this month. One reading is 85 pages. What is that rounded to the nearest ten?",
+      "options": [
+        "80",
+        "90",
+        "100",
+        "120"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Look at the digit right after the tens place in 85.",
+        "If that digit is 5 or more, round up; if it is less than 5, keep the rounding digit the same.",
+        "85 rounds to 90.",
+        "Always rounding down, or rounding to the wrong place entirely, both give a wrong answer here."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest ten.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop counts screws left in a bulk bin. One reading is 137 screws. What is that rounded to the nearest ten?",
+        "options": [
+          "130",
+          "100",
+          "150",
+          "140"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p34",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A weather station logs total rainfall for the season, in millimeters. One reading is 4500 millimeters. What is that rounded to the nearest thousand?",
+      "options": [
+        "4000",
+        "5000",
+        "0",
+        "6000"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Look at the digit right after the thousands place in 4500.",
+        "If that digit is 5 or more, round up; if it is less than 5, keep the rounding digit the same.",
+        "4500 rounds to 5000.",
+        "Always rounding down, or rounding to the wrong place entirely, both give a wrong answer here."
+      ],
+      "useAgain": "when a number needs to be rounded to the nearest thousand.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An aquarium counts total fish across all its tanks. One reading is 9750 fish. What is that rounded to the nearest thousand?",
+        "options": [
+          "10000",
+          "9000",
+          "11000",
+          "13000"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p35",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer logs total print time this week, in minutes. A rate is measured as 52 minutes across 8 identical stretches. Estimate the product by rounding 52 to the nearest hundred and 8 to the nearest whole number, then multiplying. What is the estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "800"
+      },
+      "explanation": [
+        "Round each number first: 52 rounds to 100, and 8 rounds to 8.",
+        "Multiply the rounded numbers: 100 times 8 is 800.",
+        "Rounding each factor first turns an awkward multiplication into an easy one."
+      ],
+      "useAgain": "when an exact product is not needed and rounding both factors first makes the multiplication fast.",
+      "hints": [
+        "Round each factor to its own stated place before multiplying anything.",
+        "Multiply the two rounded numbers together."
+      ],
+      "socraticHint": "Does rounding a factor up always make the estimate bigger than the exact product?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine counts total snacks sold this month. A rate is measured as 252 snacks across 9 identical stretches. Estimate the product by rounding 252 to the nearest hundred and 9 to the nearest whole number, then multiplying. What is the estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "2700"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p36",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A rover odometer tracks total distance driven, in meters. A rate is measured as 38 meters across 21 identical stretches. Estimate the product by rounding 38 to the nearest ten and 21 to the nearest ten, then multiplying. What is the estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "800"
+      },
+      "explanation": [
+        "Round each number first: 38 rounds to 40, and 21 rounds to 20.",
+        "Multiply the rounded numbers: 40 times 20 is 800.",
+        "Rounding each factor first turns an awkward multiplication into an easy one."
+      ],
+      "useAgain": "when an exact product is not needed and rounding both factors first makes the multiplication fast.",
+      "hints": [
+        "Round each factor to its own stated place before multiplying anything.",
+        "Multiply the two rounded numbers together."
+      ],
+      "socraticHint": "Does rounding a factor up always make the estimate bigger than the exact product?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game world counts every creature spawned so far. A rate is measured as 58 creatures across 31 identical stretches. Estimate the product by rounding 58 to the nearest ten and 31 to the nearest ten, then multiplying. What is the estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "1800"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p37",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A print shop counts total pages printed this month. A rate is measured as 96 pages across 12 identical stretches. Estimate the product by rounding 96 to the nearest ten and 12 to the nearest whole number, then multiplying. What is the estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "1200"
+      },
+      "explanation": [
+        "Round each number first: 96 rounds to 100, and 12 rounds to 12.",
+        "Multiply the rounded numbers: 100 times 12 is 1200.",
+        "Rounding each factor first turns an awkward multiplication into an easy one."
+      ],
+      "useAgain": "when an exact product is not needed and rounding both factors first makes the multiplication fast.",
+      "hints": [
+        "Round each factor to its own stated place before multiplying anything.",
+        "Multiply the two rounded numbers together."
+      ],
+      "socraticHint": "Does rounding a factor up always make the estimate bigger than the exact product?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop counts screws left in a bulk bin. A rate is measured as 116 screws across 13 identical stretches. Estimate the product by rounding 116 to the nearest ten and 13 to the nearest whole number, then multiplying. What is the estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "1560"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p38",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A weather station logs total rainfall for the season, in millimeters. A rate is measured as 47 millimeters across 9 identical stretches. Estimate the product by rounding 47 to the nearest ten and 9 to the nearest whole number, then multiplying. What is the estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "450"
+      },
+      "explanation": [
+        "Round each number first: 47 rounds to 50, and 9 rounds to 9.",
+        "Multiply the rounded numbers: 50 times 9 is 450.",
+        "Rounding each factor first turns an awkward multiplication into an easy one."
+      ],
+      "useAgain": "when an exact product is not needed and rounding both factors first makes the multiplication fast.",
+      "hints": [
+        "Round each factor to its own stated place before multiplying anything.",
+        "Multiply the two rounded numbers together."
+      ],
+      "socraticHint": "Does rounding a factor up always make the estimate bigger than the exact product?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An aquarium counts total fish across all its tanks. A rate is measured as 67 fish across 10 identical stretches. Estimate the product by rounding 67 to the nearest ten and 10 to the nearest whole number, then multiplying. What is the estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "700"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p39",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "truefalse",
+      "prompt": "A 3D printer logs total print time this week, in minutes. Two readings are 287 and 415 minutes. A note claims that rounding each to the nearest hundred and adding gives an estimate of 700. Is that correct?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "287 rounds to 300, and 415 rounds to 400.",
+        "300 plus 400 is 700.",
+        "That matches the note, so the claim is correct."
+      ],
+      "useAgain": "when checking whether an estimate was built by rounding correctly before adding.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine counts total snacks sold this month. Two readings are 487 and 515 snacks. A note claims that rounding each to the nearest hundred and adding gives an estimate of 1000. Is that correct?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p40",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "truefalse",
+      "prompt": "A rover odometer tracks total distance driven, in meters. Two readings are 523 and 168 meters. A note claims that rounding each to the nearest hundred and adding gives an estimate of 800. Is that correct?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "523 rounds to 500, and 168 rounds to 200.",
+        "500 plus 200 is 700.",
+        "The note says 800, which does not match, so the claim is wrong."
+      ],
+      "useAgain": "when checking whether an estimate was built by rounding correctly before adding.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game world counts every creature spawned so far. Two readings are 723 and 268 creatures. A note claims that rounding each to the nearest hundred and adding gives an estimate of 1100. Is that correct?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p41",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "truefalse",
+      "prompt": "A print shop counts total pages printed this month. Two readings are 64 and 38 pages. A note claims that rounding each to the nearest ten and adding gives an estimate of 100. Is that correct?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "64 rounds to 60, and 38 rounds to 40.",
+        "60 plus 40 is 100.",
+        "That matches the note, so the claim is correct."
+      ],
+      "useAgain": "when checking whether an estimate was built by rounding correctly before adding.",
+      "hints": [
+        "Find the digit in the place you are rounding to, then look at the digit right after it.",
+        "If that next digit is 5 or more, round up. Otherwise keep the rounding digit the same and replace everything after it with zero."
+      ],
+      "socraticHint": "Does any digit other than the one right after the rounding place ever decide which way you round?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop counts screws left in a bulk bin. Two readings are 84 and 48 screws. A note claims that rounding each to the nearest ten and adding gives an estimate of 130. Is that correct?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p42",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "order",
+      "prompt": "Round each number to the nearest ten, then put the original numbers in order from smallest to largest rounded value: 234, 267, 218, 251.",
+      "items": [
+        "234",
+        "267",
+        "218",
+        "251"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          0,
+          3,
+          1
+        ]
+      },
+      "explanation": [
+        "Rounded to the nearest ten: 234 becomes 230, 267 becomes 270, 218 becomes 220, 251 becomes 250.",
+        "Comparing the rounded values, not the original numbers, gives the order.",
+        "Two numbers that round to the same value can sit in either order relative to each other."
+      ],
+      "useAgain": "when several numbers need to be compared after rounding to the nearest ten.",
+      "hints": [
+        "Round every number to the nearest ten before comparing any of them.",
+        "Order the rounded values, not the original numbers."
+      ],
+      "socraticHint": "Can two numbers that round to the same value still be told apart by their rounded value alone?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Round each number to the nearest ten, then put the original numbers in order from smallest to largest rounded value: 265, 298, 249, 282.",
+        "items": [
+          "265",
+          "298",
+          "249",
+          "282"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            0,
+            3,
+            1
+          ]
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p43",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "order",
+      "prompt": "Round each number to the nearest hundred, then put the original numbers in order from smallest to largest rounded value: 3420, 3680, 3510, 3290.",
+      "items": [
+        "3420",
+        "3680",
+        "3510",
+        "3290"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          0,
+          2,
+          1
+        ]
+      },
+      "explanation": [
+        "Rounded to the nearest hundred: 3420 becomes 3400, 3680 becomes 3700, 3510 becomes 3500, 3290 becomes 3300.",
+        "Comparing the rounded values, not the original numbers, gives the order.",
+        "Two numbers that round to the same value can sit in either order relative to each other."
+      ],
+      "useAgain": "when several numbers need to be compared after rounding to the nearest hundred.",
+      "hints": [
+        "Round every number to the nearest hundred before comparing any of them.",
+        "Order the rounded values, not the original numbers."
+      ],
+      "socraticHint": "Can two numbers that round to the same value still be told apart by their rounded value alone?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Round each number to the nearest hundred, then put the original numbers in order from smallest to largest rounded value: 3721, 3981, 3811, 3591.",
+        "items": [
+          "3721",
+          "3981",
+          "3811",
+          "3591"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            0,
+            2,
+            1
+          ]
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p44",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "order",
+      "prompt": "Put these steps of rounding a number in the order you actually do them, first to last.",
+      "items": [
+        "If that digit is 5 or more, add one to the rounding digit; otherwise leave it alone.",
+        "Replace every digit after the rounding place with zero, or drop it if it comes after the decimal point.",
+        "Find the digit in the place you are rounding to.",
+        "Look at the digit right after that place."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          3,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "You have to find the rounding place before you can look at anything next to it.",
+        "The digit right after that place is the only one that decides which way to round.",
+        "Only after deciding up or down do the trailing digits get replaced or dropped."
+      ],
+      "useAgain": "when rounding a number to any given place.",
+      "hints": [
+        "The very first move locates the place you are rounding to, nothing else.",
+        "The decision to round up or down happens before any digit gets replaced."
+      ],
+      "socraticHint": "Could the trailing digits be replaced with zero before deciding whether to round up?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps of rounding a number in the order you actually do them, first to last.",
+        "items": [
+          "Round the rounding digit up only if that digit is 5 or more.",
+          "Zero out, or drop, everything after the rounding place.",
+          "Locate the rounding place in the number.",
+          "Check the single digit sitting right after it."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            3,
+            0,
+            1
+          ]
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p45",
+      "ideaId": "ar-rounding-estimation"
+    }
+  ],
+  "stretch": [
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A weather station logs total rainfall for the season, in millimeters. A whole number rounds to 500 when rounded to the nearest hundred. What is the smallest whole number that could round to 500?",
+      "answer": {
+        "kind": "number",
+        "value": "450"
+      },
+      "explanation": [
+        "Halfway between 400 and 500 is 450.",
+        "450 rounds up to 500, since a digit of exactly 5 rounds up.",
+        "Anything smaller than 450 is closer to 400 and would round down instead."
+      ],
+      "useAgain": "when finding the smallest or largest number that still rounds to a given target.",
+      "hints": [
+        "The smallest number that rounds up to a target sits exactly halfway between that target and the one below it.",
+        "A digit of exactly 5 always rounds up, so the halfway point itself belongs to the higher target."
+      ],
+      "socraticHint": "What is the very next whole number below the smallest one that rounds up to the target?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An aquarium counts total fish across all its tanks. A whole number rounds to 800 when rounded to the nearest hundred. What is the smallest whole number that could round to 800?",
+        "answer": {
+          "kind": "number",
+          "value": "750"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p46",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "number",
+      "prompt": "A 3D printer logs total print time this week, in minutes. Two readings are 342 and 289 minutes. Rounding each to the nearest hundred gives an estimate. What is that estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "600"
+      },
+      "explanation": [
+        "342 rounds to 300, and 289 rounds to 300.",
+        "300 plus 300 is 600.",
+        "The exact total is 631, which the estimate lands close to without needing the exact addition."
+      ],
+      "useAgain": "when a quick estimate is needed and the exact total is not.",
+      "hints": [
+        "Round each number to the nearest hundred first.",
+        "Add the two rounded numbers to get the estimate."
+      ],
+      "socraticHint": "Is the estimate ever exactly equal to the true total, or only close to it?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine counts total snacks sold this month. Two readings are 458 and 371 snacks. Rounding each to the nearest hundred gives an estimate. What is that estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "900"
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p47",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "choice",
+      "prompt": "A rover odometer tracks total distance driven, in meters. Three readings are 615, 238 and 100 meters. Estimate 615 minus 238 plus 100 by rounding each to the nearest hundred first. What is the estimate?",
+      "options": [
+        "300",
+        "477",
+        "500",
+        "400"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Round each number first: 615 rounds to 600, 238 rounds to 200, 100 rounds to 100.",
+        "Work left to right: 600 minus 200 is 400, then plus 100 is 500.",
+        "Grouping the last two rounded numbers together before subtracting changes the order of operations and gives a wrong estimate."
+      ],
+      "useAgain": "when an estimate chains rounding with more than one operation in a stated order.",
+      "hints": [
+        "Round every number before doing any of the operations.",
+        "Work through the operations strictly left to right, in the order they are written."
+      ],
+      "socraticHint": "Does grouping the last two rounded numbers together before subtracting give the same estimate as working left to right?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game world counts every creature spawned so far. Three readings are 724, 316 and 200 creatures. Estimate 724 minus 316 plus 200 by rounding each to the nearest hundred first. What is the estimate?",
+        "options": [
+          "200",
+          "608",
+          "400",
+          "600"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p48",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "order",
+      "prompt": "Work out each rounded value, then put the four results in order from smallest to largest: A: 340 to the nearest hundred. B: 65 to the nearest ten. C: 4.6 to the nearest whole number. D: 512 to the nearest hundred.",
+      "items": [
+        "A: 340 rounded to the nearest hundred",
+        "B: 65 rounded to the nearest ten",
+        "C: 4.6 rounded to the nearest whole number",
+        "D: 512 rounded to the nearest hundred"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0,
+          3
+        ]
+      },
+      "explanation": [
+        "A rounds to 300, B to 70, C to 5, D to 500.",
+        "Each one has to be rounded on its own stated place before any of them can be compared.",
+        "Comparing the rounded values in order gives the final sequence."
+      ],
+      "useAgain": "when several numbers rounded to different places need to be compared.",
+      "hints": [
+        "Round every value to its own stated place before comparing.",
+        "Compare the rounded results directly, ignoring what place each one was rounded to."
+      ],
+      "socraticHint": "Does rounding to a coarser place, like the nearest hundred instead of the nearest ten, change how the final values compare?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Work out each rounded value, then put the four results in order from smallest to largest: A: 460 to the nearest hundred. B: 84 to the nearest ten. C: 6.5 to the nearest whole number. D: 638 to the nearest hundred.",
+        "items": [
+          "A: 460 rounded to the nearest hundred",
+          "B: 84 rounded to the nearest ten",
+          "C: 6.5 rounded to the nearest whole number",
+          "D: 638 rounded to the nearest hundred"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ]
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p49",
+      "ideaId": "ar-rounding-estimation"
+    },
+    {
+      "lane": "skills",
+      "kind": "truefalse",
+      "prompt": "A print shop counts total pages printed this month. Two readings are 812 and 197 pages, adding to an exact total of 1009. A note claims that rounding each reading to the nearest hundred and adding gives an estimate of 900. Is that correct?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "812 rounds to 800, and 197 rounds to 200.",
+        "800 plus 200 is 1000, not 900.",
+        "A number close to the exact total is not the same thing as the estimate the rounding rule actually produces."
+      ],
+      "useAgain": "when a claimed estimate needs checking against the rounding rule, not just against how close it looks to the exact answer.",
+      "hints": [
+        "Round each original number to the nearest hundred first, not the exact total.",
+        "Add the two rounded numbers and compare that to the claim."
+      ],
+      "socraticHint": "Is a number that happens to be close to the exact total automatically the correct estimate?",
+      "skills": [
+        "think.skills.estimation"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop counts screws left in a bulk bin. Two readings are 623 and 284 screws, adding to an exact total of 907. A note claims that rounding each reading to the nearest hundred and adding gives an estimate of 900. Is that correct?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-ar-rounding-estimation-p50",
+      "ideaId": "ar-rounding-estimation"
+    }
+  ]
+}

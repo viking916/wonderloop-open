@@ -1,0 +1,289 @@
+{
+  "id": "s1-w11-build",
+  "season": 1,
+  "week": 11,
+  "track": "build",
+  "title": "The badge, in Python",
+  "summary": "Rewrite the week one name badge as real Python code on python.microbit.org instead of snapping blocks.",
+  "minutes": 60,
+  "materials": ["micro:bit v2", "USB cable", "laptop with Chrome"],
+  "skills": ["build.python", "build.conditionals"],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s1-w11-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop again: ask, imagine, plan, build, test, fix. This week you are not building a new badge. You are rebuilding the exact same badge from week one, except every block becomes a typed line of Python.\n\nAsk: what did each block in your week one badge actually do? Before you open the editor, picture your old program block by block. `on start`, the `forever` block with a beating heart, and `on button A pressed` showing your own picture.\n\nImagine before you build: picture what each block looks like as a line of text instead of a puzzle shape.\n\n1. A block you drag once becomes a line you type once.\n2. A block that wraps other blocks, like `forever`, becomes a line ending in a colon.\n3. Lines that were nested inside a block get typed indented underneath it instead.\n\nPlan the order before you type: which line runs once at the start, and which lines are inside the loop that never ends. Note which lines only run when button A is pressed. Plan also means choosing one number of your own: how long the happy face should stay on screen after you press the button."
+    },
+    {
+      "kind": "typing",
+      "id": "s1-w11-build-02",
+      "minutes": 5,
+      "body": "Five minutes on the same typing site you have been using. This week practice the exact shapes your code will use: a pair of quotation marks around a word, like \"NAME\", and a line that ends in a colon followed by an indented line underneath. Type a few practice lines that end in a colon, such as while True: typed out in full, then press Tab once and type the next line indented under it, then press Backspace or Shift+Tab to get back to the left edge before typing a line with no indent at all. Also practice typing a dot in the middle of a word with no space on either side, like display.show, since this week's code is full of names joined by dots."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w11-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A flow from top to bottom: import runs once, then scroll the name runs once, then a while True box contains show heart and sleep, show small heart and sleep, and the button A check, with a dashed green arrow looping from the bottom of that box back to its top, forever. A note warns that one missing colon or bad indent stops every line below it.",
+        "spec": {
+          "w": 360,
+          "h": 260,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 15,
+              "y": 15,
+              "w": 160,
+              "h": 25,
+              "label": "from microbit import *"
+            },
+            {
+              "t": "line",
+              "x1": 95,
+              "y1": 40,
+              "x2": 95,
+              "y2": 55,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 15,
+              "y": 55,
+              "w": 160,
+              "h": 25,
+              "label": "display.scroll(name)",
+              "sub": "runs once"
+            },
+            {
+              "t": "line",
+              "x1": 95,
+              "y1": 88,
+              "x2": 95,
+              "y2": 100,
+              "arrow": true
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  15,
+                  100
+                ],
+                [
+                  290,
+                  100
+                ],
+                [
+                  290,
+                  220
+                ],
+                [
+                  15,
+                  220
+                ]
+              ],
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 115,
+              "s": "while True:",
+              "anchor": "start"
+            },
+            {
+              "t": "box",
+              "x": 35,
+              "y": 130,
+              "w": 240,
+              "h": 22,
+              "label": "show heart -> sleep"
+            },
+            {
+              "t": "box",
+              "x": 35,
+              "y": 158,
+              "w": 240,
+              "h": 22,
+              "label": "show small heart -> sleep"
+            },
+            {
+              "t": "box",
+              "x": 35,
+              "y": 186,
+              "w": 240,
+              "h": 30,
+              "label": "if button_a.was_pressed():",
+              "sub": "show happy -> sleep"
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 113,
+              "s": "loops forever",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "line",
+              "x1": 305,
+              "y1": 210,
+              "x2": 305,
+              "y2": 105,
+              "arrow": true,
+              "dashed": true,
+              "color": "green"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 245,
+              "s": "one typo here stops every line below it",
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 800,
+              "caption": "import runs once",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "name scrolls once",
+              "set": {
+                "2": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "heart beats, forever loop begins",
+              "set": {
+                "6": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "small heart, then check button",
+              "set": {
+                "7": {
+                  "fill": "accent"
+                },
+                "8": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "loop closes and repeats",
+              "set": {
+                "10": {
+                  "color": "accent"
+                },
+                "6": {
+                  "fill": "accent"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "What the editor does with your text",
+      "body": "The python.microbit.org editor does not send your actual words to the chip. When you click Send, or download a file and copy it over yourself, the editor turns the Python text you typed into a hex file, a single file that packs your whole program together with the exact pattern of instructions the chip's processor understands. That hex file, not your typed words, is what actually ends up stored on the micro:bit.\n\nThe chip does not see your program all at once the way you can look at the whole screen of code. It reads and runs one instruction at a time, starting at the top and working down, in the exact order you typed the lines. The while True: line is the only twist: once the chip reaches the bottom of that loop, it jumps back to the top of the loop and keeps running the same lines in order, again and again, forever.\n\nThat strict, in-order reading is exactly why a typo stops everything. A missing colon, a misspelled word, an indent one space too far in or out, and the editor cannot turn your text into a working hex file at all, or the chip gets confused partway through and stops making sense of the lines that follow. One small mistake anywhere in the file can keep every line after it, even lines that are perfectly correct on their own, from ever running."
+    },
+    {
+      "kind": "task",
+      "id": "s1-w11-build-04",
+      "title": "Type the badge in Python",
+      "body": "Getting ready:\n\n1. https://python.microbit.org is a website with a Python editor for the micro:bit.\n2. Its `Send to micro:bit` button sends your code straight to the board over USB.\n3. The first time, it may ask you to `Connect` the micro:bit before it can send.\n\nType the code:\n\n1. Go to https://python.microbit.org and open the Python editor, not the block editor.\n2. Delete any starter code.\n3. Type `from microbit import *` on the first line.\n4. Leave a blank line, then type `display.scroll(\"YOUR NAME\")`, replacing YOUR NAME with your own name.\n5. Type `while True:` on the next line.\n6. Indent four spaces and type `display.show(Image.HEART)`.\n7. Indent four spaces and type `sleep(500)`, using the heartbeat pause you chose in week one instead of 500.\n8. Indent four spaces and type `display.show(Image.HEART_SMALL)`.\n9. Indent four spaces and type `sleep(500)` again, using the same heartbeat pause, right after `HEART_SMALL`.\n10. Indent four spaces and type `if button_a.was_pressed():`.\n11. Indent eight spaces and type `display.show(Image.HAPPY)`.\n12. Indent eight spaces and type `sleep(1000)`.\n\nNote: week one's loop had only one pause, right after the big heart, so the small heart flashed by with no pause before jumping back. This version pauses after both hearts equally, which is why it needs that second `sleep`. Delete that line after `HEART_SMALL` if you want to match week one exactly.\n\nCompare it with week one:\n\n1. `display.scroll(...)` before the loop is the same as `on start` scrolling your name once.\n2. `while True:` is the same as the `forever` block, just written as text with a colon.\n3. Each `display.show(...)` line is the same as a `show icon` block, naming the icon in parentheses.\n4. Each `sleep(...)` line is the same as a `pause` block.\n5. `if button_a.was_pressed():` is the same as `on button A pressed`, but it sits inside the loop.\n\nPredict first: how long, in milliseconds, should the happy face stay on screen before the heartbeat picks back up? Change `sleep(1000)` to the number you choose.\n\nSend it to the board:\n\n1. Check that no red error message shows under the editor.\n2. If your micro:bit is plugged in over USB, click `Send to micro:bit`.\n3. If `Send to micro:bit` is not available, click `Download` and drag the `.hex` file onto the `MICROBIT` drive.\n\nOptional: swap `Image.HAPPY` for the picture you drew in week one. Write it as five rows of five digits from 0 to 9, separated by colons, like `Image(\"09090:99999:99999:09990:00900\")`.",
+      "checklist": [
+        "Name scrolls once when the program starts",
+        "Heart beats: big heart, pause, small heart, pause, on repeat",
+        "Button A shows a happy face for a length of time I chose myself, then goes back to the heartbeat",
+        "No red error message shows under the editor before you Send",
+        "I wrote down how long I chose for the happy face to show, and why"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w11-build-05",
+      "title": "Bug diary",
+      "body": "Typing Python for the micro:bit opens up new ways to make a mistake that blocks never allowed. Three show up constantly.\n\nA missing colon: forgetting the colon at the end of a while or if line. Python needs that colon to know a new block of indented lines is about to start, and without it, the very next line confuses it.\n\nA wrong indent: a line meant to run inside the while True: loop, or inside the if button_a.was_pressed(): check, typed back at the left edge instead of indented under it, or indented at the wrong level entirely. Python uses the indent itself to decide what is inside which block, so an indent in the wrong place changes what your program actually does, even if every word is spelled right.\n\nWhen something is wrong, the micro:bit itself often tells you, scrolling an error message across its own LED grid the moment it starts up, something like line 5 SyntaxError or line 8 IndentationError. That scrolling message names the exact line the chip choked on and roughly what kind of mistake it found. Read the line number first, go straight to that line in the editor, and check it for a missing colon or a wrong indent before you check anything else.\n\nWrite one line in your bug diary for each error you hit today: what the scrolling message said, and what you changed to fix it. Also write down the number of milliseconds you chose for the happy face, and why you kept it or changed it from a full second."
+    },
+    {
+      "kind": "artifact",
+      "id": "s1-w11-build-06",
+      "title": "Show it",
+      "prompt": "Photo of the badge running, and the Python code you typed, copied out or screenshotted.",
+      "accepts": ["photo", "code"]
+    },
+    {
+      "kind": "log",
+      "id": "s1-w11-build-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s1-w11-build-x01",
+      "kind": "bonus",
+      "title": "Button B shows a different picture",
+      "minutes": 15,
+      "body": "Add a second button that shows a different picture than button A's happy face.\n\n1. Open your project at https://python.microbit.org.\n2. Keep the code you already wrote, from `import microbit` down to the button A check.\n3. Indent four spaces and type `if button_b.was_pressed():`, lined up under the button A check, not inside it.\n4. Indent eight spaces and type `display.show(Image.SAD)`.\n5. Indent eight spaces and type `sleep(1000)`, or a number you choose yourself.\n6. Check that no red error message shows, then click `Send to micro:bit`.\n\nWhat to notice: both button checks sit at the same indent level, directly inside `while True:`.",
+      "figure": {
+        "kind": "leds",
+        "alt": "A micro:bit screen showing a sad face: two eyes, and a mouth with corners higher than the middle.",
+        "spec": {
+          "frames": [
+            {
+              "rows": [
+                ".....",
+                ".#.#.",
+                ".....",
+                "#...#",
+                ".###."
+              ],
+              "ms": 1000
+            }
+          ],
+          "caption": "A sad face for button B, mouth corners higher than the middle, the opposite curve from a happy face."
+        }
+      }
+    },
+    {
+      "id": "s1-w11-build-x02",
+      "kind": "bonus",
+      "title": "Change the message when you shake it",
+      "minutes": 15,
+      "body": "Make a message appear only when you shake the badge.\n\n1. Open your project at https://python.microbit.org.\n2. Inside `while True:`, right after your two heartbeat lines, type `if accelerometer.was_gesture(\"shake\"):`.\n3. Indent four spaces and type `display.scroll(\"SHAKEN\")`, or a word you choose yourself.\n4. Check that no red error message shows, then click `Send to micro:bit`.\n\nWhat to notice: `was_gesture` reports true only once per shake, so it will not repeat until you shake again."
+    },
+    {
+      "id": "s1-w11-build-x03",
+      "kind": "invent",
+      "title": "Design your own Python badge feature",
+      "minutes": 25,
+      "body": "What is one thing you wish your Python badge could do that it cannot yet?\n\nDesign one new feature for the badge and type it yourself.\n\nIt must use `while True:` and at least one `if` you write yourself.\nIt must have one number you choose by testing, like a pause or a threshold.\nIt must be shown running on the real micro:bit to someone in your house.\n\nSketch it on paper before you type.\n\nHow to know it works: someone who has never seen your code can describe what it does after watching."
+    },
+    {
+      "id": "s1-w11-build-x04",
+      "kind": "bonus",
+      "title": "Ask the accelerometer again, in Python",
+      "minutes": 15,
+      "ideaId": "ask-the-world",
+      "body": "Find out whether the accelerometer gives about the same still reading in Python as it did in blocks back in week 2.\n\n1. Predict first: guess the number `accelerometer.get_z()` will show while your micro:bit sits still on the table. Write your number in the Maker's Log.\n2. Open python.microbit.org and add a line inside your `while True:` loop that displays `accelerometer.get_z()`.\n3. Send the program and read the number while the micro:bit lies still on the table.\n4. Shake the micro:bit and read the number again.\n5. Write down both numbers and compare them to your week 2 numbers if you still have them.\n\nCompare: was the still number close to your week 2 still number, and to your prediction this time?\n\nTeach it: tell a grown-up in two sentences why the same sensor question gets about the same answer in a different language."
+    }
+  ]
+}

@@ -1,0 +1,2211 @@
+{
+  "id": "al-modular-linear",
+  "idea": {
+    "body": "A congruence asks which whole numbers land on the same spot after a loop wraps back to its start. On a 5-hour loop, 0, 5 and 10 all land on the same spot, so 0, 5 and 10 are congruent mod 5. x is congruent to r mod m exactly when x and r leave the same remainder after dividing by m. Solving 3x congruent to 4 mod 7 means finding every x from 0 to 6 where 3 times x lands on that same spot. Congruences also explain divisibility. Since 10 is congruent to 1 mod 9, any number is congruent mod 9 to the sum of its own digits.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A remainder table for mod 5. n counts 0 to 8 next to n mod 5, which loops back to 0 at n = 5.",
+      "spec": {
+        "w": 120,
+        "h": 224,
+        "items": [
+          {
+            "t": "box",
+            "x": 0,
+            "y": 0,
+            "w": 50,
+            "h": 26,
+            "label": "n",
+            "fill": "sand"
+          },
+          {
+            "t": "box",
+            "x": 50,
+            "y": 0,
+            "w": 70,
+            "h": 26,
+            "label": "n mod 5",
+            "fill": "sand"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 26,
+            "w": 50,
+            "h": 22,
+            "label": "0",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 50,
+            "y": 26,
+            "w": 70,
+            "h": 22,
+            "label": "0",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 48,
+            "w": 50,
+            "h": 22,
+            "label": "1",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 50,
+            "y": 48,
+            "w": 70,
+            "h": 22,
+            "label": "1",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 70,
+            "w": 50,
+            "h": 22,
+            "label": "2",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 50,
+            "y": 70,
+            "w": 70,
+            "h": 22,
+            "label": "2",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 92,
+            "w": 50,
+            "h": 22,
+            "label": "3",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 50,
+            "y": 92,
+            "w": 70,
+            "h": 22,
+            "label": "3",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 114,
+            "w": 50,
+            "h": 22,
+            "label": "4",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 50,
+            "y": 114,
+            "w": 70,
+            "h": 22,
+            "label": "4",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 136,
+            "w": 50,
+            "h": 22,
+            "label": "5",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 50,
+            "y": 136,
+            "w": 70,
+            "h": 22,
+            "label": "0",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 158,
+            "w": 50,
+            "h": 22,
+            "label": "6",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 50,
+            "y": 158,
+            "w": 70,
+            "h": 22,
+            "label": "1",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 180,
+            "w": 50,
+            "h": 22,
+            "label": "7",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 50,
+            "y": 180,
+            "w": 70,
+            "h": 22,
+            "label": "2",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 202,
+            "w": 50,
+            "h": 22,
+            "label": "8",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 50,
+            "y": 202,
+            "w": 70,
+            "h": 22,
+            "label": "3",
+            "fill": "paper"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A drone's patrol loop has 7 waypoints, numbered 0 to 6. Solve 3x is congruent to 5 mod 7, for x from 0 to 6, to find which waypoint the drone starts at.",
+    "steps": [
+      "Try each whole number x from 0 to 6 in turn.",
+      "3 times 4 is 12, and 12 mod 7 is 5, which matches.",
+      "No other value of x from 0 to 6 gives 5.",
+      "The drone starts at waypoint x = 4."
+    ]
+  },
+  "ways": [
+    {
+      "id": "al-modular-linear-w1",
+      "name": "The remainder table",
+      "when": "Use this default method for any linear congruence with a small modulus.",
+      "steps": [
+        "List x from 0 to 6, then compute 3 times x mod 7 for each.",
+        "3 times 0 is 0, times 1 is 3, times 2 is 6, times 3 is 9, which is 2 mod 7.",
+        "3 times 4 is 12, which is 5 mod 7. That matches the target.",
+        "No other x from 0 to 6 gives 5, so x = 4 is the only solution."
+      ],
+      "example": "3x is congruent to 5 mod 7",
+      "answer": "x = 4",
+      "trap": "Stopping the table before checking every value from 0 to 6."
+    },
+    {
+      "id": "al-modular-linear-w2",
+      "name": "The clock",
+      "when": "Use this to see what a congruence means by walking a loop of the same size.",
+      "steps": [
+        "Draw a clock with 5 hours, 0 to 4, back to 0.",
+        "Starting at 0, jump forward 2 hours at a time: land on 2, then 4, then 1, then 3.",
+        "Landing on hour 3, the target remainder, took 4 jumps.",
+        "Each jump stands for one x, so x = 4."
+      ],
+      "example": "2x is congruent to 3 mod 5",
+      "answer": "x = 4",
+      "trap": "Losing count of the jumps, or forgetting the clock wraps back to 0 after hour 4.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A 5-hour clock with the jump-by-2 path drawn as arrows from 0 to 2 to 4 to 1 to 3.",
+        "spec": {
+          "w": 200,
+          "h": 200,
+          "items": [
+            {
+              "t": "dot",
+              "cx": 100,
+              "cy": 30,
+              "label": "0",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 166.6,
+              "cy": 78.4,
+              "label": "1",
+              "side": "right"
+            },
+            {
+              "t": "dot",
+              "cx": 141.1,
+              "cy": 156.6,
+              "label": "2",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 58.9,
+              "cy": 156.6,
+              "label": "3",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 33.4,
+              "cy": 78.4,
+              "label": "4",
+              "side": "left"
+            },
+            {
+              "t": "line",
+              "x1": 100,
+              "y1": 30,
+              "x2": 166.6,
+              "y2": 78.4,
+              "color": "muted"
+            },
+            {
+              "t": "line",
+              "x1": 166.6,
+              "y1": 78.4,
+              "x2": 141.1,
+              "y2": 156.6,
+              "color": "muted"
+            },
+            {
+              "t": "line",
+              "x1": 141.1,
+              "y1": 156.6,
+              "x2": 58.9,
+              "y2": 156.6,
+              "color": "muted"
+            },
+            {
+              "t": "line",
+              "x1": 58.9,
+              "y1": 156.6,
+              "x2": 33.4,
+              "y2": 78.4,
+              "color": "muted"
+            },
+            {
+              "t": "line",
+              "x1": 33.4,
+              "y1": 78.4,
+              "x2": 100,
+              "y2": 30,
+              "color": "muted"
+            },
+            {
+              "t": "line",
+              "x1": 100,
+              "y1": 30,
+              "x2": 141.1,
+              "y2": 156.6,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 141.1,
+              "y1": 156.6,
+              "x2": 33.4,
+              "y2": 78.4,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 33.4,
+              "y1": 78.4,
+              "x2": 166.6,
+              "y2": 78.4,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 166.6,
+              "y1": 78.4,
+              "x2": 58.9,
+              "y2": 156.6,
+              "arrow": true,
+              "color": "rust"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "The clock face, hour 0 marked.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                },
+                "13": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Draw a clock with 5 hours, 0 to",
+              "set": {
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                },
+                "13": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Starting at 0, jump forward 2 hours at",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "Landing on hour 3, the target remainder, took",
+              "set": {
+                "13": {
+                  "color": "green"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Each jump stands for one x, so x",
+              "set": {
+                "10": {
+                  "color": "green"
+                },
+                "11": {
+                  "color": "green"
+                },
+                "12": {
+                  "color": "green"
+                },
+                "13": {
+                  "color": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "al-modular-linear-w3",
+      "name": "Multiply both sides by an inverse",
+      "when": "Use this shortcut when you already know a number's inverse for the modulus.",
+      "steps": [
+        "Find the inverse of 5 mod 8: the number that multiplies with 5 to give 1 mod 8.",
+        "5 times 5 is 25, and 25 mod 8 is 1, so 5 is its own inverse mod 8.",
+        "Multiply both sides of 5x = 3 (mod 8) by 5: 25x = 15 (mod 8).",
+        "25x mod 8 is x, and 15 mod 8 is 7, so x = 7."
+      ],
+      "example": "5x is congruent to 3 mod 8",
+      "answer": "x = 7",
+      "trap": "Multiplying only one side of the congruence by the inverse instead of both sides."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-al-modular-linear-p01",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is 47 mod 6, the remainder when 47 is divided by 6?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "47 divided by 6 is 7 with a remainder.",
+        "6 times 7 is 42, and 47 minus that is 5."
+      ],
+      "useAgain": "when a plain remainder after division is needed.",
+      "hints": [
+        "Divide 47 by 6 and find how many whole times 6 fits.",
+        "The remainder is what is left after subtracting 6 times that whole number."
+      ],
+      "socraticHint": "How many whole times does 6 fit into 47, and what is left over?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 53 mod 8, the remainder when 53 is divided by 8?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p02",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is 73 mod 9, the remainder when 73 is divided by 9?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "73 divided by 9 is 8 with a remainder.",
+        "9 times 8 is 72, and 73 minus that is 1."
+      ],
+      "useAgain": "when a plain remainder after division is needed.",
+      "hints": [
+        "Divide 73 by 9 and find how many whole times 9 fits.",
+        "The remainder is what is left after subtracting 9 times that whole number."
+      ],
+      "socraticHint": "How many whole times does 9 fit into 73, and what is left over?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 61 mod 7, the remainder when 61 is divided by 7?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p03",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is 100 mod 11, the remainder when 100 is divided by 11?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "100 divided by 11 is 9 with a remainder.",
+        "11 times 9 is 99, and 100 minus that is 1."
+      ],
+      "useAgain": "when a plain remainder after division is needed.",
+      "hints": [
+        "Divide 100 by 11 and find how many whole times 11 fits.",
+        "The remainder is what is left after subtracting 11 times that whole number."
+      ],
+      "socraticHint": "How many whole times does 11 fit into 100, and what is left over?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 85 mod 12, the remainder when 85 is divided by 12?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p04",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is 58 mod 7, the remainder when 58 is divided by 7?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "58 divided by 7 is 8 with a remainder.",
+        "7 times 8 is 56, and 58 minus that is 2."
+      ],
+      "useAgain": "when a plain remainder after division is needed.",
+      "hints": [
+        "Divide 58 by 7 and find how many whole times 7 fits.",
+        "The remainder is what is left after subtracting 7 times that whole number."
+      ],
+      "socraticHint": "How many whole times does 7 fit into 58, and what is left over?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 44 mod 9, the remainder when 44 is divided by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p05",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is 91 mod 13, the remainder when 91 is divided by 13?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "91 divided by 13 is 7 with a remainder.",
+        "13 times 7 is 91, and 91 minus that is 0."
+      ],
+      "useAgain": "when a plain remainder after division is needed.",
+      "hints": [
+        "Divide 91 by 13 and find how many whole times 13 fits.",
+        "The remainder is what is left after subtracting 13 times that whole number."
+      ],
+      "socraticHint": "How many whole times does 13 fit into 91, and what is left over?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 77 mod 10, the remainder when 77 is divided by 10?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p06",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is (23 + 19) mod 7?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "23 plus 19 is 42.",
+        "42 mod 7 is 0."
+      ],
+      "useAgain": "when two numbers must be added and then reduced to a remainder.",
+      "hints": [
+        "Add the two numbers first, then take the remainder.",
+        "Divide the sum by 7 and keep only the remainder."
+      ],
+      "socraticHint": "What is the remainder of 23 plus 19, after dividing by 7?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is (31 + 24) mod 9?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p07",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is (15 + 28) mod 6?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "15 plus 28 is 43.",
+        "43 mod 6 is 1."
+      ],
+      "useAgain": "when two numbers must be added and then reduced to a remainder.",
+      "hints": [
+        "Add the two numbers first, then take the remainder.",
+        "Divide the sum by 6 and keep only the remainder."
+      ],
+      "socraticHint": "What is the remainder of 15 plus 28, after dividing by 6?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is (19 + 17) mod 5?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p08",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is (34 + 12) mod 8?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "34 plus 12 is 46.",
+        "46 mod 8 is 6."
+      ],
+      "useAgain": "when two numbers must be added and then reduced to a remainder.",
+      "hints": [
+        "Add the two numbers first, then take the remainder.",
+        "Divide the sum by 8 and keep only the remainder."
+      ],
+      "socraticHint": "What is the remainder of 34 plus 12, after dividing by 8?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is (21 + 33) mod 7?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p09",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is (9 + 46) mod 5?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "9 plus 46 is 55.",
+        "55 mod 5 is 0."
+      ],
+      "useAgain": "when two numbers must be added and then reduced to a remainder.",
+      "hints": [
+        "Add the two numbers first, then take the remainder.",
+        "Divide the sum by 5 and keep only the remainder."
+      ],
+      "socraticHint": "What is the remainder of 9 plus 46, after dividing by 5?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is (14 + 38) mod 4?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p10",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is (27 + 33) mod 10?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "27 plus 33 is 60.",
+        "60 mod 10 is 0."
+      ],
+      "useAgain": "when two numbers must be added and then reduced to a remainder.",
+      "hints": [
+        "Add the two numbers first, then take the remainder.",
+        "Divide the sum by 10 and keep only the remainder."
+      ],
+      "socraticHint": "What is the remainder of 27 plus 33, after dividing by 10?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is (18 + 45) mod 9?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p11",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is (8 times 9) mod 7?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "8 times 9 is 72.",
+        "72 mod 7 is 2."
+      ],
+      "useAgain": "when two numbers must be multiplied and then reduced to a remainder.",
+      "hints": [
+        "Multiply the two numbers first, then take the remainder.",
+        "Divide the product by 7 and keep only the remainder."
+      ],
+      "socraticHint": "What is the remainder of 8 times 9, after dividing by 7?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is (6 times 11) mod 8?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p12",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is (12 times 14) mod 5?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "12 times 14 is 168.",
+        "168 mod 5 is 3."
+      ],
+      "useAgain": "when two numbers must be multiplied and then reduced to a remainder.",
+      "hints": [
+        "Multiply the two numbers first, then take the remainder.",
+        "Divide the product by 5 and keep only the remainder."
+      ],
+      "socraticHint": "What is the remainder of 12 times 14, after dividing by 5?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is (9 times 13) mod 6?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p13",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is (17 times 6) mod 9?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "17 times 6 is 102.",
+        "102 mod 9 is 3."
+      ],
+      "useAgain": "when two numbers must be multiplied and then reduced to a remainder.",
+      "hints": [
+        "Multiply the two numbers first, then take the remainder.",
+        "Divide the product by 9 and keep only the remainder."
+      ],
+      "socraticHint": "What is the remainder of 17 times 6, after dividing by 9?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is (11 times 15) mod 7?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p14",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "truefalse",
+      "prompt": "47 and 12 leave the same remainder when divided by 5.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "47 mod 5 is 2, since 45 is the nearest multiple of 5 below it.",
+        "12 mod 5 is also 2, since 10 is the nearest multiple of 5 below it.",
+        "Both remainders match, so the claim is true."
+      ],
+      "useAgain": "when you need to check whether two numbers are congruent modulo some number.",
+      "hints": [
+        "Work out each number's remainder after dividing by 5 on its own.",
+        "Compare the two remainders directly."
+      ],
+      "socraticHint": "Do 47 and 12 actually land on the same remainder after dividing by 5?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "53 and 18 leave the same remainder when divided by 5.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p15",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "truefalse",
+      "prompt": "38 and 25 leave the same remainder when divided by 6.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "38 mod 6 is 2, since 36 is the nearest multiple of 6 below it.",
+        "25 mod 6 is 1, since 24 is the nearest multiple of 6 below it.",
+        "The remainders do not match, so the claim is false."
+      ],
+      "useAgain": "when you need to check whether two numbers are congruent modulo some number.",
+      "hints": [
+        "Work out each number's remainder after dividing by 6 on its own.",
+        "Compare the two remainders directly."
+      ],
+      "socraticHint": "Do 38 and 25 actually land on the same remainder after dividing by 6?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "41 and 29 leave the same remainder when divided by 6.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p16",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "Solve for x, the smallest value from 0 to 6: 3x is congruent to 5 mod 7.",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Try each whole number x from 0 to 6 and check 3 times x mod 7.",
+        "x = 4 gives 3 times 4 mod 7, which is 5."
+      ],
+      "useAgain": "when a linear congruence needs its one solution found by trying each value in range.",
+      "hints": [
+        "Try each value of x from 0 up to 6, checking 3 times x mod 7 each time.",
+        "Only one value in that range gives a remainder of 5."
+      ],
+      "socraticHint": "Which value of x from 0 to 6 makes 3 times x land on remainder 5?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x, the smallest value from 0 to 8: 2x is congruent to 7 mod 9.",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p17",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "Solve for x, the smallest value from 0 to 8: 4x is congruent to 5 mod 9.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Try each whole number x from 0 to 8 and check 4 times x mod 9.",
+        "x = 8 gives 4 times 8 mod 9, which is 5."
+      ],
+      "useAgain": "when a linear congruence needs its one solution found by trying each value in range.",
+      "hints": [
+        "Try each value of x from 0 up to 8, checking 4 times x mod 9 each time.",
+        "Only one value in that range gives a remainder of 5."
+      ],
+      "socraticHint": "Which value of x from 0 to 8 makes 4 times x land on remainder 5?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x, the smallest value from 0 to 10: 3x is congruent to 8 mod 11.",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p18",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "Solve for x, the smallest value from 0 to 7: 5x is congruent to 3 mod 8.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Try each whole number x from 0 to 7 and check 5 times x mod 8.",
+        "x = 7 gives 5 times 7 mod 8, which is 3."
+      ],
+      "useAgain": "when a linear congruence needs its one solution found by trying each value in range.",
+      "hints": [
+        "Try each value of x from 0 up to 7, checking 5 times x mod 8 each time.",
+        "Only one value in that range gives a remainder of 3."
+      ],
+      "socraticHint": "Which value of x from 0 to 7 makes 5 times x land on remainder 3?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x, the smallest value from 0 to 6: 2x is congruent to 4 mod 7.",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p19",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "Solve for x, the smallest value from 0 to 10: 2x is congruent to 7 mod 11.",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Try each whole number x from 0 to 10 and check 2 times x mod 11.",
+        "x = 9 gives 2 times 9 mod 11, which is 7."
+      ],
+      "useAgain": "when a linear congruence needs its one solution found by trying each value in range.",
+      "hints": [
+        "Try each value of x from 0 up to 10, checking 2 times x mod 11 each time.",
+        "Only one value in that range gives a remainder of 7."
+      ],
+      "socraticHint": "Which value of x from 0 to 10 makes 2 times x land on remainder 7?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x, the smallest value from 0 to 9: 3x is congruent to 6 mod 10.",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p20",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "Solve for x, the smallest value from 0 to 6: 6x is congruent to 4 mod 7.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Try each whole number x from 0 to 6 and check 6 times x mod 7.",
+        "x = 3 gives 6 times 3 mod 7, which is 4."
+      ],
+      "useAgain": "when a linear congruence needs its one solution found by trying each value in range.",
+      "hints": [
+        "Try each value of x from 0 up to 6, checking 6 times x mod 7 each time.",
+        "Only one value in that range gives a remainder of 4."
+      ],
+      "socraticHint": "Which value of x from 0 to 6 makes 6 times x land on remainder 4?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve for x, the smallest value from 0 to 7: 5x is congruent to 6 mod 8.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p21",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "A clock reads 9 right now. What will it read after 20 more hours, on a 12-hour clock numbered 1 to 12?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "9 plus 20 is 29.",
+        "29 mod 12 is 5, but a 12-hour clock reads 12 instead of 0.",
+        "The clock reads 5."
+      ],
+      "useAgain": "when a clock's reading after many hours needs to wrap around every 12.",
+      "hints": [
+        "Add the hours first, then reduce by 12s.",
+        "A 12-hour clock reads 12 instead of 0 when the remainder is 0."
+      ],
+      "socraticHint": "What is 9 plus 20, reduced to a number from 1 to 12?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A clock reads 7 right now. What will it read after 30 more hours, on a 12-hour clock numbered 1 to 12?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p22",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "Today is day 3 of the week (Monday is 1, Sunday is 7). What day of the week is it 17 days from now?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "3 plus 17 is 20.",
+        "20 mod 7 is 6, but the week is numbered 1 to 7, not 0 to 6.",
+        "The result lands on day 6."
+      ],
+      "useAgain": "when a day of the week many days from now needs to wrap around every 7.",
+      "hints": [
+        "Add the days first, then reduce by 7s.",
+        "The week is numbered 1 to 7, so a remainder of 0 means day 7."
+      ],
+      "socraticHint": "What is 3 plus 17, reduced to a day number from 1 to 7?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Today is day 5 of the week (Monday is 1, Sunday is 7). What day of the week is it 23 days from now?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p23",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "A game's turn counter cycles through 6 phases, numbered 0 to 5. It is on phase 2 now. What phase is it on after 37 more turns?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "2 plus 37 is 39.",
+        "39 mod 6 is 3."
+      ],
+      "useAgain": "when a cycling counter's phase after many turns needs to wrap around.",
+      "hints": [
+        "Add the turns to the current phase first.",
+        "Reduce the total by 6s to land back in the 0 to 5 range."
+      ],
+      "socraticHint": "What is 2 plus 37, reduced to a phase from 0 to 5?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game's turn counter cycles through 6 phases, numbered 0 to 5. It is on phase 4 now. What phase is it on after 25 more turns?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p24",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "A robot's patrol route has 8 checkpoints, numbered 0 to 7. It starts at checkpoint 5 and moves forward 3 checkpoints every minute. Where is it after 6 minutes?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Moving 3 checkpoints, 6 times, is 18 checkpoints total.",
+        "5 plus 18 is 23.",
+        "23 mod 8 is 7."
+      ],
+      "useAgain": "when a repeating route's position after many equal moves needs to wrap around.",
+      "hints": [
+        "Work out the total checkpoints moved first, then add the starting point.",
+        "Reduce the total by 8s to land back in the 0 to 7 range."
+      ],
+      "socraticHint": "What is 5 plus 3 times 6, reduced to a checkpoint from 0 to 7?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A robot's patrol route has 8 checkpoints, numbered 0 to 7. It starts at checkpoint 2 and moves forward 5 checkpoints every minute. Where is it after 7 minutes?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p25",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "A rocket's fuel gauge cycles through 10 readings, numbered 0 to 9, dropping by 3 every stage. It starts at reading 8. What does it read after 5 stages?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Dropping 3, 5 times, is 15 total.",
+        "8 minus 15 is negative 7.",
+        "Negative 7 mod 10 wraps around to 3."
+      ],
+      "useAgain": "when a repeating gauge's reading after several equal drops needs to wrap around.",
+      "hints": [
+        "Work out the total drop first, then subtract from the starting reading.",
+        "A negative remainder wraps around by adding 10 until it lands from 0 to 9."
+      ],
+      "socraticHint": "What is 8 minus 3 times 5, wrapped around to a reading from 0 to 9?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rocket's fuel gauge cycles through 10 readings, numbered 0 to 9, dropping by 4 every stage. It starts at reading 6. What does it read after 3 stages?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p26",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "choice",
+      "prompt": "17 is congruent to 3 mod 7, and 22 is congruent to 1 mod 7. What is (17 + 22) mod 7?",
+      "options": [
+        "5",
+        "3",
+        "4",
+        "6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Congruent numbers can be replaced by their remainders before adding.",
+        "3 plus 1 is 4, and 4 mod 7 is 4."
+      ],
+      "useAgain": "when two numbers' remainders are already known and their sum's remainder is wanted.",
+      "hints": [
+        "Replace each number with its given remainder before adding.",
+        "Add the two remainders, then reduce by 7 if needed."
+      ],
+      "socraticHint": "Do the remainders alone give the same answer as adding the full numbers?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "15 is congruent to 1 mod 7, and 21 is congruent to 0 mod 7. What is (15 + 21) mod 7?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "1",
+          "2",
+          "0",
+          "3"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p27",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "choice",
+      "prompt": "13 is congruent to 1 mod 6, and 19 is congruent to 1 mod 6. What is (13 + 19) mod 6?",
+      "options": [
+        "3",
+        "2",
+        "1",
+        "4"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Congruent numbers can be replaced by their remainders before adding.",
+        "1 plus 1 is 2, and 2 mod 6 is 2."
+      ],
+      "useAgain": "when two numbers' remainders are already known and their sum's remainder is wanted.",
+      "hints": [
+        "Replace each number with its given remainder before adding.",
+        "Add the two remainders, then reduce by 6 if needed."
+      ],
+      "socraticHint": "Do the remainders alone give the same answer as adding the full numbers?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "11 is congruent to 5 mod 6, and 16 is congruent to 4 mod 6. What is (11 + 16) mod 6?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "4",
+          "2",
+          "5",
+          "3"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p28",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "choice",
+      "prompt": "26 is congruent to 2 mod 8, and 31 is congruent to 7 mod 8. What is (26 + 31) mod 8?",
+      "options": [
+        "2",
+        "0",
+        "1",
+        "3"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Congruent numbers can be replaced by their remainders before adding.",
+        "2 plus 7 is 9, and 9 mod 8 is 1."
+      ],
+      "useAgain": "when two numbers' remainders are already known and their sum's remainder is wanted.",
+      "hints": [
+        "Replace each number with its given remainder before adding.",
+        "Add the two remainders, then reduce by 8 if needed."
+      ],
+      "socraticHint": "Do the remainders alone give the same answer as adding the full numbers?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "19 is congruent to 3 mod 8, and 24 is congruent to 0 mod 8. What is (19 + 24) mod 8?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "3",
+          "4",
+          "2",
+          "5"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p29",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "order",
+      "prompt": "Put these steps in order to solve 3x is congruent to 5 mod 7, for x from 0 to 6.",
+      "items": [
+        "x = 4 gives 3 times 4 mod 7, which is 5, a match",
+        "Try each whole number x from 0 to 6",
+        "For each x, compute 3 times x mod 7"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Every candidate value of x in the range gets tried.",
+        "Each one is checked the same way against the target remainder.",
+        "The match is found only after checking, not guessed first."
+      ],
+      "useAgain": "when you need to lay out solving a linear congruence by trying each value in order.",
+      "hints": [
+        "Every value of x in the range has to be tried, not just one.",
+        "The match is confirmed only once the check is actually done."
+      ],
+      "socraticHint": "Can the matching value of x be known before every candidate has been checked?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to solve 4x is congruent to 5 mod 9, for x from 0 to 8.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        },
+        "items": [
+          "x = 8 gives 4 times 8 mod 9, which is 5, a match",
+          "Try each whole number x from 0 to 8",
+          "For each x, compute 4 times x mod 9"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p30",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "order",
+      "prompt": "Put these steps in order to find the clock reading after 20 hours starting from 9, on a 12-hour clock.",
+      "items": [
+        "Reduce 29 by 12s to land in the 1 to 12 range, giving 5",
+        "Add the hours: 9 plus 20 is 29",
+        "Start with the current reading, 9"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "The starting reading always comes before any hours are added.",
+        "The hours are added next, giving a total that may pass 12.",
+        "That total is reduced last, back into the clock's own range."
+      ],
+      "useAgain": "when you need to lay out a clock or cycle wrap-around calculation in order.",
+      "hints": [
+        "The starting value has to be identified before anything is added to it.",
+        "The final wrap-around reduction always comes after the addition, not before."
+      ],
+      "socraticHint": "Does the wrap-around reduction happen before or after the hours are added?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to find the clock reading after 30 hours starting from 7, on a 12-hour clock.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0
+          ]
+        },
+        "items": [
+          "Reduce 37 by 12s to land in the 1 to 12 range, giving 1",
+          "Add the hours: 7 plus 30 is 37",
+          "Start with the current reading, 7"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p31",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "How many whole numbers x from 0 to 7 satisfy 4x is congruent to 4 mod 8?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Trying every x from 0 to 7 and checking 4 times x mod 8 against 4 finds every match.",
+        "That check comes out true 4 time(s)."
+      ],
+      "useAgain": "when a linear congruence's coefficient and modulus share a common factor, changing how many solutions exist.",
+      "hints": [
+        "Try each whole number x from 0 to 7, checking 4 times x mod 8 every time.",
+        "Since the coefficient and the modulus share a common factor, there may be more than one match, or none."
+      ],
+      "socraticHint": "Do the coefficient 4 and the modulus 8 share a common factor larger than 1?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers x from 0 to 8 satisfy 6x is congruent to 3 mod 9?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p32",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "How many whole numbers x from 0 to 9 satisfy 6x is congruent to 2 mod 10?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Trying every x from 0 to 9 and checking 6 times x mod 10 against 2 finds every match.",
+        "That check comes out true 2 time(s)."
+      ],
+      "useAgain": "when a linear congruence's coefficient and modulus share a common factor, changing how many solutions exist.",
+      "hints": [
+        "Try each whole number x from 0 to 9, checking 6 times x mod 10 every time.",
+        "Since the coefficient and the modulus share a common factor, there may be more than one match, or none."
+      ],
+      "socraticHint": "Do the coefficient 6 and the modulus 10 share a common factor larger than 1?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers x from 0 to 11 satisfy 4x is congruent to 8 mod 12?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p33",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "How many whole numbers x from 0 to 8 satisfy 3x is congruent to 6 mod 9?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Trying every x from 0 to 8 and checking 3 times x mod 9 against 6 finds every match.",
+        "That check comes out true 3 time(s)."
+      ],
+      "useAgain": "when a linear congruence's coefficient and modulus share a common factor, changing how many solutions exist.",
+      "hints": [
+        "Try each whole number x from 0 to 8, checking 3 times x mod 9 every time.",
+        "Since the coefficient and the modulus share a common factor, there may be more than one match, or none."
+      ],
+      "socraticHint": "Do the coefficient 3 and the modulus 9 share a common factor larger than 1?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers x from 0 to 7 satisfy 6x is congruent to 2 mod 8?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p34",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "How many whole numbers x from 0 to 5 satisfy 2x is congruent to 4 mod 6?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Trying every x from 0 to 5 and checking 2 times x mod 6 against 4 finds every match.",
+        "That check comes out true 2 time(s)."
+      ],
+      "useAgain": "when a linear congruence's coefficient and modulus share a common factor, changing how many solutions exist.",
+      "hints": [
+        "Try each whole number x from 0 to 5, checking 2 times x mod 6 every time.",
+        "Since the coefficient and the modulus share a common factor, there may be more than one match, or none."
+      ],
+      "socraticHint": "Do the coefficient 2 and the modulus 6 share a common factor larger than 1?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers x from 0 to 9 satisfy 4x is congruent to 6 mod 10?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p35",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "How many whole numbers x from 0 to 9 satisfy 5x is congruent to 5 mod 10?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Trying every x from 0 to 9 and checking 5 times x mod 10 against 5 finds every match.",
+        "That check comes out true 5 time(s)."
+      ],
+      "useAgain": "when a linear congruence's coefficient and modulus share a common factor, changing how many solutions exist.",
+      "hints": [
+        "Try each whole number x from 0 to 9, checking 5 times x mod 10 every time.",
+        "Since the coefficient and the modulus share a common factor, there may be more than one match, or none."
+      ],
+      "socraticHint": "Do the coefficient 5 and the modulus 10 share a common factor larger than 1?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers x from 0 to 11 satisfy 3x is congruent to 9 mod 12?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p36",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is the remainder when 3^40 is divided by 7?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The remainders of powers of 3 mod 7 repeat in a cycle of length 6, starting 3, 2, 6, 4, 5, 1.",
+        "40 mod 6 tells which spot in the cycle 3^40 lands on.",
+        "That spot's remainder is 4."
+      ],
+      "useAgain": "when a very large power's remainder is wanted and the remainders repeat in a short cycle.",
+      "hints": [
+        "List the remainders of 3^1, 3^2, 3^3, and so on mod 7 until they start repeating.",
+        "Once the cycle length is known, 40 mod that length says where in the cycle the answer lands."
+      ],
+      "socraticHint": "After how many powers do the remainders of 3 mod 7 start repeating?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the remainder when 2^50 is divided by 7?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p37",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is the remainder when 7^100 is divided by 5?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The remainders of powers of 7 mod 5 repeat in a cycle of length 4, starting 2, 4, 3, 1, 2.",
+        "100 mod 4 tells which spot in the cycle 7^100 lands on.",
+        "That spot's remainder is 1."
+      ],
+      "useAgain": "when a very large power's remainder is wanted and the remainders repeat in a short cycle.",
+      "hints": [
+        "List the remainders of 7^1, 7^2, 7^3, and so on mod 5 until they start repeating.",
+        "Once the cycle length is known, 100 mod that length says where in the cycle the answer lands."
+      ],
+      "socraticHint": "After how many powers do the remainders of 7 mod 5 start repeating?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the remainder when 3^100 is divided by 4?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p38",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is the remainder when 2^30 is divided by 9?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The remainders of powers of 2 mod 9 repeat in a cycle of length 6, starting 2, 4, 8, 7, 5, 1.",
+        "30 mod 6 tells which spot in the cycle 2^30 lands on.",
+        "That spot's remainder is 1."
+      ],
+      "useAgain": "when a very large power's remainder is wanted and the remainders repeat in a short cycle.",
+      "hints": [
+        "List the remainders of 2^1, 2^2, 2^3, and so on mod 9 until they start repeating.",
+        "Once the cycle length is known, 30 mod that length says where in the cycle the answer lands."
+      ],
+      "socraticHint": "After how many powers do the remainders of 2 mod 9 start repeating?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the remainder when 4^25 is divided by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p39",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is the remainder when 6^20 is divided by 11?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The remainders of powers of 6 mod 11 repeat in a cycle of length 10, starting 6, 3, 7, 9, 10, 5.",
+        "20 mod 10 tells which spot in the cycle 6^20 lands on.",
+        "That spot's remainder is 1."
+      ],
+      "useAgain": "when a very large power's remainder is wanted and the remainders repeat in a short cycle.",
+      "hints": [
+        "List the remainders of 6^1, 6^2, 6^3, and so on mod 11 until they start repeating.",
+        "Once the cycle length is known, 20 mod that length says where in the cycle the answer lands."
+      ],
+      "socraticHint": "After how many powers do the remainders of 6 mod 11 start repeating?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the remainder when 5^30 is divided by 11?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p40",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is the remainder when 9^15 is divided by 13?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The remainders of powers of 9 mod 13 repeat in a cycle of length 3, starting 9, 3, 1, 9.",
+        "15 mod 3 tells which spot in the cycle 9^15 lands on.",
+        "That spot's remainder is 1."
+      ],
+      "useAgain": "when a very large power's remainder is wanted and the remainders repeat in a short cycle.",
+      "hints": [
+        "List the remainders of 9^1, 9^2, 9^3, and so on mod 13 until they start repeating.",
+        "Once the cycle length is known, 15 mod that length says where in the cycle the answer lands."
+      ],
+      "socraticHint": "After how many powers do the remainders of 9 mod 13 start repeating?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the remainder when 8^14 is divided by 13?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p41",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "Since 10 is congruent to 1 mod 9, a number is congruent mod 9 to the sum of its digits. What is 4371 mod 9?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Adding the digits of 4371 gives 15.",
+        "15 mod 9 is 6, and this matches 4371 mod 9 exactly."
+      ],
+      "useAgain": "when a number's remainder mod 9 (or mod 3) is wanted without dividing the whole number.",
+      "hints": [
+        "Add up every digit of the number instead of dividing the whole thing.",
+        "The digit sum 15 is much smaller and easier to reduce mod 9."
+      ],
+      "socraticHint": "Why does replacing the number with its digit sum give the same remainder mod 9?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Since 10 is congruent to 1 mod 9, a number is congruent mod 9 to the sum of its digits. What is 5824 mod 9?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p42",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "Since 10 is congruent to 1 mod 9, a number is congruent mod 9 to the sum of its digits. What is 62589 mod 9?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Adding the digits of 62589 gives 30.",
+        "30 mod 9 is 3, and this matches 62589 mod 9 exactly."
+      ],
+      "useAgain": "when a number's remainder mod 9 (or mod 3) is wanted without dividing the whole number.",
+      "hints": [
+        "Add up every digit of the number instead of dividing the whole thing.",
+        "The digit sum 30 is much smaller and easier to reduce mod 9."
+      ],
+      "socraticHint": "Why does replacing the number with its digit sum give the same remainder mod 9?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Since 10 is congruent to 1 mod 9, a number is congruent mod 9 to the sum of its digits. What is 71346 mod 9?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p43",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "Since 10 is congruent to 1 mod 9, a number is congruent mod 9 to the sum of its digits. What is 138472 mod 9?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Adding the digits of 138472 gives 25.",
+        "25 mod 9 is 7, and this matches 138472 mod 9 exactly."
+      ],
+      "useAgain": "when a number's remainder mod 9 (or mod 3) is wanted without dividing the whole number.",
+      "hints": [
+        "Add up every digit of the number instead of dividing the whole thing.",
+        "The digit sum 25 is much smaller and easier to reduce mod 9."
+      ],
+      "socraticHint": "Why does replacing the number with its digit sum give the same remainder mod 9?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Since 10 is congruent to 1 mod 9, a number is congruent mod 9 to the sum of its digits. What is 294831 mod 9?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p44",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "Since 10 is congruent to 1 mod 9, a number is congruent mod 9 to the sum of its digits. What is 90817 mod 9?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Adding the digits of 90817 gives 25.",
+        "25 mod 9 is 7, and this matches 90817 mod 9 exactly."
+      ],
+      "useAgain": "when a number's remainder mod 9 (or mod 3) is wanted without dividing the whole number.",
+      "hints": [
+        "Add up every digit of the number instead of dividing the whole thing.",
+        "The digit sum 25 is much smaller and easier to reduce mod 9."
+      ],
+      "socraticHint": "Why does replacing the number with its digit sum give the same remainder mod 9?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Since 10 is congruent to 1 mod 9, a number is congruent mod 9 to the sum of its digits. What is 81274 mod 9?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p45",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "Since 10 is congruent to 1 mod 9, a number is congruent mod 9 to the sum of its digits. What is 456123 mod 9?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Adding the digits of 456123 gives 21.",
+        "21 mod 9 is 3, and this matches 456123 mod 9 exactly."
+      ],
+      "useAgain": "when a number's remainder mod 9 (or mod 3) is wanted without dividing the whole number.",
+      "hints": [
+        "Add up every digit of the number instead of dividing the whole thing.",
+        "The digit sum 21 is much smaller and easier to reduce mod 9."
+      ],
+      "socraticHint": "Why does replacing the number with its digit sum give the same remainder mod 9?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Since 10 is congruent to 1 mod 9, a number is congruent mod 9 to the sum of its digits. What is 789234 mod 9?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-al-modular-linear-p46",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is the last digit of 7 raised to the power 2024?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The last digit of powers of 7 cycles: 7, 9, 3, 1, then repeats every 4 powers.",
+        "2024 mod 4 is 0, which lands on the fourth spot in the cycle.",
+        "The fourth spot in the cycle is 1."
+      ],
+      "useAgain": "when a huge power's last digit is wanted and the last digits repeat in a short cycle.",
+      "hints": [
+        "List the last digits of 7^1, 7^2, 7^3, 7^4 and watch them repeat.",
+        "Use the exponent mod the cycle length to find which spot in the cycle it lands on."
+      ],
+      "socraticHint": "After how many powers of 7 does the last digit start repeating?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the last digit of 3 raised to the power 2025?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p47",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is the smallest positive whole number that is congruent to 2 mod 3 and congruent to 3 mod 5?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Listing numbers congruent to 2 mod 3 gives 2, 5, 8, 11, 14, ...",
+        "Checking each against 3 mod 5, the number 8 is the first one that also fits.",
+        "8 mod 5 is 3, matching both conditions."
+      ],
+      "useAgain": "when a number must satisfy two different congruences at once.",
+      "hints": [
+        "List numbers that satisfy the first congruence, then check each against the second.",
+        "The smallest positive whole number satisfying both, if one exists, shows up quickly in a short list."
+      ],
+      "socraticHint": "Which small numbers satisfy the first congruence, and does any of them also satisfy the second?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the smallest positive whole number that is congruent to 1 mod 4 and congruent to 2 mod 5?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p48",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "A number leaves remainder 4 when divided by 7. What remainder does its square leave when divided by 7?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "A number congruent to 4 mod 7 squares to something congruent to 4 times 4 mod 7.",
+        "4 times 4 is 16.",
+        "16 mod 7 is 2."
+      ],
+      "useAgain": "when the remainder of a squared number is wanted and only the original remainder is known.",
+      "hints": [
+        "Square the remainder itself, not the original unknown number.",
+        "Reduce that squared remainder mod 7 at the end."
+      ],
+      "socraticHint": "Does squaring the remainder give the same result as squaring the whole number, then reducing?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A number leaves remainder 5 when divided by 9. What remainder does its square leave when divided by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p49",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "A number is congruent mod 11 to its alternating digit sum, taken from the right. What is 74613 mod 11?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "From the right, the alternating sum of 74613's digits is 3 minus 1 plus 6 minus 4 plus 7.",
+        "That works out to 11.",
+        "11 mod 11 is 0."
+      ],
+      "useAgain": "when a number's remainder mod 11 is wanted without dividing the whole number.",
+      "hints": [
+        "Starting from the rightmost digit, alternately add and subtract each digit.",
+        "Reduce that alternating sum mod 11 at the end."
+      ],
+      "socraticHint": "What does the alternating digit sum, taken from the right, work out to before reducing mod 11?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A number is congruent mod 11 to its alternating digit sum, taken from the right. What is 58239 mod 11?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-modular-linear-p50",
+      "lane": "skills",
+      "ideaId": "al-modular-linear",
+      "kind": "number",
+      "prompt": "What is the smallest positive whole number that is congruent to 1 mod 6 and congruent to 4 mod 9?",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "Numbers congruent to 1 mod 6 are 1, 7, 13, 19, and so on.",
+        "6 and 9 share a factor of 3, and 4 minus 1 is 3, a multiple of 3, so a solution does exist.",
+        "Checking those numbers mod 9, the number 13 is the first that leaves remainder 4."
+      ],
+      "useAgain": "when two congruences share a common factor between their moduli, which can block a solution entirely.",
+      "hints": [
+        "When the two moduli share a common factor, check that the two remainders agree on that shared factor first.",
+        "List numbers satisfying the first congruence, then test each against the second."
+      ],
+      "socraticHint": "Since 6 and 9 share a common factor of 3, do the two remainders agree once reduced mod 3?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the smallest positive whole number that is congruent to 3 mod 8 and congruent to 7 mod 12?",
+        "answer": {
+          "kind": "number",
+          "value": "19"
+        }
+      }
+    }
+  ]
+}

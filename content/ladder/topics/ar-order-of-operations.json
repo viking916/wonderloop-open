@@ -1,0 +1,1950 @@
+{
+  "id": "ar-order-of-operations",
+  "idea": {
+    "body": "When an expression has more than one operation, there is one correct order to do them in. Multiplication and division always happen before addition and subtraction. Parentheses beat everything: whatever is inside them gets worked out first, no matter what operation is inside. So 3 + 4 x 2 is not 14, it is 11, since the 4 x 2 happens before the 3 is added. But (3 + 4) x 2 really is 14, since the parentheses force the addition to happen first. A kitchen scale reading, a game score, or a robot's step count can all come out wrong if the operations happen in the wrong order."
+  },
+  "workedExample": {
+    "prompt": "Evaluate 50 - 2 x (3 + (8 - 5)).",
+    "steps": [
+      "Work the innermost parentheses first: 8 - 5 is 3.",
+      "Now the next parentheses: 3 + 3 is 6.",
+      "Multiply next, before any subtracting: 2 x 6 is 12.",
+      "Finally subtract: 50 - 12 is 38."
+    ]
+  },
+  "ways": [
+    {
+      "id": "ar-order-of-operations-w1",
+      "name": "Work from the inside out",
+      "when": "Use this when parentheses sit inside other parentheses.",
+      "steps": [
+        "Work the innermost parentheses first: 8 minus 5 is 3.",
+        "Now the next parentheses: 3 plus 3 is 6.",
+        "Multiply before subtracting: 2 times 6 is 12.",
+        "Finally subtract: 50 minus 12 is 38."
+      ],
+      "example": "50 - 2 x (3 + (8 - 5))",
+      "answer": "38",
+      "trap": "Subtracting before finishing the multiplication that comes right after the parentheses."
+    },
+    {
+      "id": "ar-order-of-operations-w2",
+      "name": "Box the parentheses",
+      "when": "Use this when one group in parentheses is easy to spot and solve on its own.",
+      "steps": [
+        "Draw a box around (6 + 2), since parentheses always go first.",
+        "Solve inside the box: 6 plus 2 is 8.",
+        "Replace the box with 8: the expression is now 40 minus 8 times 3.",
+        "Multiply before subtracting: 8 times 3 is 24.",
+        "Subtract: 40 minus 24 is 16."
+      ],
+      "example": "40 - (6 + 2) x 3",
+      "answer": "16",
+      "trap": "Subtracting 40 minus 8 before multiplying by 3."
+    },
+    {
+      "id": "ar-order-of-operations-w3",
+      "name": "Mark priority numbers first",
+      "when": "Use this when several operations are mixed together at once.",
+      "steps": [
+        "Label parentheses as priority 1, multiply and divide as priority 2, add and subtract as priority 3.",
+        "Solve every priority 1 group first: 10 minus 4 is 6.",
+        "The expression is now 4 times 3 plus 6 divided by 2.",
+        "Solve every priority 2 part: 4 times 3 is 12, and 6 divided by 2 is 3.",
+        "Only priority 3 is left: 12 plus 3 is 15."
+      ],
+      "example": "4 x 3 + (10 - 4) / 2",
+      "answer": "15",
+      "trap": "Solving strictly left to right instead of by priority number, mixing up the order."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-ar-order-of-operations-p01",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "3 + 4 x 2",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "Multiplication happens before addition.",
+        "4 x 2 is 8 first.",
+        "3 + 8 is 11."
+      ],
+      "useAgain": "when an expression mixes addition and multiplication with no parentheses.",
+      "hints": [
+        "Do the multiplication part first, before adding.",
+        "Add the leftover number to that product last."
+      ],
+      "socraticHint": "Which operation, plus or times, gets done first when there are no parentheses?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "5 + 3 x 2",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p02",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "6 + 2 x 5",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "Multiplication happens before addition.",
+        "2 x 5 is 10 first.",
+        "6 + 10 is 16."
+      ],
+      "useAgain": "when a bigger multiplication is mixed with a small addition.",
+      "hints": [
+        "Multiply the two middle numbers first.",
+        "Then add the first number to that result."
+      ],
+      "socraticHint": "If you added 6 and 2 first, would you still land on the correct total?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "4 + 3 x 6",
+        "answer": {
+          "kind": "number",
+          "value": "22"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p03",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "10 - 2 x 3",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Multiplication happens before subtraction.",
+        "2 x 3 is 6 first.",
+        "10 - 6 is 4."
+      ],
+      "useAgain": "when subtraction is mixed with multiplication and no parentheses are there to change the order.",
+      "hints": [
+        "Multiply first, before subtracting anything.",
+        "Subtract that product from the first number."
+      ],
+      "socraticHint": "Does subtracting 10 minus 2 first give the same answer as multiplying first?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "20 - 3 x 4",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p04",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "2 x 5 + 4",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "Multiplication happens before addition, even when it comes first in the line.",
+        "2 x 5 is 10.",
+        "10 + 4 is 14."
+      ],
+      "useAgain": "when the multiplication is already written first, so the order looks obvious.",
+      "hints": [
+        "Multiply the first two numbers.",
+        "Add the last number to that product."
+      ],
+      "socraticHint": "Since the multiplication is already written first here, does the order of operations change anything?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "3 x 4 + 6",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p05",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "8 - 3 x 2",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Multiplication happens before subtraction.",
+        "3 x 2 is 6.",
+        "8 - 6 is 2."
+      ],
+      "useAgain": "when a small subtraction result needs the multiplication done first.",
+      "hints": [
+        "Multiply before you subtract.",
+        "Subtract the product from the first number."
+      ],
+      "socraticHint": "If you subtracted 8 minus 3 first, would the final answer still be right?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "9 - 2 x 4",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p06",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "(3 + 4) x 2",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "Parentheses always go first.",
+        "3 + 4 is 7.",
+        "7 x 2 is 14."
+      ],
+      "useAgain": "when parentheses force an addition to happen before a multiplication.",
+      "hints": [
+        "Work out the parentheses completely first.",
+        "Multiply that result by the number outside."
+      ],
+      "socraticHint": "The parentheses tell you to add first this time. Why does that give a different answer than without them?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "(5 + 2) x 3",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p07",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "(6 - 2) x 5",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "Parentheses always go first.",
+        "6 - 2 is 4.",
+        "4 x 5 is 20."
+      ],
+      "useAgain": "when parentheses force a subtraction to happen before a multiplication.",
+      "hints": [
+        "Work out the parentheses completely first.",
+        "Multiply that result by the number outside."
+      ],
+      "socraticHint": "Without the parentheses, would multiplication or subtraction happen first here?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "(9 - 4) x 3",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p08",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "5 x (2 + 3)",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "Parentheses always go first.",
+        "2 + 3 is 5.",
+        "5 x 5 is 25."
+      ],
+      "useAgain": "when the parentheses come after the multiplication sign instead of before it.",
+      "hints": [
+        "Work out the parentheses first, no matter where they sit in the line.",
+        "Multiply the outside number by that result."
+      ],
+      "socraticHint": "Does it matter that the parentheses come after the times sign instead of before it?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "4 x (3 + 5)",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p09",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "truefalse",
+      "prompt": "3 + 4 x 2 equals 14.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Multiplication happens before addition.",
+        "4 x 2 is 8, then 3 + 8 is 11, not 14.",
+        "14 would only be right if you added 3 and 4 first, which skips the correct order."
+      ],
+      "useAgain": "when a claimed answer secretly added before multiplying.",
+      "hints": [
+        "Work out 4 x 2 first.",
+        "Add 3 to that product, and compare to 14."
+      ],
+      "socraticHint": "Fourteen comes from adding 3 and 4 first. Is that the order the rule says to use?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "5 + 3 x 2 equals 16.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p10",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "truefalse",
+      "prompt": "(3 + 4) x 2 equals 14.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Parentheses go first, so 3 + 4 is 7.",
+        "7 x 2 is 14.",
+        "The claim matches the correct order."
+      ],
+      "useAgain": "when parentheses change the usual order and the claimed answer follows that change correctly.",
+      "hints": [
+        "Work out the parentheses first.",
+        "Multiply that result by 2, and compare to 14."
+      ],
+      "socraticHint": "This time the parentheses force addition first. Does that match the claimed total of 14?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "(5 + 2) x 3 equals 21.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p11",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "choice",
+      "prompt": "6 + 2 x 5 = ?",
+      "options": [
+        "16",
+        "40",
+        "13",
+        "60"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "6 + 2 x 5: multiply first, 2 x 5 is 10, then 6 + 10 is 16.",
+        "40 comes from adding 6 and 2 first, then multiplying by 5.",
+        "13 comes from treating the times sign as a plus sign.",
+        "60 comes from multiplying all three numbers together."
+      ],
+      "useAgain": "when several common slips are laid out as choices next to the correct order-of-operations answer.",
+      "hints": [
+        "Multiply the middle two numbers before adding.",
+        "Only one option follows multiply-before-add correctly."
+      ],
+      "socraticHint": "Which of these wrong answers comes from adding before multiplying instead of after?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "4 + 3 x 6 = ?",
+        "options": [
+          "42",
+          "13",
+          "22",
+          "72"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p12",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "choice",
+      "prompt": "10 - 2 x 3 = ?",
+      "options": [
+        "24",
+        "4",
+        "8",
+        "17"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "10 - 2 x 3: multiply first, 2 x 3 is 6, then 10 - 6 is 4.",
+        "24 comes from subtracting 10 minus 2 first, then multiplying by 3.",
+        "8 comes from stopping after 10 - 2 and forgetting the multiplication.",
+        "17 comes from multiplying 10 x 2 first, then subtracting 3."
+      ],
+      "useAgain": "when a subtraction and a multiplication are mixed and the multiplication has to happen first.",
+      "hints": [
+        "Multiply the two numbers next to the times sign.",
+        "Subtract that product from the first number."
+      ],
+      "socraticHint": "One wrong answer forgot the multiplication entirely. Which one looks like it stopped too early?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "20 - 3 x 4 = ?",
+        "options": [
+          "68",
+          "17",
+          "37",
+          "8"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p13",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "choice",
+      "prompt": "5 x (2 + 3) = ?",
+      "options": [
+        "13",
+        "25",
+        "10",
+        "40"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Parentheses go first: 2 + 3 is 5.",
+        "5 x 5 is 25.",
+        "13 comes from ignoring the parentheses and multiplying 5 x 2 before adding 3.",
+        "10 comes from multiplying 5 x 2 and forgetting the 3 entirely."
+      ],
+      "useAgain": "when a wrong answer ignores the parentheses and multiplies before adding anyway.",
+      "hints": [
+        "Work out the parentheses before doing anything else.",
+        "Multiply the outside number by that finished result."
+      ],
+      "socraticHint": "One wrong option treats this exactly like it had no parentheses at all. Which one is that?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "4 x (3 + 5) = ?",
+        "options": [
+          "17",
+          "12",
+          "32",
+          "60"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p14",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "12 - 4 x 2",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Multiplication happens before subtraction.",
+        "4 x 2 is 8.",
+        "12 - 8 is 4."
+      ],
+      "useAgain": "when the numbers get a little bigger but the same multiply-before-subtract rule still applies.",
+      "hints": [
+        "Multiply first.",
+        "Subtract that product from 12."
+      ],
+      "socraticHint": "By now, which operation should you always look for first in a line like this?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "15 - 3 x 3",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p15",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "4 x 3 - 2 x 2",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Both multiplications happen before the subtraction.",
+        "4 x 3 is 12, and 2 x 2 is 4.",
+        "12 - 4 is 8."
+      ],
+      "useAgain": "when two separate multiplications both need finishing before a subtraction between them.",
+      "hints": [
+        "Work out both multiplications first, one at a time.",
+        "Subtract the second product from the first."
+      ],
+      "socraticHint": "There are two separate multiplications here. Do you need to finish both before subtracting?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "5 x 2 - 3 x 2",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p16",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "(4 + 6) x 3 - 5",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "Parentheses first: 4 + 6 is 10.",
+        "Multiply next: 10 x 3 is 30.",
+        "Subtract last: 30 - 5 is 25."
+      ],
+      "useAgain": "when a parenthesized addition, a multiplication and a subtraction all appear in one line.",
+      "hints": [
+        "Work out the parentheses before anything else.",
+        "Multiply, then subtract, in that order."
+      ],
+      "socraticHint": "After the parentheses are done, which of the two remaining operations comes next?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(3 + 5) x 4 - 6",
+        "answer": {
+          "kind": "number",
+          "value": "26"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p17",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "2 x (8 - 3) + 6",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "Parentheses first: 8 - 3 is 5.",
+        "Multiply next: 2 x 5 is 10.",
+        "Add last: 10 + 6 is 16."
+      ],
+      "useAgain": "when the parentheses sit between the multiplication and an addition that comes after.",
+      "hints": [
+        "Work out the parentheses before multiplying.",
+        "Add the last number only after multiplying."
+      ],
+      "socraticHint": "Does the addition at the end happen before or after the multiplication?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "3 x (9 - 4) + 2",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p18",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "20 - (3 + 2) x 2",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Parentheses first: 3 + 2 is 5.",
+        "Multiply next: 5 x 2 is 10.",
+        "Subtract last: 20 - 10 is 10."
+      ],
+      "useAgain": "when a parenthesized sum gets multiplied before being subtracted from a bigger number.",
+      "hints": [
+        "Work out the parentheses first.",
+        "Multiply that result before subtracting it from 20."
+      ],
+      "socraticHint": "Once the parentheses and the multiplication are both done, what is the very last step?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "30 - (4 + 1) x 3",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p19",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "(9 - 4) x (2 + 3)",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "Both sets of parentheses go first.",
+        "9 - 4 is 5, and 2 + 3 is 5.",
+        "5 x 5 is 25."
+      ],
+      "useAgain": "when two separate parentheses groups both need finishing before they are multiplied together.",
+      "hints": [
+        "Work out each set of parentheses on its own first.",
+        "Multiply the two results together last."
+      ],
+      "socraticHint": "There are two separate parentheses groups here. Do they need to be finished in a particular order?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(7 - 2) x (4 + 1)",
+        "answer": {
+          "kind": "number",
+          "value": "25"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p20",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "6 x 4 - 3 x 2",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "Both multiplications happen before the subtraction.",
+        "6 x 4 is 24, and 3 x 2 is 6.",
+        "24 - 6 is 18."
+      ],
+      "useAgain": "when two multiplications on either side of a subtraction both need finishing first.",
+      "hints": [
+        "Work out both multiplications separately.",
+        "Subtract the second product from the first."
+      ],
+      "socraticHint": "Finishing both multiplications first, what two numbers are you left to subtract?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "5 x 6 - 4 x 3",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p21",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "15 + 3 x (7 - 4)",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "Parentheses first: 7 - 4 is 3.",
+        "Multiply next: 3 x 3 is 9.",
+        "Add last: 15 + 9 is 24."
+      ],
+      "useAgain": "when a parenthesized subtraction feeds into a multiplication before a final addition.",
+      "hints": [
+        "Work out the parentheses before multiplying.",
+        "Add 15 only after the multiplication is done."
+      ],
+      "socraticHint": "The addition at the very start still has to wait its turn. Why is that?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "12 + 2 x (9 - 5)",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p22",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "(12 - 2 x 3) + 5",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "Inside the parentheses, multiplication still goes first: 2 x 3 is 6.",
+        "12 - 6 is 6.",
+        "6 + 5 is 11."
+      ],
+      "useAgain": "when the order of operations rule applies again inside a set of parentheses, not just outside it.",
+      "hints": [
+        "Follow the order of operations even inside the parentheses.",
+        "Add the last number only after the parentheses are fully done."
+      ],
+      "socraticHint": "Inside the parentheses there is still a multiplication and a subtraction. Which of those goes first?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(10 - 3 x 2) + 7",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p23",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "choice",
+      "prompt": "(4 + 6) x 3 - 5 = ?",
+      "options": [
+        "17",
+        "30",
+        "15",
+        "25"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Parentheses first: 4 + 6 is 10. Then multiply: 10 x 3 is 30. Then subtract: 30 - 5 is 25.",
+        "17 comes from ignoring the parentheses and computing 4 + 6 x 3 - 5 in the usual order instead.",
+        "30 comes from forgetting the final subtraction.",
+        "15 comes from subtracting the 5 before multiplying by 3."
+      ],
+      "useAgain": "when a set of parentheses is easy to ignore by accident, changing which operation happens first.",
+      "hints": [
+        "Make sure the parentheses are worked out before anything else.",
+        "Do not forget the final subtraction after multiplying."
+      ],
+      "socraticHint": "One wrong answer skipped the parentheses entirely. What would the expression equal without them?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(3 + 5) x 4 - 6 = ?",
+        "options": [
+          "26",
+          "17",
+          "32",
+          "14"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p24",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "choice",
+      "prompt": "20 - (3 + 2) x 2 = ?",
+      "options": [
+        "10",
+        "21",
+        "38",
+        "16"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Parentheses first: 3 + 2 is 5. Then multiply: 5 x 2 is 10. Then subtract: 20 - 10 is 10.",
+        "21 comes from ignoring the parentheses and computing 20 - 3 + 2 x 2 in the usual order instead.",
+        "38 comes from doing every operation strictly left to right, ignoring both the parentheses and multiply-first.",
+        "16 comes from multiplying only the 3 by 2 and mixing up where the 2 from inside the parentheses goes."
+      ],
+      "useAgain": "when ignoring parentheses AND ignoring multiply-first both lead to different wrong answers.",
+      "hints": [
+        "Work out the parentheses completely before multiplying.",
+        "Subtract the final product from 20 last."
+      ],
+      "socraticHint": "Two of the wrong answers come from two different broken rules. Which rule does each one break?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "30 - (4 + 1) x 3 = ?",
+        "options": [
+          "23",
+          "15",
+          "77",
+          "18"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p25",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "truefalse",
+      "prompt": "(9 - 4) x (2 + 3) equals 25.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Both parentheses go first: 9 - 4 is 5, and 2 + 3 is 5.",
+        "5 x 5 is 25.",
+        "The claim matches."
+      ],
+      "useAgain": "when two separate parentheses groups both need checking before confirming a multiplication claim.",
+      "hints": [
+        "Work out both parentheses groups first.",
+        "Multiply the two results and compare to 25."
+      ],
+      "socraticHint": "Do both parentheses groups happen to give the same result here?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(7 - 2) x (4 + 1) equals 20.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p26",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "truefalse",
+      "prompt": "6 x 4 - 3 x 2 equals 42.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Both multiplications go first: 6 x 4 is 24, and 3 x 2 is 6.",
+        "24 - 6 is 18, not 42.",
+        "42 would come from doing every step strictly left to right instead, which breaks the multiply-first rule."
+      ],
+      "useAgain": "when a wrong claimed total comes from working strictly left to right instead of multiplying first.",
+      "hints": [
+        "Work out both multiplications separately before subtracting.",
+        "Compare your real answer to the claimed 42."
+      ],
+      "socraticHint": "Forty-two comes from doing this expression strictly left to right. Does that follow the multiply-first rule?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "5 x 6 - 4 x 3 equals 78.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p27",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "3 x (5 + 2) - 4 x 2",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "Parentheses first: 5 + 2 is 7.",
+        "Both multiplications next: 3 x 7 is 21, and 4 x 2 is 8.",
+        "21 - 8 is 13."
+      ],
+      "useAgain": "when parentheses, two multiplications and a subtraction all appear together in one line.",
+      "hints": [
+        "Work out the parentheses first.",
+        "Do both multiplications before the final subtraction."
+      ],
+      "socraticHint": "How many separate multiplications need finishing before you can subtract?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "2 x (6 + 3) - 5 x 2",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p28",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "20 / 4 + 3 x 2",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "Division and multiplication both go before addition.",
+        "20 / 4 is 5, and 3 x 2 is 6.",
+        "5 + 6 is 11."
+      ],
+      "useAgain": "when division and multiplication both need finishing before an addition between them.",
+      "hints": [
+        "Divide and multiply separately before adding.",
+        "Add the two results together last."
+      ],
+      "socraticHint": "Division and multiplication have the same rank in the order of operations. Does it matter which one you do first here?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "18 / 3 + 2 x 4",
+        "answer": {
+          "kind": "number",
+          "value": "14"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p29",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "(16 / 4 + 1) x 3",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Inside the parentheses, division goes before addition: 16 / 4 is 4.",
+        "4 + 1 is 5.",
+        "5 x 3 is 15."
+      ],
+      "useAgain": "when a division and an addition are grouped together inside parentheses, then multiplied.",
+      "hints": [
+        "Follow the order of operations inside the parentheses too.",
+        "Multiply by 3 only after the parentheses are fully done."
+      ],
+      "socraticHint": "Inside the parentheses, division and addition are mixed. Which one goes first?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "(24 / 6 + 2) x 2",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p30",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "order",
+      "prompt": "Put these steps in order to evaluate 4 + 6 x 3 - 5.",
+      "items": [
+        "Subtract 5",
+        "Multiply 6 x 3",
+        "Add 4 and the product"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Multiplication happens before addition or subtraction, so 6 x 3 is done first.",
+        "Then the product is added to 4.",
+        "Subtracting 5 always happens last, since it is the only step left."
+      ],
+      "useAgain": "when the steps of a multi-operation expression need to be put in the right working order.",
+      "hints": [
+        "Find the multiplication step; it always goes first here.",
+        "The subtraction has nothing before it to happen earlier, so it goes last."
+      ],
+      "socraticHint": "Which single step in this list has to happen before either of the other two can?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to evaluate 7 + 2 x 5 - 3.",
+        "items": [
+          "Subtract 3",
+          "Add 7 and the product",
+          "Multiply 2 x 5"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p31",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "2 x (3 + (4 - 1) x 2) - 5",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "Innermost parentheses first: 4 - 1 is 3.",
+        "Inside the outer parentheses, multiply before adding: 3 x 2 is 6, then 3 + 6 is 9.",
+        "Multiply by 2: 2 x 9 is 18.",
+        "Subtract last: 18 - 5 is 13."
+      ],
+      "useAgain": "when parentheses are nested inside other parentheses, so the innermost ones finish first.",
+      "hints": [
+        "Work from the innermost parentheses outward.",
+        "Do not multiply by the outside 2 until every inner step is done."
+      ],
+      "socraticHint": "There are two levels of parentheses here. Which one has to finish completely first?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "3 x (2 + (6 - 2) x 2) - 4",
+        "answer": {
+          "kind": "number",
+          "value": "26"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p32",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "(10 - (2 + 3)) x (6 - 2)",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "Innermost parentheses first: 2 + 3 is 5, and 6 - 2 is 4.",
+        "Then finish the outer left parentheses: 10 - 5 is 5.",
+        "Multiply the two finished results: 5 x 4 is 20."
+      ],
+      "useAgain": "when nested parentheses sit on one side of a multiplication and separate parentheses sit on the other.",
+      "hints": [
+        "Finish the innermost parentheses on the left before finishing the outer one around it.",
+        "Multiply the two final results together last."
+      ],
+      "socraticHint": "The left side has parentheses inside parentheses, and the right side has just one set. Does that change the order you work in?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "(15 - (3 + 4)) x (5 - 1)",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p33",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "50 - 2 x (3 + (8 - 5))",
+      "answer": {
+        "kind": "number",
+        "value": "38"
+      },
+      "explanation": [
+        "Innermost parentheses first: 8 - 5 is 3.",
+        "Inside the outer parentheses: 3 + 3 is 6.",
+        "Multiply next: 2 x 6 is 12.",
+        "Subtract last: 50 - 12 is 38."
+      ],
+      "useAgain": "when the whole parenthesized group is multiplied by a number before being subtracted from something bigger.",
+      "hints": [
+        "Work from the innermost parentheses out to the outermost.",
+        "Multiply the finished parentheses group by 2 before subtracting from 50."
+      ],
+      "socraticHint": "Does the 2 multiply just the 3, or everything inside the outer parentheses?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "60 - 3 x (4 + (9 - 6))",
+        "answer": {
+          "kind": "number",
+          "value": "39"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p34",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "((4 + 2) x 3 - 6) / 3",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Innermost parentheses first: 4 + 2 is 6.",
+        "Inside the outer parentheses: 6 x 3 is 18, then 18 - 6 is 12.",
+        "Divide last: 12 / 3 is 4."
+      ],
+      "useAgain": "when a whole parenthesized expression is divided by a number at the very end.",
+      "hints": [
+        "Finish everything inside the outer parentheses before dividing.",
+        "Divide only once the parentheses are completely done."
+      ],
+      "socraticHint": "Everything inside the big outer parentheses has to be finished before the divide sign matters. Why?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "((5 + 1) x 2 - 4) / 4",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p35",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "3 x ((5 - 2) x (4 - 1))",
+      "answer": {
+        "kind": "number",
+        "value": "27"
+      },
+      "explanation": [
+        "Innermost parentheses first: 5 - 2 is 3, and 4 - 1 is 3.",
+        "Multiply those two results: 3 x 3 is 9.",
+        "Multiply by the outside 3 last: 3 x 9 is 27."
+      ],
+      "useAgain": "when two small parentheses groups are multiplied together, and that whole result is multiplied again.",
+      "hints": [
+        "Finish both small parentheses groups first.",
+        "Multiply their results together, then multiply by the number outside."
+      ],
+      "socraticHint": "There are three multiplications tangled together here. Which two numbers get multiplied first?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "2 x ((6 - 3) x (5 - 2))",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p36",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "choice",
+      "prompt": "100 - (4 x (6 + 2 x 3)) = ?",
+      "options": [
+        "4",
+        "88",
+        "48",
+        "52"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Inside the parentheses, multiply before adding: 2 x 3 is 6, then 6 + 6 is 12.",
+        "Multiply by 4: 4 x 12 is 48. Subtract from 100: 100 - 48 is 52.",
+        "4 comes from doing 6 + 2 first (ignoring multiply-first inside), then multiplying differently.",
+        "88 comes from forgetting the outside 4 entirely and just subtracting the inner 12."
+      ],
+      "useAgain": "when order of operations has to be followed both inside and outside a set of parentheses at once.",
+      "hints": [
+        "Follow multiply-before-add inside the parentheses first.",
+        "Multiply the whole parentheses result by 4 before subtracting from 100."
+      ],
+      "socraticHint": "One wrong answer forgot to multiply by 4 at all. Which one looks like it just subtracted the inner total?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "80 - (3 x (5 + 2 x 4)) = ?",
+        "options": [
+          "8",
+          "67",
+          "41",
+          "39"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p37",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "choice",
+      "prompt": "2 x (3 + (4 - 1) x 2) - 5 = ?",
+      "options": [
+        "18",
+        "5",
+        "13",
+        "4"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "4 - 1 is 3, then 3 x 2 is 6, then 3 + 6 is 9. 2 x 9 is 18, then 18 - 5 is 13.",
+        "18 comes from forgetting the final subtraction of 5.",
+        "5 comes from computing (4 - 1) x 2 the wrong way, as 4 - (1 x 2), before continuing.",
+        "4 comes from dropping the outer 2 multiplier and only working with what is inside the parentheses."
+      ],
+      "useAgain": "when a nested expression has several plausible stopping points and mis-groupings to watch for.",
+      "hints": [
+        "Work from the innermost parentheses outward, one step at a time.",
+        "Do not forget the multiplier outside the big parentheses, or the subtraction at the very end."
+      ],
+      "socraticHint": "Two of the wrong answers each skip one real step. Which step does each one skip?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "3 x (2 + (6 - 2) x 2) - 4 = ?",
+        "options": [
+          "30",
+          "26",
+          "10",
+          "6"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p38",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "truefalse",
+      "prompt": "50 - 2 x (3 + (8 - 5)) equals 288.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "The correct value is 38. 8 - 5 is 3, then 3 + 3 is 6, then 2 x 6 is 12, then 50 - 12 is 38.",
+        "288 comes from wrongly grouping the 50 into the multiplication, as if it were (50 - 2) x (3 + (8 - 5)).",
+        "The 50 is never multiplied here; only the 2 is."
+      ],
+      "useAgain": "when a number outside the multiplication gets wrongly pulled into it, changing the scale of the whole answer.",
+      "hints": [
+        "Check exactly which numbers the multiplication sign connects.",
+        "The 50 stands completely outside the 2 x (...) group."
+      ],
+      "socraticHint": "Which two things does the multiplication sign actually connect: 2 and the parentheses, or 50 minus 2 and the parentheses?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "60 - 3 x (4 + (9 - 6)) equals 171.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p39",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "truefalse",
+      "prompt": "3 x ((5 - 2) x (4 - 1)) equals 27.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "5 - 2 is 3, and 4 - 1 is 3.",
+        "3 x 3 is 9.",
+        "3 x 9 is 27, matching the claim."
+      ],
+      "useAgain": "when a claim about a triple multiplication with nested parentheses needs a full check.",
+      "hints": [
+        "Work out both small parentheses groups first.",
+        "Multiply all three numbers together and compare to 27."
+      ],
+      "socraticHint": "Once both small subtractions are done, are you left with three 3s to multiply?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "2 x ((6 - 3) x (5 - 2)) equals 18.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p40",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "(18 - (3 + 2)) x 2 + 4",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "Innermost parentheses first: 3 + 2 is 5.",
+        "Finish the outer parentheses: 18 - 5 is 13.",
+        "Multiply next: 13 x 2 is 26.",
+        "Add last: 26 + 4 is 30."
+      ],
+      "useAgain": "when a nested subtraction is multiplied, then something is added at the very end.",
+      "hints": [
+        "Finish both levels of parentheses before multiplying.",
+        "Add the last number only after the multiplication."
+      ],
+      "socraticHint": "The addition at the end is the very last step here. What are the three steps that come before it?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "(20 - (4 + 1)) x 3 + 2",
+        "answer": {
+          "kind": "number",
+          "value": "47"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p41",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "5 + 3 x (2 + (9 - 6))",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "Innermost parentheses first: 9 - 6 is 3.",
+        "Inside the outer parentheses: 2 + 3 is 5.",
+        "Multiply next: 3 x 5 is 15.",
+        "Add last: 5 + 15 is 20."
+      ],
+      "useAgain": "when an addition at the very start still has to wait for a nested multiplication to finish.",
+      "hints": [
+        "Work from the innermost parentheses outward before multiplying.",
+        "The 5 at the very start is added only at the very end."
+      ],
+      "socraticHint": "Even though the 5 is written first, is it used first?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "6 + 2 x (3 + (10 - 7))",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p42",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "((7 - 3) x 2 + 6) / 2",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Innermost parentheses first: 7 - 3 is 4.",
+        "Inside the outer parentheses: 4 x 2 is 8, then 8 + 6 is 14.",
+        "Divide last: 14 / 2 is 7."
+      ],
+      "useAgain": "when a parenthesized multiply-then-add expression is divided by a number at the end.",
+      "hints": [
+        "Finish everything inside the outer parentheses first.",
+        "Divide only after the parentheses are completely done."
+      ],
+      "socraticHint": "Does the division sign divide just the 6, or the whole parentheses result?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "((9 - 5) x 3 + 4) / 4",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p43",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "order",
+      "prompt": "Put these steps in order to evaluate 50 - 2 x (3 + (8 - 5)).",
+      "items": [
+        "Multiply by 2",
+        "Subtract the result from 50",
+        "Subtract 5 from 8",
+        "Add 3 to that result"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          3,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "The innermost parentheses finish first: subtract 5 from 8.",
+        "Then add 3 to that result, finishing the outer parentheses.",
+        "Multiply that total by 2 next.",
+        "Subtract the result from 50 last."
+      ],
+      "useAgain": "when a nested expression's steps need sequencing from the innermost parentheses all the way out.",
+      "hints": [
+        "Find the step that has nothing depending on it first; that goes first.",
+        "Save the very last operation in the expression for the very last step."
+      ],
+      "socraticHint": "Which step here does not need any other step finished before it can happen?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps in order to evaluate 60 - 3 x (4 + (9 - 6)).",
+        "items": [
+          "Add 4 to that result",
+          "Subtract 6 from 9",
+          "Subtract the result from 60",
+          "Multiply by 3"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0,
+            3,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p44",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "order",
+      "prompt": "Put these steps in order to evaluate 3 x (2 + (7 - 4)) - 5.",
+      "items": [
+        "Multiply by 3",
+        "Subtract 4 from 7",
+        "Subtract 5",
+        "Add 2 to that result"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          3,
+          0,
+          2
+        ]
+      },
+      "explanation": [
+        "The innermost parentheses finish first: subtract 4 from 7.",
+        "Add 2 to that result, finishing the outer parentheses.",
+        "Multiply that total by 3 next.",
+        "Subtract 5 last, since it is completely outside the parentheses."
+      ],
+      "useAgain": "when a final subtraction sits completely outside all the parentheses and always has to happen last.",
+      "hints": [
+        "Work from the innermost parentheses outward.",
+        "The step with nothing inside any parentheses happens last."
+      ],
+      "socraticHint": "One step here is not inside any parentheses at all. Where does it belong in the order?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps in order to evaluate 2 x (3 + (8 - 5)) - 4.",
+        "items": [
+          "Subtract 4",
+          "Add 3 to that result",
+          "Multiply by 2",
+          "Subtract 5 from 8"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            1,
+            2,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p45",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "(20 - (5 + 3) x 2) / 2",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Innermost parentheses first: 5 + 3 is 8.",
+        "Inside the outer parentheses, multiply before subtracting: 8 x 2 is 16, then 20 - 16 is 4.",
+        "Divide last: 4 / 2 is 2."
+      ],
+      "useAgain": "when multiply-before-subtract still applies inside a set of parentheses that is itself divided at the end.",
+      "hints": [
+        "Finish the inner parentheses, then multiply before subtracting inside the outer one.",
+        "Divide only after every parentheses step is done."
+      ],
+      "socraticHint": "Inside the outer parentheses there is still a multiplication and a subtraction. Which one goes first?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "(30 - (4 + 2) x 3) / 4",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-ar-order-of-operations-p46",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "A vending machine snack costs 2 dollars. You buy 3 snacks and a 1 dollar drink, then a coupon takes 2 dollars off the total. Write this as 3 x 2 + 1 - 2 and find the total cost in dollars.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Multiplication happens before addition or subtraction: 3 x 2 is 6.",
+        "Add the drink: 6 + 1 is 7.",
+        "Subtract the coupon: 7 - 2 is 5 dollars."
+      ],
+      "useAgain": "when a real cost, made of a repeated price, an extra item, and a discount, is written as one expression.",
+      "hints": [
+        "Multiply the snack price by how many snacks first.",
+        "Add the drink, then subtract the coupon, in that order."
+      ],
+      "socraticHint": "Which part of this story is the multiplication, and which two parts are the addition and the subtraction?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A print shop charges 3 dollars per page. You print 4 pages and pay a 2 dollar rush fee, then a coupon takes 3 dollars off the total. Write this as 4 x 3 + 2 - 3 and find the total cost in dollars.",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p47",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "choice",
+      "prompt": "Insert parentheses into 6 + 2 x 3 - 1 to make it equal 23.",
+      "options": [
+        "(6 + 2) x 3 - 1",
+        "6 + (2 x 3) - 1",
+        "6 + 2 x (3 - 1)",
+        "(6 + 2) x (3 - 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "(6 + 2) x 3 - 1: 6 + 2 is 8, then 8 x 3 is 24, then 24 - 1 is 23.",
+        "6 + (2 x 3) - 1 is the same as having no parentheses at all, giving 11, not 23.",
+        "6 + 2 x (3 - 1) gives 6 + 2 x 2, which is 10, not 23.",
+        "(6 + 2) x (3 - 1) gives 8 x 2, which is 16, not 23."
+      ],
+      "useAgain": "when parentheses need to be placed into an expression to force a specific target total.",
+      "hints": [
+        "Try each placement of parentheses and compute the total.",
+        "Only one placement changes the usual order enough to reach 23."
+      ],
+      "socraticHint": "Which placement of parentheses forces the addition to happen before the multiplication?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Insert parentheses into 5 + 3 x 4 - 2 to make it equal 30.",
+        "options": [
+          "5 + (3 x 4) - 2",
+          "5 + 3 x (4 - 2)",
+          "(5 + 3) x (4 - 2)",
+          "(5 + 3) x 4 - 2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p48",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "truefalse",
+      "prompt": "6 + 2 x 3 and (6 + 2) x 3 give the same result.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "6 + 2 x 3: multiply first, 2 x 3 is 6, then 6 + 6 is 12.",
+        "(6 + 2) x 3: parentheses first, 6 + 2 is 8, then 8 x 3 is 24.",
+        "12 and 24 are different, so the two expressions do not give the same result."
+      ],
+      "useAgain": "when checking whether adding parentheses to an expression actually changes its value.",
+      "hints": [
+        "Work out both expressions completely, one at a time.",
+        "Compare the two final numbers."
+      ],
+      "socraticHint": "Parentheses only change an answer when they force a different operation to go first. Do they do that here?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "4 + 3 x 5 and (4 + 3) x 5 give the same result.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p49",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "number",
+      "prompt": "A game gives 5 points for each of 4 rounds, doubles the total for a bonus round, then subtracts 3 for one mistake. Write this as 5 x 4 x 2 - 3 and find the total.",
+      "answer": {
+        "kind": "number",
+        "value": "37"
+      },
+      "explanation": [
+        "Both multiplications happen before the subtraction.",
+        "5 x 4 is 20, then 20 x 2 is 40.",
+        "40 - 3 is 37."
+      ],
+      "useAgain": "when a repeated score gets doubled by a bonus before a penalty is subtracted at the end.",
+      "hints": [
+        "Do both multiplications in a row before subtracting anything.",
+        "Subtract the penalty only at the very end."
+      ],
+      "socraticHint": "There are two multiplications chained together here. Does the order between them matter?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game gives 4 points for each of 3 rounds, triples the total for a bonus round, then subtracts 2 for one mistake. Write this as 4 x 3 x 3 - 2 and find the total.",
+        "answer": {
+          "kind": "number",
+          "value": "34"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-order-of-operations-p50",
+      "lane": "skills",
+      "ideaId": "ar-order-of-operations",
+      "kind": "choice",
+      "prompt": "Which expression matches this story: a rover collects 3 rocks per stop for 4 stops, then loses 2 rocks when a dust storm hits.",
+      "options": [
+        "3 x (4 - 2)",
+        "(3 - 2) x 4",
+        "3 + 4 x 2",
+        "3 x 4 - 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The rover collects 3 rocks at each of 4 stops, so that part is 3 x 4.",
+        "The dust storm loses 2 rocks after all the collecting is done, so it is subtracted at the end: 3 x 4 - 2.",
+        "3 x (4 - 2) would mean 2 fewer stops happened, which is not the story.",
+        "(3 - 2) x 4 would mean 1 rock per stop the whole time, which is not the story either."
+      ],
+      "useAgain": "when a word problem needs to be translated into the one expression that matches its actual events in order.",
+      "hints": [
+        "Find the repeated collecting part first; that is the multiplication.",
+        "The loss happens after all the collecting, so it comes last, outside any parentheses."
+      ],
+      "socraticHint": "Does the dust storm change how many rocks are collected at each stop, or does it just remove rocks at the end?",
+      "skills": [
+        "think.skills.order-of-operations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Which expression matches this story: a print shop makes 4 copies per job for 5 jobs, then 3 copies are ruined and thrown away.",
+        "options": [
+          "4 x 5 - 3",
+          "4 x (5 - 3)",
+          "(4 - 3) x 5",
+          "4 + 5 x 3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    }
+  ]
+}

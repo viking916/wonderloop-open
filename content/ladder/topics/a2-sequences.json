@@ -1,0 +1,2379 @@
+{
+  "id": "a2-sequences",
+  "idea": {
+    "body": "A sequence is a list that follows a rule. An arithmetic sequence adds the same amount every term, like 3, 7, 11, 15, adding 4 each time. A geometric sequence multiplies by the same amount every term, like 2, 6, 18, 54, multiplying by 3 each time. Written recursively, a rule only says how to get the next term from the one before it. Written explicitly instead, a_n = a_1 + d(n - 1) for arithmetic, or a_n = a_1 times r^(n - 1) for geometric. Either explicit formula jumps straight to any term, no building up needed.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A row of boxes for the sequence 3, 7, 11, 15, each 4 more than the last.",
+      "spec": {
+        "w": 192,
+        "h": 40,
+        "items": [
+          {
+            "t": "box",
+            "x": 0,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "3",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 48,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "7",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 96,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "11",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 144,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "15",
+            "fill": "paper"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A rover's battery charge starts at 80 percent and drops by 5 percent every hour.\nWhat is the charge after 6 hours, as a_7?",
+    "steps": [
+      "The charge starts at a_1 = 80 and drops by 5 every hour, so this is arithmetic with d = -5.",
+      "After 6 hours is term 7 (the first term is hour 0).",
+      "a_7 = 80 + (7 - 1)(-5) = 80 - 30 = 50.",
+      "The charge is 50 percent after 6 hours."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "A row of boxes for the battery charge, 80, 75, 70, 65, each 5 less than the last.",
+      "spec": {
+        "w": 240,
+        "h": 40,
+        "items": [
+          {
+            "t": "box",
+            "x": 0,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "80",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 48,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "75",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 96,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "70",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 144,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "65",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 192,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "...",
+            "fill": "paper"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "a2-sequences-w1",
+      "name": "The explicit formula",
+      "when": "Use this to jump straight to any term without building the sequence up.",
+      "steps": [
+        "The sequence 3, 7, 11, 15 adds 4 each time, so d = 4.",
+        "For arithmetic: a_n = a_1 + d(n - 1).",
+        "a_n = 3 + 4(n - 1).",
+        "The 10th term is 3 + 4(9) = 39."
+      ],
+      "example": "Sequence: 3, 7, 11, 15. Find the 10th term.",
+      "answer": "39",
+      "trap": "Forgetting the (n - 1) and writing a_n = a_1 + d times n instead.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A row of five boxes labeled 3, 7, 11, 15, with 4 written between boxes.",
+        "spec": {
+          "w": 240,
+          "h": 140,
+          "items": [
+            {
+              "t": "box",
+              "x": 6,
+              "y": 6,
+              "w": 48,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 54,
+              "y": 6,
+              "w": 48,
+              "h": 40,
+              "label": "7",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 102,
+              "y": 6,
+              "w": 48,
+              "h": 40,
+              "label": "11",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 6,
+              "w": 48,
+              "h": 40,
+              "label": "15",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 54,
+              "y": 64,
+              "s": "+4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 102,
+              "y": 64,
+              "s": "+4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 64,
+              "s": "+4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 120,
+              "y": 90,
+              "s": "a_n = a_1 + d(n - 1)",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 120,
+              "y": 110,
+              "s": "a_n = 3 + 4(n - 1)",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 120,
+              "y": 130,
+              "s": "10th term: 3 + 4(9) = 39",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Sequence 3, 7, 11, 15: find the 10th term.",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Each term adds 4, so d = 4.",
+              "set": {
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Formula: a_n = a_1 + d(n - 1).",
+              "set": {
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Substitute: a_n = 3 + 4(n - 1).",
+              "set": {
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "The 10th term is 3 + 4(9) = 39.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a2-sequences-w2",
+      "name": "Build the sequence term by term",
+      "when": "Use this when the explicit formula is hard to spot or you only need the next few terms.",
+      "steps": [
+        "The sequence starts at 5 and multiplies by 2 each time.",
+        "Term 1: 5. Term 2: 10. Term 3: 20. Term 4: 40.",
+        "Each term is the one before it times 2.",
+        "Term 5 is 40 times 2 = 80."
+      ],
+      "example": "Start at 5, multiply by 2 each time. Find term 5.",
+      "answer": "80",
+      "trap": "Losing track of which term you are on or multiplying by the wrong factor."
+    },
+    {
+      "id": "a2-sequences-w3",
+      "name": "Spot the pattern from differences or ratios",
+      "when": "Use this to identify what kind of sequence you have from raw data.",
+      "steps": [
+        "Terms: 2, 5, 10, 17, 26.",
+        "Differences: 3, 5, 7, 9.",
+        "Second differences: 2, 2, 2 (constant).",
+        "Constant second difference means quadratic growth."
+      ],
+      "example": "Terms: 2, 5, 10, 17, 26. What is the pattern?",
+      "answer": "Quadratic",
+      "trap": "Stopping after finding first differences and not recognizing when second differences are constant."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-sequences-p01",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "An arithmetic sequence starts at a_1 = 3 and adds 4 each term.\nWhat is a_5?",
+      "answer": {
+        "kind": "number",
+        "value": "19"
+      },
+      "explanation": [
+        "An arithmetic sequence adds the common difference 4 each step.",
+        "a_5 = 3 + (5 - 1)(4) = 19."
+      ],
+      "useAgain": "when a sequence adds the same amount every term.",
+      "hints": [
+        "Each term adds the common difference to the one before it.",
+        "a_n = a_1 + (n - 1) times the common difference."
+      ],
+      "socraticHint": "How many times does 4 get added to reach term 5?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the sequence, starting 3, 7, 11, each 4 more than the last.",
+        "spec": {
+          "w": 240,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "7",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "11",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "15",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 192,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "...",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "An arithmetic sequence starts at a_1 = 6 and adds 3 each term.\nWhat is a_5?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p02",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "An arithmetic sequence starts at a_1 = 5 and adds 3 each term.\nWhat is a_4?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "An arithmetic sequence adds the common difference 3 each step.",
+        "a_4 = 5 + (4 - 1)(3) = 14."
+      ],
+      "useAgain": "when a sequence adds the same amount every term.",
+      "hints": [
+        "Each term adds the common difference to the one before it.",
+        "a_n = a_1 + (n - 1) times the common difference."
+      ],
+      "socraticHint": "How many times does 3 get added to reach term 4?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "An arithmetic sequence starts at a_1 = 2 and adds 5 each term.\nWhat is a_5?",
+        "answer": {
+          "kind": "number",
+          "value": "22"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p03",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "An arithmetic sequence starts at a_1 = 2 and adds 6 each term.\nWhat is a_4?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "An arithmetic sequence adds the common difference 6 each step.",
+        "a_4 = 2 + (4 - 1)(6) = 20."
+      ],
+      "useAgain": "when a sequence adds the same amount every term.",
+      "hints": [
+        "Each term adds the common difference to the one before it.",
+        "a_n = a_1 + (n - 1) times the common difference."
+      ],
+      "socraticHint": "How many times does 6 get added to reach term 4?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "An arithmetic sequence starts at a_1 = 8 and adds 2 each term.\nWhat is a_4?",
+        "answer": {
+          "kind": "number",
+          "value": "14"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p04",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "An arithmetic sequence starts at a_1 = 7 and adds 2 each term.\nWhat is a_5?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "An arithmetic sequence adds the common difference 2 each step.",
+        "a_5 = 7 + (5 - 1)(2) = 15."
+      ],
+      "useAgain": "when a sequence adds the same amount every term.",
+      "hints": [
+        "Each term adds the common difference to the one before it.",
+        "a_n = a_1 + (n - 1) times the common difference."
+      ],
+      "socraticHint": "How many times does 2 get added to reach term 5?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the sequence, starting 7, 9, 11, each 2 more than the last.",
+        "spec": {
+          "w": 240,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "7",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "9",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "11",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "13",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 192,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "...",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "An arithmetic sequence starts at a_1 = 3 and adds 6 each term.\nWhat is a_4?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p05",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "An arithmetic sequence starts at a_1 = 1 and adds 5 each term.\nWhat is a_6?",
+      "answer": {
+        "kind": "number",
+        "value": "26"
+      },
+      "explanation": [
+        "An arithmetic sequence adds the common difference 5 each step.",
+        "a_6 = 1 + (6 - 1)(5) = 26."
+      ],
+      "useAgain": "when a sequence adds the same amount every term.",
+      "hints": [
+        "Each term adds the common difference to the one before it.",
+        "a_n = a_1 + (n - 1) times the common difference."
+      ],
+      "socraticHint": "How many times does 5 get added to reach term 6?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "An arithmetic sequence starts at a_1 = 5 and adds 4 each term.\nWhat is a_5?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p06",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "An arithmetic sequence starts at a_1 = 4 and adds 4 each term.\nWhat is a_4?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "An arithmetic sequence adds the common difference 4 each step.",
+        "a_4 = 4 + (4 - 1)(4) = 16."
+      ],
+      "useAgain": "when a sequence adds the same amount every term.",
+      "hints": [
+        "Each term adds the common difference to the one before it.",
+        "a_n = a_1 + (n - 1) times the common difference."
+      ],
+      "socraticHint": "How many times does 4 get added to reach term 4?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "An arithmetic sequence starts at a_1 = 1 and adds 7 each term.\nWhat is a_4?",
+        "answer": {
+          "kind": "number",
+          "value": "22"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p07",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A geometric sequence starts at a_1 = 2 and multiplies by 3 each term.\nWhat is a_4?",
+      "answer": {
+        "kind": "number",
+        "value": "54"
+      },
+      "explanation": [
+        "A geometric sequence multiplies by the common ratio 3 each step.",
+        "a_4 = 2 times 3^(4 - 1) = 54."
+      ],
+      "useAgain": "when a sequence multiplies by the same amount every term.",
+      "hints": [
+        "Each term multiplies the one before it by the common ratio.",
+        "a_n = a_1 times the common ratio raised to the power (n - 1)."
+      ],
+      "socraticHint": "How many times does 2 get multiplied by 3 to reach term 4?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the sequence, starting 2, 6, 18, each 3 times the last.",
+        "spec": {
+          "w": 240,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "2",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "6",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "18",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "54",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 192,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "...",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A geometric sequence starts at a_1 = 4 and multiplies by 2 each term.\nWhat is a_4?",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p08",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A geometric sequence starts at a_1 = 3 and multiplies by 2 each term.\nWhat is a_4?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "A geometric sequence multiplies by the common ratio 2 each step.",
+        "a_4 = 3 times 2^(4 - 1) = 24."
+      ],
+      "useAgain": "when a sequence multiplies by the same amount every term.",
+      "hints": [
+        "Each term multiplies the one before it by the common ratio.",
+        "a_n = a_1 times the common ratio raised to the power (n - 1)."
+      ],
+      "socraticHint": "How many times does 3 get multiplied by 2 to reach term 4?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A geometric sequence starts at a_1 = 2 and multiplies by 5 each term.\nWhat is a_3?",
+        "answer": {
+          "kind": "number",
+          "value": "50"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p09",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A geometric sequence starts at a_1 = 1 and multiplies by 4 each term.\nWhat is a_3?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "A geometric sequence multiplies by the common ratio 4 each step.",
+        "a_3 = 1 times 4^(3 - 1) = 16."
+      ],
+      "useAgain": "when a sequence multiplies by the same amount every term.",
+      "hints": [
+        "Each term multiplies the one before it by the common ratio.",
+        "a_n = a_1 times the common ratio raised to the power (n - 1)."
+      ],
+      "socraticHint": "How many times does 1 get multiplied by 4 to reach term 3?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A geometric sequence starts at a_1 = 3 and multiplies by 3 each term.\nWhat is a_3?",
+        "answer": {
+          "kind": "number",
+          "value": "27"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p10",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A geometric sequence starts at a_1 = 5 and multiplies by 2 each term.\nWhat is a_3?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "A geometric sequence multiplies by the common ratio 2 each step.",
+        "a_3 = 5 times 2^(3 - 1) = 20."
+      ],
+      "useAgain": "when a sequence multiplies by the same amount every term.",
+      "hints": [
+        "Each term multiplies the one before it by the common ratio.",
+        "a_n = a_1 times the common ratio raised to the power (n - 1)."
+      ],
+      "socraticHint": "How many times does 5 get multiplied by 2 to reach term 3?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the sequence, starting 5, 10, 20, each 2 times the last.",
+        "spec": {
+          "w": 192,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "5",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "10",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "20",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "...",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A geometric sequence starts at a_1 = 1 and multiplies by 2 each term.\nWhat is a_6?",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p11",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A geometric sequence starts at a_1 = 2 and multiplies by 2 each term.\nWhat is a_5?",
+      "answer": {
+        "kind": "number",
+        "value": "32"
+      },
+      "explanation": [
+        "A geometric sequence multiplies by the common ratio 2 each step.",
+        "a_5 = 2 times 2^(5 - 1) = 32."
+      ],
+      "useAgain": "when a sequence multiplies by the same amount every term.",
+      "hints": [
+        "Each term multiplies the one before it by the common ratio.",
+        "a_n = a_1 times the common ratio raised to the power (n - 1)."
+      ],
+      "socraticHint": "How many times does 2 get multiplied by 2 to reach term 5?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A geometric sequence starts at a_1 = 6 and multiplies by 2 each term.\nWhat is a_3?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p12",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A geometric sequence starts at a_1 = 1 and multiplies by 3 each term.\nWhat is a_4?",
+      "answer": {
+        "kind": "number",
+        "value": "27"
+      },
+      "explanation": [
+        "A geometric sequence multiplies by the common ratio 3 each step.",
+        "a_4 = 1 times 3^(4 - 1) = 27."
+      ],
+      "useAgain": "when a sequence multiplies by the same amount every term.",
+      "hints": [
+        "Each term multiplies the one before it by the common ratio.",
+        "a_n = a_1 times the common ratio raised to the power (n - 1)."
+      ],
+      "socraticHint": "How many times does 1 get multiplied by 3 to reach term 4?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A geometric sequence starts at a_1 = 2 and multiplies by 4 each term.\nWhat is a_3?",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p13",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A sequence starts 2, 5, 8, and adds 3 each term.\nWhat is the next term?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "The sequence adds 3 each term.",
+        "The next term after 8 is 11."
+      ],
+      "useAgain": "when continuing a sequence from its first few terms.",
+      "hints": [
+        "Find the pattern between consecutive terms first.",
+        "Apply that same pattern once more to 8."
+      ],
+      "socraticHint": "What happens to each term to get the next one?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the sequence, 2, 5, 8.",
+        "spec": {
+          "w": 192,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "2",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "5",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "8",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "...",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A sequence starts 2, 4, 8, and multiplies by 2 each term.\nWhat is the next term?",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p14",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A sequence starts 3, 7, 11, and adds 4 each term.\nWhat is the next term?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "The sequence adds 4 each term.",
+        "The next term after 11 is 15."
+      ],
+      "useAgain": "when continuing a sequence from its first few terms.",
+      "hints": [
+        "Find the pattern between consecutive terms first.",
+        "Apply that same pattern once more to 11."
+      ],
+      "socraticHint": "What happens to each term to get the next one?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A sequence starts 3, 6, 12, and multiplies by 2 each term.\nWhat is the next term?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p15",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A sequence starts 1, 4, 7, and adds 3 each term.\nWhat is the next term?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The sequence adds 3 each term.",
+        "The next term after 7 is 10."
+      ],
+      "useAgain": "when continuing a sequence from its first few terms.",
+      "hints": [
+        "Find the pattern between consecutive terms first.",
+        "Apply that same pattern once more to 7."
+      ],
+      "socraticHint": "What happens to each term to get the next one?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the sequence, 1, 4, 7.",
+        "spec": {
+          "w": 192,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "1",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "4",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "7",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "...",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A sequence starts 1, 3, 9, and multiplies by 3 each term.\nWhat is the next term?",
+        "answer": {
+          "kind": "number",
+          "value": "27"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p16",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 4.\na_n = a_(n-1) + (3).\nWhat is a_12?",
+      "answer": {
+        "kind": "number",
+        "value": "37"
+      },
+      "explanation": [
+        "This is an arithmetic sequence with common difference 3.",
+        "a_12 = 4 + (12 - 1)(3) = 37."
+      ],
+      "useAgain": "when a recursive rule needs to be turned into a direct formula.",
+      "hints": [
+        "Read off the common difference from the recursive rule.",
+        "Use a_n = a_1 + (n - 1) times the common difference instead of adding one term at a time."
+      ],
+      "socraticHint": "What is the common difference, and how many steps get you to term 12?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 8.\na_n = a_(n-1) + (3).\nWhat is a_13?",
+        "answer": {
+          "kind": "number",
+          "value": "44"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p17",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 7.\na_n = a_(n-1) + (2).\nWhat is a_15?",
+      "answer": {
+        "kind": "number",
+        "value": "35"
+      },
+      "explanation": [
+        "This is an arithmetic sequence with common difference 2.",
+        "a_15 = 7 + (15 - 1)(2) = 35."
+      ],
+      "useAgain": "when a recursive rule needs to be turned into a direct formula.",
+      "hints": [
+        "Read off the common difference from the recursive rule.",
+        "Use a_n = a_1 + (n - 1) times the common difference instead of adding one term at a time."
+      ],
+      "socraticHint": "What is the common difference, and how many steps get you to term 15?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 6.\na_n = a_(n-1) + (-3).\nWhat is a_8?",
+        "answer": {
+          "kind": "number",
+          "value": "-15"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p18",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 3.\na_n = a_(n-1) + (5).\nWhat is a_10?",
+      "answer": {
+        "kind": "number",
+        "value": "48"
+      },
+      "explanation": [
+        "This is an arithmetic sequence with common difference 5.",
+        "a_10 = 3 + (10 - 1)(5) = 48."
+      ],
+      "useAgain": "when a recursive rule needs to be turned into a direct formula.",
+      "hints": [
+        "Read off the common difference from the recursive rule.",
+        "Use a_n = a_1 + (n - 1) times the common difference instead of adding one term at a time."
+      ],
+      "socraticHint": "What is the common difference, and how many steps get you to term 10?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 1.\na_n = a_(n-1) + (4).\nWhat is a_16?",
+        "answer": {
+          "kind": "number",
+          "value": "61"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p19",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 10.\na_n = a_(n-1) + (-2).\nWhat is a_9?",
+      "answer": {
+        "kind": "number",
+        "value": "-6"
+      },
+      "explanation": [
+        "This is an arithmetic sequence with common difference -2.",
+        "a_9 = 10 + (9 - 1)(-2) = -6."
+      ],
+      "useAgain": "when a recursive rule needs to be turned into a direct formula.",
+      "hints": [
+        "Read off the common difference from the recursive rule.",
+        "Use a_n = a_1 + (n - 1) times the common difference instead of adding one term at a time."
+      ],
+      "socraticHint": "What is the common difference, and how many steps get you to term 9?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 9.\na_n = a_(n-1) + (2).\nWhat is a_10?",
+        "answer": {
+          "kind": "number",
+          "value": "27"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p20",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 5.\na_n = a_(n-1) + (4).\nWhat is a_14?",
+      "answer": {
+        "kind": "number",
+        "value": "57"
+      },
+      "explanation": [
+        "This is an arithmetic sequence with common difference 4.",
+        "a_14 = 5 + (14 - 1)(4) = 57."
+      ],
+      "useAgain": "when a recursive rule needs to be turned into a direct formula.",
+      "hints": [
+        "Read off the common difference from the recursive rule.",
+        "Use a_n = a_1 + (n - 1) times the common difference instead of adding one term at a time."
+      ],
+      "socraticHint": "What is the common difference, and how many steps get you to term 14?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 3.\na_n = a_(n-1) + (7).\nWhat is a_9?",
+        "answer": {
+          "kind": "number",
+          "value": "59"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p21",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 2.\na_n = a_(n-1) + (6).\nWhat is a_11?",
+      "answer": {
+        "kind": "number",
+        "value": "62"
+      },
+      "explanation": [
+        "This is an arithmetic sequence with common difference 6.",
+        "a_11 = 2 + (11 - 1)(6) = 62."
+      ],
+      "useAgain": "when a recursive rule needs to be turned into a direct formula.",
+      "hints": [
+        "Read off the common difference from the recursive rule.",
+        "Use a_n = a_1 + (n - 1) times the common difference instead of adding one term at a time."
+      ],
+      "socraticHint": "What is the common difference, and how many steps get you to term 11?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 5.\na_n = a_(n-1) + (-1).\nWhat is a_15?",
+        "answer": {
+          "kind": "number",
+          "value": "-9"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p22",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 1.\na_n = -2 times a_(n-1).\nWhat is a_6?",
+      "answer": {
+        "kind": "number",
+        "value": "-32"
+      },
+      "explanation": [
+        "This is a geometric sequence with common ratio -2.",
+        "a_6 = 1 times -2^(6 - 1) = -32."
+      ],
+      "useAgain": "when a geometric sequence has a negative common ratio.",
+      "hints": [
+        "Read off the common ratio from the recursive rule.",
+        "Use a_n = a_1 times the ratio raised to (n - 1), watching the sign if the ratio is negative."
+      ],
+      "socraticHint": "Does the sign flip each term, and how many times does 1 get multiplied by -2?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 1.\na_n = -3 times a_(n-1).\nWhat is a_5?",
+        "answer": {
+          "kind": "number",
+          "value": "81"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p23",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 2.\na_n = -2 times a_(n-1).\nWhat is a_5?",
+      "answer": {
+        "kind": "number",
+        "value": "32"
+      },
+      "explanation": [
+        "This is a geometric sequence with common ratio -2.",
+        "a_5 = 2 times -2^(5 - 1) = 32."
+      ],
+      "useAgain": "when a geometric sequence has a negative common ratio.",
+      "hints": [
+        "Read off the common ratio from the recursive rule.",
+        "Use a_n = a_1 times the ratio raised to (n - 1), watching the sign if the ratio is negative."
+      ],
+      "socraticHint": "Does the sign flip each term, and how many times does 2 get multiplied by -2?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 4.\na_n = -2 times a_(n-1).\nWhat is a_5?",
+        "answer": {
+          "kind": "number",
+          "value": "64"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p24",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 3.\na_n = -1 times a_(n-1).\nWhat is a_6?",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "This is a geometric sequence with common ratio -1.",
+        "a_6 = 3 times -1^(6 - 1) = -3."
+      ],
+      "useAgain": "when a geometric sequence has a negative common ratio.",
+      "hints": [
+        "Read off the common ratio from the recursive rule.",
+        "Use a_n = a_1 times the ratio raised to (n - 1), watching the sign if the ratio is negative."
+      ],
+      "socraticHint": "Does the sign flip each term, and how many times does 3 get multiplied by -1?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 1.\na_n = 5 times a_(n-1).\nWhat is a_4?",
+        "answer": {
+          "kind": "number",
+          "value": "125"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p25",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 1.\na_n = 2 times a_(n-1).\nWhat is a_7?",
+      "answer": {
+        "kind": "number",
+        "value": "64"
+      },
+      "explanation": [
+        "This is a geometric sequence with common ratio 2.",
+        "a_7 = 1 times 2^(7 - 1) = 64."
+      ],
+      "useAgain": "when a geometric sequence has a negative common ratio.",
+      "hints": [
+        "Read off the common ratio from the recursive rule.",
+        "Use a_n = a_1 times the ratio raised to (n - 1), watching the sign if the ratio is negative."
+      ],
+      "socraticHint": "Does the sign flip each term, and how many times does 1 get multiplied by 2?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 2.\na_n = 2 times a_(n-1).\nWhat is a_6?",
+        "answer": {
+          "kind": "number",
+          "value": "64"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p26",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 2.\na_n = -3 times a_(n-1).\nWhat is a_4?",
+      "answer": {
+        "kind": "number",
+        "value": "-54"
+      },
+      "explanation": [
+        "This is a geometric sequence with common ratio -3.",
+        "a_4 = 2 times -3^(4 - 1) = -54."
+      ],
+      "useAgain": "when a geometric sequence has a negative common ratio.",
+      "hints": [
+        "Read off the common ratio from the recursive rule.",
+        "Use a_n = a_1 times the ratio raised to (n - 1), watching the sign if the ratio is negative."
+      ],
+      "socraticHint": "Does the sign flip each term, and how many times does 2 get multiplied by -3?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 3.\na_n = -2 times a_(n-1).\nWhat is a_4?",
+        "answer": {
+          "kind": "number",
+          "value": "-24"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p27",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 3.\na_5 = 19.\nThis is an arithmetic sequence. What is the common difference?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Going from a_1 to a_5 takes 4 steps of the common difference.",
+        "19 - 3 = 16, so the common difference is 16 / 4 = 4."
+      ],
+      "useAgain": "when two terms of an arithmetic sequence are known but not the common difference.",
+      "hints": [
+        "Going from a_1 to a_5 takes 4 equal steps.",
+        "Divide the total change by the number of steps."
+      ],
+      "socraticHint": "How many steps of the common difference separate a_1 and a_5?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 4.\na_7 = 28.\nThis is an arithmetic sequence. What is the common difference?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p28",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 2.\na_6 = 22.\nThis is an arithmetic sequence. What is the common difference?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Going from a_1 to a_6 takes 5 steps of the common difference.",
+        "22 - 2 = 20, so the common difference is 20 / 5 = 4."
+      ],
+      "useAgain": "when two terms of an arithmetic sequence are known but not the common difference.",
+      "hints": [
+        "Going from a_1 to a_6 takes 5 equal steps.",
+        "Divide the total change by the number of steps."
+      ],
+      "socraticHint": "How many steps of the common difference separate a_1 and a_6?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 4.\na_4 = 32.\nThis is a geometric sequence with a positive common ratio. What is the common ratio?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p29",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 3.\na_5 = 48.\nThis is a geometric sequence with a positive common ratio. What is the common ratio?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Going from a_1 to a_5 takes 4 multiplications by the common ratio.",
+        "48/3 = 16, and that is 2 raised to the power 4, so the ratio is 2."
+      ],
+      "useAgain": "when two terms of a geometric sequence are known but not the common ratio.",
+      "hints": [
+        "Going from a_1 to a_5 takes 4 equal multiplications.",
+        "Divide the two terms, then find the root that matches the number of steps."
+      ],
+      "socraticHint": "What single number, multiplied by itself 4 times, gives 16?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 1.\na_5 = 21.\nThis is an arithmetic sequence. What is the common difference?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p30",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 2.\na_5 = 162.\nThis is a geometric sequence with a positive common ratio. What is the common ratio?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Going from a_1 to a_5 takes 4 multiplications by the common ratio.",
+        "162/2 = 81, and that is 3 raised to the power 4, so the ratio is 3."
+      ],
+      "useAgain": "when two terms of a geometric sequence are known but not the common ratio.",
+      "hints": [
+        "Going from a_1 to a_5 takes 4 equal multiplications.",
+        "Divide the two terms, then find the root that matches the number of steps."
+      ],
+      "socraticHint": "What single number, multiplied by itself 4 times, gives 81?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 5.\na_3 = 20.\nThis is a geometric sequence with a positive common ratio. What is the common ratio?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p31",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "choice",
+      "prompt": "a_1 = 5.\na_n = a_(n-1) + 3.\nWhich is the explicit formula for a_n?",
+      "options": [
+        "a_n = 5 + 3(n - 1)",
+        "a_n = 5 + 3n",
+        "a_n = 3 + 5(n - 1)",
+        "a_n = 5 times 3^(n - 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "A recursive rule that adds the same amount each term is arithmetic.",
+        "Its explicit formula is a_n = a_1 + d(n - 1), which is a_n = 5 + 3(n - 1)."
+      ],
+      "useAgain": "when turning a recursive rule into a direct formula for any term.",
+      "hints": [
+        "Decide whether the rule adds or multiplies each step.",
+        "Match that to the arithmetic or geometric explicit formula, with (n - 1) steps from a_1."
+      ],
+      "socraticHint": "Does the recursive rule add or multiply to get the next term?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 7.\na_n = a_(n-1) + 4.\nWhich is the explicit formula for a_n?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "a_n = 7 + 4n",
+          "a_n = 4 + 7(n - 1)",
+          "a_n = 7 + 4(n - 1)",
+          "a_n = 7 times 4^(n - 1)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p32",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "choice",
+      "prompt": "a_1 = 4.\na_n = a_(n-1) + 5.\nWhich is the explicit formula for a_n?",
+      "options": [
+        "a_n = 4 + 5n",
+        "a_n = 4 + 5(n - 1)",
+        "a_n = 5 + 4(n - 1)",
+        "a_n = 4 times 5^(n - 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "A recursive rule that adds the same amount each term is arithmetic.",
+        "Its explicit formula is a_n = a_1 + d(n - 1), which is a_n = 4 + 5(n - 1)."
+      ],
+      "useAgain": "when turning a recursive rule into a direct formula for any term.",
+      "hints": [
+        "Decide whether the rule adds or multiplies each step.",
+        "Match that to the arithmetic or geometric explicit formula, with (n - 1) steps from a_1."
+      ],
+      "socraticHint": "Does the recursive rule add or multiply to get the next term?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 2.\na_n = a_(n-1) + 5.\nWhich is the explicit formula for a_n?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "a_n = 2 + 5n",
+          "a_n = 5 + 2(n - 1)",
+          "a_n = 2 times 5^(n - 1)",
+          "a_n = 2 + 5(n - 1)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p33",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "choice",
+      "prompt": "a_1 = 2.\na_n = 3 times a_(n-1).\nWhich is the explicit formula for a_n?",
+      "options": [
+        "a_n = 2 times 3^n",
+        "a_n = 3 times 2^(n - 1)",
+        "a_n = 2 times 3^(n - 1)",
+        "a_n = 2 + 3(n - 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "A recursive rule that multiplies by the same amount each term is geometric.",
+        "Its explicit formula is a_n = a_1 times r^(n - 1), which is a_n = 2 times 3^(n - 1)."
+      ],
+      "useAgain": "when turning a recursive rule into a direct formula for any term.",
+      "hints": [
+        "Decide whether the rule adds or multiplies each step.",
+        "Match that to the arithmetic or geometric explicit formula, with (n - 1) steps from a_1."
+      ],
+      "socraticHint": "Does the recursive rule add or multiply to get the next term?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 4.\na_n = 2 times a_(n-1).\nWhich is the explicit formula for a_n?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "a_n = 4 times 2^(n - 1)",
+          "a_n = 4 times 2^n",
+          "a_n = 2 times 4^(n - 1)",
+          "a_n = 4 + 2(n - 1)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p34",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "choice",
+      "prompt": "a_1 = 3.\na_n = 2 times a_(n-1).\nWhich is the explicit formula for a_n?",
+      "options": [
+        "a_n = 3 times 2^n",
+        "a_n = 2 times 3^(n - 1)",
+        "a_n = 3 + 2(n - 1)",
+        "a_n = 3 times 2^(n - 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "A recursive rule that multiplies by the same amount each term is geometric.",
+        "Its explicit formula is a_n = a_1 times r^(n - 1), which is a_n = 3 times 2^(n - 1)."
+      ],
+      "useAgain": "when turning a recursive rule into a direct formula for any term.",
+      "hints": [
+        "Decide whether the rule adds or multiplies each step.",
+        "Match that to the arithmetic or geometric explicit formula, with (n - 1) steps from a_1."
+      ],
+      "socraticHint": "Does the recursive rule add or multiply to get the next term?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 2.\na_n = 5 times a_(n-1).\nWhich is the explicit formula for a_n?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "a_n = 2 times 5^n",
+          "a_n = 2 times 5^(n - 1)",
+          "a_n = 5 times 2^(n - 1)",
+          "a_n = 2 + 5(n - 1)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p35",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "choice",
+      "prompt": "a_1 = 6.\na_n = a_(n-1) + 2.\nWhich is the explicit formula for a_n?",
+      "options": [
+        "a_n = 6 + 2(n - 1)",
+        "a_n = 6 + 2n",
+        "a_n = 2 + 6(n - 1)",
+        "a_n = 6 times 2^(n - 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "A recursive rule that adds the same amount each term is arithmetic.",
+        "Its explicit formula is a_n = a_1 + d(n - 1), which is a_n = 6 + 2(n - 1)."
+      ],
+      "useAgain": "when turning a recursive rule into a direct formula for any term.",
+      "hints": [
+        "Decide whether the rule adds or multiplies each step.",
+        "Match that to the arithmetic or geometric explicit formula, with (n - 1) steps from a_1."
+      ],
+      "socraticHint": "Does the recursive rule add or multiply to get the next term?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 3.\na_n = a_(n-1) + 6.\nWhich is the explicit formula for a_n?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "a_n = 3 + 6n",
+          "a_n = 6 + 3(n - 1)",
+          "a_n = 3 + 6(n - 1)",
+          "a_n = 3 times 6^(n - 1)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p36",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "choice",
+      "prompt": "a_1 = 1.\na_n = 4 times a_(n-1).\nWhich is the explicit formula for a_n?",
+      "options": [
+        "a_n = 1 times 4^n",
+        "a_n = 1 times 4^(n - 1)",
+        "a_n = 4 times 1^(n - 1)",
+        "a_n = 1 + 4(n - 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "A recursive rule that multiplies by the same amount each term is geometric.",
+        "Its explicit formula is a_n = a_1 times r^(n - 1), which is a_n = 1 times 4^(n - 1)."
+      ],
+      "useAgain": "when turning a recursive rule into a direct formula for any term.",
+      "hints": [
+        "Decide whether the rule adds or multiplies each step.",
+        "Match that to the arithmetic or geometric explicit formula, with (n - 1) steps from a_1."
+      ],
+      "socraticHint": "Does the recursive rule add or multiply to get the next term?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 5.\na_n = 2 times a_(n-1).\nWhich is the explicit formula for a_n?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "a_n = 5 times 2^n",
+          "a_n = 2 times 5^(n - 1)",
+          "a_n = 5 + 2(n - 1)",
+          "a_n = 5 times 2^(n - 1)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p37",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A robot arm's reach starts at 8 centimeters and grows by 5 centimeters every upgrade.\nWhat is term 6 of the sequence, in cm?",
+      "answer": {
+        "kind": "number",
+        "value": "33"
+      },
+      "explanation": [
+        "This is a an arithmetic sequence that adds 5 each term.",
+        "Term 6 is 33 cm."
+      ],
+      "useAgain": "when a real situation grows or shrinks the same way every step.",
+      "hints": [
+        "Decide whether the sequence adds or multiplies each term.",
+        "Use the explicit formula to jump straight to term 6."
+      ],
+      "socraticHint": "Does this situation add the same amount, or multiply by the same amount, each step?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot arm's reach starts at 6 centimeters and grows by 4 centimeters every upgrade.\nWhat is term 7 of the sequence, in cm?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p38",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A drone's altitude starts at 3 meters and doubles every minute.\nWhat is term 5 of the sequence, in m?",
+      "answer": {
+        "kind": "number",
+        "value": "48"
+      },
+      "explanation": [
+        "This is a a geometric sequence that multiplies by 2 each term.",
+        "Term 5 is 48 m."
+      ],
+      "useAgain": "when a real situation grows or shrinks the same way every step.",
+      "hints": [
+        "Decide whether the sequence adds or multiplies each term.",
+        "Use the explicit formula to jump straight to term 5."
+      ],
+      "socraticHint": "Does this situation add the same amount, or multiply by the same amount, each step?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A drone's altitude starts at 2 meters and doubles every minute.\nWhat is term 6 of the sequence, in m?",
+        "answer": {
+          "kind": "number",
+          "value": "64"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p39",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A 3D printer's filament spool starts at 200 grams and loses 15 grams per print.\nWhat is term 8 of the sequence, in g?",
+      "answer": {
+        "kind": "number",
+        "value": "95"
+      },
+      "explanation": [
+        "This is a an arithmetic sequence that adds 15 each term.",
+        "Term 8 is 95 g."
+      ],
+      "useAgain": "when a real situation grows or shrinks the same way every step.",
+      "hints": [
+        "Decide whether the sequence adds or multiplies each term.",
+        "Use the explicit formula to jump straight to term 8."
+      ],
+      "socraticHint": "Does this situation add the same amount, or multiply by the same amount, each step?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printer's filament spool starts at 150 grams and loses 10 grams per print.\nWhat is term 9 of the sequence, in g?",
+        "answer": {
+          "kind": "number",
+          "value": "70"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p40",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A game score starts at 4 points and triples every round.\nWhat is term 4 of the sequence, in points?",
+      "answer": {
+        "kind": "number",
+        "value": "108"
+      },
+      "explanation": [
+        "This is a a geometric sequence that multiplies by 3 each term.",
+        "Term 4 is 108 points."
+      ],
+      "useAgain": "when a real situation grows or shrinks the same way every step.",
+      "hints": [
+        "Decide whether the sequence adds or multiplies each term.",
+        "Use the explicit formula to jump straight to term 4."
+      ],
+      "socraticHint": "Does this situation add the same amount, or multiply by the same amount, each step?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game score starts at 3 points and triples every round.\nWhat is term 5 of the sequence, in points?",
+        "answer": {
+          "kind": "number",
+          "value": "243"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p41",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A kitchen scale's calibration weight starts at 100 grams and drops by 8 grams each test.\nWhat is term 7 of the sequence, in g?",
+      "answer": {
+        "kind": "number",
+        "value": "52"
+      },
+      "explanation": [
+        "This is a an arithmetic sequence that adds 8 each term.",
+        "Term 7 is 52 g."
+      ],
+      "useAgain": "when a real situation grows or shrinks the same way every step.",
+      "hints": [
+        "Decide whether the sequence adds or multiplies each term.",
+        "Use the explicit formula to jump straight to term 7."
+      ],
+      "socraticHint": "Does this situation add the same amount, or multiply by the same amount, each step?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen scale's calibration weight starts at 80 grams and drops by 6 grams each test.\nWhat is term 6 of the sequence, in g?",
+        "answer": {
+          "kind": "number",
+          "value": "50"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p42",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "A rover's signal strength starts at 5 and doubles every relay.\nWhat is term 6 of the sequence, in units?",
+      "answer": {
+        "kind": "number",
+        "value": "160"
+      },
+      "explanation": [
+        "This is a a geometric sequence that multiplies by 2 each term.",
+        "Term 6 is 160 units."
+      ],
+      "useAgain": "when a real situation grows or shrinks the same way every step.",
+      "hints": [
+        "Decide whether the sequence adds or multiplies each term.",
+        "Use the explicit formula to jump straight to term 6."
+      ],
+      "socraticHint": "Does this situation add the same amount, or multiply by the same amount, each step?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover's signal strength starts at 3 and doubles every relay.\nWhat is term 7 of the sequence, in units?",
+        "answer": {
+          "kind": "number",
+          "value": "192"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p43",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "order",
+      "prompt": "a_1 = 4.\na_n = a_(n-1) + 3.\nPut the steps in order to write the explicit formula for a_n.",
+      "items": [
+        "Substitute a_1 and the common difference into that formula.",
+        "Identify the common difference from the recursive rule, and write the explicit formula a_n = a_1 + d(n - 1)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "The common difference has to be found and the formula shape known first.",
+        "Then a_1 and that value are substituted into the formula."
+      ],
+      "useAgain": "when turning a recursive rule into a direct formula step by step.",
+      "hints": [
+        "Figure out whether it is arithmetic or geometric first.",
+        "The formula needs both a_1 and the common difference or ratio."
+      ],
+      "socraticHint": "What do you need before you can substitute into the explicit formula?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 3.\na_n = a_(n-1) + 5.\nPut the steps in order to write the explicit formula for a_n.",
+        "items": [
+          "Substitute a_1 and the common difference into that formula.",
+          "Identify the common difference from the recursive rule, and write the explicit formula a_n = a_1 + d(n - 1)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p44",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "order",
+      "prompt": "a_1 = 2.\na_n = a_(n-1) times 3.\nPut the steps in order to write the explicit formula for a_n.",
+      "items": [
+        "Substitute a_1 and the common ratio into that formula.",
+        "Identify the common ratio from the recursive rule, and write the explicit formula a_n = a_1 times r^(n - 1)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "The common ratio has to be found and the formula shape known first.",
+        "Then a_1 and that value are substituted into the formula."
+      ],
+      "useAgain": "when turning a recursive rule into a direct formula step by step.",
+      "hints": [
+        "Figure out whether it is arithmetic or geometric first.",
+        "The formula needs both a_1 and the common difference or ratio."
+      ],
+      "socraticHint": "What do you need before you can substitute into the explicit formula?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 2.\na_n = a_(n-1) times 4.\nPut the steps in order to write the explicit formula for a_n.",
+        "items": [
+          "Substitute a_1 and the common ratio into that formula.",
+          "Identify the common ratio from the recursive rule, and write the explicit formula a_n = a_1 times r^(n - 1)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p45",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "truefalse",
+      "prompt": "a_1 = 3.\na_n = a_(n-1) + 4.\nTrue or false: 47 is a term of this sequence.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "47 - 3 = 44, and 44/4 = 11, a whole number of steps.",
+        "So 47 is term 12 of the sequence."
+      ],
+      "useAgain": "when checking whether a number appears somewhere in an arithmetic sequence.",
+      "hints": [
+        "Subtract a_1 from 47 first.",
+        "Check whether that difference divides evenly by the common difference."
+      ],
+      "socraticHint": "Does 47 - 3 divide evenly by the common difference?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 2.\na_n = a_(n-1) + 5.\nTrue or false: 33 is a term of this sequence.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-sequences-p46",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 7.\na_n = a_(n-1) + 6.\na_n = 97.\nWhat is n?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "Set the explicit formula equal to 97: 7 + 6(n - 1) = 97.",
+        "Solving gives n = 16."
+      ],
+      "useAgain": "when you know a term's value but need to find its position.",
+      "hints": [
+        "Write the explicit formula and set it equal to 97.",
+        "Solve that equation for n."
+      ],
+      "socraticHint": "What equation in n does a_n = 97 turn into?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 4.\na_n = a_(n-1) + 7.\na_n = 95.\nWhat is n?",
+        "answer": {
+          "kind": "number",
+          "value": "14"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p47",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 3.\na_n = -2 times a_(n-1).\na_n = -384.\nWhat is n?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "The terms alternate sign: 3, -6, 12, -24, 48, -96, 192, -384, ...",
+        "-384 is term 8."
+      ],
+      "useAgain": "when a geometric sequence's ratio is negative and terms alternate sign.",
+      "hints": [
+        "List out terms until the sign and size match -192.",
+        "Watch how the sign flips every term with a negative ratio."
+      ],
+      "socraticHint": "Does the sign pattern help narrow down which term -192 could be?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 2.\na_n = -3 times a_(n-1).\na_n = -486.\nWhat is n?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p48",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_4 = 11.\na_9 = 31.\nThis is an arithmetic sequence. What is a_1?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "Going from term 4 to term 9 is 5 steps of the common difference.",
+        "(31 - 11)/5 = 4, so the common difference is 4.",
+        "a_1 = a_4 - 3 times the common difference = -1."
+      ],
+      "useAgain": "when two terms are known but neither is a_1.",
+      "hints": [
+        "Find the common difference from how many steps separate the two given terms.",
+        "Then work backward from either term to a_1."
+      ],
+      "socraticHint": "How many steps of the common difference separate a_4 and a_9?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_3 = 14.\na_8 = 39.\nThis is an arithmetic sequence. What is a_1?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p49",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 5.\na_n = a_(n-1) + 3.\nHow many terms of this sequence are less than 100?",
+      "answer": {
+        "kind": "number",
+        "value": "32"
+      },
+      "explanation": [
+        "Term n is 5 + 3(n - 1), and that stays below 100 while n is less than about 32.7.",
+        "That means 32 whole terms stay under 100."
+      ],
+      "useAgain": "when counting how many terms of a sequence stay under a bound.",
+      "hints": [
+        "Write the explicit formula and set it less than 100.",
+        "Solve that inequality for n, then count the whole numbers that work."
+      ],
+      "socraticHint": "For which n does 5 + 3(n - 1) first reach 100 or more?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 4.\na_n = a_(n-1) + 5.\nHow many terms of this sequence are less than 120?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-sequences-p50",
+      "lane": "skills",
+      "ideaId": "a2-sequences",
+      "kind": "number",
+      "prompt": "a_1 = 1.\na_2 = 1.\na_n = a_(n-1) + a_(n-2).\nWhat is a_8?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "Each term is the sum of the two terms before it: 1, 1, 2, 3, 5, 8, 13, 21.",
+        "a_8 is 21."
+      ],
+      "useAgain": "when a sequence's rule uses the two terms before it instead of just one.",
+      "hints": [
+        "Write out each term using the two terms right before it.",
+        "Keep going until you reach term 8."
+      ],
+      "socraticHint": "What two terms add together to make each new term?",
+      "skills": [
+        "think.skills.sequences"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 2.\na_2 = 3.\na_n = a_(n-1) + a_(n-2).\nWhat is a_7?",
+        "answer": {
+          "kind": "number",
+          "value": "34"
+        }
+      }
+    }
+  ]
+}

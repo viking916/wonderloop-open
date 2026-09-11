@@ -1,0 +1,2340 @@
+{
+  "id": "a2-counting-advanced",
+  "idea": {
+    "body": "Counting a huge pile of possibilities calls for tricks, not a list. Stars and bars counts the ways to split n identical items into k distinct groups. Picture the items as stars in a row, with k - 1 bars dropped among them to mark the splits. That gives C(n + k - 1, k - 1) ways. Inclusion-exclusion handles overlapping conditions. To count items in A or B, add the two counts, then subtract the overlap so it is not counted twice. Three conditions add all three, subtract every pair's overlap, then add the triple overlap back. Arrangements with symmetry removed need a fix too. n distinct items around a circle, where a rotation is not a new arrangement, count only (n - 1)! ways, since fixing one item's seat removes the rotations from the count.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "Five stars and two bars in a row, showing 5 items split into 3 groups of 2, 0, and 3.",
+      "spec": {
+        "w": 260,
+        "h": 70,
+        "items": [
+          {
+            "t": "circle",
+            "cx": 20,
+            "cy": 35,
+            "r": 6,
+            "fill": "ink"
+          },
+          {
+            "t": "circle",
+            "cx": 40,
+            "cy": 35,
+            "r": 6,
+            "fill": "ink"
+          },
+          {
+            "t": "line",
+            "x1": 60,
+            "y1": 15,
+            "x2": 60,
+            "y2": 55
+          },
+          {
+            "t": "line",
+            "x1": 80,
+            "y1": 15,
+            "x2": 80,
+            "y2": 55
+          },
+          {
+            "t": "circle",
+            "cx": 100,
+            "cy": 35,
+            "r": 6,
+            "fill": "ink"
+          },
+          {
+            "t": "circle",
+            "cx": 120,
+            "cy": 35,
+            "r": 6,
+            "fill": "ink"
+          },
+          {
+            "t": "circle",
+            "cx": 140,
+            "cy": 35,
+            "r": 6,
+            "fill": "ink"
+          },
+          {
+            "t": "text",
+            "x": 130,
+            "y": 62,
+            "s": "5 stars, 2 bars, 3 groups",
+            "size": 11,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A candy jar has 6 identical candies to place into 3 distinct bags, and a bag may get zero. How many ways are there?",
+    "steps": [
+      "Picture the 6 candies as stars in a row, with 2 bars among them to split them into 3 bags.",
+      "The total number of symbols (stars plus bars) is 6 + 2 = 8.",
+      "Choosing which 2 of those 8 positions are bars decides the split: C(8, 2).",
+      "C(8, 2) = 28."
+    ]
+  },
+  "ways": [
+    {
+      "id": "a2-counting-advanced-w1",
+      "name": "Stars and bars as a picture",
+      "when": "Count ways to split n identical items into k groups; picture stars with bars between them.",
+      "steps": [
+        "5 identical items into 3 groups: picture 5 stars and 2 bars in a row.",
+        "Total symbols: 5 + 2 = 7. Choose which 2 are bars: C(7, 2) = 21.",
+        "Or equivalently, C(n + k - 1, k - 1) = C(5 + 3 - 1, 3 - 1) = C(7, 2) = 21.",
+        "Check: C(7, 2) = 7! / (2! 5!) = (7 times 6) / 2 = 21. "
+      ],
+      "example": "Count ways to split 5 identical items into 3 distinct groups.",
+      "answer": "21",
+      "trap": "Confusing the number of items with the number of groups; using C(n, k) instead of C(n + k - 1, k - 1).",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Five stars and two bars in a row, the bars shaded: the stars split into three groups of 2, 2 and 1.",
+        "spec": {
+          "w": 300,
+          "h": 150,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 30,
+              "w": 30,
+              "h": 30,
+              "label": "*",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 54,
+              "y": 30,
+              "w": 30,
+              "h": 30,
+              "label": "*",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 88,
+              "y": 30,
+              "w": 30,
+              "h": 30,
+              "label": "|",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 122,
+              "y": 30,
+              "w": 30,
+              "h": 30,
+              "label": "*",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 156,
+              "y": 30,
+              "w": 30,
+              "h": 30,
+              "label": "*",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 30,
+              "w": 30,
+              "h": 30,
+              "label": "|",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 224,
+              "y": 30,
+              "w": 30,
+              "h": 30,
+              "label": "*",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 137,
+              "y": 88,
+              "s": "7 slots, choose 2 for the bars: C(7, 2) = 21",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 137,
+              "y": 110,
+              "s": "C(n+k-1, k-1) = C(7, 2) = 21",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 137,
+              "y": 132,
+              "s": "Check: (7 x 6) / 2 = 21",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Split 5 items into 3 groups.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Picture 5 stars and 2 bars in a row.",
+              "set": {
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "7 symbols; choose 2 for bars: C(7, 2) = 21.",
+              "set": {
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Same as C(n + k - 1, k - 1) = C(7, 2).",
+              "set": {
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Check: (7 x 6) / 2 = 21.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a2-counting-advanced-w2",
+      "name": "Inclusion-exclusion with Venn",
+      "when": "Count items satisfying at least one of two overlapping conditions.",
+      "steps": [
+        "Items divisible by 2 or 3 among 1 to 30.",
+        "Multiples of 2: 30/2 = 15. Multiples of 3: 30/3 = 10.",
+        "Multiples of both (lcm = 6): 30/6 = 5.",
+        "Total: 15 + 10 - 5 = 20 (subtract overlap so it's not counted twice)."
+      ],
+      "example": "Among 1 to 30, how many are divisible by 2 or 3?",
+      "answer": "20",
+      "trap": "Forgetting to subtract the overlap; counting the overlap more than once.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two overlapping boxes for multiples of 2 and multiples of 3 among 1 to 30: 10 in the left part only, 5 in the overlap, 5 in the right part only.",
+        "spec": {
+          "w": 300,
+          "h": 160,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  30,
+                  40
+                ],
+                [
+                  180,
+                  40
+                ],
+                [
+                  180,
+                  120
+                ],
+                [
+                  30,
+                  120
+                ]
+              ]
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  120,
+                  40
+                ],
+                [
+                  270,
+                  40
+                ],
+                [
+                  270,
+                  120
+                ],
+                [
+                  120,
+                  120
+                ]
+              ],
+              "dashed": true
+            },
+            {
+              "t": "text",
+              "x": 75,
+              "y": 30,
+              "s": "multiples of 2",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 225,
+              "y": 30,
+              "s": "multiples of 3",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 75,
+              "y": 86,
+              "s": "10",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 86,
+              "s": "5",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 225,
+              "y": 86,
+              "s": "5",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 145,
+              "s": "15 + 10 - 5 = 20",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 75,
+              "y": 50,
+              "s": "15 total",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 225,
+              "y": 50,
+              "s": "10 total",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Count numbers from 1 to 30 divisible by 2 or 3.",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Items divisible by 2 or 3, among 1 to 30.",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Multiples of 2: 15. Multiples of 3: 10.",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Multiples of both (lcm 6): 5 numbers.",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Total: 15 + 10 - 5 = 20.",
+              "set": {
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a2-counting-advanced-w3",
+      "name": "Circular arrangements: divide out rotations",
+      "when": "Arrange n distinct items in a circle where rotations count as one.",
+      "steps": [
+        "Arrange 5 people around a circle: normally 5! = 120 ways.",
+        "But rotations are equivalent, so fix one person's seat to remove that redundancy.",
+        "Remaining 4 arrange in a line: 4! = 24 ways.",
+        "Formula: (n - 1)! = (5 - 1)! = 4! = 24."
+      ],
+      "example": "In how many ways can 5 people sit around a circle if rotations are the same?",
+      "answer": "24",
+      "trap": "Using n! instead of (n-1)!; forgetting that fixing one person removes rotation count."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-counting-advanced-p01",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A candy jar has 5 identical items to place into 3 distinct groups, and a group may get zero. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "Stars and bars: 5 identical items into 3 groups uses 2 dividers among the items.",
+        "The count is C(5 + 3 - 1, 3 - 1) = C(7, 2) = 21."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among distinct groups with no lower limit per group.",
+      "hints": [
+        "Picture 5 stars in a row with 2 bars placed among them to split them into 3 groups.",
+        "The count is C(n + k - 1, k - 1), with n items and k groups."
+      ],
+      "socraticHint": "How many bars split a row into 3 groups?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover's sample tray has 6 identical items to place into 3 distinct groups, and a group may get zero. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "28"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p02",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A robot's parts bin has 6 identical items to place into 4 distinct groups, and a group may get zero. How many ways are there?",
+      "options": [
+        "126",
+        "120",
+        "56",
+        "84"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Stars and bars: 6 identical items into 4 groups uses 3 dividers among the items.",
+        "The count is C(6 + 4 - 1, 4 - 1) = C(9, 3) = 84."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among distinct groups with no lower limit per group.",
+      "hints": [
+        "Picture 6 stars in a row with 3 bars placed among them to split them into 4 groups.",
+        "The count is C(n + k - 1, k - 1), with n items and k groups."
+      ],
+      "socraticHint": "How many bars split a row into 4 groups?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A puzzle's block bin has 7 identical items to place into 4 distinct groups, and a group may get zero. How many ways are there?",
+        "options": [
+          "210",
+          "165",
+          "120",
+          "84"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's token pile has 4 identical items to place into 3 distinct groups, and a group may get zero. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Stars and bars: 4 identical items into 3 groups uses 2 dividers among the items.",
+        "The count is C(4 + 3 - 1, 3 - 1) = C(6, 2) = 15."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among distinct groups with no lower limit per group.",
+      "hints": [
+        "Picture 4 stars in a row with 2 bars placed among them to split them into 3 groups.",
+        "The count is C(n + k - 1, k - 1), with n items and k groups."
+      ],
+      "socraticHint": "How many bars split a row into 3 groups?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A kitchen's spice rack has 5 identical items to place into 3 distinct groups, and a group may get zero. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p04",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A 3D printer's spool rack has 7 identical items to place into 3 distinct groups, and a group may get zero. How many ways are there?",
+      "options": [
+        "84",
+        "36",
+        "45",
+        "28"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Stars and bars: 7 identical items into 3 groups uses 2 dividers among the items.",
+        "The count is C(7 + 3 - 1, 3 - 1) = C(9, 2) = 36."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among distinct groups with no lower limit per group.",
+      "hints": [
+        "Picture 7 stars in a row with 2 bars placed among them to split them into 3 groups.",
+        "The count is C(n + k - 1, k - 1), with n items and k groups."
+      ],
+      "socraticHint": "How many bars split a row into 3 groups?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A drone's battery case has 8 identical items to place into 3 distinct groups, and a group may get zero. How many ways are there?",
+        "options": [
+          "45",
+          "120",
+          "55",
+          "36"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p05",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket's fuel bay has 5 identical items to place into 4 distinct groups, and a group may get zero. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "56"
+      },
+      "explanation": [
+        "Stars and bars: 5 identical items into 4 groups uses 3 dividers among the items.",
+        "The count is C(5 + 4 - 1, 4 - 1) = C(8, 3) = 56."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among distinct groups with no lower limit per group.",
+      "hints": [
+        "Picture 5 stars in a row with 3 bars placed among them to split them into 4 groups.",
+        "The count is C(n + k - 1, k - 1), with n items and k groups."
+      ],
+      "socraticHint": "How many bars split a row into 4 groups?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "An arcade's prize bin has 6 identical items to place into 4 distinct groups, and a group may get zero. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "84"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's token pile numbers its items 1 through 30. How many are divisible by 2 or by 3?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "Count multiples of 2: 30 // 2 = 15. Count multiples of 3: 30 // 3 = 10.",
+        "Count multiples of both (of 6, their lcm): 30 // 6 = 5.",
+        "By inclusion-exclusion: 15 + 10 - 5 = 20."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when counting items that satisfy at least one of two overlapping conditions.",
+      "hints": [
+        "Count each divisor's multiples separately first.",
+        "Subtract the count divisible by both, so it is not counted twice."
+      ],
+      "socraticHint": "How many numbers from 1 to 30 are divisible by both 2 and 3?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A 3D printer's spool rack numbers its items 1 through 45. How many are divisible by 3 or by 5?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p07",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "True or false: 4 identical candies placed into 3 distinct jars, a jar allowed to be empty, gives C(6, 2) ways.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Stars and bars: n = 4 items, k = 3 jars, gives C(n + k - 1, k - 1) = C(6, 2).",
+        "C(6, 2) = 15, which matches the direct count.",
+        "So the statement is true."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when you want a fast check on a stars and bars count.",
+      "hints": [
+        "Plug n = 4 and k = 3 into C(n + k - 1, k - 1).",
+        "Check that the resulting binomial coefficient matches what is claimed."
+      ],
+      "socraticHint": "What is n + k - 1 here?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: 5 identical candies placed into 2 distinct jars, a jar allowed to be empty, gives C(6, 1) ways.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket's fuel bay numbers its items 1 through 40. How many are divisible by 2 or by 5?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "Count multiples of 2: 40 // 2 = 20. Count multiples of 5: 40 // 5 = 8.",
+        "Count multiples of both (of 10, their lcm): 40 // 10 = 4.",
+        "By inclusion-exclusion: 20 + 8 - 4 = 24."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when counting items that satisfy at least one of two overlapping conditions.",
+      "hints": [
+        "Count each divisor's multiples separately first.",
+        "Subtract the count divisible by both, so it is not counted twice."
+      ],
+      "socraticHint": "How many numbers from 1 to 40 are divisible by both 2 and 5?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover's sample tray numbers its items 1 through 48. How many are divisible by 2 or by 3?",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover's sample tray numbers its items 1 through 60. How many are divisible by 3 or by 4?",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "Count multiples of 3: 60 // 3 = 20. Count multiples of 4: 60 // 4 = 15.",
+        "Count multiples of both (of 12, their lcm): 60 // 12 = 5.",
+        "By inclusion-exclusion: 20 + 15 - 5 = 30."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when counting items that satisfy at least one of two overlapping conditions.",
+      "hints": [
+        "Count each divisor's multiples separately first.",
+        "Subtract the count divisible by both, so it is not counted twice."
+      ],
+      "socraticHint": "How many numbers from 1 to 60 are divisible by both 3 and 4?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A puzzle's block bin numbers its items 1 through 72. How many are divisible by 3 or by 8?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p10",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A puzzle's block bin numbers its items 1 through 36. How many are divisible by 2 or by 9?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "Count multiples of 2: 36 // 2 = 18. Count multiples of 9: 36 // 9 = 4.",
+        "Count multiples of both (of 18, their lcm): 36 // 18 = 2.",
+        "By inclusion-exclusion: 18 + 4 - 2 = 20."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when counting items that satisfy at least one of two overlapping conditions.",
+      "hints": [
+        "Count each divisor's multiples separately first.",
+        "Subtract the count divisible by both, so it is not counted twice."
+      ],
+      "socraticHint": "How many numbers from 1 to 36 are divisible by both 2 and 9?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A kitchen's spice rack numbers its items 1 through 54. How many are divisible by 2 or by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p11",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "Put these steps for counting integers from 1 to 60 divisible by 4 or 6 in the order you would do them.",
+      "items": [
+        "Subtract multiples of 12 (the lcm of 4 and 6), counted twice: 5.",
+        "Count multiples of 4 (15) and multiples of 6 (10) separately.",
+        "Recognize this needs inclusion-exclusion on two overlapping conditions.",
+        "Report the final total, 15 + 10 - 5 = 20, as the answer."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0,
+          3
+        ]
+      },
+      "explanation": [
+        "Count multiples of 4 and multiples of 6 separately.",
+        "Subtract the multiples of their lcm, 12, since those were counted twice.",
+        "Recognize this needs inclusion-exclusion on two overlapping conditions.",
+        "Report the final total as the answer."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when you want to keep the steps of a divisibility count straight.",
+      "hints": [
+        "Recognizing which method applies comes before any counting.",
+        "The subtraction step always comes right after the two separate counts."
+      ],
+      "socraticHint": "What kind of counting problem is this?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Put these steps for counting integers from 1 to 90 divisible by 6 or 9 in the order you would do them.",
+        "items": [
+          "Subtract multiples of 18 (the lcm of 6 and 9), counted twice: 5.",
+          "Count multiples of 6 (15) and multiples of 9 (10) separately.",
+          "Recognize this needs inclusion-exclusion on two overlapping conditions.",
+          "Report the final total, 15 + 10 - 5 = 20, as the answer."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p12",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In how many ways can 5 distinct items be arranged around a circle, where rotations of the same arrangement count as one?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "Fix one item's position to remove rotations from the count.",
+        "The remaining 4 items can be arranged in (5-1)! = 4! ways.",
+        "4! = 24."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when items are arranged in a circle and a rotation is not a new arrangement.",
+      "hints": [
+        "Fix one item in place first; that removes the rotation overcounting.",
+        "The rest arrange in a straight line from there: (n - 1)!."
+      ],
+      "socraticHint": "Why does fixing one item remove the rotations from the count?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many ways can 10 distinct items be arranged around a circle, where rotations of the same arrangement count as one?",
+        "answer": {
+          "kind": "number",
+          "value": "362880"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p13",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In how many ways can 6 distinct items be arranged around a circle, where rotations of the same arrangement count as one?",
+      "answer": {
+        "kind": "number",
+        "value": "120"
+      },
+      "explanation": [
+        "Fix one item's position to remove rotations from the count.",
+        "The remaining 5 items can be arranged in (6-1)! = 5! ways.",
+        "5! = 120."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when items are arranged in a circle and a rotation is not a new arrangement.",
+      "hints": [
+        "Fix one item in place first; that removes the rotation overcounting.",
+        "The rest arrange in a straight line from there: (n - 1)!."
+      ],
+      "socraticHint": "Why does fixing one item remove the rotations from the count?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many ways can 11 distinct items be arranged around a circle, where rotations of the same arrangement count as one?",
+        "answer": {
+          "kind": "number",
+          "value": "3628800"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p14",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In how many ways can 3 distinct items be arranged around a circle, where rotations of the same arrangement count as one?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Fix one item's position to remove rotations from the count.",
+        "The remaining 2 items can be arranged in (3-1)! = 2! ways.",
+        "2! = 2."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when items are arranged in a circle and a rotation is not a new arrangement.",
+      "hints": [
+        "Fix one item in place first; that removes the rotation overcounting.",
+        "The rest arrange in a straight line from there: (n - 1)!."
+      ],
+      "socraticHint": "Why does fixing one item remove the rotations from the count?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many ways can 12 distinct items be arranged around a circle, where rotations of the same arrangement count as one?",
+        "answer": {
+          "kind": "number",
+          "value": "39916800"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p15",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In how many ways can 7 distinct items be arranged around a circle, where rotations of the same arrangement count as one?",
+      "answer": {
+        "kind": "number",
+        "value": "720"
+      },
+      "explanation": [
+        "Fix one item's position to remove rotations from the count.",
+        "The remaining 6 items can be arranged in (7-1)! = 6! ways.",
+        "6! = 720."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when items are arranged in a circle and a rotation is not a new arrangement.",
+      "hints": [
+        "Fix one item in place first; that removes the rotation overcounting.",
+        "The rest arrange in a straight line from there: (n - 1)!."
+      ],
+      "socraticHint": "Why does fixing one item remove the rotations from the count?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many ways can 13 distinct items be arranged around a circle, where rotations of the same arrangement count as one?",
+        "answer": {
+          "kind": "number",
+          "value": "479001600"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p16",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A candy jar has 8 identical items to place into 3 distinct groups, and every group must get at least one. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "Give each of the 3 groups 1 item first: that uses up 3 of the 8.",
+        "Split the remaining 5 items among the 3 groups with no lower limit now.",
+        "That count is C(5 + 3 - 1, 3 - 1) = C(7, 2) = 21."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among distinct groups and none can be left empty.",
+      "hints": [
+        "Hand out 1 item to each group first, to satisfy the at-least-one rule.",
+        "Then use stars and bars on the 5 that remain, with no lower limit."
+      ],
+      "socraticHint": "How many items are left after every group gets its first one?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A robot's parts bin has 9 identical items to place into 3 distinct groups, and every group must get at least one. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "28"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p17",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot's parts bin has 9 identical items to place into 4 distinct groups, and every group must get at least one. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "56"
+      },
+      "explanation": [
+        "Give each of the 4 groups 1 item first: that uses up 4 of the 9.",
+        "Split the remaining 5 items among the 4 groups with no lower limit now.",
+        "That count is C(5 + 4 - 1, 4 - 1) = C(8, 3) = 56."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among distinct groups and none can be left empty.",
+      "hints": [
+        "Hand out 1 item to each group first, to satisfy the at-least-one rule.",
+        "Then use stars and bars on the 5 that remain, with no lower limit."
+      ],
+      "socraticHint": "How many items are left after every group gets its first one?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game's token pile has 10 identical items to place into 4 distinct groups, and every group must get at least one. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "84"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p18",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's token pile has 7 identical items to place into 3 distinct groups, and every group must get at least one. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Give each of the 3 groups 1 item first: that uses up 3 of the 7.",
+        "Split the remaining 4 items among the 3 groups with no lower limit now.",
+        "That count is C(4 + 3 - 1, 3 - 1) = C(6, 2) = 15."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among distinct groups and none can be left empty.",
+      "hints": [
+        "Hand out 1 item to each group first, to satisfy the at-least-one rule.",
+        "Then use stars and bars on the 4 that remain, with no lower limit."
+      ],
+      "socraticHint": "How many items are left after every group gets its first one?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer's spool rack has 8 identical items to place into 3 distinct groups, and every group must get at least one. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p19",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D printer's spool rack has 10 identical items to place into 4 distinct groups, and every group must get at least one. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "84"
+      },
+      "explanation": [
+        "Give each of the 4 groups 1 item first: that uses up 4 of the 10.",
+        "Split the remaining 6 items among the 4 groups with no lower limit now.",
+        "That count is C(6 + 4 - 1, 4 - 1) = C(9, 3) = 84."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among distinct groups and none can be left empty.",
+      "hints": [
+        "Hand out 1 item to each group first, to satisfy the at-least-one rule.",
+        "Then use stars and bars on the 6 that remain, with no lower limit."
+      ],
+      "socraticHint": "How many items are left after every group gets its first one?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rocket's fuel bay has 11 identical items to place into 4 distinct groups, and every group must get at least one. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "120"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p20",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket's fuel bay has 6 identical items to place into 3 distinct groups, and every group must get at least one. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Give each of the 3 groups 1 item first: that uses up 3 of the 6.",
+        "Split the remaining 3 items among the 3 groups with no lower limit now.",
+        "That count is C(3 + 3 - 1, 3 - 1) = C(5, 2) = 10."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among distinct groups and none can be left empty.",
+      "hints": [
+        "Hand out 1 item to each group first, to satisfy the at-least-one rule.",
+        "Then use stars and bars on the 3 that remain, with no lower limit."
+      ],
+      "socraticHint": "How many items are left after every group gets its first one?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rover's sample tray has 7 identical items to place into 3 distinct groups, and every group must get at least one. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p21",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Out of 40 students, 18 take math club, 15 take chess club, and 7 take both. How many take neither club?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "Students taking at least one club: 18 + 15 - 7 = 26.",
+        "Students taking neither: 40 - 26 = 14."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when you need the count left over after two overlapping groups are removed.",
+      "hints": [
+        "Add the two club counts, then subtract those counted twice (both clubs).",
+        "Subtract that total from everyone to find neither."
+      ],
+      "socraticHint": "How many students take at least one of the two clubs?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Out of 48 students, 20 take math club, 17 take chess club, and 8 take both. How many take neither club?",
+        "answer": {
+          "kind": "number",
+          "value": "19"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Out of 50 students, 22 take math club, 19 take chess club, and 8 take both. How many take neither club?",
+      "answer": {
+        "kind": "number",
+        "value": "17"
+      },
+      "explanation": [
+        "Students taking at least one club: 22 + 19 - 8 = 33.",
+        "Students taking neither: 50 - 33 = 17."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when you need the count left over after two overlapping groups are removed.",
+      "hints": [
+        "Add the two club counts, then subtract those counted twice (both clubs).",
+        "Subtract that total from everyone to find neither."
+      ],
+      "socraticHint": "How many students take at least one of the two clubs?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Out of 55 students, 24 take math club, 21 take chess club, and 9 take both. How many take neither club?",
+        "answer": {
+          "kind": "number",
+          "value": "19"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p23",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Out of 60 students, 25 take math club, 20 take chess club, and 10 take both. How many take neither club?",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "Students taking at least one club: 25 + 20 - 10 = 35.",
+        "Students taking neither: 60 - 35 = 25."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when you need the count left over after two overlapping groups are removed.",
+      "hints": [
+        "Add the two club counts, then subtract those counted twice (both clubs).",
+        "Subtract that total from everyone to find neither."
+      ],
+      "socraticHint": "How many students take at least one of the two clubs?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Out of 65 students, 28 take math club, 22 take chess club, and 11 take both. How many take neither club?",
+        "answer": {
+          "kind": "number",
+          "value": "26"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p24",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Out of 45 students, 20 take math club, 18 take chess club, and 9 take both. How many take neither club?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "Students taking at least one club: 20 + 18 - 9 = 29.",
+        "Students taking neither: 45 - 29 = 16."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when you need the count left over after two overlapping groups are removed.",
+      "hints": [
+        "Add the two club counts, then subtract those counted twice (both clubs).",
+        "Subtract that total from everyone to find neither."
+      ],
+      "socraticHint": "How many students take at least one of the two clubs?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Out of 42 students, 18 take math club, 16 take chess club, and 7 take both. How many take neither club?",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p25",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "True or false: seating 5 distinct people around a round table, where rotations count as the same, gives 5! arrangements.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Round-table seatings with rotations equivalent give (n - 1)!, not n!.",
+        "For n = 5, that is 4! = 24, not 5! = 120.",
+        "So the statement is false."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when you want a fast check on a circular arrangement count.",
+      "hints": [
+        "Fixing one seat to remove rotation overcounting changes n! into (n - 1)!.",
+        "Check which of the two factorials the claim actually uses."
+      ],
+      "socraticHint": "Does fixing one person's seat change n! or leave it the same?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "True or false: seating 6 distinct people around a round table, where rotations count as the same, gives 6! arrangements.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p26",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many distinct arrangements are there of all the letters in LEVEL?",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "LEVEL has 5 letters total, with repeats: E appears 2 times, L appears 2 times.",
+        "Divide the total arrangements 5! by the repeats' factorials: 5! / (2! times 2!).",
+        "That works out to 30."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when arranging a set of letters or objects where some repeat.",
+      "hints": [
+        "Start from n! for all letters treated as different, then divide.",
+        "Divide by the factorial of each letter's repeat count, one factor per repeated letter."
+      ],
+      "socraticHint": "Which letters repeat in LEVEL, and how many times each?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many distinct arrangements are there of all the letters in NOON?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p27",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many distinct arrangements are there of all the letters in ARRAY?",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "ARRAY has 5 letters total, with repeats: A appears 2 times, R appears 2 times.",
+        "Divide the total arrangements 5! by the repeats' factorials: 5! / (2! times 2!).",
+        "That works out to 30."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when arranging a set of letters or objects where some repeat.",
+      "hints": [
+        "Start from n! for all letters treated as different, then divide.",
+        "Divide by the factorial of each letter's repeat count, one factor per repeated letter."
+      ],
+      "socraticHint": "Which letters repeat in ARRAY, and how many times each?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many distinct arrangements are there of all the letters in GIGGLE?",
+        "answer": {
+          "kind": "number",
+          "value": "120"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p28",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many distinct arrangements are there of all the letters in BANANA?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "BANANA has 6 letters total, with repeats: A appears 3 times, N appears 2 times.",
+        "Divide the total arrangements 6! by the repeats' factorials: 6! / (3! times 2!).",
+        "That works out to 60."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when arranging a set of letters or objects where some repeat.",
+      "hints": [
+        "Start from n! for all letters treated as different, then divide.",
+        "Divide by the factorial of each letter's repeat count, one factor per repeated letter."
+      ],
+      "socraticHint": "Which letters repeat in BANANA, and how many times each?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many distinct arrangements are there of all the letters in SASSY?",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p29",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many distinct arrangements are there of all the letters in KAYAK?",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "KAYAK has 5 letters total, with repeats: A appears 2 times, K appears 2 times.",
+        "Divide the total arrangements 5! by the repeats' factorials: 5! / (2! times 2!).",
+        "That works out to 30."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when arranging a set of letters or objects where some repeat.",
+      "hints": [
+        "Start from n! for all letters treated as different, then divide.",
+        "Divide by the factorial of each letter's repeat count, one factor per repeated letter."
+      ],
+      "socraticHint": "Which letters repeat in KAYAK, and how many times each?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many distinct arrangements are there of all the letters in MADAM?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p30",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "Put these steps for counting arrangements of the letters in ERROR in the order you would do them.",
+      "items": [
+        "Divide by 3! for the three repeated R's: 120 / 6 = 20.",
+        "Compute 5! for all 5 letters treated as different: 120.",
+        "Notice ERROR has 5 letters, with R repeated 3 times.",
+        "Report the final count, 20."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0,
+          3
+        ]
+      },
+      "explanation": [
+        "Compute 5! for all 5 letters treated as different.",
+        "Divide by 3! for the three repeated R's.",
+        "Notice ERROR has 5 letters, with R repeated 3 times.",
+        "Report the final count, 5! / 3! = 20."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when you want to keep the steps of a repeated-letter arrangement count straight.",
+      "hints": [
+        "Noticing which letters repeat comes before any factorial arithmetic.",
+        "The division step always comes right after computing the full n!."
+      ],
+      "socraticHint": "Which letter repeats in ERROR, and how many times?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps for counting arrangements of the letters in KAYAK in the order you would do them.",
+        "items": [
+          "Divide by 2! for the repeated K's and by 2! for the repeated A's: 120 / 4 = 30.",
+          "Compute 5! for all 5 letters treated as different: 120.",
+          "Notice KAYAK has 5 letters, with K repeated 2 times and A repeated 2 times.",
+          "Report the final count, 30."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p31",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A candy jar numbers its items 1 through 100. How many are divisible by 3, 5, or 7?",
+      "answer": {
+        "kind": "number",
+        "value": "55"
+      },
+      "explanation": [
+        "Add each single count: multiples of 3, 5, and 7.",
+        "Subtract every pairwise overlap, then add back the triple overlap once.",
+        "The total works out to 55."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when counting items that satisfy at least one of three overlapping conditions.",
+      "hints": [
+        "Add the three single counts, then subtract each pair's overlap.",
+        "Add the triple overlap back once at the very end; it was subtracted three times."
+      ],
+      "socraticHint": "What do you subtract after adding the three single counts?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot's parts bin numbers its items 1 through 120. How many are divisible by 3, 5, or 7?",
+        "answer": {
+          "kind": "number",
+          "value": "66"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p32",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A robot's parts bin numbers its items 1 through 150. How many are divisible by 2, 3, or 5?",
+      "options": [
+        "155",
+        "105",
+        "110",
+        "115"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Add each single count: multiples of 2, 3, and 5.",
+        "Subtract every pairwise overlap, then add back the triple overlap once.",
+        "The total works out to 110."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when counting items that satisfy at least one of three overlapping conditions.",
+      "hints": [
+        "Add the three single counts, then subtract each pair's overlap.",
+        "Add the triple overlap back once at the very end; it was subtracted three times."
+      ],
+      "socraticHint": "What do you subtract after adding the three single counts?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game's token pile numbers its items 1 through 180. How many are divisible by 2, 3, or 5?",
+        "options": [
+          "186",
+          "132",
+          "126",
+          "133"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's token pile numbers its items 1 through 200. How many are divisible by 4, 6, or 9?",
+      "answer": {
+        "kind": "number",
+        "value": "78"
+      },
+      "explanation": [
+        "Add each single count: multiples of 4, 6, and 9.",
+        "Subtract every pairwise overlap, then add back the triple overlap once.",
+        "The total works out to 78."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when counting items that satisfy at least one of three overlapping conditions.",
+      "hints": [
+        "Add the three single counts, then subtract each pair's overlap.",
+        "Add the triple overlap back once at the very end; it was subtracted three times."
+      ],
+      "socraticHint": "What do you subtract after adding the three single counts?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printer's spool rack numbers its items 1 through 240. How many are divisible by 4, 6, or 9?",
+        "answer": {
+          "kind": "number",
+          "value": "93"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p34",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A 3D printer's spool rack numbers its items 1 through 120. How many are divisible by 3, 4, or 5?",
+      "options": [
+        "72",
+        "94",
+        "70",
+        "74"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Add each single count: multiples of 3, 4, and 5.",
+        "Subtract every pairwise overlap, then add back the triple overlap once.",
+        "The total works out to 72."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when counting items that satisfy at least one of three overlapping conditions.",
+      "hints": [
+        "Add the three single counts, then subtract each pair's overlap.",
+        "Add the triple overlap back once at the very end; it was subtracted three times."
+      ],
+      "socraticHint": "What do you subtract after adding the three single counts?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rocket's fuel bay numbers its items 1 through 150. How many are divisible by 3, 4, or 5?",
+        "options": [
+          "117",
+          "88",
+          "91",
+          "90"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket's fuel bay numbers its items 1 through 180. How many are divisible by 2, 5, or 9?",
+      "answer": {
+        "kind": "number",
+        "value": "116"
+      },
+      "explanation": [
+        "Add each single count: multiples of 2, 5, and 9.",
+        "Subtract every pairwise overlap, then add back the triple overlap once.",
+        "The total works out to 116."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when counting items that satisfy at least one of three overlapping conditions.",
+      "hints": [
+        "Add the three single counts, then subtract each pair's overlap.",
+        "Add the triple overlap back once at the very end; it was subtracted three times."
+      ],
+      "socraticHint": "What do you subtract after adding the three single counts?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover's sample tray numbers its items 1 through 200. How many are divisible by 2, 5, or 9?",
+        "answer": {
+          "kind": "number",
+          "value": "129"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's token pile has 10 identical items to place into 3 distinct groups, and no group may hold more than 5. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "Start from the no-limit count, then subtract the cases where some group has more than 5.",
+        "For each group that overflows, shift 6 items to it first, then count the rest with stars and bars.",
+        "Use inclusion-exclusion over which groups overflow, alternating add and subtract.",
+        "The total works out to 21."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among groups and no group may hold too many.",
+      "hints": [
+        "Start from the no-limit stars and bars count.",
+        "Subtract cases where one group has at least 6, add back where two do, and so on."
+      ],
+      "socraticHint": "What happens if you give one group 6 items before counting the rest?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printer's spool rack has 11 identical items to place into 3 distinct groups, and no group may hold more than 5. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D printer's spool rack has 12 identical items to place into 3 distinct groups, and no group may hold more than 6. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "28"
+      },
+      "explanation": [
+        "Start from the no-limit count, then subtract the cases where some group has more than 6.",
+        "For each group that overflows, shift 7 items to it first, then count the rest with stars and bars.",
+        "Use inclusion-exclusion over which groups overflow, alternating add and subtract.",
+        "The total works out to 28."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among groups and no group may hold too many.",
+      "hints": [
+        "Start from the no-limit stars and bars count.",
+        "Subtract cases where one group has at least 7, add back where two do, and so on."
+      ],
+      "socraticHint": "What happens if you give one group 7 items before counting the rest?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rocket's fuel bay has 13 identical items to place into 3 distinct groups, and no group may hold more than 6. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p38",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket's fuel bay has 14 identical items to place into 4 distinct groups, and no group may hold more than 5. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "80"
+      },
+      "explanation": [
+        "Start from the no-limit count, then subtract the cases where some group has more than 5.",
+        "For each group that overflows, shift 6 items to it first, then count the rest with stars and bars.",
+        "Use inclusion-exclusion over which groups overflow, alternating add and subtract.",
+        "The total works out to 80."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among groups and no group may hold too many.",
+      "hints": [
+        "Start from the no-limit stars and bars count.",
+        "Subtract cases where one group has at least 6, add back where two do, and so on."
+      ],
+      "socraticHint": "What happens if you give one group 6 items before counting the rest?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover's sample tray has 15 identical items to place into 4 distinct groups, and no group may hold more than 5. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "56"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p39",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover's sample tray has 9 identical items to place into 3 distinct groups, and no group may hold more than 4. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Start from the no-limit count, then subtract the cases where some group has more than 4.",
+        "For each group that overflows, shift 5 items to it first, then count the rest with stars and bars.",
+        "Use inclusion-exclusion over which groups overflow, alternating add and subtract.",
+        "The total works out to 10."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among groups and no group may hold too many.",
+      "hints": [
+        "Start from the no-limit stars and bars count.",
+        "Subtract cases where one group has at least 5, add back where two do, and so on."
+      ],
+      "socraticHint": "What happens if you give one group 5 items before counting the rest?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A puzzle's block bin has 10 identical items to place into 3 distinct groups, and no group may hold more than 4. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p40",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A puzzle's block bin has 11 identical items to place into 3 distinct groups, and no group may hold more than 5. How many ways are there?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Start from the no-limit count, then subtract the cases where some group has more than 5.",
+        "For each group that overflows, shift 6 items to it first, then count the rest with stars and bars.",
+        "Use inclusion-exclusion over which groups overflow, alternating add and subtract.",
+        "The total works out to 15."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when identical items are split among groups and no group may hold too many.",
+      "hints": [
+        "Start from the no-limit stars and bars count.",
+        "Subtract cases where one group has at least 6, add back where two do, and so on."
+      ],
+      "socraticHint": "What happens if you give one group 6 items before counting the rest?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen's spice rack has 12 identical items to place into 3 distinct groups, and no group may hold more than 5. How many ways are there?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p41",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In how many ways can 5 distinct beads be strung on a bracelet, where rotations and flips of the same arrangement count as one?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Circular arrangements alone (rotations only) give (5-1)! = 24.",
+        "A bracelet can also be flipped over, which pairs up every arrangement with its mirror image.",
+        "Divide by 2 for that symmetry: 24 / 2 = 12."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when a circular arrangement can also be flipped over and still count as the same.",
+      "hints": [
+        "Start from the circular count that only removes rotations.",
+        "A bracelet's flip symmetry divides that count by 2, since flipping is an extra symmetry a table seating does not have."
+      ],
+      "socraticHint": "What extra symmetry does a bracelet have that a round table does not?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "In how many ways can 10 distinct beads be strung on a bracelet, where rotations and flips of the same arrangement count as one?",
+        "answer": {
+          "kind": "number",
+          "value": "181440"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p42",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In how many ways can 6 distinct beads be strung on a bracelet, where rotations and flips of the same arrangement count as one?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "Circular arrangements alone (rotations only) give (6-1)! = 120.",
+        "A bracelet can also be flipped over, which pairs up every arrangement with its mirror image.",
+        "Divide by 2 for that symmetry: 120 / 2 = 60."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when a circular arrangement can also be flipped over and still count as the same.",
+      "hints": [
+        "Start from the circular count that only removes rotations.",
+        "A bracelet's flip symmetry divides that count by 2, since flipping is an extra symmetry a table seating does not have."
+      ],
+      "socraticHint": "What extra symmetry does a bracelet have that a round table does not?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "In how many ways can 11 distinct beads be strung on a bracelet, where rotations and flips of the same arrangement count as one?",
+        "answer": {
+          "kind": "number",
+          "value": "1814400"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p43",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In how many ways can 7 distinct beads be strung on a bracelet, where rotations and flips of the same arrangement count as one?",
+      "answer": {
+        "kind": "number",
+        "value": "360"
+      },
+      "explanation": [
+        "Circular arrangements alone (rotations only) give (7-1)! = 720.",
+        "A bracelet can also be flipped over, which pairs up every arrangement with its mirror image.",
+        "Divide by 2 for that symmetry: 720 / 2 = 360."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when a circular arrangement can also be flipped over and still count as the same.",
+      "hints": [
+        "Start from the circular count that only removes rotations.",
+        "A bracelet's flip symmetry divides that count by 2, since flipping is an extra symmetry a table seating does not have."
+      ],
+      "socraticHint": "What extra symmetry does a bracelet have that a round table does not?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "In how many ways can 12 distinct beads be strung on a bracelet, where rotations and flips of the same arrangement count as one?",
+        "answer": {
+          "kind": "number",
+          "value": "19958400"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p44",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In how many ways can 8 distinct beads be strung on a bracelet, where rotations and flips of the same arrangement count as one?",
+      "answer": {
+        "kind": "number",
+        "value": "2520"
+      },
+      "explanation": [
+        "Circular arrangements alone (rotations only) give (8-1)! = 5040.",
+        "A bracelet can also be flipped over, which pairs up every arrangement with its mirror image.",
+        "Divide by 2 for that symmetry: 5040 / 2 = 2520."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when a circular arrangement can also be flipped over and still count as the same.",
+      "hints": [
+        "Start from the circular count that only removes rotations.",
+        "A bracelet's flip symmetry divides that count by 2, since flipping is an extra symmetry a table seating does not have."
+      ],
+      "socraticHint": "What extra symmetry does a bracelet have that a round table does not?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "In how many ways can 13 distinct beads be strung on a bracelet, where rotations and flips of the same arrangement count as one?",
+        "answer": {
+          "kind": "number",
+          "value": "239500800"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p45",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In how many ways can 4 distinct beads be strung on a bracelet, where rotations and flips of the same arrangement count as one?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Circular arrangements alone (rotations only) give (4-1)! = 6.",
+        "A bracelet can also be flipped over, which pairs up every arrangement with its mirror image.",
+        "Divide by 2 for that symmetry: 6 / 2 = 3."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when a circular arrangement can also be flipped over and still count as the same.",
+      "hints": [
+        "Start from the circular count that only removes rotations.",
+        "A bracelet's flip symmetry divides that count by 2, since flipping is an extra symmetry a table seating does not have."
+      ],
+      "socraticHint": "What extra symmetry does a bracelet have that a round table does not?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "In how many ways can 9 distinct beads be strung on a bracelet, where rotations and flips of the same arrangement count as one?",
+        "answer": {
+          "kind": "number",
+          "value": "20160"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-counting-advanced-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Write 20 as x1 + x2 + x3 + x4 with each xi an integer from 0 to 8. How many ways?",
+      "answer": {
+        "kind": "number",
+        "value": "375"
+      },
+      "explanation": [
+        "Start from the no-limit stars and bars count for n = 20, k = 4.",
+        "Subtract the cases where some xi is at least 9, using inclusion-exclusion.",
+        "Working through every term of the inclusion-exclusion sum gives 375."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when a stars and bars count has an upper bound on every group at once.",
+      "hints": [
+        "Shift 9 items to one variable to count the cases where it overflows past 8.",
+        "Alternate adding and subtracting as more variables are forced to overflow at once."
+      ],
+      "socraticHint": "What is the no-limit stars and bars count here, before any subtraction?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Write 18 as x1 + x2 + x3 + x4 with each xi an integer from 0 to 7. How many ways?",
+        "answer": {
+          "kind": "number",
+          "value": "246"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many integers from 1 to 300 are divisible by 3, 5, or 7?",
+      "answer": {
+        "kind": "number",
+        "value": "162"
+      },
+      "explanation": [
+        "Add the single counts: multiples of 3, of 5, and of 7.",
+        "Subtract each pairwise lcm's count, then add back the triple lcm's count.",
+        "The total works out to 162."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when a count must cover three separate divisibility conditions at once.",
+      "hints": [
+        "Set up all seven terms of the three-set inclusion-exclusion formula before adding.",
+        "Use each pair's lcm, and the lcm of all three, for the overlap counts."
+      ],
+      "socraticHint": "What is the lcm of 3, 5, and 7?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many integers from 1 to 250 are divisible by 2, 3, or 7?",
+        "answer": {
+          "kind": "number",
+          "value": "179"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p48",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "6 distinct people sit around a round table (rotations equivalent). In how many ways are two particular people not next to each other?",
+      "answer": {
+        "kind": "number",
+        "value": "72"
+      },
+      "explanation": [
+        "Total round-table seatings of 6: (6-1)! = 120.",
+        "Seatings where the two particular people ARE together: glue them into one block, arrange 5 units in a circle, (5-1)! = 24, times 2 for the pair's own order, giving 48.",
+        "Not together: 120 - 48 = 72."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when a circular seating has a restriction on which two items may not be adjacent.",
+      "hints": [
+        "Count the total seatings first, then subtract the ones where the pair sits together.",
+        "To count 'together', glue the pair into one unit and count that smaller circle, then double for their internal order."
+      ],
+      "socraticHint": "How many round-table seatings put the two particular people together?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "7 distinct people sit around a round table (rotations equivalent). In how many ways are two particular people not next to each other?",
+        "answer": {
+          "kind": "number",
+          "value": "480"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p49",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many distinct arrangements are there of all the letters in MISSISSIPPI?",
+      "answer": {
+        "kind": "number",
+        "value": "34650"
+      },
+      "explanation": [
+        "MISSISSIPPI has 11 letters: M once, I four times, S four times, P twice.",
+        "Start from 11! for all letters treated as different.",
+        "Divide by 4! for the I's, 4! for the S's, and 2! for the P's.",
+        "That works out to 34650."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when a word has several different letters each repeating its own number of times.",
+      "hints": [
+        "Count how many times each letter repeats before dividing anything.",
+        "Divide the full 11! by one factorial factor per repeated letter."
+      ],
+      "socraticHint": "How many times does each of M, I, S, P appear?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many distinct arrangements are there of all the letters in TENNESSEE?",
+        "answer": {
+          "kind": "number",
+          "value": "3780"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-counting-advanced-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "There are 210 ways to distribute n identical items into 3 distinct groups, with a group allowed to be empty. Find n.",
+      "answer": {
+        "kind": "number",
+        "value": "19"
+      },
+      "explanation": [
+        "Stars and bars gives C(n + 2, 2) = 210.",
+        "Testing whole numbers, n = 19 works: C(21, 2) = 210."
+      ],
+      "ideaId": "a2-counting-advanced",
+      "useAgain": "when a stars and bars count is given and you need to find n itself.",
+      "hints": [
+        "Set C(n + 2, 2) equal to the given count and solve for n.",
+        "Try nearby whole numbers for n and check the binomial coefficient."
+      ],
+      "socraticHint": "What does C(n + 2, 2) equal for 3 groups?",
+      "skills": [
+        "think.skills.counting",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "There are 136 ways to distribute n identical items into 3 distinct groups, with a group allowed to be empty. Find n.",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    }
+  ]
+}

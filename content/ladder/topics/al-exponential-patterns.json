@@ -1,0 +1,2183 @@
+{
+  "id": "al-exponential-patterns",
+  "idea": {
+    "body": "An exponential pattern multiplies by the same amount every step, instead of adding the same amount. A doubling pattern that starts at 3 goes 3, 6, 12, 24, 48, each term twice the one before. After n steps the value is 3 times 2^n. A percent growth pattern works the same way. Growing by 20 percent every step multiplies by 1.2 every step, not by adding 20 percent of the start just once. The two kinds of pattern look similar at first glance but grow apart fast. Adding the same amount every step stays a straight line. Multiplying by the same amount every step curves upward, doubling and redoubling.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A table of a doubling pattern. Step 0 through 5 next to its value 3, 6, 12, 24, 48, 96, each one double the one before.",
+      "spec": {
+        "w": 140,
+        "h": 210,
+        "items": [
+          {
+            "t": "box",
+            "x": 0,
+            "y": 0,
+            "w": 60,
+            "h": 30,
+            "label": "step",
+            "fill": "sand"
+          },
+          {
+            "t": "box",
+            "x": 60,
+            "y": 0,
+            "w": 80,
+            "h": 30,
+            "label": "value",
+            "fill": "sand"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 30,
+            "w": 60,
+            "h": 30,
+            "label": "0",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 60,
+            "y": 30,
+            "w": 80,
+            "h": 30,
+            "label": "3",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 60,
+            "w": 60,
+            "h": 30,
+            "label": "1",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 60,
+            "y": 60,
+            "w": 80,
+            "h": 30,
+            "label": "6",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 90,
+            "w": 60,
+            "h": 30,
+            "label": "2",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 60,
+            "y": 90,
+            "w": 80,
+            "h": 30,
+            "label": "12",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 120,
+            "w": 60,
+            "h": 30,
+            "label": "3",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 60,
+            "y": 120,
+            "w": 80,
+            "h": 30,
+            "label": "24",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 150,
+            "w": 60,
+            "h": 30,
+            "label": "4",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 60,
+            "y": 150,
+            "w": 80,
+            "h": 30,
+            "label": "48",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 180,
+            "w": 60,
+            "h": 30,
+            "label": "5",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 60,
+            "y": 180,
+            "w": 80,
+            "h": 30,
+            "label": "96",
+            "fill": "paper"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A rover's photo count starts at 3 pictures and triples every hour it explores. How many pictures does it have after 4 hours?",
+    "steps": [
+      "Tripling every hour means multiplying by 3 once per hour.",
+      "After 4 hours, that is 3 raised to the power 4, which is 81.",
+      "3 times 81 is 243.",
+      "The rover has 243 pictures after 4 hours."
+    ]
+  },
+  "ways": [
+    {
+      "id": "al-exponential-patterns-w1",
+      "name": "Repeated multiplication as a power",
+      "when": "Use this default method whenever a pattern doubles, triples or grows by the same multiple.",
+      "steps": [
+        "Doubling every step means multiplying by 2 each time, over and over.",
+        "After 6 steps, that is 2 raised to the power 6, which is 64.",
+        "Multiply by the starting amount: 5 times 64.",
+        "5 times 64 is 320."
+      ],
+      "example": "A culture starts at 5 and doubles every step. Find the value after 6 steps.",
+      "answer": "320",
+      "trap": "Multiplying the start by 6 instead of by 2 raised to the power 6."
+    },
+    {
+      "id": "al-exponential-patterns-w2",
+      "name": "The doubling table",
+      "when": "Use this when the number of steps is small enough to write out one by one.",
+      "steps": [
+        "List the value after each cycle, doubling from the one before.",
+        "Start at 4. After cycle 1: 8. After cycle 2: 16. After cycle 3: 32.",
+        "After cycle 4: 64. After cycle 5: 128.",
+        "Reading the table gives the value after 5 cycles: 128."
+      ],
+      "example": "A charge starts at 4 and doubles every cycle. Find the value after 5 cycles.",
+      "answer": "128",
+      "trap": "Stopping the table one cycle too early or too late and reading the wrong row.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A table of cycle against value, doubling from 4 to 128, with the cycle 5 row highlighted.",
+        "spec": {
+          "w": 220,
+          "h": 180,
+          "items": [
+            {
+              "t": "text",
+              "x": 50,
+              "y": 16,
+              "s": "cycle",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 16,
+              "s": "value",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 50,
+              "y": 40,
+              "s": "0",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 40,
+              "s": "4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 50,
+              "y": 62,
+              "s": "1",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 62,
+              "s": "8",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 50,
+              "y": 84,
+              "s": "2",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 84,
+              "s": "16",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 50,
+              "y": 106,
+              "s": "3",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 106,
+              "s": "32",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 50,
+              "y": 128,
+              "s": "4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 128,
+              "s": "64",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 140,
+              "w": 180,
+              "h": 28,
+              "fill": "accent",
+              "label": "cycle 5: 128"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "The table headers, before any cycle.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "List the value after each cycle, doubling from",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Start at 4. After cycle 1: 8. After",
+              "set": {
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "After cycle 4: 64. After cycle 5: 128.",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "Reading the table gives the value after 5",
+              "set": {
+                "12": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "al-exponential-patterns-w3",
+      "name": "The multiplier per step",
+      "when": "Use this when the growth is described as a percent instead of a whole number multiple.",
+      "steps": [
+        "Growing by 25 percent each month means multiplying by 1.25 every month.",
+        "After 2 months, multiply by 1.25 twice: 1.25 times 1.25 is 1.5625.",
+        "Multiply that by the start: 64 times 1.5625.",
+        "64 times 1.5625 is 100."
+      ],
+      "example": "A tool count starts at 64 and grows by 25 percent every month. Find the count after 2 months.",
+      "answer": "100",
+      "trap": "Adding 25 percent of the start just once instead of multiplying by 1.25 every month."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-al-exponential-patterns-p01",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 3 and doubles every step. What is it after 4 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "48"
+      },
+      "explanation": [
+        "Doubling 4 times multiplies by 2 a total of 4 times, which is 2^4 = 16.",
+        "3 times 16 is 48."
+      ],
+      "useAgain": "when a value doubles the same way every step.",
+      "hints": [
+        "Doubling repeatedly is multiplying by 2 the same number of times as there are steps.",
+        "Multiply 3 by 2, 4 times in a row."
+      ],
+      "socraticHint": "What single number is 3 multiplied by after 4 doublings?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 5 and doubles every step. What is it after 3 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "40"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p02",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 2 and doubles every step. What is it after 5 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "64"
+      },
+      "explanation": [
+        "Doubling 5 times multiplies by 2 a total of 5 times, which is 2^5 = 32.",
+        "2 times 32 is 64."
+      ],
+      "useAgain": "when a value doubles the same way every step.",
+      "hints": [
+        "Doubling repeatedly is multiplying by 2 the same number of times as there are steps.",
+        "Multiply 2 by 2, 5 times in a row."
+      ],
+      "socraticHint": "What single number is 2 multiplied by after 5 doublings?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 6 and doubles every step. What is it after 3 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "48"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p03",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 4 and doubles every step. What is it after 3 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "32"
+      },
+      "explanation": [
+        "Doubling 3 times multiplies by 2 a total of 3 times, which is 2^3 = 8.",
+        "4 times 8 is 32."
+      ],
+      "useAgain": "when a value doubles the same way every step.",
+      "hints": [
+        "Doubling repeatedly is multiplying by 2 the same number of times as there are steps.",
+        "Multiply 4 by 2, 3 times in a row."
+      ],
+      "socraticHint": "What single number is 4 multiplied by after 3 doublings?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 3 and doubles every step. What is it after 5 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "96"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p04",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 7 and doubles every step. What is it after 2 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "28"
+      },
+      "explanation": [
+        "Doubling 2 times multiplies by 2 a total of 2 times, which is 2^2 = 4.",
+        "7 times 4 is 28."
+      ],
+      "useAgain": "when a value doubles the same way every step.",
+      "hints": [
+        "Doubling repeatedly is multiplying by 2 the same number of times as there are steps.",
+        "Multiply 7 by 2, 2 times in a row."
+      ],
+      "socraticHint": "What single number is 7 multiplied by after 2 doublings?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 2 and doubles every step. What is it after 6 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "128"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p05",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 1 and doubles every step. What is it after 6 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "64"
+      },
+      "explanation": [
+        "Doubling 6 times multiplies by 2 a total of 6 times, which is 2^6 = 64.",
+        "1 times 64 is 64."
+      ],
+      "useAgain": "when a value doubles the same way every step.",
+      "hints": [
+        "Doubling repeatedly is multiplying by 2 the same number of times as there are steps.",
+        "Multiply 1 by 2, 6 times in a row."
+      ],
+      "socraticHint": "What single number is 1 multiplied by after 6 doublings?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 9 and doubles every step. What is it after 2 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p06",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 2 and is multiplied by 3 every step. What is it after 3 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "54"
+      },
+      "explanation": [
+        "Multiplying by 3 a total of 3 times is 3^3 = 27.",
+        "2 times 27 is 54."
+      ],
+      "useAgain": "when a value is multiplied by the same fixed number every step.",
+      "hints": [
+        "Repeated multiplying by the same number is that number raised to a power.",
+        "Multiply 2 by 3, 3 times in a row."
+      ],
+      "socraticHint": "What single number is 2 multiplied by after 3 steps of times 3?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 1 and is multiplied by 3 every step. What is it after 4 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "81"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p07",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 1 and is multiplied by 4 every step. What is it after 3 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "64"
+      },
+      "explanation": [
+        "Multiplying by 4 a total of 3 times is 4^3 = 64.",
+        "1 times 64 is 64."
+      ],
+      "useAgain": "when a value is multiplied by the same fixed number every step.",
+      "hints": [
+        "Repeated multiplying by the same number is that number raised to a power.",
+        "Multiply 1 by 4, 3 times in a row."
+      ],
+      "socraticHint": "What single number is 1 multiplied by after 3 steps of times 4?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 2 and is multiplied by 4 every step. What is it after 2 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p08",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 3 and is multiplied by 5 every step. What is it after 2 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "75"
+      },
+      "explanation": [
+        "Multiplying by 5 a total of 2 times is 5^2 = 25.",
+        "3 times 25 is 75."
+      ],
+      "useAgain": "when a value is multiplied by the same fixed number every step.",
+      "hints": [
+        "Repeated multiplying by the same number is that number raised to a power.",
+        "Multiply 3 by 5, 2 times in a row."
+      ],
+      "socraticHint": "What single number is 3 multiplied by after 2 steps of times 5?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 1 and is multiplied by 5 every step. What is it after 3 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "125"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p09",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 2 and is multiplied by 3 every step. What is it after 4 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "162"
+      },
+      "explanation": [
+        "Multiplying by 3 a total of 4 times is 3^4 = 81.",
+        "2 times 81 is 162."
+      ],
+      "useAgain": "when a value is multiplied by the same fixed number every step.",
+      "hints": [
+        "Repeated multiplying by the same number is that number raised to a power.",
+        "Multiply 2 by 3, 4 times in a row."
+      ],
+      "socraticHint": "What single number is 2 multiplied by after 4 steps of times 3?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 3 and is multiplied by 4 every step. What is it after 2 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "48"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p10",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 1 and is multiplied by 3 every step. What is it after 5 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "243"
+      },
+      "explanation": [
+        "Multiplying by 3 a total of 5 times is 3^5 = 243.",
+        "1 times 243 is 243."
+      ],
+      "useAgain": "when a value is multiplied by the same fixed number every step.",
+      "hints": [
+        "Repeated multiplying by the same number is that number raised to a power.",
+        "Multiply 1 by 3, 5 times in a row."
+      ],
+      "socraticHint": "What single number is 1 multiplied by after 5 steps of times 3?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 4 and is multiplied by 3 every step. What is it after 2 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p11",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 96 and is halved every step. What is it after 3 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Halving 3 times divides by 2 a total of 3 times, which is 2^3 = 8.",
+        "96 divided by 8 is 12."
+      ],
+      "useAgain": "when a value is halved the same way every step.",
+      "hints": [
+        "Halving repeatedly is dividing by 2 the same number of times as there are steps.",
+        "Divide 96 by 2, 3 times in a row."
+      ],
+      "socraticHint": "What single number is 96 divided by after 3 halvings?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 80 and is halved every step. What is it after 4 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p12",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 50 and is halved every step. What is it after 2 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "25/2"
+      },
+      "explanation": [
+        "Halving 2 times divides by 2 a total of 2 times, which is 2^2 = 4.",
+        "50 divided by 4 is 25/2."
+      ],
+      "useAgain": "when a value is halved the same way every step.",
+      "hints": [
+        "Halving repeatedly is dividing by 2 the same number of times as there are steps.",
+        "Divide 50 by 2, 2 times in a row."
+      ],
+      "socraticHint": "What single number is 50 divided by after 2 halvings?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 54 and is halved every step. What is it after 3 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "27/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p13",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 200 and is halved every step. What is it after 5 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "25/4"
+      },
+      "explanation": [
+        "Halving 5 times divides by 2 a total of 5 times, which is 2^5 = 32.",
+        "200 divided by 32 is 25/4."
+      ],
+      "useAgain": "when a value is halved the same way every step.",
+      "hints": [
+        "Halving repeatedly is dividing by 2 the same number of times as there are steps.",
+        "Divide 200 by 2, 5 times in a row."
+      ],
+      "socraticHint": "What single number is 200 divided by after 5 halvings?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value starts at 64 and is halved every step. What is it after 6 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p14",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "truefalse",
+      "prompt": "A value that starts at 4 and doubles every step reaches 32 after 3 steps.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "4 doubled 3 times is 4 times 2^3, which is 4 times 8.",
+        "4 times 8 is 32, matching the claim."
+      ],
+      "useAgain": "when you need to check a claimed result of a doubling pattern.",
+      "hints": [
+        "Work out 4 times 2, three times in a row.",
+        "Compare your result to 32."
+      ],
+      "socraticHint": "What is 4 doubled three times in a row?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value that starts at 3 and doubles every step reaches 32 after 4 steps.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p15",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "truefalse",
+      "prompt": "A value that starts at 10 and has 3 added to it every step is an exponential pattern.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "An exponential pattern is built by multiplying by the same amount every step, not adding.",
+        "Adding 3 every step builds a straight-line pattern instead, so this is not exponential."
+      ],
+      "useAgain": "when you need to tell an exponential pattern apart from one built by adding.",
+      "hints": [
+        "Check whether the pattern repeats a multiplication or a plain addition.",
+        "Only repeated multiplying makes a pattern exponential."
+      ],
+      "socraticHint": "Does this pattern repeat a multiplication step, or an addition step?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A value that starts at 2 and is multiplied by 5 every step is an exponential pattern.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p16",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 100 and grows by 10 percent every step. What is it after 2 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "121"
+      },
+      "explanation": [
+        "Growing by 10 percent multiplies by 1 plus 10/100, which is 11/10, every step.",
+        "100 times 11/10 to the power 2 is 121."
+      ],
+      "useAgain": "when a value grows by the same percent every step, compounding like a doubling pattern.",
+      "hints": [
+        "A percent growth pattern multiplies by 1 plus the percent, written as a fraction, every step.",
+        "The growth factor here is 11/10, applied 2 times."
+      ],
+      "socraticHint": "What single multiplier replaces growing by 10 percent each step?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A value starts at 200 and grows by 10 percent every step. What is it after 2 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "242"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p17",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 80 and grows by 25 percent every step. What is it after 2 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "125"
+      },
+      "explanation": [
+        "Growing by 25 percent multiplies by 1 plus 25/100, which is 5/4, every step.",
+        "80 times 5/4 to the power 2 is 125."
+      ],
+      "useAgain": "when a value grows by the same percent every step, compounding like a doubling pattern.",
+      "hints": [
+        "A percent growth pattern multiplies by 1 plus the percent, written as a fraction, every step.",
+        "The growth factor here is 5/4, applied 2 times."
+      ],
+      "socraticHint": "What single multiplier replaces growing by 25 percent each step?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A value starts at 64 and grows by 25 percent every step. What is it after 2 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "100"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p18",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 40 and grows by 50 percent every step. What is it after 2 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "90"
+      },
+      "explanation": [
+        "Growing by 50 percent multiplies by 1 plus 50/100, which is 3/2, every step.",
+        "40 times 3/2 to the power 2 is 90."
+      ],
+      "useAgain": "when a value grows by the same percent every step, compounding like a doubling pattern.",
+      "hints": [
+        "A percent growth pattern multiplies by 1 plus the percent, written as a fraction, every step.",
+        "The growth factor here is 3/2, applied 2 times."
+      ],
+      "socraticHint": "What single multiplier replaces growing by 50 percent each step?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A value starts at 60 and grows by 50 percent every step. What is it after 2 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "135"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p19",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 50 and grows by 20 percent every step. What is it after 3 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "432/5"
+      },
+      "explanation": [
+        "Growing by 20 percent multiplies by 1 plus 20/100, which is 6/5, every step.",
+        "50 times 6/5 to the power 3 is 432/5."
+      ],
+      "useAgain": "when a value grows by the same percent every step, compounding like a doubling pattern.",
+      "hints": [
+        "A percent growth pattern multiplies by 1 plus the percent, written as a fraction, every step.",
+        "The growth factor here is 6/5, applied 3 times."
+      ],
+      "socraticHint": "What single multiplier replaces growing by 20 percent each step?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A value starts at 125 and grows by 20 percent every step. What is it after 2 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "180"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p20",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 1000 and grows by 10 percent every step. What is it after 3 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "1331"
+      },
+      "explanation": [
+        "Growing by 10 percent multiplies by 1 plus 10/100, which is 11/10, every step.",
+        "1000 times 11/10 to the power 3 is 1331."
+      ],
+      "useAgain": "when a value grows by the same percent every step, compounding like a doubling pattern.",
+      "hints": [
+        "A percent growth pattern multiplies by 1 plus the percent, written as a fraction, every step.",
+        "The growth factor here is 11/10, applied 3 times."
+      ],
+      "socraticHint": "What single multiplier replaces growing by 10 percent each step?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A value starts at 300 and grows by 10 percent every step. What is it after 2 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "363"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p21",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 100 and shrinks by 20 percent every step. What is it after 2 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "64"
+      },
+      "explanation": [
+        "Shrinking by 20 percent multiplies by 1 minus 20/100, which is 4/5, every step.",
+        "100 times 4/5 to the power 2 is 64."
+      ],
+      "useAgain": "when a value shrinks by the same percent every step, the way it grows in a growth pattern.",
+      "hints": [
+        "A percent decay pattern multiplies by 1 minus the percent, written as a fraction, every step.",
+        "The decay factor here is 4/5, applied 2 times."
+      ],
+      "socraticHint": "What single multiplier replaces shrinking by 20 percent each step?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A value starts at 200 and shrinks by 20 percent every step. What is it after 2 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "128"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p22",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 80 and shrinks by 25 percent every step. What is it after 2 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "Shrinking by 25 percent multiplies by 1 minus 25/100, which is 3/4, every step.",
+        "80 times 3/4 to the power 2 is 45."
+      ],
+      "useAgain": "when a value shrinks by the same percent every step, the way it grows in a growth pattern.",
+      "hints": [
+        "A percent decay pattern multiplies by 1 minus the percent, written as a fraction, every step.",
+        "The decay factor here is 3/4, applied 2 times."
+      ],
+      "socraticHint": "What single multiplier replaces shrinking by 25 percent each step?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A value starts at 160 and shrinks by 25 percent every step. What is it after 2 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "90"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p23",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 40 and shrinks by 50 percent every step. What is it after 3 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Shrinking by 50 percent multiplies by 1 minus 50/100, which is 1/2, every step.",
+        "40 times 1/2 to the power 3 is 5."
+      ],
+      "useAgain": "when a value shrinks by the same percent every step, the way it grows in a growth pattern.",
+      "hints": [
+        "A percent decay pattern multiplies by 1 minus the percent, written as a fraction, every step.",
+        "The decay factor here is 1/2, applied 3 times."
+      ],
+      "socraticHint": "What single multiplier replaces shrinking by 50 percent each step?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A value starts at 96 and shrinks by 50 percent every step. What is it after 3 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p24",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 1000 and shrinks by 10 percent every step. What is it after 2 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "810"
+      },
+      "explanation": [
+        "Shrinking by 10 percent multiplies by 1 minus 10/100, which is 9/10, every step.",
+        "1000 times 9/10 to the power 2 is 810."
+      ],
+      "useAgain": "when a value shrinks by the same percent every step, the way it grows in a growth pattern.",
+      "hints": [
+        "A percent decay pattern multiplies by 1 minus the percent, written as a fraction, every step.",
+        "The decay factor here is 9/10, applied 2 times."
+      ],
+      "socraticHint": "What single multiplier replaces shrinking by 10 percent each step?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A value starts at 500 and shrinks by 10 percent every step. What is it after 3 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "729/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p25",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 200 and shrinks by 50 percent every step. What is it after 2 steps?",
+      "answer": {
+        "kind": "number",
+        "value": "50"
+      },
+      "explanation": [
+        "Shrinking by 50 percent multiplies by 1 minus 50/100, which is 1/2, every step.",
+        "200 times 1/2 to the power 2 is 50."
+      ],
+      "useAgain": "when a value shrinks by the same percent every step, the way it grows in a growth pattern.",
+      "hints": [
+        "A percent decay pattern multiplies by 1 minus the percent, written as a fraction, every step.",
+        "The decay factor here is 1/2, applied 2 times."
+      ],
+      "socraticHint": "What single multiplier replaces shrinking by 50 percent each step?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A value starts at 400 and shrinks by 50 percent every step. What is it after 2 steps?",
+        "answer": {
+          "kind": "number",
+          "value": "100"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p26",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A pattern begins 5, 15, 45, ... What is the next term?",
+      "answer": {
+        "kind": "number",
+        "value": "135"
+      },
+      "explanation": [
+        "Each term is the one before it times the same fixed ratio.",
+        "Dividing 15 by 5 gives that ratio.",
+        "Multiplying the last term, 45, by the ratio gives 135."
+      ],
+      "useAgain": "when a pattern of numbers is built by multiplying by the same ratio each time.",
+      "hints": [
+        "Find the fixed number each term is multiplied by to reach the next term.",
+        "Multiply the last given term by that same ratio."
+      ],
+      "socraticHint": "What fixed ratio turns each term into the next one?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A pattern begins 4, 12, 36, ... What is the next term?",
+        "answer": {
+          "kind": "number",
+          "value": "108"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p27",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A pattern begins 2, 6, 18, ... What is the next term?",
+      "answer": {
+        "kind": "number",
+        "value": "54"
+      },
+      "explanation": [
+        "Each term is the one before it times the same fixed ratio.",
+        "Dividing 6 by 2 gives that ratio.",
+        "Multiplying the last term, 18, by the ratio gives 54."
+      ],
+      "useAgain": "when a pattern of numbers is built by multiplying by the same ratio each time.",
+      "hints": [
+        "Find the fixed number each term is multiplied by to reach the next term.",
+        "Multiply the last given term by that same ratio."
+      ],
+      "socraticHint": "What fixed ratio turns each term into the next one?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A pattern begins 3, 9, 27, ... What is the next term?",
+        "answer": {
+          "kind": "number",
+          "value": "81"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p28",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A pattern begins 100, 50, 25, ... What is the next term?",
+      "answer": {
+        "kind": "number",
+        "value": "25/2"
+      },
+      "explanation": [
+        "Each term is the one before it times the same fixed ratio.",
+        "Dividing 50 by 100 gives that ratio.",
+        "Multiplying the last term, 25, by the ratio gives 25/2."
+      ],
+      "useAgain": "when a pattern of numbers is built by multiplying by the same ratio each time.",
+      "hints": [
+        "Find the fixed number each term is multiplied by to reach the next term.",
+        "Multiply the last given term by that same ratio."
+      ],
+      "socraticHint": "What fixed ratio turns each term into the next one?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A pattern begins 80, 40, 20, ... What is the next term?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p29",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "order",
+      "prompt": "Put these steps in order: a pattern starts at 100 and grows 20 percent each step. Find its value after 2 steps.",
+      "items": [
+        "Multiply 120 by 1.2 to get 144 after step 2",
+        "Write the growth factor as 1 plus 20 percent, which is 1.2",
+        "Multiply 100 by 1.2 to get 120 after step 1"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Write the growth factor first, before applying it.",
+        "Apply the factor once for step 1, then again for step 2.",
+        "Each step multiplies by the same growth factor as the last."
+      ],
+      "useAgain": "when you need to lay out the steps of a percent growth pattern in the right order.",
+      "hints": [
+        "The growth factor has to be written down before it can be used.",
+        "The value after step 2 comes from multiplying the value after step 1, not the starting value."
+      ],
+      "socraticHint": "Does the growth factor get found before or after it is used?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order: a pattern starts at 50 and grows 10 percent each step. Find its value after 2 steps.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        },
+        "items": [
+          "Multiply 55 by 1.1 to get 60.5 after step 2",
+          "Write the growth factor as 1 plus 10 percent, which is 1.1",
+          "Multiply 50 by 1.1 to get 55 after step 1"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p30",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "order",
+      "prompt": "Put these steps in order to find the value after 3 steps of a pattern that starts at 4 and doubles each step.",
+      "items": [
+        "Multiply 16 by 2 a third time to get 32",
+        "Start at 4 and multiply by 2 to get 8",
+        "Multiply 8 by 2 a second time to get 16"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "The starting value is multiplied by 2 once for every step.",
+        "Each multiplication uses the result of the step before it.",
+        "After three multiplications by 2, the value is 32."
+      ],
+      "useAgain": "when you need to lay out the steps of a doubling pattern in the right order.",
+      "hints": [
+        "The starting value has to be doubled once before it can be doubled again.",
+        "Each step multiplies the previous step's result, not the original starting value."
+      ],
+      "socraticHint": "Does the second doubling use the starting value or the result of the first doubling?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to find the value after 3 steps of a pattern that starts at 3 and doubles each step.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        },
+        "items": [
+          "Multiply 12 by 2 a third time to get 24",
+          "Start at 3 and multiply by 2 to get 6",
+          "Multiply 6 by 2 a second time to get 12"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p31",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 1 and is multiplied by 2 every step. After how many steps does it first reach 64?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The value after n steps is 2 raised to the power n.",
+        "2 raised to the power 6 is 64, which matches the target.",
+        "So it takes 6 steps."
+      ],
+      "useAgain": "when a target value is given and the number of multiplying steps is unknown.",
+      "hints": [
+        "Multiply 1 by 2 repeatedly and count how many multiplications it takes.",
+        "Try 2 raised to a few small powers until one lands on 64."
+      ],
+      "socraticHint": "What power of 2 equals 64?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A value starts at 1 and is multiplied by 2 every step. After how many steps does it first reach 128?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p32",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 1 and is multiplied by 3 every step. After how many steps does it first reach 81?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The value after n steps is 3 raised to the power n.",
+        "3 raised to the power 4 is 81, which matches the target.",
+        "So it takes 4 steps."
+      ],
+      "useAgain": "when a target value is given and the number of multiplying steps is unknown.",
+      "hints": [
+        "Multiply 1 by 3 repeatedly and count how many multiplications it takes.",
+        "Try 3 raised to a few small powers until one lands on 81."
+      ],
+      "socraticHint": "What power of 3 equals 81?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A value starts at 1 and is multiplied by 3 every step. After how many steps does it first reach 243?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p33",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 1 and is multiplied by 5 every step. After how many steps does it first reach 125?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The value after n steps is 5 raised to the power n.",
+        "5 raised to the power 3 is 125, which matches the target.",
+        "So it takes 3 steps."
+      ],
+      "useAgain": "when a target value is given and the number of multiplying steps is unknown.",
+      "hints": [
+        "Multiply 1 by 5 repeatedly and count how many multiplications it takes.",
+        "Try 5 raised to a few small powers until one lands on 125."
+      ],
+      "socraticHint": "What power of 5 equals 125?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A value starts at 1 and is multiplied by 5 every step. After how many steps does it first reach 625?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p34",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 1 and is multiplied by 4 every step. After how many steps does it first reach 64?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The value after n steps is 4 raised to the power n.",
+        "4 raised to the power 3 is 64, which matches the target.",
+        "So it takes 3 steps."
+      ],
+      "useAgain": "when a target value is given and the number of multiplying steps is unknown.",
+      "hints": [
+        "Multiply 1 by 4 repeatedly and count how many multiplications it takes.",
+        "Try 4 raised to a few small powers until one lands on 64."
+      ],
+      "socraticHint": "What power of 4 equals 64?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A value starts at 1 and is multiplied by 4 every step. After how many steps does it first reach 256?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p35",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value starts at 1 and is multiplied by 2 every step. After how many steps does it first reach 256?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "The value after n steps is 2 raised to the power n.",
+        "2 raised to the power 8 is 256, which matches the target.",
+        "So it takes 8 steps."
+      ],
+      "useAgain": "when a target value is given and the number of multiplying steps is unknown.",
+      "hints": [
+        "Multiply 1 by 2 repeatedly and count how many multiplications it takes.",
+        "Try 2 raised to a few small powers until one lands on 256."
+      ],
+      "socraticHint": "What power of 2 equals 256?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A value starts at 1 and is multiplied by 2 every step. After how many steps does it first reach 512?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p36",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A game's difficulty score starts at 4 and doubles after every level cleared. What is the score after 5 levels?",
+      "answer": {
+        "kind": "number",
+        "value": "128"
+      },
+      "explanation": [
+        "Doubling 5 times multiplies by 2 five times, which is 2^5 = 32.",
+        "4 times 32 is 128."
+      ],
+      "useAgain": "when a game score doubles the same way after every level.",
+      "hints": [
+        "Doubling after every level is multiplying by 2 once per level.",
+        "Multiply 4 by 2, five times in a row."
+      ],
+      "socraticHint": "What single number is the starting score multiplied by after 5 levels?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game's difficulty score starts at 6 and doubles after every level cleared. What is the score after 4 levels?",
+        "answer": {
+          "kind": "number",
+          "value": "96"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p37",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A 3D printer's print queue triples every day it is left running unattended. It starts with 2 jobs queued. How many jobs are queued after 4 days?",
+      "answer": {
+        "kind": "number",
+        "value": "162"
+      },
+      "explanation": [
+        "Tripling 4 times multiplies by 3 four times, which is 3^4 = 81.",
+        "2 times 81 is 162."
+      ],
+      "useAgain": "when a queue or count triples the same way every day.",
+      "hints": [
+        "Tripling every day is multiplying by 3 once per day.",
+        "Multiply 2 by 3, four times in a row."
+      ],
+      "socraticHint": "What single number is the starting queue multiplied by after 4 days?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printer's print queue triples every day it is left running unattended. It starts with 3 jobs queued. How many jobs are queued after 3 days?",
+        "answer": {
+          "kind": "number",
+          "value": "81"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p38",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A drone's signal strength grows by 20 percent every time it moves closer to base, starting at a strength of 100. What is its strength after 2 such moves?",
+      "answer": {
+        "kind": "number",
+        "value": "144"
+      },
+      "explanation": [
+        "Growing by 20 percent multiplies by 1.2 every move.",
+        "100 times 1.2 times 1.2 is 144."
+      ],
+      "useAgain": "when a signal, score or reading grows by the same percent every step.",
+      "hints": [
+        "A percent growth pattern multiplies by 1 plus the percent every step.",
+        "Apply the 1.2 multiplier twice in a row."
+      ],
+      "socraticHint": "What single multiplier replaces growing by 20 percent each move?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A drone's signal strength grows by 20 percent every time it moves closer to base, starting at a strength of 50. What is its strength after 3 such moves?",
+        "answer": {
+          "kind": "number",
+          "value": "432/5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p39",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A rocket's fuel efficiency rating starts at 200 and drops by 10 percent every stage it burns through. What is the rating after 2 stages?",
+      "answer": {
+        "kind": "number",
+        "value": "162"
+      },
+      "explanation": [
+        "Dropping by 10 percent multiplies by 0.9 every stage.",
+        "200 times 0.9 times 0.9 is 162."
+      ],
+      "useAgain": "when a rating or reading drops by the same percent every stage.",
+      "hints": [
+        "A percent decay pattern multiplies by 1 minus the percent every step.",
+        "Apply the 0.9 multiplier twice in a row."
+      ],
+      "socraticHint": "What single multiplier replaces dropping by 10 percent each stage?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rocket's fuel efficiency rating starts at 500 and drops by 10 percent every stage it burns through. What is the rating after 3 stages?",
+        "answer": {
+          "kind": "number",
+          "value": "729/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p40",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A kitchen scale's stored batch size starts at 3 and doubles with every scale-up. What is it after 4 scale-ups in a row?",
+      "answer": {
+        "kind": "number",
+        "value": "48"
+      },
+      "explanation": [
+        "Doubling 4 times multiplies by 2 four times, which is 2^4 = 16.",
+        "3 times 16 is 48."
+      ],
+      "useAgain": "when a batch size or quantity doubles the same way every time it is scaled up.",
+      "hints": [
+        "Doubling every scale-up is multiplying by 2 once per scale-up.",
+        "Multiply 3 by 2, four times in a row."
+      ],
+      "socraticHint": "What single number is the starting batch size multiplied by after 4 scale-ups?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen scale's stored batch size starts at 5 and doubles with every scale-up. What is it after 3 scale-ups in a row?",
+        "answer": {
+          "kind": "number",
+          "value": "40"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p41",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "choice",
+      "prompt": "A pattern begins 2, 4, 8, 16, ... What is the next term?",
+      "options": [
+        "32",
+        "24",
+        "64",
+        "48"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Each term is the one before it times the fixed ratio 2.",
+        "The last given term is 16.",
+        "16 times 2 is 32."
+      ],
+      "useAgain": "when a pattern's next term must be found by multiplying, not adding.",
+      "hints": [
+        "Find the ratio between two consecutive terms first.",
+        "Multiply the last given term by that same ratio, 2."
+      ],
+      "socraticHint": "What happens if you add the last difference instead of multiplying by the ratio?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A pattern begins 3, 6, 12, 24, ... What is the next term?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "36",
+          "96",
+          "72",
+          "48"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p42",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "choice",
+      "prompt": "A pattern begins 1, 3, 9, 27, ... What is the next term?",
+      "options": [
+        "45",
+        "243",
+        "81",
+        "108"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Each term is the one before it times the fixed ratio 3.",
+        "The last given term is 27.",
+        "27 times 3 is 81."
+      ],
+      "useAgain": "when a pattern's next term must be found by multiplying, not adding.",
+      "hints": [
+        "Find the ratio between two consecutive terms first.",
+        "Multiply the last given term by that same ratio, 3."
+      ],
+      "socraticHint": "What happens if you add the last difference instead of multiplying by the ratio?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A pattern begins 2, 6, 18, 54, ... What is the next term?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "90",
+          "162",
+          "486",
+          "216"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p43",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "choice",
+      "prompt": "A pattern begins 2, 8, 32, 128, ... What is the next term?",
+      "options": [
+        "224",
+        "2048",
+        "640",
+        "512"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Each term is the one before it times the fixed ratio 4.",
+        "The last given term is 128.",
+        "128 times 4 is 512."
+      ],
+      "useAgain": "when a pattern's next term must be found by multiplying, not adding.",
+      "hints": [
+        "Find the ratio between two consecutive terms first.",
+        "Multiply the last given term by that same ratio, 4."
+      ],
+      "socraticHint": "What happens if you add the last difference instead of multiplying by the ratio?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A pattern begins 1, 4, 16, 64, ... What is the next term?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "256",
+          "112",
+          "1024",
+          "320"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p44",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "choice",
+      "prompt": "A pattern begins 1, 5, 25, 125, ... What is the next term?",
+      "options": [
+        "225",
+        "625",
+        "3125",
+        "750"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Each term is the one before it times the fixed ratio 5.",
+        "The last given term is 125.",
+        "125 times 5 is 625."
+      ],
+      "useAgain": "when a pattern's next term must be found by multiplying, not adding.",
+      "hints": [
+        "Find the ratio between two consecutive terms first.",
+        "Multiply the last given term by that same ratio, 5."
+      ],
+      "socraticHint": "What happens if you add the last difference instead of multiplying by the ratio?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A pattern begins 2, 10, 50, 250, ... What is the next term?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "450",
+          "6250",
+          "1250",
+          "1500"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p45",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "choice",
+      "prompt": "A pattern begins 3, 9, 27, 81, ... What is the next term?",
+      "options": [
+        "243",
+        "135",
+        "729",
+        "324"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Each term is the one before it times the fixed ratio 3.",
+        "The last given term is 81.",
+        "81 times 3 is 243."
+      ],
+      "useAgain": "when a pattern's next term must be found by multiplying, not adding.",
+      "hints": [
+        "Find the ratio between two consecutive terms first.",
+        "Multiply the last given term by that same ratio, 3."
+      ],
+      "socraticHint": "What happens if you add the last difference instead of multiplying by the ratio?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A pattern begins 4, 8, 16, 32, ... What is the next term?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "48",
+          "128",
+          "96",
+          "64"
+        ]
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-al-exponential-patterns-p46",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A bacteria colony doubles every hour. It starts with 3 bacteria. After how many full hours does the colony first have more than 1000 bacteria?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Doubling repeatedly is multiplying by 2 once per hour.",
+        "3 times 2^8 is 768, still under 1000.",
+        "3 times 2^9 is 1536, the first time past 1000, so it takes 9 hours."
+      ],
+      "useAgain": "when a doubling pattern must first pass a target, not just reach a nearby value.",
+      "hints": [
+        "Multiply by 2 repeatedly and check after each hour whether the count has passed 1000.",
+        "Track when the running total first crosses 1000, not when it equals it."
+      ],
+      "socraticHint": "After 8 hours the count is 768. Is that enough, or does it need one more hour?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bacteria colony doubles every hour. It starts with 5 bacteria. After how many full hours does the colony first have more than 5000 bacteria?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p47",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "1 + 2 + 4 + ... + 2^n equals 511. What is n?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "This sum of doublings equals 2 to the power n plus 1, minus 1.",
+        "511 plus 1 is 512, which is 2 to the power 9.",
+        "So n plus 1 is 9, and n is 8."
+      ],
+      "useAgain": "when a sum of a doubling pattern is given and the number of terms is unknown.",
+      "hints": [
+        "A sum of doublings starting from 1 always equals one less than the next power of 2.",
+        "Add 1 to the total sum first, then find what power of 2 that is."
+      ],
+      "socraticHint": "What power of 2 is one more than 511?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "1 + 3 + 9 + ... + 3^n equals 1093. What is n?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p48",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value grows by x percent every step. After 2 steps, a starting value of 100 becomes 121. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "After 2 steps the growth factor squared equals 121/100.",
+        "The square root of 121/100 is 11/10, so the growth factor is 1.1.",
+        "A growth factor of 1.1 is 1 plus 10 percent, so x is 10."
+      ],
+      "useAgain": "when the growth factor is unknown but the start and end values after a few steps are given.",
+      "hints": [
+        "Divide the final value by the starting value to get the growth factor squared.",
+        "Find the square root of that squared factor to get the one-step factor."
+      ],
+      "socraticHint": "What one-step growth factor, applied twice, gives 121 from 100?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A value grows by x percent every step. After 2 steps, a starting value of 100 becomes 144. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p49",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "A value triples every step. After how many steps does it first exceed 50 times its starting value?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Tripling 3 times gives 3^3 = 27 times the starting value, still under 50.",
+        "Tripling 4 times gives 3^4 = 81 times the starting value, past 50.",
+        "So it takes 4 steps."
+      ],
+      "useAgain": "when a tripling or similar pattern must first pass a target multiple of its start.",
+      "hints": [
+        "Multiply by 3 repeatedly and compare the running multiple to 50.",
+        "Check 3 raised to a few small powers in a row."
+      ],
+      "socraticHint": "Is 3 to the third power enough to pass 50 times the start, or does it need one more step?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A value triples every step. After how many steps does it first exceed 100 times its starting value?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-exponential-patterns-p50",
+      "lane": "skills",
+      "ideaId": "al-exponential-patterns",
+      "kind": "number",
+      "prompt": "Three positive numbers form an exponential pattern: a, 12, b, each term the last times a fixed ratio. If a is 3, what is b?",
+      "answer": {
+        "kind": "number",
+        "value": "48"
+      },
+      "explanation": [
+        "The ratio from a to the middle term is 12 divided by 3, which is 4.",
+        "The same ratio applies from the middle term to b.",
+        "12 times 4 is 48."
+      ],
+      "useAgain": "when the middle term of a three-term exponential pattern is known but an end term is not.",
+      "hints": [
+        "Find the ratio between the first two given terms.",
+        "Apply that same ratio to the middle term to reach the third."
+      ],
+      "socraticHint": "What fixed ratio takes 3 to 12, and does that same ratio apply again?",
+      "skills": [
+        "think.skills.exponential"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Three positive numbers form an exponential pattern: a, 12, b, each term the last times a fixed ratio. If a is 4, what is b?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    }
+  ]
+}

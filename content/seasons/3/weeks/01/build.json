@@ -1,0 +1,591 @@
+{
+  "id": "s3-w01-build",
+  "season": 3,
+  "week": 1,
+  "track": "build",
+  "title": "Python moves to the laptop",
+  "summary": "Install Python and a real editor, write the first programs that listen before they answer, move the Season 1 dice game onto the laptop so it asks how many dice, and cut the first save points into the trail with git.",
+  "minutes": 60,
+  "materials": [
+    "laptop",
+    "internet connection for the installs",
+    "a grown-up alongside for the install step",
+    "Maker's Log",
+    "paper and pencil"
+  ],
+  "skills": [
+    "build.python",
+    "build.version-control",
+    "build.debugging"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "typing",
+      "id": "s3-w01-build-01",
+      "minutes": 5,
+      "body": "Five minutes, and this season the typing has a job. Python on a laptop is typed, every character of it, and the keys it leans on are not the ones a story leans on.\n\nStart on the home row for one minute: a s d f and j k l semicolon, fingers resting, eyes up.\n\nThen the four characters Python asks for constantly: the round brackets ( and ), the colon :, and the quote mark \". Find them without looking down. Type ten lines of just those.\n\nThen three words this week's programs are actually built from: input, int, print. Ten of each, fast.\n\nLast minute, type this line ten times exactly as it stands, spaces and all, because you are going to be typing it into a terminal all season:\n\npython dice.py"
+    },
+    {
+      "kind": "instruction",
+      "id": "s3-w01-build-02",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop runs this season the same as it always has: ask, imagine, plan, build, test, fix.\n\nAsk: can a program hold a conversation? Everything you have written so far answered a shake, a button or a sensor. Nothing you wrote could stop, wait for you, and then decide what to do with what you said. The micro:bit had no keyboard to wait for. The laptop has a whole one.\n\nImagine: a program that listens before it speaks. It prints a question, then stops dead until you type a line and press enter, then takes what you typed and works with it. That is the shape of nearly every serious program in the world, and it is the shape of every farm problem the USACO grader will hand you this season: the question arrives as lines, the answer leaves as a line. The idea has a name, read the input, and it is worth knowing you met it on day one.\n\nPlan, smallest first, on paper before any typing. Three programs today. One that asks your name and greets you. One that asks for a start height and a climb and prints where you end up. One that asks how many dice and rolls that many. For each one, write two lines on paper: exactly what it asks for, and exactly what it prints. If you cannot write those two lines, you are not ready to type it."
+    },
+    {
+      "kind": "task",
+      "id": "s3-w01-build-03",
+      "title": "Set up base camp: Python and an editor",
+      "body": "This one is done next to a grown-up, because it installs software and touches settings.\n\nGet Python from python.org. Take version 3, the one the site offers you. On Windows, tick the box in the installer that says add python.exe to PATH before pressing install, because that box is what lets you type python in a terminal later instead of hunting for where it landed.\n\nThen an editor. An editor is not a word processor: it knows what code is, colours it, and complains about some mistakes before you run anything. Pick one with a grown-up and then stay with it all season, because learning one editor properly beats sampling three.\n\nNow make the season a home. One folder, named so you can find it in a hurry, and every file you write this season lives in it. Open a terminal in that folder. The terminal is the plain text window where you tell the computer to run things; the editor is where you write things. Two different jobs, two different windows, and you will have both open every single Build hour from now on.\n\nCheck the install by asking Python who it is:\n\npython --version\n\nIt should answer with a version number starting with 3. On a Mac you may need python3 instead of python, and if so, use python3 everywhere below.\n\nThen the smallest possible program. In the editor, one line, saved into your season folder as hello.py:\n\n```python\nprint(\"Base camp.\")\n```\n\nBack in the terminal, run it:\n\npython hello.py\n\nTwo words come back. That is the whole install proved: your editor wrote a file, your terminal found it, and Python read it.",
+      "checklist": [
+        "python --version answered with a number that starts with 3",
+        "There is one folder for this whole season and my files are inside it",
+        "hello.py ran from the terminal and printed its line",
+        "I can say out loud what the editor is for and what the terminal is for"
+      ]
+    },
+    {
+      "kind": "science",
+      "id": "s3-w01-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The interpreter turns a .py file into a running program in stages: it chops the text into tokens, checks that the tokens make a legal sentence, turns each line into simple instructions, then walks those instructions one at a time from the top.",
+        "spec": {
+          "w": 360,
+          "h": 230,
+          "items": [
+            {
+              "t": "box",
+              "x": 80,
+              "y": 10,
+              "w": 200,
+              "h": 30,
+              "label": "the .py file (text)",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 40,
+              "x2": 180,
+              "y2": 55,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 80,
+              "y": 55,
+              "w": 200,
+              "h": 30,
+              "label": "chop into tokens"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 85,
+              "x2": 180,
+              "y2": 100,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 80,
+              "y": 100,
+              "w": 200,
+              "h": 30,
+              "label": "check the sentence"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 130,
+              "x2": 180,
+              "y2": 145,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 80,
+              "y": 145,
+              "w": 200,
+              "h": 30,
+              "label": "turn into instructions"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 175,
+              "x2": 180,
+              "y2": 190,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 80,
+              "y": 190,
+              "w": 200,
+              "h": 30,
+              "label": "walk one at a time",
+              "fill": "accent"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 700,
+              "caption": "the interpreter reads your text",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "chops it into tokens",
+              "set": {
+                "2": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "checks the sentence is legal",
+              "set": {
+                "4": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "turns it into instructions",
+              "set": {
+                "6": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "and walks them one at a time",
+              "set": {
+                "8": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "What the interpreter actually does with your .py file",
+      "body": "A .py file is nothing but text. Open it in a notes app and it looks the same as a shopping list. Nothing inside it is a program until something reads it.\n\nWhen you type python dice.py, you are starting a different program, called the interpreter, and handing it your file. It reads your text roughly the way you read a sentence. First it chops the text into small pieces: a name, a number, a bracket, a colon. Then it checks the pieces make a legal sentence. Then it turns each line into a much simpler list of instructions for the machine underneath. Only then does it start walking that list, one instruction at a time, doing exactly what each one says and nothing it was not told.\n\nThat explains two things you are about to live through. A missing colon stops everything before a single line of yours runs, because the sentence check failed and there was nothing to walk. But a misspelled name, like typing tootal where you meant total, only shows up when the walk actually reaches that line, which might be after a lot of your program has already happened. A spelling mistake inside a message between quote marks is not an error at all: the interpreter has no opinion about your spelling, it just prints exactly what you typed. And it explains the line number in every error: the interpreter knows exactly where it was standing when it got stuck.\n\nLast season a small version of this same interpreter lived on the micro:bit's chip, which is why the programs had to stay tiny. On the laptop it is just a program in a folder, with the whole machine behind it, and it will happily read a file thousands of lines long."
+    },
+    {
+      "kind": "task",
+      "id": "s3-w01-build-05",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two paths: input() always hands back text, so start + climb typed as 1200 and 300 glues into the text 1200300. Wrapping each input in int() turns the text into numbers first, so int(start) + int(climb) adds to 1500 instead.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 20,
+              "w": 130,
+              "h": 30,
+              "label": "start",
+              "sub": "'1200' (text)",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 60,
+              "w": 130,
+              "h": 30,
+              "label": "climb",
+              "sub": "'300' (text)",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 155,
+              "y1": 40,
+              "x2": 195,
+              "y2": 40,
+              "arrow": true,
+              "label": "+"
+            },
+            {
+              "t": "box",
+              "x": 195,
+              "y": 20,
+              "w": 145,
+              "h": 30,
+              "label": "'1200300'",
+              "sub": "glued, not added",
+              "fill": "rust"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 120,
+              "w": 130,
+              "h": 30,
+              "label": "int(start)",
+              "sub": "1200 (number)",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 160,
+              "w": 130,
+              "h": 30,
+              "label": "int(climb)",
+              "sub": "300 (number)",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 155,
+              "y1": 140,
+              "x2": 195,
+              "y2": 140,
+              "arrow": true,
+              "label": "+"
+            },
+            {
+              "t": "box",
+              "x": 195,
+              "y": 125,
+              "w": 145,
+              "h": 30,
+              "label": "1500",
+              "sub": "added correctly",
+              "fill": "green"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 700,
+              "caption": "text glues together, wrong",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                },
+                "1": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "1200 and 300 become 1200300",
+              "set": {
+                "3": {
+                  "fill": "rust"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "int() turns text into numbers",
+              "set": {
+                "4": {
+                  "fill": "accent"
+                },
+                "5": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "now they add correctly: 1500",
+              "set": {
+                "7": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "The program that listens",
+      "body": "Every program so far did the talking. This one waits.\n\nNew file, greet.py, two lines:\n\n```python\nname = input(\"Who is climbing today? \")\nprint(\"Good morning,\", name)\n```\n\nRun it. The question appears and then nothing happens, possibly for as long as you feel like sitting there. The program is not stuck, it is listening. It starts again the moment you type a line and press enter.\n\nNow the trap, and you are going to walk into it deliberately, because seeing it once is worth being told about it ten times. New file, climb.py:\n\n```python\nstart = input(\"Start height in metres: \")\nclimb = input(\"Metres climbed: \")\nprint(\"New height:\", start + climb)\n```\n\nRun it and answer 1200, then 300. It prints 1200300.\n\nNothing is broken. input always hands back text, never a number, and the plus sign on two pieces of text means glue them end to end. Python did exactly what you asked. You asked wrong.\n\nThe fix is one word wrapped around each input, int, which means read this text as a whole number:\n\n```python\nstart = int(input(\"Start height in metres: \"))\nclimb = int(input(\"Metres climbed: \"))\nprint(\"New height:\", start + climb)\n```\n\nRun it again with the same two answers and 1500 comes back.\n\nLast one, and this is the shape a grader will want: a program that reads three lines before it answers anything. Make climb3.py, ask for three days of climbing, and print the total of all three. Three inputs, one answer, nothing printed until the last line is in.\n\nTry it with a negative number too. Type -400 for one of the days and watch the total come out lower. The minus you have been working on in the Think lane goes straight into the machine and the machine does not blink.",
+      "checklist": [
+        "greet.py sat and waited for me before it said anything",
+        "I saw 1200300 with my own eyes before I fixed it, and I can say why it happened",
+        "With int around each input, the two heights actually add up",
+        "climb3.py reads three lines and prints one answer",
+        "A negative number typed in came out the other side and behaved"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s3-w01-build-06",
+      "figure": {
+        "kind": "diagram",
+        "alt": "how_many decides the number of rolls. The loop visits each roll in turn, printing it, and adds it into total, which starts at 0 and grows one roll at a time; the total only prints after the loop has visited every roll.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "items": [
+            {
+              "t": "text",
+              "x": 10,
+              "y": 15,
+              "s": "how_many = 5"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 40,
+              "w": 55,
+              "h": 40,
+              "label": "roll 1"
+            },
+            {
+              "t": "box",
+              "x": 85,
+              "y": 40,
+              "w": 55,
+              "h": 40,
+              "label": "roll 2"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 40,
+              "w": 55,
+              "h": 40,
+              "label": "roll 3"
+            },
+            {
+              "t": "box",
+              "x": 215,
+              "y": 40,
+              "w": 55,
+              "h": 40,
+              "label": "roll 4"
+            },
+            {
+              "t": "box",
+              "x": 280,
+              "y": 40,
+              "w": 55,
+              "h": 40,
+              "label": "roll 5"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 80,
+              "x2": 180,
+              "y2": 118,
+              "arrow": true,
+              "label": "add each roll"
+            },
+            {
+              "t": "box",
+              "x": 80,
+              "y": 128,
+              "w": 200,
+              "h": 40,
+              "label": "total",
+              "sub": "starts at 0, grows each roll",
+              "fill": "accent"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 195,
+              "s": "print(\"Total:\", total) after the loop ends"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 600,
+              "caption": "roll 1 adds into total",
+              "set": {
+                "1": {
+                  "fill": "accent"
+                },
+                "6": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 600,
+              "caption": "roll 2 adds in too",
+              "set": {
+                "2": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 600,
+              "caption": "roll 3 adds in too",
+              "set": {
+                "3": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 600,
+              "caption": "roll 4 adds in too",
+              "set": {
+                "4": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 600,
+              "caption": "roll 5, total complete",
+              "set": {
+                "5": {
+                  "fill": "accent"
+                },
+                "7": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "The dice game moves to the laptop",
+      "body": "Season 1's dice lived on the micro:bit. You shook it, it picked a number from 1 to 6, and two rolls appeared with a star for a double. It could never ask you anything, because it had nothing to ask with.\n\nRebuild it on the laptop, where it can ask first. New file, dice.py:\n\n```python\nimport random\n\nhow_many = int(input(\"How many dice? \"))\ntotal = 0\nfor i in range(how_many):\n    roll = random.randint(1, 6)\n    print(\"Die\", i + 1, \"rolled\", roll)\n    total = total + roll\nprint(\"Total:\", total)\n```\n\nThree parts worth naming while you type them.\n\nimport random brings in Python's dice box. randint(1, 6) is the same pick random 1 to 6 you dragged out of MakeCode two seasons ago, typed instead of dragged.\n\nrange(how_many) counts out exactly that many turns of the loop, however many you asked for. The number of rolls is decided by you, at the moment you run it, not by the person who wrote the program. That is new.\n\ntotal = total + roll is a running answer: a box that starts empty and grows by one roll each time round. Say it out loud as make total be whatever total is now, plus this roll. Next week that same line, with a file instead of dice, is the whole business of the hour.\n\nTest it properly, four ways: 1 die, 2 dice, 10 dice, and 0 dice. The last one prints no rolls at all and a total of 0. That is not a bug, it is the correct answer to a strange question, and noticing why is worth more than the program.\n\nOne warning that has eaten many afternoons: do not name any of your files random.py. If you do, Python finds your file first when it goes looking for the dice box, and the errors that follow make no sense at all.",
+      "checklist": [
+        "Asking for 5 dice printed exactly 5 rolls",
+        "The printed total matches the rolls when I add them by hand",
+        "I ran it with 0 dice and can explain why the answer it gave is right",
+        "No file of mine is called random.py"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s3-w01-build-07",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Git save points form a trail: git log --oneline shows camp 1 and camp 2. Deliberately wrecking dice.py so the total stays stuck at 0, then running git restore, brings the file back exactly to the last camp on the trail.",
+        "spec": {
+          "w": 420,
+          "h": 200,
+          "items": [
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 100,
+              "x2": 390,
+              "y2": 100,
+              "color": "muted"
+            },
+            {
+              "t": "dot",
+              "cx": 100,
+              "cy": 100,
+              "label": "camp 1",
+              "side": "below"
+            },
+            {
+              "t": "text",
+              "x": 100,
+              "y": 55,
+              "s": "dice game: how many dice?",
+              "anchor": "middle",
+              "size": 11
+            },
+            {
+              "t": "dot",
+              "cx": 300,
+              "cy": 100,
+              "label": "camp 2",
+              "side": "below"
+            },
+            {
+              "t": "text",
+              "x": 300,
+              "y": 55,
+              "s": "friendlier prompt",
+              "anchor": "middle",
+              "size": 11
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 150,
+              "w": 200,
+              "h": 30,
+              "label": "wrecked dice.py",
+              "sub": "total stuck at 0",
+              "fill": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 150,
+              "x2": 190,
+              "y2": 115,
+              "arrow": true,
+              "dashed": true,
+              "label": "git restore"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 20,
+              "s": "the trail: git log --oneline",
+              "size": 12
+            }
+          ],
+          "wide": true
+        }
+      },
+      "title": "Git begins: save points on the trail",
+      "body": "You now have five small programs and no way back from a bad idea. Time for save points.\n\nA grown-up installs git. Then, once for the whole laptop and never again, git has to be told whose work this is, because the very first commit refuses to happen without it and says Author identity unknown. With the grown-up, in the terminal:\n\ngit config --global user.name \"your name\"\ngit config --global user.email \"the grown-up's email address\"\n\nNow everything below happens in the terminal, inside your season folder.\n\nStart the trail:\n\ngit init\n\nThat makes the folder into a place that can remember. Nothing has been saved yet.\n\nAsk what git can see:\n\ngit status\n\nIt lists your files as untracked, which means noticed but not yet packed.\n\nPack them, then cut the first camp:\n\ngit add hello.py greet.py climb.py climb3.py dice.py\ngit commit -m \"first camp: dice game asks how many dice\"\n\nTwo different jobs there, and it is worth being able to say the difference out loud: add chooses what goes into this save, commit actually makes the save and gives it a message.\n\nSee the trail so far:\n\ngit log --oneline\n\nOne line, one camp.\n\nNow prove the point, on purpose. Open dice.py and wreck it: delete the line that adds the roll to the total, save, and run it. The total comes out 0 every time, and the program looks fine, which is the worst kind of broken.\n\nWalk back to camp:\n\ngit restore dice.py\n\nOpen it again. The line is back, exactly as you wrote it. That is the whole idea of a save point: the camp you already reached is still there, so wrecking the thing in front of you costs you nothing.\n\nFinish by making one change you actually want, something small like a friendlier question in the dice prompt, then add and commit it with a message that names what this camp is. Run git log --oneline again and there are two camps on the trail.\n\nNothing of yours went onto the internet today. Git is running entirely on your own laptop, and it is happy to stay there forever. Putting a repo where other people can reach it is week 3, on an account a grown-up owns and holds, used together.",
+      "checklist": [
+        "git log --oneline lists at least two camps",
+        "I wrecked dice.py on purpose and git restore brought it back",
+        "I can say what git add does that git commit does not",
+        "Nothing of mine went onto the internet this week, and I can say why not"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s3-w01-build-08",
+      "title": "Bug diary",
+      "body": "One line per thing that did not work the first time, and what you tried. This week's classics, and every one of them will happen to you eventually:\n\nThe terminal says python is not recognised, because the add to PATH box was not ticked during the install.\n\nThe very first commit refuses and says Author identity unknown, because git was never told a name and an email address.\n\nTwo numbers glue together instead of adding, because int is missing around an input.\n\nPython says expected ':' and points at the for or if line itself, because the colon at the end of that line is missing.\n\nPython says expected an indented block and points at the line underneath a for or an if, because that line was never indented at all.\n\nThe program runs but nothing you changed shows up, because the editor never saved the file.\n\nThe terminal says it cannot find your file, because the terminal is sitting in a different folder from the one the file is in.\n\nEverything about random breaks at once, because a file got named random.py.\n\nWrite the error message down, word for word, including the line number. Half of debugging is being able to recognise an error you have already met."
+    },
+    {
+      "kind": "instruction",
+      "id": "s3-w01-build-09",
+      "title": "The shop idea page opens",
+      "body": "This season ends with a shop. A real table, real customers, real coins, and money that stays yours after it is counted. Nobody is choosing anything today. Today the idea page opens, and that is all.\n\nTake a fresh page in the Maker's Log and title it The shop. Write down three or four things you could make and sell. Beside each one, three notes: who would actually buy it, roughly what one would cost you to make, and how many you could finish in one afternoon.\n\nDo not filter yet. A thing you can make is a thing worth writing down, even if it seems small, even if you are not sure anyone would pay for it. Small and finishable beats grand and imaginary every single time, and you have twelve weeks, not twelve months.\n\nThe page stays open. Add to it whenever an idea turns up, in any week, from anywhere. In week 4 you pick one and pitch it to the family with a prototype and a plan, and the family will cross-examine the plan, never the choice. The best pitches start as week 1 scribbles."
+    },
+    {
+      "kind": "artifact",
+      "id": "s3-w01-build-10",
+      "title": "Show it",
+      "prompt": "A photo of the terminal straight after dice.py runs with 5 dice, greet.py, climb.py and dice.py pasted as code, and the lines that git log --oneline printed.",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s3-w01-build-11",
+      "variant": "maker"
+    }
+  ]
+}

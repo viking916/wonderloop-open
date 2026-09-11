@@ -1,0 +1,492 @@
+{
+  "id": "s3-w10-build",
+  "season": 3,
+  "week": 10,
+  "track": "build",
+  "title": "Try them all, on purpose: two cow problems and a promise that the loop ends",
+  "summary": "Two past Bronze problems on the farm, both solved by trying every possibility inside a wall you worked out first: all the pairs of cows for the gymnastics, and every possible first cow for the photograph. Count the steps on paper before every run, and say out loud why the machine has to finish.",
+  "minutes": 60,
+  "materials": [
+    "laptop with Python and the editor from week 1",
+    "the parent held usaco.org account from week 2",
+    "paper and pencil for drawing the farm and counting the steps",
+    "the season folder git has been watching since week 1",
+    "a clock or a stopwatch"
+  ],
+  "skills": [
+    "build.python",
+    "build.loops",
+    "build.debugging"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s3-w10-build-01",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A loop counter that only ever moves one way, toward a wall it cannot pass, is guaranteed to arrive: the counter starts high, only falls, and the loop stops the moment it reaches the wall.",
+        "spec": {
+          "w": 360,
+          "h": 170,
+          "items": [
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 80,
+              "x2": 340,
+              "y2": 80,
+              "color": "muted"
+            },
+            {
+              "t": "dot",
+              "cx": 300,
+              "cy": 80,
+              "label": "start",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 60,
+              "cy": 80,
+              "label": "wall (0)",
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 295,
+              "y1": 80,
+              "x2": 70,
+              "y2": 80,
+              "arrow": true,
+              "color": "accent",
+              "label": "counter only falls"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 130,
+              "s": "never moves back up, so it must reach the wall",
+              "size": 12
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 148,
+              "s": "and stop, which is why the loop finishes",
+              "size": 12
+            }
+          ],
+          "frames": [
+            {
+              "ms": 700,
+              "caption": "the counter starts high",
+              "set": {
+                "3": {
+                  "x2": 220
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "and only ever falls",
+              "set": {
+                "3": {
+                  "x2": 150
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "getting closer to the wall",
+              "set": {
+                "3": {
+                  "x2": 90
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "until it reaches the wall and stops",
+              "set": {}
+            }
+          ]
+        }
+      },
+      "title": "Ask, imagine, plan",
+      "body": "The design loop, same six moves: ask, imagine, plan, build, test, fix.\n\nAsk: in week 6 you let a machine try every price in your demand table and read the profit off the printout. That worked because there were only eighteen sums to do. This week the same move goes to the farm and gets its proper name, and the question underneath it gets asked out loud for the first time: when is trying every possibility a plan, and when is it a way of never getting an answer?\n\nImagine: two programs, neither of them clever. The first walks every pair of cows there is. The second guesses the answer's first number, then works out everything else from that guess, and throws the whole guess away the moment it goes wrong. Neither program is smart. Both of them finish, and finishing is the part you have to earn.\n\nPlan, three jobs, in this order.\n\nOne, the story. Both problems are farm stories before they are anything else. Read the page out loud, draw the farm on paper, and move things around with a pencil until you can say what the answer is for the sample without a computer in the room.\n\nTwo, the step count. Before you run either program you work out on paper how many times its innermost line runs, using the limits printed on the problem page. Then you say out loud whether that number is one a laptop can finish before dinner. You do this before the run, not after, because after the run the machine has already told you and you have learned nothing.\n\nThree, the grader. Sample first, then the real one. This week the keyboard is yours; a grown-up is in the room for the account and the submit button, not for the plan.\n\nAnd the thing that makes any of this honest. Every loop you write this week counts. The counter starts somewhere, moves one way only, and there is a wall it is not allowed to pass. A number that only moves one way toward a wall it cannot pass has to arrive. That is why your program stops, and it is a promise you can make about a program before you ever run it. It has a name, which you meet again in this week's warm-up: the number that only falls. Every loop in every program you write from here has one somewhere, and when a program hangs forever it is almost always because somebody let the number wander back the other way."
+    },
+    {
+      "kind": "typing",
+      "id": "s3-w10-build-02",
+      "minutes": 5,
+      "body": "Five minutes, hands on the home row. This week's words are the ones both programs need: open, read, split, write, close, range, append, break, continue, always, count, place. Type each one five times.\n\nThen these two lines, three times each, without looking down: data = open('gymnastics.in').read().split() and for b in range(1, n + 1):. Mind the colon on the end of the second one. Python uses it to say that an indented block is coming, and leaving it off is this week's most common single character mistake."
+    },
+    {
+      "kind": "science",
+      "id": "s3-w10-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Twenty cows in every pair is 380 steps, finished instantly. Twenty cows in every possible order is about 2.5 x 10^18 steps, roughly seven thousand years on the same laptop. Same 20 cows: the shape of the plan is what makes the difference.",
+        "spec": {
+          "w": 360,
+          "h": 210,
+          "items": [
+            {
+              "t": "text",
+              "x": 20,
+              "y": 20,
+              "s": "same 20 cows, two different plans",
+              "size": 12
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 140,
+              "w": 60,
+              "h": 30,
+              "label": "pairs",
+              "sub": "380 steps",
+              "fill": "green"
+            },
+            {
+              "t": "box",
+              "x": 220,
+              "y": 30,
+              "w": 60,
+              "h": 140,
+              "label": "orders",
+              "sub": "~2.5x10^18",
+              "fill": "rust"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 190,
+              "s": "380 steps: instant. Every order: ~7000 years.",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "title": "How fast a laptop actually is, and why that still runs out",
+      "body": "A rough number worth carrying around: Python gets through something like ten million simple steps a second. A blink takes about a third of a second, so a few million steps go past while your eyes are shut. That is why week 6's eighteen sums were not worth worrying about, and why this week's few thousand comparisons are not either.\n\nNow the other end. Suppose you tried to solve the gymnastics problem by lining up 20 cows in every possible order and checking each lineup. The number of orders of 20 things is 20 multiplied by 19 multiplied by 18, all the way down to 1. That is about under three billion billion. At ten million steps a second it would take roughly seven thousand years, and no faster laptop saves you: a machine a thousand times quicker still needs seven years.\n\nSo fast is not the same as infinite, and the difference between the two programs is not the machine, it is the shape of the plan. Walking every pair of 20 cows is 380 pairs. Walking every order of 20 cows is a number with nineteen digits. Same farm, same laptop, same afternoon, and one of them never comes back.\n\nThis is what a time limit on a grader is really measuring. Not whether your answer is right, and not how hard you worked. It is asking whether the shape you chose grows gently or explosively as the farm gets bigger, and the honest way to find that out is on paper, before the run."
+    },
+    {
+      "kind": "task",
+      "id": "s3-w10-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Each class is a row of cows in finishing order. Reading down a column shows where the same cow finished across classes; the code flips this into rank[cow], which answers where a given cow finished instead of which cow finished where.",
+        "spec": {
+          "w": 420,
+          "h": 120,
+          "items": [
+            {
+              "t": "text",
+              "x": 20,
+              "y": 20,
+              "s": "class 1: C A B D",
+              "size": 12
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 45,
+              "s": "class 2: A D C B",
+              "size": 12
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 70,
+              "s": "class 3: B A D C",
+              "size": 12
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 95,
+              "s": "(each row: finishing order)",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 230,
+              "y": 20,
+              "s": "rank[cow] = position",
+              "size": 12
+            },
+            {
+              "t": "text",
+              "x": 230,
+              "y": 45,
+              "s": "reading down a column shows",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 230,
+              "y": 60,
+              "s": "where one cow finished",
+              "size": 11
+            }
+          ],
+          "wide": true
+        }
+      },
+      "title": "Cow Gymnastics: the story, the farm, and the step count",
+      "body": "A grown-up finds Cow Gymnastics on the past problems list on usaco.org, under the Bronze problems, and opens the page. Read the whole thing out loud, including the boring part about where the input arrives and where the answer goes.\n\nThe story: the cows hold a gymnastics class more than once, and each class ends with the cows in some order, best to worst. A pair of cows counts as consistent if the same one of the two finishes ahead of the other in every single class. The answer is how many consistent pairs there are.\n\nNow draw it, and use the sample from the page, not made up numbers. Write each class as a row of cow numbers in finishing order, one row under the other, lined up so you can read down the columns. Then take two cows and check them by eye across every row. Do that by hand for three different pairs and write down what you found. If you cannot do three pairs by hand, you do not understand the question yet, and no amount of typing will fix that.\n\nOne thing worth noticing while you are looking at your rows: a cow's number and a cow's position are two different things, and the rows give you positions when what you keep asking for is where cow number 7 finished. That gap is what the code deals with first.\n\nStep count, on paper, before any code. Read the limits off the problem page and write them down. Suppose the page says there are at most 20 cows and at most 10 classes. The program looks at every ordered pair of different cows, which is 20 times 19, or 380 pairs, and for each pair it checks every class, which is 10 more steps. That is 380 times 10, so 3800 comparisons. Say the number out loud, then say the second sentence too: a laptop doing something like ten million steps a second finishes 3800 of them before I have finished saying this. If your page gives different limits, use yours, and do the sum with your own numbers.",
+      "checklist": [
+        "I read the whole problem page out loud to another person",
+        "The sample classes are written out as rows on paper, lined up so the columns can be read down",
+        "I checked three pairs of cows by hand and wrote down which of them were consistent",
+        "The limits from the problem page are copied onto my paper",
+        "I worked out the number of comparisons on paper and said out loud why a laptop finishes them"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s3-w10-build-05",
+      "figure": {
+        "kind": "diagram",
+        "alt": "For every pair of cows a and b, the code walks each class's rank list. always starts True and only ever flips to False if b ever finishes ahead of a; if always survives every class, the pair is counted as consistent.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 20,
+              "w": 140,
+              "h": 25,
+              "label": "pair: cow a, cow b"
+            },
+            {
+              "t": "box",
+              "x": 200,
+              "y": 20,
+              "w": 140,
+              "h": 25,
+              "label": "always = True",
+              "fill": "accent"
+            },
+            {
+              "t": "line",
+              "x1": 90,
+              "y1": 45,
+              "x2": 90,
+              "y2": 70,
+              "arrow": true
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  90,
+                  70
+                ],
+                [
+                  155,
+                  95
+                ],
+                [
+                  90,
+                  120
+                ],
+                [
+                  25,
+                  95
+                ]
+              ],
+              "label": "rank[a] > rank[b]?"
+            },
+            {
+              "t": "line",
+              "x1": 90,
+              "y1": 120,
+              "x2": 90,
+              "y2": 150,
+              "arrow": true,
+              "label": "yes"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 150,
+              "w": 140,
+              "h": 30,
+              "label": "always = False",
+              "fill": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 155,
+              "y1": 95,
+              "x2": 230,
+              "y2": 95,
+              "arrow": true,
+              "label": "no"
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 95,
+              "x2": 230,
+              "y2": 150,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 160,
+              "y": 150,
+              "w": 140,
+              "h": 30,
+              "label": "count += 1",
+              "sub": "if always survives",
+              "fill": "green"
+            }
+          ]
+        }
+      },
+      "title": "Cow Gymnastics: the code, the sample, the grader",
+      "body": "New file in the season folder, called gymnastics.py. Type it exactly, and mind the indents.\n\ndata = open('gymnastics.in').read().split()\n\nk = int(data[0])\nn = int(data[1])\n\nplace = []\nat = 2\nfor session in range(k):\n    rank = []\n    for i in range(n + 1):\n        rank.append(0)\n    for spot in range(n):\n        cow = int(data[at])\n        at = at + 1\n        rank[cow] = spot\n    place.append(rank)\n\ncount = 0\nfor a in range(1, n + 1):\n    for b in range(1, n + 1):\n        if a == b:\n            continue\n        always = True\n        for rank in place:\n            if rank[a] > rank[b]:\n                always = False\n        if always:\n            count = count + 1\n\nanswer = open('gymnastics.out', 'w')\nanswer.write(str(count) + '\\n')\nanswer.close()\n\nRead it out loud before you run it. The first block turns each class into a rank list, so that rank[cow] answers where that cow finished rather than which cow finished there. That is the swap you spotted on paper. The middle block is the brute force: every ordered pair of different cows, and for each pair a walk along the classes. always starts True and is only ever knocked down to False, never back up, which is the whole reason one bad class is enough to disqualify a pair.\n\nAbout the input and the output, read the problem page one more time and follow it to the letter. This is an older problem, so the page names two files: it says INPUT FORMAT, file gymnastics.in, and OUTPUT FORMAT, file gymnastics.out. That is why your program opens gymnastics.in instead of waiting for you to type, and writes gymnastics.out instead of printing on the screen. Newer problems on the site use plain typed input and printing, and the page always says which kind it is. A correct program that puts its answer in the wrong place is rejected, and that is the most common way a good solution fails.\n\nTest on the sample from the page. Make a file called gymnastics.in in the same folder, type the sample into it exactly, run the program, then open gymnastics.out and compare it with the sample answer. The grader reads gymnastics.out and compares it character by character, so a stray blank line or an extra word in that file is a wrong answer, however right your thinking was.\n\nThen submit it to the real USACO grader and read the verdict, whatever it says. If it is not accepted, write down which test failed and what the message was, then make one honest fix and try again. A rejection you can explain out loud is worth more than an acceptance you cannot.",
+      "checklist": [
+        "gymnastics.py runs on the sample from the problem page and matches the sample answer exactly",
+        "I can say out loud what rank[cow] holds and why the program builds it",
+        "gymnastics.out holds the answer and nothing else, with no extra line and no leftover debugging text",
+        "The submission was made and the verdict is written in the Maker's Log in my own words",
+        "The file is committed with a message saying why, not what"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s3-w10-build-06",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Guess the first cow, then derive every next cow from the sums, each next equals the sum minus the previous. Check that every derived number is between 1 and n and none repeats, using a used list; if it all checks out, that lineup is the answer.",
+        "spec": {
+          "w": 360,
+          "h": 230,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 20,
+              "w": 140,
+              "h": 25,
+              "label": "guess: first cow"
+            },
+            {
+              "t": "line",
+              "x1": 90,
+              "y1": 45,
+              "x2": 90,
+              "y2": 65,
+              "arrow": true,
+              "label": "next = sum - prev"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 65,
+              "w": 140,
+              "h": 25,
+              "label": "cow 2, cow 3, ... n"
+            },
+            {
+              "t": "line",
+              "x1": 90,
+              "y1": 90,
+              "x2": 90,
+              "y2": 110,
+              "arrow": true
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  90,
+                  110
+                ],
+                [
+                  160,
+                  130
+                ],
+                [
+                  90,
+                  150
+                ],
+                [
+                  20,
+                  130
+                ]
+              ],
+              "label": "1..n and not used?"
+            },
+            {
+              "t": "line",
+              "x1": 160,
+              "y1": 130,
+              "x2": 230,
+              "y2": 130,
+              "arrow": true,
+              "label": "no: next guess"
+            },
+            {
+              "t": "line",
+              "x1": 90,
+              "y1": 150,
+              "x2": 90,
+              "y2": 180,
+              "arrow": true,
+              "label": "yes, every cow"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 180,
+              "w": 140,
+              "h": 30,
+              "label": "write the lineup",
+              "fill": "green"
+            }
+          ]
+        }
+      },
+      "title": "The photoshoot: guess the first cow, then derive the rest",
+      "body": "Second problem, and a different flavour of trying them all. A grown-up opens the Bronze problem called Photoshoot from the January 2020 contest, on the same past problems list. Check the story on the page against the one below before you start, because more than one Bronze problem on that site is called Photoshoot and only this one is the problem the code below solves.\n\nThe story: the cows line up for a photograph, wearing numbers 1 up to N, each number used exactly once. Farmer John did not write down the lineup. He wrote down the sum of each pair of neighbours: the first cow plus the second, the second plus the third, and so on. From that list of sums, work out a lineup that fits, and if more than one fits, give the one that starts with the smallest cow.\n\nDraw it first with a tiny made up case. Four cows and three sums. Choose the first cow yourself, then notice what happens: the second cow is forced, because the first sum minus the first cow is the only thing it can be. Then the third is forced by the second, and the fourth by the third. One guess and the whole line falls out. That is the shape: guess one thing, derive everything else, then check whether what you derived is legal.\n\nThe check has two parts and both matter. Every derived number must be between 1 and N, and no number may appear twice. Miss the second and a lineup like 2, 3, 2, 3 sails through looking fine.\n\nStep count on paper before you run it. Read your page's limit for N and suppose it says N can be as big as 1000. There are 1000 possible first cows, and each guess derives about 1000 more cows and checks them, so it is around a thousand times a thousand, which is a million steps. Say out loud whether a million is a problem for a machine doing ten million a second. Then notice the thing that would have been a problem. Trying every possible lineup of 1000 cows is not the same trouble as the twenty cows in the science moment, it is far worse. Twenty cows in every order came to seven thousand years. A thousand cows in every order is a number too long to write across this page, and no machine anybody will ever build reaches the end of it. One guess and a derived line is a million steps. Every lineup is not a bigger number, it is a different kind of number.\n\nNew file, photoshoot.py.\n\ndata = open('photo.in').read().split()\nn = int(data[0])\n\nsums = []\nfor i in range(1, n):\n    sums.append(int(data[i]))\n\nfor first in range(1, n + 1):\n    line = [first]\n    for i in range(n - 1):\n        line.append(sums[i] - line[i])\n    used = []\n    for i in range(n + 1):\n        used.append(False)\n    ok = True\n    for cow in line:\n        if cow < 1 or cow > n:\n            ok = False\n            break\n        if used[cow]:\n            ok = False\n            break\n        used[cow] = True\n    if ok:\n        pieces = []\n        for cow in line:\n            pieces.append(str(cow))\n        answer = open('photo.out', 'w')\n        answer.write(' '.join(pieces) + '\\n')\n        answer.close()\n        break\n\nThe used list is what makes the no repeats check cheap. Ticking a box and looking at a box are both one step, so the check costs the same whether there are ten cows or a thousand. Searching a growing list every time instead would have quietly turned your million steps into a billion, which is the sort of mistake that looks like nothing and reads as a time limit failure on the grader.\n\nSame as before: make photo.in with the sample in it, run the program, open photo.out and check it against the page, then the grader.",
+      "checklist": [
+        "I worked a four cow case out by hand and can say why one guess forces the whole lineup",
+        "I said out loud both parts of the legality check and why leaving out the repeats check breaks it",
+        "The step count for the guesses is on paper before the first run",
+        "photoshoot.py matches the sample answer from the problem page",
+        "The submission was made and the verdict is written down honestly"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s3-w10-build-07",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. This week's usual suspects, with the words Python actually uses, because reading the message beats guessing.\n\nIndexError: list index out of range. Almost always an off by one in a range. range(1, n + 1) gives 1 up to n; range(1, n) stops one short. Or the rank list was built with n slots when cow number n needs slot n, so it wants n + 1 of them.\n\nValueError: invalid literal for int() with base 10. Something that is not a number reached int(). Usually a blank line, or the whole input read as one lump instead of split.\n\nFileNotFoundError: No such file or directory. The program went looking for gymnastics.in or photo.in and there was not one. Either the file has not been made yet, or it is sitting in a different folder from the program, or the name has a capital letter the page did not ask for.\n\nphoto.out comes out empty. In the photoshoot, that means no guess ever passed the check, so nothing was ever written. Print the first three lineups you derive on the screen and look at them: usually the sums list is off by one place, or the first guess loop starts at 0 where cow numbers start at 1.\n\nThe program never stops. Look for a number that was supposed to only go one way and does not. A while loop whose counter is changed inside an if, a break that never fires, or a step that adds when it meant to take away. The number that only falls is a promise, and a hang means the promise was broken somewhere.\n\nAccepted on the sample, rejected by the grader. Read which test failed. A wrong answer on a big test with a right answer on the sample usually means a case the sample never had: two cows that never meet in a class, a lineup where the smallest first cow is not the first one you happen to find, or a tie you assumed could not happen.\n\nAnd one that is not a bug: your program being slower than a friend's and still accepted. Inside the wall is inside the wall."
+    },
+    {
+      "kind": "artifact",
+      "id": "s3-w10-build-08",
+      "title": "Show it",
+      "prompt": "A photo of the paper with both step counts on it, worked out before the runs, with the limits you copied off each problem page. The contents of gymnastics.py and photoshoot.py, pasted or as a share link. A photo of each grader verdict screen, whatever it says. And a short recording, thirty seconds is plenty, of you saying why the gymnastics loop has to finish, using your own loop counter as the example.",
+      "accepts": [
+        "photo",
+        "code",
+        "recording",
+        "text"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s3-w10-build-09",
+      "variant": "maker"
+    }
+  ]
+}

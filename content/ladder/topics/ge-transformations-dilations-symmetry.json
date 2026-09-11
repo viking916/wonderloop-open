@@ -1,0 +1,2546 @@
+{
+  "id": "ge-transformations-dilations-symmetry",
+  "idea": {
+    "body": "A dilation stretches or shrinks a figure from a center point by a scale factor. About the origin, (x, y) becomes (kx, ky): a scale factor bigger than 1 enlarges, and a scale factor between 0 and 1 shrinks. About any other center, first move the center to the origin, scale, then move back. Dilations are not rigid: lengths change by a factor of k, and area changes by a factor of k squared. A figure also has lines of symmetry, lines that reflect it onto itself. A square has 4, an equilateral triangle has 3, and a plain rectangle has only 2, through the midpoints of its sides. For example, dilating (4, 6) about the origin by a scale factor of 1/2 gives (2, 3): both coordinates are cut in half.",
+    "figure": {
+      "kind": "plane",
+      "alt": "The point (4, 6) and its dilation (2, 3) about the origin by a scale factor of 1/2.",
+      "spec": {
+        "range": 8,
+        "points": [
+          {
+            "x": 4,
+            "y": 6,
+            "label": "(4, 6)"
+          },
+          {
+            "x": 2,
+            "y": 3,
+            "label": "(2, 3)"
+          }
+        ],
+        "segments": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              6
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "Triangle has vertices A(1, 1), B(4, 1), C(1, 3). Dilate it about the origin by a scale factor of 3. What are the coordinates of the image of C?",
+    "steps": [
+      "A dilation about the origin multiplies every coordinate by the scale factor.",
+      "C is at (1, 3), so its image is (3 times 1, 3 times 3).",
+      "That is (3, 9)."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "Triangle ABC and the dilated image of vertex C.",
+      "spec": {
+        "range": 10,
+        "points": [
+          {
+            "x": 1,
+            "y": 1,
+            "label": "A"
+          },
+          {
+            "x": 4,
+            "y": 1,
+            "label": "B"
+          },
+          {
+            "x": 1,
+            "y": 3,
+            "label": "C"
+          },
+          {
+            "x": 3,
+            "y": 9,
+            "label": "C image"
+          }
+        ],
+        "polygon": [
+          [
+            1,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            1,
+            3
+          ]
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "ge-transformations-dilations-symmetry-w1",
+      "name": "The coordinate rule",
+      "when": "Use this any time the dilation's center is the origin.",
+      "steps": [
+        "A dilation about the origin multiplies each coordinate by the scale factor.",
+        "Point (4, 6) dilated by a scale factor of 1/2 becomes (4 times 1/2, 6 times 1/2).",
+        "That is (2, 3)."
+      ],
+      "example": "Dilate the point (4, 6) about the origin by a scale factor of 1/2.",
+      "answer": "(2, 3)",
+      "trap": "Adding the scale factor to the coordinates instead of multiplying by it.",
+      "figure": {
+        "kind": "plane",
+        "alt": "The point (4, 6) and its dilation (2, 3) about the origin by a scale factor of 1/2.",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": 4,
+              "y": 6,
+              "label": "(4, 6)"
+            },
+            {
+              "x": 2,
+              "y": 3,
+              "label": "(2, 3)"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-transformations-dilations-symmetry-w2",
+      "name": "Shift the center to the origin",
+      "when": "Use this when the dilation's center is not the origin.",
+      "steps": [
+        "Dilate point (5, 7) about center (1, 1) by a scale factor of 3.",
+        "Shift so the center sits at the origin: subtract (1, 1) to get (4, 6).",
+        "Scale by 3: (4 times 3, 6 times 3) is (12, 18).",
+        "Shift back by adding (1, 1): (12 + 1, 18 + 1) is (13, 19)."
+      ],
+      "example": "Dilate (5, 7) about center (1, 1) by a scale factor of 3.",
+      "answer": "(13, 19)",
+      "trap": "Scaling the point before shifting the center to the origin first."
+    },
+    {
+      "id": "ge-transformations-dilations-symmetry-w3",
+      "name": "Length scale k, area scale k squared",
+      "when": "Use this when you know an area before a dilation and need it after, without coordinates.",
+      "steps": [
+        "A figure has area 20 square centimeters.",
+        "It is dilated by a scale factor of 3.",
+        "Area scales by the square of the scale factor: 3^2 is 9.",
+        "New area is 20 times 9, which is 180 square centimeters."
+      ],
+      "example": "A figure with area 20 square centimeters is dilated by a scale factor of 3. Find the new area.",
+      "answer": "180",
+      "trap": "Multiplying the area by the scale factor itself instead of by its square."
+    },
+    {
+      "id": "ge-transformations-dilations-symmetry-w4",
+      "name": "Match the shape to its symmetry count",
+      "when": "Use this to find how many lines of symmetry a regular shape has, by its name.",
+      "steps": [
+        "A regular shape's count of symmetry lines equals its number of sides.",
+        "A square has 4 sides, so it has 4 lines of symmetry.",
+        "An equilateral triangle has 3 sides, so it has 3 lines of symmetry.",
+        "A plain rectangle is not regular: it has only 2, through the midpoints of its sides."
+      ],
+      "example": "How many lines of symmetry does a regular pentagon have?",
+      "answer": "5",
+      "trap": "Using the side count for a shape that is not regular, like a plain rectangle.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A square with its four lines of symmetry drawn: two through side midpoints, two through diagonals.",
+        "spec": {
+          "w": 200,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  40,
+                  40
+                ],
+                [
+                  160,
+                  40
+                ],
+                [
+                  160,
+                  160
+                ],
+                [
+                  40,
+                  160
+                ]
+              ]
+            },
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 100,
+              "x2": 170,
+              "y2": 100,
+              "dashed": true
+            },
+            {
+              "t": "line",
+              "x1": 100,
+              "y1": 30,
+              "x2": 100,
+              "y2": 170,
+              "dashed": true
+            },
+            {
+              "t": "line",
+              "x1": 40,
+              "y1": 40,
+              "x2": 160,
+              "y2": 160,
+              "dashed": true
+            },
+            {
+              "t": "line",
+              "x1": 40,
+              "y1": 160,
+              "x2": 160,
+              "y2": 40,
+              "dashed": true
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "A square, before its symmetry lines.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "One line, through the vertical midline.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "One more, through the horizontal midline.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Both diagonals complete the four lines.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p01",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (2, 3) is dilated about the origin by a scale factor of 2. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "A dilation about the origin multiplies each coordinate by the scale factor.",
+        "x becomes 2 times 2 = 4."
+      ],
+      "useAgain": "when a figure grows or shrinks from a fixed center.",
+      "hints": [
+        "Multiply each coordinate by the scale factor.",
+        "The center of dilation here is the origin."
+      ],
+      "socraticHint": "What do you multiply the x-coordinate by?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (1, 4) is dilated about the origin by a scale factor of 3. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (2, 3) and its dilated image (4, 6).",
+        "spec": {
+          "range": 7,
+          "points": [
+            {
+              "x": 2,
+              "y": 3,
+              "label": "P"
+            },
+            {
+              "x": 4,
+              "y": 6,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p02",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (-4, 1) is dilated about the origin by a scale factor of 3. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "-12"
+      },
+      "explanation": [
+        "A dilation about the origin multiplies each coordinate by the scale factor.",
+        "x becomes 3 times -4 = -12."
+      ],
+      "useAgain": "when a figure grows or shrinks from a fixed center.",
+      "hints": [
+        "Multiply each coordinate by the scale factor.",
+        "The center of dilation here is the origin."
+      ],
+      "socraticHint": "What do you multiply the x-coordinate by?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (-3, 2) is dilated about the origin by a scale factor of 2. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "-6"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-4, 1) and its dilated image (-12, 3).",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": -4,
+              "y": 1,
+              "label": "P"
+            },
+            {
+              "x": -12,
+              "y": 3,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                -12,
+                3
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p03",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (5, -2) is dilated about the origin by a scale factor of 2. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "A dilation about the origin multiplies each coordinate by the scale factor.",
+        "x becomes 2 times 5 = 10."
+      ],
+      "useAgain": "when a figure grows or shrinks from a fixed center.",
+      "hints": [
+        "Multiply each coordinate by the scale factor.",
+        "The center of dilation here is the origin."
+      ],
+      "socraticHint": "What do you multiply the x-coordinate by?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (6, -1) is dilated about the origin by a scale factor of 2. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (5, -2) and its dilated image (10, -4).",
+        "spec": {
+          "range": 11,
+          "points": [
+            {
+              "x": 5,
+              "y": -2,
+              "label": "P"
+            },
+            {
+              "x": 10,
+              "y": -4,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                -4
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p04",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (-3, -5) is dilated about the origin by a scale factor of 2. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "-6"
+      },
+      "explanation": [
+        "A dilation about the origin multiplies each coordinate by the scale factor.",
+        "x becomes 2 times -3 = -6."
+      ],
+      "useAgain": "when a figure grows or shrinks from a fixed center.",
+      "hints": [
+        "Multiply each coordinate by the scale factor.",
+        "The center of dilation here is the origin."
+      ],
+      "socraticHint": "What do you multiply the x-coordinate by?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (-2, -6) is dilated about the origin by a scale factor of 2. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "-4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-3, -5) and its dilated image (-6, -10).",
+        "spec": {
+          "range": 11,
+          "points": [
+            {
+              "x": -3,
+              "y": -5,
+              "label": "P"
+            },
+            {
+              "x": -6,
+              "y": -10,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                -6,
+                -10
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p05",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (2, 3) is dilated about the origin by a scale factor of 2. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "A dilation about the origin multiplies each coordinate by the scale factor.",
+        "y becomes 2 times 3 = 6."
+      ],
+      "useAgain": "when a figure grows or shrinks from a fixed center.",
+      "hints": [
+        "Multiply each coordinate by the scale factor.",
+        "The center of dilation here is the origin."
+      ],
+      "socraticHint": "What do you multiply the y-coordinate by?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (-3, 2) is dilated about the origin by a scale factor of 2. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (2, 3) and its dilated image (4, 6).",
+        "spec": {
+          "range": 7,
+          "points": [
+            {
+              "x": 2,
+              "y": 3,
+              "label": "P"
+            },
+            {
+              "x": 4,
+              "y": 6,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p06",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (-4, 1) is dilated about the origin by a scale factor of 3. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "A dilation about the origin multiplies each coordinate by the scale factor.",
+        "y becomes 3 times 1 = 3."
+      ],
+      "useAgain": "when a figure grows or shrinks from a fixed center.",
+      "hints": [
+        "Multiply each coordinate by the scale factor.",
+        "The center of dilation here is the origin."
+      ],
+      "socraticHint": "What do you multiply the y-coordinate by?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (6, -1) is dilated about the origin by a scale factor of 2. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-4, 1) and its dilated image (-12, 3).",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": -4,
+              "y": 1,
+              "label": "P"
+            },
+            {
+              "x": -12,
+              "y": 3,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                -12,
+                3
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p07",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (5, -2) is dilated about the origin by a scale factor of 2. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "-4"
+      },
+      "explanation": [
+        "A dilation about the origin multiplies each coordinate by the scale factor.",
+        "y becomes 2 times -2 = -4."
+      ],
+      "useAgain": "when a figure grows or shrinks from a fixed center.",
+      "hints": [
+        "Multiply each coordinate by the scale factor.",
+        "The center of dilation here is the origin."
+      ],
+      "socraticHint": "What do you multiply the y-coordinate by?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (-2, -6) is dilated about the origin by a scale factor of 2. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "-12"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (5, -2) and its dilated image (10, -4).",
+        "spec": {
+          "range": 11,
+          "points": [
+            {
+              "x": 5,
+              "y": -2,
+              "label": "P"
+            },
+            {
+              "x": 10,
+              "y": -4,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                -4
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p08",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (-3, -5) is dilated about the origin by a scale factor of 2. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "-10"
+      },
+      "explanation": [
+        "A dilation about the origin multiplies each coordinate by the scale factor.",
+        "y becomes 2 times -5 = -10."
+      ],
+      "useAgain": "when a figure grows or shrinks from a fixed center.",
+      "hints": [
+        "Multiply each coordinate by the scale factor.",
+        "The center of dilation here is the origin."
+      ],
+      "socraticHint": "What do you multiply the y-coordinate by?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (1, 4) is dilated about the origin by a scale factor of 3. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-3, -5) and its dilated image (-6, -10).",
+        "spec": {
+          "range": 11,
+          "points": [
+            {
+              "x": -3,
+              "y": -5,
+              "label": "P"
+            },
+            {
+              "x": -6,
+              "y": -10,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                -6,
+                -10
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p09",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (2, 3) is dilated about the origin, and its image is (6, 9). What is the scale factor?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The scale factor is the image's coordinate divided by the original's: 6/2.",
+        "That is 3."
+      ],
+      "useAgain": "when you know a point and its image and need the scale factor between them.",
+      "hints": [
+        "Divide a coordinate of the image by the matching coordinate of the original.",
+        "Check the answer with the other coordinate too."
+      ],
+      "socraticHint": "What do you get from the image's x-coordinate divided by the original's?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (1, 4) is dilated about the origin, and its image is (3, 12). What is the scale factor?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p10",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (4, -2) is dilated about the origin, and its image is (12, -6). What is the scale factor?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The scale factor is the image's coordinate divided by the original's: 12/4.",
+        "That is 3."
+      ],
+      "useAgain": "when you know a point and its image and need the scale factor between them.",
+      "hints": [
+        "Divide a coordinate of the image by the matching coordinate of the original.",
+        "Check the answer with the other coordinate too."
+      ],
+      "socraticHint": "What do you get from the image's x-coordinate divided by the original's?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (5, -3) is dilated about the origin, and its image is (15, -9). What is the scale factor?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p11",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (-3, 5) is dilated about the origin, and its image is (-9, 15). What is the scale factor?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The scale factor is the image's coordinate divided by the original's: -9/-3.",
+        "That is 3."
+      ],
+      "useAgain": "when you know a point and its image and need the scale factor between them.",
+      "hints": [
+        "Divide a coordinate of the image by the matching coordinate of the original.",
+        "Check the answer with the other coordinate too."
+      ],
+      "socraticHint": "What do you get from the image's x-coordinate divided by the original's?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (-2, 6) is dilated about the origin, and its image is (-6, 18). What is the scale factor?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p12",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "How many lines of symmetry does an equilateral triangle have?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "A regular polygon with n sides has n lines of symmetry.",
+        "A equilateral triangle has 3 sides, so it has 3 lines of symmetry."
+      ],
+      "useAgain": "when a shape is a regular polygon and you need its lines of symmetry.",
+      "hints": [
+        "A regular polygon's lines of symmetry equal its number of sides.",
+        "Count the sides of this shape."
+      ],
+      "socraticHint": "How many sides does this shape have?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lines of symmetry does a regular heptagon have?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p13",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "How many lines of symmetry does a square have?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "A regular polygon with n sides has n lines of symmetry.",
+        "A square has 4 sides, so it has 4 lines of symmetry."
+      ],
+      "useAgain": "when a shape is a regular polygon and you need its lines of symmetry.",
+      "hints": [
+        "A regular polygon's lines of symmetry equal its number of sides.",
+        "Count the sides of this shape."
+      ],
+      "socraticHint": "How many sides does this shape have?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lines of symmetry does a regular octagon have?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p14",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "How many lines of symmetry does a regular pentagon have?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "A regular polygon with n sides has n lines of symmetry.",
+        "A regular pentagon has 5 sides, so it has 5 lines of symmetry."
+      ],
+      "useAgain": "when a shape is a regular polygon and you need its lines of symmetry.",
+      "hints": [
+        "A regular polygon's lines of symmetry equal its number of sides.",
+        "Count the sides of this shape."
+      ],
+      "socraticHint": "How many sides does this shape have?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lines of symmetry does a regular nonagon have?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p15",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "How many lines of symmetry does a regular hexagon have?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "A regular polygon with n sides has n lines of symmetry.",
+        "A regular hexagon has 6 sides, so it has 6 lines of symmetry."
+      ],
+      "useAgain": "when a shape is a regular polygon and you need its lines of symmetry.",
+      "hints": [
+        "A regular polygon's lines of symmetry equal its number of sides.",
+        "Count the sides of this shape."
+      ],
+      "socraticHint": "How many sides does this shape have?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lines of symmetry does a regular decagon have?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p16",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (6, 8) is dilated about the origin by a scale factor of 1/2. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Multiply each coordinate by 1/2.",
+        "y becomes 1/2 times 8 = 4."
+      ],
+      "useAgain": "when a figure shrinks toward its center of dilation.",
+      "hints": [
+        "A fractional scale factor between 0 and 1 shrinks the figure toward the center.",
+        "Multiply the y-coordinate by the scale factor."
+      ],
+      "socraticHint": "What does a scale factor between 0 and 1 do to a figure?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (4, 10) is dilated about the origin by a scale factor of 1/2. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (6, 8) and its dilated image (3, 4).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 6,
+              "y": 8,
+              "label": "P"
+            },
+            {
+              "x": 3,
+              "y": 4,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                8
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p17",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (-9, 3) is dilated about the origin by a scale factor of 1/3. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Multiply each coordinate by 1/3.",
+        "y becomes 1/3 times 3 = 1."
+      ],
+      "useAgain": "when a figure shrinks toward its center of dilation.",
+      "hints": [
+        "A fractional scale factor between 0 and 1 shrinks the figure toward the center.",
+        "Multiply the y-coordinate by the scale factor."
+      ],
+      "socraticHint": "What does a scale factor between 0 and 1 do to a figure?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (-6, 9) is dilated about the origin by a scale factor of 1/3. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-9, 3) and its dilated image (-3, 1).",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": -9,
+              "y": 3,
+              "label": "P"
+            },
+            {
+              "x": -3,
+              "y": 1,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                -9,
+                3
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p18",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (10, -4) is dilated about the origin by a scale factor of 1/2. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Multiply each coordinate by 1/2.",
+        "y becomes 1/2 times -4 = -2."
+      ],
+      "useAgain": "when a figure shrinks toward its center of dilation.",
+      "hints": [
+        "A fractional scale factor between 0 and 1 shrinks the figure toward the center.",
+        "Multiply the y-coordinate by the scale factor."
+      ],
+      "socraticHint": "What does a scale factor between 0 and 1 do to a figure?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (8, -6) is dilated about the origin by a scale factor of 1/2. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "-3"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (10, -4) and its dilated image (5, -2).",
+        "spec": {
+          "range": 11,
+          "points": [
+            {
+              "x": 10,
+              "y": -4,
+              "label": "P"
+            },
+            {
+              "x": 5,
+              "y": -2,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                -4
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p19",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (5, 4) is dilated about the center (1, 2) by a scale factor of 2. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Subtract the center first: 5 - 1 = 4.",
+        "Multiply by the scale factor: 2 times 4 = 8.",
+        "Add the center back: 8 + 1 = 9."
+      ],
+      "useAgain": "when a dilation's center is not the origin.",
+      "hints": [
+        "Move the center to the origin first by subtracting its coordinates.",
+        "Scale, then add the center's coordinates back at the end."
+      ],
+      "socraticHint": "What do you get when you subtract the center from the point?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (6, 5) is dilated about the center (2, 1) by a scale factor of 2. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Point (5, 4) and the center of dilation (1, 2).",
+        "spec": {
+          "range": 6,
+          "points": [
+            {
+              "x": 5,
+              "y": 4,
+              "label": "P"
+            },
+            {
+              "x": 1,
+              "y": 2,
+              "label": "center"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p20",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (7, 1) is dilated about the center (2, 3) by a scale factor of 3. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "17"
+      },
+      "explanation": [
+        "Subtract the center first: 7 - 2 = 5.",
+        "Multiply by the scale factor: 3 times 5 = 15.",
+        "Add the center back: 15 + 2 = 17."
+      ],
+      "useAgain": "when a dilation's center is not the origin.",
+      "hints": [
+        "Move the center to the origin first by subtracting its coordinates.",
+        "Scale, then add the center's coordinates back at the end."
+      ],
+      "socraticHint": "What do you get when you subtract the center from the point?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (8, 2) is dilated about the center (3, 2) by a scale factor of 3. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Point (7, 1) and the center of dilation (2, 3).",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": 7,
+              "y": 1,
+              "label": "P"
+            },
+            {
+              "x": 2,
+              "y": 3,
+              "label": "center"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p21",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (0, 6) is dilated about the center (-2, 1) by a scale factor of 2. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Subtract the center first: 0 + 2 = 2.",
+        "Multiply by the scale factor: 2 times 2 = 4.",
+        "Add the center back: 4 - 2 = 2."
+      ],
+      "useAgain": "when a dilation's center is not the origin.",
+      "hints": [
+        "Move the center to the origin first by subtracting its coordinates.",
+        "Scale, then add the center's coordinates back at the end."
+      ],
+      "socraticHint": "What do you get when you subtract the center from the point?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (1, 7) is dilated about the center (-1, 2) by a scale factor of 2. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Point (0, 6) and the center of dilation (-2, 1).",
+        "spec": {
+          "range": 7,
+          "points": [
+            {
+              "x": 0,
+              "y": 6,
+              "label": "P"
+            },
+            {
+              "x": -2,
+              "y": 1,
+              "label": "center"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p22",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (3, 2) is dilated about the origin by a scale factor of 2, then reflected over the x-axis. What is the x-coordinate of the final image?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "First, (3, 2) dilated about the origin by a scale factor of 2 gives (6, 4).",
+        "Then (6, 4) reflected over the x-axis gives (6, -4).",
+        "The x-coordinate is 6."
+      ],
+      "useAgain": "when a dilation combines with a rigid transformation.",
+      "hints": [
+        "Apply the two transformations one at a time, in order.",
+        "The second transformation uses the first one's result, not the original point."
+      ],
+      "socraticHint": "What point do you get after only the first transformation?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (2, 3) is dilated about the origin by a scale factor of 2, then reflected over the x-axis. What is the x-coordinate of the final image?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p23",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (-2, 5) is reflected over the y-axis, then dilated about the origin by a scale factor of 3. What is the x-coordinate of the final image?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "First, (-2, 5) reflected over the y-axis gives (2, 5).",
+        "Then (2, 5) dilated about the origin by a scale factor of 3 gives (6, 15).",
+        "The x-coordinate is 6."
+      ],
+      "useAgain": "when a dilation combines with a rigid transformation.",
+      "hints": [
+        "Apply the two transformations one at a time, in order.",
+        "The second transformation uses the first one's result, not the original point."
+      ],
+      "socraticHint": "What point do you get after only the first transformation?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (-3, 4) is reflected over the y-axis, then dilated about the origin by a scale factor of 3. What is the x-coordinate of the final image?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p24",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (4, -1) is dilated about the origin by a scale factor of 2, then translated 1 unit right and 2 units up. What is the x-coordinate of the final image?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "First, (4, -1) dilated about the origin by a scale factor of 2 gives (8, -2).",
+        "Then (8, -2) translated 1 unit right and 2 units up gives (9, 0).",
+        "The x-coordinate is 9."
+      ],
+      "useAgain": "when a dilation combines with a rigid transformation.",
+      "hints": [
+        "Apply the two transformations one at a time, in order.",
+        "The second transformation uses the first one's result, not the original point."
+      ],
+      "socraticHint": "What point do you get after only the first transformation?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (5, -2) is dilated about the origin by a scale factor of 2, then translated 1 unit right and 2 units up. What is the x-coordinate of the final image?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p25",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "choice",
+      "prompt": "A rectangle has vertices (0, 0), (8, 0), (8, 4), (0, 4). Which of these lines is a line of symmetry?",
+      "options": [
+        "y = x",
+        "x = 0",
+        "x = 4",
+        "y = 4"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "A rectangle's lines of symmetry pass through the midpoints of its opposite sides.",
+        "x = 4 passes halfway between x = 0 and x = 8, splitting the rectangle in half."
+      ],
+      "useAgain": "when you must pick out an actual line of symmetry from several candidates.",
+      "hints": [
+        "A line of symmetry must pass through the shape's center.",
+        "Check which line splits the rectangle into two mirror halves."
+      ],
+      "socraticHint": "Which line passes through the midpoints of the left and right sides?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rectangle has vertices (0, 0), (6, 0), (6, 10), (0, 10). Which of these lines is a line of symmetry?",
+        "options": [
+          "y = x",
+          "x = 0",
+          "x = 6",
+          "y = 5"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p26",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "choice",
+      "prompt": "An isosceles triangle has vertices (0, 0), (6, 0), (3, 5). Which of these lines is a line of symmetry?",
+      "options": [
+        "y = 0",
+        "x = 3",
+        "x = 0",
+        "y = 5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "An isosceles triangle's line of symmetry passes through the apex and the midpoint of the base.",
+        "The base runs from (0, 0) to (6, 0), so its midpoint is (3, 0).",
+        "The apex is (3, 5), and both points lie on x = 3."
+      ],
+      "useAgain": "when an isosceles triangle's line of symmetry is not obviously one of the axes.",
+      "hints": [
+        "Find the midpoint of the base first.",
+        "The line of symmetry passes through that midpoint and the opposite vertex."
+      ],
+      "socraticHint": "What is the midpoint of the base, and does the apex share its x-coordinate?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "An isosceles triangle has vertices (0, 0), (8, 0), (4, 6). Which of these lines is a line of symmetry?",
+        "options": [
+          "x = 4",
+          "y = 0",
+          "x = 0",
+          "y = 6"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p27",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "choice",
+      "prompt": "A regular hexagon is centered at (2, 3). Which of these lines could be one of its lines of symmetry?",
+      "options": [
+        "A line through (0, 0) that misses (2, 3)",
+        "A line through (5, 3) that misses (2, 3)",
+        "A line through (2, 3)",
+        "A line through (2, 0) that misses (2, 3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Every line of symmetry of a regular polygon passes through its center.",
+        "Only a line through (2, 3) can possibly be one."
+      ],
+      "useAgain": "when you must recognize that every line of symmetry passes through a regular polygon's center.",
+      "hints": [
+        "A line of symmetry always passes through the shape's center.",
+        "Rule out any option whose line misses the center."
+      ],
+      "socraticHint": "Does the line pass through the hexagon's center?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A regular pentagon is centered at (-1, 4). Which of these lines could be one of its lines of symmetry?",
+        "options": [
+          "A line through (0, 0) that misses (-1, 4)",
+          "A line through (-1, 4)",
+          "A line through (2, 4) that misses (-1, 4)",
+          "A line through (-1, 0) that misses (-1, 4)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p28",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "truefalse",
+      "prompt": "A dilation with a scale factor greater than 1 always makes a figure larger.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "A scale factor greater than 1 multiplies every distance from the center by more than 1.",
+        "That always makes the figure larger, no matter where the center is."
+      ],
+      "useAgain": "when you need to recall what a scale factor bigger than 1 does.",
+      "hints": [
+        "Think about what happens to distance from the center when you multiply by a number bigger than 1.",
+        "Try a simple example with a scale factor of 2."
+      ],
+      "socraticHint": "What happens to distance from the center when the scale factor is bigger than 1?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A dilation with a scale factor between 0 and 1 always makes a figure larger.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p29",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "truefalse",
+      "prompt": "A dilation always keeps every angle in a figure the same measure.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "A dilation stretches every length by the same factor, so the shape's proportions do not change.",
+        "Angles depend on proportions, not on size, so they stay the same."
+      ],
+      "useAgain": "when you need to recall which measurements a dilation preserves.",
+      "hints": [
+        "Think about whether a dilation changes the shape, or only the size.",
+        "Compare a dilated triangle's angles to the original's."
+      ],
+      "socraticHint": "Does a dilation change the shape of a figure, or only its size?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A dilation always keeps every length in a figure the same measure.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p30",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "truefalse",
+      "prompt": "A regular hexagon has more lines of symmetry than a square.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "A regular hexagon has 6 lines of symmetry, and a square has 4.",
+        "6 is more than 4."
+      ],
+      "useAgain": "when you need to compare the symmetry of two regular polygons.",
+      "hints": [
+        "Count the sides of each shape.",
+        "A regular polygon's lines of symmetry equal its number of sides."
+      ],
+      "socraticHint": "How many sides does each shape have?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A regular pentagon has more lines of symmetry than a regular hexagon.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p31",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "A figure has area 5. It is dilated by a scale factor of 2. What is the image's area?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "A dilation by scale factor k multiplies area by k squared.",
+        "2 squared is 4, so the new area is 5 times 4 = 20."
+      ],
+      "useAgain": "when a dilation changes a figure's area, not just its side lengths.",
+      "hints": [
+        "Area scales by the square of the scale factor, not the scale factor itself.",
+        "Square the scale factor first, then multiply by the original area."
+      ],
+      "socraticHint": "What do you square before multiplying by the original area?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A figure has area 6. It is dilated by a scale factor of 3. What is the image's area?",
+        "answer": {
+          "kind": "number",
+          "value": "54"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p32",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "A figure has area 12. It is dilated by a scale factor of 3. What is the image's area?",
+      "answer": {
+        "kind": "number",
+        "value": "108"
+      },
+      "explanation": [
+        "A dilation by scale factor k multiplies area by k squared.",
+        "3 squared is 9, so the new area is 12 times 9 = 108."
+      ],
+      "useAgain": "when a dilation changes a figure's area, not just its side lengths.",
+      "hints": [
+        "Area scales by the square of the scale factor, not the scale factor itself.",
+        "Square the scale factor first, then multiply by the original area."
+      ],
+      "socraticHint": "What do you square before multiplying by the original area?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A figure has area 10. It is dilated by a scale factor of 2. What is the image's area?",
+        "answer": {
+          "kind": "number",
+          "value": "40"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p33",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "A figure has area 8. It is dilated by a scale factor of 1/2. What is the image's area?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "A dilation by scale factor k multiplies area by k squared.",
+        "1/2 squared is 1/4, so the new area is 8 times 1/4 = 2."
+      ],
+      "useAgain": "when a dilation changes a figure's area, not just its side lengths.",
+      "hints": [
+        "Area scales by the square of the scale factor, not the scale factor itself.",
+        "Square the scale factor first, then multiply by the original area."
+      ],
+      "socraticHint": "What do you square before multiplying by the original area?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A figure has area 12. It is dilated by a scale factor of 1/2. What is the image's area?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p34",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "A figure has area 20. It is dilated by a scale factor of 3/2. What is the image's area?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "A dilation by scale factor k multiplies area by k squared.",
+        "3/2 squared is 9/4, so the new area is 20 times 9/4 = 45."
+      ],
+      "useAgain": "when a dilation changes a figure's area, not just its side lengths.",
+      "hints": [
+        "Area scales by the square of the scale factor, not the scale factor itself.",
+        "Square the scale factor first, then multiply by the original area."
+      ],
+      "socraticHint": "What do you square before multiplying by the original area?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A figure has area 16. It is dilated by a scale factor of 3/2. What is the image's area?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p35",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "A figure has perimeter 18. It is dilated by a scale factor of 3. What is the image's perimeter?",
+      "answer": {
+        "kind": "number",
+        "value": "54"
+      },
+      "explanation": [
+        "A dilation by scale factor k multiplies every length, including the perimeter, by k.",
+        "18 times 3 = 54."
+      ],
+      "useAgain": "when a dilation changes a figure's perimeter, which scales differently than its area.",
+      "hints": [
+        "Perimeter is a length, so it scales the same way any single side does.",
+        "Multiply the original perimeter by the scale factor directly."
+      ],
+      "socraticHint": "Does perimeter scale by k, or by k squared?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A figure has perimeter 20. It is dilated by a scale factor of 2. What is the image's perimeter?",
+        "answer": {
+          "kind": "number",
+          "value": "40"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p36",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "A figure has perimeter 24. It is dilated by a scale factor of 1/3. What is the image's perimeter?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "A dilation by scale factor k multiplies every length, including the perimeter, by k.",
+        "24 times 1/3 = 8."
+      ],
+      "useAgain": "when a dilation changes a figure's perimeter, which scales differently than its area.",
+      "hints": [
+        "Perimeter is a length, so it scales the same way any single side does.",
+        "Multiply the original perimeter by the scale factor directly."
+      ],
+      "socraticHint": "Does perimeter scale by k, or by k squared?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A figure has perimeter 30. It is dilated by a scale factor of 1/3. What is the image's perimeter?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p37",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "A triangle's side is 4 units. After a dilation, the corresponding side of the image is 10 units. What is the scale factor?",
+      "answer": {
+        "kind": "number",
+        "value": "5/2"
+      },
+      "explanation": [
+        "The scale factor is the image's length divided by the original's: 10/4.",
+        "That is 5/2."
+      ],
+      "useAgain": "when you know corresponding side lengths and need the scale factor between them.",
+      "hints": [
+        "Divide the image's side length by the matching original side length.",
+        "Keep the fraction in lowest terms."
+      ],
+      "socraticHint": "What do you divide by what to find the scale factor?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A triangle's side is 3 units. After a dilation, the corresponding side of the image is 12 units. What is the scale factor?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p38",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "A triangle's side is 6 units. After a dilation, the corresponding side of the image is 15 units. What is the scale factor?",
+      "answer": {
+        "kind": "number",
+        "value": "5/2"
+      },
+      "explanation": [
+        "The scale factor is the image's length divided by the original's: 15/6.",
+        "That is 5/2."
+      ],
+      "useAgain": "when you know corresponding side lengths and need the scale factor between them.",
+      "hints": [
+        "Divide the image's side length by the matching original side length.",
+        "Keep the fraction in lowest terms."
+      ],
+      "socraticHint": "What do you divide by what to find the scale factor?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A triangle's side is 8 units. After a dilation, the corresponding side of the image is 20 units. What is the scale factor?",
+        "answer": {
+          "kind": "number",
+          "value": "5/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p39",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "A triangle's side is 9 units. After a dilation, the corresponding side of the image is 6 units. What is the scale factor?",
+      "answer": {
+        "kind": "number",
+        "value": "2/3"
+      },
+      "explanation": [
+        "The scale factor is the image's length divided by the original's: 6/9.",
+        "That is 2/3."
+      ],
+      "useAgain": "when you know corresponding side lengths and need the scale factor between them.",
+      "hints": [
+        "Divide the image's side length by the matching original side length.",
+        "Keep the fraction in lowest terms."
+      ],
+      "socraticHint": "What do you divide by what to find the scale factor?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A triangle's side is 12 units. After a dilation, the corresponding side of the image is 9 units. What is the scale factor?",
+        "answer": {
+          "kind": "number",
+          "value": "3/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p40",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "order",
+      "prompt": "Point (6, 8) is dilated about the center (2, 2) by a scale factor of 2. Put these steps for finding its image in order.",
+      "items": [
+        "Add the center back: (8, 12) becomes (8+2, 12+2) = (10, 14).",
+        "Subtract the center: (6, 8) becomes (6-2, 8-2) = (4, 6).",
+        "Multiply by the scale factor 2: (4, 6) becomes (8, 12)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "The scale-by-k rule only works when the center of dilation is the origin.",
+        "Move the center to the origin, scale, then undo the move at the end."
+      ],
+      "useAgain": "when a dilation's center is not the origin.",
+      "hints": [
+        "What has to move to the origin before you can multiply by k?",
+        "The center of dilation itself has to move there first."
+      ],
+      "socraticHint": "What needs to sit at the origin before the scale factor can be applied?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (7, 9) is dilated about the center (3, 3) by a scale factor of 2. Put these steps for finding its image in order.",
+        "items": [
+          "Add the center back: (8, 12) becomes (8+3, 12+3) = (11, 15).",
+          "Subtract the center: (7, 9) becomes (7-3, 9-3) = (4, 6).",
+          "Multiply by the scale factor 2: (4, 6) becomes (8, 12)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Point (6, 8) and the center of dilation (2, 2).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 6,
+              "y": 8,
+              "label": "P"
+            },
+            {
+              "x": 2,
+              "y": 2,
+              "label": "center"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p41",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "order",
+      "prompt": "Point (1, 5) is dilated about the center (3, 1) by a scale factor of 3. Put these steps for finding its image in order.",
+      "items": [
+        "Add the center back: (-6, 12) becomes (-6+3, 12+1) = (-3, 13).",
+        "Subtract the center: (1, 5) becomes (1-3, 5-1) = (-2, 4).",
+        "Multiply by the scale factor 3: (-2, 4) becomes (-6, 12)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "The scale-by-k rule only works when the center of dilation is the origin.",
+        "Move the center to the origin, scale, then undo the move at the end."
+      ],
+      "useAgain": "when a dilation's center is not the origin.",
+      "hints": [
+        "What has to move to the origin before you can multiply by k?",
+        "The center of dilation itself has to move there first."
+      ],
+      "socraticHint": "What needs to sit at the origin before the scale factor can be applied?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (2, 6) is dilated about the center (4, 2) by a scale factor of 3. Put these steps for finding its image in order.",
+        "items": [
+          "Add the center back: (-6, 12) becomes (-6+4, 12+2) = (-2, 14).",
+          "Subtract the center: (2, 6) becomes (2-4, 6-2) = (-2, 4).",
+          "Multiply by the scale factor 3: (-2, 4) becomes (-6, 12)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Point (1, 5) and the center of dilation (3, 1).",
+        "spec": {
+          "range": 6,
+          "points": [
+            {
+              "x": 1,
+              "y": 5,
+              "label": "P"
+            },
+            {
+              "x": 3,
+              "y": 1,
+              "label": "center"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p42",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "order",
+      "prompt": "Point (8, 2) is dilated about the center (2, 4) by a scale factor of 1/2. Put these steps for finding its image in order.",
+      "items": [
+        "Add the center back: (3, -1) becomes (3+2, -1+4) = (5, 3).",
+        "Subtract the center: (8, 2) becomes (8-2, 2-4) = (6, -2).",
+        "Multiply by the scale factor 1/2: (6, -2) becomes (3, -1)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "The scale-by-k rule only works when the center of dilation is the origin.",
+        "Move the center to the origin, scale, then undo the move at the end."
+      ],
+      "useAgain": "when a dilation's center is not the origin.",
+      "hints": [
+        "What has to move to the origin before you can multiply by k?",
+        "The center of dilation itself has to move there first."
+      ],
+      "socraticHint": "What needs to sit at the origin before the scale factor can be applied?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (10, 3) is dilated about the center (4, 5) by a scale factor of 1/2. Put these steps for finding its image in order.",
+        "items": [
+          "Add the center back: (3, -1) becomes (3+4, -1+5) = (7, 4).",
+          "Subtract the center: (10, 3) becomes (10-4, 3-5) = (6, -2).",
+          "Multiply by the scale factor 1/2: (6, -2) becomes (3, -1)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Point (8, 2) and the center of dilation (2, 4).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 8,
+              "y": 2,
+              "label": "P"
+            },
+            {
+              "x": 2,
+              "y": 4,
+              "label": "center"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p43",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "choice",
+      "prompt": "A point is dilated about the origin by a scale factor of 2, then dilated again about the origin by a scale factor of 3. What single scale factor gives the same final image?",
+      "options": [
+        "5",
+        "1",
+        "1/6",
+        "6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Two dilations about the same center combine by multiplying their scale factors.",
+        "2 times 3 is 6."
+      ],
+      "useAgain": "when two dilations about the same center combine into one.",
+      "hints": [
+        "Apply both scale factors to a general point (x, y) in order.",
+        "Compare the result to a single dilation by some factor m."
+      ],
+      "socraticHint": "What single factor, applied once, matches applying 2 and then 3?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A point is dilated about the origin by a scale factor of 1/2, then dilated again about the origin by a scale factor of 4. What single scale factor gives the same final image?",
+        "options": [
+          "2",
+          "4.5",
+          "8",
+          "1/2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p44",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "choice",
+      "prompt": "A point is dilated about the origin by a scale factor of 5, then dilated again about the origin by a scale factor of 1/5. What single scale factor gives the same final image?",
+      "options": [
+        "25",
+        "5",
+        "1",
+        "0"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Two dilations about the same center combine by multiplying their scale factors.",
+        "5 times 1/5 is 1, which leaves every point exactly where it started."
+      ],
+      "useAgain": "when two dilations about the same center combine into one.",
+      "hints": [
+        "Apply both scale factors to a general point (x, y) in order.",
+        "A combined scale factor of 1 means no change at all."
+      ],
+      "socraticHint": "What do 5 and 1/5 multiply to?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A point is dilated about the origin by a scale factor of 3, then dilated again about the origin by a scale factor of 1/3. What single scale factor gives the same final image?",
+        "options": [
+          "9",
+          "3",
+          "0",
+          "1"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p45",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "A dilation with scale factor 2 sends (6, 8) to (10, 12). What is the x-coordinate of the center of dilation?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The center satisfies image = center + k(point - center), so center = (image - k times point)/(1 - k).",
+        "For x: (10 - 2 times 6)/(1 - 2) = 2."
+      ],
+      "useAgain": "when you know a point, its image and the scale factor, and need the center.",
+      "hints": [
+        "The center of dilation is the one point that maps to itself.",
+        "Set up image = center + k(point - center) and solve for the center."
+      ],
+      "socraticHint": "What equation does the center of dilation satisfy?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A dilation with scale factor 2 sends (4, 10) to (0, 14). What is the x-coordinate of the center of dilation?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p46",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "choice",
+      "prompt": "Point (4, 6) is dilated about the origin by a scale factor of -2. What is its image?",
+      "options": [
+        "(-8, -12)",
+        "(8, 12)",
+        "(-8, 12)",
+        "(8, -12)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "A negative scale factor multiplies each coordinate by that negative number, sending the point to the opposite side of the center.",
+        "That gives (-8, -12)."
+      ],
+      "useAgain": "when a dilation's scale factor is negative.",
+      "hints": [
+        "A negative scale factor is still just a multiplier, sign and all.",
+        "Multiply both coordinates by the full signed number, not just its size."
+      ],
+      "socraticHint": "What does multiplying by a negative number do to a coordinate's sign?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (3, 5) is dilated about the origin by a scale factor of -3. What is its image?",
+        "options": [
+          "(9, 15)",
+          "(-9, -15)",
+          "(-9, 15)",
+          "(9, -15)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p47",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Point (3, 2) is dilated about the origin by a scale factor of 2, then the result is rotated 90 degrees counterclockwise about the origin. What is the y-coordinate of the final image?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Dilating (3, 2) by 2 gives (6, 4).",
+        "Rotating (6, 4) by 90 degrees counterclockwise gives (-4, 6).",
+        "The y-coordinate is 6."
+      ],
+      "useAgain": "when a dilation combines with a rotation about the same center.",
+      "hints": [
+        "Apply the dilation first, then the rotation, to the dilation's result.",
+        "A 90 degree counterclockwise rotation sends (x, y) to (-y, x)."
+      ],
+      "socraticHint": "What point do you get after only the dilation?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (4, 1) is dilated about the origin by a scale factor of 3, then the result is rotated 90 degrees counterclockwise about the origin. What is the y-coordinate of the final image?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p48",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "Two similar figures have areas in the ratio 9 to 4. What is the ratio of a side of the larger figure to the corresponding side of the smaller, as a single number?",
+      "answer": {
+        "kind": "number",
+        "value": "3/2"
+      },
+      "explanation": [
+        "Area scales by the square of the side ratio, so the side ratio is the square root of the area ratio.",
+        "The square root of 9/4 is 3/2."
+      ],
+      "useAgain": "when you know how two similar figures' areas compare and need their side ratio.",
+      "hints": [
+        "Area ratio is side ratio squared, so work backward with a square root.",
+        "Take the square root of the numerator and denominator separately."
+      ],
+      "socraticHint": "What operation undoes squaring to get from an area ratio back to a side ratio?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Two similar figures have areas in the ratio 25 to 16. What is the ratio of a side of the larger figure to the corresponding side of the smaller, as a single number?",
+        "answer": {
+          "kind": "number",
+          "value": "5/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p49",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "number",
+      "prompt": "An isosceles trapezoid that is not a rectangle has how many lines of symmetry?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Only the line through the midpoints of the two parallel sides reflects the trapezoid onto itself.",
+        "A trapezoid has 4 sides, but its lines of symmetry are not equal to its number of sides unless it is regular."
+      ],
+      "useAgain": "when a shape's number of sides does not equal its number of lines of symmetry.",
+      "hints": [
+        "The 'sides equal lines of symmetry' rule only holds for regular polygons.",
+        "Check whether reflecting over any other line keeps the trapezoid looking the same."
+      ],
+      "socraticHint": "Does the rule for regular polygons apply to a shape that is not regular?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A non-square rhombus has how many lines of symmetry?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-dilations-symmetry-p50",
+      "lane": "skills",
+      "ideaId": "ge-transformations-dilations-symmetry",
+      "kind": "choice",
+      "prompt": "A point is dilated about the origin by a scale factor of 3, giving the image (12, -9). What was the original point?",
+      "options": [
+        "(36, -27)",
+        "(4, 3)",
+        "(-4, -3)",
+        "(4, -3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Undo a dilation by dividing by the scale factor instead of multiplying.",
+        "That gives (4, -3)."
+      ],
+      "useAgain": "when you know a dilation's image and scale factor and need the original point.",
+      "hints": [
+        "The image equals the scale factor times the original, so work backward with division.",
+        "Divide each coordinate of the image by the scale factor."
+      ],
+      "socraticHint": "What operation undoes multiplying by the scale factor?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A point is dilated about the origin by a scale factor of 4, giving the image (20, -8). What was the original point?",
+        "options": [
+          "(5, -2)",
+          "(80, -32)",
+          "(5, 2)",
+          "(-5, -2)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    }
+  ]
+}

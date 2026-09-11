@@ -1,0 +1,1981 @@
+{
+  "id": "ar-factors-multiples",
+  "idea": {
+    "body": "A factor of a number divides it evenly, with nothing left over. 12 has factors 1, 2, 3, 4, 6, 12, since each one divides 12 with no remainder. A multiple of a number comes from counting it again and again. The multiples of 4 are 4, 8, 12, 16, 20, and so on forever. Factors are always smaller than or equal to the number, but multiples keep growing without end. A robot arm turning 6 bolts at a time only finishes whole batches on multiples of 6: 6 bolts, then 12, then 18. A rover pings every 4 minutes, and a second rover pings every 6 minutes. The two line up together again on a shared multiple, the first one being 12."
+  },
+  "workedExample": {
+    "prompt": "A workshop has 24 small gears and 32 large gears to split into matching boxes. Find the greatest common factor of 24 and 32 for the biggest matching box size. Then find their least common multiple, the smallest shared count both amounts could regroup into evenly.",
+    "steps": [
+      "List the factors of 24: 1, 2, 3, 4, 6, 8, 12, 24.",
+      "List the factors of 32: 1, 2, 4, 8, 16, 32.",
+      "The biggest number that appears in both lists is 8, so the greatest common factor is 8.",
+      "For the smallest shared multiple, list multiples of 24: 24, 48, 72, 96. List multiples of 32: 32, 64, 96.",
+      "96 is the first number that shows up in both multiple lists, so the least common multiple is 96."
+    ]
+  },
+  "ways": [
+    {
+      "id": "ar-factors-multiples-w1",
+      "name": "Test every number in turn",
+      "when": "Use this when you want to be sure you have found every factor.",
+      "steps": [
+        "Test every whole number from 1 up through 20 to see if it divides evenly.",
+        "1, 2, 4, 5, 10, and 20 divide 20 with nothing left over.",
+        "No other number between 1 and 20 divides evenly.",
+        "Count the numbers that worked: 6 factors."
+      ],
+      "example": "factors of 20",
+      "answer": "6",
+      "trap": "Forgetting to test the number itself as one of its own factors."
+    },
+    {
+      "id": "ar-factors-multiples-w2",
+      "name": "Rainbow of factor pairs",
+      "when": "Use this when you want every factor faster by pairing them up.",
+      "steps": [
+        "Pair the outside factors first: 1 times 36.",
+        "Move inward: 2 and 18, 3 and 12, 4 and 9, 6 and 6.",
+        "The pairs meet in the middle, so every pair is found.",
+        "List every number that appeared: 1, 2, 3, 4, 6, 9, 12, 18, 36.",
+        "Count them: 9 factors."
+      ],
+      "example": "factors of 36",
+      "answer": "9",
+      "trap": "Missing the middle pair when a number is a perfect square, like 6 and 6."
+    },
+    {
+      "id": "ar-factors-multiples-w3",
+      "name": "Divisibility rules",
+      "when": "Use this to check small factors fast, without dividing at all.",
+      "steps": [
+        "Check for 2: 90 ends in an even digit, so 2 is a factor.",
+        "Check for 5: 90 ends in 0, so 5 is a factor.",
+        "Check for 10: 90 ends in 0, so 10 is a factor.",
+        "Check for 3: 9 plus 0 is 9, which divides evenly by 3, so 3 is a factor.",
+        "All four numbers, 2, 3, 5, and 10, are factors of 90."
+      ],
+      "example": "which of 2, 3, 5, 10 are factors of 90",
+      "answer": "4",
+      "trap": "Using the digit-sum rule for 3 as if it were the rule for 9."
+    },
+    {
+      "id": "ar-factors-multiples-w4",
+      "name": "Skip counting to a shared multiple",
+      "when": "Use this when you need the smallest number two counts both reach.",
+      "steps": [
+        "List multiples of 9 by skip counting: 9, 18, 27, 36, 45.",
+        "List multiples of 15 by skip counting: 15, 30, 45.",
+        "Look for the first number that appears in both lists.",
+        "45 appears in both, so that is the least common multiple."
+      ],
+      "example": "least common multiple of 9 and 15",
+      "answer": "45",
+      "trap": "Stopping the lists too early and missing where they first meet."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-ar-factors-multiples-p01",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "How many factors does 12 have? (Think of a kitchen tray split into 12 equal spots.)",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "List every number that divides 12 evenly: 1, 2, 3, 4, 6, 12.",
+        "Count how many numbers are in that list.",
+        "12 has 6 factors in total."
+      ],
+      "useAgain": "when you need every way to split a number into equal groups.",
+      "hints": [
+        "Check every whole number from 1 up to 12 to see which ones divide it evenly.",
+        "A factor always pairs with another factor: if 2 divides 12, so does 12/2."
+      ],
+      "socraticHint": "Factors come in pairs that multiply to 12. Once you find half of a pair, do you already know the other half?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many factors does 24 have?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p02",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "How many factors does 20 have? (Think of a garden bed split into 20 equal spots.)",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "List every number that divides 20 evenly: 1, 2, 4, 5, 10, 20.",
+        "Count how many numbers are in that list.",
+        "20 has 6 factors in total."
+      ],
+      "useAgain": "when you need every way to split a number into equal groups.",
+      "hints": [
+        "Check every whole number from 1 up to 20 to see which ones divide it evenly.",
+        "A factor always pairs with another factor: if 2 divides 20, so does 20/2."
+      ],
+      "socraticHint": "Factors come in pairs that multiply to 20. Once you find half of a pair, do you already know the other half?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many factors does 28 have?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p03",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "How many factors does 18 have? (Think of a robot's tool rack split into 18 equal spots.)",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "List every number that divides 18 evenly: 1, 2, 3, 6, 9, 18.",
+        "Count how many numbers are in that list.",
+        "18 has 6 factors in total."
+      ],
+      "useAgain": "when you need every way to split a number into equal groups.",
+      "hints": [
+        "Check every whole number from 1 up to 18 to see which ones divide it evenly.",
+        "A factor always pairs with another factor: if 2 divides 18, so does 18/2."
+      ],
+      "socraticHint": "Factors come in pairs that multiply to 18. Once you find half of a pair, do you already know the other half?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many factors does 45 have?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p04",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "How many factors does 16 have? (Think of a print job's pages split into 16 equal spots.)",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "List every number that divides 16 evenly: 1, 2, 4, 8, 16.",
+        "Count how many numbers are in that list.",
+        "16 has 5 factors in total."
+      ],
+      "useAgain": "when you need every way to split a number into equal groups.",
+      "hints": [
+        "Check every whole number from 1 up to 16 to see which ones divide it evenly.",
+        "A factor always pairs with another factor: if 2 divides 16, so does 16/2."
+      ],
+      "socraticHint": "Factors come in pairs that multiply to 16. Once you find half of a pair, do you already know the other half?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many factors does 30 have?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p05",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "A piano metronome click repeats every 5 units. What is 5 counted 4 times?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "The multiples of 5 are 5, 10, 15, and so on, counting 5 again each time.",
+        "Counting 5 four times means 5 x 4.",
+        "5 x 4 is 20."
+      ],
+      "useAgain": "when something repeats at a steady count and you need a specific step in that count.",
+      "hints": [
+        "Multiples of 5 go up by 5 each time, starting from 5 itself.",
+        "5 counted 4 times is 5 multiplied by 4."
+      ],
+      "socraticHint": "If 5 counted once is 5, what do you multiply by to count it 4 times instead?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 5 counted 5 times?",
+        "answer": {
+          "kind": "number",
+          "value": "25"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p06",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "A rover's ping repeats every 7 units. What is 7 counted 6 times?",
+      "answer": {
+        "kind": "number",
+        "value": "42"
+      },
+      "explanation": [
+        "The multiples of 7 are 7, 14, 21, and so on, counting 7 again each time.",
+        "Counting 7 six times means 7 x 6.",
+        "7 x 6 is 42."
+      ],
+      "useAgain": "when something repeats at a steady count and you need a specific step in that count.",
+      "hints": [
+        "Multiples of 7 go up by 7 each time, starting from 7 itself.",
+        "7 counted 6 times is 7 multiplied by 6."
+      ],
+      "socraticHint": "If 7 counted once is 7, what do you multiply by to count it 6 times instead?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 7 counted 7 times?",
+        "answer": {
+          "kind": "number",
+          "value": "49"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p07",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "A print run repeats every 9 units. What is 9 counted 5 times?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "The multiples of 9 are 9, 18, 27, and so on, counting 9 again each time.",
+        "Counting 9 five times means 9 x 5.",
+        "9 x 5 is 45."
+      ],
+      "useAgain": "when something repeats at a steady count and you need a specific step in that count.",
+      "hints": [
+        "Multiples of 9 go up by 9 each time, starting from 9 itself.",
+        "9 counted 5 times is 9 multiplied by 5."
+      ],
+      "socraticHint": "If 9 counted once is 9, what do you multiply by to count it 5 times instead?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 9 counted 6 times?",
+        "answer": {
+          "kind": "number",
+          "value": "54"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p08",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "A game's scoring round repeats every 6 units. What is 6 counted 7 times?",
+      "answer": {
+        "kind": "number",
+        "value": "42"
+      },
+      "explanation": [
+        "The multiples of 6 are 6, 12, 18, and so on, counting 6 again each time.",
+        "Counting 6 seven times means 6 x 7.",
+        "6 x 7 is 42."
+      ],
+      "useAgain": "when something repeats at a steady count and you need a specific step in that count.",
+      "hints": [
+        "Multiples of 6 go up by 6 each time, starting from 6 itself.",
+        "6 counted 7 times is 6 multiplied by 7."
+      ],
+      "socraticHint": "If 6 counted once is 6, what do you multiply by to count it 7 times instead?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 6 counted 8 times?",
+        "answer": {
+          "kind": "number",
+          "value": "48"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p09",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "truefalse",
+      "prompt": "15 is a multiple of 5.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "A multiple of 5 is what you get counting 5 again and again: 5, 10, 15, 20.",
+        "15 shows up in that list, so 15 is a multiple of 5."
+      ],
+      "useAgain": "when you need to check if one number shows up in another number's counting list.",
+      "hints": [
+        "List out the multiples of 5 until you reach or pass 15.",
+        "Check whether 15 itself appears in that list."
+      ],
+      "socraticHint": "Fifteen divided by five comes out even with no remainder. What does that tell you about whether fifteen is a multiple of five?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "18 is a multiple of 4.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p10",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "truefalse",
+      "prompt": "9 is a factor of 27.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "A factor of 27 divides it with nothing left over.",
+        "27 divided by 9 is 3 exactly, with no remainder.",
+        "So 9 is a factor of 27."
+      ],
+      "useAgain": "when you need to check if one number divides another evenly.",
+      "hints": [
+        "Divide 27 by 9 and see if anything is left over.",
+        "A factor always divides with a whole number result and no remainder."
+      ],
+      "socraticHint": "If a number divides another with nothing left over, what word describes that first number?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "8 is a factor of 28.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p11",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "truefalse",
+      "prompt": "Every factor of a number is smaller than or equal to that number.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "A factor divides evenly into the number, so it can never be bigger than the number itself.",
+        "The biggest factor a number ever has is the number itself, since a number always divides itself evenly.",
+        "So every factor is smaller than or equal to the number."
+      ],
+      "useAgain": "when you want to check a factor list for a number that is too big to belong.",
+      "hints": [
+        "Think about the biggest possible factor a number can have.",
+        "Can a factor ever be bigger than the number it divides?"
+      ],
+      "socraticHint": "If a factor were bigger than the number itself, could it still divide that number evenly?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A multiple of a number can be smaller than that number.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p12",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "choice",
+      "prompt": "Which of these is NOT a factor of 24?",
+      "options": [
+        "6",
+        "9",
+        "8",
+        "12"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Check each option by dividing 24 by it.",
+        "24 divided by 6 is 4, by 8 is 3, by 12 is 2, all with nothing left over.",
+        "24 divided by 9 leaves a remainder, so 9 is the one that is not a factor."
+      ],
+      "useAgain": "when you need to pick out the one number that does not divide evenly from a list of near matches.",
+      "hints": [
+        "Divide 24 by each option in turn.",
+        "The factor that leaves a remainder is the one that does not belong."
+      ],
+      "socraticHint": "Three of these numbers divide 24 with nothing left over. What happens when you try the fourth one?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Which of these is NOT a factor of 30?",
+        "options": [
+          "8",
+          "5",
+          "6",
+          "10"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p13",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "choice",
+      "prompt": "Which of these is NOT a factor of 36?",
+      "options": [
+        "4",
+        "6",
+        "9",
+        "10"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Divide 36 by each option.",
+        "36 divided by 4 is 9, by 6 is 6, by 9 is 4, all whole numbers.",
+        "36 divided by 10 leaves a remainder, so 10 does not belong."
+      ],
+      "useAgain": "when a list of near-factor numbers has exactly one that does not actually divide evenly.",
+      "hints": [
+        "Try dividing 36 by each number on the list.",
+        "Only one of the four leaves a remainder."
+      ],
+      "socraticHint": "If a number ends in a certain digit, does that always tell you whether 10 divides it evenly?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Which of these is NOT a factor of 40?",
+        "options": [
+          "5",
+          "8",
+          "9",
+          "10"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p14",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "choice",
+      "prompt": "A multiple of 6 must divide evenly by both 2 and 3. Which of these is a multiple of 6?",
+      "options": [
+        "16",
+        "21",
+        "24",
+        "32"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "16 divides evenly by 2 but not by 3, so it is not a multiple of 6.",
+        "21 divides evenly by 3 but not by 2, so it is not a multiple of 6 either.",
+        "32 divides evenly by 2 but not by 3.",
+        "24 divides evenly by both 2 and 3, so 24 is the multiple of 6."
+      ],
+      "useAgain": "when checking a multiple of a number made of two smaller factors, like 6 being 2 times 3.",
+      "hints": [
+        "Check each option for dividing evenly by 2 first.",
+        "Among the ones that pass, check which also divides evenly by 3."
+      ],
+      "socraticHint": "A number that only passes one of the two checks, divisible by 2 or divisible by 3, is not enough. Why does it need to pass both?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A multiple of 10 must divide evenly by both 2 and 5. Which of these is a multiple of 10?",
+        "options": [
+          "30",
+          "14",
+          "25",
+          "34"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p15",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "choice",
+      "prompt": "A multiple of 15 must divide evenly by both 3 and 5. Which of these is a multiple of 15?",
+      "options": [
+        "18",
+        "25",
+        "50",
+        "45"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "18 divides evenly by 3 but not by 5.",
+        "25 divides evenly by 5 but not by 3.",
+        "50 divides evenly by 5 but not by 3.",
+        "45 divides evenly by both 3 and 5, so 45 is the multiple of 15."
+      ],
+      "useAgain": "when a compound number like 15 is built from two smaller factors, 3 and 5, and both checks must pass.",
+      "hints": [
+        "Test each option against dividing evenly by 3.",
+        "Then test the survivors against dividing evenly by 5."
+      ],
+      "socraticHint": "Fifteen is built from three and five together. What has to be true about a number for it to be a multiple of both at once?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A multiple of 12 must divide evenly by both 3 and 4. Which of these is a multiple of 12?",
+        "options": [
+          "15",
+          "36",
+          "20",
+          "40"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p16",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "What is the greatest common factor of 24 and 18?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "List the factors of 24: 1, 2, 3, 4, 6, 8, 12, 24.",
+        "List the factors of 18: 1, 2, 3, 6, 9, 18.",
+        "The biggest number that appears in both lists is 6."
+      ],
+      "useAgain": "when you need to split two different amounts into the biggest matching equal groups.",
+      "hints": [
+        "List the factors of 24 and the factors of 18 separately.",
+        "Find the largest number that appears in both lists."
+      ],
+      "socraticHint": "Both lists share more than one common factor. How do you make sure you picked the greatest one, not just any shared one?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the greatest common factor of 36 and 27?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p17",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "What is the greatest common factor of 30 and 45?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "List the factors of 30: 1, 2, 3, 5, 6, 10, 15, 30.",
+        "List the factors of 45: 1, 3, 5, 9, 15, 45.",
+        "The biggest number that appears in both lists is 15."
+      ],
+      "useAgain": "when you need to split two different amounts into the biggest matching equal groups.",
+      "hints": [
+        "List the factors of 30 and the factors of 45 separately.",
+        "Find the largest number that appears in both lists."
+      ],
+      "socraticHint": "Both lists share more than one common factor. How do you make sure you picked the greatest one, not just any shared one?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the greatest common factor of 20 and 50?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p18",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "What is the greatest common factor of 16 and 40?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "List the factors of 16: 1, 2, 4, 8, 16.",
+        "List the factors of 40: 1, 2, 4, 5, 8, 10, 20, 40.",
+        "The biggest number that appears in both lists is 8."
+      ],
+      "useAgain": "when you need to split two different amounts into the biggest matching equal groups.",
+      "hints": [
+        "List the factors of 16 and the factors of 40 separately.",
+        "Find the largest number that appears in both lists."
+      ],
+      "socraticHint": "Both lists share more than one common factor. How do you make sure you picked the greatest one, not just any shared one?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the greatest common factor of 24 and 56?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p19",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "What is the greatest common factor of 28 and 42?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "List the factors of 28: 1, 2, 4, 7, 14, 28.",
+        "List the factors of 42: 1, 2, 3, 6, 7, 14, 21, 42.",
+        "The biggest number that appears in both lists is 14."
+      ],
+      "useAgain": "when you need to split two different amounts into the biggest matching equal groups.",
+      "hints": [
+        "List the factors of 28 and the factors of 42 separately.",
+        "Find the largest number that appears in both lists."
+      ],
+      "socraticHint": "Both lists share more than one common factor. How do you make sure you picked the greatest one, not just any shared one?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the greatest common factor of 35 and 63?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p20",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "What is the least common multiple of 4 and 6?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "List multiples of 4: 4, 8, 12, 16...",
+        "List multiples of 6: 6, 12, 18, 24...",
+        "The smallest number that appears in both lists is 12."
+      ],
+      "useAgain": "when two repeating things line up again and you need the first shared count.",
+      "hints": [
+        "List out multiples of 4 and multiples of 6 until one number matches.",
+        "The least common multiple is the smallest match, not just any match."
+      ],
+      "socraticHint": "Both counting lists eventually share many numbers, not just one. Why do you want the very first one they share?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the least common multiple of 6 and 8?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p21",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "What is the least common multiple of 8 and 12?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "List multiples of 8: 8, 16, 24, 32...",
+        "List multiples of 12: 12, 24, 36, 48...",
+        "The smallest number that appears in both lists is 24."
+      ],
+      "useAgain": "when two repeating things line up again and you need the first shared count.",
+      "hints": [
+        "List out multiples of 8 and multiples of 12 until one number matches.",
+        "The least common multiple is the smallest match, not just any match."
+      ],
+      "socraticHint": "Both counting lists eventually share many numbers, not just one. Why do you want the very first one they share?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the least common multiple of 12 and 6?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p22",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "What is the least common multiple of 6 and 9?",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "List multiples of 6: 6, 12, 18, 24...",
+        "List multiples of 9: 9, 18, 27, 36...",
+        "The smallest number that appears in both lists is 18."
+      ],
+      "useAgain": "when two repeating things line up again and you need the first shared count.",
+      "hints": [
+        "List out multiples of 6 and multiples of 9 until one number matches.",
+        "The least common multiple is the smallest match, not just any match."
+      ],
+      "socraticHint": "Both counting lists eventually share many numbers, not just one. Why do you want the very first one they share?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the least common multiple of 9 and 4?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p23",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "What is the least common multiple of 10 and 15?",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "List multiples of 10: 10, 20, 30, 40...",
+        "List multiples of 15: 15, 30, 45, 60...",
+        "The smallest number that appears in both lists is 30."
+      ],
+      "useAgain": "when two repeating things line up again and you need the first shared count.",
+      "hints": [
+        "List out multiples of 10 and multiples of 15 until one number matches.",
+        "The least common multiple is the smallest match, not just any match."
+      ],
+      "socraticHint": "Both counting lists eventually share many numbers, not just one. Why do you want the very first one they share?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the least common multiple of 15 and 6?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p24",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "choice",
+      "prompt": "What is the greatest common factor of 20 and 30?",
+      "options": [
+        "5",
+        "60",
+        "600",
+        "10"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "List the factors of 20: 1, 2, 4, 5, 10, 20.",
+        "List the factors of 30: 1, 2, 3, 5, 6, 10, 15, 30.",
+        "The biggest shared factor is 10, not just any shared factor like 5.",
+        "60 and 600 come from multiplying the numbers, which finds a common multiple, not a common factor."
+      ],
+      "useAgain": "when a common factor is confused with a common multiple, or the greatest common factor is confused with a smaller one.",
+      "hints": [
+        "List both factor lists fully before comparing.",
+        "Pick the largest number the two lists actually share, not the product of the two numbers."
+      ],
+      "socraticHint": "5 and 10 are both shared factors of 20 and 30. Which word in the question tells you to pick the bigger one, not either one?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the greatest common factor of 12 and 18?",
+        "options": [
+          "3",
+          "6",
+          "36",
+          "216"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p25",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "choice",
+      "prompt": "What is the greatest common factor of 14 and 21?",
+      "options": [
+        "1",
+        "3",
+        "7",
+        "35"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "List the factors of 14: 1, 2, 7, 14.",
+        "List the factors of 21: 1, 3, 7, 21.",
+        "1 is shared, but 7 is also shared and it is bigger.",
+        "35 is the sum of the two numbers, not a shared factor at all."
+      ],
+      "useAgain": "when 1 looks like a safe answer but a bigger shared factor is hiding in both lists.",
+      "hints": [
+        "Every pair of numbers shares the factor 1, so keep checking for a bigger shared one.",
+        "Compare the full factor lists of both numbers."
+      ],
+      "socraticHint": "1 always divides both numbers, so it is never wrong, only sometimes not the biggest. What else do both lists share?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the greatest common factor of 15 and 25?",
+        "options": [
+          "5",
+          "1",
+          "3",
+          "40"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p26",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "choice",
+      "prompt": "What is the least common multiple of 4 and 10?",
+      "options": [
+        "20",
+        "2",
+        "14",
+        "40"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Multiples of 4: 4, 8, 12, 16, 20. Multiples of 10: 10, 20.",
+        "20 is the first number both lists share.",
+        "2 is a common factor, not a common multiple.",
+        "14 comes from adding the two numbers, and 40 is a shared multiple, but not the smallest one."
+      ],
+      "useAgain": "when the least common multiple is confused with the common factor, the sum, or a bigger shared multiple.",
+      "hints": [
+        "List multiples of both numbers until you find the first match.",
+        "Adding the two numbers together does not give a common multiple."
+      ],
+      "socraticHint": "40 is also a multiple of both 4 and 10. Why is 20 the better answer to a question asking for the LEAST common multiple?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the least common multiple of 6 and 8?",
+        "options": [
+          "2",
+          "24",
+          "14",
+          "48"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p27",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "choice",
+      "prompt": "What is the least common multiple of 5 and 6?",
+      "options": [
+        "1",
+        "11",
+        "30",
+        "60"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Multiples of 5: 5, 10, 15, 20, 25, 30. Multiples of 6: 6, 12, 18, 24, 30.",
+        "30 is the first number both lists share.",
+        "1 is their greatest common factor, not a common multiple.",
+        "11 comes from adding the two numbers, which is not a multiple of either one."
+      ],
+      "useAgain": "when 5 and 6 share no common factor bigger than 1, so their least common multiple is just their product.",
+      "hints": [
+        "List out multiples of 5 and of 6 far enough to find a match.",
+        "Adding the two numbers together will not land on a real multiple of either."
+      ],
+      "socraticHint": "5 and 6 share no factor bigger than 1. When two numbers share nothing bigger than 1, what do you notice about their least common multiple compared to just multiplying them?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the least common multiple of 4 and 9?",
+        "options": [
+          "1",
+          "13",
+          "72",
+          "36"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p28",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "A kitchen has 24 carrots and 36 potatoes. They need to be split into the largest possible number of identical bags, using every vegetable with none left over. How many bags is that?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "The largest number of identical bags with nothing left over is the greatest common factor of the two amounts.",
+        "List the factors of 24: 1, 2, 3, 4, 6, 8, 12, 24.",
+        "List the factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36.",
+        "The biggest shared factor is 12, so that many bags works."
+      ],
+      "useAgain": "when two different amounts must split evenly into the largest possible number of matching groups.",
+      "hints": [
+        "The number of bags has to divide both 24 and 36 evenly.",
+        "Find the greatest common factor of 24 and 36."
+      ],
+      "socraticHint": "Every bag needs the exact same number of carrots and the exact same number of potatoes. What kind of number has to divide both 24 and 36 for that to work?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A garden has 18 tomato plants and 30 pepper plants. They need to be split into the largest possible number of identical rows, using every plant with none left over. How many rows is that?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p29",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "A workshop has 42 bolts and 28 washers. They need to be split into the largest possible number of identical kits, using every part with none left over. How many kits is that?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "The largest number of matching kits is the greatest common factor of the two counts.",
+        "List the factors of 42: 1, 2, 3, 6, 7, 14, 21, 42.",
+        "List the factors of 28: 1, 2, 4, 7, 14, 28.",
+        "The biggest shared factor is 14, so that many kits works."
+      ],
+      "useAgain": "when the largest possible number of matching kits or groups must be found from two different part counts.",
+      "hints": [
+        "The number of kits must divide both 42 and 28 evenly.",
+        "Find the greatest common factor of the two amounts."
+      ],
+      "socraticHint": "If you tried more kits than the greatest common factor, would every kit still get a whole number of bolts and washers?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A print shop has 36 blue sheets and 54 red sheets. They need to be split into the largest possible number of identical stacks, using every sheet with none left over. How many stacks is that?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p30",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "truefalse",
+      "prompt": "If two numbers share no common factor bigger than 1, their least common multiple is just the two numbers multiplied together.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "When two numbers share nothing bigger than 1, none of their factors overlap.",
+        "That means the smallest number both can divide into is simply their product.",
+        "For example, 4 and 9 share only 1, and their least common multiple is 36, exactly 4 times 9."
+      ],
+      "useAgain": "when two numbers share no common factor bigger than 1 and you want their least common multiple quickly.",
+      "hints": [
+        "Try an example: 5 and 6 share only the factor 1.",
+        "Check whether their least common multiple equals 5 times 6."
+      ],
+      "socraticHint": "When two numbers share a bigger common factor, like 4 and 6 sharing 2, is their least common multiple still just the two multiplied together?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "The greatest common factor of two different numbers can never be 1.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p31",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "At the start of a run, rover A pings every 4 seconds and rover B pings every 6 seconds. After how many seconds do the two line up together again for the first time?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "They line up again on the first shared multiple of 4 and 6, the least common multiple.",
+        "Multiples of 4: 4, 8, 12, 16. Multiples of 6: 6, 12, 18.",
+        "The first number both lists share is 12 seconds."
+      ],
+      "useAgain": "when two repeating events start together and you need the first time they both happen again at once.",
+      "hints": [
+        "List multiples of 4 and of 6 until one number matches on both lists.",
+        "The first shared number is the least common multiple, the answer you want."
+      ],
+      "socraticHint": "Both events happened together at the very start too. What are you really looking for: the first shared time AFTER that start?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "At the start of a run, rover A pings every 5 seconds and rover B pings every 6 seconds. After how many seconds do the two line up together again for the first time?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p32",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "At the start of a run, the piano metronome clicks every 8 seconds and the recorder beeps every 12 seconds. After how many seconds do the two line up together again for the first time?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "They line up again on the first shared multiple of 8 and 12, the least common multiple.",
+        "Multiples of 8: 8, 16, 24, 32. Multiples of 12: 12, 24, 36.",
+        "The first number both lists share is 24 seconds."
+      ],
+      "useAgain": "when two repeating events start together and you need the first time they both happen again at once.",
+      "hints": [
+        "List multiples of 8 and of 12 until one number matches on both lists.",
+        "The first shared number is the least common multiple, the answer you want."
+      ],
+      "socraticHint": "Both events happened together at the very start too. What are you really looking for: the first shared time AFTER that start?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "At the start of a run, the piano metronome clicks every 10 seconds and the recorder beeps every 15 seconds. After how many seconds do the two line up together again for the first time?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p33",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "At the start of a run, the kitchen timer rings every 15 seconds and the oven buzzer rings every 20 seconds. After how many seconds do the two line up together again for the first time?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "They line up again on the first shared multiple of 15 and 20, the least common multiple.",
+        "Multiples of 15: 15, 30, 45, 60. Multiples of 20: 20, 40, 60.",
+        "The first number both lists share is 60 seconds."
+      ],
+      "useAgain": "when two repeating events start together and you need the first time they both happen again at once.",
+      "hints": [
+        "List multiples of 15 and of 20 until one number matches on both lists.",
+        "The first shared number is the least common multiple, the answer you want."
+      ],
+      "socraticHint": "Both events happened together at the very start too. What are you really looking for: the first shared time AFTER that start?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "At the start of a run, the kitchen timer rings every 12 seconds and the oven buzzer rings every 18 seconds. After how many seconds do the two line up together again for the first time?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p34",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "At the start of a run, the print head resets every 9 seconds and the ink refills every 12 seconds. After how many seconds do the two line up together again for the first time?",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "They line up again on the first shared multiple of 9 and 12, the least common multiple.",
+        "Multiples of 9: 9, 18, 27, 36. Multiples of 12: 12, 24, 36.",
+        "The first number both lists share is 36 seconds."
+      ],
+      "useAgain": "when two repeating events start together and you need the first time they both happen again at once.",
+      "hints": [
+        "List multiples of 9 and of 12 until one number matches on both lists.",
+        "The first shared number is the least common multiple, the answer you want."
+      ],
+      "socraticHint": "Both events happened together at the very start too. What are you really looking for: the first shared time AFTER that start?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "At the start of a run, the print head resets every 6 seconds and the ink refills every 8 seconds. After how many seconds do the two line up together again for the first time?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p35",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "At the start of a run, the game's power-up appears every 6 seconds and the boss appears every 10 seconds. After how many seconds do the two line up together again for the first time?",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "They line up again on the first shared multiple of 6 and 10, the least common multiple.",
+        "Multiples of 6: 6, 12, 18, 24. Multiples of 10: 10, 20, 30.",
+        "The first number both lists share is 30 seconds."
+      ],
+      "useAgain": "when two repeating events start together and you need the first time they both happen again at once.",
+      "hints": [
+        "List multiples of 6 and of 10 until one number matches on both lists.",
+        "The first shared number is the least common multiple, the answer you want."
+      ],
+      "socraticHint": "Both events happened together at the very start too. What are you really looking for: the first shared time AFTER that start?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "At the start of a run, the game's power-up appears every 8 seconds and the boss appears every 12 seconds. After how many seconds do the two line up together again for the first time?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p36",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "choice",
+      "prompt": "What is the greatest common factor of 48 and 60?",
+      "options": [
+        "12",
+        "6",
+        "24",
+        "2880"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "List the factors of 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48.",
+        "List the factors of 60: 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60.",
+        "The biggest shared factor is 12, bigger than the shared factor 6.",
+        "2880 comes from multiplying the two numbers, which is not a common factor at all."
+      ],
+      "useAgain": "when a smaller shared factor is found first but a bigger one is still hiding in both lists.",
+      "hints": [
+        "List both full factor lists before deciding on the biggest shared one.",
+        "Check whether a bigger number than 6 also appears in both lists."
+      ],
+      "socraticHint": "6 divides both 48 and 60, but so does a bigger number. How do you make sure you have checked every shared factor, not just the first one you spot?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the greatest common factor of 36 and 84?",
+        "options": [
+          "6",
+          "18",
+          "12",
+          "3024"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p37",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "choice",
+      "prompt": "What is the least common multiple of 12 and 18?",
+      "options": [
+        "6",
+        "72",
+        "216",
+        "36"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The greatest common factor of 12 and 18 is 6, but that is a factor, not a multiple.",
+        "Multiples of 12: 12, 24, 36. Multiples of 18: 18, 36.",
+        "36 is the first number shared by both lists.",
+        "72 and 216 are also common multiples, but neither is the smallest one."
+      ],
+      "useAgain": "when the greatest common factor looks tempting but the question actually asks for the least common multiple.",
+      "hints": [
+        "Multiples are much bigger than factors; do not answer with the greatest common factor by mistake.",
+        "List multiples of both numbers and find the smallest shared one."
+      ],
+      "socraticHint": "6 is a factor of both numbers, and 36 is a multiple of both. Which word in the question, factor or multiple, tells you which one to give?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the least common multiple of 15 and 25?",
+        "options": [
+          "5",
+          "75",
+          "150",
+          "375"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p38",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "The product of two numbers is 144, and their greatest common factor is 6. What is their least common multiple?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "For any two numbers, their product always equals their greatest common factor times their least common multiple.",
+        "So 144 equals 6 times the least common multiple.",
+        "144 divided by 6 is 24, so the least common multiple is 24."
+      ],
+      "useAgain": "when the product and the greatest common factor of two numbers are known and the least common multiple is missing.",
+      "hints": [
+        "The product of two numbers always equals their greatest common factor times their least common multiple.",
+        "Divide the product, 144, by the greatest common factor, 6."
+      ],
+      "socraticHint": "The product equals the greatest common factor times the least common multiple. Which division finds the missing piece?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The product of two numbers is 180, and their greatest common factor is 6. What is their least common multiple?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p39",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "How many whole numbers from 1 to 50 are multiples of both 4 and 6?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "A number that is a multiple of both 4 and 6 must be a multiple of their least common multiple.",
+        "The least common multiple of 4 and 6 is 12.",
+        "Count the multiples of 12 up to 50: 12, 24, 36, 48, which is 4 numbers."
+      ],
+      "useAgain": "when counting numbers in a range that are multiples of two different numbers at once.",
+      "hints": [
+        "A number that is a multiple of both 4 and 6 is really a multiple of their least common multiple.",
+        "Find the least common multiple of 4 and 6 first, then count its multiples up to 50."
+      ],
+      "socraticHint": "Instead of checking every number from 1 to 50 against both 4 and 6, what single number could you check multiples of instead?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers from 1 to 60 are multiples of both 6 and 8?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p40",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "order",
+      "prompt": "Put these common multiples of 3 and 4 in order from smallest to largest: 36, 12, 48, 24.",
+      "items": [
+        "36",
+        "12",
+        "48",
+        "24"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          3,
+          0,
+          2
+        ]
+      },
+      "explanation": [
+        "Every one of these numbers is a multiple of both 3 and 4, since they are all multiples of 12.",
+        "Arrange them from smallest to largest: 12, then 24, then 36, then 48."
+      ],
+      "useAgain": "when a list of shared multiples needs to be arranged from smallest to largest.",
+      "hints": [
+        "Every number here is a multiple of 12; just sort them by size.",
+        "Start with the smallest number and work up to the largest."
+      ],
+      "socraticHint": "All four numbers are multiples of the same smaller number. Does that change how you sort them by size?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these common multiples of 4 and 5 in order from smallest to largest: 40, 60, 20, 80.",
+        "items": [
+          "40",
+          "60",
+          "20",
+          "80"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            0,
+            1,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p41",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "order",
+      "prompt": "Put these factors of 60 in order from largest to smallest: 6, 20, 4, 30.",
+      "items": [
+        "6",
+        "20",
+        "4",
+        "30"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          1,
+          0,
+          2
+        ]
+      },
+      "explanation": [
+        "Check that every number divides 60 evenly: 60 divided by 6, 20, 4 and 30 all come out whole.",
+        "Arrange them from largest to smallest: 30, then 20, then 6, then 4."
+      ],
+      "useAgain": "when a list of factors needs to be arranged from largest to smallest instead of smallest to largest.",
+      "hints": [
+        "Check each number really divides 60 evenly first.",
+        "Sort the four numbers starting with the biggest one."
+      ],
+      "socraticHint": "Ordering from largest to smallest is the reverse of ordering from smallest to largest. Which end do you start writing from?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these factors of 48 in order from largest to smallest: 8, 24, 4, 16.",
+        "items": [
+          "8",
+          "24",
+          "4",
+          "16"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            3,
+            0,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p42",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "A rover has 45 rock samples and 60 soil samples, split into the largest possible number of identical crates with none left over. How many rock samples go in each crate?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The largest number of matching crates is the greatest common factor of 45 and 60, which is 15.",
+        "Each crate gets 45 divided by 15 rock samples.",
+        "45 divided by 15 is 3 rock samples per crate."
+      ],
+      "useAgain": "when the greatest common factor sets the number of groups, and a second division finds how many of one item lands in each group.",
+      "hints": [
+        "Find the greatest common factor of 45 and 60 first, since that is the number of crates.",
+        "Then divide 45 by that number of crates to find rock samples per crate."
+      ],
+      "socraticHint": "Once you know the number of crates, how do you find out how many rock samples land in just one of them?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover has 36 rock samples and 54 soil samples, split into the largest possible number of identical crates with none left over. How many rock samples go in each crate?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p43",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "choice",
+      "prompt": "A game gives a coin bonus every 8 rounds and a gem bonus every 10 rounds. On round 80, both bonuses land at once. Is round 40 also a round where both bonuses land together?",
+      "options": [
+        "No, because 40 is not a multiple of both 8 and 10",
+        "Yes, because 40 is half of 80",
+        "No, because bonuses only ever land once",
+        "Yes, because 40 is a multiple of both 8 and 10"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Both bonuses land together only on common multiples of 8 and 10.",
+        "The least common multiple of 8 and 10 is 40.",
+        "40 divides evenly by 8 and by 10, so both bonuses really do land on round 40.",
+        "The correct reasoning is that 40 IS a common multiple; the trap answer wrongly claims it is not."
+      ],
+      "useAgain": "when checking whether a specific round or time is a shared multiple, not just half of a known shared multiple.",
+      "hints": [
+        "Check whether 40 divides evenly by both 8 and 10.",
+        "Being half of 80 does not automatically make a number a common multiple."
+      ],
+      "socraticHint": "80 is a common multiple of 8 and 10, and 40 is exactly half of 80. Does dividing a common multiple in half always give another common multiple?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game gives a coin bonus every 6 rounds and a gem bonus every 9 rounds. On round 18, both bonuses land at once. Is round 9 also a round where both bonuses land together?",
+        "options": [
+          "Yes, because 9 is a multiple of both 6 and 9",
+          "No, because 9 is not a multiple of both 6 and 9",
+          "Yes, because 9 is half of 18",
+          "No, because bonuses only ever land once"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p44",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "A print shop cuts paper into equal stacks. It has 90 blue sheets and 126 white sheets. What is the greatest number of sheets that could be in each identical stack, using all the paper with none left over from either color?",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "The greatest common factor of 90 and 126 sets the biggest possible stack size that divides both evenly.",
+        "List the factors of 90: 1, 2, 3, 5, 6, 9, 10, 15, 18, 30, 45, 90.",
+        "List the factors of 126: 1, 2, 3, 6, 7, 9, 14, 18, 21, 42, 63, 126.",
+        "The biggest shared factor is 18."
+      ],
+      "useAgain": "when the greatest common factor of two bigger numbers must be found from their full factor lists.",
+      "hints": [
+        "List the factors of both 90 and 126 completely.",
+        "Pick the largest number that appears in both lists."
+      ],
+      "socraticHint": "With bigger numbers, factor lists get longer. Does the method for finding the greatest common factor change at all?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A print shop has 70 blue sheets and 105 white sheets. What is the greatest number of sheets that could be in each identical stack, using all the paper with none left over from either color?",
+        "answer": {
+          "kind": "number",
+          "value": "35"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p45",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "A garden has 54 marigolds and 81 zinnias, split into the largest possible number of identical rows, using every flower with none left over. How many zinnias go in each row?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The greatest common factor of 54 and 81 sets the largest possible number of matching rows.",
+        "The greatest common factor of 54 and 81 is 27.",
+        "Each row gets 81 divided by 27 zinnias.",
+        "81 divided by 27 is 3 zinnias per row."
+      ],
+      "useAgain": "when the greatest common factor sets the number of groups, and a second division finds how many of the other item land in each group.",
+      "hints": [
+        "Find the greatest common factor of 54 and 81 first, since that is the number of rows.",
+        "Then divide 81 by that number of rows to find zinnias per row."
+      ],
+      "socraticHint": "Once you know how many rows there are, which of the two flower counts still needs to be divided by that number?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A garden has 36 marigolds and 60 zinnias, split into the largest possible number of identical rows, using every flower with none left over. How many zinnias go in each row?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-ar-factors-multiples-p46",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "Three rovers ping every 6, 8 and 9 minutes, all starting together. After how many minutes do all three ping together again for the first time?",
+      "answer": {
+        "kind": "number",
+        "value": "72"
+      },
+      "explanation": [
+        "All three line up on the least common multiple of all three numbers.",
+        "The least common multiple of 6 and 8 is 24.",
+        "The least common multiple of 24 and 9 is 72.",
+        "So all three ping together again after 72 minutes."
+      ],
+      "useAgain": "when three repeating events need to line up together, not just two.",
+      "hints": [
+        "Find the least common multiple of the first two numbers before bringing in the third.",
+        "Take the least common multiple of that result and the third number."
+      ],
+      "socraticHint": "You already know how to find the least common multiple of two numbers. How could you use that twice to handle three numbers instead?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Three timers beep every 4, 6 and 10 minutes, all starting together. After how many minutes do all three beep together again for the first time?",
+        "answer": {
+          "kind": "number",
+          "value": "60"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p47",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "A number is greater than 1 and has exactly 3 factors. What is the smallest such number?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "A number with exactly 3 factors is always the square of a prime number.",
+        "Test small squares: 4 has factors 1, 2, 4, exactly 3 of them.",
+        "9 also has exactly 3 factors, 1, 3, 9, but 4 is smaller.",
+        "The smallest number with exactly 3 factors is 4."
+      ],
+      "useAgain": "when a number's factor count points to a special shape, like a prime squared for exactly 3 factors.",
+      "hints": [
+        "Try listing the factors of small square numbers like 9 and 16.",
+        "A number with exactly 3 factors always turns out to be a prime number multiplied by itself."
+      ],
+      "socraticHint": "1 always has exactly 1 factor, and a prime number always has exactly 2. What is special about a prime number multiplied by itself?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A number is greater than 1 and has exactly 3 factors. What is the second smallest such number?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p48",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "choice",
+      "prompt": "Two numbers, both greater than 4, have a greatest common factor of 4 and a least common multiple of 24. Which pair of numbers fits?",
+      "options": [
+        "8 and 12",
+        "4 and 24",
+        "6 and 16",
+        "12 and 16"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The two numbers must multiply to the greatest common factor times the least common multiple: 4 times 24 is 96.",
+        "8 times 12 is also 96. Checking directly, 8 and 12 really do have greatest common factor 4 and least common multiple 24.",
+        "4 and 24 also fit the two clues, but 4 is not greater than 4, so the question rules that pair out.",
+        "6 and 16 multiply to 96 too, but their greatest common factor is 2, not 4, so they do not fit."
+      ],
+      "useAgain": "when the product rule, gcf times lcm equals the product of the two numbers, helps check which pair of numbers actually fits both clues.",
+      "hints": [
+        "The two numbers must multiply to give the greatest common factor times the least common multiple.",
+        "Check each option's actual greatest common factor and least common multiple against the clues, and against the greater than 4 rule."
+      ],
+      "socraticHint": "Two different pairs can share the same greatest common factor and least common multiple. What extra rule in the question rules one of those pairs out here?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Two numbers, both greater than 5, have a greatest common factor of 5 and a least common multiple of 30. Which pair of numbers fits?",
+        "options": [
+          "5 and 30",
+          "6 and 25",
+          "10 and 15",
+          "15 and 20"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p49",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "number",
+      "prompt": "How many whole numbers from 1 to 100 are multiples of 6 but NOT multiples of 4?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Count the multiples of 6 up to 100 first: there are 16.",
+        "Multiples of both 6 and 4 are multiples of their least common multiple, 12: there are 8 of those up to 100.",
+        "Subtract the shared ones from all the multiples of 6: 16 minus 8 is 8."
+      ],
+      "useAgain": "when counting numbers that are multiples of one number but must exclude the ones that are also multiples of another.",
+      "hints": [
+        "First count all multiples of 6 up to 100.",
+        "Then subtract the ones that are also multiples of 4, using the least common multiple of 6 and 4."
+      ],
+      "socraticHint": "Some multiples of 6 are also multiples of 4. Which numbers are those, and what do you do with them once you have counted all the multiples of 6?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers from 1 to 100 are multiples of 8 but NOT multiples of 6?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-factors-multiples-p50",
+      "lane": "skills",
+      "ideaId": "ar-factors-multiples",
+      "kind": "truefalse",
+      "prompt": "If the greatest common factor of two numbers is 1, they must both be prime.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "A greatest common factor of 1 only means the two numbers share no factor bigger than 1.",
+        "8 and 9 share no common factor bigger than 1, but neither one is prime.",
+        "So sharing no common factor does not force either number to be prime."
+      ],
+      "useAgain": "when a greatest common factor of 1 tempts you into assuming both numbers must be prime.",
+      "hints": [
+        "Try to find two composite numbers, not prime, that still share no common factor bigger than 1.",
+        "8 and 9 are a useful pair to test this claim against."
+      ],
+      "socraticHint": "8 and 9 are both composite numbers, yet nothing bigger than 1 divides them both. What does that tell you about the claim?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "If two different numbers are both prime, their greatest common factor must be 1.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    }
+  ]
+}

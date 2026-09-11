@@ -1,0 +1,3683 @@
+{
+  "id": "al-systems-graphing-substitution",
+  "idea": {
+    "body": "A system of two linear equations asks for the one point that lies on both lines at once. One way to find it is to graph both lines and read off where they cross. Another way is substitution. Solve one equation for a variable, then substitute that expression into the other equation, which leaves a single equation in one variable to solve. For y = 2x + 1 and y = -x + 7, substituting gives 2x + 1 = -x + 7. That solves to 3x = 6, so x = 2, and then y = 2(2) + 1 = 5. The lines cross at (2, 5).",
+    "figure": {
+      "kind": "plane",
+      "alt": "The lines y = 2x + 1 and y = -x + 7 crossing at (2, 5).",
+      "spec": {
+        "range": 9,
+        "polylines": [
+          [
+            [
+              -1,
+              -1
+            ],
+            [
+              4,
+              9
+            ]
+          ],
+          [
+            [
+              -1,
+              8
+            ],
+            [
+              8,
+              -1
+            ]
+          ]
+        ],
+        "points": [
+          {
+            "x": 2,
+            "y": 5,
+            "label": "(2, 5)"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "Solve the system y = x + 3 and 2x + y = 12 by substitution, and check it by graphing.",
+    "steps": [
+      "The first equation already gives y in terms of x: y = x + 3.",
+      "Substitute that into the second equation: 2x + (x + 3) = 12.",
+      "Combine like terms: 3x + 3 = 12, so 3x = 9 and x = 3.",
+      "Substitute back: y = 3 + 3 = 6, so the solution is (3, 6).",
+      "On the graph, the two lines cross exactly at (3, 6), matching the algebra."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "The lines y = x + 3 and y = -2x + 12 crossing at (3, 6).",
+      "spec": {
+        "range": 10,
+        "polylines": [
+          [
+            [
+              -3,
+              0
+            ],
+            [
+              5,
+              8
+            ]
+          ],
+          [
+            [
+              1,
+              10
+            ],
+            [
+              7,
+              -2
+            ]
+          ]
+        ],
+        "points": [
+          {
+            "x": 3,
+            "y": 6,
+            "label": "(3, 6)"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "al-systems-graphing-substitution-w1",
+      "name": "Substitute the isolated variable",
+      "when": "Use this when one equation already gives y, or an unknown, alone.",
+      "steps": [
+        "y = 2x + 1 and y = -x + 7 both describe y, so set the right sides equal.",
+        "2x + 1 = -x + 7.",
+        "Add x to both sides: 3x + 1 = 7, then subtract 1: 3x = 6.",
+        "Divide by 3: x = 2. Substitute back: y = 2(2) + 1 = 5."
+      ],
+      "example": "y = 2x + 1 and y = -x + 7",
+      "answer": "(2, 5)",
+      "trap": "Substituting into the wrong equation to find y, instead of either original one."
+    },
+    {
+      "id": "al-systems-graphing-substitution-w2",
+      "name": "Graph and read the crossing",
+      "when": "Use this when both equations are easy to plot and you want a quick visual check.",
+      "steps": [
+        "Plot y = x + 1 by starting at (0, 1) and stepping up 1 for every 1 across.",
+        "Plot y = -x + 5 by starting at (0, 5) and stepping down 1 for every 1 across.",
+        "Find where the two lines cross on the grid.",
+        "The lines cross at (2, 3), so that is the solution."
+      ],
+      "example": "y = x + 1 and y = -x + 5",
+      "answer": "(2, 3)",
+      "trap": "Misreading the crossing point's coordinates off the grid by one square.",
+      "figure": {
+        "kind": "plane",
+        "alt": "The lines y = x + 1 and y = -x + 5 crossing at (2, 3).",
+        "spec": {
+          "range": 8,
+          "polylines": [
+            [
+              [
+                -1,
+                0
+              ],
+              [
+                6,
+                7
+              ]
+            ],
+            [
+              [
+                -1,
+                6
+              ],
+              [
+                6,
+                -1
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2,
+              "y": 3,
+              "label": "(2, 3)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "al-systems-graphing-substitution-w3",
+      "name": "Check the pair in both equations",
+      "when": "Use this when you already have a candidate solution and want to confirm it quickly.",
+      "steps": [
+        "A candidate solution is (3, 4) for y = x + 1 and y = 2x - 2.",
+        "Check the first equation: 3 + 1 = 4, which matches y = 4.",
+        "Check the second equation: 2 times 3 minus 2 = 4, which also matches.",
+        "Both equations hold, so (3, 4) is the solution."
+      ],
+      "example": "y = x + 1 and y = 2x - 2, candidate (3, 4)",
+      "answer": "(3, 4)",
+      "trap": "Checking only one equation and assuming the pair works in both."
+    }
+  ],
+  "bank": [
+    {
+      "kind": "number",
+      "prompt": "Two lines are given by y = 2x + 1 and y = -x + 7. At the point where they cross, what is the x-coordinate?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The crossing point is the one (x, y) pair that makes both equations true.",
+        "Setting the two right-hand sides equal gives 2x + 1 = -x + 7.",
+        "Solving gives x = 2 and y = 5."
+      ],
+      "hints": [
+        "Set the two expressions for y equal to each other, since both describe the same y at the crossing point.",
+        "Solve that equation for x, then substitute back into either line to get y."
+      ],
+      "socraticHint": "What equation do you get when the two expressions for y are set equal?",
+      "useAgain": "when two lines are already written as y equals something, and you need where they cross.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 5).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -2.0
+              ],
+              [
+                -2.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 5.0,
+              "label": "(2, 5)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Two lines are given by y = 2x + 2 and y = -x + 8. At the point where they cross, what is the x-coordinate?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p01",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Two lines are given by y = x + 2 and y = -2x + 8. At the point where they cross, what is the x-coordinate?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The crossing point is the one (x, y) pair that makes both equations true.",
+        "Setting the two right-hand sides equal gives x + 2 = -2x + 8.",
+        "Solving gives x = 2 and y = 4."
+      ],
+      "hints": [
+        "Set the two expressions for y equal to each other, since both describe the same y at the crossing point.",
+        "Solve that equation for x, then substitute back into either line to get y."
+      ],
+      "socraticHint": "What equation do you get when the two expressions for y are set equal?",
+      "useAgain": "when two lines are already written as y equals something, and you need where they cross.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 4).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -7.0
+              ],
+              [
+                7.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                8.5,
+                -9.0
+              ],
+              [
+                -0.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 4.0,
+              "label": "(2, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Two lines are given by y = x + 3 and y = -2x + 9. At the point where they cross, what is the x-coordinate?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p02",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Two lines are given by y = 3x and y = -x + 8. At the point where they cross, what is the x-coordinate?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The crossing point is the one (x, y) pair that makes both equations true.",
+        "Setting the two right-hand sides equal gives 3x + 0 = -x + 8.",
+        "Solving gives x = 2 and y = 6."
+      ],
+      "hints": [
+        "Set the two expressions for y equal to each other, since both describe the same y at the crossing point.",
+        "Solve that equation for x, then substitute back into either line to get y."
+      ],
+      "socraticHint": "What equation do you get when the two expressions for y are set equal?",
+      "useAgain": "when two lines are already written as y equals something, and you need where they cross.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 6).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -3.0,
+                -9.0
+              ],
+              [
+                3.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -1.0
+              ],
+              [
+                -1.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 6.0,
+              "label": "(2, 6)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Two lines are given by y = 3x + 1 and y = -x + 9. At the point where they cross, what is the x-coordinate?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p03",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Two lines are given by y = 2x - 1 and y = -x + 5. At the point where they cross, what is the x-coordinate?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The crossing point is the one (x, y) pair that makes both equations true.",
+        "Setting the two right-hand sides equal gives 2x - 1 = -x + 5.",
+        "Solving gives x = 2 and y = 3."
+      ],
+      "hints": [
+        "Set the two expressions for y equal to each other, since both describe the same y at the crossing point.",
+        "Solve that equation for x, then substitute back into either line to get y."
+      ],
+      "socraticHint": "What equation do you get when the two expressions for y are set equal?",
+      "useAgain": "when two lines are already written as y equals something, and you need where they cross.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -4.0,
+                -9.0
+              ],
+              [
+                5.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -4.0
+              ],
+              [
+                -4.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 3.0,
+              "label": "(2, 3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Two lines are given by y = 2x and y = -x + 6. At the point where they cross, what is the x-coordinate?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p04",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Two lines are given by y = x + 1 and y = -3x + 9. At the point where they cross, what is the x-coordinate?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The crossing point is the one (x, y) pair that makes both equations true.",
+        "Setting the two right-hand sides equal gives x + 1 = -3x + 9.",
+        "Solving gives x = 2 and y = 3."
+      ],
+      "hints": [
+        "Set the two expressions for y equal to each other, since both describe the same y at the crossing point.",
+        "Solve that equation for x, then substitute back into either line to get y."
+      ],
+      "socraticHint": "What equation do you get when the two expressions for y are set equal?",
+      "useAgain": "when two lines are already written as y equals something, and you need where they cross.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -8.0
+              ],
+              [
+                8.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                6.0,
+                -9.0
+              ],
+              [
+                0.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 3.0,
+              "label": "(2, 3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Two lines are given by y = x + 2 and y = -3x + 10. At the point where they cross, what is the x-coordinate?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p05",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Two lines are given by y = x + 1 and y = -x + 5. At the point where they cross, what is the y-coordinate?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The crossing point is the one (x, y) pair that makes both equations true.",
+        "Setting the two right-hand sides equal gives x + 1 = -x + 5.",
+        "Solving gives x = 2 and y = 3."
+      ],
+      "hints": [
+        "Set the two expressions for y equal to each other, since both describe the same y at the crossing point.",
+        "Solve that equation for x, then substitute back into either line to get y."
+      ],
+      "socraticHint": "What equation do you get when the two expressions for y are set equal?",
+      "useAgain": "when two lines are already written as y equals something, and you need where they cross.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -8.0
+              ],
+              [
+                8.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -4.0
+              ],
+              [
+                -4.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 3.0,
+              "label": "(2, 3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Two lines are given by y = x + 2 and y = -x + 6. At the point where they cross, what is the y-coordinate?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p06",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Two lines are given by y = 2x and y = -x + 6. At the point where they cross, what is the y-coordinate?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The crossing point is the one (x, y) pair that makes both equations true.",
+        "Setting the two right-hand sides equal gives 2x + 0 = -x + 6.",
+        "Solving gives x = 2 and y = 4."
+      ],
+      "hints": [
+        "Set the two expressions for y equal to each other, since both describe the same y at the crossing point.",
+        "Solve that equation for x, then substitute back into either line to get y."
+      ],
+      "socraticHint": "What equation do you get when the two expressions for y are set equal?",
+      "useAgain": "when two lines are already written as y equals something, and you need where they cross.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 4).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -4.5,
+                -9.0
+              ],
+              [
+                4.5,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -3.0
+              ],
+              [
+                -3.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 4.0,
+              "label": "(2, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Two lines are given by y = 2x + 1 and y = -x + 7. At the point where they cross, what is the y-coordinate?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p07",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Two lines are given by y = x + 2 and y = -2x + 8. At the point where they cross, what is the y-coordinate?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The crossing point is the one (x, y) pair that makes both equations true.",
+        "Setting the two right-hand sides equal gives x + 2 = -2x + 8.",
+        "Solving gives x = 2 and y = 4."
+      ],
+      "hints": [
+        "Set the two expressions for y equal to each other, since both describe the same y at the crossing point.",
+        "Solve that equation for x, then substitute back into either line to get y."
+      ],
+      "socraticHint": "What equation do you get when the two expressions for y are set equal?",
+      "useAgain": "when two lines are already written as y equals something, and you need where they cross.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 4).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -7.0
+              ],
+              [
+                7.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                8.5,
+                -9.0
+              ],
+              [
+                -0.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 4.0,
+              "label": "(2, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Two lines are given by y = x + 3 and y = -2x + 9. At the point where they cross, what is the y-coordinate?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p08",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Two lines are given by y = 3x - 2 and y = -x + 6. At the point where they cross, what is the y-coordinate?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The crossing point is the one (x, y) pair that makes both equations true.",
+        "Setting the two right-hand sides equal gives 3x - 2 = -x + 6.",
+        "Solving gives x = 2 and y = 4."
+      ],
+      "hints": [
+        "Set the two expressions for y equal to each other, since both describe the same y at the crossing point.",
+        "Solve that equation for x, then substitute back into either line to get y."
+      ],
+      "socraticHint": "What equation do you get when the two expressions for y are set equal?",
+      "useAgain": "when two lines are already written as y equals something, and you need where they cross.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 4).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -2.3333333333333335,
+                -9.0
+              ],
+              [
+                3.6666666666666665,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -3.0
+              ],
+              [
+                -3.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 4.0,
+              "label": "(2, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Two lines are given by y = 3x - 1 and y = -x + 7. At the point where they cross, what is the y-coordinate?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p09",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Two lines are given by y = 2x + 1 and y = -2x + 7. At the point where they cross, what is the y-coordinate?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The crossing point is the one (x, y) pair that makes both equations true.",
+        "Setting the two right-hand sides equal gives 2x + 1 = -2x + 7.",
+        "Solving gives x = 3/2 and y = 4."
+      ],
+      "hints": [
+        "Set the two expressions for y equal to each other, since both describe the same y at the crossing point.",
+        "Solve that equation for x, then substitute back into either line to get y."
+      ],
+      "socraticHint": "What equation do you get when the two expressions for y are set equal?",
+      "useAgain": "when two lines are already written as y equals something, and you need where they cross.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (3/2, 4).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                8.0,
+                -9.0
+              ],
+              [
+                -1.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 1.5,
+              "y": 4.0,
+              "label": "(3/2, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Two lines are given by y = 2x + 2 and y = -2x + 8. At the point where they cross, what is the y-coordinate?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p10",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which point solves the system y = 2x + 1 and y = -x + 7 at the same time?",
+      "options": [
+        "(5, 2)",
+        "(2, 5)",
+        "(-2, 5)",
+        "(2, 6)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The solution must make both equations true at once, not just one of them.",
+        "Substituting x = 2 into both lines gives y = 5 for each."
+      ],
+      "hints": [
+        "Try each candidate point in both equations, not just one.",
+        "Only the true solution satisfies both equations at the same time."
+      ],
+      "socraticHint": "Does the candidate point make both equations true, or only one?",
+      "useAgain": "when you have candidate points and need to check which one solves both equations.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 5).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -2.0
+              ],
+              [
+                -2.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 5.0,
+              "label": "(2, 5)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which point solves the system y = 2x + 2 and y = -x + 8 at the same time?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "(6, 2)",
+          "(-2, 6)",
+          "(2, 7)",
+          "(2, 6)"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p11",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which point solves the system y = x + 2 and y = -2x + 8 at the same time?",
+      "options": [
+        "(2, 4)",
+        "(4, 2)",
+        "(-2, 4)",
+        "(2, 5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The solution must make both equations true at once, not just one of them.",
+        "Substituting x = 2 into both lines gives y = 4 for each."
+      ],
+      "hints": [
+        "Try each candidate point in both equations, not just one.",
+        "Only the true solution satisfies both equations at the same time."
+      ],
+      "socraticHint": "Does the candidate point make both equations true, or only one?",
+      "useAgain": "when you have candidate points and need to check which one solves both equations.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 4).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -7.0
+              ],
+              [
+                7.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                8.5,
+                -9.0
+              ],
+              [
+                -0.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 4.0,
+              "label": "(2, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which point solves the system y = x + 3 and y = -2x + 9 at the same time?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(5, 2)",
+          "(-2, 5)",
+          "(2, 5)",
+          "(2, 6)"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p12",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which point solves the system y = 3x and y = -x + 8 at the same time?",
+      "options": [
+        "(6, 2)",
+        "(-2, 6)",
+        "(2, 7)",
+        "(2, 6)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The solution must make both equations true at once, not just one of them.",
+        "Substituting x = 2 into both lines gives y = 6 for each."
+      ],
+      "hints": [
+        "Try each candidate point in both equations, not just one.",
+        "Only the true solution satisfies both equations at the same time."
+      ],
+      "socraticHint": "Does the candidate point make both equations true, or only one?",
+      "useAgain": "when you have candidate points and need to check which one solves both equations.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 6).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -3.0,
+                -9.0
+              ],
+              [
+                3.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -1.0
+              ],
+              [
+                -1.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 6.0,
+              "label": "(2, 6)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which point solves the system y = 3x + 1 and y = -x + 9 at the same time?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "(2, 7)",
+          "(7, 2)",
+          "(-2, 7)",
+          "(2, 8)"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p13",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which point solves the system y = 2x - 1 and y = -x + 5 at the same time?",
+      "options": [
+        "(3, 2)",
+        "(2, 3)",
+        "(-2, 3)",
+        "(2, 4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The solution must make both equations true at once, not just one of them.",
+        "Substituting x = 2 into both lines gives y = 3 for each."
+      ],
+      "hints": [
+        "Try each candidate point in both equations, not just one.",
+        "Only the true solution satisfies both equations at the same time."
+      ],
+      "socraticHint": "Does the candidate point make both equations true, or only one?",
+      "useAgain": "when you have candidate points and need to check which one solves both equations.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -4.0,
+                -9.0
+              ],
+              [
+                5.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -4.0
+              ],
+              [
+                -4.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 3.0,
+              "label": "(2, 3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which point solves the system y = 2x and y = -x + 6 at the same time?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(4, 2)",
+          "(-2, 4)",
+          "(2, 4)",
+          "(2, 5)"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p14",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which point solves the system y = x + 1 and y = -3x + 9 at the same time?",
+      "options": [
+        "(2, 3)",
+        "(3, 2)",
+        "(-2, 3)",
+        "(2, 4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The solution must make both equations true at once, not just one of them.",
+        "Substituting x = 2 into both lines gives y = 3 for each."
+      ],
+      "hints": [
+        "Try each candidate point in both equations, not just one.",
+        "Only the true solution satisfies both equations at the same time."
+      ],
+      "socraticHint": "Does the candidate point make both equations true, or only one?",
+      "useAgain": "when you have candidate points and need to check which one solves both equations.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -8.0
+              ],
+              [
+                8.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                6.0,
+                -9.0
+              ],
+              [
+                0.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 3.0,
+              "label": "(2, 3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which point solves the system y = x + 2 and y = -3x + 10 at the same time?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "(4, 2)",
+          "(-2, 4)",
+          "(2, 5)",
+          "(2, 4)"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p15",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = 2x + 1 and x + y = 9 together. What is the x-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "8/3"
+      },
+      "explanation": [
+        "Substitute 2x + 1 in place of y in the second equation.",
+        "x + (2x + 1) = 9 becomes (3)x = 8.",
+        "So x = 8/3, and y = 2(8/3) + 1 = 19/3."
+      ],
+      "hints": [
+        "Replace y in the second equation with the expression the first equation gives for y.",
+        "Solve the resulting one-variable equation for x, then use it to find y."
+      ],
+      "socraticHint": "What do you get when you substitute the first equation's expression for y into the second?",
+      "useAgain": "when one equation is already solved for y and the other is not.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (8/3, 19/3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                0.0
+              ],
+              [
+                0.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.6666666666666665,
+              "y": 6.333333333333333,
+              "label": "(8/3, 19/3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = 2x + 2 and x + y = 10 together. What is the x-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "8/3"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p16",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = x + 2 and 2x + y = 10 together. What is the x-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "8/3"
+      },
+      "explanation": [
+        "Substitute x + 2 in place of y in the second equation.",
+        "2x + (x + 2) = 10 becomes (3)x = 8.",
+        "So x = 8/3, and y = (8/3) + 2 = 14/3."
+      ],
+      "hints": [
+        "Replace y in the second equation with the expression the first equation gives for y.",
+        "Solve the resulting one-variable equation for x, then use it to find y."
+      ],
+      "socraticHint": "What do you get when you substitute the first equation's expression for y into the second?",
+      "useAgain": "when one equation is already solved for y and the other is not.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (8/3, 14/3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -7.0
+              ],
+              [
+                7.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -8.0
+              ],
+              [
+                0.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.6666666666666665,
+              "y": 4.666666666666667,
+              "label": "(8/3, 14/3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = x + 3 and 2x + y = 11 together. What is the x-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "8/3"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p17",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = 3x - 1 and x + y = 5 together. What is the x-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "3/2"
+      },
+      "explanation": [
+        "Substitute 3x - 1 in place of y in the second equation.",
+        "x + (3x - 1) = 5 becomes (4)x = 6.",
+        "So x = 3/2, and y = 3(3/2) + (-1) = 7/2."
+      ],
+      "hints": [
+        "Replace y in the second equation with the expression the first equation gives for y.",
+        "Solve the resulting one-variable equation for x, then use it to find y."
+      ],
+      "socraticHint": "What do you get when you substitute the first equation's expression for y into the second?",
+      "useAgain": "when one equation is already solved for y and the other is not.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (3/2, 7/2).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -2.6666666666666665,
+                -9.0
+              ],
+              [
+                3.3333333333333335,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -4.0
+              ],
+              [
+                -4.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 1.5,
+              "y": 3.5,
+              "label": "(3/2, 7/2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = 3x - 2 and x + y = 4 together. What is the x-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "3/2"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p18",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = x + 1 and x + 2y = 12 together. What is the x-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "10/3"
+      },
+      "explanation": [
+        "Substitute x + 1 in place of y in the second equation.",
+        "x + 2(x + 1) = 12 becomes (3)x = 10.",
+        "So x = 10/3, and y = (10/3) + 1 = 13/3."
+      ],
+      "hints": [
+        "Replace y in the second equation with the expression the first equation gives for y.",
+        "Solve the resulting one-variable equation for x, then use it to find y."
+      ],
+      "socraticHint": "What do you get when you substitute the first equation's expression for y into the second?",
+      "useAgain": "when one equation is already solved for y and the other is not.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (10/3, 13/3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -8.0
+              ],
+              [
+                8.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                1.5
+              ],
+              [
+                -6.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3.3333333333333335,
+              "y": 4.333333333333333,
+              "label": "(10/3, 13/3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = x + 2 and x + 2y = 13 together. What is the x-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p19",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = 2x - 2 and x + y = 4 together. What is the x-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Substitute 2x - 2 in place of y in the second equation.",
+        "x + (2x - 2) = 4 becomes (3)x = 6.",
+        "So x = 2, and y = 2(2) + (-2) = 2."
+      ],
+      "hints": [
+        "Replace y in the second equation with the expression the first equation gives for y.",
+        "Solve the resulting one-variable equation for x, then use it to find y."
+      ],
+      "socraticHint": "What do you get when you substitute the first equation's expression for y into the second?",
+      "useAgain": "when one equation is already solved for y and the other is not.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 2).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -3.5,
+                -9.0
+              ],
+              [
+                5.5,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -5.0
+              ],
+              [
+                -5.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 2.0,
+              "label": "(2, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = 2x - 1 and x + y = 5 together. What is the x-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p20",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = x + 2 and x + y = 8 together. What is the y-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Substitute x + 2 in place of y in the second equation.",
+        "x + (x + 2) = 8 becomes (2)x = 6.",
+        "So x = 3, and y = (3) + 2 = 5."
+      ],
+      "hints": [
+        "Replace y in the second equation with the expression the first equation gives for y.",
+        "Solve the resulting one-variable equation for x, then use it to find y."
+      ],
+      "socraticHint": "What do you get when you substitute the first equation's expression for y into the second?",
+      "useAgain": "when one equation is already solved for y and the other is not.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (3, 5).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -7.0
+              ],
+              [
+                7.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -1.0
+              ],
+              [
+                -1.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3.0,
+              "y": 5.0,
+              "label": "(3, 5)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = x + 1 and x + y = 7 together. What is the y-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p21",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = 2x + 1 and x + y = 7 together. What is the y-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Substitute 2x + 1 in place of y in the second equation.",
+        "x + (2x + 1) = 7 becomes (3)x = 6.",
+        "So x = 2, and y = 2(2) + 1 = 5."
+      ],
+      "hints": [
+        "Replace y in the second equation with the expression the first equation gives for y.",
+        "Solve the resulting one-variable equation for x, then use it to find y."
+      ],
+      "socraticHint": "What do you get when you substitute the first equation's expression for y into the second?",
+      "useAgain": "when one equation is already solved for y and the other is not.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 5).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -2.0
+              ],
+              [
+                -2.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 5.0,
+              "label": "(2, 5)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = 2x and x + y = 6 together. What is the y-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p22",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = x - 1 and 2x + y = 8 together. What is the y-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Substitute x - 1 in place of y in the second equation.",
+        "2x + (x - 1) = 8 becomes (3)x = 9.",
+        "So x = 3, and y = (3) + (-1) = 2."
+      ],
+      "hints": [
+        "Replace y in the second equation with the expression the first equation gives for y.",
+        "Solve the resulting one-variable equation for x, then use it to find y."
+      ],
+      "socraticHint": "What do you get when you substitute the first equation's expression for y into the second?",
+      "useAgain": "when one equation is already solved for y and the other is not.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (3, 2).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                9.0,
+                8.0
+              ],
+              [
+                -8.0,
+                -9.0
+              ]
+            ],
+            [
+              [
+                8.5,
+                -9.0
+              ],
+              [
+                -0.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3.0,
+              "y": 2.0,
+              "label": "(3, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = x - 2 and 2x + y = 6 together. What is the y-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "2/3"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p23",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = 2x + 2 and x + y = 9 together. What is the y-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "20/3"
+      },
+      "explanation": [
+        "Substitute 2x + 2 in place of y in the second equation.",
+        "x + (2x + 2) = 9 becomes (3)x = 7.",
+        "So x = 7/3, and y = 2(7/3) + 2 = 20/3."
+      ],
+      "hints": [
+        "Replace y in the second equation with the expression the first equation gives for y.",
+        "Solve the resulting one-variable equation for x, then use it to find y."
+      ],
+      "socraticHint": "What do you get when you substitute the first equation's expression for y into the second?",
+      "useAgain": "when one equation is already solved for y and the other is not.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (7/3, 20/3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.5,
+                -9.0
+              ],
+              [
+                3.5,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                0.0
+              ],
+              [
+                0.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.3333333333333335,
+              "y": 6.666666666666667,
+              "label": "(7/3, 20/3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = 2x + 3 and x + y = 10 together. What is the y-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "23/3"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p24",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = x + 3 and x + 2y = 14 together. What is the y-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "17/3"
+      },
+      "explanation": [
+        "Substitute x + 3 in place of y in the second equation.",
+        "x + 2(x + 3) = 14 becomes (3)x = 8.",
+        "So x = 8/3, and y = (8/3) + 3 = 17/3."
+      ],
+      "hints": [
+        "Replace y in the second equation with the expression the first equation gives for y.",
+        "Solve the resulting one-variable equation for x, then use it to find y."
+      ],
+      "socraticHint": "What do you get when you substitute the first equation's expression for y into the second?",
+      "useAgain": "when one equation is already solved for y and the other is not.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (8/3, 17/3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -6.0
+              ],
+              [
+                6.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                2.5
+              ],
+              [
+                -4.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.6666666666666665,
+              "y": 5.666666666666667,
+              "label": "(8/3, 17/3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = x + 2 and x + 2y = 12 together. What is the y-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "14/3"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p25",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which point solves both y = 2x + 1 and x + y = 9?",
+      "options": [
+        "(11/3, 25/3)",
+        "(8/3, 19/3)",
+        "(14/3, 13/3)",
+        "(19/3, 8/3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Check each candidate in both equations; the true solution satisfies both.",
+        "Only (8/3, 19/3) makes both equations true at once."
+      ],
+      "hints": [
+        "Substitute each candidate's x and y into both equations.",
+        "Reject any candidate that fails either equation."
+      ],
+      "socraticHint": "Does the candidate satisfy the first equation, the second, or both?",
+      "useAgain": "when several candidate points are offered and only one solves the whole system.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (8/3, 19/3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                0.0
+              ],
+              [
+                0.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.6666666666666665,
+              "y": 6.333333333333333,
+              "label": "(8/3, 19/3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which point solves both y = 2x + 2 and x + y = 10?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(11/3, 28/3)",
+          "(14/3, 16/3)",
+          "(8/3, 22/3)",
+          "(22/3, 8/3)"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p26",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which point solves both y = x + 2 and 2x + y = 10?",
+      "options": [
+        "(11/3, 17/3)",
+        "(8/3, 14/3)",
+        "(14/3, 2/3)",
+        "(14/3, 8/3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Check each candidate in both equations; the true solution satisfies both.",
+        "Only (8/3, 14/3) makes both equations true at once."
+      ],
+      "hints": [
+        "Substitute each candidate's x and y into both equations.",
+        "Reject any candidate that fails either equation."
+      ],
+      "socraticHint": "Does the candidate satisfy the first equation, the second, or both?",
+      "useAgain": "when several candidate points are offered and only one solves the whole system.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (8/3, 14/3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -7.0
+              ],
+              [
+                7.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -8.0
+              ],
+              [
+                0.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.6666666666666665,
+              "y": 4.666666666666667,
+              "label": "(8/3, 14/3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which point solves both y = x + 3 and 2x + y = 11?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "(11/3, 20/3)",
+          "(14/3, 5/3)",
+          "(17/3, 8/3)",
+          "(8/3, 17/3)"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p27",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which point solves both y = 3x - 1 and x + y = 5?",
+      "options": [
+        "(3/2, 7/2)",
+        "(5/2, 13/2)",
+        "(7/2, 3/2)",
+        "(9/2, 7/2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Check each candidate in both equations; the true solution satisfies both.",
+        "Only (3/2, 7/2) makes both equations true at once."
+      ],
+      "hints": [
+        "Substitute each candidate's x and y into both equations.",
+        "Reject any candidate that fails either equation."
+      ],
+      "socraticHint": "Does the candidate satisfy the first equation, the second, or both?",
+      "useAgain": "when several candidate points are offered and only one solves the whole system.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (3/2, 7/2).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -2.6666666666666665,
+                -9.0
+              ],
+              [
+                3.3333333333333335,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -4.0
+              ],
+              [
+                -4.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 1.5,
+              "y": 3.5,
+              "label": "(3/2, 7/2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which point solves both y = 3x - 2 and x + y = 4?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(5/2, 11/2)",
+          "(7/2, 1/2)",
+          "(3/2, 5/2)",
+          "(5/2, 3/2)"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p28",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which point solves both y = x + 1 and x + 2y = 12?",
+      "options": [
+        "(13/3, 16/3)",
+        "(10/3, 13/3)",
+        "(16/3, 10/3)",
+        "(13/3, 10/3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Check each candidate in both equations; the true solution satisfies both.",
+        "Only (10/3, 13/3) makes both equations true at once."
+      ],
+      "hints": [
+        "Substitute each candidate's x and y into both equations.",
+        "Reject any candidate that fails either equation."
+      ],
+      "socraticHint": "Does the candidate satisfy the first equation, the second, or both?",
+      "useAgain": "when several candidate points are offered and only one solves the whole system.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (10/3, 13/3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -8.0
+              ],
+              [
+                8.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                1.5
+              ],
+              [
+                -6.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3.3333333333333335,
+              "y": 4.333333333333333,
+              "label": "(10/3, 13/3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which point solves both y = x + 2 and x + 2y = 13?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "(3, 5)",
+          "(4, 6)",
+          "(5, 4)",
+          "(5, 3)"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p29",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which point solves both y = 2x - 2 and x + y = 4?",
+      "options": [
+        "(3, 4)",
+        "(4, 0)",
+        "(5, 2)",
+        "(2, 2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Check each candidate in both equations; the true solution satisfies both.",
+        "Only (2, 2) makes both equations true at once."
+      ],
+      "hints": [
+        "Substitute each candidate's x and y into both equations.",
+        "Reject any candidate that fails either equation."
+      ],
+      "socraticHint": "Does the candidate satisfy the first equation, the second, or both?",
+      "useAgain": "when several candidate points are offered and only one solves the whole system.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 2).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -3.5,
+                -9.0
+              ],
+              [
+                5.5,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -5.0
+              ],
+              [
+                -5.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 2.0,
+              "label": "(2, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which point solves both y = 2x - 1 and x + y = 5?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(3, 5)",
+          "(4, 1)",
+          "(2, 3)",
+          "(3, 2)"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p30",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = 2x + 1 and x + (y - 2) = 7 together. What is the x-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "8/3"
+      },
+      "explanation": [
+        "Expand the bracket first: x + y - 2 = 7, so x + y = 9.",
+        "Substitute 2x + 1 for y: (3)x = 8.",
+        "So x = 8/3, and y = 19/3."
+      ],
+      "hints": [
+        "Expand the bracket in the second equation before substituting.",
+        "Then substitute the first equation's expression for y and solve for x."
+      ],
+      "socraticHint": "What does the second equation look like once the bracket is expanded?",
+      "useAgain": "when a system's second equation has a bracket that must be expanded first.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (8/3, 19/3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                0.0
+              ],
+              [
+                0.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.6666666666666665,
+              "y": 6.333333333333333,
+              "label": "(8/3, 19/3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = 2x + 2 and x + (y - 2) = 8 together. What is the x-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "8/3"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p31",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = x + 2 and x + (y - 1) = 8 together. What is the x-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "7/2"
+      },
+      "explanation": [
+        "Expand the bracket first: x + y - 1 = 8, so x + y = 9.",
+        "Substitute x + 2 for y: (2)x = 7.",
+        "So x = 7/2, and y = 11/2."
+      ],
+      "hints": [
+        "Expand the bracket in the second equation before substituting.",
+        "Then substitute the first equation's expression for y and solve for x."
+      ],
+      "socraticHint": "What does the second equation look like once the bracket is expanded?",
+      "useAgain": "when a system's second equation has a bracket that must be expanded first.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (7/2, 11/2).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -7.0
+              ],
+              [
+                7.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                0.0
+              ],
+              [
+                0.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3.5,
+              "y": 5.5,
+              "label": "(7/2, 11/2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = x + 3 and x + (y - 1) = 9 together. What is the x-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "7/2"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p32",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = x + 1 and 2x + (y - 1) = 9 together. What is the y-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Expand the bracket first: 2x + y - 1 = 9, so 2x + y = 10.",
+        "Substitute x + 1 for y: (3)x = 9.",
+        "So x = 3, and y = 4."
+      ],
+      "hints": [
+        "Expand the bracket in the second equation before substituting.",
+        "Then substitute the first equation's expression for y and solve for x."
+      ],
+      "socraticHint": "What does the second equation look like once the bracket is expanded?",
+      "useAgain": "when a system's second equation has a bracket that must be expanded first.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (3, 4).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -8.0
+              ],
+              [
+                8.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -8.0
+              ],
+              [
+                0.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3.0,
+              "y": 4.0,
+              "label": "(3, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = x + 2 and 2x + (y - 1) = 10 together. What is the y-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p33",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = 2x - 1 and x + (y - 2) = 6 together. What is the y-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Expand the bracket first: x + y - 2 = 6, so x + y = 8.",
+        "Substitute 2x - 1 for y: (3)x = 9.",
+        "So x = 3, and y = 5."
+      ],
+      "hints": [
+        "Expand the bracket in the second equation before substituting.",
+        "Then substitute the first equation's expression for y and solve for x."
+      ],
+      "socraticHint": "What does the second equation look like once the bracket is expanded?",
+      "useAgain": "when a system's second equation has a bracket that must be expanded first.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (3, 5).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -4.0,
+                -9.0
+              ],
+              [
+                5.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -1.0
+              ],
+              [
+                -1.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3.0,
+              "y": 5.0,
+              "label": "(3, 5)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = 2x and x + (y - 2) = 7 together. What is the y-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p34",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = x + 2 and x + 2(y - 1) = 10 together. What is the y-value of the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "14/3"
+      },
+      "explanation": [
+        "Expand the bracket first: x + 2y - 2 = 10, so x + 2y = 12.",
+        "Substitute x + 2 for y: (3)x = 8.",
+        "So x = 8/3, and y = 14/3."
+      ],
+      "hints": [
+        "Expand the bracket in the second equation before substituting.",
+        "Then substitute the first equation's expression for y and solve for x."
+      ],
+      "socraticHint": "What does the second equation look like once the bracket is expanded?",
+      "useAgain": "when a system's second equation has a bracket that must be expanded first.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (8/3, 14/3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -7.0
+              ],
+              [
+                7.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                1.5
+              ],
+              [
+                -6.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.6666666666666665,
+              "y": 4.666666666666667,
+              "label": "(8/3, 14/3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = x + 3 and x + 2(y - 1) = 12 together. What is the y-value of the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "17/3"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p35",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "How many solutions does the system y = 2x + 1 and y = 3x - 1 have?",
+      "options": [
+        "No solution",
+        "Exactly one solution",
+        "Infinitely many solutions",
+        "Exactly two solutions"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Compare the slopes: 2 and 3.",
+        "Different slopes mean the lines cross exactly once."
+      ],
+      "hints": [
+        "Compare the two lines' slopes first.",
+        "Same slope, different start: no crossing. Same slope, same start: every point matches."
+      ],
+      "socraticHint": "Are the two slopes the same or different, and if the same, are the starting values also the same?",
+      "useAgain": "when you need to tell how many solutions a system has before solving it.",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The lines cross once, at (2, 5).",
+        "spec": {
+          "range": 8,
+          "polylines": [
+            [
+              [
+                -4.5,
+                -8.0
+              ],
+              [
+                3.5,
+                8.0
+              ]
+            ],
+            [
+              [
+                -2.3333333333333335,
+                -8.0
+              ],
+              [
+                3.0,
+                8.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 5.0,
+              "label": "(2, 5)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "How many solutions does the system y = 2x + 2 and y = 3x have?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "Exactly one solution",
+          "No solution",
+          "Infinitely many solutions",
+          "Exactly two solutions"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p36",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "How many solutions does the system y = x + 2 and y = x + 4 have?",
+      "options": [
+        "Exactly one solution",
+        "Infinitely many solutions",
+        "No solution",
+        "Exactly two solutions"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Compare the slopes: 1 and 1.",
+        "The same slope with different starting values means the lines never meet."
+      ],
+      "hints": [
+        "Compare the two lines' slopes first.",
+        "Same slope, different start: no crossing. Same slope, same start: every point matches."
+      ],
+      "socraticHint": "Are the two slopes the same or different, and if the same, are the starting values also the same?",
+      "useAgain": "when you need to tell how many solutions a system has before solving it.",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two parallel lines, lines that never meet.",
+        "spec": {
+          "range": 8,
+          "polylines": [
+            [
+              [
+                -8.0,
+                -6.0
+              ],
+              [
+                6.0,
+                8.0
+              ]
+            ],
+            [
+              [
+                -8.0,
+                -4.0
+              ],
+              [
+                4.0,
+                8.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "How many solutions does the system y = x + 1 and y = x + 3 have?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "Exactly one solution",
+          "Infinitely many solutions",
+          "Exactly two solutions",
+          "No solution"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p37",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "How many solutions does the system y = 2x - 1 and y = 2x - 1 have?",
+      "options": [
+        "Infinitely many solutions",
+        "Exactly one solution",
+        "No solution",
+        "Exactly two solutions"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Compare the slopes: 2 and 2.",
+        "The same slope and the same starting value mean the two equations describe the same line."
+      ],
+      "hints": [
+        "Compare the two lines' slopes first.",
+        "Same slope, different start: no crossing. Same slope, same start: every point matches."
+      ],
+      "socraticHint": "Are the two slopes the same or different, and if the same, are the starting values also the same?",
+      "useAgain": "when you need to tell how many solutions a system has before solving it.",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two parallel lines, the same line.",
+        "spec": {
+          "range": 8,
+          "polylines": [
+            [
+              [
+                -3.5,
+                -8.0
+              ],
+              [
+                4.5,
+                8.0
+              ]
+            ],
+            [
+              [
+                -3.5,
+                -8.0
+              ],
+              [
+                4.5,
+                8.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "How many solutions does the system y = 3x - 2 and y = 3x - 2 have?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "Exactly one solution",
+          "No solution",
+          "Exactly two solutions",
+          "Infinitely many solutions"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p38",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "How many solutions does the system y = 3x and y = -2x + 4 have?",
+      "options": [
+        "No solution",
+        "Infinitely many solutions",
+        "Exactly one solution",
+        "Exactly two solutions"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Compare the slopes: 3 and -2.",
+        "Different slopes mean the lines cross exactly once."
+      ],
+      "hints": [
+        "Compare the two lines' slopes first.",
+        "Same slope, different start: no crossing. Same slope, same start: every point matches."
+      ],
+      "socraticHint": "Are the two slopes the same or different, and if the same, are the starting values also the same?",
+      "useAgain": "when you need to tell how many solutions a system has before solving it.",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The lines cross once, at (4/5, 12/5).",
+        "spec": {
+          "range": 8,
+          "polylines": [
+            [
+              [
+                -2.6666666666666665,
+                -8.0
+              ],
+              [
+                2.6666666666666665,
+                8.0
+              ]
+            ],
+            [
+              [
+                6.0,
+                -8.0
+              ],
+              [
+                -2.0,
+                8.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.8,
+              "y": 2.4,
+              "label": "(4/5, 12/5)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "How many solutions does the system y = 2x + 1 and y = -x + 5 have?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "No solution",
+          "Exactly one solution",
+          "Infinitely many solutions",
+          "Exactly two solutions"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p39",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "How many solutions does the system y = x - 2 and y = x - 4 have?",
+      "options": [
+        "Exactly one solution",
+        "No solution",
+        "Infinitely many solutions",
+        "Exactly two solutions"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Compare the slopes: 1 and 1.",
+        "The same slope with different starting values means the lines never meet."
+      ],
+      "hints": [
+        "Compare the two lines' slopes first.",
+        "Same slope, different start: no crossing. Same slope, same start: every point matches."
+      ],
+      "socraticHint": "Are the two slopes the same or different, and if the same, are the starting values also the same?",
+      "useAgain": "when you need to tell how many solutions a system has before solving it.",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two parallel lines, lines that never meet.",
+        "spec": {
+          "range": 8,
+          "polylines": [
+            [
+              [
+                8.0,
+                6.0
+              ],
+              [
+                -6.0,
+                -8.0
+              ]
+            ],
+            [
+              [
+                8.0,
+                4.0
+              ],
+              [
+                -4.0,
+                -8.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "How many solutions does the system y = x - 1 and y = x - 3 have?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "No solution",
+          "Exactly one solution",
+          "Infinitely many solutions",
+          "Exactly two solutions"
+        ]
+      },
+      "id": "ladder-al-systems-graphing-substitution-p40",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = 2x + 1 and x + y = 9. What is the sum of x and y at the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Substitute 2x + 1 for y in the second equation and solve for x.",
+        "That gives x = 8/3 and y = 19/3.",
+        "Their sum is 9."
+      ],
+      "hints": [
+        "Solve the system for x and y first, the same way as always.",
+        "Then compute the sum the question asks for."
+      ],
+      "socraticHint": "What are x and y at the solution, before you combine them?",
+      "useAgain": "when a system's solution is needed as one combined number, not a pair.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (8/3, 19/3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                0.0
+              ],
+              [
+                0.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.6666666666666665,
+              "y": 6.333333333333333,
+              "label": "(8/3, 19/3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = 2x + 2 and x + y = 10. What is the sum of x and y at the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p41",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = x + 2 and x + y = 8. What is the product of x and y at the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Substitute x + 2 for y in the second equation and solve for x.",
+        "That gives x = 3 and y = 5.",
+        "Their product is 15."
+      ],
+      "hints": [
+        "Solve the system for x and y first, the same way as always.",
+        "Then compute the product the question asks for."
+      ],
+      "socraticHint": "What are x and y at the solution, before you combine them?",
+      "useAgain": "when a system's solution is needed as one combined number, not a pair.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (3, 5).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -7.0
+              ],
+              [
+                7.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -1.0
+              ],
+              [
+                -1.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3.0,
+              "y": 5.0,
+              "label": "(3, 5)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = x + 3 and x + y = 9. What is the product of x and y at the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p42",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = 3x - 1 and x + y = 5. What is the sum of x and y at the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Substitute 3x - 1 for y in the second equation and solve for x.",
+        "That gives x = 3/2 and y = 7/2.",
+        "Their sum is 5."
+      ],
+      "hints": [
+        "Solve the system for x and y first, the same way as always.",
+        "Then compute the sum the question asks for."
+      ],
+      "socraticHint": "What are x and y at the solution, before you combine them?",
+      "useAgain": "when a system's solution is needed as one combined number, not a pair.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (3/2, 7/2).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -2.6666666666666665,
+                -9.0
+              ],
+              [
+                3.3333333333333335,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -4.0
+              ],
+              [
+                -4.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 1.5,
+              "y": 3.5,
+              "label": "(3/2, 7/2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = 3x - 2 and x + y = 4. What is the sum of x and y at the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p43",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = x + 1 and x + 2y = 12. What is the product of x and y at the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "130/9"
+      },
+      "explanation": [
+        "Substitute x + 1 for y in the second equation and solve for x.",
+        "That gives x = 10/3 and y = 13/3.",
+        "Their product is 130/9."
+      ],
+      "hints": [
+        "Solve the system for x and y first, the same way as always.",
+        "Then compute the product the question asks for."
+      ],
+      "socraticHint": "What are x and y at the solution, before you combine them?",
+      "useAgain": "when a system's solution is needed as one combined number, not a pair.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (10/3, 13/3).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -8.0
+              ],
+              [
+                8.0,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                1.5
+              ],
+              [
+                -6.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3.3333333333333335,
+              "y": 4.333333333333333,
+              "label": "(10/3, 13/3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = x + 2 and x + 2y = 13. What is the product of x and y at the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p44",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve the system y = 2x - 2 and x + y = 4. What is the sum of x and y at the solution?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Substitute 2x - 2 for y in the second equation and solve for x.",
+        "That gives x = 2 and y = 2.",
+        "Their sum is 4."
+      ],
+      "hints": [
+        "Solve the system for x and y first, the same way as always.",
+        "Then compute the sum the question asks for."
+      ],
+      "socraticHint": "What are x and y at the solution, before you combine them?",
+      "useAgain": "when a system's solution is needed as one combined number, not a pair.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines crossing at (2, 2).",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -3.5,
+                -9.0
+              ],
+              [
+                5.5,
+                9.0
+              ]
+            ],
+            [
+              [
+                9.0,
+                -5.0
+              ],
+              [
+                -5.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 2.0,
+              "label": "(2, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Solve the system y = 2x - 1 and x + y = 5. What is the sum of x and y at the solution?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p45",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    }
+  ],
+  "stretch": [
+    {
+      "kind": "number",
+      "prompt": "Two numbers add to 14 and differ by 4. What is their product?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "Adding the sum and the difference doubles the larger number: (14 + 4) / 2 = 9.",
+        "The smaller number is 14 - 9 = 5.",
+        "Their product is 9 times 5 = 45."
+      ],
+      "hints": [
+        "Add the sum and the difference, then halve it, to get the larger number.",
+        "Subtract the smaller number from the sum, then multiply the two numbers."
+      ],
+      "socraticHint": "What do you get when you add the sum and the difference, then divide by 2?",
+      "useAgain": "when a system is given as a sum and a difference rather than two full equations.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Two numbers add to 20 and differ by 6. What is their product?",
+        "answer": {
+          "kind": "number",
+          "value": "91"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p46",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For what value of k does the system y = 2x + 3 and y = kx + 7 have no solution?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "A system of two lines has no solution exactly when the lines are parallel with different starting values.",
+        "The first line's slope is 2, so k must equal 2 for the lines to be parallel."
+      ],
+      "hints": [
+        "No solution means the two lines never meet.",
+        "Lines never meet when they have the same slope but different starting values."
+      ],
+      "socraticHint": "What slope would make the second line parallel to the first?",
+      "useAgain": "when you need the slope that makes a system have no solution.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For what value of k does the system y = 3x - 1 and y = kx + 4 have no solution?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p47",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Three lines are y = x, y = -x + 6, and y = 2. What is the sum of the x-coordinates of their three crossing points?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "y = x and y = -x + 6 cross where x = -x + 6, so x = 3.",
+        "y = x and y = 2 cross where x = 2. y = -x + 6 and y = 2 cross where x = 4.",
+        "The three x-coordinates are 3, 2 and 4, adding to 9."
+      ],
+      "hints": [
+        "Find each pair of lines' crossing point one at a time.",
+        "Add up the three x-coordinates you find."
+      ],
+      "socraticHint": "What are the three crossing points, one pair of lines at a time?",
+      "useAgain": "when three lines cross in pairs and you need to combine all three crossing points.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Three lines are y = x + 1, y = -x + 7, and y = 3. What is the sum of the x-coordinates of their three crossing points?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p48",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "The system 2x + 4y = 8 and x + 2y = 4 has infinitely many solutions, since one equation is just twice the other. If x = 6 in this system, what is y?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "Since the two equations describe the same line, any point that fits one fits both.",
+        "Using x + 2y = 4 with x = 6: 6 + 2y = 4, so 2y = -2 and y = -1."
+      ],
+      "hints": [
+        "Check that the two equations really are multiples of each other first.",
+        "Substitute the given x into either equation and solve for y."
+      ],
+      "socraticHint": "What does substituting x = 6 into one of the equations give for y?",
+      "useAgain": "when a system's two equations are multiples of each other and only one x-value is given.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The system 3x + 6y = 12 and x + 2y = 4 has infinitely many solutions, since one equation is three times the other. If x = 8 in this system, what is y?",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p49",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "The solution to x + y = 12 and x - y = 2 is a pair (x, y). What is x^2 - y^2?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "x^2 - y^2 factors as (x + y)(x - y), so it can be found without solving for x and y separately.",
+        "Here (x + y)(x - y) = 12 times 2 = 24."
+      ],
+      "hints": [
+        "x^2 - y^2 factors into (x + y) times (x - y).",
+        "Both of those factors are already given directly."
+      ],
+      "socraticHint": "How does x^2 - y^2 factor, and are both factors already given?",
+      "useAgain": "when a system directly hands you x plus y and x minus y, and the question is really about x^2 - y^2.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The solution to x + y = 9 and x - y = 5 is a pair (x, y). What is x^2 - y^2?",
+        "answer": {
+          "kind": "number",
+          "value": "45"
+        }
+      },
+      "id": "ladder-al-systems-graphing-substitution-p50",
+      "lane": "skills",
+      "ideaId": "al-systems-graphing-substitution",
+      "skills": [
+        "think.skills.systems",
+        "think.skills.linear"
+      ]
+    }
+  ]
+}

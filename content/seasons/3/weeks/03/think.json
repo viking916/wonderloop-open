@@ -1,0 +1,745 @@
+{
+  "id": "s3-w03-think",
+  "season": 3,
+  "week": 3,
+  "track": "think",
+  "title": "Legal moves, and the squares hiding in the odd numbers",
+  "summary": "Solve two step equations with legal moves and split the rectangle to make the distributive property do algebra, then prove with dominoes that the odd numbers add up to squares.",
+  "minutes": 90,
+  "materials": ["graph paper", "pencil", "three coins of different sizes for the tower", "field journal"],
+  "skills": ["think.skills.equations", "think.proof", "think.patterns", "think.spatial"],
+  "completion": "all-steps",
+  "steps": [
+    {
+      "kind": "warmup",
+      "id": "s3-w03-think-01",
+      "variant": "fermi",
+      "problems": [
+        {
+          "id": "s3-w03-think-01-p01",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "A 3D printer extrudes about 2 grams of plastic every minute. Printing 8 hours a day for a 7-day print run, about how many grams of plastic does it use in all?",
+          "options": [
+            "about 700",
+            "about 7,000",
+            "about 70,000"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 1
+          },
+          "explanation": [
+            "Climb one hop at a time: 2 grams a minute times 60 minutes is 120 grams an hour.",
+            "120 grams an hour times 8 hours is 960 grams a day.",
+            "960 grams a day times 7 days is 6,720 grams, which rounds to about 7,000."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a rate has to climb minute to hour to day to a whole run, and only the size of the answer matters.",
+          "hints": [
+            "Turn the rate into grams per hour first, before you touch the hours or the days.",
+            "Climb the hops in order: minute to hour, hour to day, day to the whole run."
+          ],
+          "socraticHint": "Which hop in this chain would change the answer the most if you got it wrong: the minutes-to-hours step, or the days-to-the-whole-run step?",
+          "skills": [
+            "think.number-sense"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A 3D printer extrudes about 3 grams of plastic every minute. Printing 9 hours a day for a 5-day print run, about how many grams does it use in all?",
+            "options": [
+              "about 800",
+              "about 8,000",
+              "about 80,000"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 1
+            }
+          }
+        },
+        {
+          "id": "s3-w03-think-01-p02",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "About how many steps do you take on a one hour hike?",
+          "options": ["about 600", "about 60,000", "about 6,000"],
+          "answer": { "kind": "choice", "index": 2 },
+          "explanation": [
+            "Guess and round: walking steadily is about 100 steps a minute. Count ten seconds on your next walk if you doubt it.",
+            "One hour is 60 minutes.",
+            "100 steps times 60 minutes is 6,000 steps."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when something happens at a steady rate and you want the total for a much longer stretch.",
+          "hints": ["Count your own steps for ten seconds and grow that into one minute.", "Then multiply one minute of steps by the minutes in an hour."],
+          "socraticHint": "Nobody counts a whole hour of steps. What is the longest stretch you could honestly count, and what would you do with it?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "About how many steps do you take in a whole ordinary day?",
+            "options": ["about 1,000", "about 10,000", "about 1 million"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s3-w03-think-01-p03",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "A server answers about 10 requests every second, all day and all night. About how many requests does it answer in one day?",
+          "options": ["about 1,000", "about 1 million", "about 1 billion"],
+          "answer": { "kind": "choice", "index": 1 },
+          "explanation": [
+            "Guess and round: 10 requests a second times 60 seconds is 600 requests a minute.",
+            "600 a minute times 60 minutes is 36,000 an hour. Round that to 40,000.",
+            "40,000 an hour times 24 hours is a bit under a million, so about 1 million is the closest choice."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a rate per second has to be stretched all the way up to a day.",
+          "hints": ["Climb one step at a time: seconds into a minute, minutes into an hour, hours into a day.", "Round at every step so the arithmetic stays easy enough to do in your head."],
+          "socraticHint": "What ladder of round numbers takes you from one second up to one whole day without a calculator?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "The same server answers about 10 requests a second. About how many does it answer in one hour?",
+            "options": ["about 40,000", "about 400", "about 4 million"],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "puzzle-of-week",
+      "id": "s3-w03-think-02",
+      "problem": {
+        "id": "s3-w03-think-02-p01",
+        "kind": "number",
+        "lane": "puzzle-of-week",
+        "prompt": "On graph paper, dots make a solid square 5 across and 5 down. To grow it into a 6 by 6 square you add one L shaped strip: a new column down one side and a new row along the top. How many dots are in that L?",
+        "answer": { "kind": "number", "value": "11" },
+        "explanation": [
+          "The finished square holds 6 rows of 6 dots, which is 36 dots.",
+          "The square you started with holds 5 rows of 5 dots, which is 25 dots.",
+          "The L is everything the big square has that the small one does not, so it is 36 minus 25, which is 11.",
+          "Counting the strip directly agrees: 6 dots down the new column, 6 along the new row, minus the corner dot counted twice."
+        ],
+        "ideaId": "find-the-rule",
+        "useAgain": "when a shape grows by a border and you want the border's size without counting it dot by dot.",
+        "hints": ["The L is exactly what the bigger square has and the smaller one does not.", "Or count it in two pieces, the new column and the new row, and watch the dot they share."],
+        "socraticHint": "Could you find the size of that strip without drawing a single dot, using only the two squares' sizes?",
+        "skills": ["think.spatial", "think.patterns"],
+        "thinkMinutes": 5,
+        "difficulty": 2,
+        "variant": {
+          "prompt": "Dots make a solid square 8 across and 8 down. Sketch it if it helps. How many dots are in the L that grows it into a 9 by 9 square?",
+          "answer": { "kind": "number", "value": "17" }
+        }
+      }
+    },
+    {
+      "kind": "problem-set",
+      "id": "s3-w03-think-03",
+      "title": "Legal moves only: like terms, two steps, and splitting the rectangle",
+      "lane": "skills",
+      "problems": [
+        {
+          "id": "s3-w03-think-03-p01",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Owen solved 4n - 5 = 23 like this:\nLine 1: Add 5 to both sides: 4n = 28.\nLine 2: Divide both sides by 4: n = 7.\nLine 3: Check it back in 4n - 5 = 23: 4 times 7 is 28.\nLine 4: 28 minus 5 is 33.\nWhich line is wrong?",
+          "options": [
+            "Line 1",
+            "Line 2",
+            "Line 3",
+            "Line 4",
+            "No line is wrong"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 3
+          },
+          "explanation": [
+            "Line 4 is wrong: 28 minus 5 is 23, not 33.",
+            "Lines 1 to 3 are correct: adding 5 gives 4n = 28, dividing by 4 gives n = 7, and 4 times 7 is 28.",
+            "The slip is a plain subtraction error inside the check itself.",
+            "A check that lands on the wrong number can hide a mistake instead of catching one."
+          ],
+          "ideaId": "keep-the-balance",
+          "useAgain": "when you check a solved equation, since the check line is only useful if its own arithmetic is done correctly.",
+          "hints": [
+            "An equation move has to be done to both sides, and a check has to be done with careful arithmetic. Test each line for one of those two.",
+            "Solve the equation yourself from scratch, put your answer back in, and compare every number you get with the lines shown."
+          ],
+          "socraticHint": "If you put the working's own answer back into the original equation and do the arithmetic slowly, does every number match what the check claims?",
+          "skills": [
+            "think.skills.equations"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Owen solved 5n - 6 = 24 like this:\nLine 1: Add 6 to the left side only: 5n = 24.\nLine 2: Divide both sides by 5: n = 4.8.\nLine 3: Multiply back: 5 times 4.8 is 24.\nLine 4: 24 minus 6 is 18.\nWhich line is wrong?",
+            "options": [
+              "Line 1",
+              "Line 2",
+              "Line 3",
+              "Line 4",
+              "No line is wrong"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            }
+          }
+        },
+        {
+          "id": "s3-w03-think-03-p02",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Solve for n, legal moves only, both pans every time: 3n + 4 = 19. What is n?",
+          "answer": { "kind": "number", "value": "5" },
+          "explanation": [
+            "Balance: whatever you do to one pan you do to the other, or the equals sign stops being true.",
+            "Take 4 from both pans. The left becomes 3n and the right becomes 15.",
+            "Now 3 boxes are worth 15, so one box is worth 15 shared into 3 equal parts.",
+            "n is 5. Check it back in the original: 3 times 5 is 15, and 15 plus 4 is 19."
+          ],
+          "ideaId": "keep-the-balance",
+          "useAgain": "when a letter has been multiplied and then had something added, and you have to walk both moves backwards.",
+          "hints": ["Something is being added to the 3n. What undoes adding?", "Once one pan holds only 3 boxes, share that pan into 3 equal parts."],
+          "socraticHint": "Two undoing moves are needed here. Which one has to happen first, and what goes wrong in the other order?",
+          "skills": ["think.skills.equations"],
+          "thinkMinutes": 4,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "Solve for n, legal moves only: 4n + 7 = 31. What is n?",
+            "answer": { "kind": "number", "value": "6" }
+          }
+        },
+        {
+          "id": "s3-w03-think-03-p03",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Solve for k: 5k - 7 = 23. What is k?",
+          "answer": { "kind": "number", "value": "6" },
+          "explanation": [
+            "Balance: 7 has been taken away from the left pan, so add 7 back to both pans.",
+            "The left becomes 5k and the right becomes 30.",
+            "5 boxes are worth 30, so one box is worth 30 shared into 5 equal parts.",
+            "k is 6. Check it back: 5 times 6 is 30, and 30 take away 7 is 23."
+          ],
+          "ideaId": "keep-the-balance",
+          "useAgain": "when the number stuck to the letter was subtracted rather than added.",
+          "hints": ["Adding is undone by taking away, so what undoes taking away?", "Do it to both pans, then share the pan that holds only boxes."],
+          "socraticHint": "Undoing runs in the reverse order of doing. Which move happened to k last, and which do you therefore undo first?",
+          "skills": ["think.skills.equations"],
+          "thinkMinutes": 4,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "Solve for k: 3k - 8 = 19. What is k?",
+            "answer": { "kind": "number", "value": "9" }
+          }
+        },
+        {
+          "id": "s3-w03-think-03-p04",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Last season's area picture, now doing algebra. A rectangle 4 tall and n + 3 wide can be cut where the plus sign is, into a 4 by n piece and a 4 by 3 piece. Which expression is the same as 4(n + 3)?",
+          "options": ["4n + 3", "4n + 12", "n + 12", "7n"],
+          "answer": { "kind": "choice", "index": 1 },
+          "explanation": [
+            "Split the rectangle: the wide side is n and 3 stuck together, so the area arrives in two pieces.",
+            "The first piece is 4 rows of n dots, which is 4n.",
+            "The second piece is 4 rows of 3, which is 12.",
+            "Both pieces belong to the same rectangle, so 4(n + 3) is 4n + 12.",
+            "The trap is 4n + 3, which multiplies only the first thing inside the bracket and forgets the rest."
+          ],
+          "ideaId": "split-the-rectangle",
+          "introducesIdea": true,
+          "useAgain": "when a number sits outside a bracket and you want the bracket gone without changing the value.",
+          "hints": ["Draw the rectangle on graph paper and cut it where the plus sign is.", "Work out the area of each piece on its own, then put the two pieces back together."],
+          "socraticHint": "The 4 stands outside the bracket. How many of the things inside does it have to reach, and why can it not stop at the first one?",
+          "skills": ["think.skills.equations"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Which expression is the same as 6(m + 5)?",
+            "options": ["6m + 30", "6m + 5", "m + 30", "11m"],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        },
+        {
+          "id": "s3-w03-think-03-p05",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Solve for m: 3(m + 2) = 21. There are two legal first moves here, and both are allowed. What is m?",
+          "answer": { "kind": "number", "value": "5" },
+          "explanation": [
+            "Route one, split the rectangle first: 3(m + 2) becomes 3m + 6, so 3m + 6 = 21.",
+            "Take 6 from both pans to get 3m = 15, then share by 3.",
+            "Route two, share first: both pans divided by 3 gives m + 2 = 7, then take 2 from both.",
+            "Both routes give m = 5. Check it back: 5 plus 2 is 7, and 3 times 7 is 21."
+          ],
+          "ideaId": "keep-the-balance",
+          "useAgain": "when the letter is trapped inside a bracket and you get to choose which legal move opens it.",
+          "hints": ["You may spread the 3 across the bracket, or share both pans by 3 first. Both are legal.", "Whichever route you take, finish by undoing the adding that is left."],
+          "socraticHint": "Two different legal first moves, one answer. Which route leaves you carrying the smaller numbers?",
+          "skills": ["think.skills.equations"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Solve for m: 6(m + 1) = 42. What is m?",
+            "answer": { "kind": "number", "value": "6" }
+          }
+        },
+        {
+          "id": "s3-w03-think-03-p06",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Suppose a market stall costs 12 dollars for the table, plus 2 dollars for every sign you print, and the whole bill comes to 30 dollars. Written as an equation that is 2n + 12 = 30. How many signs were printed?",
+          "answer": { "kind": "number", "value": "9" },
+          "explanation": [
+            "The letter is a box holding the number of signs, and the equation is the bill written in short.",
+            "The table costs the same whether you print one sign or fifty, so take 12 from both pans.",
+            "That leaves 2n = 18, which says the signs together cost 18 dollars.",
+            "Each sign costs 2, so 18 shared into 2 dollar signs is 9 signs.",
+            "Check it back: 9 signs at 2 dollars is 18, plus the 12 dollar table is 30."
+          ],
+          "ideaId": "letter-is-a-box",
+          "useAgain": "when a real bill has one cost that happens once and another that happens per item.",
+          "hints": ["Which part of this bill would stay exactly the same if you printed one more sign?", "Take that once only cost off both pans first, then share what is left between the signs."],
+          "socraticHint": "Two numbers in this bill behave completely differently when the order gets bigger. Which is which, and how can you tell?",
+          "skills": ["think.skills.equations", "think.money"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Suppose the table costs 15 dollars, each sign costs 3 dollars, and the bill comes to 39 dollars. How many signs were printed?",
+            "answer": { "kind": "number", "value": "8" }
+          }
+        },
+        {
+          "id": "s3-w03-think-03-p07",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Suppose you are solving 7x + 5 = 40 and four first moves are suggested. Which one is not a legal move?",
+          "options": [
+            "take 5 from both sides",
+            "subtract 5 from each side and write 7x = 35",
+            "add 3 to both sides",
+            "take 5 from the left side only"
+          ],
+          "answer": { "kind": "choice", "index": 3 },
+          "explanation": [
+            "Balance: an equation is two pans holding the same weight, and the equals sign is the promise that they match.",
+            "Taking 5 from one pan alone makes that pan lighter, so the pans stop matching and the promise breaks.",
+            "The other three moves touch both pans, so all three are legal.",
+            "Legal and helpful are different questions. Adding 3 to both sides is legal, it just walks sideways."
+          ],
+          "ideaId": "keep-the-balance",
+          "useAgain": "when you are checking your own working and want to know whether a step was allowed at all.",
+          "hints": ["Ask of each move: did both pans feel it?", "A move can be legal and still be useless. The question asks only about legal."],
+          "socraticHint": "If a move made only the left pan lighter, what would happen to the equals sign sitting between them?",
+          "skills": ["think.skills.equations"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Suppose you are solving 4y - 6 = 18. Which of these moves is not legal?",
+            "options": [
+              "add 6 to both sides",
+              "add 6 to the right side only",
+              "divide both sides by 2",
+              "add 10 to both sides"
+            ],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "problem-set",
+      "id": "s3-w03-think-07",
+      "title": "Every corner counted, and the six sides that are missing",
+      "lane": "shape",
+      "problems": [
+        {
+          "id": "s3-w03-think-07-p01",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "Fanning a pentagon (5 sides) into triangles from one corner makes 3 triangles. What is the sum of a pentagon's interior angles, in degrees?",
+          "answer": {
+            "kind": "number",
+            "value": "540"
+          },
+          "explanation": [
+            "Every triangle's corners add to 180 degrees, no matter its shape.",
+            "The pentagon is made of exactly 3 of those triangles, fanned from one corner.",
+            "3 times 180 is 540 degrees."
+          ],
+          "ideaId": "polygon-is-triangles-fanned-out",
+          "introducesIdea": true,
+          "useAgain": "when a polygon's interior angle sum is needed, by fanning triangles from one corner and multiplying by 180.",
+          "hints": [
+            "How many triangles does drawing every diagonal from one corner of a pentagon make?",
+            "Each triangle contributes 180 degrees; multiply that by how many triangles you found."
+          ],
+          "socraticHint": "If a shape is built from whole triangles with nothing left over, what do their angle sums have to add up to?",
+          "skills": [
+            "think.skills.angles",
+            "think.spatial"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Fanning a hexagon (6 sides) into triangles from one corner makes 4 triangles. What is the sum of a hexagon's interior angles, in degrees?",
+            "answer": {
+              "kind": "number",
+              "value": "720"
+            }
+          }
+        },
+        {
+          "id": "s3-w03-think-07-p02",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "A polygon's interior angles add up to 900 degrees. How many sides does it have?",
+          "answer": {
+            "kind": "number",
+            "value": "7"
+          },
+          "explanation": [
+            "Fanning from one corner always makes 2 fewer triangles than the polygon has sides.",
+            "900 divided by 180 is 5, so the polygon is made of 5 triangles.",
+            "5 triangles plus the 2 sides that do not become triangle bases means the polygon has 7 sides."
+          ],
+          "ideaId": "polygon-is-triangles-fanned-out",
+          "useAgain": "when the total angle sum is known and the number of sides is the missing piece.",
+          "hints": [
+            "How many triangles does this angle sum come from? Divide by 180 first.",
+            "The number of sides is always 2 more than the number of fan triangles."
+          ],
+          "socraticHint": "If the sum of the angles tells you how many triangles are hiding inside, how does the triangle count relate to the side count?",
+          "skills": [
+            "think.skills.angles"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A polygon's interior angles add up to 1080 degrees. How many sides does it have?",
+            "answer": {
+              "kind": "number",
+              "value": "8"
+            }
+          }
+        },
+        {
+          "id": "s3-w03-think-07-p03",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "You roll two fair dice. What is the probability, as a fraction, that at least one die shows a 6?",
+          "answer": {
+            "kind": "number",
+            "value": "11/36"
+          },
+          "explanation": [
+            "It is easier to count the opposite: neither die shows a 6.",
+            "Each die avoids 6 with probability 5/6, so both avoiding it is 5/6 times 5/6, which is 25/36.",
+            "At least one 6 is everything else: 1 minus 25/36 is 11/36."
+          ],
+          "ideaId": "count-the-opposite",
+          "useAgain": "when a question asks for at least one of something across several independent tries, since the opposite, none at all, is often easier to count.",
+          "hints": [
+            "What is the probability that neither die shows a 6?",
+            "Subtract the no-6-at-all probability from 1 to get at least one."
+          ],
+          "socraticHint": "Is it easier to count every way to get at least one six, or every way to get none at all?",
+          "skills": [
+            "think.skills.probability",
+            "think.skills.counting"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "You roll two fair dice. What is the probability, as a fraction, that at least one die shows a 1?",
+            "answer": {
+              "kind": "number",
+              "value": "11/36"
+            }
+          }
+        },
+        {
+          "id": "s3-w03-think-07-p04",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "A spinner has 4 equal sections numbered 1 to 4. You spin it 3 times. What is the probability, as a fraction, that at least one spin lands on 4?",
+          "answer": {
+            "kind": "number",
+            "value": "37/64"
+          },
+          "explanation": [
+            "Count the opposite first: every spin avoids 4, which happens with probability 3/4 each time.",
+            "All three spins avoiding 4 is 3/4 times 3/4 times 3/4, which is 27/64.",
+            "At least one 4 is 1 minus 27/64, which is 37/64."
+          ],
+          "ideaId": "count-the-opposite",
+          "useAgain": "when at least one success is asked for across three or more independent tries.",
+          "hints": [
+            "Find the probability that every single spin avoids landing on 4.",
+            "Subtract that all-avoid probability from 1."
+          ],
+          "socraticHint": "With three spins instead of two, does the chance of avoiding 4 every time get bigger or smaller?",
+          "skills": [
+            "think.skills.probability",
+            "think.skills.counting"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A spinner has 5 equal sections numbered 1 to 5. You spin it twice. What is the probability, as a fraction, that at least one spin lands on 5?",
+            "answer": {
+              "kind": "number",
+              "value": "9/25"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "problem-set",
+      "id": "s3-w03-think-04",
+      "title": "Induction round two: the odd numbers build squares",
+      "lane": "puzzle",
+      "problems": [
+        {
+          "id": "s3-w03-think-04-p01",
+          "kind": "text",
+          "lane": "puzzle",
+          "prompt": "Invent your own growing-number pattern that a domino proof can crack, in the shape of the odd-numbers-build-squares proof from this week. Pick a starting shape or count, say the fixed amount it grows by at every step, then claim what a term at least twenty steps along is worth. Prove your claim with a domino proof: the first domino, checked by hand, and the repeating step, saying exactly what one more step always adds. Finish by computing the term you claimed.",
+          "answer": {
+            "kind": "rubric",
+            "mustMention": [
+              "a pattern that grows by the same fixed amount every step",
+              "the first domino, checked by hand",
+              "the repeating step, saying what one more step always adds, and the term computed correctly"
+            ]
+          },
+          "explanation": [
+            "Pick something that grows by the same fixed amount every step, the way each cairn or each square's L strip did this week.",
+            "Check the smallest case completely by hand, since that alone is the whole first domino.",
+            "Say exactly what one more step adds, and why that same addition happens every single time: that sentence is the repeating step.",
+            "Compute the term you claimed using the rule, then walk a few steps by hand to be sure nothing was skipped."
+          ],
+          "ideaId": "domino-proof",
+          "useAgain": "when you want to build your own growing-pattern claim and prove it holds forever, not just for the cases you checked.",
+          "hints": [
+            "Decide the fixed amount your pattern grows by before you decide which term to ask about.",
+            "The first domino only has to be true once, by hand. The repeating step has to be true for every step, so word it without naming any particular number."
+          ],
+          "socraticHint": "If a friend asked you to prove your claim for the fiftieth term, could your repeating step answer them without you doing fifty steps by hand?",
+          "skills": [
+            "think.proof",
+            "think.patterns"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 3
+        },
+        {
+          "id": "s3-w03-think-04-p02",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "Grow any square of dots by one on each side and the new dots make an L, like the one in this week's opener. What is always true about the number of dots in that L?",
+          "options": [
+            "it is the next odd number in the list 1, 3, 5, 7 and so on",
+            "it is always an even number",
+            "it is always the same as the side of the smaller square",
+            "it doubles every time the square grows"
+          ],
+          "answer": { "kind": "choice", "index": 0 },
+          "explanation": [
+            "The L is a new column plus a new row, and those two pieces share one corner dot.",
+            "Growing 1 by 1 into 2 by 2 adds 4 minus 1, which is 3 dots.",
+            "Then 2 by 2 into 3 by 3 adds 5 dots, and 3 by 3 into 4 by 4 adds 7 dots.",
+            "The Ls run 3, 5, 7, 9, which are exactly the odd numbers after 1.",
+            "So each new odd number is the strip that turns one square into the next square."
+          ],
+          "ideaId": "find-the-rule",
+          "useAgain": "when a picture grows step by step and you want to name the size of each new piece.",
+          "hints": ["Count one L in two pieces, the new column and the new row, and remember that they share a dot.", "Work out the L for 1 by 1 growing to 2 by 2, then 2 by 2 to 3 by 3, and list what you get."],
+          "socraticHint": "This week's opener handed you the L for 5 growing to 6. Without counting a single dot, what is the L for 100 growing to 101, and what does that answer tell you about the whole family of Ls?",
+          "skills": ["think.patterns", "think.spatial"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A square of dots 9 across and 9 down grows into a 10 by 10 square. How many dots are in the L that does it?",
+            "options": ["18", "19", "20", "21"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s3-w03-think-04-p03",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "A domino proof of the odd number pattern needs a first domino and a repeating step. Which pair does both jobs?",
+          "options": [
+            "first: 1 + 3 is 4; repeating: check a few more cases to be safe",
+            "first: the pattern is true; repeating: it stays true",
+            "first: 6 x 6 is 36; repeating: work downwards to the smaller cases",
+            "first: 1 on its own is 1 x 1; repeating: the next odd number is exactly the L that grows the square"
+          ],
+          "answer": { "kind": "choice", "index": 3 },
+          "explanation": [
+            "Job one is the first domino: a case small enough to settle completely by looking at it.",
+            "One odd number, 1, adds to 1, and 1 is 1 x 1. Settled.",
+            "Job two is the repeating step: adding the next odd number lays exactly the L that grows the square by one.",
+            "So each case knocks the next one over, and the whole endless line falls.",
+            "The pair that says check a few more cases is testing, not proving, which is the trap."
+          ],
+          "ideaId": "domino-proof",
+          "useAgain": "when a proof has to cover endlessly many cases and you need to name its two jobs.",
+          "hints": ["One job is about the smallest case, the other is about every link in the chain.", "The L you counted earlier is the link: it says what one more odd number does to the square."],
+          "socraticHint": "Which of these pairs would still be doing work if you were handed a count of odd numbers longer than anyone has ever written down?",
+          "skills": ["think.proof"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Your friend has already shown the first domino: 1 on its own is 1 x 1. Which job is left before the whole line must fall?",
+            "options": [
+              "show that adding the next odd number turns each square into the next square",
+              "add up the first hundred odd numbers to be safe",
+              "check that the pattern holds when the count is even",
+              "find a bigger example than anybody has tried"
+            ],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        },
+        {
+          "id": "s3-w03-think-04-p04",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "The Tower of Hanoi: three discs sit on peg A, biggest at the bottom. Move the whole stack to peg C, one disc at a time, never putting a bigger disc on a smaller one. What is the smallest number of moves?",
+          "answer": { "kind": "number", "value": "7" },
+          "explanation": [
+            "The bottom disc cannot move until the two above it are parked out of the way on peg B.",
+            "Getting two discs onto peg B costs 3 moves. Try it with two coins and count.",
+            "The big disc then crosses to peg C: 1 move.",
+            "The two parked discs then travel back on top of it: 3 more moves.",
+            "3 plus 1 plus 3 is 7 moves, and nothing shorter obeys the rules."
+          ],
+          "ideaId": "count-the-steps",
+          "useAgain": "when a job has to clear a path for itself before its main move can happen.",
+          "hints": ["Play the two disc version first with two coins of different sizes and count what it costs.", "The biggest disc moves only once. Ask what has to be true just before and just after that single move."],
+          "socraticHint": "Where do all the other discs have to be sitting at the exact moment the biggest one moves?",
+          "skills": ["think.algorithms", "think.patterns"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Same tower, same rules, four discs this time. What is the smallest number of moves?",
+            "answer": { "kind": "number", "value": "15" }
+          }
+        },
+        {
+          "id": "s3-w03-think-04-p05",
+          "kind": "text",
+          "lane": "puzzle",
+          "prompt": "An AMC 8 style peak, untimed, and you explain it back when it is done. A staircase of dots has n(n+1)/2 dots in pattern n, the way a triangular stack grows: 1, 3, 6, 10 and so on. How many dots are in pattern 15? Then say how many more dots pattern 16 adds compared with pattern 15, than pattern 15 added compared with pattern 14.",
+          "answer": {
+            "kind": "rubric",
+            "mustMention": [
+              "pattern 15 has 120 dots",
+              "pattern 16 adds 16 dots and pattern 15 added 15 dots",
+              "one more"
+            ]
+          },
+          "explanation": [
+            "The triangular number formula n(n+1)/2 gives pattern 15 as 15 x 16 divided by 2, which is 120 dots.",
+            "Pattern 16 has 16 x 17 divided by 2, which is 136 dots, so pattern 16 adds 136 minus 120, which is 16 dots.",
+            "Pattern 14 has 14 x 15 divided by 2, which is 105 dots, so pattern 15 added 120 minus 105, which is 15 dots.",
+            "Pattern 16's addition, 16, beats pattern 15's addition, 15, by exactly one dot, which is always true for this growing staircase."
+          ],
+          "ideaId": "find-the-rule",
+          "useAgain": "when a pattern grows in triangular-number steps and you want to compare how much two consecutive steps each added.",
+          "hints": [
+            "Work out patterns 14, 15 and 16 using the triangular number formula before comparing anything.",
+            "Look at the two additions, pattern 16 minus pattern 15, and pattern 15 minus pattern 14, not at the pattern totals themselves."
+          ],
+          "socraticHint": "For triangular numbers, the amount added at each new pattern goes up by the same fixed amount every time. What is that amount, and does your answer match it?",
+          "skills": [
+            "think.patterns",
+            "think.number-sense"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 3
+        },
+        {
+          "id": "s3-w03-think-04-p06",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "A second peak. Write the numbers 2, then 2 x 2, then 2 x 2 x 2, and keep going. Their last digits run 2, 4, 8, 6, and then start over. What is the last digit of the twenty third number in that list?",
+          "answer": { "kind": "number", "value": "8" },
+          "explanation": [
+            "The last digits repeat in a block of four: 2, 4, 8, 6.",
+            "So two positions in the list share a last digit whenever they are a whole number of blocks apart.",
+            "Divide 23 by 4: that is 5 whole blocks with 3 left over.",
+            "The leftover 3 lands on the third entry of the block, so the last digit is 8.",
+            "Clock math, exactly like last season: only the remainder matters, and the whole blocks can be thrown away."
+          ],
+          "ideaId": "clock-math",
+          "useAgain": "when a list repeats in a fixed block and you need a position far past the end of what you wrote.",
+          "hints": ["How many entries are in the repeating block before it starts again?", "Divide the position by the block length and pay attention only to what is left over."],
+          "socraticHint": "Two positions land on the same last digit when they are how far apart? What does that let you throw away?",
+          "skills": ["think.patterns", "think.skills.modular"],
+          "thinkMinutes": 5,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "The last digits of 3, then 3 x 3, then 3 x 3 x 3 and onwards run 3, 9, 7, 1, and then start over. What is the last digit of the thirtieth number in that list?",
+            "answer": { "kind": "number", "value": "9" }
+          }
+        },
+        {
+          "id": "s3-w03-think-04-p07",
+          "kind": "text",
+          "lane": "puzzle",
+          "prompt": "Write the whole domino proof that adding the first n odd numbers always gives n x n. Give the first domino, then the repeating step using the L picture, then finish by saying what the proof tells you about a sum far too long to add by hand.",
+          "answer": {
+            "kind": "rubric",
+            "mustMention": [
+              "the smallest case is 1, and 1 is 1 x 1",
+              "the next odd number is exactly the L that grows the square by one",
+              "every case follows from the case before it, so no case has to be checked"
+            ]
+          },
+          "explanation": [
+            "Domino proof: three beats, and you have already done all three of them separately today.",
+            "First domino: one odd number, 1, adds to 1, and 1 is 1 x 1. True just by looking.",
+            "Repeating step: if the first n odd numbers make an n by n square, the next odd number is the L that grows it.",
+            "That L holds 2 x n plus 1 dots, which is exactly the next odd number, so the square grows by one on each side.",
+            "So every case knocks over the next, and a thousand odd numbers add to 1,000 x 1,000 without adding a thing."
+          ],
+          "ideaId": "domino-proof",
+          "useAgain": "when a claim about every whole number needs a written proof rather than a demonstration.",
+          "hints": ["Start with the smallest case and show it is true just by looking at it.", "Then say what one more odd number does to the square you already have."],
+          "socraticHint": "Where in your write up does the L stop being a picture and start being the reason?",
+          "skills": ["think.proof"],
+          "thinkMinutes": 5,
+          "difficulty": 3
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "s3-w03-think-05",
+      "title": "Explain it in writing: the tower doubles",
+      "mode": "written",
+      "prompt": "Write the Tower of Hanoi rule as a proof, not as something you noticed. Start with one disc and settle it by looking. Then write the repeating step: say why a tower of any size costs twice what the tower one smaller costs, plus one, naming the single moment the biggest disc moves and where every other disc has to be sitting at that moment. Finish by saying what your rule predicts for ten discs and why you can trust that number without moving a single disc."
+    },
+    {
+      "kind": "explain",
+      "id": "s3-w03-think-06",
+      "title": "Explain it out loud",
+      "mode": "voice",
+      "prompt": "Record the odd number proof out loud with your graph paper in shot. Draw the growing square as you talk: say the first domino, then lay one L on the square and say why that L is always the next odd number, then say what that means for a sum nobody could ever add.",
+      "problemId": "s3-w03-think-04-p07"
+    }
+  ]
+}

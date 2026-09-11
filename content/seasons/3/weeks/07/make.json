@@ -1,0 +1,401 @@
+{
+  "id": "s3-w07-make",
+  "season": 3,
+  "week": 7,
+  "track": "make",
+  "title": "A frame, four motors and a weight budget",
+  "summary": "Print a frame sized to the motors and flight controller, bench-test one motor's thrust on a kitchen scale, and check the aircraft's thrust-to-weight ratio.",
+  "minutes": 60,
+  "materials": [
+    "3D printer and PETG filament",
+    "digital calipers",
+    "four brushless motors, propellers and ESCs (1103 to 1104 class)",
+    "ESP32 dev board",
+    "the 2S battery from week 1",
+    "kitchen scale reading to 1 gram",
+    "a rigid clamp or stand for the motor (household)",
+    "safety glasses",
+    "graph paper and pencil",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.fabrication",
+    "make.mechanisms",
+    "make.measurement"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s3-w07-make-01",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A top-down view of the printed frame: a rectangle with a motor circle at each of the four corners, and a flight-controller mounting square in the centre dimensioned at 30.5 by 30.5 millimetres, the standard spacing looked up before the frame was modelled and printed.",
+        "spec": {
+          "w": 320,
+          "h": 280,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 160,
+              "y": 14,
+              "s": "Frame sized to motors and FC pattern",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60,
+                  60
+                ],
+                [
+                  260,
+                  60
+                ],
+                [
+                  260,
+                  240
+                ],
+                [
+                  60,
+                  240
+                ]
+              ],
+              "fill": "sand"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 75,
+              "s": "Frame",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "circle",
+              "cx": 80,
+              "cy": 80,
+              "r": 20,
+              "label": "Motor"
+            },
+            {
+              "t": "circle",
+              "cx": 240,
+              "cy": 80,
+              "r": 20,
+              "label": "Motor"
+            },
+            {
+              "t": "circle",
+              "cx": 80,
+              "cy": 220,
+              "r": 20,
+              "label": "Motor"
+            },
+            {
+              "t": "circle",
+              "cx": 240,
+              "cy": 220,
+              "r": 20,
+              "label": "Motor"
+            },
+            {
+              "t": "box",
+              "x": 127,
+              "y": 120,
+              "w": 66,
+              "h": 60,
+              "label": "FC mount",
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 127,
+              "y1": 97,
+              "x2": 193,
+              "y2": 97,
+              "label": "30.5 mm"
+            },
+            {
+              "t": "dim",
+              "x1": 126,
+              "y1": 120,
+              "x2": 126,
+              "y2": 180,
+              "label": "30.5"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 260,
+              "s": "Motor spacing measured with calipers first",
+              "size": 9,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Ask, imagine, plan",
+      "body": "This season's aerospace thread turns from water rockets to a real quad frame: ask, imagine, plan, build, test, fix.\n\nAsk: how do you know a frame you design will actually lift itself, before it ever flies?\n\nImagine: a printed frame sized to the real motors and the flight controller's mounting holes. It should be light enough that the motors' combined push clearly beats its own weight.\n\nPlan: the day before this session, measure each motor's mounting hole spacing with the calipers, in millimetres. Look up the flight controller's standard mounting hole spacing from its published spec sheet, since it is not bought yet. A common pattern is 30.5 by 30.5 millimetres. Model the frame in Tinkercad to those measurements and print it, so it is cooled and ready when this session starts."
+    },
+    {
+      "kind": "science",
+      "id": "s3-w07-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Five small boxes list the mass budget: frame 28 grams, four motors 16 grams, flight controller 5 grams, battery 9 grams, four propellers 4 grams, totalling 62 grams. Below, a long accent bar representing about 220 grams of measured thrust from four motors at full throttle is compared with a much shorter bar representing the 62 gram weight, giving a thrust-to-weight ratio of about 3.5.",
+        "spec": {
+          "w": 360,
+          "h": 247,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 14,
+              "s": "Thrust (220 g) must beat total weight (62 g)",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 40,
+              "w": 60,
+              "h": 36,
+              "label": "Frame",
+              "sub": "28 g",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 40,
+              "w": 70,
+              "h": 36,
+              "label": "4 motors",
+              "sub": "16 g",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 170,
+              "y": 40,
+              "w": 50,
+              "h": 36,
+              "label": "FC",
+              "sub": "5 g",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 230,
+              "y": 40,
+              "w": 60,
+              "h": 36,
+              "label": "Battery",
+              "sub": "9 g",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 300,
+              "y": 40,
+              "w": 50,
+              "h": 36,
+              "label": "Props",
+              "sub": "4 g",
+              "fill": "sand"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 102,
+              "s": "Total mass: 62 g",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 132,
+              "w": 240,
+              "h": 36,
+              "label": "4 motors at full throttle",
+              "sub": "~220 g thrust",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 172,
+              "w": 68,
+              "h": 36,
+              "label": "Weight",
+              "sub": "62 g",
+              "fill": "rust"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 222,
+              "s": "Thrust ÷ weight = 220 ÷ 62 ≈ 3.5",
+              "size": 12,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Thrust must beat weight",
+      "ideaId": "thrust-must-beat-weight",
+      "body": "An aircraft only leaves the ground once its motors' combined thrust is bigger than its own weight.\n\nA ratio of about 2 to 1, thrust over weight, is close to the minimum for a quad to hover with any control margin. Racing-style quads with light frames often aim for 3 to 1 or higher. Spare thrust is what lets it accelerate and correct itself, not just hang in the air.\n\nA single 1103 to 1104 class motor with a matched propeller commonly produces about 50 to 60 grams of static thrust at full throttle. Four of them together can produce roughly 200 to 240 grams.\n\nThat has to beat the whole aircraft's weight, every gram of it. Add up the frame, all four motors, the flight controller, the battery and the propellers, weighed piece by piece."
+    },
+    {
+      "kind": "task",
+      "id": "s3-w07-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The reference motor and propeller sit in a clamp directly above a kitchen scale reading to 1 gram, propeller facing down, with every other propeller left off. An adult holds the clamp steady while the ESP32 commands the ESC through 50, 75 and 100 percent throttle, safety glasses on throughout.",
+        "spec": {
+          "w": 340,
+          "h": 250,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 170,
+              "y": 14,
+              "s": "Clamped motor above the scale, others off",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 30,
+              "w": 80,
+              "h": 25,
+              "label": "Clamp",
+              "fill": "sand"
+            },
+            {
+              "t": "circle",
+              "cx": 170,
+              "cy": 85,
+              "r": 20,
+              "label": "Motor"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  140,
+                  108
+                ],
+                [
+                  200,
+                  108
+                ],
+                [
+                  170,
+                  120
+                ]
+              ],
+              "label": "Prop",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 110,
+              "y": 150,
+              "w": 120,
+              "h": 30,
+              "label": "Kitchen scale",
+              "sub": "reads to 1 g",
+              "fill": "rust"
+            },
+            {
+              "t": "dot",
+              "cx": 335,
+              "cy": 90,
+              "label": "Adult holds it steady",
+              "side": "left"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 210,
+              "s": "ESP32 to ESC: 50%, 75%, 100% throttle",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 232,
+              "s": "Safety glasses on; every other prop stays off",
+              "size": 9,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Bench-test the thrust, then total the mass",
+      "body": "Mount the reference motor with its propeller in the clamp or stand, directly above the kitchen scale, propeller facing down.\n\nEvery prop stays off every other motor for the rest of this step. Only the one clamped motor being tested ever spins. Put on safety glasses before it spins, and keep them on for every powered test this week.\n\nHave the ESP32 send the ESC three throttle levels: about 50 percent, 75 percent and 100 percent. With an adult holding the frame steady and ready to cut power, run each level for two or three seconds and read the scale.\n\nTest each of the three throttle levels three times, nine readings in total, and record the median grams for each level.\n\nWeigh the frame, one motor, and one propeller separately on the kitchen scale. Multiply the one motor's weight by four and the one propeller's weight by four, since all four are the same class of part. Add the flight controller's and battery's published weights from their listing, since neither is bought yet.\n\nAs a worked example: a frame weighs 28 grams. Four motors at 4 grams each add 16 grams. A flight controller adds 5 grams, a battery adds 9 grams, and four propellers at 1 gram each add 4 grams. That totals 62 grams. If the reference motor's full-throttle thrust measured 55 grams, four motors together give about 220 grams of thrust. Divide 220 by 62 for a thrust-to-weight ratio of about 3.5.\n\nUse your own measured numbers the same way, and check that your total mass stays under 250 grams.",
+      "checklist": [
+        "Every propeller except the one clamped motor being tested stayed off",
+        "An adult held the frame steady during every powered test",
+        "Three throttle levels were each tested three times, nine readings in total",
+        "The frame, one motor and one propeller were weighed, and the full mass budget was added up under 250 grams",
+        "Safety glasses were worn for every powered test"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s3-w07-make-04",
+      "title": "Throttle command versus thrust",
+      "ideaId": "thrust-must-beat-weight",
+      "body": "The clamped motor, propeller and mounting stay the same for every row. Only the commanded throttle level changes.\n\nTest three throttle levels, three times each, nine rows in total. For each reading, write the throttle percent and the thrust the scale measured in grams.",
+      "columns": [
+        "Throttle (%)",
+        "Thrust (g)"
+      ],
+      "minRows": 9,
+      "question": "About how many grams of extra thrust did each 25 percent increase in throttle add?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s3-w07-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: a propeller left on a motor that was not being tested, which is not safe and is not part of the plan.\n\nAlso watch for the clamp not holding the motor rigid, which throws off the scale's reading. And watch for a mass left off the budget, such as the wire or connector weight, which quietly pushes the total past 250 grams."
+    },
+    {
+      "kind": "artifact",
+      "id": "s3-w07-make-06",
+      "title": "Show it",
+      "prompt": "Photo of the clamped motor mid-test above the scale, the printed frame with all four motors dry-fitted, and your nine-row throttle table",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s3-w07-make-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s3-w07-make-x01",
+      "kind": "bonus",
+      "title": "Why a satellite never lands",
+      "minutes": 30,
+      "ideaId": "orbit-is-falling-and-missing",
+      "body": "Find out how a satellite's real orbital speed compares with the fastest you can swing a ball on a string.\n\nPredict first: write in the Maker's Log how many times faster you think an orbit is than your fastest swing.\n\nMeasure it with the week's own kit. Swing a small ball on about a metre of string in a clear space, away from people and breakables. Time ten full swings at your fastest steady speed, then compute the speed: the circle's circumference times ten, divided by the time.\n\nCompare: Earth's orbital speed at the surface is about 7.9 kilometres per second. That comes from gravity at 9.8 metres per second squared and Earth's radius of about 6,371,000 metres. Line your swing speed up next to that number.\n\nTeach it: explain to the family why an orbiting object is still falling, just moving sideways fast enough to keep missing the ground."
+    }
+  ]
+}

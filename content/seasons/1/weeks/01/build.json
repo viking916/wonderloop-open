@@ -1,0 +1,295 @@
+{
+  "id": "s1-w01-build",
+  "season": 1,
+  "week": 1,
+  "track": "build",
+  "title": "Name badge",
+  "summary": "Build a micro:bit badge that scrolls your name and shows a picture you draw.",
+  "minutes": 60,
+  "materials": ["micro:bit v2", "USB cable", "laptop with Chrome", "phone with slow-motion video for the physics extra"],
+  "skills": ["build.blocks", "build.loops"],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s1-w01-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop in six words: ask, imagine, plan, build, test, fix.\n\nBefore you open MakeCode, sketch your badge on paper.\n\n1. Draw your name scrolling across the screen.\n2. Draw the picture you want to appear when you press button A.\n3. Plan how fast you think your heart should beat."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w01-build-02",
+      "ideaId": "current-is-a-flow",
+      "title": "LEDs and current",
+      "figure": {
+        "kind": "leds",
+        "alt": "A micro:bit whose screen lights one row of a heart at a time, top to bottom, twice, and then shows the whole heart steady.",
+        "spec": {
+          "frames": [
+            {
+              "rows": [
+                ".#.#.",
+                ".....",
+                ".....",
+                ".....",
+                "....."
+              ],
+              "ms": 140
+            },
+            {
+              "rows": [
+                ".....",
+                "#####",
+                ".....",
+                ".....",
+                "....."
+              ],
+              "ms": 140
+            },
+            {
+              "rows": [
+                ".....",
+                ".....",
+                "#####",
+                ".....",
+                "....."
+              ],
+              "ms": 140
+            },
+            {
+              "rows": [
+                ".....",
+                ".....",
+                ".....",
+                ".###.",
+                "....."
+              ],
+              "ms": 140
+            },
+            {
+              "rows": [
+                ".....",
+                ".....",
+                ".....",
+                ".....",
+                "..#.."
+              ],
+              "ms": 140
+            },
+            {
+              "rows": [
+                ".#.#.",
+                ".....",
+                ".....",
+                ".....",
+                "....."
+              ],
+              "ms": 140
+            },
+            {
+              "rows": [
+                ".....",
+                "#####",
+                ".....",
+                ".....",
+                "....."
+              ],
+              "ms": 140
+            },
+            {
+              "rows": [
+                ".....",
+                ".....",
+                "#####",
+                ".....",
+                "....."
+              ],
+              "ms": 140
+            },
+            {
+              "rows": [
+                ".....",
+                ".....",
+                ".....",
+                ".###.",
+                "....."
+              ],
+              "ms": 140
+            },
+            {
+              "rows": [
+                ".....",
+                ".....",
+                ".....",
+                ".....",
+                "..#.."
+              ],
+              "ms": 140
+            },
+            {
+              "rows": [
+                ".#.#.",
+                "#####",
+                "#####",
+                ".###.",
+                "..#.."
+              ],
+              "ms": 1600
+            },
+            {
+              "rows": [
+                ".....",
+                ".....",
+                ".....",
+                ".....",
+                "....."
+              ],
+              "ms": 300
+            }
+          ],
+          "caption": "Watch: one row at a time, then the whole heart. The chip really only ever lights one row, hundreds of times a second."
+        }
+      },
+      "body": "An LED is a one-way valve for electricity. Current has to flow through it in the right direction, from the positive leg to the negative leg, or no light comes out at all.\n\nYour micro:bit screen is not 25 lights that stay on all the time. It is a 5 by 5 grid, and the chip lights one row at a time, then moves to the next, switching hundreds of times every second.\n\nYour eyes cannot keep up with switching that fast. Each row fades only a little before the chip lights it again, so the whole picture looks steady and glowing, even though only a few LEDs are ever lit at once."
+    },
+    {
+      "kind": "task",
+      "id": "s1-w01-build-03",
+      "title": "Build the badge in MakeCode",
+      "figure": {
+        "kind": "leds",
+        "alt": "A micro:bit whose screen shows a big heart, pauses, then a small heart, over and over.",
+        "spec": {
+          "frames": [
+            {
+              "rows": [
+                ".#.#.",
+                "#####",
+                "#####",
+                ".###.",
+                "..#.."
+              ],
+              "ms": 700
+            },
+            {
+              "rows": [
+                ".....",
+                ".#.#.",
+                ".###.",
+                "..#..",
+                "....."
+              ],
+              "ms": 500
+            }
+          ],
+          "caption": "Big heart, pause, small heart: this is what your forever loop makes. The pause is the number you choose."
+        }
+      },
+      "body": "Getting ready:\n\n1. https://makecode.microbit.org is a website in Chrome where you build a program from blocks.\n2. MakeCode shows your blocks running live on a picture of the micro:bit.\n3. The micro:bit is a small computer with a 5 by 5 grid of lights, two buttons, and sensors.\n4. Plug the micro:bit into the laptop with the USB cable.\n5. MakeCode saves your project in this browser on its own. Signing in with the family account (`Sign In`, top right) adds cloud backup, so it opens on another computer and survives a cleared browser.\n\nBuild the badge:\n\n1. Open https://makecode.microbit.org and start a new project.\n2. From `Basic`, drag an `on start` block onto the canvas.\n3. From `Basic`, snap a `show string` block inside `on start` and type your name.\n4. From `Basic`, drag a `forever` block onto the canvas, under `on start`.\n5. From `Basic`, snap a `show icon` block inside `forever` and pick the heart.\n6. From `Basic`, snap a `pause (ms)` block under the heart, still inside `forever`.\n7. Predict first: how many milliseconds should a heartbeat pause feel alive, not frantic, not sleepy?\n8. Type your guess into `pause (ms)`, then run it and adjust the number until it feels right.\n9. From `Basic`, snap another `show icon` block under `pause (ms)` and pick the small heart.\n10. From `Input`, drag an `on button A pressed` block onto the canvas.\n11. From `Basic`, snap a `show leds` block inside it and draw the picture you sketched on paper.\n\nThat loop makes the heart beat: big, pause, small, and `forever` repeats it without end.\n\nRun it on the board:\n\n1. Press `Download`.\n2. If asked, choose `Connect device` and pick your micro:bit from the list.\n3. If nothing is asked, drag the downloaded `.hex` file onto the `MICROBIT` drive instead.\n4. Wait for the yellow light on the back of the board to stop flashing.\n5. Unplug the USB cable and clip on the battery pack.",
+      "checklist": [
+        "Name scrolls when it powers on",
+        "Heart beats in the forever loop",
+        "Button A shows my own picture",
+        "It runs from the battery pack, not only USB",
+        "I wrote down the number of milliseconds I chose for the heartbeat and why"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w01-build-04",
+      "title": "Bug diary",
+      "body": "Write one line for each thing that did not work the first time and what you tried."
+    },
+    {
+      "kind": "artifact",
+      "id": "s1-w01-build-05",
+      "title": "Show it",
+      "prompt": "Photo of the badge running, and paste the MakeCode share link or the JavaScript from the editor",
+      "accepts": ["photo", "code"]
+    },
+    {
+      "kind": "log",
+      "id": "s1-w01-build-06",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s1-w01-build-x01",
+      "kind": "bonus",
+      "title": "A second button, a second picture",
+      "minutes": 15,
+      "body": "Add a second button to your badge, so it does more than one trick.\n\n1. From `Input`, drag an `on button B pressed` block onto the canvas.\n2. From `Basic`, snap a `show leds` block inside it.\n3. Draw a different picture than the one behind button A.\n4. Press `Download` and test both buttons on the real board.\n\nWhat to notice: one press switches instantly and clearly to a second picture.",
+      "figure": {
+        "kind": "leds",
+        "alt": "A micro:bit screen showing a plus-shaped star, one lit column crossing one lit row in the middle.",
+        "spec": {
+          "frames": [
+            {
+              "rows": [
+                "..#..",
+                "..#..",
+                "#####",
+                "..#..",
+                "..#.."
+              ],
+              "ms": 1000
+            }
+          ],
+          "caption": "One example picture to try for button B. Draw whatever you like instead."
+        }
+      }
+    },
+    {
+      "id": "s1-w01-build-x02",
+      "kind": "bonus",
+      "title": "A heartbeat that follows your presses",
+      "minutes": 20,
+      "body": "Make your own heartbeat speed, instead of one fixed number.\n\n1. From `Variables`, make a new variable called `beat` and set it to 500 in `on start`.\n2. From `Input`, add an `on button A pressed` block.\n3. Snap `change beat by -50` inside it, from `Variables`.\n4. Add an `on button B pressed` block and snap `change beat by 50` inside it.\n5. In your `forever` loop, replace the `pause (ms)` number with the `beat` variable.\n6. Press `Download` and press each button to feel the heartbeat change speed.\n\nWhat to notice: the heart keeps beating at whatever speed you set, even between presses.",
+      "figure": {
+        "kind": "leds",
+        "alt": "A micro:bit screen showing a big heart, then a small heart, the same two pictures as the built-in heartbeat.",
+        "spec": {
+          "frames": [
+            {
+              "rows": [
+                ".#.#.",
+                "#####",
+                "#####",
+                ".###.",
+                "..#.."
+              ],
+              "ms": 400
+            },
+            {
+              "rows": [
+                ".....",
+                ".#.#.",
+                ".###.",
+                "..#..",
+                "....."
+              ],
+              "ms": 400
+            }
+          ],
+          "caption": "Same big and small heart as before, but now the pause comes from the beat variable, not a fixed number."
+        }
+      }
+    },
+    {
+      "id": "s1-w01-build-x03",
+      "kind": "invent",
+      "title": "Design a badge feature of your own",
+      "minutes": 25,
+      "body": "What could your badge tell a stranger about you without words?\n\nDesign one new feature for your badge, something no one told you to build.\n\nYour feature must use a `show leds` or `show icon` block that is new, not just your name or the heart.\nIt must include one number you choose yourself by testing, like a pause or a speed.\nIt must be something you show to someone in your house.\n\nSketch your idea on paper before you open MakeCode.\n\nHow to know it works: someone who has never seen your badge can tell what it does by watching once."
+    },
+    {
+      "id": "s1-w01-build-x04",
+      "kind": "bonus",
+      "title": "How fast is too fast to see?",
+      "minutes": 20,
+      "ideaId": "persistence-of-vision",
+      "body": "Find out how many milliseconds of gap your own eyes need before a blinking light looks steady.\n\n1. Predict first: guess the pause, in milliseconds, where a blinking light will start to look steady to your eyes. Write your number in the Maker's Log.\n2. Open your badge project. Add a new `forever` loop that shows the heart icon, clears the screen, and pauses after each step.\n3. Try a slow pause like 500 milliseconds, then try 200, 100, 50, 25 and 10, changing only the pause each time.\n4. Watch each pause with your own eyes. Then film the fastest one on your phone's slow-motion camera and play it back.\n5. Write down the smallest pause where your eyes saw steady light, even though the slow-motion video proved it was still blinking.\n\nCompare: was the pause where your eyes got fooled close to your prediction, sooner, or later?\n\nTeach it: tell a grown-up in two sentences why a light that is truly still blinking can look steady to your eyes."
+    }
+  ]
+}

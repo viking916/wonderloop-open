@@ -1,0 +1,345 @@
+{
+  "id": "s1-w02-build",
+  "season": 1,
+  "week": 2,
+  "track": "build",
+  "title": "Shake to roll",
+  "summary": "Build a micro:bit dice that rolls a random number on a shake, then turn it into a two-player game.",
+  "minutes": 60,
+  "materials": ["micro:bit v2", "USB cable", "laptop with Chrome"],
+  "skills": ["build.variables", "build.conditionals"],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s1-w02-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop again: ask, imagine, plan, build, test, fix.\n\nAsk: what should the badge do now? Roll a die when you shake it, so you never need a plastic one again.\n\nImagine before you build. Sketch a plain die on paper: give it a shake, and a number from 1 to 6 flashes on the screen. Then imagine one step further: two players, two dice, and whoever rolls higher wins, unless the two numbers match, which is worth something special.\n\nPlan the pieces before you open MakeCode:\n\n1. One shake event.\n2. One random number.\n3. One variable to remember it.\n4. A second variable for the second player.\n5. A rule that checks whether the two numbers match."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w02-build-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A graph of one axis of accelerometer reading over time, split into three zones. Sitting still, the line is nearly flat near zero. Sliding slowly, it makes one small bump, still below a dashed threshold line. Shaking, the line spikes up and down rapidly, crossing the threshold many times, and a dot marks the moment the shake event fires.",
+        "spec": {
+          "w": 360,
+          "h": 240,
+          "wide": false,
+          "items": [
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 110,
+              "x2": 340,
+              "y2": 110,
+              "dashed": true,
+              "color": "rust"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  20,
+                  188
+                ],
+                [
+                  40,
+                  189
+                ],
+                [
+                  60,
+                  187
+                ],
+                [
+                  80,
+                  188
+                ],
+                [
+                  100,
+                  188
+                ]
+              ],
+              "color": "muted"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  110,
+                  188
+                ],
+                [
+                  130,
+                  170
+                ],
+                [
+                  150,
+                  160
+                ],
+                [
+                  170,
+                  170
+                ],
+                [
+                  190,
+                  188
+                ]
+              ],
+              "color": "sand"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  200,
+                  188
+                ],
+                [
+                  210,
+                  70
+                ],
+                [
+                  220,
+                  200
+                ],
+                [
+                  230,
+                  60
+                ],
+                [
+                  240,
+                  205
+                ],
+                [
+                  250,
+                  65
+                ],
+                [
+                  260,
+                  200
+                ],
+                [
+                  270,
+                  75
+                ],
+                [
+                  280,
+                  188
+                ],
+                [
+                  300,
+                  188
+                ],
+                [
+                  320,
+                  188
+                ],
+                [
+                  340,
+                  188
+                ]
+              ],
+              "color": "accent"
+            },
+            {
+              "t": "dot",
+              "cx": 210,
+              "cy": 70,
+              "label": "shake fires",
+              "side": "above"
+            },
+            {
+              "t": "text",
+              "x": 60,
+              "y": 205,
+              "s": "still",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 205,
+              "s": "slide slowly",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 270,
+              "y": 205,
+              "s": "shake",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 335,
+              "y": 96,
+              "s": "threshold",
+              "size": 10,
+              "anchor": "end"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 20,
+              "s": "acceleration reading over time (one axis)",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "ideaId": "ask-the-world",
+      "title": "Accelerometers",
+      "body": "Inside the micro:bit is a tiny chip called an accelerometer. It does not feel a shake the way your hand does. It feels a sudden change in speed, in three directions at once: side to side, forward and back, and up and down.\n\nSitting still on a table, the chip reads almost no change in speed at all. Move the micro:bit slowly across the table and the change in speed stays small too, since the motion happens gradually. A shake is different: the micro:bit speeds up, stops and reverses direction again and again in a fraction of a second, so the change in speed spikes very high, very fast.\n\nThe chip checks its own reading many times every second. The moment that spike crosses a threshold, the firmware fires the shake event once, which is exactly what the `on shake` block is waiting for."
+    },
+    {
+      "kind": "task",
+      "id": "s1-w02-build-03",
+      "title": "Build the dice in MakeCode",
+      "figure": {
+        "kind": "leds",
+        "alt": "A micro:bit whose screen shows the six faces of a die one after another, one dot up to six dots.",
+        "spec": {
+          "frames": [
+            {
+              "rows": [
+                ".....",
+                ".....",
+                "..#..",
+                ".....",
+                "....."
+              ],
+              "ms": 650
+            },
+            {
+              "rows": [
+                "#....",
+                ".....",
+                ".....",
+                ".....",
+                "....#"
+              ],
+              "ms": 650
+            },
+            {
+              "rows": [
+                "#....",
+                ".....",
+                "..#..",
+                ".....",
+                "....#"
+              ],
+              "ms": 650
+            },
+            {
+              "rows": [
+                "#...#",
+                ".....",
+                ".....",
+                ".....",
+                "#...#"
+              ],
+              "ms": 650
+            },
+            {
+              "rows": [
+                "#...#",
+                ".....",
+                "..#..",
+                ".....",
+                "#...#"
+              ],
+              "ms": 650
+            },
+            {
+              "rows": [
+                "#...#",
+                ".....",
+                "#...#",
+                ".....",
+                "#...#"
+              ],
+              "ms": 650
+            }
+          ],
+          "caption": "Every shake picks one of these six faces at random. That is what pick random 1 to 6 means."
+        }
+      },
+      "body": "Getting ready:\n\n1. https://makecode.microbit.org is the same MakeCode website you used for the badge.\n2. Plug in the micro:bit over USB.\n3. MakeCode saves your project in this browser on its own. Signing in with the family account (`Sign In`, top right) adds cloud backup, so it opens on another computer and survives a cleared browser.\n\nBuild the dice:\n\n1. Open https://makecode.microbit.org and start a new project.\n2. From `Variables`, make a new variable called `roll`.\n3. From `Input`, drag an `on shake` block onto the canvas.\n4. From `Variables`, snap a `set roll to` block inside `on shake`.\n5. From `Math`, drag a `pick random 1 to 6` block into the empty slot of `set roll to`.\n6. From `Basic`, snap a `show number` block under that and drop in the `roll` variable.\n7. From `Variables`, make a second variable called `roll2`.\n8. Still inside `on shake`, add another `set roll2 to`, with its own `pick random 1 to 6` block.\n9. From `Basic`, snap a `show number` block right after the first, showing `roll2`.\n10. From `Logic`, drag an `if then` block below the two `set` blocks.\n11. Build the check `roll = roll2` using the `roll` variable, an `=` block from `Logic`, and `roll2`.\n12. Inside the `if`, snap a `show icon` block and pick a star.\n\nEvery shake picks fresh numbers, shows both rolls, then shows a star whenever they match.\n\nRun it on the board:\n\n1. Press `Download`.\n2. If asked, choose `Connect device` and pick your micro:bit from the list.\n3. If nothing is asked, drag the downloaded `.hex` file onto the `MICROBIT` drive instead.\n4. Wait for the yellow light on the back of the board to stop flashing.\n5. Unplug the USB cable, clip on the battery pack, and shake it a few times.",
+      "checklist": [
+        "Shaking the badge shows a fresh roll between 1 and 6",
+        "A second variable rolls a second number the same way",
+        "Doubles show the star, every time roll and roll2 match",
+        "It runs from the battery pack, not only USB"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w02-build-04",
+      "title": "Bug diary",
+      "body": "Write one line for each thing that did not work the first time and what you tried."
+    },
+    {
+      "kind": "artifact",
+      "id": "s1-w02-build-05",
+      "title": "Show it",
+      "prompt": "Photo of the dice running, and paste the MakeCode share link or the JavaScript from the editor",
+      "accepts": ["photo", "code"]
+    },
+    {
+      "kind": "log",
+      "id": "s1-w02-build-06",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s1-w02-build-x01",
+      "kind": "bonus",
+      "title": "Count the doubles",
+      "minutes": 15,
+      "body": "Turn your dice into a doubles tracker.\n\n1. From `Variables`, make a new variable called `doublesCount` and set it to 0 in `on start`.\n2. Inside the `if roll = roll2` block, snap a `change doublesCount by 1` block.\n3. From `Input`, add an `on button A pressed` block.\n4. Inside it, snap a `show number` block showing `doublesCount`.\n5. Press `Download` and shake several times to build up a count.\n\nWhat to notice: doubles come up more often than you might expect, about once every six shakes."
+    },
+    {
+      "id": "s1-w02-build-x02",
+      "kind": "bonus",
+      "title": "A special icon for double six",
+      "minutes": 20,
+      "body": "Give the badge two different reactions instead of one star for every match.\n\n1. Keep the `if roll = roll2` block from the build.\n2. From `Logic`, drag an `and` block and build `roll = roll2` and `roll = 6` inside it.\n3. Replace the outer `if` condition with this new combined check.\n4. Inside the `if`, snap a `show icon` block and pick a diamond.\n5. Click the `+` at the bottom of that `if` block to add an `else`. Inside the `else`, snap a plain `if roll = roll2` check with the star inside it, so an ordinary double shows the star and a double six shows only the diamond.\n6. Press `Download` and shake until you get a double six.\n\nWhat to notice: a double six needs both dice to match one exact number out of six, rarer than an ordinary double.",
+      "figure": {
+        "kind": "leds",
+        "alt": "A micro:bit screen showing a small diamond outline, for the special double six ending.",
+        "spec": {
+          "frames": [
+            {
+              "rows": [
+                ".....",
+                "..#..",
+                ".#.#.",
+                "..#..",
+                "....."
+              ],
+              "ms": 1000
+            }
+          ],
+          "caption": "The diamond icon marks a double six, separate from the plain star used for every other double."
+        }
+      }
+    },
+    {
+      "id": "s1-w02-build-x03",
+      "kind": "invent",
+      "title": "Design your own two-player twist",
+      "minutes": 25,
+      "body": "What would make rolling the dice more exciting for two players?\n\nDesign one new rule for your two-player dice game.\n\nIt must use the `roll` and `roll2` variables you already made.\nIt must have one number you choose by testing, like a score to reach or a bonus value.\nIt must be played with a real second person, for at least three rounds.\n\nSketch your rule on paper before you build it.\n\nHow to know it works: someone else understands the new rule after you explain it once."
+    },
+    {
+      "id": "s1-w02-build-x04",
+      "kind": "bonus",
+      "title": "What is the accelerometer asking?",
+      "minutes": 15,
+      "ideaId": "ask-the-world",
+      "body": "Find out how differently the accelerometer answers when the micro:bit sits still, moves slowly, and shakes.\n\n1. Predict first: guess the number the accelerometer will show while your micro:bit sits still on the table. Write your number in the Maker's Log.\n2. Open your project and add a `show number (acceleration (z))` block inside `forever`, right after your shake code.\n3. Download the program, then read the number while the micro:bit lies still on the table.\n4. Slide it slowly across the table and read the number again.\n5. Shake it hard and read the number a third time, then write down all three numbers.\n\nCompare: how close was the still number to your prediction, and how much bigger did shaking make it?\n\nTeach it: tell a grown-up in two sentences why a sensor that never moves on its own still answers a different number each time."
+    }
+  ]
+}

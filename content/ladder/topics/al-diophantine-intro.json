@@ -1,0 +1,2128 @@
+{
+  "id": "al-diophantine-intro",
+  "idea": {
+    "body": "Some equations have two unknowns and only one equation, so ordinarily any real number could work. Requiring both letters to be whole numbers changes everything. Now only some pairs fit, sometimes just one, sometimes several, sometimes none at all. 3x + 5y = 23 has the solution x = 6, y = 1, since 3 times 6, plus 5 times 1, is 23. A solution exists only when the greatest common divisor of the two coefficients divides evenly into the total on the other side. Once one whole number solution is found, more can often be found by stepping. Add the second coefficient to x and subtract the first coefficient from y, and the total stays exactly the same."
+  },
+  "workedExample": {
+    "prompt": "A robot's parts bin holds gears worth 4 grams and springs worth 7 grams, totaling 43 grams. If there are 3 springs, how many gears are there?",
+    "steps": [
+      "3 springs at 7 grams each weigh 21 grams.",
+      "That leaves 43 minus 21, which is 22 grams, for the gears.",
+      "22 grams divided by 4 does not divide evenly, so 3 springs cannot be the right count.",
+      "Trying 2 springs instead: 2 times 7 is 14, leaving 43 minus 14, which is 29, still not a multiple of 4.",
+      "Trying 4 springs: 4 times 7 is 28, leaving 43 minus 28, which is 15, still not a multiple of 4.",
+      "Trying 1 spring: 1 times 7 is 7, leaving 43 minus 7, which is 36, and 36 divided by 4 is 9 gears exactly."
+    ]
+  },
+  "ways": [
+    {
+      "id": "al-diophantine-intro-w1",
+      "name": "Guess one solution, then step by the coefficients",
+      "when": "Use this default method to find one whole number solution, then more.",
+      "steps": [
+        "Try small whole numbers: x = 6, y = 1. Check: 3 times 6, plus 5 times 1, is 23.",
+        "That fits, so (6, 1) solves the equation.",
+        "Step to a new solution: subtract 5 from x and add 3 to y, the reverse of the usual step.",
+        "x = 6 - 5 = 1, y = 1 + 3 = 4. Check: 3 times 1 plus 5 times 4 is 23."
+      ],
+      "example": "3x + 5y = 23, whole numbers only",
+      "answer": "x = 6, y = 1 (also x = 1, y = 4)",
+      "trap": "Stepping in the direction that pushes x or y negative instead of trying the other way."
+    },
+    {
+      "id": "al-diophantine-intro-w2",
+      "name": "The modular restriction",
+      "when": "Use this to narrow down which whole numbers are even worth trying.",
+      "steps": [
+        "Rearrange: 3x = 23 - 5y, so 3x is congruent to 23 mod 5.",
+        "23 mod 5 is 3, so 3x is congruent to 3 mod 5, which means x is congruent to 1 mod 5.",
+        "Whole number values of x that fit are 1, 6, 11, and so on.",
+        "Test x = 1: y = (23 - 3)/5 = 4. Test x = 6: y = (23 - 18)/5 = 1. Both work."
+      ],
+      "example": "3x + 5y = 23, whole numbers only",
+      "answer": "x = 1, y = 4 or x = 6, y = 1",
+      "trap": "Forgetting that y must also stay a whole number, so not every matching x works."
+    },
+    {
+      "id": "al-diophantine-intro-w3",
+      "name": "The table of one variable",
+      "when": "Use this when a quick sweep through small values is easier than any shortcut.",
+      "steps": [
+        "Make a table of x from 0 up, computing y = (23 - 3x)/5 each time.",
+        "x = 0 gives y = 4.6, not whole. x = 1 gives y = 4, whole.",
+        "x = 2 gives 3.4, x = 3 gives 2.8, x = 4 gives 2.2, x = 5 gives 1.6, all not whole.",
+        "x = 6 gives y = 1, whole. The table stops once x makes 23 - 3x negative."
+      ],
+      "example": "3x + 5y = 23, whole numbers only",
+      "answer": "x = 1, y = 4 or x = 6, y = 1",
+      "trap": "Stopping the table too early and missing a whole number value further along.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A table of x from 0 to 6 against y = (23 - 3x)/5, with the two whole number rows highlighted.",
+        "spec": {
+          "w": 240,
+          "h": 220,
+          "items": [
+            {
+              "t": "text",
+              "x": 50,
+              "y": 16,
+              "s": "x",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 16,
+              "s": "y",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 50,
+              "y": 42,
+              "s": "0",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 42,
+              "s": "4.6",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 48,
+              "w": 180,
+              "h": 26,
+              "fill": "accent",
+              "label": "x=1, y=4"
+            },
+            {
+              "t": "text",
+              "x": 50,
+              "y": 94,
+              "s": "2",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 94,
+              "s": "3.4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 50,
+              "y": 120,
+              "s": "3",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 120,
+              "s": "2.8",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 50,
+              "y": 146,
+              "s": "4",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 146,
+              "s": "2.2",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 50,
+              "y": 172,
+              "s": "5",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 172,
+              "s": "1.6",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 178,
+              "w": 180,
+              "h": 26,
+              "fill": "accent",
+              "label": "x=6, y=1"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "The table, headers only, no rows.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                },
+                "13": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Make a table of x from 0 up,",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                },
+                "13": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "x = 0 gives y = 4.6, not",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                },
+                "13": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "x = 2 gives 3.4, x = 3",
+              "set": {
+                "13": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "x = 6 gives y = 1, whole.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-al-diophantine-intro-p01",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "3x + 4y = 23 has a whole number solution with y = 2. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Put y = 2 into the equation: 3x + 8 = 23.",
+        "Subtract 8 from both sides: 3x = 15.",
+        "Divide by 3: x = 5."
+      ],
+      "useAgain": "when one letter of a two-letter equation is already known as a whole number.",
+      "hints": [
+        "Substitute the known value of y into the equation first.",
+        "Once y is replaced by a number, this is an ordinary one-letter equation."
+      ],
+      "socraticHint": "Once y is replaced by 2, what one-step equation is left for x?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "3x + 5y = 31 has a whole number solution with y = 2. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p02",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "2x + 5y = 19 has a whole number solution with y = 3. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Put y = 3 into the equation: 2x + 15 = 19.",
+        "Subtract 15 from both sides: 2x = 4.",
+        "Divide by 2: x = 2."
+      ],
+      "useAgain": "when one letter of a two-letter equation is already known as a whole number.",
+      "hints": [
+        "Substitute the known value of y into the equation first.",
+        "Once y is replaced by a number, this is an ordinary one-letter equation."
+      ],
+      "socraticHint": "Once y is replaced by 3, what one-step equation is left for x?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "2x + 7y = 27 has a whole number solution with y = 3. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p03",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "5x + 2y = 21 has a whole number solution with y = 3. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Put y = 3 into the equation: 5x + 6 = 21.",
+        "Subtract 6 from both sides: 5x = 15.",
+        "Divide by 5: x = 3."
+      ],
+      "useAgain": "when one letter of a two-letter equation is already known as a whole number.",
+      "hints": [
+        "Substitute the known value of y into the equation first.",
+        "Once y is replaced by a number, this is an ordinary one-letter equation."
+      ],
+      "socraticHint": "Once y is replaced by 3, what one-step equation is left for x?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "5x + 3y = 32 has a whole number solution with y = 4. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p04",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "4x + 3y = 31 has a whole number solution with y = 5. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Put y = 5 into the equation: 4x + 15 = 31.",
+        "Subtract 15 from both sides: 4x = 16.",
+        "Divide by 4: x = 4."
+      ],
+      "useAgain": "when one letter of a two-letter equation is already known as a whole number.",
+      "hints": [
+        "Substitute the known value of y into the equation first.",
+        "Once y is replaced by a number, this is an ordinary one-letter equation."
+      ],
+      "socraticHint": "Once y is replaced by 5, what one-step equation is left for x?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "4x + 5y = 27 has a whole number solution with y = 3. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p05",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "6x + 5y = 28 has a whole number solution with y = 2. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Put y = 2 into the equation: 6x + 10 = 28.",
+        "Subtract 10 from both sides: 6x = 18.",
+        "Divide by 6: x = 3."
+      ],
+      "useAgain": "when one letter of a two-letter equation is already known as a whole number.",
+      "hints": [
+        "Substitute the known value of y into the equation first.",
+        "Once y is replaced by a number, this is an ordinary one-letter equation."
+      ],
+      "socraticHint": "Once y is replaced by 2, what one-step equation is left for x?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "6x + 7y = 39 has a whole number solution with y = 3. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p06",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 2x + 3y = 12?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Try each whole number value of x from 0 up, and check whether the leftover divides evenly by 3.",
+        "That leftover check works out 3 time(s) before x gets too large."
+      ],
+      "useAgain": "when every whole number solution to a two-letter equation needs to be counted.",
+      "hints": [
+        "Start with x = 0 and increase it, checking whether 12 minus 2 times x divides evenly by 3.",
+        "Stop once x is so large that the leftover would have to be negative."
+      ],
+      "socraticHint": "For which whole number values of x does 12 minus 2 times x divide evenly by 3?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 2x + 3y = 18?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p07",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 3x + 2y = 18?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Try each whole number value of x from 0 up, and check whether the leftover divides evenly by 2.",
+        "That leftover check works out 4 time(s) before x gets too large."
+      ],
+      "useAgain": "when every whole number solution to a two-letter equation needs to be counted.",
+      "hints": [
+        "Start with x = 0 and increase it, checking whether 18 minus 3 times x divides evenly by 2.",
+        "Stop once x is so large that the leftover would have to be negative."
+      ],
+      "socraticHint": "For which whole number values of x does 18 minus 3 times x divide evenly by 2?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 3x + 2y = 24?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p08",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 2x + 5y = 20?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Try each whole number value of x from 0 up, and check whether the leftover divides evenly by 5.",
+        "That leftover check works out 3 time(s) before x gets too large."
+      ],
+      "useAgain": "when every whole number solution to a two-letter equation needs to be counted.",
+      "hints": [
+        "Start with x = 0 and increase it, checking whether 20 minus 2 times x divides evenly by 5.",
+        "Stop once x is so large that the leftover would have to be negative."
+      ],
+      "socraticHint": "For which whole number values of x does 20 minus 2 times x divide evenly by 5?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 2x + 5y = 30?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p09",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 4x + 3y = 24?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Try each whole number value of x from 0 up, and check whether the leftover divides evenly by 3.",
+        "That leftover check works out 3 time(s) before x gets too large."
+      ],
+      "useAgain": "when every whole number solution to a two-letter equation needs to be counted.",
+      "hints": [
+        "Start with x = 0 and increase it, checking whether 24 minus 4 times x divides evenly by 3.",
+        "Stop once x is so large that the leftover would have to be negative."
+      ],
+      "socraticHint": "For which whole number values of x does 24 minus 4 times x divide evenly by 3?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 4x + 3y = 36?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p10",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 3x + 4y = 24?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Try each whole number value of x from 0 up, and check whether the leftover divides evenly by 4.",
+        "That leftover check works out 3 time(s) before x gets too large."
+      ],
+      "useAgain": "when every whole number solution to a two-letter equation needs to be counted.",
+      "hints": [
+        "Start with x = 0 and increase it, checking whether 24 minus 3 times x divides evenly by 4.",
+        "Stop once x is so large that the leftover would have to be negative."
+      ],
+      "socraticHint": "For which whole number values of x does 24 minus 3 times x divide evenly by 4?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 3x + 4y = 36?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p11",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "truefalse",
+      "prompt": "2x + 4y = 7 has a whole number solution.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Every value 2x + 4y can reach is a multiple of the greatest common divisor of 2 and 4, which is 2.",
+        "7 is not a multiple of 2, so a whole number solution does not exist."
+      ],
+      "useAgain": "when you need to check whether a two-letter equation can have a whole number solution at all.",
+      "hints": [
+        "Find the greatest common divisor of 2 and 4.",
+        "Check whether 7 is a multiple of that greatest common divisor."
+      ],
+      "socraticHint": "Is 7 a multiple of the greatest common divisor of 2 and 4?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "3x + 6y = 8 has a whole number solution.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p12",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "truefalse",
+      "prompt": "3x + 6y = 15 has a whole number solution.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Every value 3x + 6y can reach is a multiple of the greatest common divisor of 3 and 6, which is 3.",
+        "15 is a multiple of 3, so a whole number solution does exist."
+      ],
+      "useAgain": "when you need to check whether a two-letter equation can have a whole number solution at all.",
+      "hints": [
+        "Find the greatest common divisor of 3 and 6.",
+        "Check whether 15 is a multiple of that greatest common divisor."
+      ],
+      "socraticHint": "Is 15 a multiple of the greatest common divisor of 3 and 6?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "4x + 6y = 10 has a whole number solution.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p13",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "truefalse",
+      "prompt": "2x + 6y = 11 has a whole number solution.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Every value 2x + 6y can reach is a multiple of the greatest common divisor of 2 and 6, which is 2.",
+        "11 is not a multiple of 2, so a whole number solution does not exist."
+      ],
+      "useAgain": "when you need to check whether a two-letter equation can have a whole number solution at all.",
+      "hints": [
+        "Find the greatest common divisor of 2 and 6.",
+        "Check whether 11 is a multiple of that greatest common divisor."
+      ],
+      "socraticHint": "Is 11 a multiple of the greatest common divisor of 2 and 6?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "3x + 9y = 20 has a whole number solution.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p14",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "order",
+      "prompt": "Put these steps in order to solve 3x + 4y = 23 for x when y = 2.",
+      "items": [
+        "Divide both sides by 3 to get x = 5",
+        "Subtract 8 from both sides to get 3x = 15",
+        "Substitute y = 2 to get 3x + 8 = 23"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "The known value of y always goes in first.",
+        "Undo the addition before the multiplication, just as with any equation.",
+        "Dividing last isolates x on its own."
+      ],
+      "useAgain": "when you need to lay out solving a two-letter equation for a known letter in the right order.",
+      "hints": [
+        "The substitution has to happen before any other step.",
+        "Undo the addition or subtraction before the multiplication."
+      ],
+      "socraticHint": "Which has to happen first: substituting the known value, or undoing the addition?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Put these steps in order to solve 2x + 5y = 19 for x when y = 3.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0
+          ]
+        },
+        "items": [
+          "Divide both sides by 2 to get x = 2",
+          "Subtract 15 from both sides to get 2x = 4",
+          "Substitute y = 3 to get 2x + 15 = 19"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p15",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "order",
+      "prompt": "Put these steps in order to check whether 2x + 4y = 7 has a whole number solution.",
+      "items": [
+        "7 is not a multiple of 2, so no whole number solution exists",
+        "Find the greatest common divisor of 2 and 4, which is 2",
+        "Check whether 7 is a multiple of that greatest common divisor"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "The greatest common divisor of the two coefficients is found first.",
+        "That divisor is then checked against the total on the other side.",
+        "The conclusion follows directly from whether that division works evenly."
+      ],
+      "useAgain": "when you need to lay out checking a two-letter equation for solutions in the right order.",
+      "hints": [
+        "The greatest common divisor of the coefficients has to be found before anything else.",
+        "The final conclusion depends on whether the total is a multiple of that divisor."
+      ],
+      "socraticHint": "What has to be found about the coefficients before the total can be checked against it?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Put these steps in order to check whether 3x + 6y = 20 has a whole number solution.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        },
+        "items": [
+          "20 is not a multiple of 3, so no whole number solution exists",
+          "Find the greatest common divisor of 3 and 6, which is 3",
+          "Check whether 20 is a multiple of that greatest common divisor"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p16",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "A game awards points in bundles worth 3 and bundles worth 7. A total of 41 points came from 5 bundles worth 7. How many bundles worth 3 were used?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The 5 bundles worth 7 account for 35 of the total 41.",
+        "That leaves 6 to come from bundles worth 3.",
+        "6 divided by 3 is 2."
+      ],
+      "useAgain": "when a total splits between two bundle sizes and one count is already known.",
+      "hints": [
+        "Work out how much of the total the known count already accounts for.",
+        "Divide what is left by the value of the unknown bundles."
+      ],
+      "socraticHint": "How much of the total is already used up by the known count?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game awards points in bundles worth 3 and bundles worth 8. A total of 41 points came from 4 bundles worth 8. How many bundles worth 3 were used?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p17",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "A rover's spare parts bin has screws worth 4 grams and bolts worth 6 grams. The bin weighs 30 grams total, from 3 bolts. How many screws are in the bin?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The 3 bundles worth 6 account for 18 of the total 30.",
+        "That leaves 12 to come from bundles worth 4.",
+        "12 divided by 4 is 3."
+      ],
+      "useAgain": "when a total splits between two bundle sizes and one count is already known.",
+      "hints": [
+        "Work out how much of the total the known count already accounts for.",
+        "Divide what is left by the value of the unknown bundles."
+      ],
+      "socraticHint": "How much of the total is already used up by the known count?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rover's spare parts bin has screws worth 5 grams and bolts worth 4 grams. The bin weighs 46 grams total, from 4 bolts. How many screws are in the bin?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p18",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "A 3D printer uses filament in spools of 2 meters and 9 meters. A print job used 35 meters total, from 3 spools of 9 meters. How many spools of 2 meters were used?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The 3 bundles worth 9 account for 27 of the total 35.",
+        "That leaves 8 to come from bundles worth 2.",
+        "8 divided by 2 is 4."
+      ],
+      "useAgain": "when a total splits between two bundle sizes and one count is already known.",
+      "hints": [
+        "Work out how much of the total the known count already accounts for.",
+        "Divide what is left by the value of the unknown bundles."
+      ],
+      "socraticHint": "How much of the total is already used up by the known count?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer uses filament in spools of 3 meters and 8 meters. A print job used 47 meters total, from 4 spools of 8 meters. How many spools of 3 meters were used?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p19",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "A kitchen scale shows a tray of small weights worth 5 grams and large weights worth 8 grams totaling 47 grams, using 4 large weights. How many small weights are on the tray?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The 4 bundles worth 8 account for 32 of the total 47.",
+        "That leaves 15 to come from bundles worth 5.",
+        "15 divided by 5 is 3."
+      ],
+      "useAgain": "when a total splits between two bundle sizes and one count is already known.",
+      "hints": [
+        "Work out how much of the total the known count already accounts for.",
+        "Divide what is left by the value of the unknown bundles."
+      ],
+      "socraticHint": "How much of the total is already used up by the known count?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A kitchen scale shows a tray of small weights worth 6 grams and large weights worth 7 grams totaling 45 grams, using 3 large weights. How many small weights are on the tray?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p20",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "A rocket stage uses fuel cells worth 3 units and 5 units of thrust. A total of 32 thrust units came from 4 cells worth 5. How many cells worth 3 were used?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The 4 bundles worth 5 account for 20 of the total 32.",
+        "That leaves 12 to come from bundles worth 3.",
+        "12 divided by 3 is 4."
+      ],
+      "useAgain": "when a total splits between two bundle sizes and one count is already known.",
+      "hints": [
+        "Work out how much of the total the known count already accounts for.",
+        "Divide what is left by the value of the unknown bundles."
+      ],
+      "socraticHint": "How much of the total is already used up by the known count?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rocket stage uses fuel cells worth 4 units and 6 units of thrust. A total of 38 thrust units came from 3 cells worth 6. How many cells worth 4 were used?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p21",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "In 2x + 3y = 18, with x and y both 0 or more, what is the largest possible x?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "List the whole number values of x that leave a multiple of 3 behind.",
+        "The largest one of those values of x is 9."
+      ],
+      "useAgain": "when several whole number solutions exist and only the extreme one is wanted.",
+      "hints": [
+        "Try whole number values of x from 0 upward, checking which leave a leftover divisible by 3.",
+        "Keep track of every value of x that works, then pick the largest one."
+      ],
+      "socraticHint": "Of all the whole number values of x that work, which one is largest?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In 3x + 4y = 24, with x and y both 0 or more, what is the largest possible x?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p22",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "In 3x + 5y = 30, with x and y both 0 or more, what is the smallest possible x?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "List the whole number values of x that leave a multiple of 5 behind.",
+        "The smallest one of those values of x is 0."
+      ],
+      "useAgain": "when several whole number solutions exist and only the extreme one is wanted.",
+      "hints": [
+        "Try whole number values of x from 0 upward, checking which leave a leftover divisible by 5.",
+        "Keep track of every value of x that works, then pick the smallest one."
+      ],
+      "socraticHint": "Of all the whole number values of x that work, which one is smallest?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In 2x + 7y = 28, with x and y both 0 or more, what is the smallest possible x?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p23",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "In 4x + 3y = 27, with x and y both 0 or more, what is the largest possible x?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "List the whole number values of x that leave a multiple of 3 behind.",
+        "The largest one of those values of x is 6."
+      ],
+      "useAgain": "when several whole number solutions exist and only the extreme one is wanted.",
+      "hints": [
+        "Try whole number values of x from 0 upward, checking which leave a leftover divisible by 3.",
+        "Keep track of every value of x that works, then pick the largest one."
+      ],
+      "socraticHint": "Of all the whole number values of x that work, which one is largest?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In 5x + 2y = 24, with x and y both 0 or more, what is the largest possible x?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p24",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "In 2x + 9y = 36, with x and y both 0 or more, what is the smallest possible x?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "List the whole number values of x that leave a multiple of 9 behind.",
+        "The smallest one of those values of x is 0."
+      ],
+      "useAgain": "when several whole number solutions exist and only the extreme one is wanted.",
+      "hints": [
+        "Try whole number values of x from 0 upward, checking which leave a leftover divisible by 9.",
+        "Keep track of every value of x that works, then pick the smallest one."
+      ],
+      "socraticHint": "Of all the whole number values of x that work, which one is smallest?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In 3x + 8y = 40, with x and y both 0 or more, what is the smallest possible x?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p25",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "In 5x + 4y = 40, with x and y both 0 or more, what is the largest possible x?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "List the whole number values of x that leave a multiple of 4 behind.",
+        "The largest one of those values of x is 8."
+      ],
+      "useAgain": "when several whole number solutions exist and only the extreme one is wanted.",
+      "hints": [
+        "Try whole number values of x from 0 upward, checking which leave a leftover divisible by 4.",
+        "Keep track of every value of x that works, then pick the largest one."
+      ],
+      "socraticHint": "Of all the whole number values of x that work, which one is largest?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In 6x + 5y = 45, with x and y both 0 or more, what is the largest possible x?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p26",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "In 3x + 7y = 42, with x and y both 0 or more, what is the largest possible x?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "List the whole number values of x that leave a multiple of 7 behind.",
+        "The largest one of those values of x is 14."
+      ],
+      "useAgain": "when several whole number solutions exist and only the extreme one is wanted.",
+      "hints": [
+        "Try whole number values of x from 0 upward, checking which leave a leftover divisible by 7.",
+        "Keep track of every value of x that works, then pick the largest one."
+      ],
+      "socraticHint": "Of all the whole number values of x that work, which one is largest?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In 4x + 9y = 54, with x and y both 0 or more, what is the largest possible x?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p27",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "In 2x + 11y = 44, with x and y both 0 or more, what is the smallest possible x?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "List the whole number values of x that leave a multiple of 11 behind.",
+        "The smallest one of those values of x is 0."
+      ],
+      "useAgain": "when several whole number solutions exist and only the extreme one is wanted.",
+      "hints": [
+        "Try whole number values of x from 0 upward, checking which leave a leftover divisible by 11.",
+        "Keep track of every value of x that works, then pick the smallest one."
+      ],
+      "socraticHint": "Of all the whole number values of x that work, which one is smallest?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In 5x + 6y = 60, with x and y both 0 or more, what is the smallest possible x?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p28",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "In 4x + 7y = 56, with x and y both 0 or more, what is the largest possible x?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "List the whole number values of x that leave a multiple of 7 behind.",
+        "The largest one of those values of x is 14."
+      ],
+      "useAgain": "when several whole number solutions exist and only the extreme one is wanted.",
+      "hints": [
+        "Try whole number values of x from 0 upward, checking which leave a leftover divisible by 7.",
+        "Keep track of every value of x that works, then pick the largest one."
+      ],
+      "socraticHint": "Of all the whole number values of x that work, which one is largest?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In 3x + 10y = 50, with x and y both 0 or more, what is the largest possible x?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p29",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "order",
+      "prompt": "Put these steps in order to find the smallest whole number x solving 3x + 5y = 30.",
+      "items": [
+        "Try x = 0: leftover 30 is a multiple of 5, so it works",
+        "Check whether the leftover divides evenly by 5",
+        "Start with the smallest possible value, x = 0"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "Always start the search from the smallest possible value of x.",
+        "Each value of x is checked the same way before moving to the next.",
+        "The first value that works, starting from the smallest, is the answer."
+      ],
+      "useAgain": "when you need to lay out the search for the smallest whole number solution in order.",
+      "hints": [
+        "The search always begins at the smallest allowed value.",
+        "Every candidate value gets the same leftover check."
+      ],
+      "socraticHint": "Where does the search for the smallest solution always begin?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to find the smallest whole number x solving 2x + 7y = 28.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0
+          ]
+        },
+        "items": [
+          "Try x = 0: leftover 28 is a multiple of 7, so it works",
+          "Check whether the leftover divides evenly by 7",
+          "Start with the smallest possible value, x = 0"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p30",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "order",
+      "prompt": "Put these steps in order to count the whole number solutions to 2x + 3y = 12.",
+      "items": [
+        "Count how many values of x passed the check",
+        "Try every whole number x from 0 up to 6",
+        "For each x, check whether 12 minus 2x divides evenly by 3"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Every candidate value of x in the allowed range is tried.",
+        "Each one is checked the same way for a valid partner y.",
+        "The total count only comes after every candidate has been checked."
+      ],
+      "useAgain": "when you need to lay out counting every whole number solution in the right order.",
+      "hints": [
+        "The full range of x values has to be tried before any counting happens.",
+        "The count is the very last step, after every check is done."
+      ],
+      "socraticHint": "Can the total count be known before every candidate value of x has been checked?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to count the whole number solutions to 3x + 2y = 18.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        },
+        "items": [
+          "Count how many values of x passed the check",
+          "Try every whole number x from 0 up to 6",
+          "For each x, check whether 18 minus 3x divides evenly by 2"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p31",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "A vending machine only accepts exact change in coins worth 3 and 5 units, and gives no change back. What is the largest amount it can never make exactly?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Since 3 and 5 share no common factor, every large enough amount can eventually be made from them.",
+        "The formula for the largest impossible amount is 3 times 5, minus 3, minus 5.",
+        "3 times 5 is 15; subtracting 3 and 5 leaves 7."
+      ],
+      "useAgain": "when two coin or unit sizes share no common factor and the largest unreachable total is wanted.",
+      "hints": [
+        "Since 3 and 5 share no common factor, only finitely many amounts are impossible to make.",
+        "The largest impossible amount is 3 times 5 minus 3 minus 5."
+      ],
+      "socraticHint": "What is 3 times 5, minus 3, minus 5?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine only accepts exact change in coins worth 4 and 9 units, and gives no change back. What is the largest amount it can never make exactly?",
+        "answer": {
+          "kind": "number",
+          "value": "23"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p32",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "A vending machine only accepts exact change in coins worth 4 and 5 units, and gives no change back. What is the largest amount it can never make exactly?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "Since 4 and 5 share no common factor, every large enough amount can eventually be made from them.",
+        "The formula for the largest impossible amount is 4 times 5, minus 4, minus 5.",
+        "4 times 5 is 20; subtracting 4 and 5 leaves 11."
+      ],
+      "useAgain": "when two coin or unit sizes share no common factor and the largest unreachable total is wanted.",
+      "hints": [
+        "Since 4 and 5 share no common factor, only finitely many amounts are impossible to make.",
+        "The largest impossible amount is 4 times 5 minus 4 minus 5."
+      ],
+      "socraticHint": "What is 4 times 5, minus 4, minus 5?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine only accepts exact change in coins worth 5 and 8 units, and gives no change back. What is the largest amount it can never make exactly?",
+        "answer": {
+          "kind": "number",
+          "value": "27"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p33",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "A vending machine only accepts exact change in coins worth 3 and 7 units, and gives no change back. What is the largest amount it can never make exactly?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "Since 3 and 7 share no common factor, every large enough amount can eventually be made from them.",
+        "The formula for the largest impossible amount is 3 times 7, minus 3, minus 7.",
+        "3 times 7 is 21; subtracting 3 and 7 leaves 11."
+      ],
+      "useAgain": "when two coin or unit sizes share no common factor and the largest unreachable total is wanted.",
+      "hints": [
+        "Since 3 and 7 share no common factor, only finitely many amounts are impossible to make.",
+        "The largest impossible amount is 3 times 7 minus 3 minus 7."
+      ],
+      "socraticHint": "What is 3 times 7, minus 3, minus 7?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine only accepts exact change in coins worth 5 and 6 units, and gives no change back. What is the largest amount it can never make exactly?",
+        "answer": {
+          "kind": "number",
+          "value": "19"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p34",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "A vending machine only accepts exact change in coins worth 2 and 9 units, and gives no change back. What is the largest amount it can never make exactly?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Since 2 and 9 share no common factor, every large enough amount can eventually be made from them.",
+        "The formula for the largest impossible amount is 2 times 9, minus 2, minus 9.",
+        "2 times 9 is 18; subtracting 2 and 9 leaves 7."
+      ],
+      "useAgain": "when two coin or unit sizes share no common factor and the largest unreachable total is wanted.",
+      "hints": [
+        "Since 2 and 9 share no common factor, only finitely many amounts are impossible to make.",
+        "The largest impossible amount is 2 times 9 minus 2 minus 9."
+      ],
+      "socraticHint": "What is 2 times 9, minus 2, minus 9?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine only accepts exact change in coins worth 3 and 8 units, and gives no change back. What is the largest amount it can never make exactly?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p35",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "A vending machine only accepts exact change in coins worth 5 and 7 units, and gives no change back. What is the largest amount it can never make exactly?",
+      "answer": {
+        "kind": "number",
+        "value": "23"
+      },
+      "explanation": [
+        "Since 5 and 7 share no common factor, every large enough amount can eventually be made from them.",
+        "The formula for the largest impossible amount is 5 times 7, minus 5, minus 7.",
+        "5 times 7 is 35; subtracting 5 and 7 leaves 23."
+      ],
+      "useAgain": "when two coin or unit sizes share no common factor and the largest unreachable total is wanted.",
+      "hints": [
+        "Since 5 and 7 share no common factor, only finitely many amounts are impossible to make.",
+        "The largest impossible amount is 5 times 7 minus 5 minus 7."
+      ],
+      "socraticHint": "What is 5 times 7, minus 5, minus 7?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine only accepts exact change in coins worth 2 and 5 units, and gives no change back. What is the largest amount it can never make exactly?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p36",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 5x + 7y = 70?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Whole number solutions exist only where x increases by steps of 7 divided by their shared factor, keeping the leftover a multiple of 7.",
+        "Checking every valid x from 0 up to 14 gives 3 solution(s)."
+      ],
+      "useAgain": "when every whole number solution to a two-letter equation needs to be counted, even with larger numbers.",
+      "hints": [
+        "Try each whole number x from 0 up to 14, the largest x can be.",
+        "For each x, check whether 70 minus 5 times x divides evenly by 7."
+      ],
+      "socraticHint": "Once one solution is found, by how much does x have to jump to reach the next one?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 4x + 9y = 72?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p37",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 3x + 8y = 72?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Whole number solutions exist only where x increases by steps of 8 divided by their shared factor, keeping the leftover a multiple of 8.",
+        "Checking every valid x from 0 up to 24 gives 4 solution(s)."
+      ],
+      "useAgain": "when every whole number solution to a two-letter equation needs to be counted, even with larger numbers.",
+      "hints": [
+        "Try each whole number x from 0 up to 24, the largest x can be.",
+        "For each x, check whether 72 minus 3 times x divides evenly by 8."
+      ],
+      "socraticHint": "Once one solution is found, by how much does x have to jump to reach the next one?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 6x + 5y = 90?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p38",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 4x + 9y = 108?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Whole number solutions exist only where x increases by steps of 9 divided by their shared factor, keeping the leftover a multiple of 9.",
+        "Checking every valid x from 0 up to 27 gives 4 solution(s)."
+      ],
+      "useAgain": "when every whole number solution to a two-letter equation needs to be counted, even with larger numbers.",
+      "hints": [
+        "Try each whole number x from 0 up to 27, the largest x can be.",
+        "For each x, check whether 108 minus 4 times x divides evenly by 9."
+      ],
+      "socraticHint": "Once one solution is found, by how much does x have to jump to reach the next one?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 5x + 8y = 120?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p39",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 6x + 5y = 96?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Whole number solutions exist only where x increases by steps of 5 divided by their shared factor, keeping the leftover a multiple of 5.",
+        "Checking every valid x from 0 up to 16 gives 4 solution(s)."
+      ],
+      "useAgain": "when every whole number solution to a two-letter equation needs to be counted, even with larger numbers.",
+      "hints": [
+        "Try each whole number x from 0 up to 16, the largest x can be.",
+        "For each x, check whether 96 minus 6 times x divides evenly by 5."
+      ],
+      "socraticHint": "Once one solution is found, by how much does x have to jump to reach the next one?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 7x + 4y = 84?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p40",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 7x + 6y = 126?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Whole number solutions exist only where x increases by steps of 6 divided by their shared factor, keeping the leftover a multiple of 6.",
+        "Checking every valid x from 0 up to 18 gives 4 solution(s)."
+      ],
+      "useAgain": "when every whole number solution to a two-letter equation needs to be counted, even with larger numbers.",
+      "hints": [
+        "Try each whole number x from 0 up to 18, the largest x can be.",
+        "For each x, check whether 126 minus 7 times x divides evenly by 6."
+      ],
+      "socraticHint": "Once one solution is found, by how much does x have to jump to reach the next one?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many pairs of whole numbers (x, y), both 0 or more, satisfy 8x + 3y = 96?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p41",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "choice",
+      "prompt": "(5, 2) is one whole number solution to 3x + 5y = 25. Another solution is found by adding 5 to x and subtracting 3 from y. What is the next solution?",
+      "options": [
+        "(10, -1)",
+        "(10, 5)",
+        "(0, -1)",
+        "(0, 5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Adding 3 lots of 5 and taking away 5 lots of 3 changes the total by 15 minus 15, which is 0.",
+        "So x becomes 5 plus 5, and y becomes 2 minus 3.",
+        "The next solution is (10, -1)."
+      ],
+      "useAgain": "when one whole number solution is known and the next one needs to be stepped to.",
+      "hints": [
+        "Add 5 to the x-value and subtract 3 from the y-value.",
+        "The total stays the same because the two changes cancel out exactly."
+      ],
+      "socraticHint": "Why does adding 5 to x and subtracting 3 from y leave the total 25 unchanged?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "(2, 3) is one whole number solution to 7x + 6y = 32. Another solution is found by adding 6 to x and subtracting 7 from y. What is the next solution?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "(8, 10)",
+          "(8, -4)",
+          "(-4, 10)",
+          "(-4, -4)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p42",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "choice",
+      "prompt": "(4, 2) is one whole number solution to 2x + 7y = 22. Another solution is found by adding 7 to x and subtracting 2 from y. What is the next solution?",
+      "options": [
+        "(11, 0)",
+        "(11, 4)",
+        "(-3, 0)",
+        "(6, -5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Adding 2 lots of 7 and taking away 7 lots of 2 changes the total by 14 minus 14, which is 0.",
+        "So x becomes 4 plus 7, and y becomes 2 minus 2.",
+        "The next solution is (11, 0)."
+      ],
+      "useAgain": "when one whole number solution is known and the next one needs to be stepped to.",
+      "hints": [
+        "Add 7 to the x-value and subtract 2 from the y-value.",
+        "The total stays the same because the two changes cancel out exactly."
+      ],
+      "socraticHint": "Why does adding 7 to x and subtracting 2 from y leave the total 22 unchanged?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "(3, 3) is one whole number solution to 5x + 9y = 42. Another solution is found by adding 9 to x and subtracting 5 from y. What is the next solution?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "(12, 8)",
+          "(12, -2)",
+          "(-6, -2)",
+          "(-6, 8)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p43",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "choice",
+      "prompt": "(3, 4) is one whole number solution to 4x + 3y = 24. Another solution is found by adding 3 to x and subtracting 4 from y. What is the next solution?",
+      "options": [
+        "(6, 8)",
+        "(0, 0)",
+        "(7, 1)",
+        "(6, 0)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Adding 4 lots of 3 and taking away 3 lots of 4 changes the total by 12 minus 12, which is 0.",
+        "So x becomes 3 plus 3, and y becomes 4 minus 4.",
+        "The next solution is (6, 0)."
+      ],
+      "useAgain": "when one whole number solution is known and the next one needs to be stepped to.",
+      "hints": [
+        "Add 3 to the x-value and subtract 4 from the y-value.",
+        "The total stays the same because the two changes cancel out exactly."
+      ],
+      "socraticHint": "Why does adding 3 to x and subtracting 4 from y leave the total 24 unchanged?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "(5, 2) is one whole number solution to 6x + 5y = 40. Another solution is found by adding 5 to x and subtracting 6 from y. What is the next solution?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(0, 8)",
+          "(10, 8)",
+          "(10, -4)",
+          "(0, -4)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p44",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "choice",
+      "prompt": "(4, 3) is one whole number solution to 5x + 4y = 32. Another solution is found by adding 4 to x and subtracting 5 from y. What is the next solution?",
+      "options": [
+        "(8, 8)",
+        "(0, 8)",
+        "(8, -2)",
+        "(0, -2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Adding 5 lots of 4 and taking away 4 lots of 5 changes the total by 20 minus 20, which is 0.",
+        "So x becomes 4 plus 4, and y becomes 3 minus 5.",
+        "The next solution is (8, -2)."
+      ],
+      "useAgain": "when one whole number solution is known and the next one needs to be stepped to.",
+      "hints": [
+        "Add 4 to the x-value and subtract 5 from the y-value.",
+        "The total stays the same because the two changes cancel out exactly."
+      ],
+      "socraticHint": "Why does adding 4 to x and subtracting 5 from y leave the total 32 unchanged?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "(3, 6) is one whole number solution to 7x + 3y = 39. Another solution is found by adding 3 to x and subtracting 7 from y. What is the next solution?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "(6, 13)",
+          "(0, -1)",
+          "(0, 13)",
+          "(6, -1)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p45",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "choice",
+      "prompt": "(4, 3) is one whole number solution to 3x + 8y = 36. Another solution is found by adding 8 to x and subtracting 3 from y. What is the next solution?",
+      "options": [
+        "(12, 6)",
+        "(-4, 0)",
+        "(7, -5)",
+        "(12, 0)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Adding 3 lots of 8 and taking away 8 lots of 3 changes the total by 24 minus 24, which is 0.",
+        "So x becomes 4 plus 8, and y becomes 3 minus 3.",
+        "The next solution is (12, 0)."
+      ],
+      "useAgain": "when one whole number solution is known and the next one needs to be stepped to.",
+      "hints": [
+        "Add 8 to the x-value and subtract 3 from the y-value.",
+        "The total stays the same because the two changes cancel out exactly."
+      ],
+      "socraticHint": "Why does adding 8 to x and subtracting 3 from y leave the total 36 unchanged?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "(2, 5) is one whole number solution to 5x + 6y = 40. Another solution is found by adding 6 to x and subtracting 5 from y. What is the next solution?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(8, 10)",
+          "(-4, 0)",
+          "(8, 0)",
+          "(7, -1)"
+        ]
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-al-diophantine-intro-p46",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "How many pairs of positive whole numbers (x, y), both 1 or more, satisfy 3x + 5y = 100?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "x must be a multiple of 5, since 100 and the 5y term are both multiples of 5, so 3x must be too.",
+        "That makes x one of 5, 10, 15, 20, 25, 30, keeping y at least 1 every time.",
+        "There are 6 values in that list."
+      ],
+      "useAgain": "when solutions must be strictly positive, not just nonnegative.",
+      "hints": [
+        "Solve for y in terms of x first, then check which values of x keep y a positive whole number.",
+        "Remember x and y must both be 1 or more, not just 0 or more."
+      ],
+      "socraticHint": "How does requiring y to be positive, not just nonnegative, change which x values count?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many pairs of positive whole numbers (x, y), both 1 or more, satisfy 4x + 7y = 100?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p47",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "A vending machine accepts only coins worth 4 units and 7 units, giving no change back. How many positive whole number totals can it never make exactly?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "The largest total this machine can never make is 4 times 7, minus 4, minus 7, which is 17.",
+        "Every total from 0 to 17 pairs with another one that adds up to 17.",
+        "Exactly one total in each pair turns out to be possible, so exactly half of them are impossible.",
+        "That makes 9 impossible totals in all, since only positive ones count here."
+      ],
+      "useAgain": "when a machine or game uses two coin or bundle sizes and every impossible total needs counting, not just the largest one.",
+      "hints": [
+        "Find the largest total this machine can never make first, the same way as before.",
+        "Every total pairs with another that adds up to that largest one, and only one side of each pair is possible."
+      ],
+      "socraticHint": "If a total and its pair both add up to the largest impossible one, can both be possible at once?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A vending machine accepts only coins worth 3 units and 8 units, giving no change back. How many positive whole number totals can it never make exactly?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p48",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "Add up every whole number value of x, with x and y both 0 or more, that solves 5x + 3y = 50. What is the sum?",
+      "answer": {
+        "kind": "number",
+        "value": "22"
+      },
+      "explanation": [
+        "x must leave remainder 1 when divided by 3, since 50 leaves remainder 2 and 5x must match it mod 3.",
+        "That makes x one of 1, 4, 7, 10, staying between 0 and 10.",
+        "Adding those four values gives 22."
+      ],
+      "useAgain": "when every whole number solution's x-value needs to be combined, not just counted.",
+      "hints": [
+        "First find every value of x that works, the same way as counting solutions.",
+        "Then add those values together instead of just counting them."
+      ],
+      "socraticHint": "Once every valid x-value is listed, what is left to do with them?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Add up every whole number value of x, with x and y both 0 or more, that solves 7x + 4y = 56. What is the sum?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p49",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "In 6x + 5y = 90, with x and y both 0 or more, what is the smallest possible value of x + y?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Using more of the larger coefficient, 6, reaches the same total with fewer pieces overall.",
+        "x must be a multiple of 5, giving x = 0, 5, 10, or 15, with y = 18, 12, 6, or 0.",
+        "The sums x + y are 18, 17, 16, and 15, so 15 is the smallest."
+      ],
+      "useAgain": "when every whole number solution's x plus y needs to be compared, not just the solutions themselves.",
+      "hints": [
+        "List every whole number solution the way you would when counting them.",
+        "For each one, add x and y together, then compare the totals."
+      ],
+      "socraticHint": "Does using more of the larger coefficient or the smaller one tend to need fewer total pieces?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "In 4x + 7y = 84, with x and y both 0 or more, what is the smallest possible value of x + y?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-diophantine-intro-p50",
+      "lane": "skills",
+      "ideaId": "al-diophantine-intro",
+      "kind": "number",
+      "prompt": "3x + 7y = 100 has more than one solution in positive whole numbers, x and y both 1 or more. What is the difference between the largest and smallest possible values of x?",
+      "answer": {
+        "kind": "number",
+        "value": "28"
+      },
+      "explanation": [
+        "x must leave remainder 3 when divided by 7, since 100 leaves remainder 2 and 3x must match it mod 7.",
+        "That makes x one of 3, 10, 17, 24, 31, staying positive with y at least 1.",
+        "The largest is 31 and the smallest is 3, and 31 minus 3 is 28."
+      ],
+      "useAgain": "when the spread between two solutions' values needs comparing, not just the solutions themselves.",
+      "hints": [
+        "Find every positive whole number solution first, requiring both x and y to be 1 or more.",
+        "Compare the x-values across every solution you find."
+      ],
+      "socraticHint": "Once every positive solution is listed, what are its largest and smallest x-values?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "2x + 9y = 90 has more than one solution in positive whole numbers, x and y both 1 or more. What is the difference between the largest and smallest possible values of x?",
+        "answer": {
+          "kind": "number",
+          "value": "27"
+        }
+      }
+    }
+  ]
+}

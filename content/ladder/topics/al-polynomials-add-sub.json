@@ -1,0 +1,2487 @@
+{
+  "id": "al-polynomials-add-sub",
+  "idea": {
+    "body": "Add or subtract a polynomial by combining only the terms that match. A term matches another when it has the same variable raised to the same exponent. (3x^2 + 2x) + (x^2 - 5x) combines the two x^2 terms and the two x terms separately, giving 4x^2 - 3x. Subtracting works the same way, but first flip the sign of every term being subtracted. (5x + 3) - (2x - 4) becomes (5x + 3) + (-2x + 4), which combines to 3x + 7. A term with no match, like a lone constant, simply carries through unchanged."
+  },
+  "workedExample": {
+    "prompt": "Subtract (2x - 4) from (5x + 3).",
+    "steps": [
+      "Subtracting a polynomial flips the sign of every one of its terms.",
+      "(5x + 3) - (2x - 4) becomes (5x + 3) + (-2x + 4).",
+      "Combine the x terms: 5x + (-2x) = 3x.",
+      "Combine the constants: 3 + 4 = 7.",
+      "The result is 3x + 7."
+    ]
+  },
+  "ways": [
+    {
+      "id": "al-polynomials-add-sub-w1",
+      "name": "Line up like terms",
+      "when": "Use this default method for adding or subtracting any polynomials.",
+      "steps": [
+        "Match terms with the same variable and exponent: the x^2 terms, the x terms, the constants.",
+        "Combine the x^2 terms: 3x^2 + 2x^2 = 5x^2.",
+        "Combine the x terms: 4x + (-5x) = -x.",
+        "Combine the constants: -1 + 6 = 5.",
+        "The sum is 5x^2 - x + 5."
+      ],
+      "example": "(3x^2 + 4x - 1) + (2x^2 - 5x + 6)",
+      "answer": "5x^2 - x + 5",
+      "trap": "Combining terms with different exponents, like an x^2 term with an x term."
+    },
+    {
+      "id": "al-polynomials-add-sub-w2",
+      "name": "Stack the polynomials in columns",
+      "when": "Use this when the polynomials are long and columns keep the terms straight.",
+      "steps": [
+        "Write the two polynomials one under the other, in matching columns for x^2, x and the constant.",
+        "Flip the sign of every term in the polynomial being subtracted: -4x^2, +3x, -2.",
+        "Add straight down the x^2 column: 7 + (-4) = 3.",
+        "Add down the x column: 1 + 3 = 4. Add the constant column: -5 + (-2) = -7.",
+        "The result is 3x^2 + 4x - 7."
+      ],
+      "example": "(7x^2 + x - 5) - (4x^2 - 3x + 2)",
+      "answer": "3x^2 + 4x - 7",
+      "trap": "Writing a term in the wrong column when a polynomial is missing a matching term.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two rows of terms stacked in columns over an addition bar, summing to a third row.",
+        "spec": {
+          "w": 260,
+          "h": 130,
+          "items": [
+            {
+              "t": "box",
+              "x": 10,
+              "y": 10,
+              "w": 74,
+              "h": 30,
+              "fill": "paper",
+              "label": "7x^2"
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 10,
+              "w": 74,
+              "h": 30,
+              "fill": "paper",
+              "label": "x"
+            },
+            {
+              "t": "box",
+              "x": 170,
+              "y": 10,
+              "w": 74,
+              "h": 30,
+              "fill": "paper",
+              "label": "-5"
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 46,
+              "w": 74,
+              "h": 30,
+              "fill": "paper",
+              "label": "-4x^2"
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 46,
+              "w": 74,
+              "h": 30,
+              "fill": "paper",
+              "label": "+3x"
+            },
+            {
+              "t": "box",
+              "x": 170,
+              "y": 46,
+              "w": 74,
+              "h": 30,
+              "fill": "paper",
+              "label": "-2"
+            },
+            {
+              "t": "line",
+              "x1": 4,
+              "y1": 82,
+              "x2": 250,
+              "y2": 82
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 90,
+              "w": 74,
+              "h": 30,
+              "fill": "accent",
+              "label": "3x^2"
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 90,
+              "w": 74,
+              "h": 30,
+              "fill": "accent",
+              "label": "4x"
+            },
+            {
+              "t": "box",
+              "x": 170,
+              "y": 90,
+              "w": 74,
+              "h": 30,
+              "fill": "accent",
+              "label": "-7"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "The first polynomial's terms, in columns.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Write the two polynomials one under the other,",
+              "set": {
+                "3": {
+                  "label": "4x^2"
+                },
+                "4": {
+                  "label": "-3x"
+                },
+                "5": {
+                  "label": "2"
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Flip the sign of every term in the",
+              "set": {
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Add straight down the x^2 column: 7 +",
+              "set": {
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Add down the x column: 1 + 3",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "The result is 3x^2 + 4x - 7.",
+              "set": {
+                "7": {
+                  "fill": "green"
+                },
+                "8": {
+                  "fill": "green"
+                },
+                "9": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "al-polynomials-add-sub-w3",
+      "name": "Tiles that cancel",
+      "when": "Use this when a term looks like it might disappear after subtracting.",
+      "steps": [
+        "Picture each term as a tile: 4x tiles and constant tiles.",
+        "Subtracting flips every tile in (4x + 5) to its opposite: -4x and -5.",
+        "The 4x tile and the new -4x tile cancel to zero.",
+        "The constants do not cancel: -9 and -5 combine to -14."
+      ],
+      "example": "(4x - 9) - (4x + 5)",
+      "answer": "-14",
+      "trap": "Cancelling tiles that are not actually the same size, like an x tile against a constant.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A 4x tile and a -4x tile under a cancel bracket, plus a -9 tile and a -5 tile combining to -14.",
+        "spec": {
+          "w": 170,
+          "h": 165,
+          "items": [
+            {
+              "t": "dim",
+              "x1": 10,
+              "y1": 10,
+              "x2": 150,
+              "y2": 10,
+              "label": "cancel to 0"
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 45,
+              "w": 60,
+              "h": 36,
+              "fill": "accent",
+              "label": "4x"
+            },
+            {
+              "t": "box",
+              "x": 100,
+              "y": 45,
+              "w": 60,
+              "h": 36,
+              "fill": "paper",
+              "label": "-4x"
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 95,
+              "w": 60,
+              "h": 36,
+              "fill": "sand",
+              "label": "-9"
+            },
+            {
+              "t": "box",
+              "x": 100,
+              "y": 95,
+              "w": 60,
+              "h": 36,
+              "fill": "sand",
+              "label": "-5"
+            },
+            {
+              "t": "text",
+              "x": 85,
+              "y": 150,
+              "s": "-9 + (-5) = -14",
+              "size": 12,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "The first polynomial's tiles: 4x and -9.",
+              "set": {
+                "0": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Picture each term as a tile: 4x tiles",
+              "set": {
+                "0": {
+                  "hidden": true
+                },
+                "2": {
+                  "label": "4x"
+                },
+                "4": {
+                  "label": "5"
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Subtracting flips every tile in (4x + 5)",
+              "set": {
+                "0": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "The 4x tile and the new -4x tile",
+              "set": {
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "The constants do not cancel: -9 and -5",
+              "set": {
+                "3": {
+                  "fill": "green"
+                },
+                "4": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "kind": "choice",
+      "prompt": "Add (2x + 3) and (4x - 1).",
+      "options": [
+        "6x + 2",
+        "-6x + 2",
+        "6x",
+        "-2x + 4"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Combine only the terms that match, same variable and same exponent.",
+        "That gives 6x + 2."
+      ],
+      "useAgain": "when two polynomials are added together.",
+      "hints": [
+        "Line up the terms with the same exponent before combining.",
+        "A term with no match in the other polynomial carries straight through."
+      ],
+      "socraticHint": "Which terms in the two polynomials actually match each other?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Add (3x + 4) and (5x - 2).",
+        "options": [
+          "-8x + 2",
+          "8x + 2",
+          "8x",
+          "-2x + 6"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p01",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "choice",
+      "prompt": "Add (5x - 2) and (3x + 6).",
+      "options": [
+        "-8x + 4",
+        "8x",
+        "8x + 4",
+        "2x - 8"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Combine only the terms that match, same variable and same exponent.",
+        "That gives 8x + 4."
+      ],
+      "useAgain": "when two polynomials are added together.",
+      "hints": [
+        "Line up the terms with the same exponent before combining.",
+        "A term with no match in the other polynomial carries straight through."
+      ],
+      "socraticHint": "Which terms in the two polynomials actually match each other?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Add (4x - 1) and (2x + 5).",
+        "options": [
+          "-6x + 4",
+          "6x",
+          "2x - 6",
+          "6x + 4"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p02",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "choice",
+      "prompt": "Add (2x^2 + 3x + 1) and (x^2 - 2x + 4).",
+      "options": [
+        "3x^2 + x + 5",
+        "-3x^2 + x + 5",
+        "3x^2 + x",
+        "x^2 + 5x - 3"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Combine only the terms that match, same variable and same exponent.",
+        "That gives 3x^2 + x + 5."
+      ],
+      "useAgain": "when two polynomials are added together.",
+      "hints": [
+        "Line up the terms with the same exponent before combining.",
+        "A term with no match in the other polynomial carries straight through."
+      ],
+      "socraticHint": "Which terms in the two polynomials actually match each other?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Add (3x^2 + 2x + 4) and (2x^2 - x + 3).",
+        "options": [
+          "-5x^2 + x + 7",
+          "5x^2 + x + 7",
+          "5x^2 + x",
+          "x^2 + 3x + 1"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p03",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "choice",
+      "prompt": "Add (3x^2 - 5) and (2x^2 + 4x).",
+      "options": [
+        "-5x^2 + 4x - 5",
+        "5x^2 + 4x",
+        "5x^2 + 4x - 5",
+        "x^2 - 4x - 5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Combine only the terms that match, same variable and same exponent.",
+        "That gives 5x^2 + 4x - 5."
+      ],
+      "useAgain": "when two polynomials are added together.",
+      "hints": [
+        "Line up the terms with the same exponent before combining.",
+        "A term with no match in the other polynomial carries straight through."
+      ],
+      "socraticHint": "Which terms in the two polynomials actually match each other?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Add (4x^2 - 3) and (x^2 + 5x).",
+        "options": [
+          "-5x^2 + 5x - 3",
+          "5x^2 + 5x",
+          "3x^2 - 5x - 3",
+          "5x^2 + 5x - 3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p04",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "choice",
+      "prompt": "Add (-3x + 7) and (6x - 2).",
+      "options": [
+        "3x + 5",
+        "-3x + 5",
+        "3x",
+        "-9x + 9"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Combine only the terms that match, same variable and same exponent.",
+        "That gives 3x + 5."
+      ],
+      "useAgain": "when two polynomials are added together.",
+      "hints": [
+        "Line up the terms with the same exponent before combining.",
+        "A term with no match in the other polynomial carries straight through."
+      ],
+      "socraticHint": "Which terms in the two polynomials actually match each other?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Add (-2x + 6) and (7x - 3).",
+        "options": [
+          "-5x + 3",
+          "5x + 3",
+          "5x",
+          "-9x + 9"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p05",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "choice",
+      "prompt": "Simplify 5x + 3 - 2x + 7.",
+      "options": [
+        "-3x + 10",
+        "3x",
+        "3x + 10",
+        "4x + 11"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Group the terms that match, same variable and exponent, before combining.",
+        "That gives 3x + 10."
+      ],
+      "useAgain": "when one expression has like terms scattered instead of grouped together.",
+      "hints": [
+        "Find every term with the same exponent first.",
+        "Add or subtract only the coefficients of matching terms."
+      ],
+      "socraticHint": "Which terms here share the same exponent on x?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Simplify 6x + 2 - x + 9.",
+        "options": [
+          "-5x + 11",
+          "5x",
+          "6x + 12",
+          "5x + 11"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p06",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "choice",
+      "prompt": "Simplify 8x - 4 - 3x + 1.",
+      "options": [
+        "5x - 3",
+        "-5x - 3",
+        "5x",
+        "6x - 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Group the terms that match, same variable and exponent, before combining.",
+        "That gives 5x - 3."
+      ],
+      "useAgain": "when one expression has like terms scattered instead of grouped together.",
+      "hints": [
+        "Find every term with the same exponent first.",
+        "Add or subtract only the coefficients of matching terms."
+      ],
+      "socraticHint": "Which terms here share the same exponent on x?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Simplify 7x - 3 - 2x + 4.",
+        "options": [
+          "-5x + 1",
+          "5x + 1",
+          "5x",
+          "6x + 2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p07",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "choice",
+      "prompt": "Simplify 3x^2 + 2x + x^2 - 5x.",
+      "options": [
+        "-4x^2 - 3x",
+        "4x^2",
+        "4x^2 - 3x",
+        "5x^2 - 2x"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Group the terms that match, same variable and exponent, before combining.",
+        "That gives 4x^2 - 3x."
+      ],
+      "useAgain": "when one expression has like terms scattered instead of grouped together.",
+      "hints": [
+        "Find every term with the same exponent first.",
+        "Add or subtract only the coefficients of matching terms."
+      ],
+      "socraticHint": "Which terms here share the same exponent on x?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Simplify 4x^2 + x + 2x^2 - 6x.",
+        "options": [
+          "-6x^2 - 5x",
+          "6x^2",
+          "7x^2 - 4x",
+          "6x^2 - 5x"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p08",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "choice",
+      "prompt": "Simplify -6x + 9 + 4x - 2.",
+      "options": [
+        "-2x + 7",
+        "2x + 7",
+        "-2x",
+        "-x + 8"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Group the terms that match, same variable and exponent, before combining.",
+        "That gives -2x + 7."
+      ],
+      "useAgain": "when one expression has like terms scattered instead of grouped together.",
+      "hints": [
+        "Find every term with the same exponent first.",
+        "Add or subtract only the coefficients of matching terms."
+      ],
+      "socraticHint": "Which terms here share the same exponent on x?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Simplify -5x + 8 + 3x - 1.",
+        "options": [
+          "2x + 7",
+          "-2x + 7",
+          "-2x",
+          "-x + 8"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p09",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "choice",
+      "prompt": "Simplify 4x^2 + 5 - x^2 - 8.",
+      "options": [
+        "-3x^2 - 3",
+        "3x^2",
+        "3x^2 - 3",
+        "4x^2 - 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Group the terms that match, same variable and exponent, before combining.",
+        "That gives 3x^2 - 3."
+      ],
+      "useAgain": "when one expression has like terms scattered instead of grouped together.",
+      "hints": [
+        "Find every term with the same exponent first.",
+        "Add or subtract only the coefficients of matching terms."
+      ],
+      "socraticHint": "Which terms here share the same exponent on x?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Simplify 5x^2 + 6 - 2x^2 - 9.",
+        "options": [
+          "-3x^2 - 3",
+          "3x^2",
+          "4x^2 - 2",
+          "3x^2 - 3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p10",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "Evaluate 3x^2 - 2x + 1 when x = 2.",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Substitute 2 for x in every term.",
+        "3x^2 - 2x + 1 at x = 2 equals 9."
+      ],
+      "useAgain": "when a polynomial needs a number in place of x.",
+      "hints": [
+        "Replace every x with the given value before doing any arithmetic.",
+        "Work through the terms one at a time, then add them up."
+      ],
+      "socraticHint": "What do you substitute for x in each term?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Evaluate 3x^2 - 2x + 1 when x = 3.",
+        "answer": {
+          "kind": "number",
+          "value": "22"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p11",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "Evaluate 4x - 5 when x = 3.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Substitute 3 for x in every term.",
+        "4x - 5 at x = 3 equals 7."
+      ],
+      "useAgain": "when a polynomial needs a number in place of x.",
+      "hints": [
+        "Replace every x with the given value before doing any arithmetic.",
+        "Work through the terms one at a time, then add them up."
+      ],
+      "socraticHint": "What do you substitute for x in each term?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Evaluate 4x - 5 when x = 2.",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p12",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "Evaluate x^2 - 4 when x = -2.",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "Substitute -2 for x in every term.",
+        "x^2 - 4 at x = -2 equals 0."
+      ],
+      "useAgain": "when a polynomial needs a number in place of x.",
+      "hints": [
+        "Replace every x with the given value before doing any arithmetic.",
+        "Work through the terms one at a time, then add them up."
+      ],
+      "socraticHint": "What do you substitute for x in each term?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Evaluate x^2 - 4 when x = 3.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p13",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "Evaluate -3x + 6 when x = -1.",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Substitute -1 for x in every term.",
+        "-3x + 6 at x = -1 equals 9."
+      ],
+      "useAgain": "when a polynomial needs a number in place of x.",
+      "hints": [
+        "Replace every x with the given value before doing any arithmetic.",
+        "Work through the terms one at a time, then add them up."
+      ],
+      "socraticHint": "What do you substitute for x in each term?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Evaluate -3x + 6 when x = 2.",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p14",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "Evaluate 2x^2 + 5x - 3 when x = 1.",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Substitute 1 for x in every term.",
+        "2x^2 + 5x - 3 at x = 1 equals 4."
+      ],
+      "useAgain": "when a polynomial needs a number in place of x.",
+      "hints": [
+        "Replace every x with the given value before doing any arithmetic.",
+        "Work through the terms one at a time, then add them up."
+      ],
+      "socraticHint": "What do you substitute for x in each term?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Evaluate 2x^2 + 5x - 3 when x = 2.",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p15",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "choice",
+      "prompt": "Subtract (3x - 4) from (5x + 2).",
+      "options": [
+        "2x + 6",
+        "8x - 2",
+        "-2x + 6",
+        "8x + 6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Subtracting a polynomial flips the sign of every one of its terms first.",
+        "(5x + 2) - (3x - 4) becomes (5x + 2) + (-3x + 4).",
+        "Combine matching terms to get 2x + 6."
+      ],
+      "useAgain": "when one polynomial is subtracted from another, not just added.",
+      "hints": [
+        "Flip the sign of every term in the polynomial being subtracted.",
+        "Then combine matching terms as usual."
+      ],
+      "socraticHint": "Does the sign flip on just the first term, or on every term, when you subtract?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Subtract (2x - 5) from (6x + 3).",
+        "options": [
+          "8x - 2",
+          "4x + 8",
+          "-4x + 8",
+          "8x + 8"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p16",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Subtract (2x + 5) from (7x - 3).",
+      "options": [
+        "9x + 2",
+        "-5x - 8",
+        "5x - 8",
+        "9x - 8"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Subtracting a polynomial flips the sign of every one of its terms first.",
+        "(7x - 3) - (2x + 5) becomes (7x - 3) + (-2x - 5).",
+        "Combine matching terms to get 5x - 8."
+      ],
+      "useAgain": "when one polynomial is subtracted from another, not just added.",
+      "hints": [
+        "Flip the sign of every term in the polynomial being subtracted.",
+        "Then combine matching terms as usual."
+      ],
+      "socraticHint": "Does the sign flip on just the first term, or on every term, when you subtract?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Subtract (3x + 2) from (9x - 4).",
+        "options": [
+          "12x - 2",
+          "-6x - 6",
+          "12x - 6",
+          "6x - 6"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p17",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Subtract (-2x - 3) from (-4x + 6).",
+      "options": [
+        "-2x + 9",
+        "-6x + 3",
+        "2x + 9",
+        "-6x + 9"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Subtracting a polynomial flips the sign of every one of its terms first.",
+        "(-4x + 6) - (-2x - 3) becomes (-4x + 6) + (2x + 3).",
+        "Combine matching terms to get -2x + 9."
+      ],
+      "useAgain": "when one polynomial is subtracted from another, not just added.",
+      "hints": [
+        "Flip the sign of every term in the polynomial being subtracted.",
+        "Then combine matching terms as usual."
+      ],
+      "socraticHint": "Does the sign flip on just the first term, or on every term, when you subtract?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Subtract (-x - 4) from (-5x + 7).",
+        "options": [
+          "-6x + 3",
+          "-4x + 11",
+          "4x + 11",
+          "-6x + 11"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p18",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Subtract (5x + 4) from (8x + 1).",
+      "options": [
+        "13x + 5",
+        "-3x - 3",
+        "3x - 3",
+        "13x - 3"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Subtracting a polynomial flips the sign of every one of its terms first.",
+        "(8x + 1) - (5x + 4) becomes (8x + 1) + (-5x - 4).",
+        "Combine matching terms to get 3x - 3."
+      ],
+      "useAgain": "when one polynomial is subtracted from another, not just added.",
+      "hints": [
+        "Flip the sign of every term in the polynomial being subtracted.",
+        "Then combine matching terms as usual."
+      ],
+      "socraticHint": "Does the sign flip on just the first term, or on every term, when you subtract?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Subtract (4x + 5) from (7x + 2).",
+        "options": [
+          "11x + 7",
+          "-3x - 3",
+          "11x - 3",
+          "3x - 3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p19",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Subtract (-3x + 7) from (-6x - 2).",
+      "options": [
+        "-3x - 9",
+        "-9x + 5",
+        "3x - 9",
+        "-9x - 9"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Subtracting a polynomial flips the sign of every one of its terms first.",
+        "(-6x - 2) - (-3x + 7) becomes (-6x - 2) + (3x - 7).",
+        "Combine matching terms to get -3x - 9."
+      ],
+      "useAgain": "when one polynomial is subtracted from another, not just added.",
+      "hints": [
+        "Flip the sign of every term in the polynomial being subtracted.",
+        "Then combine matching terms as usual."
+      ],
+      "socraticHint": "Does the sign flip on just the first term, or on every term, when you subtract?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Subtract (-2x + 6) from (-8x - 3).",
+        "options": [
+          "-10x + 3",
+          "-6x - 9",
+          "6x - 9",
+          "-10x - 9"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p20",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Add (3x^2 - 2x + 5) and (-x^2 + 4x - 3).",
+      "options": [
+        "4x^2 - 6x + 8",
+        "-2x^2 + 2x + 2",
+        "2x^2 + 2x + 2",
+        "2x^2 + 2x - 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Match up terms by exponent: the x^2 terms, the x terms, and the constants.",
+        "Combine each group to get 2x^2 + 2x + 2."
+      ],
+      "useAgain": "when two trinomials are added or subtracted.",
+      "hints": [
+        "Group the x^2 terms, the x terms, and the constants separately.",
+        "Combine each group on its own before writing the final answer."
+      ],
+      "socraticHint": "How many groups of matching terms are there here?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Add (4x^2 - 3x + 6) and (-2x^2 + 5x - 4).",
+        "options": [
+          "6x^2 - 8x + 10",
+          "-2x^2 + 2x + 2",
+          "2x^2 + 2x - 2",
+          "2x^2 + 2x + 2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p21",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Subtract (2x^2 - 3x + 2) from (4x^2 + x - 6).",
+      "options": [
+        "2x^2 + 4x - 8",
+        "6x^2 - 2x - 4",
+        "-2x^2 + 4x - 8",
+        "2x^2 + 4x + 8"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Match up terms by exponent: the x^2 terms, the x terms, and the constants.",
+        "Combine each group to get 2x^2 + 4x - 8."
+      ],
+      "useAgain": "when two trinomials are added or subtracted.",
+      "hints": [
+        "Group the x^2 terms, the x terms, and the constants separately.",
+        "Combine each group on its own before writing the final answer."
+      ],
+      "socraticHint": "How many groups of matching terms are there here?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Subtract (3x^2 - 4x + 3) from (5x^2 + 2x - 7).",
+        "options": [
+          "8x^2 - 2x - 4",
+          "2x^2 + 6x - 10",
+          "-2x^2 + 6x - 10",
+          "2x^2 + 6x + 10"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p22",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Add (-2x^2 + 5x + 1) and (3x^2 - x - 4).",
+      "options": [
+        "-5x^2 + 6x + 5",
+        "-x^2 + 4x - 3",
+        "x^2 + 4x - 3",
+        "x^2 + 4x + 3"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Match up terms by exponent: the x^2 terms, the x terms, and the constants.",
+        "Combine each group to get x^2 + 4x - 3."
+      ],
+      "useAgain": "when two trinomials are added or subtracted.",
+      "hints": [
+        "Group the x^2 terms, the x terms, and the constants separately.",
+        "Combine each group on its own before writing the final answer."
+      ],
+      "socraticHint": "How many groups of matching terms are there here?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Add (-3x^2 + 6x + 2) and (4x^2 - 2x - 5).",
+        "options": [
+          "-7x^2 + 8x + 7",
+          "-x^2 + 4x - 3",
+          "x^2 + 4x + 3",
+          "x^2 + 4x - 3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p23",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Subtract (2x^2 + 2x - 1) from (5x^2 - 4x + 3).",
+      "options": [
+        "3x^2 - 6x + 4",
+        "7x^2 - 2x + 2",
+        "-3x^2 - 6x + 4",
+        "3x^2 - 6x - 4"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Match up terms by exponent: the x^2 terms, the x terms, and the constants.",
+        "Combine each group to get 3x^2 - 6x + 4."
+      ],
+      "useAgain": "when two trinomials are added or subtracted.",
+      "hints": [
+        "Group the x^2 terms, the x terms, and the constants separately.",
+        "Combine each group on its own before writing the final answer."
+      ],
+      "socraticHint": "How many groups of matching terms are there here?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Subtract (3x^2 + 3x - 2) from (6x^2 - 5x + 4).",
+        "options": [
+          "9x^2 - 2x + 2",
+          "3x^2 - 8x + 6",
+          "-3x^2 - 8x + 6",
+          "3x^2 - 8x - 6"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p24",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Add (x^2 + 6x - 2) and (2x^2 - 6x + 5).",
+      "options": [
+        "-x^2 + 12x - 7",
+        "-3x^2 + 3",
+        "3x^2 + 3",
+        "3x^2 - 3"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Match up terms by exponent: the x^2 terms, the x terms, and the constants.",
+        "Combine each group to get 3x^2 + 3."
+      ],
+      "useAgain": "when two trinomials are added or subtracted.",
+      "hints": [
+        "Group the x^2 terms, the x terms, and the constants separately.",
+        "Combine each group on its own before writing the final answer."
+      ],
+      "socraticHint": "How many groups of matching terms are there here?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Add (2x^2 + 7x - 3) and (3x^2 - 7x + 6).",
+        "options": [
+          "-x^2 + 14x - 9",
+          "-5x^2 + 3",
+          "5x^2 - 3",
+          "5x^2 + 3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p25",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "number",
+      "prompt": "A rover's two solar panels produce 3x + 5 and 2x - 1 watts of power, where x is the sunlight level. What is the combined amount when x = 4?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "Add the two expressions first: 5x + 4.",
+        "Substitute x = 4 to get 24."
+      ],
+      "useAgain": "when a real quantity is the sum or difference of two polynomial expressions.",
+      "hints": [
+        "Combine the two polynomials into one expression first.",
+        "Then substitute the given value of x."
+      ],
+      "socraticHint": "Should the two expressions be added or subtracted here?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rover's two solar panels produce 3x + 5 and 2x - 1 watts of power, where x is the sunlight level. What is the combined amount when x = 5?",
+        "answer": {
+          "kind": "number",
+          "value": "29"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p26",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "number",
+      "prompt": "A drone's flight uses 2x^2 + 10 joules of energy, and its landing routine uses 3x + 4 joules, where x is the flight time. What is the combined amount when x = 3?",
+      "answer": {
+        "kind": "number",
+        "value": "41"
+      },
+      "explanation": [
+        "Add the two expressions first: 2x^2 + 3x + 14.",
+        "Substitute x = 3 to get 41."
+      ],
+      "useAgain": "when a real quantity is the sum or difference of two polynomial expressions.",
+      "hints": [
+        "Combine the two polynomials into one expression first.",
+        "Then substitute the given value of x."
+      ],
+      "socraticHint": "Should the two expressions be added or subtracted here?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone's flight uses 2x^2 + 10 joules of energy, and its landing routine uses 3x + 4 joules, where x is the flight time. What is the combined amount when x = 4?",
+        "answer": {
+          "kind": "number",
+          "value": "58"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p27",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "number",
+      "prompt": "A 3D print job needs 5x^2 + 20 grams of filament, but 2x + 6 grams are already loaded, where x is the model size. What is the left amount when x = 2?",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "Subtract the two expressions first: 5x^2 - 2x + 14.",
+        "Substitute x = 2 to get 30."
+      ],
+      "useAgain": "when a real quantity is the sum or difference of two polynomial expressions.",
+      "hints": [
+        "Combine the two polynomials into one expression first.",
+        "Then substitute the given value of x."
+      ],
+      "socraticHint": "Should the two expressions be added or subtracted here?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D print job needs 5x^2 + 20 grams of filament, but 2x + 6 grams are already loaded, where x is the model size. What is the left amount when x = 3?",
+        "answer": {
+          "kind": "number",
+          "value": "53"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p28",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "number",
+      "prompt": "A game's total score is 4x^2 + 3x + 50 points, minus a penalty of 5x + 8 points, where x is the round number. What is the left amount when x = 3?",
+      "answer": {
+        "kind": "number",
+        "value": "72"
+      },
+      "explanation": [
+        "Subtract the two expressions first: 4x^2 - 2x + 42.",
+        "Substitute x = 3 to get 72."
+      ],
+      "useAgain": "when a real quantity is the sum or difference of two polynomial expressions.",
+      "hints": [
+        "Combine the two polynomials into one expression first.",
+        "Then substitute the given value of x."
+      ],
+      "socraticHint": "Should the two expressions be added or subtracted here?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game's total score is 4x^2 + 3x + 50 points, minus a penalty of 5x + 8 points, where x is the round number. What is the left amount when x = 4?",
+        "answer": {
+          "kind": "number",
+          "value": "98"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p29",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "number",
+      "prompt": "A rocket has two fuel gauges. One reads 6x + 2 liters, and the other reads 4x + 3 liters. x is the minutes since launch. What is the combined amount when x = 5?",
+      "answer": {
+        "kind": "number",
+        "value": "55"
+      },
+      "explanation": [
+        "Add the two expressions first: 10x + 5.",
+        "Substitute x = 5 to get 55."
+      ],
+      "useAgain": "when a real quantity is the sum or difference of two polynomial expressions.",
+      "hints": [
+        "Combine the two polynomials into one expression first.",
+        "Then substitute the given value of x."
+      ],
+      "socraticHint": "Should the two expressions be added or subtracted here?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rocket has two fuel gauges. One reads 6x + 2 liters, and the other reads 4x + 3 liters. x is the minutes since launch. What is the combined amount when x = 6?",
+        "answer": {
+          "kind": "number",
+          "value": "65"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p30",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Add (2x^3 - 3x^2 + 5x - 1) and (-x^3 + 4x^2 - 2x + 6).",
+      "options": [
+        "x^3 + x^2 + 3x + 5",
+        "3x^3 - 7x^2 + 7x - 7",
+        "-x^3 + x^2 + 3x + 5",
+        "x^3 + x^2 + 3x"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Match terms by exponent across every degree, from x^3 down to the constant.",
+        "Combine each group to get x^3 + x^2 + 3x + 5."
+      ],
+      "useAgain": "when the polynomials have several matching degrees to track at once.",
+      "hints": [
+        "Work one exponent at a time, from the highest degree down to the constant.",
+        "Do not skip an exponent even if one polynomial has no term of that degree."
+      ],
+      "socraticHint": "How many different exponents need matching here?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Add (3x^3 - 2x^2 + 4x - 2) and (-2x^3 + 5x^2 - x + 7).",
+        "options": [
+          "5x^3 - 7x^2 + 5x - 9",
+          "x^3 + 3x^2 + 3x + 5",
+          "-x^3 + 3x^2 + 3x + 5",
+          "x^3 + 3x^2 + 3x"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p31",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "Subtract (2x^3 - 2x^2 + 3x - 1) from (4x^3 + x^2 - 5x + 3).",
+      "options": [
+        "6x^3 - x^2 - 2x + 2",
+        "-2x^3 + 3x^2 - 8x + 4",
+        "2x^3 + 3x^2 - 8x + 4",
+        "2x^3 + 3x^2 - 8x"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Match terms by exponent across every degree, from x^3 down to the constant.",
+        "Combine each group to get 2x^3 + 3x^2 - 8x + 4."
+      ],
+      "useAgain": "when the polynomials have several matching degrees to track at once.",
+      "hints": [
+        "Work one exponent at a time, from the highest degree down to the constant.",
+        "Do not skip an exponent even if one polynomial has no term of that degree."
+      ],
+      "socraticHint": "How many different exponents need matching here?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Subtract (3x^3 - x^2 + 2x - 2) from (5x^3 + 2x^2 - 4x + 2).",
+        "options": [
+          "8x^3 + x^2 - 2x",
+          "-2x^3 + 3x^2 - 6x + 4",
+          "2x^3 + 3x^2 - 6x",
+          "2x^3 + 3x^2 - 6x + 4"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p32",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "Add (-3x^3 + 2x^2 + x - 4) and (5x^3 - x^2 - 3x + 2).",
+      "options": [
+        "2x^3 + x^2 - 2x - 2",
+        "-8x^3 + 3x^2 + 4x - 6",
+        "-2x^3 + x^2 - 2x - 2",
+        "2x^3 + x^2 - 2x"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Match terms by exponent across every degree, from x^3 down to the constant.",
+        "Combine each group to get 2x^3 + x^2 - 2x - 2."
+      ],
+      "useAgain": "when the polynomials have several matching degrees to track at once.",
+      "hints": [
+        "Work one exponent at a time, from the highest degree down to the constant.",
+        "Do not skip an exponent even if one polynomial has no term of that degree."
+      ],
+      "socraticHint": "How many different exponents need matching here?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Add (-4x^3 + 3x^2 + 2x - 5) and (6x^3 - 2x^2 - 4x + 3).",
+        "options": [
+          "-10x^3 + 5x^2 + 6x - 8",
+          "2x^3 + x^2 - 2x - 2",
+          "-2x^3 + x^2 - 2x - 2",
+          "2x^3 + x^2 - 2x"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p33",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "Subtract (3x^3 - x^2 + 5x - 2) from (6x^3 - 4x^2 + 2x + 1).",
+      "options": [
+        "9x^3 - 5x^2 + 7x - 1",
+        "-3x^3 - 3x^2 - 3x + 3",
+        "3x^3 - 3x^2 - 3x + 3",
+        "3x^3 - 3x^2 - 3x"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Match terms by exponent across every degree, from x^3 down to the constant.",
+        "Combine each group to get 3x^3 - 3x^2 - 3x + 3."
+      ],
+      "useAgain": "when the polynomials have several matching degrees to track at once.",
+      "hints": [
+        "Work one exponent at a time, from the highest degree down to the constant.",
+        "Do not skip an exponent even if one polynomial has no term of that degree."
+      ],
+      "socraticHint": "How many different exponents need matching here?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Subtract (4x^3 - 2x^2 + 6x - 3) from (7x^3 - 5x^2 + 3x + 2).",
+        "options": [
+          "11x^3 - 7x^2 + 9x - 1",
+          "-3x^3 - 3x^2 - 3x + 5",
+          "3x^3 - 3x^2 - 3x",
+          "3x^3 - 3x^2 - 3x + 5"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p34",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "Add (x^3 + 5x^2 - 2x + 3) and (2x^3 - 5x^2 + 4x - 6).",
+      "options": [
+        "3x^3 + 2x - 3",
+        "-x^3 + 10x^2 - 6x + 9",
+        "-3x^3 + 2x - 3",
+        "3x^3 + 2x"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Match terms by exponent across every degree, from x^3 down to the constant.",
+        "Combine each group to get 3x^3 + 2x - 3."
+      ],
+      "useAgain": "when the polynomials have several matching degrees to track at once.",
+      "hints": [
+        "Work one exponent at a time, from the highest degree down to the constant.",
+        "Do not skip an exponent even if one polynomial has no term of that degree."
+      ],
+      "socraticHint": "How many different exponents need matching here?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Add (2x^3 + 6x^2 - 3x + 4) and (3x^3 - 6x^2 + 5x - 7).",
+        "options": [
+          "-x^3 + 12x^2 - 8x + 11",
+          "5x^3 + 2x - 3",
+          "-5x^3 + 2x - 3",
+          "5x^3 + 2x"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p35",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "A robot's charge combines a solar panel's output (4x + 2) and a battery's output (3x - 1). A display then draws (2x + 5). Write this total as one simplified expression.",
+      "options": [
+        "9x + 6",
+        "-5x - 4",
+        "5x - 4",
+        "-x - 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Add the first two expressions, then subtract the third from that sum.",
+        "That gives 5x - 4."
+      ],
+      "useAgain": "when a real total combines more than two polynomial expressions at once.",
+      "hints": [
+        "Work left to right: add the first two, then subtract the last.",
+        "Combine matching terms only after every expression is included."
+      ],
+      "socraticHint": "In what order should the addition and subtraction happen here?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot's charge combines a solar panel's output (5x + 3) and a battery's output (2x - 2). A display then draws (3x + 4). Write this total as one simplified expression.",
+        "options": [
+          "10x + 5",
+          "-4x - 3",
+          "1",
+          "4x - 3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p36",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "A rover's path has one leg (3x^2 + 6) and a second leg (5x - 2). It then backtracks a distance of (x^2 + 3). Write this total as one simplified expression.",
+      "options": [
+        "2x^2 + 5x + 1",
+        "4x^2 + 5x + 7",
+        "-2x^2 + 5x + 1",
+        "2x^2 - 5x + 5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Add the first two expressions, then subtract the third from that sum.",
+        "That gives 2x^2 + 5x + 1."
+      ],
+      "useAgain": "when a real total combines more than two polynomial expressions at once.",
+      "hints": [
+        "Work left to right: add the first two, then subtract the last.",
+        "Combine matching terms only after every expression is included."
+      ],
+      "socraticHint": "In what order should the addition and subtraction happen here?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover's path has one leg (4x^2 + 5) and a second leg (6x - 1). It then backtracks a distance of (2x^2 + 2). Write this total as one simplified expression.",
+        "options": [
+          "6x^2 + 6x + 6",
+          "2x^2 + 6x + 2",
+          "-2x^2 + 6x + 2",
+          "2x^2 - 6x + 4"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p37",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "A rocket's total mass is the body (5x^2 + 20) plus the fuel (4x + 8). So far, (2x + 6) of mass has burned. Write this total as one simplified expression.",
+      "options": [
+        "5x^2 + 6x + 34",
+        "-5x^2 + 2x + 22",
+        "5x^2 + 2x + 22",
+        "5x^2 - 6x + 6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Add the first two expressions, then subtract the third from that sum.",
+        "That gives 5x^2 + 2x + 22."
+      ],
+      "useAgain": "when a real total combines more than two polynomial expressions at once.",
+      "hints": [
+        "Work left to right: add the first two, then subtract the last.",
+        "Combine matching terms only after every expression is included."
+      ],
+      "socraticHint": "In what order should the addition and subtraction happen here?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rocket's total mass is the body (6x^2 + 18) plus the fuel (3x + 9). So far, (x + 5) of mass has burned. Write this total as one simplified expression.",
+        "options": [
+          "6x^2 + 4x + 32",
+          "-6x^2 + 2x + 22",
+          "6x^2 - 4x + 4",
+          "6x^2 + 2x + 22"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p38",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "A game's score is a level's points (2x^2 + 6x - 3) plus a bonus (5x + 10). A time penalty of (3x + 4) then applies. Write this total as one simplified expression.",
+      "options": [
+        "2x^2 + 8x + 3",
+        "2x^2 + 14x + 11",
+        "-2x^2 + 8x + 3",
+        "2x^2 - 2x - 17"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Add the first two expressions, then subtract the third from that sum.",
+        "That gives 2x^2 + 8x + 3."
+      ],
+      "useAgain": "when a real total combines more than two polynomial expressions at once.",
+      "hints": [
+        "Work left to right: add the first two, then subtract the last.",
+        "Combine matching terms only after every expression is included."
+      ],
+      "socraticHint": "In what order should the addition and subtraction happen here?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game's score is a level's points (3x^2 + 5x - 4) plus a bonus (6x + 9). A time penalty of (2x + 3) then applies. Write this total as one simplified expression.",
+        "options": [
+          "3x^2 + 13x + 8",
+          "3x^2 + 9x + 2",
+          "-3x^2 + 9x + 2",
+          "3x^2 - 3x - 16"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p39",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "A print job uses one part's filament (7x + 3) and a second part's filament (2x + 5). Reused scrap saves (4x + 1). Write this total as one simplified expression.",
+      "options": [
+        "13x + 9",
+        "-5x + 7",
+        "5x + 7",
+        "x - 3"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Add the first two expressions, then subtract the third from that sum.",
+        "That gives 5x + 7."
+      ],
+      "useAgain": "when a real total combines more than two polynomial expressions at once.",
+      "hints": [
+        "Work left to right: add the first two, then subtract the last.",
+        "Combine matching terms only after every expression is included."
+      ],
+      "socraticHint": "In what order should the addition and subtraction happen here?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A print job uses one part's filament (8x + 4) and a second part's filament (3x + 6). Reused scrap saves (5x + 2). Write this total as one simplified expression.",
+        "options": [
+          "16x + 12",
+          "-6x + 8",
+          "-4",
+          "6x + 8"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p40",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "What must be added to (3x^2 - 5x) to get (5x^2 + x)?",
+      "options": [
+        "2x^2 + 6x",
+        "8x^2 - 4x",
+        "-2x^2 + 6x",
+        "-2x^2 - 6x"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The missing piece is the target minus the starting expression.",
+        "(5x^2 + x) - (3x^2 - 5x) = 2x^2 + 6x."
+      ],
+      "useAgain": "when a polynomial addition problem gives the total instead of one of the parts.",
+      "hints": [
+        "Subtract the starting expression from the target expression.",
+        "Combine matching terms once the subtraction is set up."
+      ],
+      "socraticHint": "If two expressions add to the target, what operation finds the missing one?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What must be added to (4x^2 - 3x) to get (7x^2 + 2x)?",
+        "options": [
+          "11x^2 - x",
+          "3x^2 + 5x",
+          "-3x^2 + 5x",
+          "-3x^2 - 5x"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p41",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "What must be added to (4x - 2) to get (9x + 3)?",
+      "options": [
+        "13x + 1",
+        "-5x + 5",
+        "5x + 5",
+        "-5x - 5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The missing piece is the target minus the starting expression.",
+        "(9x + 3) - (4x - 2) = 5x + 5."
+      ],
+      "useAgain": "when a polynomial addition problem gives the total instead of one of the parts.",
+      "hints": [
+        "Subtract the starting expression from the target expression.",
+        "Combine matching terms once the subtraction is set up."
+      ],
+      "socraticHint": "If two expressions add to the target, what operation finds the missing one?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What must be added to (5x - 3) to get (8x + 2)?",
+        "options": [
+          "13x - 1",
+          "-3x + 5",
+          "-3x - 5",
+          "3x + 5"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p42",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "What must be added to (2x^2 + 6x - 3) to get (6x^2 + 6x + 2)?",
+      "options": [
+        "4x^2 + 5",
+        "8x^2 + 12x - 1",
+        "-4x^2 + 5",
+        "-4x^2 - 5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The missing piece is the target minus the starting expression.",
+        "(6x^2 + 6x + 2) - (2x^2 + 6x - 3) = 4x^2 + 5."
+      ],
+      "useAgain": "when a polynomial addition problem gives the total instead of one of the parts.",
+      "hints": [
+        "Subtract the starting expression from the target expression.",
+        "Combine matching terms once the subtraction is set up."
+      ],
+      "socraticHint": "If two expressions add to the target, what operation finds the missing one?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What must be added to (3x^2 + 5x - 2) to get (8x^2 + 5x + 3)?",
+        "options": [
+          "11x^2 + 10x + 1",
+          "5x^2 + 5",
+          "-5x^2 + 5",
+          "-5x^2 - 5"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p43",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "What must be added to (-3x + 5) to get (2x - 1)?",
+      "options": [
+        "-x + 4",
+        "-5x - 6",
+        "5x - 6",
+        "-5x + 6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The missing piece is the target minus the starting expression.",
+        "(2x - 1) - (-3x + 5) = 5x - 6."
+      ],
+      "useAgain": "when a polynomial addition problem gives the total instead of one of the parts.",
+      "hints": [
+        "Subtract the starting expression from the target expression.",
+        "Combine matching terms once the subtraction is set up."
+      ],
+      "socraticHint": "If two expressions add to the target, what operation finds the missing one?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What must be added to (-4x + 6) to get (x - 2)?",
+        "options": [
+          "-3x + 4",
+          "-5x - 8",
+          "-5x + 8",
+          "5x - 8"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p44",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "What must be added to (x^2 - 4x + 7) to get (4x^2 - 4x + 1)?",
+      "options": [
+        "3x^2 - 6",
+        "5x^2 - 8x + 8",
+        "-3x^2 - 6",
+        "-3x^2 + 6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The missing piece is the target minus the starting expression.",
+        "(4x^2 - 4x + 1) - (x^2 - 4x + 7) = 3x^2 - 6."
+      ],
+      "useAgain": "when a polynomial addition problem gives the total instead of one of the parts.",
+      "hints": [
+        "Subtract the starting expression from the target expression.",
+        "Combine matching terms once the subtraction is set up."
+      ],
+      "socraticHint": "If two expressions add to the target, what operation finds the missing one?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What must be added to (2x^2 - 5x + 6) to get (5x^2 - 5x)?",
+        "options": [
+          "7x^2 - 10x + 6",
+          "3x^2 - 6",
+          "-3x^2 - 6",
+          "-3x^2 + 6"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p45",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 5
+    }
+  ],
+  "stretch": [
+    {
+      "kind": "number",
+      "prompt": "If P(x) = 4x^3 - 2x^2 - 7, what is the sum of its coefficients?",
+      "answer": {
+        "kind": "number",
+        "value": "-5"
+      },
+      "explanation": [
+        "The sum of a polynomial's coefficients is exactly what you get by evaluating it at x = 1.",
+        "P(1) = 4x^3 - 2x^2 - 7 with x = 1, which is -5."
+      ],
+      "useAgain": "when every coefficient in a polynomial needs adding up at once.",
+      "hints": [
+        "Try substituting x = 1 into the whole polynomial.",
+        "Every x^n becomes 1, so only the coefficients are left."
+      ],
+      "socraticHint": "What happens to every power of x when x = 1?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "If P(x) = 3x^3 - 5x^2 + 2x - 4, what is the sum of its coefficients?",
+        "answer": {
+          "kind": "number",
+          "value": "-4"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p46",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6
+    },
+    {
+      "kind": "number",
+      "prompt": "If Q(x) = 2x^4 - x^3 + 5x - 3, what is the sum of its coefficients?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Substituting x = 1 turns every power of x into 1, leaving just the coefficients added together.",
+        "Q(1) = 3."
+      ],
+      "useAgain": "when a missing-term polynomial's coefficients still need summing.",
+      "hints": [
+        "A missing term just means that coefficient is zero; it does not change the trick.",
+        "Substitute x = 1 and add everything up."
+      ],
+      "socraticHint": "Does a missing power of x affect the sum of the coefficients?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "If Q(x) = x^4 + 3x^3 - 2x + 6, what is the sum of its coefficients?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p47",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6
+    },
+    {
+      "kind": "number",
+      "prompt": "What is the coefficient of x^2 in the sum of (3x^2 - 5x + 1) and (2x^2 + 4x - 6)?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Only the x^2 terms from each polynomial affect the x^2 coefficient of the sum.",
+        "3 + 2 = 5."
+      ],
+      "useAgain": "when only one term of a sum matters, not the whole simplified expression.",
+      "hints": [
+        "You only need to combine the x^2 terms, not the whole polynomial.",
+        "Ignore every other exponent."
+      ],
+      "socraticHint": "Which terms from each polynomial actually affect the x^2 coefficient?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the coefficient of x^2 in the sum of (5x^2 - 2x + 3) and (-x^2 + 6x - 4)?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p48",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6
+    },
+    {
+      "kind": "choice",
+      "prompt": "If A(x) + B(x) = 5x^3 - 2x + 7 and A(x) = 2x^3 + 3x - 4, what is B(x)?",
+      "options": [
+        "7x^3 + x + 3",
+        "-3x^3 + 5x - 11",
+        "3x^3 - 5x + 11",
+        "-3x^3 - 5x + 11"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "B(x) is the total minus A(x).",
+        "(5x^3 - 2x + 7) - (2x^3 + 3x - 4) = 3x^3 - 5x + 11."
+      ],
+      "useAgain": "when a sum and one addend are both polynomials, and the other addend is unknown.",
+      "hints": [
+        "Subtract the known polynomial from the total.",
+        "Combine matching terms after the subtraction."
+      ],
+      "socraticHint": "If two polynomials add to a known total, what operation finds the missing one?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "If A(x) + B(x) = 6x^3 - x + 5 and A(x) = 3x^3 + 4x - 2, what is B(x)?",
+        "options": [
+          "9x^3 + 3x + 3",
+          "-3x^3 + 5x - 7",
+          "-3x^3 - 5x + 7",
+          "3x^3 - 5x + 7"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p49",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6
+    },
+    {
+      "kind": "number",
+      "prompt": "How many terms does (3x^3 - 2x^2 + x) + (-3x^3 + 2x^2 - x + 5) have, after combining like terms?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Combine the polynomials term by term; several pairs of matching terms cancel completely.",
+        "Only 1 term is left after everything else cancels to zero."
+      ],
+      "useAgain": "when adding two polynomials makes several terms disappear entirely.",
+      "hints": [
+        "Combine every matching pair of terms, even if the result is zero.",
+        "A term that cancels to zero is not written in the final answer."
+      ],
+      "socraticHint": "Do any of the matching terms here cancel out completely?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many terms does (4x^3 + 5x^2 - 2) + (-4x^3 - 5x^2 + 3x + 2) have, after combining like terms?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "id": "ladder-al-polynomials-add-sub-p50",
+      "lane": "skills",
+      "ideaId": "al-polynomials-add-sub",
+      "skills": [
+        "think.skills.polynomials"
+      ],
+      "thinkMinutes": 6
+    }
+  ]
+}

@@ -1,0 +1,3056 @@
+{
+  "id": "ge-transformations-rigid",
+  "idea": {
+    "body": "A rigid transformation moves every point of a figure by the same rule, without changing any length or angle. A translation slides a point by a fixed amount: (x, y) becomes (x + a, y + b). A reflection flips a point over a line: over the x-axis it becomes (x, -y), and over the y-axis it becomes (-x, y). A rotation about the origin turns a point through an angle. 90 degrees counterclockwise sends (x, y) to (-y, x); 180 degrees sends it to (-x, -y). For example, reflecting the point (3, 5) over the x-axis gives (3, -5): the x-coordinate stays put and the y-coordinate changes sign. Each rule is worth memorizing, since every problem is just substitution once you know which rule applies.",
+    "figure": {
+      "kind": "plane",
+      "alt": "The point (3, 5) and its reflection (3, -5) over the x-axis.",
+      "spec": {
+        "range": 7,
+        "points": [
+          {
+            "x": 3,
+            "y": 5,
+            "label": "(3, 5)"
+          },
+          {
+            "x": 3,
+            "y": -5,
+            "label": "(3, -5)"
+          }
+        ],
+        "segments": [
+          [
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              -5
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "Point A is at (2, 5). Reflect A over the line y = x, then translate the result 2 units right and 6 units down. What is the final image?",
+    "steps": [
+      "Reflecting over y = x swaps the coordinates: (2, 5) becomes (5, 2).",
+      "Translating 2 units right adds 2 to the x-coordinate: 5 + 2 = 7.",
+      "Translating 6 units down subtracts 6 from the y-coordinate: 2 - 6 = -4.",
+      "The final image is (7, -4)."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "Point (2, 5), its reflection (5, 2) over y = x, and the final image (7, -4).",
+      "spec": {
+        "range": 10,
+        "points": [
+          {
+            "x": 2,
+            "y": 5,
+            "label": "A(2, 5)"
+          },
+          {
+            "x": 5,
+            "y": 2,
+            "label": "(5, 2)"
+          },
+          {
+            "x": 7,
+            "y": -4,
+            "label": "(7, -4)"
+          }
+        ],
+        "polylines": [
+          [
+            [
+              -10,
+              -10
+            ],
+            [
+              10,
+              10
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "ge-transformations-rigid-w1",
+      "name": "The rule on coordinates",
+      "when": "Use this any time you know which transformation applies and need one image point.",
+      "steps": [
+        "Reflecting over the x-axis keeps x the same and flips the sign of y.",
+        "Point (3, 5) reflects to (3, -5).",
+        "Each transformation has its own rule: substitute the coordinates directly into it."
+      ],
+      "example": "Reflect the point (3, 5) over the x-axis.",
+      "answer": "(3, -5)",
+      "trap": "Flipping the sign of x instead of y when reflecting over the x-axis.",
+      "figure": {
+        "kind": "plane",
+        "alt": "The point (3, 5) and its reflection (3, -5) over the x-axis.",
+        "spec": {
+          "range": 7,
+          "points": [
+            {
+              "x": 3,
+              "y": 5,
+              "label": "(3, 5)"
+            },
+            {
+              "x": 3,
+              "y": -5,
+              "label": "(3, -5)"
+            }
+          ],
+          "segments": [
+            [
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                -5
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-transformations-rigid-w2",
+      "name": "Trace and slide, flip or turn",
+      "when": "Use this when picturing the motion helps more than computing coordinates.",
+      "steps": [
+        "Trace the figure on paper, then physically slide, flip or turn the tracing.",
+        "A slide moves the tracing without turning it.",
+        "A flip turns the tracing face down over a line.",
+        "A turn rotates the tracing around one fixed point.",
+        "Read the new coordinates straight off the moved tracing."
+      ],
+      "example": "Picture point (2, 3) flipped over a mirror line by turning a tracing over.",
+      "answer": "(-2, 3)",
+      "trap": "Sliding the tracing sideways instead of flipping it over the line.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A point beside a mirror line, then flipped across it to the other side.",
+        "spec": {
+          "w": 240,
+          "h": 200,
+          "items": [
+            {
+              "t": "line",
+              "x1": 120,
+              "y1": 30,
+              "x2": 120,
+              "y2": 170,
+              "dashed": true
+            },
+            {
+              "t": "dot",
+              "cx": 70,
+              "cy": 100,
+              "label": "(2, 3)",
+              "side": "left"
+            },
+            {
+              "t": "dot",
+              "cx": 170,
+              "cy": 100,
+              "label": "(-2, 3)",
+              "side": "right"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Start: point (2, 3) beside the mirror line.",
+              "set": {
+                "2": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Flip it straight across the line.",
+              "set": {
+                "2": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "It lands at (-2, 3).",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-transformations-rigid-w3",
+      "name": "The vector for a translation",
+      "when": "Use this when a translation is described as a shift, not separate coordinate rules.",
+      "steps": [
+        "A translation vector of (5, -3) means move 5 right and 3 down.",
+        "Point (1, 4) moves to (1 + 5, 4 - 3).",
+        "That is (6, 1)."
+      ],
+      "example": "Translate the point (1, 4) by the vector (5, -3).",
+      "answer": "(6, 1)",
+      "trap": "Adding the vector's second number instead of subtracting when it is negative.",
+      "figure": {
+        "kind": "plane",
+        "alt": "The point (1, 4) shifted by the vector (5, -3) to (6, 1).",
+        "spec": {
+          "range": 7,
+          "points": [
+            {
+              "x": 1,
+              "y": 4,
+              "label": "(1, 4)"
+            },
+            {
+              "x": 6,
+              "y": 1,
+              "label": "(6, 1)"
+            }
+          ],
+          "segments": [
+            [
+              [
+                1,
+                4
+              ],
+              [
+                6,
+                1
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-transformations-rigid-w4",
+      "name": "The composition one step at a time",
+      "when": "Use this when two or more transformations happen one after another.",
+      "steps": [
+        "Point B is at (3, 1).",
+        "Reflect over y = x first: swap the coordinates to get (1, 3).",
+        "Translate that result 4 right and 2 up: (1 + 4, 3 + 2).",
+        "That is (5, 5), the final image after both steps."
+      ],
+      "example": "Reflect (3, 1) over y = x, then translate 4 right and 2 up.",
+      "answer": "(5, 5)",
+      "trap": "Doing the two transformations in the wrong order, which can change the final point.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Point B(3, 1) reflected to (1, 3), then translated to (5, 5).",
+        "spec": {
+          "w": 300,
+          "h": 150,
+          "items": [
+            {
+              "t": "dot",
+              "cx": 50,
+              "cy": 70,
+              "label": "B(3, 1)",
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 50,
+              "y1": 70,
+              "x2": 150,
+              "y2": 70,
+              "arrow": true
+            },
+            {
+              "t": "dot",
+              "cx": 150,
+              "cy": 70,
+              "label": "(1, 3)",
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 150,
+              "y1": 70,
+              "x2": 250,
+              "y2": 70,
+              "arrow": true
+            },
+            {
+              "t": "dot",
+              "cx": 250,
+              "cy": 70,
+              "label": "(5, 5)",
+              "side": "below"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Start: point B(3, 1).",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Reflect over y = x: (1, 3).",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Translate 4 right, 2 up: (5, 5).",
+              "set": {}
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-ge-transformations-rigid-p01",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (2, 3) is translated 4 units right and 1 unit down. What is the x-coordinate of the image?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "A translation adds the shift to each coordinate: x becomes 2 + (4).",
+        "That is 6."
+      ],
+      "useAgain": "when a figure slides without turning or flipping.",
+      "hints": [
+        "A translation adds a fixed amount to each coordinate.",
+        "Add the horizontal shift to the x-coordinate, with the correct sign."
+      ],
+      "socraticHint": "What do you add to the x-coordinate for this shift?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (1, 4) is translated 2 units right and 3 units up. What is the x-coordinate of the image?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (2, 3) and its image (6, 2) after the translation.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 2,
+              "y": 3,
+              "label": "P"
+            },
+            {
+              "x": 6,
+              "y": 2,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                2,
+                3
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p02",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-4, 5) is translated 2 units left and 5 units up. What is the x-coordinate of the image?",
+      "answer": {
+        "kind": "number",
+        "value": "-6"
+      },
+      "explanation": [
+        "A translation adds the shift to each coordinate: x becomes -4 + (-2).",
+        "That is -6."
+      ],
+      "useAgain": "when a figure slides without turning or flipping.",
+      "hints": [
+        "A translation adds a fixed amount to each coordinate.",
+        "Add the horizontal shift to the x-coordinate, with the correct sign."
+      ],
+      "socraticHint": "What do you add to the x-coordinate for this shift?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (-5, 2) is translated 4 units left and 1 unit up. What is the x-coordinate of the image?",
+        "answer": {
+          "kind": "number",
+          "value": "-9"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-4, 5) and its image (-6, 10) after the translation.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": -4,
+              "y": 5,
+              "label": "P"
+            },
+            {
+              "x": -6,
+              "y": 10,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -4,
+                5
+              ],
+              [
+                -6,
+                10
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p03",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (6, -2) is translated 3 units right and 3 units up. What is the x-coordinate of the image?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "A translation adds the shift to each coordinate: x becomes 6 + (3).",
+        "That is 9."
+      ],
+      "useAgain": "when a figure slides without turning or flipping.",
+      "hints": [
+        "A translation adds a fixed amount to each coordinate.",
+        "Add the horizontal shift to the x-coordinate, with the correct sign."
+      ],
+      "socraticHint": "What do you add to the x-coordinate for this shift?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (7, -3) is translated 6 units right and 2 units down. What is the x-coordinate of the image?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (6, -2) and its image (9, 1) after the translation.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 6,
+              "y": -2,
+              "label": "P"
+            },
+            {
+              "x": 9,
+              "y": 1,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                6,
+                -2
+              ],
+              [
+                9,
+                1
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p04",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-3, -6) is translated 5 units right and 4 units down. What is the x-coordinate of the image?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "A translation adds the shift to each coordinate: x becomes -3 + (5).",
+        "That is 2."
+      ],
+      "useAgain": "when a figure slides without turning or flipping.",
+      "hints": [
+        "A translation adds a fixed amount to each coordinate.",
+        "Add the horizontal shift to the x-coordinate, with the correct sign."
+      ],
+      "socraticHint": "What do you add to the x-coordinate for this shift?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (-2, -5) is translated 3 units right and 3 units down. What is the x-coordinate of the image?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-3, -6) and its image (2, -10) after the translation.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": -3,
+              "y": -6,
+              "label": "P"
+            },
+            {
+              "x": 2,
+              "y": -10,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -3,
+                -6
+              ],
+              [
+                2,
+                -10
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p05",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (2, 3) slides 4 units right and 1 unit down. What is the y-coordinate of the image?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "A translation adds the shift to each coordinate: y becomes 3 + (-1).",
+        "That is 2."
+      ],
+      "useAgain": "when a figure slides without turning or flipping.",
+      "hints": [
+        "A translation adds a fixed amount to each coordinate.",
+        "Add the vertical shift to the y-coordinate, with the correct sign."
+      ],
+      "socraticHint": "What do you add to the y-coordinate for this shift?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (-5, 2) slides 4 units left and 1 unit up. What is the y-coordinate of the image?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (2, 3) and its image (6, 2) after the slide.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 2,
+              "y": 3,
+              "label": "P"
+            },
+            {
+              "x": 6,
+              "y": 2,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                2,
+                3
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p06",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-4, 5) slides 2 units left and 5 units up. What is the y-coordinate of the image?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "A translation adds the shift to each coordinate: y becomes 5 + (5).",
+        "That is 10."
+      ],
+      "useAgain": "when a figure slides without turning or flipping.",
+      "hints": [
+        "A translation adds a fixed amount to each coordinate.",
+        "Add the vertical shift to the y-coordinate, with the correct sign."
+      ],
+      "socraticHint": "What do you add to the y-coordinate for this shift?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (7, -3) slides 6 units right and 2 units down. What is the y-coordinate of the image?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-4, 5) and its image (-6, 10) after the slide.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": -4,
+              "y": 5,
+              "label": "P"
+            },
+            {
+              "x": -6,
+              "y": 10,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -4,
+                5
+              ],
+              [
+                -6,
+                10
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p07",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (6, -2) slides 3 units right and 3 units up. What is the y-coordinate of the image?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "A translation adds the shift to each coordinate: y becomes -2 + (3).",
+        "That is 1."
+      ],
+      "useAgain": "when a figure slides without turning or flipping.",
+      "hints": [
+        "A translation adds a fixed amount to each coordinate.",
+        "Add the vertical shift to the y-coordinate, with the correct sign."
+      ],
+      "socraticHint": "What do you add to the y-coordinate for this shift?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (-2, -5) slides 3 units right and 3 units down. What is the y-coordinate of the image?",
+        "answer": {
+          "kind": "number",
+          "value": "-8"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (6, -2) and its image (9, 1) after the slide.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 6,
+              "y": -2,
+              "label": "P"
+            },
+            {
+              "x": 9,
+              "y": 1,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                6,
+                -2
+              ],
+              [
+                9,
+                1
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p08",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-3, -6) slides 5 units right and 4 units down. What is the y-coordinate of the image?",
+      "answer": {
+        "kind": "number",
+        "value": "-10"
+      },
+      "explanation": [
+        "A translation adds the shift to each coordinate: y becomes -6 + (-4).",
+        "That is -10."
+      ],
+      "useAgain": "when a figure slides without turning or flipping.",
+      "hints": [
+        "A translation adds a fixed amount to each coordinate.",
+        "Add the vertical shift to the y-coordinate, with the correct sign."
+      ],
+      "socraticHint": "What do you add to the y-coordinate for this shift?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (1, 4) slides 2 units right and 3 units up. What is the y-coordinate of the image?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-3, -6) and its image (2, -10) after the slide.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": -3,
+              "y": -6,
+              "label": "P"
+            },
+            {
+              "x": 2,
+              "y": -10,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -3,
+                -6
+              ],
+              [
+                2,
+                -10
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p09",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (4, 3) is reflected over the x-axis. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "Reflecting over the x-axis flips the sign of the y-coordinate and leaves the other alone.",
+        "That gives y = -3."
+      ],
+      "useAgain": "when a figure flips over one of the axes.",
+      "hints": [
+        "A reflection over the x-axis changes the sign of one coordinate only.",
+        "The x-coordinate stays the same; the y-coordinate flips sign."
+      ],
+      "socraticHint": "Which coordinate keeps its sign when you reflect over the x-axis?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (3, 5) is reflected over the x-axis. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (4, 3) and its reflection (4, -3) over the x-axis.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 4,
+              "y": 3,
+              "label": "P"
+            },
+            {
+              "x": 4,
+              "y": -3,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                4,
+                3
+              ],
+              [
+                4,
+                -3
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p10",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-2, 6) is reflected over the y-axis. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Reflecting over the y-axis flips the sign of the x-coordinate and leaves the other alone.",
+        "That gives x = 2."
+      ],
+      "useAgain": "when a figure flips over one of the axes.",
+      "hints": [
+        "A reflection over the y-axis changes the sign of one coordinate only.",
+        "The y-coordinate stays the same; the x-coordinate flips sign."
+      ],
+      "socraticHint": "Which coordinate keeps its sign when you reflect over the y-axis?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (-6, 2) is reflected over the y-axis. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-2, 6) and its reflection (2, 6) over the y-axis.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -2,
+              "y": 6,
+              "label": "P"
+            },
+            {
+              "x": 2,
+              "y": 6,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -2,
+                6
+              ],
+              [
+                2,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p11",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (5, -4) is reflected over the x-axis. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Reflecting over the x-axis flips the sign of the y-coordinate and leaves the other alone.",
+        "That gives y = 4."
+      ],
+      "useAgain": "when a figure flips over one of the axes.",
+      "hints": [
+        "A reflection over the x-axis changes the sign of one coordinate only.",
+        "The x-coordinate stays the same; the y-coordinate flips sign."
+      ],
+      "socraticHint": "Which coordinate keeps its sign when you reflect over the x-axis?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (1, -8) is reflected over the x-axis. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (5, -4) and its reflection (5, 4) over the x-axis.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 5,
+              "y": -4,
+              "label": "P"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                5,
+                -4
+              ],
+              [
+                5,
+                4
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p12",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-7, -1) is reflected over the y-axis. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Reflecting over the y-axis flips the sign of the x-coordinate and leaves the other alone.",
+        "That gives x = 7."
+      ],
+      "useAgain": "when a figure flips over one of the axes.",
+      "hints": [
+        "A reflection over the y-axis changes the sign of one coordinate only.",
+        "The y-coordinate stays the same; the x-coordinate flips sign."
+      ],
+      "socraticHint": "Which coordinate keeps its sign when you reflect over the y-axis?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (-4, -3) is reflected over the y-axis. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-7, -1) and its reflection (7, -1) over the y-axis.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -7,
+              "y": -1,
+              "label": "P"
+            },
+            {
+              "x": 7,
+              "y": -1,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -7,
+                -1
+              ],
+              [
+                7,
+                -1
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p13",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (3, 4) is rotated 180 degrees about the origin. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "A 180 degree rotation about the origin flips the sign of both coordinates.",
+        "So the x-coordinate becomes -3."
+      ],
+      "useAgain": "when a figure turns halfway around the origin.",
+      "hints": [
+        "A 180 degree rotation sends (x, y) to (-x, -y).",
+        "Flip the sign of the x-coordinate."
+      ],
+      "socraticHint": "What happens to both coordinates in a 180 degree rotation?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (2, 7) is rotated 180 degrees about the origin. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (3, 4) and its image (-3, -4) after a 180 degree rotation.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 3,
+              "y": 4,
+              "label": "P"
+            },
+            {
+              "x": -3,
+              "y": -4,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                3,
+                4
+              ],
+              [
+                -3,
+                -4
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p14",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-5, 2) is rotated 180 degrees about the origin. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "A 180 degree rotation about the origin flips the sign of both coordinates.",
+        "So the x-coordinate becomes 5."
+      ],
+      "useAgain": "when a figure turns halfway around the origin.",
+      "hints": [
+        "A 180 degree rotation sends (x, y) to (-x, -y).",
+        "Flip the sign of the x-coordinate."
+      ],
+      "socraticHint": "What happens to both coordinates in a 180 degree rotation?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (-4, 5) is rotated 180 degrees about the origin. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-5, 2) and its image (5, -2) after a 180 degree rotation.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -5,
+              "y": 2,
+              "label": "P"
+            },
+            {
+              "x": 5,
+              "y": -2,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -5,
+                2
+              ],
+              [
+                5,
+                -2
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p15",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (6, -3) is rotated 180 degrees about the origin. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "-6"
+      },
+      "explanation": [
+        "A 180 degree rotation about the origin flips the sign of both coordinates.",
+        "So the x-coordinate becomes -6."
+      ],
+      "useAgain": "when a figure turns halfway around the origin.",
+      "hints": [
+        "A 180 degree rotation sends (x, y) to (-x, -y).",
+        "Flip the sign of the x-coordinate."
+      ],
+      "socraticHint": "What happens to both coordinates in a 180 degree rotation?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Point (8, -1) is rotated 180 degrees about the origin. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "-8"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (6, -3) and its image (-6, 3) after a 180 degree rotation.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 6,
+              "y": -3,
+              "label": "P"
+            },
+            {
+              "x": -6,
+              "y": 3,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                6,
+                -3
+              ],
+              [
+                -6,
+                3
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p16",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (3, 7) is reflected over the line y = x. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Reflecting over y = x swaps the two coordinates.",
+        "So the image is (7, 3), and its y-coordinate is 3."
+      ],
+      "useAgain": "when a figure flips over a diagonal line instead of an axis.",
+      "hints": [
+        "Reflecting over y = x does not keep either coordinate in place.",
+        "Work out both new coordinates, then read off the one asked for."
+      ],
+      "socraticHint": "What does reflecting over y = x do to the pair of coordinates?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (2, 8) is reflected over the line y = x. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (3, 7) and its reflection (7, 3) over y = x.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 3,
+              "y": 7,
+              "label": "P"
+            },
+            {
+              "x": 7,
+              "y": 3,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                3,
+                7
+              ],
+              [
+                7,
+                3
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p17",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (5, -2) is reflected over the line y = -x. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "-5"
+      },
+      "explanation": [
+        "Reflecting over y = -x swaps the two coordinates and flips both signs.",
+        "So the image is (2, -5), and its y-coordinate is -5."
+      ],
+      "useAgain": "when a figure flips over a diagonal line instead of an axis.",
+      "hints": [
+        "Reflecting over y = -x does not keep either coordinate in place.",
+        "Work out both new coordinates, then read off the one asked for."
+      ],
+      "socraticHint": "What does reflecting over y = -x do to the pair of coordinates?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (6, -3) is reflected over the line y = -x. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "-6"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (5, -2) and its reflection (2, -5) over y = -x.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 5,
+              "y": -2,
+              "label": "P"
+            },
+            {
+              "x": 2,
+              "y": -5,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                5,
+                -2
+              ],
+              [
+                2,
+                -5
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p18",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-4, 6) is reflected over the line y = x. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "-4"
+      },
+      "explanation": [
+        "Reflecting over y = x swaps the two coordinates.",
+        "So the image is (6, -4), and its y-coordinate is -4."
+      ],
+      "useAgain": "when a figure flips over a diagonal line instead of an axis.",
+      "hints": [
+        "Reflecting over y = x does not keep either coordinate in place.",
+        "Work out both new coordinates, then read off the one asked for."
+      ],
+      "socraticHint": "What does reflecting over y = x do to the pair of coordinates?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (-5, 4) is reflected over the line y = x. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-4, 6) and its reflection (6, -4) over y = x.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -4,
+              "y": 6,
+              "label": "P"
+            },
+            {
+              "x": 6,
+              "y": -4,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -4,
+                6
+              ],
+              [
+                6,
+                -4
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p19",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (2, 4) is reflected over the line x = 5. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "A reflection over x = 5 keeps the point the same distance from the line, on the other side.",
+        "The x-coordinate becomes 2 times 5 minus the original x-coordinate, which is 8."
+      ],
+      "useAgain": "when a figure flips over a line that is not an axis.",
+      "hints": [
+        "The distance from the point to the line x = 5 stays the same after reflecting.",
+        "The new x-coordinate is 25 minus the old one."
+      ],
+      "socraticHint": "How far is the point from the line x = 5, and which side is it on?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (1, 6) is reflected over the line x = 4. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (2, 4), the line x = 5, and the image (8, 4).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 2,
+              "y": 4,
+              "label": "P"
+            },
+            {
+              "x": 8,
+              "y": 4,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                2,
+                4
+              ],
+              [
+                8,
+                4
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p20",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (6, -1) is reflected over the line y = 2. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "A reflection over y = 2 keeps the point the same distance from the line, on the other side.",
+        "The y-coordinate becomes 2 times 2 minus the original y-coordinate, which is 5."
+      ],
+      "useAgain": "when a figure flips over a line that is not an axis.",
+      "hints": [
+        "The distance from the point to the line y = 2 stays the same after reflecting.",
+        "The new y-coordinate is 22 minus the old one."
+      ],
+      "socraticHint": "How far is the point from the line y = 2, and which side is it on?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (7, -3) is reflected over the line y = 1. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (6, -1), the line y = 2, and the image (6, 5).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 6,
+              "y": -1,
+              "label": "P"
+            },
+            {
+              "x": 6,
+              "y": 5,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                6,
+                -1
+              ],
+              [
+                6,
+                5
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p21",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-3, 5) is reflected over the line x = -1. What is the x-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "A reflection over x = -1 keeps the point the same distance from the line, on the other side.",
+        "The x-coordinate becomes 2 times -1 minus the original x-coordinate, which is 1."
+      ],
+      "useAgain": "when a figure flips over a line that is not an axis.",
+      "hints": [
+        "The distance from the point to the line x = -1 stays the same after reflecting.",
+        "The new x-coordinate is 2-1 minus the old one."
+      ],
+      "socraticHint": "How far is the point from the line x = -1, and which side is it on?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (-4, 2) is reflected over the line x = -2. What is the x-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-3, 5), the line x = -1, and the image (1, 5).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -3,
+              "y": 5,
+              "label": "P"
+            },
+            {
+              "x": 1,
+              "y": 5,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -3,
+                5
+              ],
+              [
+                1,
+                5
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p22",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (3, 2) is rotated 90 degrees counterclockwise about the origin. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "A 90 degree counterclockwise rotation about the origin: (x, y) becomes (-y, x).",
+        "So the image is (-2, 3), and its y-coordinate is 3."
+      ],
+      "useAgain": "when a figure turns about the origin by a right angle or its multiple.",
+      "hints": [
+        "A 90 degree rotation has its own fixed rule for both coordinates.",
+        "Substitute the point's coordinates into that rule."
+      ],
+      "socraticHint": "What is the rule for a 90 degree counterclockwise rotation about the origin?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (2, 5) is rotated 90 degrees counterclockwise about the origin. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (3, 2) and its image (-2, 3) after a 90 degree rotation.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 3,
+              "y": 2,
+              "label": "P"
+            },
+            {
+              "x": -2,
+              "y": 3,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                3,
+                2
+              ],
+              [
+                -2,
+                3
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p23",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-4, 5) is rotated 270 degrees counterclockwise about the origin. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "A 270 degree counterclockwise rotation about the origin: (x, y) becomes (y, -x).",
+        "So the image is (5, 4), and its y-coordinate is 4."
+      ],
+      "useAgain": "when a figure turns about the origin by a right angle or its multiple.",
+      "hints": [
+        "A 270 degree rotation has its own fixed rule for both coordinates.",
+        "Substitute the point's coordinates into that rule."
+      ],
+      "socraticHint": "What is the rule for a 270 degree counterclockwise rotation about the origin?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (-3, 4) is rotated 270 degrees counterclockwise about the origin. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-4, 5) and its image (5, 4) after a 270 degree rotation.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -4,
+              "y": 5,
+              "label": "P"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -4,
+                5
+              ],
+              [
+                5,
+                4
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p24",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (6, -1) is rotated 90 degrees counterclockwise about the origin. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "A 90 degree counterclockwise rotation about the origin: (x, y) becomes (-y, x).",
+        "So the image is (1, 6), and its y-coordinate is 6."
+      ],
+      "useAgain": "when a figure turns about the origin by a right angle or its multiple.",
+      "hints": [
+        "A 90 degree rotation has its own fixed rule for both coordinates.",
+        "Substitute the point's coordinates into that rule."
+      ],
+      "socraticHint": "What is the rule for a 90 degree counterclockwise rotation about the origin?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (7, -2) is rotated 90 degrees counterclockwise about the origin. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (6, -1) and its image (1, 6) after a 90 degree rotation.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 6,
+              "y": -1,
+              "label": "P"
+            },
+            {
+              "x": 1,
+              "y": 6,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                6,
+                -1
+              ],
+              [
+                1,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p25",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-2, -6) is rotated 270 degrees counterclockwise about the origin. What is the y-coordinate of its image?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "A 270 degree counterclockwise rotation about the origin: (x, y) becomes (y, -x).",
+        "So the image is (-6, 2), and its y-coordinate is 2."
+      ],
+      "useAgain": "when a figure turns about the origin by a right angle or its multiple.",
+      "hints": [
+        "A 270 degree rotation has its own fixed rule for both coordinates.",
+        "Substitute the point's coordinates into that rule."
+      ],
+      "socraticHint": "What is the rule for a 270 degree counterclockwise rotation about the origin?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (-1, -5) is rotated 270 degrees counterclockwise about the origin. What is the y-coordinate of its image?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Point (-2, -6) and its image (-6, 2) after a 270 degree rotation.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -2,
+              "y": -6,
+              "label": "P"
+            },
+            {
+              "x": -6,
+              "y": 2,
+              "label": "P'"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -2,
+                -6
+              ],
+              [
+                -6,
+                2
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p26",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "choice",
+      "prompt": "Point (5, 2) is reflected over the y-axis. What is its image?",
+      "options": [
+        "(2, 5)",
+        "(5, 2)",
+        "(-5, -2)",
+        "(-5, 2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Apply the rule for this transformation to each coordinate in turn.",
+        "That gives (-5, 2)."
+      ],
+      "useAgain": "when you need the whole image point, not just one coordinate.",
+      "hints": [
+        "Write down the rule for this exact transformation before substituting.",
+        "Check the sign and the order of the two coordinates separately."
+      ],
+      "socraticHint": "What does the rule for this transformation do to each coordinate?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (6, 3) is reflected over the y-axis. What is its image?",
+        "options": [
+          "(3, 6)",
+          "(-6, 3)",
+          "(6, 3)",
+          "(-6, -3)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p27",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "choice",
+      "prompt": "Point (-3, 6) is rotated 90 degrees counterclockwise about the origin. What is its image?",
+      "options": [
+        "(-6, -3)",
+        "(6, -3)",
+        "(-6, 3)",
+        "(6, 3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Apply the rule for this transformation to each coordinate in turn.",
+        "That gives (-6, -3)."
+      ],
+      "useAgain": "when you need the whole image point, not just one coordinate.",
+      "hints": [
+        "Write down the rule for this exact transformation before substituting.",
+        "Check the sign and the order of the two coordinates separately."
+      ],
+      "socraticHint": "What does the rule for this transformation do to each coordinate?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (-2, 7) is rotated 90 degrees counterclockwise about the origin. What is its image?",
+        "options": [
+          "(7, -2)",
+          "(-7, 2)",
+          "(-7, -2)",
+          "(7, 2)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p28",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "choice",
+      "prompt": "Point (4, -5) is reflected over the line y = x. What is its image?",
+      "options": [
+        "(5, 4)",
+        "(-5, 4)",
+        "(-5, -4)",
+        "(5, -4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Apply the rule for this transformation to each coordinate in turn.",
+        "That gives (-5, 4)."
+      ],
+      "useAgain": "when you need the whole image point, not just one coordinate.",
+      "hints": [
+        "Write down the rule for this exact transformation before substituting.",
+        "Check the sign and the order of the two coordinates separately."
+      ],
+      "socraticHint": "What does the rule for this transformation do to each coordinate?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Point (5, -6) is reflected over the line y = x. What is its image?",
+        "options": [
+          "(6, 5)",
+          "(-6, -5)",
+          "(6, -5)",
+          "(-6, 5)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p29",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "truefalse",
+      "prompt": "Reflecting a point over the y-axis changes the sign of its y-coordinate.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Reflecting over the y-axis changes the sign of the x-coordinate, not the y-coordinate.",
+        "The y-coordinate stays the same; only the x-coordinate flips."
+      ],
+      "useAgain": "when you need to recall which coordinate a reflection over an axis changes.",
+      "hints": [
+        "Think about which axis stays fixed during this reflection.",
+        "A reflection over the y-axis keeps every point's distance from the y-axis, on the other side."
+      ],
+      "socraticHint": "Which coordinate measures distance from the y-axis?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Reflecting a point over the x-axis changes the sign of its x-coordinate.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p30",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "truefalse",
+      "prompt": "Rotating a point 180 degrees about the origin is the same as reflecting it over the x-axis and then over the y-axis.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Reflecting over the x-axis sends (x, y) to (x, -y). Reflecting that over the y-axis sends it to (-x, -y).",
+        "That is exactly the rule for a 180 degree rotation about the origin."
+      ],
+      "useAgain": "when you need to combine two simple transformations into one rule.",
+      "hints": [
+        "Apply the two reflections in order to a general point (x, y).",
+        "Compare the result to the rule for a 180 degree rotation."
+      ],
+      "socraticHint": "What do you get if you apply both reflections, in order, to (x, y)?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Rotating a point 90 degrees is the same as reflecting it over the x-axis and then over the y-axis.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p31",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (3, 5) is reflected over the x-axis, then the result is reflected over the y-axis. What is the x-coordinate of the final image?",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "First, (3, 5) reflected over the x-axis gives (3, -5).",
+        "Then (3, -5) reflected over the y-axis gives (-3, -5).",
+        "The x-coordinate of the final image is -3."
+      ],
+      "useAgain": "when two transformations are applied to a point one after the other.",
+      "hints": [
+        "Apply the two transformations one at a time, in the order given.",
+        "Use the result of the first transformation as the input to the second."
+      ],
+      "socraticHint": "What point do you get after only the first transformation?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (2, 7) is reflected over the x-axis, then the result is reflected over the y-axis. What is the x-coordinate of the final image?",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Point (3, 5) before any transformation.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 3,
+              "y": 5,
+              "label": "P"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p32",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-2, 6) is rotated 90 degrees counterclockwise about the origin, then the result is reflected over the x-axis. What is the x-coordinate of the final image?",
+      "answer": {
+        "kind": "number",
+        "value": "-6"
+      },
+      "explanation": [
+        "First, (-2, 6) rotated 90 degrees counterclockwise about the origin gives (-6, -2).",
+        "Then (-6, -2) reflected over the x-axis gives (-6, 2).",
+        "The x-coordinate of the final image is -6."
+      ],
+      "useAgain": "when two transformations are applied to a point one after the other.",
+      "hints": [
+        "Apply the two transformations one at a time, in the order given.",
+        "Use the result of the first transformation as the input to the second."
+      ],
+      "socraticHint": "What point do you get after only the first transformation?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (-3, 5) is rotated 90 degrees counterclockwise about the origin, then the result is reflected over the x-axis. What is the x-coordinate of the final image?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Point (-2, 6) before any transformation.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -2,
+              "y": 6,
+              "label": "P"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p33",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (4, -3) is reflected over the line y = x, then the result is rotated 180 degrees about the origin. What is the x-coordinate of the final image?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "First, (4, -3) reflected over the line y = x gives (-3, 4).",
+        "Then (-3, 4) rotated 180 degrees about the origin gives (3, -4).",
+        "The x-coordinate of the final image is 3."
+      ],
+      "useAgain": "when two transformations are applied to a point one after the other.",
+      "hints": [
+        "Apply the two transformations one at a time, in the order given.",
+        "Use the result of the first transformation as the input to the second."
+      ],
+      "socraticHint": "What point do you get after only the first transformation?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (6, -1) is reflected over the line y = x, then the result is rotated 180 degrees about the origin. What is the x-coordinate of the final image?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Point (4, -3) before any transformation.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 4,
+              "y": -3,
+              "label": "P"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p34",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (-5, -2) is translated 3 units right and 2 units up, then the result is reflected over the y-axis. What is the x-coordinate of the final image?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "First, (-5, -2) translated 3 units right and 2 units up gives (-2, 0).",
+        "Then (-2, 0) reflected over the y-axis gives (2, 0).",
+        "The x-coordinate of the final image is 2."
+      ],
+      "useAgain": "when two transformations are applied to a point one after the other.",
+      "hints": [
+        "Apply the two transformations one at a time, in the order given.",
+        "Use the result of the first transformation as the input to the second."
+      ],
+      "socraticHint": "What point do you get after only the first transformation?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (-4, -6) is translated 2 units right and 3 units up, then the result is reflected over the y-axis. What is the x-coordinate of the final image?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Point (-5, -2) before any transformation.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -5,
+              "y": -2,
+              "label": "P"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p35",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "choice",
+      "prompt": "Reflecting a point over the x-axis, then over the y-axis, has the same effect as which single transformation?",
+      "options": [
+        "A 180 degree rotation about the origin",
+        "A 90 degree counterclockwise rotation about the origin",
+        "A reflection over the line y = x",
+        "A translation"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Apply both reflections to a general point (x, y): the x-axis reflection gives (x, -y), then the y-axis reflection gives (-x, -y).",
+        "(-x, -y) is exactly the rule for a 180 degree rotation about the origin."
+      ],
+      "useAgain": "when two reflections over perpendicular lines combine into one transformation.",
+      "hints": [
+        "Apply the two reflections to (x, y) in order, one at a time.",
+        "Compare the final rule to the rules for rotation, reflection over y = x, and translation."
+      ],
+      "socraticHint": "What single rule takes (x, y) to (-x, -y)?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Reflecting a point over the x-axis, then over the line y = x, has the same effect as which single transformation?",
+        "options": [
+          "A 180 degree rotation about the origin",
+          "A reflection over the y-axis",
+          "A 90 degree counterclockwise rotation about the origin",
+          "A translation"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p36",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "choice",
+      "prompt": "Rotating a point 90 degrees counterclockwise about the origin, then reflecting the result over the x-axis, has the same effect as which single transformation?",
+      "options": [
+        "A 180 degree rotation about the origin",
+        "A reflection over the x-axis",
+        "A reflection over the line y = -x",
+        "A translation"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Apply both steps to a general point (x, y): the 90 degree rotation gives (-y, x), then reflecting over the x-axis gives (-y, -x).",
+        "(-y, -x) is exactly the rule for a reflection over the line y = -x."
+      ],
+      "useAgain": "when two different kinds of transformation combine into one.",
+      "hints": [
+        "Apply the rotation first, then the reflection, to (x, y).",
+        "Compare the final rule to each option's own coordinate rule."
+      ],
+      "socraticHint": "What single rule takes (x, y) to (-y, -x)?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Rotating a point 180 degrees about the origin, then reflecting the result over the y-axis, has the same effect as which single transformation?",
+        "options": [
+          "A reflection over the x-axis",
+          "A reflection over the line y = x",
+          "A 90 degree counterclockwise rotation about the origin",
+          "A translation"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p37",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "choice",
+      "prompt": "A point at (3, 5) has image (3, -5). Which transformation maps the point to its image?",
+      "options": [
+        "Reflection over the y-axis",
+        "Reflection over the x-axis",
+        "Reflection over the line y = x",
+        "Rotation 180 degrees about the origin"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Compare the point and its image coordinate by coordinate.",
+        "Match the pattern of signs and swaps to one of the four rules."
+      ],
+      "useAgain": "when you are given a point and its image and must name the rule.",
+      "hints": [
+        "Check whether the coordinates swapped places.",
+        "Check which coordinates changed sign and which stayed the same."
+      ],
+      "socraticHint": "Did the coordinates swap, change sign, or both?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A point at (2, 6) has image (2, -6). Which transformation maps the point to its image?",
+        "options": [
+          "Reflection over the y-axis",
+          "Reflection over the line y = x",
+          "Rotation 180 degrees about the origin",
+          "Reflection over the x-axis"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p38",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "choice",
+      "prompt": "A point at (-4, 6) has image (4, 6). Which transformation maps the point to its image?",
+      "options": [
+        "Reflection over the y-axis",
+        "Reflection over the x-axis",
+        "Reflection over the line y = x",
+        "Rotation 180 degrees about the origin"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Compare the point and its image coordinate by coordinate.",
+        "Match the pattern of signs and swaps to one of the four rules."
+      ],
+      "useAgain": "when you are given a point and its image and must name the rule.",
+      "hints": [
+        "Check whether the coordinates swapped places.",
+        "Check which coordinates changed sign and which stayed the same."
+      ],
+      "socraticHint": "Did the coordinates swap, change sign, or both?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A point at (-3, 7) has image (3, 7). Which transformation maps the point to its image?",
+        "options": [
+          "Reflection over the x-axis",
+          "Reflection over the line y = x",
+          "Reflection over the y-axis",
+          "Rotation 180 degrees about the origin"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p39",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "choice",
+      "prompt": "A point at (7, -2) has image (-2, 7). Which transformation maps the point to its image?",
+      "options": [
+        "Reflection over the x-axis",
+        "Reflection over the line y = x",
+        "Reflection over the y-axis",
+        "Rotation 180 degrees about the origin"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Compare the point and its image coordinate by coordinate.",
+        "Match the pattern of signs and swaps to one of the four rules."
+      ],
+      "useAgain": "when you are given a point and its image and must name the rule.",
+      "hints": [
+        "Check whether the coordinates swapped places.",
+        "Check which coordinates changed sign and which stayed the same."
+      ],
+      "socraticHint": "Did the coordinates swap, change sign, or both?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A point at (8, -1) has image (-1, 8). Which transformation maps the point to its image?",
+        "options": [
+          "Reflection over the x-axis",
+          "Reflection over the y-axis",
+          "Rotation 180 degrees about the origin",
+          "Reflection over the line y = x"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p40",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "choice",
+      "prompt": "A point at (-5, -3) has image (5, 3). Which transformation maps the point to its image?",
+      "options": [
+        "Rotation 180 degrees about the origin",
+        "Reflection over the x-axis",
+        "Reflection over the y-axis",
+        "Reflection over the line y = x"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Compare the point and its image coordinate by coordinate.",
+        "Match the pattern of signs and swaps to one of the four rules."
+      ],
+      "useAgain": "when you are given a point and its image and must name the rule.",
+      "hints": [
+        "Check whether the coordinates swapped places.",
+        "Check which coordinates changed sign and which stayed the same."
+      ],
+      "socraticHint": "Did the coordinates swap, change sign, or both?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A point at (-6, -4) has image (6, 4). Which transformation maps the point to its image?",
+        "options": [
+          "Reflection over the x-axis",
+          "Rotation 180 degrees about the origin",
+          "Reflection over the y-axis",
+          "Reflection over the line y = x"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p41",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "order",
+      "prompt": "Point (2, 4) is reflected over the y-axis, then rotated 90 degrees counterclockwise about the origin. Put these steps for finding the final image in order.",
+      "items": [
+        "The final image is (-4, -2).",
+        "Apply the first transformation: (2, 4) reflected over the y-axis gives (-2, 4).",
+        "Apply the second transformation to that result: (-2, 4) rotated 90 degrees counterclockwise about the origin gives (-4, -2)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Only one transformation can be applied at a time, first to last.",
+        "The second transformation always uses the first transformation's result, not the original point."
+      ],
+      "useAgain": "when a point goes through two transformations, one after the other.",
+      "hints": [
+        "Which point does the second transformation start from?",
+        "It starts from the image the first transformation produced, not the original."
+      ],
+      "socraticHint": "Which point does the second transformation actually start from?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (3, 6) is reflected over the y-axis, then rotated 90 degrees counterclockwise about the origin. Put these steps for finding the final image in order.",
+        "items": [
+          "The final image is (-6, -3).",
+          "Apply the first transformation: (3, 6) reflected over the y-axis gives (-3, 6).",
+          "Apply the second transformation to that result: (-3, 6) rotated 90 degrees counterclockwise about the origin gives (-6, -3)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p42",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "order",
+      "prompt": "Point (5, -3) is rotated 180 degrees about the origin, then reflected over the line y = x. Put these steps for finding the final image in order.",
+      "items": [
+        "The final image is (3, -5).",
+        "Apply the first transformation: (5, -3) rotated 180 degrees about the origin gives (-5, 3).",
+        "Apply the second transformation to that result: (-5, 3) reflected over the line y = x gives (3, -5)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Only one transformation can be applied at a time, first to last.",
+        "The second transformation always uses the first transformation's result, not the original point."
+      ],
+      "useAgain": "when a point goes through two transformations, one after the other.",
+      "hints": [
+        "Which point does the second transformation start from?",
+        "It starts from the image the first transformation produced, not the original."
+      ],
+      "socraticHint": "Which point does the second transformation actually start from?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (6, -4) is rotated 180 degrees about the origin, then reflected over the line y = x. Put these steps for finding the final image in order.",
+        "items": [
+          "The final image is (4, -6).",
+          "Apply the first transformation: (6, -4) rotated 180 degrees about the origin gives (-6, 4).",
+          "Apply the second transformation to that result: (-6, 4) reflected over the line y = x gives (4, -6)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p43",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "order",
+      "prompt": "Point (-3, 5) is translated 4 units right and 1 unit down, then reflected over the x-axis. Put these steps for finding the final image in order.",
+      "items": [
+        "The final image is (1, -4).",
+        "Apply the first transformation: (-3, 5) translated 4 units right and 1 unit down gives (1, 4).",
+        "Apply the second transformation to that result: (1, 4) reflected over the x-axis gives (1, -4)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Only one transformation can be applied at a time, first to last.",
+        "The second transformation always uses the first transformation's result, not the original point."
+      ],
+      "useAgain": "when a point goes through two transformations, one after the other.",
+      "hints": [
+        "Which point does the second transformation start from?",
+        "It starts from the image the first transformation produced, not the original."
+      ],
+      "socraticHint": "Which point does the second transformation actually start from?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (-4, 6) is translated 3 units right and 2 units down, then reflected over the x-axis. Put these steps for finding the final image in order.",
+        "items": [
+          "The final image is (-1, -4).",
+          "Apply the first transformation: (-4, 6) translated 3 units right and 2 units down gives (-1, 4).",
+          "Apply the second transformation to that result: (-1, 4) reflected over the x-axis gives (-1, -4)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p44",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "truefalse",
+      "prompt": "Reflecting a point over a line twice, over the same line both times, always returns the original point.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "A reflection undoes itself: reflecting the image back over the same line reverses the flip.",
+        "So two reflections over the same line always return the starting point."
+      ],
+      "useAgain": "when you need to know whether repeating the same reflection changes anything.",
+      "hints": [
+        "Think about what a reflection does to distance from the line.",
+        "Reflecting an already-reflected point back over the same line reverses the first flip exactly."
+      ],
+      "socraticHint": "What happens to a point's distance from the line after two reflections over it?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Rotating a point 90 degrees counterclockwise twice about the origin always returns the original point.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p45",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "truefalse",
+      "prompt": "Translating a point up 4 units, then reflecting it over the x-axis, always matches reflecting first and translating second.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Starting from (1, 2): translate up 4 to (1, 6), then reflect over the x-axis to (1, -6).",
+        "Starting from (1, 2) again: reflect first to (1, -2), then translate up 4 to (1, 2). The two results differ."
+      ],
+      "useAgain": "when you need to know whether the order of two transformations matters.",
+      "hints": [
+        "Pick one point and try both orders on it.",
+        "Translating first changes what gets reflected; reflecting first changes what gets translated."
+      ],
+      "socraticHint": "Do the two orders give the same final point for (1, 2)?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Rotating a point 90 degrees about the origin, then another 90 degrees about the origin, always matches one rotation of 180 degrees.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-ge-transformations-rigid-p46",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "A point is reflected over the y-axis, then the result is rotated 90 degrees counterclockwise about the origin, giving the final image (7, -2). What is the x-coordinate of the original point?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Undo the second step first: rotated 90 degrees counterclockwise about the origin is undone by its opposite rotation, taking (7, -2) back to (-2, -7).",
+        "Undo the first step: reflected over the y-axis is undone by the same reflection again, taking (-2, -7) back to (2, -7).",
+        "The original point is (2, -7), so its x-coordinate is 2."
+      ],
+      "useAgain": "when you know the final image of two transformations and must find the original point.",
+      "hints": [
+        "Work backward through the two steps, undoing the last one first.",
+        "Each transformation has an opposite that reverses it exactly."
+      ],
+      "socraticHint": "What undoes the second transformation, and what does it give you?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A point is reflected over the x-axis, then the result is rotated 90 degrees counterclockwise about the origin, giving the final image (5, -6). What is the x-coordinate of the original point?",
+        "answer": {
+          "kind": "number",
+          "value": "-6"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p47",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "order",
+      "prompt": "Point (5, 4) is rotated 90 degrees counterclockwise about the center (2, 1), not the origin. Put these steps for finding its image in order.",
+      "items": [
+        "Translate back, undoing the first shift: (-3, 3) becomes (-3+2, 3+1) = (-1, 4).",
+        "Translate so the center of rotation moves to the origin: (5, 4) becomes (5-2, 4-1) = (3, 3).",
+        "Rotate 90 degrees counterclockwise about the origin: (3, 3) becomes (-3, 3)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Move the center of rotation to the origin first, since the rotation rule only works about the origin.",
+        "Undo that first move at the very end, on the rotated point."
+      ],
+      "useAgain": "when a rotation is centered at a point other than the origin.",
+      "hints": [
+        "Which point needs to sit at the origin before the rotation rule applies?",
+        "Subtract the center's coordinates first, rotate, then add them back."
+      ],
+      "socraticHint": "What has to move to the origin before the rotation rule can be used?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (7, 6) is rotated 90 degrees counterclockwise about the center (3, 2), not the origin. Put these steps for finding its image in order.",
+        "items": [
+          "Translate back, undoing the first shift: (-4, 4) becomes (-4+3, 4+2) = (-1, 6).",
+          "Translate so the center of rotation moves to the origin: (7, 6) becomes (7-3, 6-2) = (4, 4).",
+          "Rotate 90 degrees counterclockwise about the origin: (4, 4) becomes (-4, 4)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Point (5, 4) and the center of rotation (2, 1).",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 5,
+              "y": 4,
+              "label": "point"
+            },
+            {
+              "x": 2,
+              "y": 1,
+              "label": "center"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p48",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "choice",
+      "prompt": "Point (a, b) is reflected over the line y = x, then the result is reflected over the x-axis. What is the final image?",
+      "options": [
+        "(-b, a)",
+        "(a, -b)",
+        "(b, -a)",
+        "(-a, -b)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Reflecting (a, b) over y = x swaps the coordinates: (b, a).",
+        "Reflecting (b, a) over the x-axis flips the sign of the second coordinate: (b, -a)."
+      ],
+      "useAgain": "when a transformation problem uses letters instead of numbers.",
+      "hints": [
+        "Apply the first reflection symbolically before the second.",
+        "Track which letter sits in which position after each step."
+      ],
+      "socraticHint": "What does (a, b) become after just the first reflection?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (a, b) is reflected over the x-axis, then the result is reflected over the line y = x. What is the final image?",
+        "options": [
+          "(b, -a)",
+          "(a, -b)",
+          "(-a, -b)",
+          "(-b, a)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p49",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "number",
+      "prompt": "Point (2, 5) is reflected over the line x = 1, then the result is reflected over the line x = 4. What is the x-coordinate of the final image?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Reflecting over x = 1 sends (2, 5) to (0, 5).",
+        "Reflecting that over x = 4 sends it to (8, 5).",
+        "Two reflections over parallel vertical lines always equal one translation, here by 6 units."
+      ],
+      "useAgain": "when two reflections over parallel lines combine into one slide.",
+      "hints": [
+        "Apply each reflection in order, over its own line.",
+        "Two reflections over parallel lines always combine into a single slide."
+      ],
+      "socraticHint": "What is the image after just the first reflection?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Point (3, 6) is reflected over the line x = 2, then the result is reflected over the line x = 6. What is the x-coordinate of the final image?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-transformations-rigid-p50",
+      "lane": "skills",
+      "ideaId": "ge-transformations-rigid",
+      "kind": "choice",
+      "prompt": "A point at (6, -4) has image (4, 6). Which transformation maps the point to its image?",
+      "options": [
+        "Rotation 90 degrees counterclockwise about the origin",
+        "Rotation 270 degrees counterclockwise about the origin",
+        "Reflection over the line y = x",
+        "Reflection over the line y = -x"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Two of these four options both swap the coordinates and change one sign, so check the sign pattern exactly.",
+        "Rotation 90 degrees counterclockwise sends (x, y) to (-y, x): the first coordinate of the image is the negative of the point's second coordinate."
+      ],
+      "useAgain": "when several transformations produce similar-looking images and you must pick the exact one.",
+      "hints": [
+        "More than one option could swap and negate; check which coordinate gets the negative sign.",
+        "Compare the image's first coordinate to the point's second coordinate."
+      ],
+      "socraticHint": "Which coordinate of the image is the negative of which coordinate of the point?",
+      "skills": [
+        "think.skills.transformations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A point at (5, -7) has image (7, 5). Which transformation maps the point to its image?",
+        "options": [
+          "Rotation 270 degrees counterclockwise about the origin",
+          "Reflection over the line y = x",
+          "Rotation 90 degrees counterclockwise about the origin",
+          "Reflection over the line y = -x"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    }
+  ]
+}

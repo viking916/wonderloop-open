@@ -1,0 +1,1993 @@
+{
+  "id": "a2-systems-three-variables",
+  "idea": {
+    "body": "Three equations in three unknowns pin down a single point, if you eliminate one variable at a time. Combine two equations to knock out one letter, then combine a different pair to knock out the same letter again. That leaves two equations in two unknowns, which reduces the same way algebra 1 solved a pair of lines. Once two variables are known, substitute back into any original equation for the third. Sometimes a third equation adds no new information, and the system has a whole line of solutions instead of one point. Sometimes a third equation flatly contradicts the other two, and there is no solution at all."
+  },
+  "workedExample": {
+    "prompt": "x + y + z = 6.\n2x - y + z = 7.\nx + 2y - z = 3.\nWhat is x?",
+    "steps": [
+      "Add the first and second equations to eliminate y: 3x + 2z = 13.",
+      "Combine twice the first equation with the third to eliminate y again: x + 3z = 9.",
+      "Multiply the second result by 3 and subtract from the first: 7z = 14, so z = 2.",
+      "x + 3(2) = 9, so x = 3."
+    ]
+  },
+  "ways": [
+    {
+      "id": "a2-systems-three-variables-w1",
+      "name": "Eliminate one variable at a time",
+      "when": "Use this method for any system of three equations in three unknowns.",
+      "steps": [
+        "Pick one variable to eliminate, say y.",
+        "Combine two equations to knock out y, getting one equation with x and z.",
+        "Combine two different equations to knock out y again, getting a second equation with x and z.",
+        "Solve the pair of equations in x and z, then substitute back to find y."
+      ],
+      "example": "x + 2y + z = 10.\n2x - y + z = 8.\nx + y - z = 5.\nWhat is x?",
+      "answer": "3",
+      "trap": "Eliminating the same variable pair twice instead of picking a different pair the second time.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Three equations in three unknowns, then elimination steps showing y knocked out.",
+        "spec": {
+          "w": 300,
+          "h": 180,
+          "items": [
+            {
+              "t": "text",
+              "x": 10,
+              "y": 16,
+              "s": "x + 2y + z = 10",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 38,
+              "s": "2x - y + z = 8",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 60,
+              "s": "x + y - z = 5",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 90,
+              "s": "Eliminate y from pairs of equations:",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 112,
+              "s": "3x + 2z = 21",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 134,
+              "s": "3x = 13",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 156,
+              "s": "x = 3",
+              "size": 12,
+              "anchor": "start"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Solve for x in a 3-equation system.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Pick a variable to eliminate: y.",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Combine two equations to eliminate y.",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Combine a different pair to eliminate y again.",
+              "set": {
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Solve the pair, then find y: x = 3.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a2-systems-three-variables-w2",
+      "name": "Back substitution from triangular form",
+      "when": "Use this when the system is arranged so each equation has one fewer variable.",
+      "steps": [
+        "The third equation gives one variable directly.",
+        "Substitute that into the second equation to find the next variable.",
+        "Substitute both into the first equation to find the last variable."
+      ],
+      "example": "x + y + z = 6.\ny + z = 4.\nz = 1.\nWhat is x?",
+      "answer": "2",
+      "trap": "Forgetting to substitute back and stopping after solving the simplest equation."
+    },
+    {
+      "id": "a2-systems-three-variables-w3",
+      "name": "Detect no solution or infinitely many solutions",
+      "when": "Use this to spot when a system is inconsistent or has a whole line of solutions.",
+      "steps": [
+        "After eliminating variables, check the resulting equations.",
+        "If an equation says 0 = 1, there is no solution.",
+        "If an equation simplifies to 0 = 0, that equation gives no new info and there are infinitely many solutions."
+      ],
+      "example": "x + y + z = 5.\nx + y + z = 7.\nz = 2.\nIs there a solution?",
+      "answer": "No",
+      "trap": "Missing that the first two equations contradict each other because they both say x + y + z equals different numbers."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-systems-three-variables-p01",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 6.\ny + z = 4.\nz = 1.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The last line gives z = 1.",
+        "y + z = 4, so y = 4 - 1 = 3.",
+        "x + y + z = 6, so x = 6 - 3 - 1 = 2."
+      ],
+      "useAgain": "when a system is already arranged so the last equation gives one variable directly.",
+      "hints": [
+        "Start from the last equation, which already gives one variable.",
+        "Substitute back up through the equations one at a time."
+      ],
+      "socraticHint": "Which equation already tells you one of the three variables?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x + y + z = 10.\ny + z = 3.\nz = 1.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p02",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 7.\ny + z = 3.\nz = 2.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The last line gives z = 2.",
+        "y + z = 3, so y = 3 - 2 = 1.",
+        "x + y + z = 7, so x = 7 - 1 - 2 = 4."
+      ],
+      "useAgain": "when a system is already arranged so the last equation gives one variable directly.",
+      "hints": [
+        "Start from the last equation, which already gives one variable.",
+        "Substitute back up through the equations one at a time."
+      ],
+      "socraticHint": "Which equation already tells you one of the three variables?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x + y + z = 11.\ny + z = 8.\nz = 2.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p03",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 10.\ny + z = 5.\nz = 3.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The last line gives z = 3.",
+        "y + z = 5, so y = 5 - 3 = 2.",
+        "x + y + z = 10, so x = 10 - 2 - 3 = 5."
+      ],
+      "useAgain": "when a system is already arranged so the last equation gives one variable directly.",
+      "hints": [
+        "Start from the last equation, which already gives one variable.",
+        "Substitute back up through the equations one at a time."
+      ],
+      "socraticHint": "Which equation already tells you one of the three variables?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x + y + z = 12.\ny + z = 7.\nz = 3.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p04",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 9.\ny + z = 6.\nz = 2.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The last line gives z = 2.",
+        "y + z = 6, so y = 6 - 2 = 4.",
+        "x + y + z = 9, so x = 9 - 4 - 2 = 3."
+      ],
+      "useAgain": "when a system is already arranged so the last equation gives one variable directly.",
+      "hints": [
+        "Start from the last equation, which already gives one variable.",
+        "Substitute back up through the equations one at a time."
+      ],
+      "socraticHint": "Which equation already tells you one of the three variables?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x + y + z = 11.\ny + z = 3.\nz = 2.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p05",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 10.\ny + z = 4.\nz = 3.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The last line gives z = 3.",
+        "y + z = 4, so y = 4 - 3 = 1.",
+        "x + y + z = 10, so x = 10 - 1 - 3 = 6."
+      ],
+      "useAgain": "when a system is already arranged so the last equation gives one variable directly.",
+      "hints": [
+        "Start from the last equation, which already gives one variable.",
+        "Substitute back up through the equations one at a time."
+      ],
+      "socraticHint": "Which equation already tells you one of the three variables?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x + y + z = 12.\ny + z = 8.\nz = 5.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p06",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 11.\ny + z = 9.\nz = 4.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The last line gives z = 4.",
+        "y + z = 9, so y = 9 - 4 = 5.",
+        "x + y + z = 11, so x = 11 - 5 - 4 = 2."
+      ],
+      "useAgain": "when a system is already arranged so the last equation gives one variable directly.",
+      "hints": [
+        "Start from the last equation, which already gives one variable.",
+        "Substitute back up through the equations one at a time."
+      ],
+      "socraticHint": "Which equation already tells you one of the three variables?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x + y + z = 12.\ny + z = 6.\nz = 4.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p07",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 10.\nx - y = 1.\ny - z = -3.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Add all three equations' patterns: 3y = 10 - 1 - 3, so y = 2.",
+        "x - y = 1, so x = 1 + 2 = 3."
+      ],
+      "useAgain": "when two equations already isolate the difference between pairs of variables.",
+      "hints": [
+        "Combine the three equations to isolate one variable first.",
+        "Once you know one variable, the other two follow from the simple equations."
+      ],
+      "socraticHint": "Which variable can you find fastest from the two simple equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x + y + z = 10.\nx - y = 2.\ny - z = 1.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p08",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 8.\nx - y = 1.\ny - z = 2.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Add all three equations' patterns: 3y = 8 - 1 + 2, so y = 3.",
+        "x - y = 1, so x = 1 + 3 = 4."
+      ],
+      "useAgain": "when two equations already isolate the difference between pairs of variables.",
+      "hints": [
+        "Combine the three equations to isolate one variable first.",
+        "Once you know one variable, the other two follow from the simple equations."
+      ],
+      "socraticHint": "Which variable can you find fastest from the two simple equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x + y + z = 13.\nx - y = 4.\ny - z = -3.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p09",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 12.\nx - y = 2.\ny - z = 2.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Add all three equations' patterns: 3y = 12 - 2 + 2, so y = 4.",
+        "x - y = 2, so x = 2 + 4 = 6."
+      ],
+      "useAgain": "when two equations already isolate the difference between pairs of variables.",
+      "hints": [
+        "Combine the three equations to isolate one variable first.",
+        "Once you know one variable, the other two follow from the simple equations."
+      ],
+      "socraticHint": "Which variable can you find fastest from the two simple equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x + y + z = 12.\nx - y = -1.\ny - z = 2.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p10",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 9.\nx - y = 4.\ny - z = -2.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Add all three equations' patterns: 3y = 9 - 4 - 2, so y = 1.",
+        "x - y = 4, so x = 4 + 1 = 5."
+      ],
+      "useAgain": "when two equations already isolate the difference between pairs of variables.",
+      "hints": [
+        "Combine the three equations to isolate one variable first.",
+        "Once you know one variable, the other two follow from the simple equations."
+      ],
+      "socraticHint": "Which variable can you find fastest from the two simple equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x + y + z = 11.\nx - y = 6.\ny - z = 1.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p11",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 14.\nx - y = 4.\ny - z = -1.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Add all three equations' patterns: 3y = 14 - 4 - 1, so y = 3.",
+        "x - y = 4, so x = 4 + 3 = 7."
+      ],
+      "useAgain": "when two equations already isolate the difference between pairs of variables.",
+      "hints": [
+        "Combine the three equations to isolate one variable first.",
+        "Once you know one variable, the other two follow from the simple equations."
+      ],
+      "socraticHint": "Which variable can you find fastest from the two simple equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x + y + z = 14.\nx - y = -4.\ny - z = 3.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p12",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 9.\nx - y = -4.\ny - z = 5.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Add all three equations' patterns: 3y = 9 + 4 + 5, so y = 6.",
+        "x - y = -4, so x = -4 + 6 = 2."
+      ],
+      "useAgain": "when two equations already isolate the difference between pairs of variables.",
+      "hints": [
+        "Combine the three equations to isolate one variable first.",
+        "Once you know one variable, the other two follow from the simple equations."
+      ],
+      "socraticHint": "Which variable can you find fastest from the two simple equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x + y + z = 14.\nx - y = 3.\ny - z = -2.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p13",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "truefalse",
+      "prompt": "x - y = 1.\ny - z = -2.\nx + z = 5.\nTrue or false: (x, y, z) = (2, 1, 3) is the solution.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Solving the system gives (x, y, z) = (2, 1, 3).",
+        "(2, 1, 3) is exactly that triple."
+      ],
+      "useAgain": "when checking whether a given triple satisfies a system.",
+      "hints": [
+        "Solve the system for x, y and z first.",
+        "Compare every coordinate of the claimed triple to your solution."
+      ],
+      "socraticHint": "What is the actual solution of the system?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x - y = 1.\ny - z = -2.\nx + z = 7.\nTrue or false: (x, y, z) = (3, 2, 4) is the solution.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p14",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "truefalse",
+      "prompt": "x - y = 2.\ny - z = 1.\nx + z = 5.\nTrue or false: (x, y, z) = (4, 3, 1) is the solution.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Solving the system gives (x, y, z) = (4, 2, 1).",
+        "(4, 3, 1) is not that triple."
+      ],
+      "useAgain": "when checking whether a given triple satisfies a system.",
+      "hints": [
+        "Solve the system for x, y and z first.",
+        "Compare every coordinate of the claimed triple to your solution."
+      ],
+      "socraticHint": "What is the actual solution of the system?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x - y = 4.\ny - z = -2.\nx + z = 8.\nTrue or false: (x, y, z) = (5, 2, 3) is the solution.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p15",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "truefalse",
+      "prompt": "x - y = -4.\ny - z = 3.\nx + z = 3.\nTrue or false: (x, y, z) = (1, 4, 2) is the solution.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Solving the system gives (x, y, z) = (1, 5, 2).",
+        "(1, 4, 2) is not that triple."
+      ],
+      "useAgain": "when checking whether a given triple satisfies a system.",
+      "hints": [
+        "Solve the system for x, y and z first.",
+        "Compare every coordinate of the claimed triple to your solution."
+      ],
+      "socraticHint": "What is the actual solution of the system?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "x - y = -4.\ny - z = 5.\nx + z = 3.\nTrue or false: (x, y, z) = (2, 5, 1) is the solution.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p16",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 6.\n2x - y + z = 6.\nx + 2y - z = 1.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Eliminate one variable at a time by combining pairs of equations.",
+        "Solving the system gives (x, y, z) = (2, 1, 3).",
+        "So x = 2."
+      ],
+      "useAgain": "when none of the three equations isolates a variable directly.",
+      "hints": [
+        "Combine two equations to eliminate one variable, then repeat with a different pair.",
+        "Once two variables are known, substitute back into any equation for the third."
+      ],
+      "socraticHint": "Which pair of equations eliminates the same variable most easily?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "2x + y - z = 5.\nx - y + 2z = 6.\nx + y + z = 6.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p17",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x - y + 2z = 3.\n2x + y - z = 7.\nx + y + z = 6.\nWhat is y?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Eliminate one variable at a time by combining pairs of equations.",
+        "Solving the system gives (x, y, z) = (3, 2, 1).",
+        "So y = 2."
+      ],
+      "useAgain": "when none of the three equations isolates a variable directly.",
+      "hints": [
+        "Combine two equations to eliminate one variable, then repeat with a different pair.",
+        "Once two variables are known, substitute back into any equation for the third."
+      ],
+      "socraticHint": "Which pair of equations eliminates the same variable most easily?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x + 2y + z = 11.\n2x - y - z = -1.\nx + y - 2z = 4.\nWhat is y?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p18",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "2x + y - z = 4.\nx - y + 2z = 1.\nx + y + z = 7.\nWhat is z?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Eliminate one variable at a time by combining pairs of equations.",
+        "Solving the system gives (x, y, z) = (1, 4, 2).",
+        "So z = 2."
+      ],
+      "useAgain": "when none of the three equations isolates a variable directly.",
+      "hints": [
+        "Combine two equations to eliminate one variable, then repeat with a different pair.",
+        "Once two variables are known, substitute back into any equation for the third."
+      ],
+      "socraticHint": "Which pair of equations eliminates the same variable most easily?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x + y + z = 7.\n2x - y + z = 2.\nx + 2y - z = 4.\nWhat is z?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p19",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + 2y + z = 10.\n2x - y - z = -1.\nx + y - 2z = 1.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Eliminate one variable at a time by combining pairs of equations.",
+        "Solving the system gives (x, y, z) = (2, 3, 2).",
+        "So x = 2."
+      ],
+      "useAgain": "when none of the three equations isolates a variable directly.",
+      "hints": [
+        "Combine two equations to eliminate one variable, then repeat with a different pair.",
+        "Once two variables are known, substitute back into any equation for the third."
+      ],
+      "socraticHint": "Which pair of equations eliminates the same variable most easily?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x - y + 2z = 6.\n2x + y - z = 8.\nx + y + z = 8.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p20",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y + z = 6.\n2x - y + z = 8.\nx + 2y - z = 5.\nWhat is y?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Eliminate one variable at a time by combining pairs of equations.",
+        "Solving the system gives (x, y, z) = (4, 1, 1).",
+        "So y = 1."
+      ],
+      "useAgain": "when none of the three equations isolates a variable directly.",
+      "hints": [
+        "Combine two equations to eliminate one variable, then repeat with a different pair.",
+        "Once two variables are known, substitute back into any equation for the third."
+      ],
+      "socraticHint": "Which pair of equations eliminates the same variable most easily?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "2x + y - z = 3.\nx - y + 2z = 6.\nx + y + z = 7.\nWhat is y?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p21",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x - y + 2z = 7.\n2x + y - z = 0.\nx + y + z = 7.\nWhat is z?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Eliminate one variable at a time by combining pairs of equations.",
+        "Solving the system gives (x, y, z) = (1, 2, 4).",
+        "So z = 4."
+      ],
+      "useAgain": "when none of the three equations isolates a variable directly.",
+      "hints": [
+        "Combine two equations to eliminate one variable, then repeat with a different pair.",
+        "Once two variables are known, substitute back into any equation for the third."
+      ],
+      "socraticHint": "Which pair of equations eliminates the same variable most easily?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x + 2y + z = 10.\n2x - y - z = 2.\nx + y - 2z = 4.\nWhat is z?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p22",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "choice",
+      "prompt": "x + y + z = 6.\nx - y + 2z = 7.\n2x + y - z = 2.\nWhat does the solution set look like?",
+      "options": [
+        "exactly one point",
+        "a whole line of points",
+        "no solution at all",
+        "two separate points"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Try to eliminate a variable and see whether the system still pins down a unique answer.",
+        "The three planes meet at a single point, since the equations pin down x, y and z uniquely."
+      ],
+      "useAgain": "when a system's three planes might meet at a point, along a line, or not at all.",
+      "hints": [
+        "Try eliminating one variable using two of the equations.",
+        "Check whether the third equation gives new information, repeats old information, or contradicts it."
+      ],
+      "socraticHint": "Does the third equation add new information, or is it already implied by the other two?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x - z = 2.\ny + z = 5.\nx + 2y + z = 12.\nWhat does the solution set look like?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "a whole line of points",
+          "exactly one point",
+          "no solution at all",
+          "two separate points"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p23",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "choice",
+      "prompt": "x + y + z = 6.\nx - y + 2z = 3.\n3x + y + 4z = 15.\nWhat does the solution set look like?",
+      "options": [
+        "exactly one point",
+        "a whole line of points",
+        "no solution at all",
+        "two separate points"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Try to eliminate a variable and see whether the system still pins down a unique answer.",
+        "The third equation is a combination of the first two, so it adds no new information; the planes meet along a line."
+      ],
+      "useAgain": "when a system's three planes might meet at a point, along a line, or not at all.",
+      "hints": [
+        "Try eliminating one variable using two of the equations.",
+        "Check whether the third equation gives new information, repeats old information, or contradicts it."
+      ],
+      "socraticHint": "Does the third equation add new information, or is it already implied by the other two?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x - z = 2.\ny + z = 5.\nx + 2y + z = 15.\nWhat does the solution set look like?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "exactly one point",
+          "no solution at all",
+          "a whole line of points",
+          "two separate points"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p24",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "choice",
+      "prompt": "x + y + z = 6.\nx - y + 2z = 3.\n3x + y + 4z = 20.\nWhat does the solution set look like?",
+      "options": [
+        "exactly one point",
+        "a whole line of points",
+        "no solution at all",
+        "two separate points"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Try to eliminate a variable and see whether the system still pins down a unique answer.",
+        "The third equation contradicts what the first two force, so no triple satisfies all three."
+      ],
+      "useAgain": "when a system's three planes might meet at a point, along a line, or not at all.",
+      "hints": [
+        "Try eliminating one variable using two of the equations.",
+        "Check whether the third equation gives new information, repeats old information, or contradicts it."
+      ],
+      "socraticHint": "Does the third equation add new information, or is it already implied by the other two?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "3x + y - z = 7.\nx - 2y + z = -1.\n2x + y + z = 7.\nWhat does the solution set look like?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "a whole line of points",
+          "no solution at all",
+          "exactly one point",
+          "two separate points"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p25",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "choice",
+      "prompt": "2x - y + z = 1.\nx + 2y - z = 5.\nx + y + 2z = 8.\nWhat does the solution set look like?",
+      "options": [
+        "a whole line of points",
+        "no solution at all",
+        "two separate points",
+        "exactly one point"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Try to eliminate a variable and see whether the system still pins down a unique answer.",
+        "The three planes meet at a single point, since the equations pin down x, y and z uniquely."
+      ],
+      "useAgain": "when a system's three planes might meet at a point, along a line, or not at all.",
+      "hints": [
+        "Try eliminating one variable using two of the equations.",
+        "Check whether the third equation gives new information, repeats old information, or contradicts it."
+      ],
+      "socraticHint": "Does the third equation add new information, or is it already implied by the other two?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "2x + y = 5.\ny - z = 1.\n2x + 4y - 3z = 8.\nWhat does the solution set look like?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "exactly one point",
+          "no solution at all",
+          "two separate points",
+          "a whole line of points"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p26",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y = 8.\ny + z = 7.\nz + x = 5.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Adding all three equations gives 2(x + y + z) = 20, so x + y + z = 10.",
+        "Subtract each original equation from that total to get each variable; x = 3."
+      ],
+      "useAgain": "when every equation is the sum of exactly two of the three variables.",
+      "hints": [
+        "Add all three equations together first.",
+        "Subtracting one pairwise equation from the total isolates the third variable."
+      ],
+      "socraticHint": "What do you get if you add all three equations together?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x + y = 13.\ny + z = 16.\nz + x = 11.\nWhat is z?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p27",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y = 10.\ny + z = 14.\nz + x = 12.\nWhat is y?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Adding all three equations gives 2(x + y + z) = 36, so x + y + z = 18.",
+        "Subtract each original equation from that total to get each variable; y = 6."
+      ],
+      "useAgain": "when every equation is the sum of exactly two of the three variables.",
+      "hints": [
+        "Add all three equations together first.",
+        "Subtracting one pairwise equation from the total isolates the third variable."
+      ],
+      "socraticHint": "What do you get if you add all three equations together?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x + y = 11.\ny + z = 8.\nz + x = 9.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p28",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y = 12.\ny + z = 11.\nz + x = 9.\nWhat is z?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Adding all three equations gives 2(x + y + z) = 32, so x + y + z = 16.",
+        "Subtract each original equation from that total to get each variable; z = 4."
+      ],
+      "useAgain": "when every equation is the sum of exactly two of the three variables.",
+      "hints": [
+        "Add all three equations together first.",
+        "Subtracting one pairwise equation from the total isolates the third variable."
+      ],
+      "socraticHint": "What do you get if you add all three equations together?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x + y = 12.\ny + z = 10.\nz + x = 14.\nWhat is y?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p29",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y = 9.\ny + z = 12.\nz + x = 15.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Adding all three equations gives 2(x + y + z) = 36, so x + y + z = 18.",
+        "Subtract each original equation from that total to get each variable; x = 6."
+      ],
+      "useAgain": "when every equation is the sum of exactly two of the three variables.",
+      "hints": [
+        "Add all three equations together first.",
+        "Subtracting one pairwise equation from the total isolates the third variable."
+      ],
+      "socraticHint": "What do you get if you add all three equations together?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x + y = 14.\ny + z = 17.\nz + x = 13.\nWhat is z?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p30",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y = 15.\ny + z = 13.\nz + x = 12.\nWhat is y?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Adding all three equations gives 2(x + y + z) = 40, so x + y + z = 20.",
+        "Subtract each original equation from that total to get each variable; y = 8."
+      ],
+      "useAgain": "when every equation is the sum of exactly two of the three variables.",
+      "hints": [
+        "Add all three equations together first.",
+        "Subtracting one pairwise equation from the total isolates the third variable."
+      ],
+      "socraticHint": "What do you get if you add all three equations together?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "x + y = 10.\ny + z = 13.\nz + x = 9.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p31",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "order",
+      "prompt": "x + y + z = 6.\n2x + y - z = 5.\nx - y + z = 4.\nPut the steps in order to solve for x, y and z.",
+      "items": [
+        "Combine a different pair of equations to eliminate the same variable again.",
+        "Combine two of the equations to eliminate one variable, leaving an equation in the other two.",
+        "Solve the resulting pair of equations in two variables.",
+        "Substitute back into one original equation to find the third variable."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ]
+      },
+      "explanation": [
+        "Eliminate the same variable from two different pairs of equations.",
+        "That leaves two equations in two unknowns, then one, working back up to all three."
+      ],
+      "useAgain": "when a system needs two elimination steps before it is solved.",
+      "hints": [
+        "Decide which variable to eliminate first, and pick two equations to combine.",
+        "Repeat with a different pair of equations to eliminate that same variable again."
+      ],
+      "socraticHint": "If you eliminate one variable from two different pairs of equations, what are you left with?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "2x + y + z = 7.\nx - y + 2z = 5.\nx + y - z = 0.\nPut the steps in order to solve for x, y and z.",
+        "items": [
+          "Combine a different pair of equations to eliminate the same variable again.",
+          "Combine two of the equations to eliminate one variable, leaving an equation in the other two.",
+          "Solve the resulting pair of equations in two variables.",
+          "Substitute back into one original equation to find the third variable."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0,
+            2,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p32",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "order",
+      "prompt": "x - y + z = 1.\n2x + y + z = 7.\nx + 2y - z = 5.\nPut the steps in order to solve for x, y and z.",
+      "items": [
+        "Combine a different pair of equations to eliminate the same variable again.",
+        "Combine two of the equations to eliminate one variable, leaving an equation in the other two.",
+        "Solve the resulting pair of equations in two variables.",
+        "Substitute back into one original equation to find the third variable."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ]
+      },
+      "explanation": [
+        "Eliminate the same variable from two different pairs of equations.",
+        "That leaves two equations in two unknowns, then one, working back up to all three."
+      ],
+      "useAgain": "when a system needs two elimination steps before it is solved.",
+      "hints": [
+        "Decide which variable to eliminate first, and pick two equations to combine.",
+        "Repeat with a different pair of equations to eliminate that same variable again."
+      ],
+      "socraticHint": "If you eliminate one variable from two different pairs of equations, what are you left with?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "x - 2y + z = 3.\n2x + y - z = 5.\nx + y + z = 6.\nPut the steps in order to solve for x, y and z.",
+        "items": [
+          "Combine a different pair of equations to eliminate the same variable again.",
+          "Combine two of the equations to eliminate one variable, leaving an equation in the other two.",
+          "Solve the resulting pair of equations in two variables.",
+          "Substitute back into one original equation to find the third variable."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0,
+            2,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p33",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "order",
+      "prompt": "x + y - z = 4.\n2x - y + z = 2.\nx + 2y + z = 9.\nPut the steps in order to solve for x, y and z.",
+      "items": [
+        "Combine a different pair of equations to eliminate the same variable again.",
+        "Combine two of the equations to eliminate one variable, leaving an equation in the other two.",
+        "Solve the resulting pair of equations in two variables.",
+        "Substitute back into one original equation to find the third variable."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0,
+          2,
+          3
+        ]
+      },
+      "explanation": [
+        "Eliminate the same variable from two different pairs of equations.",
+        "That leaves two equations in two unknowns, then one, working back up to all three."
+      ],
+      "useAgain": "when a system needs two elimination steps before it is solved.",
+      "hints": [
+        "Decide which variable to eliminate first, and pick two equations to combine.",
+        "Repeat with a different pair of equations to eliminate that same variable again."
+      ],
+      "socraticHint": "If you eliminate one variable from two different pairs of equations, what are you left with?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "x + y + 2z = 5.\n2x - y + z = 4.\nx + 2y - z = 3.\nPut the steps in order to solve for x, y and z.",
+        "items": [
+          "Combine a different pair of equations to eliminate the same variable again.",
+          "Combine two of the equations to eliminate one variable, leaving an equation in the other two.",
+          "Solve the resulting pair of equations in two variables.",
+          "Substitute back into one original equation to find the third variable."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0,
+            2,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p34",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "2x - y + z = 9.\nx + 3y - 2z = -4.\n3x + y + z = 10.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Eliminate one variable using two pairs of equations, watching the signs carefully.",
+        "Solving the system gives (x, y, z) = (3, -1, 2).",
+        "So x = 3."
+      ],
+      "useAgain": "when a system's coefficients are larger or negative and need care to eliminate.",
+      "hints": [
+        "Multiply an equation by a constant so a variable cancels when you add or subtract.",
+        "Keep track of signs carefully when a coefficient is negative."
+      ],
+      "socraticHint": "What constant would make one variable's coefficient cancel between two of the equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "3x - 2y + z = -8.\nx + y - z = -3.\n2x + y + 3z = 11.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p35",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + 2y - 3z = 13.\n2x - y + z = -1.\n3x + y + 2z = 8.\nWhat is y?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Eliminate one variable using two pairs of equations, watching the signs carefully.",
+        "Solving the system gives (x, y, z) = (2, 4, -1).",
+        "So y = 4."
+      ],
+      "useAgain": "when a system's coefficients are larger or negative and need care to eliminate.",
+      "hints": [
+        "Multiply an equation by a constant so a variable cancels when you add or subtract.",
+        "Keep track of signs carefully when a coefficient is negative."
+      ],
+      "socraticHint": "What constant would make one variable's coefficient cancel between two of the equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "2x + y - 3z = -14.\nx - 2y + z = 13.\n3x + 2y + z = 5.\nWhat is y?",
+        "answer": {
+          "kind": "number",
+          "value": "-3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p36",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "3x - 2y + z = -7.\nx + y - z = 0.\n2x + y + 3z = 7.\nWhat is z?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Eliminate one variable using two pairs of equations, watching the signs carefully.",
+        "Solving the system gives (x, y, z) = (-1, 3, 2).",
+        "So z = 2."
+      ],
+      "useAgain": "when a system's coefficients are larger or negative and need care to eliminate.",
+      "hints": [
+        "Multiply an equation by a constant so a variable cancels when you add or subtract.",
+        "Keep track of signs carefully when a coefficient is negative."
+      ],
+      "socraticHint": "What constant would make one variable's coefficient cancel between two of the equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "2x - y + z = 5.\nx + 3y - 2z = 11.\n3x + y + z = 11.\nWhat is z?",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p37",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "2x + y - 3z = 3.\nx - 2y + z = 9.\n3x + 2y + z = 9.\nWhat is x?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Eliminate one variable using two pairs of equations, watching the signs carefully.",
+        "Solving the system gives (x, y, z) = (4, -2, 1).",
+        "So x = 4."
+      ],
+      "useAgain": "when a system's coefficients are larger or negative and need care to eliminate.",
+      "hints": [
+        "Multiply an equation by a constant so a variable cancels when you add or subtract.",
+        "Keep track of signs carefully when a coefficient is negative."
+      ],
+      "socraticHint": "What constant would make one variable's coefficient cancel between two of the equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "x + 2y - 3z = -16.\n2x - y + z = 9.\n3x + y + 2z = 5.\nWhat is x?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p38",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "2x - y + z = -5.\nx + 3y - 2z = 20.\n3x + y + z = 6.\nWhat is y?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Eliminate one variable using two pairs of equations, watching the signs carefully.",
+        "Solving the system gives (x, y, z) = (1, 5, -2).",
+        "So y = 5."
+      ],
+      "useAgain": "when a system's coefficients are larger or negative and need care to eliminate.",
+      "hints": [
+        "Multiply an equation by a constant so a variable cancels when you add or subtract.",
+        "Keep track of signs carefully when a coefficient is negative."
+      ],
+      "socraticHint": "What constant would make one variable's coefficient cancel between two of the equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "3x - 2y + z = -2.\nx + y - z = 9.\n2x + y + 3z = 8.\nWhat is y?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p39",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + 2y - 3z = 16.\n2x - y + z = 1.\n3x + y + 2z = 5.\nWhat is z?",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "Eliminate one variable using two pairs of equations, watching the signs carefully.",
+        "Solving the system gives (x, y, z) = (3, 2, -3).",
+        "So z = -3."
+      ],
+      "useAgain": "when a system's coefficients are larger or negative and need care to eliminate.",
+      "hints": [
+        "Multiply an equation by a constant so a variable cancels when you add or subtract.",
+        "Keep track of signs carefully when a coefficient is negative."
+      ],
+      "socraticHint": "What constant would make one variable's coefficient cancel between two of the equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "2x + y - 3z = 12.\nx - 2y + z = 1.\n3x + 2y + z = 1.\nWhat is z?",
+        "answer": {
+          "kind": "number",
+          "value": "-3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p40",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "Let a, l and g be the mass in grams of one arm, one leg and one gripper.\na + l + g = 9.\n2a + l - g = 9.\na - l + g = 3.\nWhat is the mass in grams of one arm?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Write the three sentences as a system in the three unknowns.",
+        "Solving gives (a, l, g) = (4, 3, 2).",
+        "So the arm is 4."
+      ],
+      "useAgain": "when a real situation gives three unknowns and three relationships between them.",
+      "hints": [
+        "Turn each sentence into an equation in the three unknowns.",
+        "Eliminate one unknown at a time, the same way as any other system."
+      ],
+      "socraticHint": "What equation does the first sentence turn into?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Let a, l and g be the mass in grams of one arm, one leg and one gripper.\na + l + g = 12.\n2a + l - g = 11.\na - l + g = 4.\nWhat is the mass in grams of one leg?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p41",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "Let b, c and f be the mass in grams of one battery, one camera and one frame.\nb + c + f = 14.\nb + 2c - f = 7.\n2b - c + f = 14.\nWhat is the mass in grams of one camera?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Write the three sentences as a system in the three unknowns.",
+        "Solving gives (b, c, f) = (6, 3, 5).",
+        "So the camera is 3."
+      ],
+      "useAgain": "when a real situation gives three unknowns and three relationships between them.",
+      "hints": [
+        "Turn each sentence into an equation in the three unknowns.",
+        "Eliminate one unknown at a time, the same way as any other system."
+      ],
+      "socraticHint": "What equation does the first sentence turn into?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Let b, c and f be the mass in grams of one battery, one camera and one frame.\nb + c + f = 17.\nb + 2c - f = 9.\n2b - c + f = 16.\nWhat is the mass in grams of one frame?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p42",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "Let p, q and r be the fuel in liters of one tank P, one tank Q and one tank R.\np + q + r = 11.\np - q + 2r = 11.\n2p + q - r = 8.\nWhat is the fuel in liters of one tank R?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Write the three sentences as a system in the three unknowns.",
+        "Solving gives (p, q, r) = (5, 2, 4).",
+        "So the tank R is 4."
+      ],
+      "useAgain": "when a real situation gives three unknowns and three relationships between them.",
+      "hints": [
+        "Turn each sentence into an equation in the three unknowns.",
+        "Eliminate one unknown at a time, the same way as any other system."
+      ],
+      "socraticHint": "What equation does the first sentence turn into?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Let p, q and r be the fuel in liters of one tank P, one tank Q and one tank R.\np + q + r = 14.\np - q + 2r = 13.\n2p + q - r = 10.\nWhat is the fuel in liters of one tank P?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p43",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "Let w, k and m be the mass in grams of one wheel, one axle and one motor.\nw + 2k - m = 3.\n2w - k + m = 8.\nw + k + m = 9.\nWhat is the mass in grams of one motor?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Write the three sentences as a system in the three unknowns.",
+        "Solving gives (w, k, m) = (3, 2, 4).",
+        "So the motor is 4."
+      ],
+      "useAgain": "when a real situation gives three unknowns and three relationships between them.",
+      "hints": [
+        "Turn each sentence into an equation in the three unknowns.",
+        "Eliminate one unknown at a time, the same way as any other system."
+      ],
+      "socraticHint": "What equation does the first sentence turn into?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Let w, k and m be the mass in grams of one wheel, one axle and one motor.\nw + 2k - m = 5.\n2w - k + m = 10.\nw + k + m = 12.\nWhat is the mass in grams of one wheel?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p44",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "Let g, s and b be the point value of one gold token, one silver token and one bronze token.\ng + s + b = 10.\n2g - s + b = 9.\ng + s - b = 6.\nWhat is the point value of one gold token?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Write the three sentences as a system in the three unknowns.",
+        "Solving gives (g, s, b) = (5, 3, 2).",
+        "So the gold token is 5."
+      ],
+      "useAgain": "when a real situation gives three unknowns and three relationships between them.",
+      "hints": [
+        "Turn each sentence into an equation in the three unknowns.",
+        "Eliminate one unknown at a time, the same way as any other system."
+      ],
+      "socraticHint": "What equation does the first sentence turn into?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Let g, s and b be the point value of one gold token, one silver token and one bronze token.\ng + s + b = 13.\n2g - s + b = 11.\ng + s - b = 7.\nWhat is the point value of one silver token?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p45",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "Let r, u and n be the mass in grams of one red spool, one blue spool and one green spool.\nr - u + n = 2.\nr + u - n = 6.\nr + u + n = 12.\nWhat is the mass in grams of one green spool?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Write the three sentences as a system in the three unknowns.",
+        "Solving gives (r, u, n) = (4, 5, 3).",
+        "So the green spool is 3."
+      ],
+      "useAgain": "when a real situation gives three unknowns and three relationships between them.",
+      "hints": [
+        "Turn each sentence into an equation in the three unknowns.",
+        "Eliminate one unknown at a time, the same way as any other system."
+      ],
+      "socraticHint": "What equation does the first sentence turn into?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Let r, u and n be the mass in grams of one red spool, one blue spool and one green spool.\nr - u + n = 3.\nr + u - n = 7.\nr + u + n = 15.\nWhat is the mass in grams of one red spool?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-systems-three-variables-p46",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + 2y - z = 4.\n2x - y + z = 1.\n4x + 3y - z = k.\nFor what value of k does this system have infinitely many solutions instead of exactly one?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "The third equation's left side is 2 times the first equation's left side plus 1 times the second's.",
+        "For the equation to add no new information, its right side must match: k = 2(4) + 1(1) = 9.",
+        "Any other value of k would make the three equations contradict each other instead."
+      ],
+      "useAgain": "when a system's third equation might be redundant instead of new information.",
+      "hints": [
+        "Check whether the third equation's left side is a combination of the first two.",
+        "Once you know that combination, the right side has to match it too."
+      ],
+      "socraticHint": "Is the third equation's left side some combination of the other two?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "x - y + 2z = 3.\n2x + y - z = 4.\n5x + y = k.\nFor what value of k does this system have infinitely many solutions instead of exactly one?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p47",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + y = 7.\ny + z = 9.\nz + x = 8.\nWhat is x times y times z?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "Adding all three equations gives 2(x + y + z) = 24, so x + y + z = 12.",
+        "Subtracting each pairwise equation from 12 gives x = 3, y = 4, z = 5.",
+        "3 times 4 times 5 is 60."
+      ],
+      "useAgain": "when every equation is the sum of exactly two of the three variables.",
+      "hints": [
+        "Add all three equations to find x + y + z first.",
+        "Subtract each given equation from that total to isolate each variable."
+      ],
+      "socraticHint": "What is x + y + z once you add all three equations?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "x + y = 6.\ny + z = 10.\nz + x = 8.\nWhat is x times y times z?",
+        "answer": {
+          "kind": "number",
+          "value": "48"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p48",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "How many ordered triples of positive integers (x, y, z) satisfy x + y + z = 10 and x - y = 2?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "x = y + 2, so the sum becomes 2y + 2 + z = 10, or z = 8 - 2y.",
+        "z must stay a positive integer, so y can only be 1, 2 or 3.",
+        "That gives 3 ordered triples."
+      ],
+      "useAgain": "when counting whole-number solutions of a system instead of solving for one answer.",
+      "hints": [
+        "Replace x with y + 2 in the sum equation.",
+        "Find every positive integer y that keeps z positive too."
+      ],
+      "socraticHint": "Once x is written in terms of y, what values can y take and still keep z positive?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many ordered triples of positive integers (x, y, z) satisfy x + y + z = 12 and x - y = 3?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p49",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "number",
+      "prompt": "x + 2y - z = 1.\n2x - y + z = 2.\n3x + y + 2z = 3.\nWhat is the determinant of this system's coefficient matrix?",
+      "answer": {
+        "kind": "number",
+        "value": "-10"
+      },
+      "explanation": [
+        "Write the three equations' coefficients as a 3 by 3 matrix.",
+        "Expand along the first row to compute the determinant.",
+        "The determinant is -10."
+      ],
+      "useAgain": "when checking whether a system's coefficient matrix is invertible.",
+      "hints": [
+        "Write the coefficients of x, y and z as the rows of a 3 by 3 matrix.",
+        "Expand along the first row, alternating signs."
+      ],
+      "socraticHint": "What are the three rows of the coefficient matrix?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "2x - y + z = 1.\nx + 3y - 2z = 2.\nx + y + z = 3.\nWhat is the determinant of this system's coefficient matrix?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-systems-three-variables-p50",
+      "lane": "skills",
+      "ideaId": "a2-systems-three-variables",
+      "kind": "choice",
+      "prompt": "x + 2y - z = 4.\n2x - y + z = 1.\n4x + 3y - z = 3.\nWhat does the solution set look like?",
+      "options": [
+        "no solution at all",
+        "exactly one point",
+        "a whole line of points",
+        "two separate points"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The third equation's left side is 2 times the first plus 1 times the second.",
+        "Its right side should then be 2(4) + 1(1) = 9, but it is not.",
+        "That makes the three equations contradict each other, so nothing satisfies all three."
+      ],
+      "useAgain": "when a system's third equation almost repeats the others but its constant does not match.",
+      "hints": [
+        "Check whether the third equation's left side is a combination of the other two.",
+        "If it is, does its right side match that same combination?"
+      ],
+      "socraticHint": "Does the third equation's right side match the combination its left side represents?",
+      "skills": [
+        "think.skills.systems"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "x + 2y - z = 4.\n2x - y + z = 1.\n4x + 3y - z = 5.\nWhat does the solution set look like?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "exactly one point",
+          "no solution at all",
+          "a whole line of points",
+          "two separate points"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "id": "s3-w03-make",
+  "season": 3,
+  "week": 3,
+  "track": "make",
+  "title": "Order the board, solder the twin",
+  "summary": "Send the KiCad design to a fabrication service, then solder the same circuit on perfboard while the board ships, and test every joint before trusting it.",
+  "minutes": 60,
+  "materials": [
+    "the finished KiCad layout from week 2",
+    "a PCB fabrication order (2 to 5 boards, shipped)",
+    "perfboard pack and hookup wire",
+    "soldering iron kit and safety glasses",
+    "small wire strippers and pliers",
+    "multimeter",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.electronics",
+    "make.fabrication",
+    "make.measurement"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s3-w03-make-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop continues: ask, imagine, plan, build, test, fix.\n\nAsk: a finished layout is still only a file. Can it become a real, made object, and is there something worth building while it is on its way?\n\nImagine: a fabrication service that turns a KiCad file into an actual board, arriving in the mail in about a week or two. Waiting empty-handed for it would waste the week.\n\nPlan: submit the week 2 layout for fabrication first. Then, with an adult, plan the same circuit built on perfboard, using the schematic as the guide, so a working twin exists before the real board even ships."
+    },
+    {
+      "kind": "science",
+      "id": "s3-w03-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Three stages in a row, connected by arrows: a breadboard circuit (fast, temporary, a sketch), then the same circuit hand-soldered on perfboard (ink, permanent once committed), then a machine-fabricated board (etched precisely, the same way every time).",
+        "spec": {
+          "w": 360,
+          "h": 160,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 16,
+              "s": "Sketch, ink, then a machine inks it",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 60,
+              "w": 95,
+              "h": 60,
+              "label": "Breadboard",
+              "sub": "fast, temporary",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 120,
+              "y": 60,
+              "w": 95,
+              "h": 60,
+              "label": "Perfboard",
+              "sub": "hand-soldered",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 230,
+              "y": 60,
+              "w": 120,
+              "h": 60,
+              "label": "Fabricated board",
+              "sub": "machine-etched",
+              "fill": "green"
+            },
+            {
+              "t": "line",
+              "x1": 105,
+              "y1": 90,
+              "x2": 120,
+              "y2": 90,
+              "arrow": true,
+              "color": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 215,
+              "y1": 90,
+              "x2": 230,
+              "y2": 90,
+              "arrow": true,
+              "color": "ink"
+            },
+            {
+              "t": "text",
+              "x": 57,
+              "y": 135,
+              "s": "sketch",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 167,
+              "y": 135,
+              "s": "ink",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 290,
+              "y": 135,
+              "s": "machine ink",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Sketch, then ink, then a machine inks it too",
+      "ideaId": "sketch-then-ink",
+      "body": "A breadboard is a sketch: fast to change, nothing permanent. Perfboard, soldered by hand, is ink: it holds its shape once you understand the circuit well enough to commit to it.\n\nA fabricated board is a further step past ink. A machine etches the exact copper pattern your layout described, the same way every time, with traces far thinner and more exact than a hand can solder.\n\nThat is why perfboard is worth building even though a better board is already on order. The perfboard version proves the circuit really works. It catches any mistake in the design before it is baked permanently into copper. It also gives you something to compare the fabricated board against once it arrives."
+    },
+    {
+      "kind": "task",
+      "id": "s3-w03-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The perfboard circuit's power connection, switch, resistor and LED wired in a row, with five solder joints marked J1 through J5 along the connections and leads. The multimeter's resistance setting checks one probe on each side of a joint; a good joint reads near 0 ohms, before any power is applied.",
+        "spec": {
+          "w": 360,
+          "h": 180,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 16,
+              "s": "Test five solder joints before powering up",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 15,
+              "y": 50,
+              "w": 55,
+              "h": 35,
+              "label": "PWR",
+              "fill": "rust"
+            },
+            {
+              "t": "box",
+              "x": 110,
+              "y": 50,
+              "w": 50,
+              "h": 35,
+              "label": "SW",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 195,
+              "y": 50,
+              "w": 35,
+              "h": 35,
+              "label": "R",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 50,
+              "w": 40,
+              "h": 35,
+              "label": "LED",
+              "fill": "accent"
+            },
+            {
+              "t": "line",
+              "x1": 70,
+              "y1": 67,
+              "x2": 110,
+              "y2": 67,
+              "color": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 160,
+              "y1": 67,
+              "x2": 195,
+              "y2": 67,
+              "color": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 67,
+              "x2": 250,
+              "y2": 67,
+              "color": "ink"
+            },
+            {
+              "t": "dot",
+              "cx": 90,
+              "cy": 67,
+              "label": "J1",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 177,
+              "cy": 67,
+              "label": "J2",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 240,
+              "cy": 67,
+              "label": "J3",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 42,
+              "cy": 100,
+              "label": "J4",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 270,
+              "cy": 100,
+              "label": "J5",
+              "side": "below"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 140,
+              "s": "Multimeter, resistance setting, one probe each side",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 160,
+              "s": "A good joint reads near 0 ohms",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Order it, then solder its twin",
+      "body": "With an adult, export the week 2 layout's manufacturing files from KiCad and place an order with a PCB fabrication service. Write the order date and the expected arrival window in the Maker's Log.\n\nNow solder the same circuit onto perfboard. An adult stays at the bench for the whole soldering step. Strip and shape each wire before soldering it, following the schematic connection by connection, not the old breadboard photo.\n\nOnce it is built, do not just power it on and hope. Test five separate joints with the multimeter's resistance setting, touching one probe on each side of the joint, before powering the circuit up at all.",
+      "checklist": [
+        "The layout's manufacturing files were exported and a fabrication order was placed",
+        "An adult was present for the entire soldering step",
+        "The perfboard circuit was built from the schematic, connection by connection",
+        "Five separate solder joints were tested for resistance before power was applied"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s3-w03-make-04",
+      "title": "Solder joint resistance",
+      "ideaId": "test-it-or-trust-it",
+      "body": "The multimeter and its resistance setting stay the same for every reading. Only which joint is being touched changes.\n\nTest five different solder joints on the perfboard circuit. For each row, write which joint it was and the resistance the multimeter read in ohms.",
+      "columns": [
+        "Joint",
+        "Resistance (ohm)"
+      ],
+      "minRows": 5,
+      "question": "Did every joint read close to zero ohms, and which joint read the highest?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s3-w03-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: a joint that reads a high resistance because the solder never truly flowed onto both surfaces, called a cold joint.\n\nAlso watch for two neighbouring pads bridged by a stray blob of solder, and a wire stripped too far back so bare copper touches something it should not."
+    },
+    {
+      "kind": "artifact",
+      "id": "s3-w03-make-06",
+      "title": "Show it",
+      "prompt": "Photo of the soldered perfboard circuit working, the multimeter reading one joint's resistance, and the fabrication order confirmation",
+      "accepts": [
+        "photo"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s3-w03-make-07",
+      "variant": "maker"
+    }
+  ]
+}

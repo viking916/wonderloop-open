@@ -1,0 +1,313 @@
+{
+  "id": "s4-w09-build",
+  "season": 4,
+  "week": 9,
+  "track": "build",
+  "title": "The author's chair",
+  "summary": "The whole week goes to setting your own problem rather than solving somebody else's: a farm story, an input format pinned down to the line, a generator whose only reader is a grader, ambush cases chosen because you can name what each would catch, and a reference solution in C++ cross-checked against a deliberately slow brute force. It is the last new C++ work of the season and the firewall closes behind it.",
+  "minutes": 60,
+  "materials": [
+    "laptop with g++, Python and the editor, all already working",
+    "two USACO problem pages open from different years, one file-based and one not",
+    "the Error Bestiary notebook opened in week 1",
+    "paper and a pencil for the story, the three lines and the step count",
+    "an empty folder for the problem, its cases and its answers",
+    "the Expedition dossier board, for the finished page"
+  ],
+  "skills": [
+    "build.cpp",
+    "build.python",
+    "build.data",
+    "build.design",
+    "build.debugging"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w09-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop first, same six moves as always: ask, imagine, plan, build, test, fix. Only today the thing being designed is a problem rather than a program.\n\nAsk. For four seasons somebody else set the problems and you solved them. That is one half of owning an idea. Here is the other half, and it is the harder one: you own an idea completely when you can build a problem that teaches it to somebody else. A solver has to find the one road through. An author has to know every road, including the wrong ones, because the wrong ones are what the test data has to catch.\n\nImagine. A problem page like the ones you have been reading all season. A farm story with a question at the end of it. A section that says exactly what arrives and in what order. A section that says exactly what goes out. One sample, small enough to work by hand. Limits, so a solver knows how big things get. And behind the page, out of sight, a folder of test cases and their answers, which is where the real work is.\n\nPlan, and this one runs across the whole week rather than the hour, because the author's chair is not an hour's job. Roughly: story and format first, then the generator, then the reference solution in C++, then the ambush cases and the cross-check, then the page printed and put in the dossier. If a day runs long, the next day is shorter. Nothing here is raced.\n\nFour rules said out loud before anything is typed.\n\nThe difficulty is aimed at your parents. Not at you, and not at a stranger on the internet. They will hunt this at the Grand Expedition while you grade their submissions, and a problem nobody can solve is not hard, it is broken. Aim at something they can get in twenty minutes if they think clearly and cannot get at all by guessing.\n\nThe page is the authority. Whatever your page says about where input comes from and where output goes, your own reference solution obeys it exactly. If the page and the program disagree, the page is not wrong, the program is.\n\nYou are the grader, so grade fast. Design the output to be one line, or a small fixed number of lines, that you can hold up next to your answer file and check by eye in seconds. An author who makes grading slow has made the finale slow.\n\nAnd the firewall, which closes today. The reference solution you write this week is the last new C++ work of the season. After it, no new C++ ideas arrive: what you have got is what you carry. That is not a punishment, it is a taper. Two new things never peak in the same fortnight, and you have a crossing morning and a talk waiting for you."
+    },
+    {
+      "kind": "typing",
+      "id": "s4-w09-build-02",
+      "minutes": 5,
+      "body": "Five minutes on your typing site. Home row first, then the punctuation this week is built out of.\n\nType these three lines ten times each, without looking down:\n\n#include <algorithm>\nstd::vector<int> v(n);\nstd::sort(v.begin(), v.end());\n\nThen these two, five times each, because the generator wants them:\n\nimport random\nprint(random.randint(1, 1000))\n\nTwo things to notice while your fingers learn them. std::sort takes two things, the beginning and one past the end, and v.end() is deliberately not the last item; it is the spot after it, which is why sorting a whole vector reads the way it does. And the two languages are sitting on the same page again this week: the strict one writes the answer, the quick one writes the questions."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w09-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The space of possible test cases drawn as a line from smallest to biggest, with the ambush points marked along it: the smallest legal case, a tie, everything the same, already sorted, exactly reversed, and the biggest legal case. Each mark is a case chosen because a specific kind of wrong program fails it; the sample on the problem page is the weakest test of all and catches almost nothing.",
+        "spec": {
+          "w": 380,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 110,
+              "x2": 350,
+              "y2": 110
+            },
+            {
+              "t": "dot",
+              "cx": 50,
+              "cy": 110,
+              "label": "smallest legal",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 120,
+              "cy": 110,
+              "label": "tie",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 170,
+              "cy": 110,
+              "label": "all the same",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 220,
+              "cy": 110,
+              "label": "sorted",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 260,
+              "cy": 110,
+              "label": "reversed",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 330,
+              "cy": 110,
+              "label": "biggest legal",
+              "side": "below"
+            },
+            {
+              "t": "text",
+              "x": 90,
+              "y": 165,
+              "s": "sample: weak, catches nothing",
+              "size": 10
+            }
+          ]
+        }
+      },
+      "title": "What makes test data strong, and where the ambush points are",
+      "body": "You have spent a year on the solving side of the grader. Today, look at the other side.\n\nStart with the thing nobody tells you: the sample on a problem page is the weakest test in existence. It was chosen so a human could work it out by hand and check the story made sense. It was not chosen to break anything. A wrong program passes the sample all the time, and that is exactly what the sample is for.\n\nSo what makes test data strong? Data is strong when a wrong program fails it. That is the whole definition, and it turns the job around: you do not sit and invent nice inputs, you sit and think of the ways somebody could be wrong, and then you build a case for each way.\n\nHere are the ambush points, and this is a list worth keeping.\n\nThe smallest legal case. If your limits say one cow is allowed, then one cow has to be in the data, because loops that quietly need two cows are extremely common and they look fine on a farm of ten.\n\nThe biggest legal case. Not almost the biggest: exactly the biggest your page allows. This is the case that finds a program that is too slow, and it is the case that finds a number that has outgrown its box. You measured the int wall yourself in week 2, so you know where that wall is.\n\nThe tie. Two cows with the same answer, two equal distances, two best options. Ties are where a program that picks the first thing and a program that picks the last thing finally disagree, and until a tie exists in the data, both of them pass.\n\nEverything the same. Every value identical. Programs that quietly assume things differ fall over here.\n\nAlready in order, and exactly backwards. If your problem has anything sortable in it, both of these belong in the data. A program that forgot to sort passes the first one perfectly.\n\nAnd the answer that is zero, or empty, or none. If it is possible for the answer to be nothing at all, a case with that answer has to exist, because printing nothing and printing zero are different things and only the data can tell them apart.\n\nNow the part that decides whether any of this works: where do the answers come from? A test case is a question, and a question with no answer beside it grades nothing. The answers come from your reference solution, which means the whole set is only as right as that one program. Real problem setters deal with this by writing two programs, the intended one and a deliberately slow, stupid, obviously correct one, and running both on hundreds of tiny random cases. If the two ever disagree, one of them is wrong and you do not yet know which. That disagreement is the most useful thing that can happen to you all week.\n\nWhich brings the season's own idea back around. A program that compiles, runs, produces output and is still wrong is the mirage. Test data is the instrument that tells a mirage from a real one, and weak test data is a mirage you built yourself, on purpose, and then believed."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w09-build-04",
+      "title": "Write the story, then pin the format down",
+      "body": "The story first, and keep it short. Two hundred words is plenty and a hundred is better. A farm, a situation, a question. Bessie can be in it. The story exists to make the question memorable, not to hide it, so nothing in the story should be a riddle about what is being asked.\n\nThen the question, in one sentence, at the end. Read it out loud to somebody and see whether they can say back what is wanted. If they cannot, the sentence is the problem, not them.\n\nNow the format section, which is where authors get careless and solvers suffer.\n\nSay how many lines arrive and what is on each one. Say whether the numbers on a line are separated by spaces. Say whether there is a first line that says how many lines follow, because a solver has to know that before they can write a loop at all. Say the limits: how big can the count get, how big can a single number get. Limits are not decoration. They are how a solver decides whether the obvious plan is fast enough and whether an int is big enough.\n\nThen output. Say exactly how many lines go out and what is on them. One line is the ideal for you, because you are the grader.\n\nThen the address, and this is the part to read a real page for. USACO problems from the older contests name an input file and an output file on the problem page itself, like the mixmilk.in and mixmilk.out you used in week 6. Contests from around the 2020-21 season onwards moved to plain standard input and standard output instead, so there are no file names at all. Both kinds are sitting in the archive right now. Open two problem pages from different years and see the difference for yourself, then decide which kind yours is and write it on your page in words. Your parents will read that line and do what it says, and your reference solution has to do the same thing.\n\nLast, the sample. One small input and its correct output, small enough that you can do it by hand on paper, and you do do it by hand, before any program exists. If your own sample answer later disagrees with your own program, that disagreement is the most valuable thing on your desk.",
+      "checklist": [
+        "The story is under two hundred words and ends in one clear question sentence",
+        "The input format says how many lines arrive, what is on each one, and the limits on every number",
+        "The output format says exactly how many lines go out, and it is short enough for me to grade by eye",
+        "The page says in words whether input arrives in a named file or on standard input, and I checked a real problem page of each kind before choosing",
+        "The sample input and sample output are on the page and I worked the sample by hand before writing any program"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s4-w09-build-05",
+      "title": "The generator, whose only reader is a grader",
+      "body": "Now the small script that writes your test cases. Python for this one, because it is quick to write and you own it, and because the firewall means C++ takes no new jobs after this week.\n\nThe first thing to understand about a generator is who reads its output. Nobody. Not a person, not ever. Its output is read by a program and compared by a program. So it needs no headings, no friendly messages, no blank line to make things look nice. It needs exactly one thing: absolute obedience to the format on your own page. A generator that prints Here are the cows before the cows has broken every case it will ever write.\n\nBuild it in this shape. One function that takes the size you want and any switches the case needs, and writes one input file. Then a short list at the bottom that calls it once per case with the settings for that case. Name the files the way your page's grading needs them, something like 1.in, 2.in and so on, and keep them in one folder that holds nothing else.\n\nUse random.seed with a number you choose before you generate anything. That makes your random cases repeatable, so if case seven turns out to be interesting you can produce it again tomorrow instead of losing it forever.\n\nNow the cases themselves, and this is where the science moment cashes in. Do not write ten random cases. Write the ambushes, deliberately, one at a time, each one because you can name what it would catch: the smallest legal case, the biggest legal case, the one where everything is the same, the one where two things tie, the one already in order, the one exactly backwards, and the one where the answer is as small as your problem allows it to be. Then, and only then, add a few honestly random ones on top.\n\nAnd here is the rule that keeps a generator honest: open one of the files it wrote and read it with your own eyes, all of it if it is small and the first and last lines if it is huge. Check the count line against the number of lines that follow. Check that there is no trailing space and that the file ends with a line ending. The real site's grader is forgiving about a stray newline on the end and many graders are not, so match your own format exactly and the question never comes up.\n\nOne last check that costs a minute and saves the finale. Every number your generator writes has to be inside the limits your page promised. A case that breaks your own stated limits is not a hard case, it is an unfair one, and it is the single meanest thing an author can do.",
+      "checklist": [
+        "The generator writes files with no headings, no messages and nothing a human was meant to enjoy",
+        "random.seed is set to a number I chose, so every case can be produced again",
+        "There is one deliberate case for each ambush point and I can name out loud what each one would catch",
+        "I opened a generated file and read it, and the count line agrees with the lines that follow it",
+        "Every number in every case is inside the limits my own page promised"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s4-w09-build-06",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A vector of five numbers before and after std::sort: jumbled at first, in order from smallest to largest afterward. v.begin() points at the first slot and v.end() points at the slot just past the last one, which is why the sort call always names a beginning and a one-past-the-end rather than a beginning and an end.",
+        "spec": {
+          "w": 340,
+          "h": 205,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 20,
+              "y": 15,
+              "s": "before",
+              "size": 10
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 30,
+              "w": 45,
+              "h": 40,
+              "label": "9"
+            },
+            {
+              "t": "box",
+              "x": 70,
+              "y": 30,
+              "w": 45,
+              "h": 40,
+              "label": "3"
+            },
+            {
+              "t": "box",
+              "x": 120,
+              "y": 30,
+              "w": 45,
+              "h": 40,
+              "label": "7"
+            },
+            {
+              "t": "box",
+              "x": 170,
+              "y": 30,
+              "w": 45,
+              "h": 40,
+              "label": "1"
+            },
+            {
+              "t": "box",
+              "x": 220,
+              "y": 30,
+              "w": 45,
+              "h": 40,
+              "label": "5"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 105,
+              "s": "after std::sort",
+              "size": 10
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 120,
+              "w": 45,
+              "h": 40,
+              "label": "1",
+              "fill": "green"
+            },
+            {
+              "t": "box",
+              "x": 70,
+              "y": 120,
+              "w": 45,
+              "h": 40,
+              "label": "3",
+              "fill": "green"
+            },
+            {
+              "t": "box",
+              "x": 120,
+              "y": 120,
+              "w": 45,
+              "h": 40,
+              "label": "5",
+              "fill": "green"
+            },
+            {
+              "t": "box",
+              "x": 170,
+              "y": 120,
+              "w": 45,
+              "h": 40,
+              "label": "7",
+              "fill": "green"
+            },
+            {
+              "t": "box",
+              "x": 220,
+              "y": 120,
+              "w": 45,
+              "h": 40,
+              "label": "9",
+              "fill": "green"
+            },
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 178,
+              "x2": 20,
+              "y2": 163,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 5,
+              "y": 192,
+              "s": "v.begin()",
+              "size": 10
+            },
+            {
+              "t": "line",
+              "x1": 270,
+              "y1": 178,
+              "x2": 270,
+              "y2": 140,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 250,
+              "y": 192,
+              "s": "v.end()",
+              "size": 10
+            }
+          ]
+        }
+      },
+      "title": "The reference solution, and the last brick",
+      "body": "Now the program that decides what every answer is. It is written in C++, and it is the last new C++ work of the season.\n\nBefore you open the editor, write the three lines on paper as always: what it reads, what it does over and over, what it writes. Then count the steps, using the biggest case your own limits allow. That law has never been repealed and today it protects you rather than a solver: if your biggest case makes your own reference solution slow, your limits are wrong and you fix the page, not the program.\n\nHere is the last brick, and you get it whether this problem wants it or not, because after today nothing new arrives.\n\nSorting. Put #include <algorithm> at the top, put your numbers in a std::vector<int> called v, and then std::sort(v.begin(), v.end()); leaves them in order from smallest to largest. That is the whole thing. v.begin() is the first slot and v.end() is the slot just past the last one, which is why the pair reads oddly and why it is always written that way. Sorting is the most common single move in the whole of Bronze, and you have been doing it by hand in Python for a year.\n\nBuild it, obeying your own page: named files if your page says named files, standard input and output if your page says that. Compile it with a plain g++ setter.cpp -o setter. Under MinGW on Windows that writes setter.exe; under WSL it writes setter with nothing on the end. List the folder and use the name that is actually there.\n\nTest it on your own sample first, against the answer you worked by hand on paper. If they disagree, stop and find out which of the two is wrong before you touch anything else. One of them is, and it is not always the program.\n\nThen make the answers. Run the reference solution over every generated case and keep its output beside the input, 1.in with 1.out and so on. That folder is now your grading kit for the Expedition.\n\nAnd then the cross-check, which is the part that separates a real problem from a hopeful one. Write a second program, in Python, that is deliberately slow and obviously right: try every possibility, brute force, no cleverness at all, and do not care that it would time out on anything big. Run both programs on twenty or thirty tiny random cases and compare the two answers character for character. If they ever disagree, you have found something genuinely real, and you do not patch either one until you know which of them is lying.\n\nWhen that is done, say the firewall out loud and write it in the Maker's Log: no new C++ ideas for the rest of the season. What you have got is what you carry.",
+      "checklist": [
+        "The three lines and the step count for the biggest legal case are on paper before any C++ is typed",
+        "The reference solution obeys my own page about where input arrives and where output goes",
+        "It agrees with the sample answer I worked by hand, and I found out who was wrong when it did not",
+        "Every generated case has its answer file beside it, made by running the reference solution",
+        "A deliberately slow Python brute force agreed with the reference solution on at least twenty tiny random cases"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w09-build-07",
+      "title": "Bug diary, the Error Bestiary, and the firewall said out loud",
+      "body": "Three or four entries this week, and they are a different species from the usual ones, because this week the bugs are in a problem rather than in a program. Each one is the mistake in your own words, what actually caused it, and what you would look at first next time.\n\nThe author's own mirage, and it is the one to watch for. Your reference solution produced the answers. So if it is wrong, every answer file is wrong in exactly the same way, every case agrees with every other case, and nothing anywhere disagrees with anything. A wrong problem is quieter than a wrong program. It looks perfect right up until somebody solves it correctly and you mark them wrong. That is the only reason the slow brute force exists, and it is why you never skip it.\n\nThe count line that lies. A generator that writes 50 on the first line and then 49 cows underneath will break every solver who trusts the page, and it will not break a solver who ignores the count, which means you would grade the careful person down and the careless one up. Check a count line against the file every single time.\n\nThe wrong address. A program that prints to the screen when your page promised a named output file produces a right answer delivered nowhere. You met this one on the grader in week 6 as an empty or missing output file; today it is your page it fails against instead of somebody else's.\n\nThe compiler, and the honest sentence about it. Write down the message your compiler actually printed, not the one this page predicted. GCC, clang and MSVC word the same complaint differently and two versions of GCC do not always agree either. If you leave out #include <algorithm> and reach for std::sort, you will usually get something about sort not being a member of std, and sometimes you will get nothing at all, because another header you did include dragged it in behind your back. A program that only compiles by accident fails on somebody else's machine, and the fix is to include what you use.\n\nAnd then write the firewall into the Bestiary as its closing line, dated. No new C++ ideas for the rest of the season. Everything left is reading, using and resting, and that is on purpose."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w09-build-08",
+      "title": "Show it",
+      "prompt": "The problem page itself, printed or photographed, with story, format, limits and sample on it. Then gen.py and setter.cpp, and the slow Python brute force beside them. Then a photo of the case folder listing, inputs and answers side by side. Then the paper where you worked your own sample by hand, and this week's Bestiary pages including the firewall line with its date.",
+      "accepts": [
+        "code",
+        "photo",
+        "text"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w09-build-09",
+      "variant": "maker"
+    }
+  ]
+}

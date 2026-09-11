@@ -1,0 +1,2335 @@
+{
+  "id": "al-permutations-combinations",
+  "idea": {
+    "body": "Counting arrangements cares about order, counting selections does not. Choosing a first and second place winner from racers A, B and C gives 6 orders: AB, BA, AC, CA, BC, CB. That is a permutation. Choosing 2 of those same racers for the next round, with no ranking, gives only 3 pairs. AB and BA are now the same pair. That is a combination. A combination count is always a permutation count divided by the ways to order the chosen items among themselves. Every over-count gets removed exactly once.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A table of outcomes choosing 2 of the letters A, B, C. Six arrangements, since order matters, but only three selections, since order does not.",
+      "spec": {
+        "w": 320,
+        "h": 158,
+        "items": [
+          {
+            "t": "box",
+            "x": 0,
+            "y": 0,
+            "w": 160,
+            "h": 26,
+            "label": "arrangements",
+            "fill": "sand"
+          },
+          {
+            "t": "box",
+            "x": 160,
+            "y": 0,
+            "w": 160,
+            "h": 26,
+            "label": "selections",
+            "fill": "sand"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 26,
+            "w": 160,
+            "h": 22,
+            "label": "AB",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 160,
+            "y": 26,
+            "w": 160,
+            "h": 22,
+            "label": "AB",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 48,
+            "w": 160,
+            "h": 22,
+            "label": "BA",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 160,
+            "y": 48,
+            "w": 160,
+            "h": 22,
+            "label": "AC",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 70,
+            "w": 160,
+            "h": 22,
+            "label": "AC",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 160,
+            "y": 70,
+            "w": 160,
+            "h": 22,
+            "label": "BC",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 92,
+            "w": 160,
+            "h": 22,
+            "label": "CA",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 160,
+            "y": 92,
+            "w": 160,
+            "h": 22,
+            "label": " ",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 114,
+            "w": 160,
+            "h": 22,
+            "label": "BC",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 160,
+            "y": 114,
+            "w": 160,
+            "h": 22,
+            "label": " ",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 136,
+            "w": 160,
+            "h": 22,
+            "label": "CB",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 160,
+            "y": 136,
+            "w": 160,
+            "h": 22,
+            "label": " ",
+            "fill": "paper"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A game has 8 available characters. In how many ways can a player choose a main and a backup character, in order? Separately, in how many ways can a player just choose 2 characters, with no roles?",
+    "steps": [
+      "Choosing a main and a backup is a permutation, since the two roles are different.",
+      "There are 8 choices for the main character and 7 left for the backup: 8 times 7 is 56.",
+      "Choosing 2 characters with no roles is a combination instead.",
+      "Each pair was counted twice in the permutation count, once for each order, so divide 56 by 2.",
+      "56 divided by 2 is 28."
+    ]
+  },
+  "ways": [
+    {
+      "id": "al-permutations-combinations-w1",
+      "name": "The slots",
+      "when": "Use this default method for any question where the order of the choices matters.",
+      "steps": [
+        "Draw one slot for each role: main, then backup.",
+        "Fill the main slot: 8 choices are available.",
+        "Fill the backup slot: one character is already used, so 7 choices remain.",
+        "Multiply the slots together: 8 times 7 is 56."
+      ],
+      "example": "8 characters are available. Choose a main and a backup character, in order.",
+      "answer": "56",
+      "trap": "Using 8 choices for both slots instead of one fewer for each after the first."
+    },
+    {
+      "id": "al-permutations-combinations-w2",
+      "name": "The tree",
+      "when": "Use this to see every order laid out as a branching path.",
+      "steps": [
+        "Draw a tree: the first branch picks first place, from A, B or C.",
+        "From each first choice, branch again for second place, using the two remaining racers.",
+        "Follow every path from the start to an end: each path is one order.",
+        "Count the ends: 3 times 2 is 6, so 6 orders."
+      ],
+      "example": "Choose a first and second place winner from racers A, B and C.",
+      "answer": "6",
+      "trap": "Forgetting to remove the already-used racer from the second set of branches.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A tree of first and second place orders for racers A, B and C, branching to 6 outcomes.",
+        "spec": {
+          "w": 460,
+          "h": 200,
+          "items": [
+            {
+              "t": "box",
+              "x": 200,
+              "y": 10,
+              "w": 60,
+              "h": 30,
+              "fill": "paper",
+              "label": "Start"
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 80,
+              "w": 44,
+              "h": 30,
+              "fill": "sand",
+              "label": "A"
+            },
+            {
+              "t": "box",
+              "x": 210,
+              "y": 80,
+              "w": 44,
+              "h": 30,
+              "fill": "sand",
+              "label": "B"
+            },
+            {
+              "t": "box",
+              "x": 360,
+              "y": 80,
+              "w": 44,
+              "h": 30,
+              "fill": "sand",
+              "label": "C"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 150,
+              "w": 50,
+              "h": 30,
+              "fill": "accent",
+              "label": "A,B"
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 150,
+              "w": 50,
+              "h": 30,
+              "fill": "accent",
+              "label": "A,C"
+            },
+            {
+              "t": "box",
+              "x": 180,
+              "y": 150,
+              "w": 50,
+              "h": 30,
+              "fill": "accent",
+              "label": "B,A"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 150,
+              "w": 50,
+              "h": 30,
+              "fill": "accent",
+              "label": "B,C"
+            },
+            {
+              "t": "box",
+              "x": 330,
+              "y": 150,
+              "w": 50,
+              "h": 30,
+              "fill": "accent",
+              "label": "C,A"
+            },
+            {
+              "t": "box",
+              "x": 400,
+              "y": 150,
+              "w": 50,
+              "h": 30,
+              "fill": "accent",
+              "label": "C,B"
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 40,
+              "x2": 82,
+              "y2": 80
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 40,
+              "x2": 232,
+              "y2": 80
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 40,
+              "x2": 382,
+              "y2": 80
+            },
+            {
+              "t": "line",
+              "x1": 82,
+              "y1": 110,
+              "x2": 45,
+              "y2": 150
+            },
+            {
+              "t": "line",
+              "x1": 82,
+              "y1": 110,
+              "x2": 115,
+              "y2": 150
+            },
+            {
+              "t": "line",
+              "x1": 232,
+              "y1": 110,
+              "x2": 205,
+              "y2": 150
+            },
+            {
+              "t": "line",
+              "x1": 232,
+              "y1": 110,
+              "x2": 275,
+              "y2": 150
+            },
+            {
+              "t": "line",
+              "x1": 382,
+              "y1": 110,
+              "x2": 355,
+              "y2": 150
+            },
+            {
+              "t": "line",
+              "x1": 382,
+              "y1": 110,
+              "x2": 425,
+              "y2": 150
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Start: about to choose first place.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                },
+                "13": {
+                  "hidden": true
+                },
+                "14": {
+                  "hidden": true
+                },
+                "15": {
+                  "hidden": true
+                },
+                "16": {
+                  "hidden": true
+                },
+                "17": {
+                  "hidden": true
+                },
+                "18": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Draw a tree: the first branch picks first",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "13": {
+                  "hidden": true
+                },
+                "14": {
+                  "hidden": true
+                },
+                "15": {
+                  "hidden": true
+                },
+                "16": {
+                  "hidden": true
+                },
+                "17": {
+                  "hidden": true
+                },
+                "18": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "From each first choice, branch again for second",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "Follow every path from the start to an",
+              "set": {
+                "10": {
+                  "color": "green"
+                },
+                "11": {
+                  "color": "green"
+                },
+                "12": {
+                  "color": "green"
+                },
+                "13": {
+                  "color": "green"
+                },
+                "14": {
+                  "color": "green"
+                },
+                "15": {
+                  "color": "green"
+                },
+                "16": {
+                  "color": "green"
+                },
+                "17": {
+                  "color": "green"
+                },
+                "18": {
+                  "color": "green"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Count the ends: 3 times 2 is 6,",
+              "set": {
+                "4": {
+                  "fill": "green"
+                },
+                "5": {
+                  "fill": "green"
+                },
+                "6": {
+                  "fill": "green"
+                },
+                "7": {
+                  "fill": "green"
+                },
+                "8": {
+                  "fill": "green"
+                },
+                "9": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "al-permutations-combinations-w3",
+      "name": "Divide out the order",
+      "when": "Use this when the choices have no separate roles, so each group is counted twice or more.",
+      "steps": [
+        "First count the ordered choices, as if the two picks had roles: 8 times 7 is 56.",
+        "Each unordered pair was counted twice in that total, once for each order.",
+        "Divide the ordered count by the number of ways to order 2 items, which is 2.",
+        "56 divided by 2 is 28."
+      ],
+      "example": "8 characters are available. Choose 2 characters, with no roles.",
+      "answer": "28",
+      "trap": "Forgetting to divide and leaving the answer as the larger ordered count, 56."
+    },
+    {
+      "id": "al-permutations-combinations-w4",
+      "name": "The formula",
+      "when": "Use this when you want a direct formula instead of building slots every time.",
+      "steps": [
+        "Use the combination formula: n choose r is n! divided by r! times (n - r)!.",
+        "Here n = 6 and r = 3, so it is 6! divided by 3! times 3!.",
+        "6! is 720, and 3! is 6, so the denominator is 6 times 6, which is 36.",
+        "720 divided by 36 is 20."
+      ],
+      "example": "Choose 3 of 6 pizza toppings, with no order.",
+      "answer": "20",
+      "trap": "Mixing up the permutation and combination formulas and forgetting to divide by r!."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-al-permutations-combinations-p01",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "In how many different orders can 4 different stickers be arranged in a row?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "The first spot can be filled 4 ways, the next 3 ways, and so on down to 1.",
+        "Multiplying 4 times 3 times down to 1 gives 24."
+      ],
+      "useAgain": "when every one of a group of different items gets arranged in a row.",
+      "hints": [
+        "The first position has 4 choices, and each spot after has one fewer choice.",
+        "Multiply the choices for every position together."
+      ],
+      "socraticHint": "How many choices are left for the last spot, once every other spot is filled?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many different orders can 5 different trading cards be arranged in a row?",
+        "answer": {
+          "kind": "number",
+          "value": "120"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p02",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "In how many different orders can 3 different game pieces be arranged in a row?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The first spot can be filled 3 ways, the next 2 ways, and so on down to 1.",
+        "Multiplying 3 times 2 times down to 1 gives 6."
+      ],
+      "useAgain": "when every one of a group of different items gets arranged in a row.",
+      "hints": [
+        "The first position has 3 choices, and each spot after has one fewer choice.",
+        "Multiply the choices for every position together."
+      ],
+      "socraticHint": "How many choices are left for the last spot, once every other spot is filled?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many different orders can 6 different puzzle tiles be arranged in a row?",
+        "answer": {
+          "kind": "number",
+          "value": "720"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p03",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "In how many different orders can 5 different toy robots be arranged in a row?",
+      "answer": {
+        "kind": "number",
+        "value": "120"
+      },
+      "explanation": [
+        "The first spot can be filled 5 ways, the next 4 ways, and so on down to 1.",
+        "Multiplying 5 times 4 times down to 1 gives 120."
+      ],
+      "useAgain": "when every one of a group of different items gets arranged in a row.",
+      "hints": [
+        "The first position has 5 choices, and each spot after has one fewer choice.",
+        "Multiply the choices for every position together."
+      ],
+      "socraticHint": "How many choices are left for the last spot, once every other spot is filled?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many different orders can 4 different rocket models be arranged in a row?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p04",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "In how many different orders can 6 different paint colors be arranged in a row?",
+      "answer": {
+        "kind": "number",
+        "value": "720"
+      },
+      "explanation": [
+        "The first spot can be filled 6 ways, the next 5 ways, and so on down to 1.",
+        "Multiplying 6 times 5 times down to 1 gives 720."
+      ],
+      "useAgain": "when every one of a group of different items gets arranged in a row.",
+      "hints": [
+        "The first position has 6 choices, and each spot after has one fewer choice.",
+        "Multiply the choices for every position together."
+      ],
+      "socraticHint": "How many choices are left for the last spot, once every other spot is filled?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many different orders can 3 different wristbands be arranged in a row?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p05",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "In how many different orders can 7 different photo cards be arranged in a row?",
+      "answer": {
+        "kind": "number",
+        "value": "5040"
+      },
+      "explanation": [
+        "The first spot can be filled 7 ways, the next 6 ways, and so on down to 1.",
+        "Multiplying 7 times 6 times down to 1 gives 5040."
+      ],
+      "useAgain": "when every one of a group of different items gets arranged in a row.",
+      "hints": [
+        "The first position has 7 choices, and each spot after has one fewer choice.",
+        "Multiply the choices for every position together."
+      ],
+      "socraticHint": "How many choices are left for the last spot, once every other spot is filled?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many different orders can 2 different keychains be arranged in a row?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p06",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "In how many ways can 2 cards be chosen from 6 different cards, where the order chosen does not matter?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Choosing without caring about order uses combinations: 6 choose 2.",
+        "That works out to 15."
+      ],
+      "useAgain": "when a group is selected from a larger set and the order picked does not matter.",
+      "hints": [
+        "Since the order the items are picked in does not matter, this is a combination, not a permutation.",
+        "6 choose 2 counts every group of 2, without repeating any group in a different order."
+      ],
+      "socraticHint": "Does the order the items are picked in change which group ends up chosen?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many ways can 2 marbles be chosen from 7 different marbles, where the order chosen does not matter?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p07",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "In how many ways can 3 beads be chosen from 5 different beads, where the order chosen does not matter?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Choosing without caring about order uses combinations: 5 choose 3.",
+        "That works out to 10."
+      ],
+      "useAgain": "when a group is selected from a larger set and the order picked does not matter.",
+      "hints": [
+        "Since the order the items are picked in does not matter, this is a combination, not a permutation.",
+        "5 choose 3 counts every group of 3, without repeating any group in a different order."
+      ],
+      "socraticHint": "Does the order the items are picked in change which group ends up chosen?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many ways can 3 shells be chosen from 8 different shells, where the order chosen does not matter?",
+        "answer": {
+          "kind": "number",
+          "value": "56"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p08",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "In how many ways can 2 stamps be chosen from 7 different stamps, where the order chosen does not matter?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "Choosing without caring about order uses combinations: 7 choose 2.",
+        "That works out to 21."
+      ],
+      "useAgain": "when a group is selected from a larger set and the order picked does not matter.",
+      "hints": [
+        "Since the order the items are picked in does not matter, this is a combination, not a permutation.",
+        "7 choose 2 counts every group of 2, without repeating any group in a different order."
+      ],
+      "socraticHint": "Does the order the items are picked in change which group ends up chosen?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many ways can 4 stickers be chosen from 6 different stickers, where the order chosen does not matter?",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p09",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "In how many ways can 3 buttons be chosen from 8 different buttons, where the order chosen does not matter?",
+      "answer": {
+        "kind": "number",
+        "value": "56"
+      },
+      "explanation": [
+        "Choosing without caring about order uses combinations: 8 choose 3.",
+        "That works out to 56."
+      ],
+      "useAgain": "when a group is selected from a larger set and the order picked does not matter.",
+      "hints": [
+        "Since the order the items are picked in does not matter, this is a combination, not a permutation.",
+        "8 choose 3 counts every group of 3, without repeating any group in a different order."
+      ],
+      "socraticHint": "Does the order the items are picked in change which group ends up chosen?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many ways can 3 coins be chosen from 5 different coins, where the order chosen does not matter?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p10",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "In how many ways can 4 tiles be chosen from 6 different tiles, where the order chosen does not matter?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Choosing without caring about order uses combinations: 6 choose 4.",
+        "That works out to 15."
+      ],
+      "useAgain": "when a group is selected from a larger set and the order picked does not matter.",
+      "hints": [
+        "Since the order the items are picked in does not matter, this is a combination, not a permutation.",
+        "6 choose 4 counts every group of 4, without repeating any group in a different order."
+      ],
+      "socraticHint": "Does the order the items are picked in change which group ends up chosen?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In how many ways can 2 flags be chosen from 9 different flags, where the order chosen does not matter?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p11",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "What is 4 factorial, written 4!, the product of every whole number from 4 down to 1?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "4! means 4 times 3 times down to 1.",
+        "Multiplying those out gives 24."
+      ],
+      "useAgain": "when the number of ways to arrange every item in a full row is needed.",
+      "hints": [
+        "Multiply 4 by every whole number below it, down to 1.",
+        "Multiply them in order, two at a time, to keep track."
+      ],
+      "socraticHint": "What is 4 times 3, times 2, and so on down to 1?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 7 factorial, written 7!, the product of every whole number from 7 down to 1?",
+        "answer": {
+          "kind": "number",
+          "value": "5040"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p12",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "What is 5 factorial, written 5!, the product of every whole number from 5 down to 1?",
+      "answer": {
+        "kind": "number",
+        "value": "120"
+      },
+      "explanation": [
+        "5! means 5 times 4 times down to 1.",
+        "Multiplying those out gives 120."
+      ],
+      "useAgain": "when the number of ways to arrange every item in a full row is needed.",
+      "hints": [
+        "Multiply 5 by every whole number below it, down to 1.",
+        "Multiply them in order, two at a time, to keep track."
+      ],
+      "socraticHint": "What is 5 times 4, times 3, and so on down to 1?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 8 factorial, written 8!, the product of every whole number from 8 down to 1?",
+        "answer": {
+          "kind": "number",
+          "value": "40320"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p13",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "What is 6 factorial, written 6!, the product of every whole number from 6 down to 1?",
+      "answer": {
+        "kind": "number",
+        "value": "720"
+      },
+      "explanation": [
+        "6! means 6 times 5 times down to 1.",
+        "Multiplying those out gives 720."
+      ],
+      "useAgain": "when the number of ways to arrange every item in a full row is needed.",
+      "hints": [
+        "Multiply 6 by every whole number below it, down to 1.",
+        "Multiply them in order, two at a time, to keep track."
+      ],
+      "socraticHint": "What is 6 times 5, times 4, and so on down to 1?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 9 factorial, written 9!, the product of every whole number from 9 down to 1?",
+        "answer": {
+          "kind": "number",
+          "value": "362880"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p14",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "truefalse",
+      "prompt": "Choosing 3 books to bring on a trip, with no order to how they are picked, is a combination, not a permutation.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Since the order the books are chosen in does not matter, this counts as a combination.",
+        "That matches the claim."
+      ],
+      "useAgain": "when you need to check whether a counting situation calls for a permutation or a combination.",
+      "hints": [
+        "Check whether the order items are picked in changes the result.",
+        "A selection where order does not matter is a combination."
+      ],
+      "socraticHint": "Does the order the books are picked in change which 3 books end up chosen?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Choosing 3 runners to fill first, second and third place is a combination, not a permutation.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p15",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "truefalse",
+      "prompt": "Arranging 5 different books on a shelf, where the order they sit in matters, is a permutation.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Since the order the books sit in matters, this counts as a permutation.",
+        "That matches the claim."
+      ],
+      "useAgain": "when you need to check whether a counting situation calls for a permutation or a combination.",
+      "hints": [
+        "Check whether swapping the order changes the result.",
+        "An arrangement where order matters is a permutation."
+      ],
+      "socraticHint": "Does swapping the order of two books on the shelf create a different arrangement?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Choosing a committee of 4 people from a group, with no roles assigned, is a permutation.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p16",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A robot race has 6 robots entered. In how many ways can 1st, 2nd and 3rd place be awarded, with no ties?",
+      "answer": {
+        "kind": "number",
+        "value": "120"
+      },
+      "explanation": [
+        "The first spot has 6 choices, the next 5, and so on for 3 spots.",
+        "Multiplying those 3 choices together gives 120."
+      ],
+      "useAgain": "when a fixed number of ordered spots are filled from a larger group of distinct items.",
+      "hints": [
+        "The order matters here, so this is a permutation of 3 items chosen from 6.",
+        "Multiply 6 by 5 and so on, 3 numbers in a row."
+      ],
+      "socraticHint": "Does swapping which item goes first and which goes second change the outcome here?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A robot race has 7 robots entered. In how many ways can 1st, 2nd and 3rd place be awarded, with no ties?",
+        "answer": {
+          "kind": "number",
+          "value": "210"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p17",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "5 rovers are lined up to launch. In how many ways can a first rover and a second rover to launch be chosen?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "The first spot has 5 choices, the next 4, and so on for 2 spots.",
+        "Multiplying those 2 choices together gives 20."
+      ],
+      "useAgain": "when a fixed number of ordered spots are filled from a larger group of distinct items.",
+      "hints": [
+        "The order matters here, so this is a permutation of 2 items chosen from 5.",
+        "Multiply 5 by 4 and so on, 2 numbers in a row."
+      ],
+      "socraticHint": "Does swapping which item goes first and which goes second change the outcome here?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "6 rovers are lined up to launch. In how many ways can a first rover and a second rover to launch be chosen?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p18",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A game has 7 different levels. In how many ways can the first 3 levels of a custom playlist be chosen, in order?",
+      "answer": {
+        "kind": "number",
+        "value": "210"
+      },
+      "explanation": [
+        "The first spot has 7 choices, the next 6, and so on for 3 spots.",
+        "Multiplying those 3 choices together gives 210."
+      ],
+      "useAgain": "when a fixed number of ordered spots are filled from a larger group of distinct items.",
+      "hints": [
+        "The order matters here, so this is a permutation of 3 items chosen from 7.",
+        "Multiply 7 by 6 and so on, 3 numbers in a row."
+      ],
+      "socraticHint": "Does swapping which item goes first and which goes second change the outcome here?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game has 8 different levels. In how many ways can the first 3 levels of a custom playlist be chosen, in order?",
+        "answer": {
+          "kind": "number",
+          "value": "336"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p19",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "8 3D printer nozzles are available. In how many ways can a primary nozzle and a backup nozzle be assigned, in that order?",
+      "answer": {
+        "kind": "number",
+        "value": "56"
+      },
+      "explanation": [
+        "The first spot has 8 choices, the next 7, and so on for 2 spots.",
+        "Multiplying those 2 choices together gives 56."
+      ],
+      "useAgain": "when a fixed number of ordered spots are filled from a larger group of distinct items.",
+      "hints": [
+        "The order matters here, so this is a permutation of 2 items chosen from 8.",
+        "Multiply 8 by 7 and so on, 2 numbers in a row."
+      ],
+      "socraticHint": "Does swapping which item goes first and which goes second change the outcome here?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "9 3D printer nozzles are available. In how many ways can a primary nozzle and a backup nozzle be assigned, in that order?",
+        "answer": {
+          "kind": "number",
+          "value": "72"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p20",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "6 kitchen scale weights are on a shelf. In how many ways can 4 of them be lined up in a row, left to right?",
+      "answer": {
+        "kind": "number",
+        "value": "360"
+      },
+      "explanation": [
+        "The first spot has 6 choices, the next 5, and so on for 4 spots.",
+        "Multiplying those 4 choices together gives 360."
+      ],
+      "useAgain": "when a fixed number of ordered spots are filled from a larger group of distinct items.",
+      "hints": [
+        "The order matters here, so this is a permutation of 4 items chosen from 6.",
+        "Multiply 6 by 5 and so on, 4 numbers in a row."
+      ],
+      "socraticHint": "Does swapping which item goes first and which goes second change the outcome here?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "7 kitchen scale weights are on a shelf. In how many ways can 4 of them be lined up in a row, left to right?",
+        "answer": {
+          "kind": "number",
+          "value": "840"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p21",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A game shop has 9 different game cards. In how many ways can a player choose 3 to bring to a match?",
+      "answer": {
+        "kind": "number",
+        "value": "84"
+      },
+      "explanation": [
+        "Since there is no ranking or order among the chosen items, this is a combination: 9 choose 3.",
+        "That works out to 84."
+      ],
+      "useAgain": "when a group is selected from a larger set with no order or ranking among the chosen items.",
+      "hints": [
+        "Since no order or ranking is given to the chosen items, this is a combination, not a permutation.",
+        "9 choose 3 counts every possible group, without repeating a group in a different order."
+      ],
+      "socraticHint": "Does the order the items are chosen in change which group ends up selected?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game shop has 10 different game cards. In how many ways can a player choose 3 to bring to a match?",
+        "answer": {
+          "kind": "number",
+          "value": "120"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p22",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A drone kit has 10 different attachments. In how many ways can 2 be chosen to install today?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "Since there is no ranking or order among the chosen items, this is a combination: 10 choose 2.",
+        "That works out to 45."
+      ],
+      "useAgain": "when a group is selected from a larger set with no order or ranking among the chosen items.",
+      "hints": [
+        "Since no order or ranking is given to the chosen items, this is a combination, not a permutation.",
+        "10 choose 2 counts every possible group, without repeating a group in a different order."
+      ],
+      "socraticHint": "Does the order the items are chosen in change which group ends up selected?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone kit has 9 different attachments. In how many ways can 2 be chosen to install today?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p23",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A rocket has 8 candidate fuel cells. In how many ways can 4 be chosen to load, with no ranking among them?",
+      "answer": {
+        "kind": "number",
+        "value": "70"
+      },
+      "explanation": [
+        "Since there is no ranking or order among the chosen items, this is a combination: 8 choose 4.",
+        "That works out to 70."
+      ],
+      "useAgain": "when a group is selected from a larger set with no order or ranking among the chosen items.",
+      "hints": [
+        "Since no order or ranking is given to the chosen items, this is a combination, not a permutation.",
+        "8 choose 4 counts every possible group, without repeating a group in a different order."
+      ],
+      "socraticHint": "Does the order the items are chosen in change which group ends up selected?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rocket has 9 candidate fuel cells. In how many ways can 4 be chosen to load, with no ranking among them?",
+        "answer": {
+          "kind": "number",
+          "value": "126"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p24",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A kitchen has 7 different spice jars. In how many ways can 5 be chosen for a recipe?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "Since there is no ranking or order among the chosen items, this is a combination: 7 choose 5.",
+        "That works out to 21."
+      ],
+      "useAgain": "when a group is selected from a larger set with no order or ranking among the chosen items.",
+      "hints": [
+        "Since no order or ranking is given to the chosen items, this is a combination, not a permutation.",
+        "7 choose 5 counts every possible group, without repeating a group in a different order."
+      ],
+      "socraticHint": "Does the order the items are chosen in change which group ends up selected?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A kitchen has 8 different spice jars. In how many ways can 5 be chosen for a recipe?",
+        "answer": {
+          "kind": "number",
+          "value": "56"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p25",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A 3D printer has 11 filament spools. In how many ways can 2 be chosen to test today?",
+      "answer": {
+        "kind": "number",
+        "value": "55"
+      },
+      "explanation": [
+        "Since there is no ranking or order among the chosen items, this is a combination: 11 choose 2.",
+        "That works out to 55."
+      ],
+      "useAgain": "when a group is selected from a larger set with no order or ranking among the chosen items.",
+      "hints": [
+        "Since no order or ranking is given to the chosen items, this is a combination, not a permutation.",
+        "11 choose 2 counts every possible group, without repeating a group in a different order."
+      ],
+      "socraticHint": "Does the order the items are chosen in change which group ends up selected?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer has 12 filament spools. In how many ways can 2 be chosen to test today?",
+        "answer": {
+          "kind": "number",
+          "value": "66"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p26",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "choice",
+      "prompt": "A coach picks a captain and a vice-captain from 6 players. Which method and answer are correct?",
+      "options": [
+        "Combination: 6 choose 2 = 15",
+        "Permutation: 6 times 6 = 36",
+        "Permutation: 6 times 5 = 30",
+        "Combination: 6 choose 1 = 6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Check first whether the roles being filled are different from each other or identical.",
+        "Different roles mean order matters, so a permutation, not a combination, is the right method.",
+        "That gives 6 times 5, which is 30, since the second role has one fewer player left to choose."
+      ],
+      "useAgain": "when it is unclear whether a counting situation needs a permutation or a combination.",
+      "hints": [
+        "Check whether the two spots being filled are different roles or the same kind of spot.",
+        "Different roles mean the order of choosing matters."
+      ],
+      "socraticHint": "Are the two spots being filled the same kind of role, or different roles?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A coach picks a starting pitcher and a starting catcher from 8 players. Which method and answer are correct?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "Permutation: 8 times 7 = 56",
+          "Combination: 8 choose 2 = 28",
+          "Permutation: 8 times 8 = 64",
+          "Combination: 8 choose 1 = 8"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p27",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "choice",
+      "prompt": "A coach picks 2 players from 6 to represent the team, with no roles assigned. Which method and answer are correct?",
+      "options": [
+        "Permutation: 6 times 5 = 30",
+        "Combination: 6 choose 2 = 15",
+        "Combination: 6 choose 1 = 6",
+        "Permutation: 6 times 6 = 36"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Check first whether the roles being filled are different from each other or identical.",
+        "Identical roles mean order does not matter, so a combination, not a permutation, is the right method.",
+        "That gives 6 choose 2, which is 15."
+      ],
+      "useAgain": "when it is unclear whether a counting situation needs a permutation or a combination.",
+      "hints": [
+        "Check whether the two spots being filled are different roles or the same kind of spot.",
+        "Identical roles mean the order of choosing does not matter."
+      ],
+      "socraticHint": "Are the two spots being filled the same kind of role, or different roles?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A coach picks 3 players from 8 to represent the team, with no roles assigned. Which method and answer are correct?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "Permutation: 8 times 7 times 6 = 336",
+          "Combination: 8 choose 2 = 28",
+          "Permutation: 8 times 8 times 8 = 512",
+          "Combination: 8 choose 3 = 56"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p28",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "choice",
+      "prompt": "A drone team assigns a lead pilot and a backup pilot from 5 candidates. Which method and answer are correct?",
+      "options": [
+        "Permutation: 5 times 4 = 20",
+        "Combination: 5 choose 2 = 10",
+        "Permutation: 5 times 5 = 25",
+        "Combination: 5 choose 1 = 5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Check first whether the roles being filled are different from each other or identical.",
+        "Different roles mean order matters, so a permutation, not a combination, is the right method.",
+        "That gives 5 times 4, which is 20, since the backup role has one fewer candidate left to choose."
+      ],
+      "useAgain": "when it is unclear whether a counting situation needs a permutation or a combination.",
+      "hints": [
+        "Check whether the two spots being filled are different roles or the same kind of spot.",
+        "Different roles mean the order of choosing matters."
+      ],
+      "socraticHint": "Are the two spots being filled the same kind of role, or different roles?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone team assigns a lead pilot and a backup pilot from 7 candidates. Which method and answer are correct?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "Combination: 7 choose 2 = 21",
+          "Permutation: 7 times 7 = 49",
+          "Combination: 7 choose 1 = 7",
+          "Permutation: 7 times 6 = 42"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p29",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "order",
+      "prompt": "Put these steps in order to find how many ways to choose 3 of 6 game cards.",
+      "items": [
+        "Divide by 3 factorial to remove the order, since order does not matter here",
+        "Compute 6 times 5 times 4, the ordered count for 3 spots",
+        "Recognize that choosing cards has no order, so this is a combination"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "The situation is identified as a combination before any computing starts.",
+        "The ordered count is found first, the same way as a permutation.",
+        "Dividing out the repeated orderings comes last, turning the permutation count into a combination count."
+      ],
+      "useAgain": "when you need to lay out computing a combination from a permutation count in order.",
+      "hints": [
+        "Recognizing the situation as a combination comes before any numbers are computed.",
+        "The division that removes repeated orderings is always the last step."
+      ],
+      "socraticHint": "Does the division to remove order happen before or after the ordered count is found?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to find how many ways to choose 2 of 5 game cards.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0
+          ]
+        },
+        "items": [
+          "Divide by 2 factorial to remove the order, since order does not matter here",
+          "Compute 5 times 4, the ordered count for 2 spots",
+          "Recognize that choosing cards has no order, so this is a combination"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p30",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "order",
+      "prompt": "Put these steps in order to find how many ways 4 robots can finish 1st through 4th.",
+      "items": [
+        "Multiply 4 times 3 times 2 times 1 together",
+        "Recognize that finishing order matters, so this is a permutation",
+        "Count the choices for each place: 4 for first, 3 for second, and so on"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "The situation is identified as a permutation before any computing starts.",
+        "The choices for each place are counted one at a time.",
+        "Multiplying every place's choices together gives the final count."
+      ],
+      "useAgain": "when you need to lay out counting a permutation of finishing places in order.",
+      "hints": [
+        "Recognizing the situation as a permutation comes before counting any choices.",
+        "The final multiplication comes only after every place's choices are counted."
+      ],
+      "socraticHint": "Can the final count be multiplied out before the choices for each place are known?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to find how many ways 5 rockets can finish 1st through 5th.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        },
+        "items": [
+          "Multiply 5 times 4 times 3 times 2 times 1 together",
+          "Recognize that finishing order matters, so this is a permutation",
+          "Count the choices for each place: 5 for first, 4 for second, and so on"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p31",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "How many distinct arrangements are there of all the letters in LEVEL?",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "LEVEL has 5 letters, but some repeat.",
+        "Start with 5 factorial, then divide by the factorial of each repeated letter's count to remove the arrangements that look identical.",
+        "That gives 30."
+      ],
+      "useAgain": "when arranging a group of items where some are identical to each other.",
+      "hints": [
+        "Start with 5 factorial, as if every letter were different.",
+        "Divide out the factorial of each letter's repeat count, since swapping identical letters makes no visible difference."
+      ],
+      "socraticHint": "Which letters in LEVEL repeat, and how many times does each repeat?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many distinct arrangements are there of all the letters in ROBOT?",
+        "answer": {
+          "kind": "number",
+          "value": "60"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p32",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "How many distinct arrangements are there of all the letters in PIZZA?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "PIZZA has 5 letters, but some repeat.",
+        "Start with 5 factorial, then divide by the factorial of each repeated letter's count to remove the arrangements that look identical.",
+        "That gives 60."
+      ],
+      "useAgain": "when arranging a group of items where some are identical to each other.",
+      "hints": [
+        "Start with 5 factorial, as if every letter were different.",
+        "Divide out the factorial of each letter's repeat count, since swapping identical letters makes no visible difference."
+      ],
+      "socraticHint": "Which letters in PIZZA repeat, and how many times does each repeat?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many distinct arrangements are there of all the letters in ROTOR?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p33",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "How many distinct arrangements are there of all the letters in BANANA?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "BANANA has 6 letters, but some repeat.",
+        "Start with 6 factorial, then divide by the factorial of each repeated letter's count to remove the arrangements that look identical.",
+        "That gives 60."
+      ],
+      "useAgain": "when arranging a group of items where some are identical to each other.",
+      "hints": [
+        "Start with 6 factorial, as if every letter were different.",
+        "Divide out the factorial of each letter's repeat count, since swapping identical letters makes no visible difference."
+      ],
+      "socraticHint": "Which letters in BANANA repeat, and how many times does each repeat?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many distinct arrangements are there of all the letters in GIGGLE?",
+        "answer": {
+          "kind": "number",
+          "value": "120"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p34",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "How many distinct arrangements are there of all the letters in TOMATO?",
+      "answer": {
+        "kind": "number",
+        "value": "180"
+      },
+      "explanation": [
+        "TOMATO has 6 letters, but some repeat.",
+        "Start with 6 factorial, then divide by the factorial of each repeated letter's count to remove the arrangements that look identical.",
+        "That gives 180."
+      ],
+      "useAgain": "when arranging a group of items where some are identical to each other.",
+      "hints": [
+        "Start with 6 factorial, as if every letter were different.",
+        "Divide out the factorial of each letter's repeat count, since swapping identical letters makes no visible difference."
+      ],
+      "socraticHint": "Which letters in TOMATO repeat, and how many times does each repeat?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many distinct arrangements are there of all the letters in KAYAK?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p35",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "How many distinct arrangements are there of all the letters in PEPPER?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "PEPPER has 6 letters, but some repeat.",
+        "Start with 6 factorial, then divide by the factorial of each repeated letter's count to remove the arrangements that look identical.",
+        "That gives 60."
+      ],
+      "useAgain": "when arranging a group of items where some are identical to each other.",
+      "hints": [
+        "Start with 6 factorial, as if every letter were different.",
+        "Divide out the factorial of each letter's repeat count, since swapping identical letters makes no visible difference."
+      ],
+      "socraticHint": "Which letters in PEPPER repeat, and how many times does each repeat?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many distinct arrangements are there of all the letters in MUMMY?",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p36",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A team of 4 is chosen from 6 robots and 3 rovers (9 total). How many teams include at least one of the rovers?",
+      "answer": {
+        "kind": "number",
+        "value": "111"
+      },
+      "explanation": [
+        "Every possible team of 4 from all 9 items is 9 choose 4, which is 126.",
+        "Teams with none of the rovers come only from the robots: 6 choose 4, which is 15.",
+        "Subtracting the ones with none of the rovers leaves 111."
+      ],
+      "useAgain": "when directly counting groups with at least one of something is harder than counting the ones with none and subtracting.",
+      "hints": [
+        "Count every possible team first, ignoring the condition: 9 choose 4.",
+        "Then subtract the teams that break the condition, using only the robots."
+      ],
+      "socraticHint": "Is it easier to count every team with at least one rover, or every team with none, and subtract?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A team of 3 is chosen from 5 drones and 4 carts (9 total). How many teams include at least one of the carts?",
+        "answer": {
+          "kind": "number",
+          "value": "74"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p37",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A team of 4 is chosen from 7 game cards and 3 power-ups (10 total). How many teams include at least one of the power-ups?",
+      "answer": {
+        "kind": "number",
+        "value": "175"
+      },
+      "explanation": [
+        "Every possible team of 4 from all 10 items is 10 choose 4, which is 210.",
+        "Teams with none of the power-ups come only from the game cards: 7 choose 4, which is 35.",
+        "Subtracting the ones with none of the power-ups leaves 175."
+      ],
+      "useAgain": "when directly counting groups with at least one of something is harder than counting the ones with none and subtracting.",
+      "hints": [
+        "Count every possible team first, ignoring the condition: 10 choose 4.",
+        "Then subtract the teams that break the condition, using only the game cards."
+      ],
+      "socraticHint": "Is it easier to count every team with at least one power-up, or every team with none, and subtract?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A team of 3 is chosen from 6 trading cards and 4 bonus tiles (10 total). How many teams include at least one of the bonus tiles?",
+        "answer": {
+          "kind": "number",
+          "value": "100"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p38",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A team of 5 is chosen from 8 fuel cells and 2 backup batteries (10 total). How many teams include at least one of the backup batteries?",
+      "answer": {
+        "kind": "number",
+        "value": "196"
+      },
+      "explanation": [
+        "Every possible team of 5 from all 10 items is 10 choose 5, which is 252.",
+        "Teams with none of the backup batteries come only from the fuel cells: 8 choose 5, which is 56.",
+        "Subtracting the ones with none of the backup batteries leaves 196."
+      ],
+      "useAgain": "when directly counting groups with at least one of something is harder than counting the ones with none and subtracting.",
+      "hints": [
+        "Count every possible team first, ignoring the condition: 10 choose 5.",
+        "Then subtract the teams that break the condition, using only the fuel cells."
+      ],
+      "socraticHint": "Is it easier to count every team with at least one backup batterie, or every team with none, and subtract?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A team of 4 is chosen from 7 circuit boards and 3 sensors (10 total). How many teams include at least one of the sensors?",
+        "answer": {
+          "kind": "number",
+          "value": "175"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p39",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A team of 4 is chosen from 9 spice jars and 1 sweetener packets (10 total). How many teams include at least one of the sweetener packets?",
+      "answer": {
+        "kind": "number",
+        "value": "84"
+      },
+      "explanation": [
+        "Every possible team of 4 from all 10 items is 10 choose 4, which is 210.",
+        "Teams with none of the sweetener packets come only from the spice jars: 9 choose 4, which is 126.",
+        "Subtracting the ones with none of the sweetener packets leaves 84."
+      ],
+      "useAgain": "when directly counting groups with at least one of something is harder than counting the ones with none and subtracting.",
+      "hints": [
+        "Count every possible team first, ignoring the condition: 10 choose 4.",
+        "Then subtract the teams that break the condition, using only the spice jars."
+      ],
+      "socraticHint": "Is it easier to count every team with at least one sweetener packet, or every team with none, and subtract?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A team of 3 is chosen from 6 mixing bowls and 2 measuring cups (8 total). How many teams include at least one of the measuring cups?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p40",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A team of 5 is chosen from 5 red parts and 5 blue parts (10 total). How many teams include at least one of the blue parts?",
+      "answer": {
+        "kind": "number",
+        "value": "251"
+      },
+      "explanation": [
+        "Every possible team of 5 from all 10 items is 10 choose 5, which is 252.",
+        "Teams with none of the blue parts come only from the red parts: 5 choose 5, which is 1.",
+        "Subtracting the ones with none of the blue parts leaves 251."
+      ],
+      "useAgain": "when directly counting groups with at least one of something is harder than counting the ones with none and subtracting.",
+      "hints": [
+        "Count every possible team first, ignoring the condition: 10 choose 5.",
+        "Then subtract the teams that break the condition, using only the red parts."
+      ],
+      "socraticHint": "Is it easier to count every team with at least one blue part, or every team with none, and subtract?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A team of 5 is chosen from 4 large gears and 6 small gears (10 total). How many teams include at least one of the small gears?",
+        "answer": {
+          "kind": "number",
+          "value": "252"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p41",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A game lets a player pick one from each of these independently: 5 characters, 4 weapons, 3 armor sets. How many different combinations are possible?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "Each choice is made independently of the others, so the counts multiply together.",
+        "Multiplying 5 times 4 times 3 gives 60."
+      ],
+      "useAgain": "when several independent choices are each made once and combined together.",
+      "hints": [
+        "Each category is chosen independently, so this uses the multiplication principle, not a permutation or combination.",
+        "Multiply every category's count together."
+      ],
+      "socraticHint": "Does picking from one category change how many choices are left in another category?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop lets a builder pick one from each of these independently: 4 colors, 5 wheels, 2 engines. How many different combinations are possible?",
+        "answer": {
+          "kind": "number",
+          "value": "40"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p42",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A game lets a player pick one from each of these independently: 3 difficulty levels, 6 maps, 2 game modes. How many different combinations are possible?",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "Each choice is made independently of the others, so the counts multiply together.",
+        "Multiplying 3 times 6 times 2 gives 36."
+      ],
+      "useAgain": "when several independent choices are each made once and combined together.",
+      "hints": [
+        "Each category is chosen independently, so this uses the multiplication principle, not a permutation or combination.",
+        "Multiply every category's count together."
+      ],
+      "socraticHint": "Does picking from one category change how many choices are left in another category?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop lets a builder pick one from each of these independently: 4 nozzles, 3 filament colors, 3 print speeds. How many different combinations are possible?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p43",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A game lets a player pick one from each of these independently: 6 toppings, 2 crust types. How many different combinations are possible?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Each choice is made independently of the others, so the counts multiply together.",
+        "Multiplying 6 times 2 gives 12."
+      ],
+      "useAgain": "when several independent choices are each made once and combined together.",
+      "hints": [
+        "Each category is chosen independently, so this uses the multiplication principle, not a permutation or combination.",
+        "Multiply every category's count together."
+      ],
+      "socraticHint": "Does picking from one category change how many choices are left in another category?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop lets a builder pick one from each of these independently: 5 scales, 4 recipe books. How many different combinations are possible?",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p44",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A game lets a player pick one from each of these independently: 4 thrusters, 4 fins, 4 nose cones. How many different combinations are possible?",
+      "answer": {
+        "kind": "number",
+        "value": "64"
+      },
+      "explanation": [
+        "Each choice is made independently of the others, so the counts multiply together.",
+        "Multiplying 4 times 4 times 4 gives 64."
+      ],
+      "useAgain": "when several independent choices are each made once and combined together.",
+      "hints": [
+        "Each category is chosen independently, so this uses the multiplication principle, not a permutation or combination.",
+        "Multiply every category's count together."
+      ],
+      "socraticHint": "Does picking from one category change how many choices are left in another category?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop lets a builder pick one from each of these independently: 3 stages, 3 boosters, 3 payloads, 3 fins. How many different combinations are possible?",
+        "answer": {
+          "kind": "number",
+          "value": "81"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p45",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A game lets a player pick one from each of these independently: 7 paint colors, 3 decal sets. How many different combinations are possible?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "Each choice is made independently of the others, so the counts multiply together.",
+        "Multiplying 7 times 3 gives 21."
+      ],
+      "useAgain": "when several independent choices are each made once and combined together.",
+      "hints": [
+        "Each category is chosen independently, so this uses the multiplication principle, not a permutation or combination.",
+        "Multiply every category's count together."
+      ],
+      "socraticHint": "Does picking from one category change how many choices are left in another category?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A workshop lets a builder pick one from each of these independently: 8 wristband colors, 2 clasp styles. How many different combinations are possible?",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-al-permutations-combinations-p46",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "6 people sit around a circular table. Rotations of a seating count as the same. How many distinct seatings are there?",
+      "answer": {
+        "kind": "number",
+        "value": "120"
+      },
+      "explanation": [
+        "Fixing one person's seat removes the rotations that would otherwise count as different.",
+        "The remaining 5 people can be arranged in any order around them.",
+        "5 factorial is 120."
+      ],
+      "useAgain": "when a group is arranged in a circle instead of a row, and rotations count as the same.",
+      "hints": [
+        "Rotating everyone around the table by one seat gives the same seating, so those should not be counted separately.",
+        "Fix one person's seat, then arrange the rest normally."
+      ],
+      "socraticHint": "If one person's seat is fixed, how many people are left to arrange freely?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "5 people sit around a circular table. Rotations of a seating count as the same. How many distinct seatings are there?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p47",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "At a party there are 9 people, and every pair shakes hands exactly once. How many handshakes happen in total?",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "Every handshake is a choice of 2 people from the 9, with no order to who offers a hand first.",
+        "That is 9 choose 2.",
+        "9 choose 2 is 36."
+      ],
+      "useAgain": "when every pair in a group interacts exactly once and the total count of pairs is needed.",
+      "hints": [
+        "Each handshake picks 2 people from the group, and picking them in the other order is the same handshake.",
+        "This is a combination, not a permutation."
+      ],
+      "socraticHint": "Does it matter which of the two people in a handshake is picked first?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "At a party there are 12 people, and every pair shakes hands exactly once. How many handshakes happen in total?",
+        "answer": {
+          "kind": "number",
+          "value": "66"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p48",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A delivery robot moves only right or up along a grid, needing 4 moves right and 3 moves up to reach its target. How many different paths can it take?",
+      "answer": {
+        "kind": "number",
+        "value": "35"
+      },
+      "explanation": [
+        "Every path is some order of 4 right moves and 3 up moves, 7 moves total.",
+        "Choosing which 3 of those 7 moves are the up moves fixes the whole path.",
+        "7 choose 3 is 35."
+      ],
+      "useAgain": "when a grid path is built from a fixed number of moves in two directions.",
+      "hints": [
+        "Every path is really just an order of 7 moves, 4 right and 3 up.",
+        "Choosing which of the 7 move-slots are the up moves is a combination."
+      ],
+      "socraticHint": "Once you know which of the 7 move-slots are the up moves, is the rest of the path decided?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A delivery robot moves only right or up along a grid, needing 5 moves right and 2 moves up to reach its target. How many different paths can it take?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p49",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "How many ways can 3 numbers be chosen from 1 to 10 so that no two chosen numbers are next to each other?",
+      "answer": {
+        "kind": "number",
+        "value": "56"
+      },
+      "explanation": [
+        "Line up the 3 chosen numbers in order and leave at least one gap after each one except the last.",
+        "That turns the problem into freely choosing 3 numbers from a shorter list of 8.",
+        "8 choose 3 is 56."
+      ],
+      "useAgain": "when a selection must avoid choosing two items that are next to each other.",
+      "hints": [
+        "List or imagine every group of 3 numbers from 1 to 10, then rule out any with two numbers right next to each other.",
+        "A group like 2, 3, 7 is ruled out because 2 and 3 are next to each other."
+      ],
+      "socraticHint": "What makes a chosen group invalid here: repeated numbers, or numbers that are next to each other?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many ways can 2 numbers be chosen from 1 to 8 so that no two chosen numbers are next to each other?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-permutations-combinations-p50",
+      "lane": "skills",
+      "ideaId": "al-permutations-combinations",
+      "kind": "number",
+      "prompt": "A committee of 4 is chosen from 10 people, but one specific person must always be included. How many committees are possible?",
+      "answer": {
+        "kind": "number",
+        "value": "84"
+      },
+      "explanation": [
+        "Since that one person is always included, only the remaining 3 spots need filling.",
+        "Those 3 spots are chosen from the other 9 people.",
+        "9 choose 3 is 84."
+      ],
+      "useAgain": "when a selection must always include one specific item, leaving fewer spots genuinely open.",
+      "hints": [
+        "Set the one required person aside first, since their spot is already decided.",
+        "Count only the remaining spots, chosen from everyone else."
+      ],
+      "socraticHint": "Once one person's spot is already decided, how many spots and how many people are left to choose from?",
+      "skills": [
+        "think.skills.permutations",
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A committee of 5 is chosen from 12 people, but one specific person must always be included. How many committees are possible?",
+        "answer": {
+          "kind": "number",
+          "value": "330"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,554 @@
+{
+  "id": "s3-w06-build",
+  "season": 3,
+  "week": 6,
+  "track": "build",
+  "title": "The production run, and a machine that tries every price",
+  "summary": "Make the whole run instead of one more prototype, then write a Python loop that tries every price you might charge against a table of honest guesses, count the tries before you run it, and choose your price with the table in front of you.",
+  "minutes": 60,
+  "materials": [
+    "laptop with Python and the editor from week 1",
+    "your v0.1 sketch and your cost sheet from week 5",
+    "all the materials your run needs, bought inside the seed loan",
+    "a clear surface you can leave set up, and a box or tray to store finished units in",
+    "a timer or a clock with a second hand",
+    "paper and pencil for the demand table",
+    "the season folder git has been watching since week 1"
+  ],
+  "skills": ["build.python", "build.data", "build.loops"],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s3-w06-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop, same six moves: ask, imagine, plan, build, test, fix.\n\nAsk: last week you finished one unit and wrote the cost sheet that says what it takes. One unit is a prototype. A shop is stock. So the question this week is not can you make it, which you have already answered, but can you make it again, and again, and again, the same each time, without the tenth one being worse than the first.\n\nAnd then a second question, which is harder because no amount of care answers it: what should you charge? Too cheap and you work all week for nothing. Too dear and the units go home with you. Somewhere between those two is a price, and it is not the one that feels nicest. It is the one the numbers point at.\n\nImagine: a table on your screen with a row for every price you might charge and a profit next to each one, so choosing a price stops being a feeling and becomes reading. You will not get that table by thinking harder. You will get it by writing about twenty lines of Python and letting the machine grind through every option while you watch.\n\nPlan, three jobs, in this order.\n\nOne, the run. Make your whole inventory today. Not one more careful prototype: the batch. This is a different job from making one, and it has its own tricks, which the next steps give you.\n\nTwo, the demand table. For each price you might charge, three honest guesses of how many you would sell: a shy guess, a likely guess and a bold guess. Guesses, written down before the day, so that after Market Day you can see how wrong you were, which is the only way a guess ever turns into knowledge.\n\nThree, the simulator. A Python loop tries every price in your table against all three guesses and prints the profit for every combination. Before you run it, you count the tries. That order matters and it is the whole habit: count the tries first, then let the machine grind. A computer is fast, not infinite, and knowing which one you are asking for is the difference between a program that answers and a program that never comes back.\n\nOne thing to hold on to about the loop you are writing. It is the same shape as week 2: visit each line of a file once, carry a running answer. All that has changed is what the running answer is."
+    },
+    {
+      "kind": "typing",
+      "id": "s3-w06-build-02",
+      "minutes": 5,
+      "body": "Five minutes, hands on the home row. Today's words are the ones the simulator needs: open, line, strip, split, parts, float, int, price, guess, profit, round, print. Type each one five times.\n\nThen the two lines this week leans on, three times each, without looking down: parts = line.split() and profit = price * guess - (fixed + unit * guess). Watch the brackets on the second one. Every open bracket needs its partner, and Python will not guess where you meant it to close."
+    },
+    {
+      "kind": "task",
+      "id": "s3-w06-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Making a batch means doing step 1 to every unit, then step 2 to every unit, then step 3 to every unit, rather than finishing unit A from start to finish before starting unit B.",
+        "spec": {
+          "w": 420,
+          "h": 200,
+          "items": [
+            {
+              "t": "text",
+              "x": 15,
+              "y": 32,
+              "s": "step 1"
+            },
+            {
+              "t": "text",
+              "x": 15,
+              "y": 72,
+              "s": "step 2"
+            },
+            {
+              "t": "text",
+              "x": 15,
+              "y": 112,
+              "s": "step 3"
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 20,
+              "w": 50,
+              "h": 25,
+              "label": "unit A"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 20,
+              "w": 50,
+              "h": 25,
+              "label": "unit B"
+            },
+            {
+              "t": "box",
+              "x": 210,
+              "y": 20,
+              "w": 50,
+              "h": 25,
+              "label": "unit C"
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 60,
+              "w": 50,
+              "h": 25,
+              "label": "unit A"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 60,
+              "w": 50,
+              "h": 25,
+              "label": "unit B"
+            },
+            {
+              "t": "box",
+              "x": 210,
+              "y": 60,
+              "w": 50,
+              "h": 25,
+              "label": "unit C"
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 100,
+              "w": 50,
+              "h": 25,
+              "label": "unit A"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 100,
+              "w": 50,
+              "h": 25,
+              "label": "unit B"
+            },
+            {
+              "t": "box",
+              "x": 210,
+              "y": 100,
+              "w": 50,
+              "h": 25,
+              "label": "unit C"
+            },
+            {
+              "t": "text",
+              "x": 15,
+              "y": 155,
+              "s": "do every unit's step 1, then step 2,",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 15,
+              "y": 173,
+              "s": "across the batch, not one unit start to finish",
+              "size": 11
+            }
+          ],
+          "wide": true,
+          "frames": [
+            {
+              "ms": 700,
+              "caption": "step 1, done to every unit",
+              "set": {
+                "3": {
+                  "fill": "accent"
+                },
+                "4": {
+                  "fill": "accent"
+                },
+                "5": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "then step 2, across the batch",
+              "set": {
+                "6": {
+                  "fill": "accent"
+                },
+                "7": {
+                  "fill": "accent"
+                },
+                "8": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "then step 3, finishing together",
+              "set": {
+                "9": {
+                  "fill": "green"
+                },
+                "10": {
+                  "fill": "green"
+                },
+                "11": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "The run: make the whole batch",
+      "body": "Making ten of something is not making one thing ten times. It is a different job, and four moves make it a much shorter afternoon.\n\nFirst, the reference unit. Put last week's finished unit somewhere you can see it the whole time. That is the standard. Every unit you make today gets held up next to it before it goes in the box.\n\nSecond, batch the steps. Do step one to every unit, then step two to every unit, and so on down your sketch. Do not build unit two from start to finish and then start unit three. Your hands get faster at a step the more times in a row they do it, and every time you swap tools or swap steps you pay that cost again. Write your steps in order on paper first, then work down the list.\n\nThird, the jig. If any step needs the same measurement or the same position every time, do not measure it every time. Make one marker for it: a strip of card cut to the right length, a pencil line on the bench, a paper template you lay on top. Making the marker costs you two minutes once and buys the rest of the afternoon back. This is the step most people skip and it is the one that keeps unit ten looking like unit one.\n\nFourth, the quality line, decided before you start and written at the top of your paper. Finish this sentence: a unit is good enough to sell if it ______. It has to be something you can check by looking or by trying, not a feeling. Anything that fails the line does not go in the box. Keep those ones anyway, in a separate pile, because they are the most useful things in the room when you write the bug diary.\n\nTime three of them: your first, your middle and your last. Write the three times down. The fall from the first to the last is the most honest measurement you will take all week, and week 9 will want it when it works out what an hour of your time earned.\n\nWhen you are done, count the good units out loud and write the number on the box. That number is your stock, and every plan from here uses it.",
+      "checklist": [
+        "The quality line was written down before the first unit was made, and it is something I can check rather than feel",
+        "I worked step by step across the whole batch instead of finishing one unit at a time",
+        "Anything that needs the same measurement twice has a jig, a template or a marked line instead of a fresh measurement",
+        "I timed my first, middle and last unit and wrote all three times down",
+        "The good units are counted, the number is written on the box, and the rejects are in their own pile"
+      ]
+    },
+    {
+      "kind": "science",
+      "id": "s3-w06-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Ten coin tosses can easily land seven heads by chance alone; a thousand tosses lands close to five hundred. A Saturday morning of customers is ten tosses, not a thousand, so any one afternoon's demand count wobbles hard even when nothing changed.",
+        "spec": {
+          "w": 360,
+          "h": 210,
+          "items": [
+            {
+              "t": "text",
+              "x": 20,
+              "y": 20,
+              "s": "how far the count can wobble",
+              "size": 12
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 40,
+              "w": 60,
+              "h": 120,
+              "fill": "none"
+            },
+            {
+              "t": "dim",
+              "x1": 180,
+              "y1": 40,
+              "x2": 180,
+              "y2": 160,
+              "label": "wide swing"
+            },
+            {
+              "t": "box",
+              "x": 220,
+              "y": 90,
+              "w": 60,
+              "h": 30,
+              "fill": "none"
+            },
+            {
+              "t": "dim",
+              "x1": 320,
+              "y1": 90,
+              "x2": 320,
+              "y2": 120,
+              "label": "narrow"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 195,
+              "s": "a Saturday morning is 10 tosses, not 1000",
+              "size": 12
+            }
+          ]
+        }
+      },
+      "title": "Why demand guesses wobble, and why big shops guess wrong too",
+      "body": "You are about to write down how many you think you will sell at each price. Every one of those numbers will be wrong. Here is why that is fine, and why it is still worth doing.\n\nDemand is people, and people are weather. Whether somebody buys depends on the sun, on whether they already ate, on whether their friend stopped first, on whether they happen to have cash in their pocket that day. None of that is in your control and none of it is in your table.\n\nThen there is the size of your crowd. If forty people walk past your stand, you are not measuring what a hundred thousand people would do. You are taking one very small sample, and small samples wobble hard. Toss a coin ten times and you can easily get seven heads, and it means nothing. Toss it a thousand times and seven hundred heads would be extraordinary. Your Saturday is ten tosses, not a thousand.\n\nThe surprising part is that this does not go away with size. Supermarkets employ people whose whole job is guessing demand, with years of till data and the weather forecast, and they still get it wrong every week. That is what a clearance shelf is: a wall of demand guesses that came in too high. And an empty shelf on a Saturday afternoon is the same mistake pointing the other way, which costs them just as much and is harder to see, because nobody photographs the sale that did not happen.\n\nSo the honest way to guess is not to write one number. It is to write a range, low and likely and high, and to write it down before the day rather than after, when memory has quietly tidied it. Then on Market Day you write the real number next to it. That gap between the guess and the truth is not a failure. It is the only thing that turns a guess into knowledge, and it is the reason your second run will be planned better than your first."
+    },
+    {
+      "kind": "science",
+      "id": "s3-w06-build-10",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Earth turns 360 degrees every 24 hours, 15 degrees per hour, so each time zone is set about one hour from its neighbour. Clock math wraps around a 24 hour dial the way this face does.",
+        "spec": {
+          "w": 360,
+          "h": 260,
+          "items": [
+            {
+              "t": "text",
+              "x": 30,
+              "y": 15,
+              "s": "24 hour clock face",
+              "size": 12
+            },
+            {
+              "t": "circle",
+              "cx": 120,
+              "cy": 130,
+              "r": 80,
+              "fill": "none"
+            },
+            {
+              "t": "dot",
+              "cx": 120,
+              "cy": 50,
+              "label": "0",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 200,
+              "cy": 130,
+              "label": "6",
+              "side": "right"
+            },
+            {
+              "t": "dot",
+              "cx": 120,
+              "cy": 210,
+              "label": "12",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 40,
+              "cy": 130,
+              "label": "18",
+              "side": "left"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 245,
+              "s": "15 degrees of longitude = 1 hour",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "title": "Time zones are clock math wearing a map",
+      "body": "Earth turns one full 360 degrees every 24 hours, which works out to 15 degrees of longitude for every hour. Time zones are built almost exactly on that number. Each zone is roughly 15 degrees wide, its clock set about one hour apart from its neighbour.\n\nThat is clock math again, the idea from last season: keep only the remainder, and the numbers wrap around instead of growing forever. A clock only has 24 positions, so 23 plus 2 hours is not 25. It is 1, the remainder left after dividing by 24.\n\nCross enough time zones travelling east and the clock jumps forward past midnight into a new date, a real rule called the International Date Line. It exists purely so the hour and the sunlight stay roughly matched wherever you stand.\n\nThe sun does not move. The lines drawn on the clock face do.",
+      "ideaId": "clock-math"
+    },
+    {
+      "kind": "task",
+      "id": "s3-w06-build-05",
+      "figure": {
+        "kind": "diagram",
+        "alt": "demand.txt holds one row per price: the price, then a shy, likely and bold guess, separated by spaces. Six prices times three guesses is eighteen tries, small enough for a laptop to finish before you blink.",
+        "spec": {
+          "w": 420,
+          "h": 200,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 20,
+              "w": 340,
+              "h": 25,
+              "label": "price   shy   likely   bold",
+              "fill": "none"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 50,
+              "w": 340,
+              "h": 22,
+              "label": "2.00     6      10       14",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 75,
+              "w": 340,
+              "h": 22,
+              "label": "3.00     4       8       10",
+              "fill": "sand"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 120,
+              "s": "6 prices x 3 guesses = 18 tries",
+              "size": 12
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 140,
+              "s": "a laptop does millions of steps a second",
+              "size": 12
+            }
+          ],
+          "wide": true
+        }
+      },
+      "title": "The demand table, and counting the tries",
+      "body": "On paper first, then in a file.\n\nPick six prices you would genuinely consider. Spread them out rather than bunching them: something clearly cheap, something clearly dear, and four in between. Round numbers or clean halves are easier to hand change for, which matters more at a real table than it looks on paper.\n\nFor each price, three guesses of how many you would sell in one Saturday morning: shy, likely, bold. Two rules keep them honest. No guess may be bigger than the number written on your box, because you cannot sell a unit that does not exist. And the numbers must fall as the price rises: if your guess at 5 dollars is bigger than your guess at 2 dollars, either you have found something remarkable or you have written down a wish.\n\nNow put it in a file called demand.txt, in the season folder git is watching, four numbers on each line separated by spaces, price first and then shy, likely, bold. It looks like this, and these numbers are an example, not yours:\n\n2.00 6 10 14\n3.00 4 8 10\n4.00 3 6 8\n5.00 2 4 6\n6.00 1 3 4\n7.00 1 2 3\n\nNo dollar signs. No commas. Just the numbers and the spaces, one row per price, and no blank line hiding at the top.\n\nBefore any code exists, count the tries. Six prices, three guesses each, is six times three, so eighteen profit sums. Say the number out loud and write it on your paper. Then ask the second question, which is the one that actually matters: is eighteen a number a laptop can chew through before you blink? A laptop runs millions of small steps every second, so eighteen is nothing at all. Even if you had used every price from 1 dollar to 10 dollars in 25 cent steps, that would be 37 prices times 3 guesses, which is 111 sums, and still nothing.\n\nThat habit has a name you will meet properly on the farm later in the season: count the tries before you run them. Today it is easy and the answer is always yes. It is worth doing today precisely because it is easy, so that the hour when the answer is no, you already have the habit.",
+      "checklist": [
+        "Six prices are chosen and spread out, not bunched together",
+        "Every row has a shy, a likely and a bold guess, no guess is bigger than the units in my box, and the guesses fall as the price rises",
+        "demand.txt holds four numbers a row separated by spaces, with no dollar signs and no commas",
+        "I counted the tries and said the number out loud before I wrote a line of code",
+        "I said why a laptop finishes that many sums before I can blink"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s3-w06-build-06",
+      "figure": {
+        "kind": "diagram",
+        "alt": "price_check.py loops over each price row, then loops over the three guesses inside it, computing profit for each. A decision keeps only the best profit seen so far on the likely guess, and the totals print after both loops finish.",
+        "spec": {
+          "w": 360,
+          "h": 260,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 10,
+              "w": 100,
+              "h": 25,
+              "label": "demand.txt"
+            },
+            {
+              "t": "line",
+              "x1": 70,
+              "y1": 35,
+              "x2": 70,
+              "y2": 55,
+              "arrow": true,
+              "label": "for price"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 55,
+              "w": 200,
+              "h": 25,
+              "label": "price, shy, likely, bold"
+            },
+            {
+              "t": "line",
+              "x1": 120,
+              "y1": 80,
+              "x2": 120,
+              "y2": 100,
+              "arrow": true,
+              "label": "for guess"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 100,
+              "w": 200,
+              "h": 30,
+              "label": "profit = price*guess - costs"
+            },
+            {
+              "t": "line",
+              "x1": 120,
+              "y1": 130,
+              "x2": 120,
+              "y2": 150,
+              "arrow": true
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  120,
+                  150
+                ],
+                [
+                  180,
+                  170
+                ],
+                [
+                  120,
+                  190
+                ],
+                [
+                  60,
+                  170
+                ]
+              ],
+              "label": "beats best so far?"
+            },
+            {
+              "t": "line",
+              "x1": 120,
+              "y1": 190,
+              "x2": 120,
+              "y2": 210,
+              "arrow": true,
+              "label": "yes"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 210,
+              "w": 200,
+              "h": 30,
+              "label": "best_price, best_profit",
+              "fill": "accent"
+            },
+            {
+              "t": "text",
+              "x": 230,
+              "y": 110,
+              "s": "tries count up;",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 230,
+              "y": 128,
+              "s": "totals print after",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 230,
+              "y": 146,
+              "s": "both loops end",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "title": "The simulator, and choosing your price",
+      "body": "New file in the same folder, called price_check.py. Before you type anything given to you, write it yourself, using the loop-over-data shape you already own: read demand.txt one line at a time, and for each price try all three guesses (shy, likely, bold), printing the price, the guess and the profit (price times guess, minus fixed costs, minus unit cost times guess), counting every try. At the end print the number of tries and the price and profit that win on the likely guesses. Put your own two numbers at the top, the fixed costs and one unit's materials cost, straight off last week's cost sheet.\n\nTry it for real first. Give it a real, focused 15 minutes; if it still is not running by then, move to the version below rather than losing the whole hour to one line of code. If stuck, here is one way, and mind the indents, since Python uses them to decide what is inside the loop and what is outside it:\n\nfixed = 12.00\nunit = 1.50\n\ntries = 0\nbest_price = None\nbest_profit = None\n\nfor line in open('demand.txt'):\n    line = line.strip()\n    if line == '':\n        continue\n    parts = line.split()\n    price = float(parts[0])\n    shy = int(parts[1])\n    likely = int(parts[2])\n    bold = int(parts[3])\n    for guess in [shy, likely, bold]:\n        profit = price * guess - (fixed + unit * guess)\n        tries = tries + 1\n        print(price, guess, round(profit, 2))\n    middle = price * likely - (fixed + unit * likely)\n    if best_profit is None or middle > best_profit:\n        best_profit = middle\n        best_price = price\n\nprint('tries', tries)\nprint('best price on the likely guess', best_price)\nprint('best profit on the likely guess', round(best_profit, 2))\n\nThe first two lines hold your own fixed cost and cost per unit. Everything below them works for anything anybody has ever sold.\n\nRead it out loud before you run it. line.split() cuts a row at its spaces and hands back the four pieces as a little list, and parts[0] is the first piece. float turns a piece of text into a number that can hold cents; int turns a piece of text into a whole number, which is right for a count of units, because half a customer does not exist. The inner loop visits the three guesses for one price. The line after it works out the profit on the likely guess only, and that is the one the best-so-far hand is allowed to hold, because choosing your price off the bold guess is choosing it off your best mood.\n\nRun it. Two things to notice in the output. Python prints 4.0 where you typed 4.00, because a float does not remember trailing zeros, and that is not a bug. And read the likely column all the way down and look at its shape. If the profits climb and then turn over and fall, you have found the middle: past some point the extra dollars stop making up for the customers who walk away. If instead they climb all the way to your dearest price, nothing has gone wrong with the program. That is your own demand table telling you that you never guessed a price high enough to scare anybody off, and the fix is to add a dearer row and run it again. Either way, finding the turn by hand is exactly the job you just handed to a machine.\n\nCheck it before you trust it. Take any one row of the printout and work the same sum out on paper: price times the guess, take away the fixed costs, take away the unit cost times the guess. If your paper and the program disagree, one of you is wrong and finding out which one is the whole job.\n\nNow choose, out loud, with a grown-up listening, and answer these four before you say the number:\n\nWhich price wins on the likely row? Does the same price still win if you read the shy column instead, and if it does not, which of the two do you want to be wrong about? What is your break-even count at the price you are choosing, worked out in this week's Think lane, and is that count smaller than the number on your box? And last: could you say this price out loud to a neighbour without your voice going quiet?\n\nOne honest thing about the model. This table treats a unit's materials as spent only when that unit sells. You have already made your whole run, so the materials in every leftover unit are spent whatever happens on the day. That makes these numbers a little kinder than reality, and week 9 counts it properly when the ledger closes. Knowing that now is better than being surprised then.\n\nWrite your chosen price on your paper with today's date and one sentence saying why, then commit both files with a message that says why you picked it rather than what you typed.",
+      "checklist": [
+        "I wrote my own price_check.py, using the loop-over-data shape I already know, before I looked at the given code",
+        "I worked out one row of the printed table by hand on paper and it matched my program",
+        "I said which price wins on the likely row and whether the shy column agrees",
+        "I said my break-even count out loud and whether the box holds enough units to reach it",
+        "The chosen price is written down and dated with one sentence of why, and both files are committed"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s3-w06-build-07",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Today's usual suspects, with the exact words Python uses, because reading the message is faster than guessing.\n\nFileNotFoundError: [Errno 2] No such file or directory: 'demand.txt'. The program and the file are in different folders, or the name is spelled differently in the two places.\n\nIndexError: list index out of range. A row in demand.txt has fewer than four numbers on it. Usually the last row, where a number went missing, or a row where two numbers ran together with no space between them, so the split finds only three pieces where the program wants four. A line of pure whitespace is not the culprit here: strip cleans it to nothing and the empty check skips it.\n\nValueError: could not convert string to float: '$2.00'. A dollar sign got into the file. float reads digits and a dot, and nothing else.\n\nTypeError: can't multiply sequence by non-int of type 'float'. The int or the float call got left off, so Python is still holding text where it needs a number, and text cannot be multiplied by money.\n\nIndentationError, or six rows printing instead of eighteen: something is indented to the wrong depth. The row print belongs inside the inner loop, the one that walks the three guesses. If it slips out one level you get one row per price instead of three, because only the last guess of each price survives to be printed. The three prints at the bottom belong right at the left edge, outside both loops.\n\nAnd the one that is not a bug at all. Money in floats picks up a long tail sometimes, which is why the printed profit goes through round. If you want to see it for yourself, open Python on its own and type 0.1 + 0.2, and it will answer 0.30000000000000004. Your machine is not broken and neither is Python. Some fractions that are tidy in tens are endless in twos, the same way a third is endless in tens, and round(x, 2) is how you keep the table readable."
+    },
+    {
+      "kind": "artifact",
+      "id": "s3-w06-build-08",
+      "title": "Show it",
+      "prompt": "A photo of the whole run counted out with the number written on the box, a photo of the reject pile beside it, the contents of demand.txt and price_check.py pasted or as a share link, and a photo or screenshot of the printed profit table with your chosen price circled and today's date on it.",
+      "accepts": ["photo", "code", "text"]
+    },
+    {
+      "kind": "log",
+      "id": "s3-w06-build-09",
+      "variant": "maker"
+    }
+  ]
+}

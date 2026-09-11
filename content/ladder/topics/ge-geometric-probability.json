@@ -1,0 +1,3776 @@
+{
+  "id": "ge-geometric-probability",
+  "idea": {
+    "body": "Sometimes an outcome is not a separate object to count, but a point on a segment, in a region, or around a circle. Then probability comes from measuring, not counting. A point dropped at random on a segment lands on a marked piece with probability equal to that piece's length over the whole length. A dart thrown at random into a region lands in part of it with probability equal to that part's area divided by the whole area. A spinner lands in a sector with probability equal to that sector's angle divided by 360 degrees. For example, a target is a circle of radius 10 with a bullseye of radius 4 at its center. The chance of hitting the bullseye is its area divided by the target's area: 4^2 over 10^2, which is 16/100, or 4/25.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A target: a circle of radius 10 with a bullseye of radius 4.",
+      "spec": {
+        "w": 220,
+        "h": 220,
+        "items": [
+          {
+            "t": "circle",
+            "cx": 110.0,
+            "cy": 110.0,
+            "r": 95.0,
+            "fill": "rust"
+          },
+          {
+            "t": "circle",
+            "cx": 110.0,
+            "cy": 110.0,
+            "r": 38.0,
+            "fill": "paper"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A spinner is divided into 3 sectors of 90, 150 and 120 degrees. What is the probability the spinner stops in the 150 degree sector?",
+    "steps": [
+      "A sector's probability is its angle divided by the full circle, 360 degrees.",
+      "That is 150/360.",
+      "150/360 simplifies to 5/12."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "A spinner with sectors of 90, 150 and 120 degrees, the 150 degree sector marked.",
+      "spec": {
+        "w": 220,
+        "h": 220,
+        "items": [
+          {
+            "t": "circle",
+            "cx": 110.0,
+            "cy": 110.0,
+            "r": 95.0
+          },
+          {
+            "t": "line",
+            "x1": 110.0,
+            "y1": 110.0,
+            "x2": 110.0,
+            "y2": 15.0
+          },
+          {
+            "t": "poly",
+            "points": [
+              [
+                110.0,
+                110.0
+              ],
+              [
+                205.0,
+                110.0
+              ],
+              [
+                203.55673653615975,
+                126.49657687835838
+              ],
+              [
+                199.27079897466132,
+                142.49191361593853
+              ],
+              [
+                192.2724133595217,
+                157.5
+              ],
+              [
+                182.7742220963029,
+                171.06482292022122
+              ],
+              [
+                171.06482292022125,
+                182.7742220963029
+              ],
+              [
+                157.5,
+                192.27241335952166
+              ],
+              [
+                142.49191361593853,
+                199.2707989746613
+              ],
+              [
+                126.49657687835838,
+                203.55673653615975
+              ],
+              [
+                110.0,
+                205.0
+              ],
+              [
+                93.50342312164162,
+                203.55673653615975
+              ],
+              [
+                77.50808638406147,
+                199.27079897466132
+              ],
+              [
+                62.50000000000002,
+                192.2724133595217
+              ],
+              [
+                48.93517707977876,
+                182.7742220963029
+              ],
+              [
+                37.22577790369709,
+                171.06482292022125
+              ],
+              [
+                27.72758664047832,
+                157.5
+              ]
+            ],
+            "fill": "rust"
+          },
+          {
+            "t": "line",
+            "x1": 110.0,
+            "y1": 110.0,
+            "x2": 205.0,
+            "y2": 110.0
+          },
+          {
+            "t": "line",
+            "x1": 110.0,
+            "y1": 110.0,
+            "x2": 27.72758664047832,
+            "y2": 157.5
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "ge-geometric-probability-w1",
+      "name": "Favorable area over total area",
+      "when": "Use this when the outcome is landing in a region, not a single point.",
+      "steps": [
+        "A target is a circle of radius 10 centimeters with a bullseye of radius 4 at its center.",
+        "The chance of hitting the bullseye is the bullseye's area divided by the target's area.",
+        "That is 4^2 over 10^2, which is 16/100.",
+        "16/100 simplifies to 4/25."
+      ],
+      "example": "A target has radius 10 centimeters with a bullseye of radius 4. Find the chance of hitting the bullseye.",
+      "answer": "4/25",
+      "trap": "Dividing the radii instead of the areas, which use the radii squared.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A target: a circle of radius 10 with a bullseye of radius 4.",
+        "spec": {
+          "w": 220,
+          "h": 280,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110,
+              "cy": 110,
+              "r": 95,
+              "fill": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 110,
+              "cy": 110,
+              "r": 38,
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110,
+              "y": 232,
+              "s": "16 / 100",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 110,
+              "y": 255,
+              "s": "= 4 / 25",
+              "size": 12,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Target: radius 10, bullseye radius 4",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Circle radius 10, bullseye radius 4",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Chance = bullseye area over target area",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "1": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "That is 4 squared over 10 squared",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "1": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "16/100 simplifies to 4/25",
+              "set": {
+                "1": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-geometric-probability-w2",
+      "name": "Favorable length over total length",
+      "when": "Use this when a point lands at random somewhere along a segment.",
+      "steps": [
+        "A rope is 15 meters long, with a red-marked piece 6 meters long.",
+        "A point lands at random somewhere on the rope.",
+        "The chance it lands on the red piece is the piece's length over the total length.",
+        "That is 6/15, which simplifies to 2/5."
+      ],
+      "example": "A 15 meter rope has a 6 meter red piece. Find the chance a random point lands on it.",
+      "answer": "2/5",
+      "trap": "Using the piece's length as the denominator instead of the whole segment's length.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A 15 meter bar with a 6 meter piece shaded, showing the favorable length within the whole.",
+        "spec": {
+          "w": 470,
+          "h": 125,
+          "items": [
+            {
+              "t": "box",
+              "x": 10,
+              "y": 30,
+              "w": 28,
+              "h": 30
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 30,
+              "w": 28,
+              "h": 30
+            },
+            {
+              "t": "box",
+              "x": 70,
+              "y": 30,
+              "w": 28,
+              "h": 30
+            },
+            {
+              "t": "box",
+              "x": 100,
+              "y": 30,
+              "w": 28,
+              "h": 30
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 30,
+              "w": 28,
+              "h": 30,
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 160,
+              "y": 30,
+              "w": 28,
+              "h": 30,
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 30,
+              "w": 28,
+              "h": 30,
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 220,
+              "y": 30,
+              "w": 28,
+              "h": 30,
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 30,
+              "w": 28,
+              "h": 30,
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 280,
+              "y": 30,
+              "w": 28,
+              "h": 30,
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 310,
+              "y": 30,
+              "w": 28,
+              "h": 30
+            },
+            {
+              "t": "box",
+              "x": 340,
+              "y": 30,
+              "w": 28,
+              "h": 30
+            },
+            {
+              "t": "box",
+              "x": 370,
+              "y": 30,
+              "w": 28,
+              "h": 30
+            },
+            {
+              "t": "box",
+              "x": 400,
+              "y": 30,
+              "w": 28,
+              "h": 30
+            },
+            {
+              "t": "box",
+              "x": 430,
+              "y": 30,
+              "w": 28,
+              "h": 30
+            },
+            {
+              "t": "text",
+              "x": 234,
+              "y": 85,
+              "s": "6 of 15 meters shaded",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 234,
+              "y": 103,
+              "s": "6/15 = 2/5",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "dot",
+              "cx": 235,
+              "cy": 45
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "A 15 meter bar, nothing marked yet",
+              "set": {
+                "17": {
+                  "hidden": true
+                },
+                "4": {
+                  "fill": "paper"
+                },
+                "5": {
+                  "fill": "paper"
+                },
+                "6": {
+                  "fill": "paper"
+                },
+                "7": {
+                  "fill": "paper"
+                },
+                "8": {
+                  "fill": "paper"
+                },
+                "9": {
+                  "fill": "paper"
+                },
+                "15": {
+                  "hidden": true
+                },
+                "16": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Red piece is 6 of 15 meters",
+              "set": {
+                "17": {
+                  "hidden": true
+                },
+                "15": {
+                  "hidden": true
+                },
+                "16": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "A point drops at random on the rope",
+              "set": {
+                "17": {
+                  "cy": 5
+                },
+                "15": {
+                  "hidden": true
+                },
+                "16": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Chance is piece length over whole length",
+              "set": {
+                "16": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "6/15 simplifies to 2/5",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-geometric-probability-w3",
+      "name": "The angle as a fraction of 360",
+      "when": "Use this when the outcome is a stopping angle around a full circle.",
+      "steps": [
+        "A spinner is divided into sectors of 40, 200 and 120 degrees.",
+        "The chance of landing in the 40 degree sector is its angle over the full 360.",
+        "That is 40/360.",
+        "40/360 simplifies to 1/9."
+      ],
+      "example": "A spinner has sectors of 40, 200 and 120 degrees. Find the chance of landing in the 40 degree sector.",
+      "answer": "1/9",
+      "trap": "Dividing by the sum of the other sectors instead of the full 360 degrees.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A spinner with a 40 degree sector shaded out of the full circle.",
+        "spec": {
+          "w": 220,
+          "h": 280,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110,
+              "cy": 110,
+              "r": 95
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  110,
+                  110
+                ],
+                [
+                  110,
+                  15
+                ],
+                [
+                  126.497,
+                  16.443
+                ],
+                [
+                  142.492,
+                  20.729
+                ],
+                [
+                  157.5,
+                  27.727
+                ],
+                [
+                  171.065,
+                  37.226
+                ]
+              ],
+              "fill": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 110,
+              "y1": 110,
+              "x2": 110,
+              "y2": 15
+            },
+            {
+              "t": "line",
+              "x1": 110,
+              "y1": 110,
+              "x2": 171.065,
+              "y2": 37.226
+            },
+            {
+              "t": "text",
+              "x": 110,
+              "y": 232,
+              "s": "40 / 360",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 110,
+              "y": 255,
+              "s": "= 1 / 9",
+              "size": 12,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Spinner: sectors of 40, 200, 120 degrees",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Sectors: 40, 200, and 120 degrees",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Chance = angle over 360 degrees",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "That is 40 over 360",
+              "set": {
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "40/360 simplifies to 1/9",
+              "set": {
+                "1": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-ge-geometric-probability-p01",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A point is dropped at random on a segment 20 units long. A marked piece of the segment is 5 units long. What is the probability the point lands on the marked piece?",
+      "answer": {
+        "kind": "number",
+        "value": "1/4"
+      },
+      "explanation": [
+        "The probability is the marked length divided by the whole length.",
+        "That is 5/20 = 1/4."
+      ],
+      "useAgain": "when an outcome is where a point lands on a segment, not which of several objects is picked.",
+      "hints": [
+        "Probability along a segment is a length divided by the whole length.",
+        "Write the fraction, then simplify it."
+      ],
+      "socraticHint": "What two lengths does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A point is dropped at random on a segment 16 units long. A marked piece of the segment is 4 units long. What is the probability the point lands on the marked piece?",
+        "answer": {
+          "kind": "number",
+          "value": "1/4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A segment 20 units long with a marked piece 5 units long.",
+        "spec": {
+          "w": 280,
+          "h": 90,
+          "items": [
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 45,
+              "x2": 260.0,
+              "y2": 45
+            },
+            {
+              "t": "dot",
+              "cx": 20,
+              "cy": 45
+            },
+            {
+              "t": "dot",
+              "cx": 260.0,
+              "cy": 45
+            },
+            {
+              "t": "line",
+              "x1": 110.0,
+              "y1": 33,
+              "x2": 110.0,
+              "y2": 57
+            },
+            {
+              "t": "line",
+              "x1": 170.0,
+              "y1": 33,
+              "x2": 170.0,
+              "y2": 57
+            },
+            {
+              "t": "line",
+              "x1": 110.0,
+              "y1": 45,
+              "x2": 170.0,
+              "y2": 45,
+              "color": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p02",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A point is dropped at random on a segment 15 units long. A marked piece of the segment is 6 units long. What is the probability the point lands on the marked piece?",
+      "answer": {
+        "kind": "number",
+        "value": "2/5"
+      },
+      "explanation": [
+        "The probability is the marked length divided by the whole length.",
+        "That is 6/15 = 2/5."
+      ],
+      "useAgain": "when an outcome is where a point lands on a segment, not which of several objects is picked.",
+      "hints": [
+        "Probability along a segment is a length divided by the whole length.",
+        "Write the fraction, then simplify it."
+      ],
+      "socraticHint": "What two lengths does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A point is dropped at random on a segment 21 units long. A marked piece of the segment is 7 units long. What is the probability the point lands on the marked piece?",
+        "answer": {
+          "kind": "number",
+          "value": "1/3"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A segment 15 units long with a marked piece 6 units long.",
+        "spec": {
+          "w": 280,
+          "h": 90,
+          "items": [
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 45,
+              "x2": 260.0,
+              "y2": 45
+            },
+            {
+              "t": "dot",
+              "cx": 20,
+              "cy": 45
+            },
+            {
+              "t": "dot",
+              "cx": 260.0,
+              "cy": 45
+            },
+            {
+              "t": "line",
+              "x1": 92.0,
+              "y1": 33,
+              "x2": 92.0,
+              "y2": 57
+            },
+            {
+              "t": "line",
+              "x1": 188.0,
+              "y1": 33,
+              "x2": 188.0,
+              "y2": 57
+            },
+            {
+              "t": "line",
+              "x1": 92.0,
+              "y1": 45,
+              "x2": 188.0,
+              "y2": 45,
+              "color": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p03",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A point is dropped at random on a segment 24 units long. A marked piece of the segment is 9 units long. What is the probability the point lands on the marked piece?",
+      "answer": {
+        "kind": "number",
+        "value": "3/8"
+      },
+      "explanation": [
+        "The probability is the marked length divided by the whole length.",
+        "That is 9/24 = 3/8."
+      ],
+      "useAgain": "when an outcome is where a point lands on a segment, not which of several objects is picked.",
+      "hints": [
+        "Probability along a segment is a length divided by the whole length.",
+        "Write the fraction, then simplify it."
+      ],
+      "socraticHint": "What two lengths does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A point is dropped at random on a segment 25 units long. A marked piece of the segment is 10 units long. What is the probability the point lands on the marked piece?",
+        "answer": {
+          "kind": "number",
+          "value": "2/5"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A segment 24 units long with a marked piece 9 units long.",
+        "spec": {
+          "w": 280,
+          "h": 90,
+          "items": [
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 45,
+              "x2": 260.0,
+              "y2": 45
+            },
+            {
+              "t": "dot",
+              "cx": 20,
+              "cy": 45
+            },
+            {
+              "t": "dot",
+              "cx": 260.0,
+              "cy": 45
+            },
+            {
+              "t": "line",
+              "x1": 95.0,
+              "y1": 33,
+              "x2": 95.0,
+              "y2": 57
+            },
+            {
+              "t": "line",
+              "x1": 185.0,
+              "y1": 33,
+              "x2": 185.0,
+              "y2": 57
+            },
+            {
+              "t": "line",
+              "x1": 95.0,
+              "y1": 45,
+              "x2": 185.0,
+              "y2": 45,
+              "color": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p04",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A point is dropped at random on a segment 18 units long. A marked piece of the segment is 4 units long. What is the probability the point lands on the marked piece?",
+      "answer": {
+        "kind": "number",
+        "value": "2/9"
+      },
+      "explanation": [
+        "The probability is the marked length divided by the whole length.",
+        "That is 4/18 = 2/9."
+      ],
+      "useAgain": "when an outcome is where a point lands on a segment, not which of several objects is picked.",
+      "hints": [
+        "Probability along a segment is a length divided by the whole length.",
+        "Write the fraction, then simplify it."
+      ],
+      "socraticHint": "What two lengths does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A point is dropped at random on a segment 14 units long. A marked piece of the segment is 6 units long. What is the probability the point lands on the marked piece?",
+        "answer": {
+          "kind": "number",
+          "value": "3/7"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A segment 18 units long with a marked piece 4 units long.",
+        "spec": {
+          "w": 280,
+          "h": 90,
+          "items": [
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 45,
+              "x2": 260.0,
+              "y2": 45
+            },
+            {
+              "t": "dot",
+              "cx": 20,
+              "cy": 45
+            },
+            {
+              "t": "dot",
+              "cx": 260.0,
+              "cy": 45
+            },
+            {
+              "t": "line",
+              "x1": 113.33333333333334,
+              "y1": 33,
+              "x2": 113.33333333333334,
+              "y2": 57
+            },
+            {
+              "t": "line",
+              "x1": 166.66666666666669,
+              "y1": 33,
+              "x2": 166.66666666666669,
+              "y2": 57
+            },
+            {
+              "t": "line",
+              "x1": 113.33333333333334,
+              "y1": 45,
+              "x2": 166.66666666666669,
+              "y2": 45,
+              "color": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p05",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A point is dropped at random on a segment 30 units long. A marked piece of the segment is 12 units long. What is the probability the point lands on the marked piece?",
+      "answer": {
+        "kind": "number",
+        "value": "2/5"
+      },
+      "explanation": [
+        "The probability is the marked length divided by the whole length.",
+        "That is 12/30 = 2/5."
+      ],
+      "useAgain": "when an outcome is where a point lands on a segment, not which of several objects is picked.",
+      "hints": [
+        "Probability along a segment is a length divided by the whole length.",
+        "Write the fraction, then simplify it."
+      ],
+      "socraticHint": "What two lengths does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A point is dropped at random on a segment 36 units long. A marked piece of the segment is 9 units long. What is the probability the point lands on the marked piece?",
+        "answer": {
+          "kind": "number",
+          "value": "1/4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A segment 30 units long with a marked piece 12 units long.",
+        "spec": {
+          "w": 280,
+          "h": 90,
+          "items": [
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 45,
+              "x2": 260.0,
+              "y2": 45
+            },
+            {
+              "t": "dot",
+              "cx": 20,
+              "cy": 45
+            },
+            {
+              "t": "dot",
+              "cx": 260.0,
+              "cy": 45
+            },
+            {
+              "t": "line",
+              "x1": 92.0,
+              "y1": 33,
+              "x2": 92.0,
+              "y2": 57
+            },
+            {
+              "t": "line",
+              "x1": 188.0,
+              "y1": 33,
+              "x2": 188.0,
+              "y2": 57
+            },
+            {
+              "t": "line",
+              "x1": 92.0,
+              "y1": 45,
+              "x2": 188.0,
+              "y2": 45,
+              "color": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p06",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A spinner has a sector that measures 60 degrees. What is the probability the spinner stops in that sector?",
+      "answer": {
+        "kind": "number",
+        "value": "1/6"
+      },
+      "explanation": [
+        "A sector's probability is its angle divided by the full circle, 360 degrees.",
+        "That is 60/360 = 1/6."
+      ],
+      "useAgain": "when an outcome is where a spinner stops, measured by an angle.",
+      "hints": [
+        "Probability on a spinner is an angle divided by 360 degrees.",
+        "Simplify the fraction once you have it."
+      ],
+      "socraticHint": "What two angle measures does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A spinner has a sector that measures 80 degrees. What is the probability the spinner stops in that sector?",
+        "answer": {
+          "kind": "number",
+          "value": "2/9"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A spinner with one sector marked, measuring 60 degrees.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  110.0,
+                  110.0
+                ],
+                [
+                  110.0,
+                  15.0
+                ],
+                [
+                  126.49657687835838,
+                  16.44326346384024
+                ],
+                [
+                  142.49191361593853,
+                  20.72920102533871
+                ],
+                [
+                  157.5,
+                  27.727586640478336
+                ],
+                [
+                  171.06482292022125,
+                  37.22577790369709
+                ],
+                [
+                  182.7742220963029,
+                  48.93517707977877
+                ],
+                [
+                  192.2724133595217,
+                  62.50000000000001
+                ]
+              ],
+              "fill": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 110.0,
+              "y1": 110.0,
+              "x2": 110.0,
+              "y2": 15.0
+            },
+            {
+              "t": "line",
+              "x1": 110.0,
+              "y1": 110.0,
+              "x2": 192.2724133595217,
+              "y2": 62.50000000000001
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p07",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A spinner has a sector that measures 90 degrees. What is the probability the spinner stops in that sector?",
+      "answer": {
+        "kind": "number",
+        "value": "1/4"
+      },
+      "explanation": [
+        "A sector's probability is its angle divided by the full circle, 360 degrees.",
+        "That is 90/360 = 1/4."
+      ],
+      "useAgain": "when an outcome is where a spinner stops, measured by an angle.",
+      "hints": [
+        "Probability on a spinner is an angle divided by 360 degrees.",
+        "Simplify the fraction once you have it."
+      ],
+      "socraticHint": "What two angle measures does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A spinner has a sector that measures 135 degrees. What is the probability the spinner stops in that sector?",
+        "answer": {
+          "kind": "number",
+          "value": "3/8"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A spinner with one sector marked, measuring 90 degrees.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  110.0,
+                  110.0
+                ],
+                [
+                  110.0,
+                  15.0
+                ],
+                [
+                  126.49657687835838,
+                  16.44326346384024
+                ],
+                [
+                  142.49191361593853,
+                  20.72920102533871
+                ],
+                [
+                  157.5,
+                  27.727586640478336
+                ],
+                [
+                  171.06482292022125,
+                  37.22577790369709
+                ],
+                [
+                  182.7742220963029,
+                  48.93517707977877
+                ],
+                [
+                  192.2724133595217,
+                  62.50000000000001
+                ],
+                [
+                  199.27079897466132,
+                  77.50808638406147
+                ],
+                [
+                  203.55673653615975,
+                  93.50342312164162
+                ],
+                [
+                  205.0,
+                  110.0
+                ]
+              ],
+              "fill": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 110.0,
+              "y1": 110.0,
+              "x2": 110.0,
+              "y2": 15.0
+            },
+            {
+              "t": "line",
+              "x1": 110.0,
+              "y1": 110.0,
+              "x2": 205.0,
+              "y2": 110.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p08",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A spinner has a sector that measures 45 degrees. What is the probability the spinner stops in that sector?",
+      "answer": {
+        "kind": "number",
+        "value": "1/8"
+      },
+      "explanation": [
+        "A sector's probability is its angle divided by the full circle, 360 degrees.",
+        "That is 45/360 = 1/8."
+      ],
+      "useAgain": "when an outcome is where a spinner stops, measured by an angle.",
+      "hints": [
+        "Probability on a spinner is an angle divided by 360 degrees.",
+        "Simplify the fraction once you have it."
+      ],
+      "socraticHint": "What two angle measures does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A spinner has a sector that measures 30 degrees. What is the probability the spinner stops in that sector?",
+        "answer": {
+          "kind": "number",
+          "value": "1/12"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A spinner with one sector marked, measuring 45 degrees.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  110.0,
+                  110.0
+                ],
+                [
+                  110.0,
+                  15.0
+                ],
+                [
+                  128.5335805915322,
+                  16.825398361693104
+                ],
+                [
+                  146.35492607468353,
+                  22.23144441142776
+                ],
+                [
+                  162.7791721368622,
+                  31.010386831258202
+                ],
+                [
+                  177.17514421272202,
+                  42.82485578727798
+                ]
+              ],
+              "fill": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 110.0,
+              "y1": 110.0,
+              "x2": 110.0,
+              "y2": 15.0
+            },
+            {
+              "t": "line",
+              "x1": 110.0,
+              "y1": 110.0,
+              "x2": 177.17514421272202,
+              "y2": 42.82485578727798
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p09",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A spinner has a sector that measures 120 degrees. What is the probability the spinner stops in that sector?",
+      "answer": {
+        "kind": "number",
+        "value": "1/3"
+      },
+      "explanation": [
+        "A sector's probability is its angle divided by the full circle, 360 degrees.",
+        "That is 120/360 = 1/3."
+      ],
+      "useAgain": "when an outcome is where a spinner stops, measured by an angle.",
+      "hints": [
+        "Probability on a spinner is an angle divided by 360 degrees.",
+        "Simplify the fraction once you have it."
+      ],
+      "socraticHint": "What two angle measures does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A spinner has a sector that measures 144 degrees. What is the probability the spinner stops in that sector?",
+        "answer": {
+          "kind": "number",
+          "value": "2/5"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A spinner with one sector marked, measuring 120 degrees.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  110.0,
+                  110.0
+                ],
+                [
+                  110.0,
+                  15.0
+                ],
+                [
+                  126.49657687835838,
+                  16.44326346384024
+                ],
+                [
+                  142.49191361593853,
+                  20.72920102533871
+                ],
+                [
+                  157.5,
+                  27.727586640478336
+                ],
+                [
+                  171.06482292022125,
+                  37.22577790369709
+                ],
+                [
+                  182.7742220963029,
+                  48.93517707977877
+                ],
+                [
+                  192.2724133595217,
+                  62.50000000000001
+                ],
+                [
+                  199.27079897466132,
+                  77.50808638406147
+                ],
+                [
+                  203.55673653615975,
+                  93.50342312164162
+                ],
+                [
+                  205.0,
+                  110.0
+                ],
+                [
+                  203.55673653615975,
+                  126.49657687835838
+                ],
+                [
+                  199.27079897466132,
+                  142.49191361593853
+                ],
+                [
+                  192.2724133595217,
+                  157.5
+                ]
+              ],
+              "fill": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 110.0,
+              "y1": 110.0,
+              "x2": 110.0,
+              "y2": 15.0
+            },
+            {
+              "t": "line",
+              "x1": 110.0,
+              "y1": 110.0,
+              "x2": 192.2724133595217,
+              "y2": 157.5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p10",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A spinner has a sector that measures 72 degrees. What is the probability the spinner stops in that sector?",
+      "answer": {
+        "kind": "number",
+        "value": "1/5"
+      },
+      "explanation": [
+        "A sector's probability is its angle divided by the full circle, 360 degrees.",
+        "That is 72/360 = 1/5."
+      ],
+      "useAgain": "when an outcome is where a spinner stops, measured by an angle.",
+      "hints": [
+        "Probability on a spinner is an angle divided by 360 degrees.",
+        "Simplify the fraction once you have it."
+      ],
+      "socraticHint": "What two angle measures does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A spinner has a sector that measures 100 degrees. What is the probability the spinner stops in that sector?",
+        "answer": {
+          "kind": "number",
+          "value": "5/18"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A spinner with one sector marked, measuring 72 degrees.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  110.0,
+                  110.0
+                ],
+                [
+                  110.0,
+                  15.0
+                ],
+                [
+                  126.96290500587048,
+                  16.52668908313018
+                ],
+                [
+                  143.38060828772757,
+                  21.057687289224972
+                ],
+                [
+                  158.72543135356108,
+                  28.44736460782272
+                ],
+                [
+                  172.50417896427268,
+                  38.45821072965697
+                ],
+                [
+                  184.27399083446284,
+                  50.76846882342032
+                ],
+                [
+                  193.6565755263901,
+                  64.98247706506513
+                ],
+                [
+                  200.35036904803957,
+                  80.64338553438
+                ]
+              ],
+              "fill": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 110.0,
+              "y1": 110.0,
+              "x2": 110.0,
+              "y2": 15.0
+            },
+            {
+              "t": "line",
+              "x1": 110.0,
+              "y1": 110.0,
+              "x2": 200.35036904803957,
+              "y2": 80.64338553438
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p11",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart lands at random inside a 10 by 8 rectangle. A marked region inside it is a 4 by 2 rectangle. What is the probability the dart lands in the marked region?",
+      "answer": {
+        "kind": "number",
+        "value": "1/10"
+      },
+      "explanation": [
+        "The probability is the marked area divided by the whole area.",
+        "That is (4 times 2)/(10 times 8) = 8/80 = 1/10."
+      ],
+      "useAgain": "when an outcome is where a dart lands in a flat region, not which of several objects is picked.",
+      "hints": [
+        "Probability over a region is an area divided by the whole area.",
+        "Find both areas first, then divide and simplify."
+      ],
+      "socraticHint": "What two areas does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A dart lands at random inside a 8 by 6 rectangle. A marked region inside it is a 2 by 3 rectangle. What is the probability the dart lands in the marked region?",
+        "answer": {
+          "kind": "number",
+          "value": "1/8"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A 10 by 8 rectangle with a marked 4 by 2 rectangle inside it.",
+        "spec": {
+          "w": 280,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  40.0,
+                  20.0
+                ],
+                [
+                  240.0,
+                  20.0
+                ],
+                [
+                  240.0,
+                  180.0
+                ],
+                [
+                  40.0,
+                  180.0
+                ]
+              ]
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  180.0,
+                  80.0
+                ],
+                [
+                  180.0,
+                  120.0
+                ],
+                [
+                  100.0,
+                  120.0
+                ]
+              ],
+              "fill": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p12",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart lands at random inside a 12 by 6 rectangle. A marked region inside it is a 6 by 3 rectangle. What is the probability the dart lands in the marked region?",
+      "answer": {
+        "kind": "number",
+        "value": "1/4"
+      },
+      "explanation": [
+        "The probability is the marked area divided by the whole area.",
+        "That is (6 times 3)/(12 times 6) = 18/72 = 1/4."
+      ],
+      "useAgain": "when an outcome is where a dart lands in a flat region, not which of several objects is picked.",
+      "hints": [
+        "Probability over a region is an area divided by the whole area.",
+        "Find both areas first, then divide and simplify."
+      ],
+      "socraticHint": "What two areas does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A dart lands at random inside a 14 by 8 rectangle. A marked region inside it is a 7 by 2 rectangle. What is the probability the dart lands in the marked region?",
+        "answer": {
+          "kind": "number",
+          "value": "1/8"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A 12 by 6 rectangle with a marked 6 by 3 rectangle inside it.",
+        "spec": {
+          "w": 280,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  20.0,
+                  40.0
+                ],
+                [
+                  260.0,
+                  40.0
+                ],
+                [
+                  260.0,
+                  160.0
+                ],
+                [
+                  20.0,
+                  160.0
+                ]
+              ]
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  80.0,
+                  70.0
+                ],
+                [
+                  200.0,
+                  70.0
+                ],
+                [
+                  200.0,
+                  130.0
+                ],
+                [
+                  80.0,
+                  130.0
+                ]
+              ],
+              "fill": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p13",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart lands at random inside a 10 by 10 rectangle. A marked region inside it is a 5 by 4 rectangle. What is the probability the dart lands in the marked region?",
+      "answer": {
+        "kind": "number",
+        "value": "1/5"
+      },
+      "explanation": [
+        "The probability is the marked area divided by the whole area.",
+        "That is (5 times 4)/(10 times 10) = 20/100 = 1/5."
+      ],
+      "useAgain": "when an outcome is where a dart lands in a flat region, not which of several objects is picked.",
+      "hints": [
+        "Probability over a region is an area divided by the whole area.",
+        "Find both areas first, then divide and simplify."
+      ],
+      "socraticHint": "What two areas does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A dart lands at random inside a 12 by 9 rectangle. A marked region inside it is a 4 by 3 rectangle. What is the probability the dart lands in the marked region?",
+        "answer": {
+          "kind": "number",
+          "value": "1/9"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A 10 by 10 rectangle with a marked 5 by 4 rectangle inside it.",
+        "spec": {
+          "w": 280,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60.0,
+                  20.0
+                ],
+                [
+                  220.0,
+                  20.0
+                ],
+                [
+                  220.0,
+                  180.0
+                ],
+                [
+                  60.0,
+                  180.0
+                ]
+              ]
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  100.0,
+                  68.0
+                ],
+                [
+                  180.0,
+                  68.0
+                ],
+                [
+                  180.0,
+                  132.0
+                ],
+                [
+                  100.0,
+                  132.0
+                ]
+              ],
+              "fill": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p14",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart lands at random inside a 16 by 9 rectangle. A marked region inside it is a 8 by 3 rectangle. What is the probability the dart lands in the marked region?",
+      "answer": {
+        "kind": "number",
+        "value": "1/6"
+      },
+      "explanation": [
+        "The probability is the marked area divided by the whole area.",
+        "That is (8 times 3)/(16 times 9) = 24/144 = 1/6."
+      ],
+      "useAgain": "when an outcome is where a dart lands in a flat region, not which of several objects is picked.",
+      "hints": [
+        "Probability over a region is an area divided by the whole area.",
+        "Find both areas first, then divide and simplify."
+      ],
+      "socraticHint": "What two areas does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A dart lands at random inside a 18 by 10 rectangle. A marked region inside it is a 6 by 5 rectangle. What is the probability the dart lands in the marked region?",
+        "answer": {
+          "kind": "number",
+          "value": "1/6"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A 16 by 9 rectangle with a marked 8 by 3 rectangle inside it.",
+        "spec": {
+          "w": 280,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  20.0,
+                  32.5
+                ],
+                [
+                  260.0,
+                  32.5
+                ],
+                [
+                  260.0,
+                  167.5
+                ],
+                [
+                  20.0,
+                  167.5
+                ]
+              ]
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  80.0,
+                  77.5
+                ],
+                [
+                  200.0,
+                  77.5
+                ],
+                [
+                  200.0,
+                  122.5
+                ],
+                [
+                  80.0,
+                  122.5
+                ]
+              ],
+              "fill": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p15",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart lands at random inside a 15 by 8 rectangle. A marked region inside it is a 5 by 4 rectangle. What is the probability the dart lands in the marked region?",
+      "answer": {
+        "kind": "number",
+        "value": "1/6"
+      },
+      "explanation": [
+        "The probability is the marked area divided by the whole area.",
+        "That is (5 times 4)/(15 times 8) = 20/120 = 1/6."
+      ],
+      "useAgain": "when an outcome is where a dart lands in a flat region, not which of several objects is picked.",
+      "hints": [
+        "Probability over a region is an area divided by the whole area.",
+        "Find both areas first, then divide and simplify."
+      ],
+      "socraticHint": "What two areas does this probability compare?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A dart lands at random inside a 20 by 6 rectangle. A marked region inside it is a 10 by 3 rectangle. What is the probability the dart lands in the marked region?",
+        "answer": {
+          "kind": "number",
+          "value": "1/4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A 15 by 8 rectangle with a marked 5 by 4 rectangle inside it.",
+        "spec": {
+          "w": 280,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  20.0,
+                  36.0
+                ],
+                [
+                  260.0,
+                  36.0
+                ],
+                [
+                  260.0,
+                  164.0
+                ],
+                [
+                  20.0,
+                  164.0
+                ]
+              ]
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  100.0,
+                  68.0
+                ],
+                [
+                  180.0,
+                  68.0
+                ],
+                [
+                  180.0,
+                  132.0
+                ],
+                [
+                  100.0,
+                  132.0
+                ]
+              ],
+              "fill": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p16",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A circular target has radius 10. A circular bullseye at its center has radius 4. What is the probability a random dart hits the bullseye?",
+      "answer": {
+        "kind": "number",
+        "value": "4/25"
+      },
+      "explanation": [
+        "The probability is the bullseye's area divided by the target's area.",
+        "That is pi times 4^2 over pi times 10^2, which is 4^2/10^2 = 4/25."
+      ],
+      "useAgain": "when a circular target has a circular bullseye at its center.",
+      "hints": [
+        "The pi in each circle's area cancels, leaving just the radii squared.",
+        "Square each radius before dividing."
+      ],
+      "socraticHint": "What happens to the pi in each circle's area when you divide?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A circular target has radius 9. A circular bullseye at its center has radius 3. What is the probability a random dart hits the bullseye?",
+        "answer": {
+          "kind": "number",
+          "value": "1/9"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A target of radius 10 with a bullseye of radius 4.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0,
+              "fill": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 38.0,
+              "fill": "paper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p17",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A circular target has radius 12. A circular bullseye at its center has radius 3. What is the probability a random dart hits the bullseye?",
+      "answer": {
+        "kind": "number",
+        "value": "1/16"
+      },
+      "explanation": [
+        "The probability is the bullseye's area divided by the target's area.",
+        "That is pi times 3^2 over pi times 12^2, which is 3^2/12^2 = 1/16."
+      ],
+      "useAgain": "when a circular target has a circular bullseye at its center.",
+      "hints": [
+        "The pi in each circle's area cancels, leaving just the radii squared.",
+        "Square each radius before dividing."
+      ],
+      "socraticHint": "What happens to the pi in each circle's area when you divide?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A circular target has radius 14. A circular bullseye at its center has radius 7. What is the probability a random dart hits the bullseye?",
+        "answer": {
+          "kind": "number",
+          "value": "1/4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A target of radius 12 with a bullseye of radius 3.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0,
+              "fill": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 23.75,
+              "fill": "paper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p18",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A circular target has radius 15. A circular bullseye at its center has radius 6. What is the probability a random dart hits the bullseye?",
+      "answer": {
+        "kind": "number",
+        "value": "4/25"
+      },
+      "explanation": [
+        "The probability is the bullseye's area divided by the target's area.",
+        "That is pi times 6^2 over pi times 15^2, which is 6^2/15^2 = 4/25."
+      ],
+      "useAgain": "when a circular target has a circular bullseye at its center.",
+      "hints": [
+        "The pi in each circle's area cancels, leaving just the radii squared.",
+        "Square each radius before dividing."
+      ],
+      "socraticHint": "What happens to the pi in each circle's area when you divide?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A circular target has radius 10. A circular bullseye at its center has radius 5. What is the probability a random dart hits the bullseye?",
+        "answer": {
+          "kind": "number",
+          "value": "1/4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A target of radius 15 with a bullseye of radius 6.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0,
+              "fill": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 38.0,
+              "fill": "paper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p19",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A circular target has radius 20. A circular bullseye at its center has radius 8. What is the probability a random dart hits the bullseye?",
+      "answer": {
+        "kind": "number",
+        "value": "4/25"
+      },
+      "explanation": [
+        "The probability is the bullseye's area divided by the target's area.",
+        "That is pi times 8^2 over pi times 20^2, which is 8^2/20^2 = 4/25."
+      ],
+      "useAgain": "when a circular target has a circular bullseye at its center.",
+      "hints": [
+        "The pi in each circle's area cancels, leaving just the radii squared.",
+        "Square each radius before dividing."
+      ],
+      "socraticHint": "What happens to the pi in each circle's area when you divide?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A circular target has radius 16. A circular bullseye at its center has radius 4. What is the probability a random dart hits the bullseye?",
+        "answer": {
+          "kind": "number",
+          "value": "1/16"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A target of radius 20 with a bullseye of radius 8.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0,
+              "fill": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 38.0,
+              "fill": "paper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p20",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A spinner's sectors measure A = 60, B = 90, C = 70, D = 140 degrees. What is the probability the spinner stops in sector A, C?",
+      "answer": {
+        "kind": "number",
+        "value": "13/36"
+      },
+      "explanation": [
+        "Add the degree measures of the sectors asked for: 60 + 70 = 130.",
+        "Divide by 360: 130/360 = 13/36."
+      ],
+      "useAgain": "when a spinner probability covers more than one sector at once.",
+      "hints": [
+        "Add up only the degree measures of the sectors the question asks about.",
+        "Divide that sum by 360 and simplify."
+      ],
+      "socraticHint": "Which sectors' degree measures need to be added together?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A spinner's sectors measure A = 80, B = 60, C = 100, D = 120 degrees. What is the probability the spinner stops in sector A, B?",
+        "answer": {
+          "kind": "number",
+          "value": "7/18"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p21",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A spinner's sectors measure A = 100, B = 50, C = 60, D = 150 degrees. What is the probability the spinner stops in sector B, C?",
+      "answer": {
+        "kind": "number",
+        "value": "11/36"
+      },
+      "explanation": [
+        "Add the degree measures of the sectors asked for: 50 + 60 = 110.",
+        "Divide by 360: 110/360 = 11/36."
+      ],
+      "useAgain": "when a spinner probability covers more than one sector at once.",
+      "hints": [
+        "Add up only the degree measures of the sectors the question asks about.",
+        "Divide that sum by 360 and simplify."
+      ],
+      "socraticHint": "Which sectors' degree measures need to be added together?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A spinner's sectors measure A = 70, B = 110, C = 90, D = 90 degrees. What is the probability the spinner stops in sector C, D?",
+        "answer": {
+          "kind": "number",
+          "value": "1/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p22",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A spinner's sectors measure A = 45, B = 45, C = 90, D = 180 degrees. What is the probability the spinner stops in sector A, B, C?",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "Add the degree measures of the sectors asked for: 45 + 45 + 90 = 180.",
+        "Divide by 360: 180/360 = 1/2."
+      ],
+      "useAgain": "when a spinner probability covers more than one sector at once.",
+      "hints": [
+        "Add up only the degree measures of the sectors the question asks about.",
+        "Divide that sum by 360 and simplify."
+      ],
+      "socraticHint": "Which sectors' degree measures need to be added together?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A spinner's sectors measure A = 30, B = 60, C = 90, D = 180 degrees. What is the probability the spinner stops in sector A, B?",
+        "answer": {
+          "kind": "number",
+          "value": "1/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p23",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart has probability 3/8 of landing in a marked region. What is the probability it lands outside that region?",
+      "answer": {
+        "kind": "number",
+        "value": "5/8"
+      },
+      "explanation": [
+        "The dart lands either inside the region or outside it, and those two probabilities add to 1.",
+        "So the outside probability is 1 - 3/8 = 5/8."
+      ],
+      "useAgain": "when you know a region's probability and need the probability of missing it.",
+      "hints": [
+        "Inside and outside probabilities always add to 1.",
+        "Subtract the given probability from 1."
+      ],
+      "socraticHint": "What do the inside and outside probabilities always add up to?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A dart has probability 1/4 of landing in a marked region. What is the probability it lands outside that region?",
+        "answer": {
+          "kind": "number",
+          "value": "3/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p24",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart has probability 2/5 of landing in a marked region. What is the probability it lands outside that region?",
+      "answer": {
+        "kind": "number",
+        "value": "3/5"
+      },
+      "explanation": [
+        "The dart lands either inside the region or outside it, and those two probabilities add to 1.",
+        "So the outside probability is 1 - 2/5 = 3/5."
+      ],
+      "useAgain": "when you know a region's probability and need the probability of missing it.",
+      "hints": [
+        "Inside and outside probabilities always add to 1.",
+        "Subtract the given probability from 1."
+      ],
+      "socraticHint": "What do the inside and outside probabilities always add up to?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A dart has probability 7/10 of landing in a marked region. What is the probability it lands outside that region?",
+        "answer": {
+          "kind": "number",
+          "value": "3/10"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p25",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart has probability 5/12 of landing in a marked region. What is the probability it lands outside that region?",
+      "answer": {
+        "kind": "number",
+        "value": "7/12"
+      },
+      "explanation": [
+        "The dart lands either inside the region or outside it, and those two probabilities add to 1.",
+        "So the outside probability is 1 - 5/12 = 7/12."
+      ],
+      "useAgain": "when you know a region's probability and need the probability of missing it.",
+      "hints": [
+        "Inside and outside probabilities always add to 1.",
+        "Subtract the given probability from 1."
+      ],
+      "socraticHint": "What do the inside and outside probabilities always add up to?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A dart has probability 3/7 of landing in a marked region. What is the probability it lands outside that region?",
+        "answer": {
+          "kind": "number",
+          "value": "4/7"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p26",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A target is a circle of radius 10 with a circular hole of radius 6 cut from its center, leaving a ring. What is the probability a random dart lands in the ring?",
+      "answer": {
+        "kind": "number",
+        "value": "16/25"
+      },
+      "explanation": [
+        "The ring's area is the big circle's area minus the hole's area: pi times 10^2 - pi times 6^2.",
+        "Dividing by the big circle's area gives (10^2 - 6^2)/10^2 = 16/25."
+      ],
+      "useAgain": "when a target region is a ring between two circles, not a solid circle.",
+      "hints": [
+        "The ring's area is the outer circle's area minus the inner circle's area.",
+        "Divide that difference by the outer circle's area."
+      ],
+      "socraticHint": "What is the ring's area, compared to the whole outer circle?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A target is a circle of radius 8 with a circular hole of radius 4 cut from its center, leaving a ring. What is the probability a random dart lands in the ring?",
+        "answer": {
+          "kind": "number",
+          "value": "3/4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A ring between radius 6 and radius 10.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0,
+              "fill": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 57.0,
+              "fill": "paper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p27",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A target is a circle of radius 12 with a circular hole of radius 8 cut from its center, leaving a ring. What is the probability a random dart lands in the ring?",
+      "answer": {
+        "kind": "number",
+        "value": "5/9"
+      },
+      "explanation": [
+        "The ring's area is the big circle's area minus the hole's area: pi times 12^2 - pi times 8^2.",
+        "Dividing by the big circle's area gives (12^2 - 8^2)/12^2 = 5/9."
+      ],
+      "useAgain": "when a target region is a ring between two circles, not a solid circle.",
+      "hints": [
+        "The ring's area is the outer circle's area minus the inner circle's area.",
+        "Divide that difference by the outer circle's area."
+      ],
+      "socraticHint": "What is the ring's area, compared to the whole outer circle?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A target is a circle of radius 14 with a circular hole of radius 10 cut from its center, leaving a ring. What is the probability a random dart lands in the ring?",
+        "answer": {
+          "kind": "number",
+          "value": "24/49"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A ring between radius 8 and radius 12.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0,
+              "fill": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 63.333333333333336,
+              "fill": "paper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p28",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A target is a circle of radius 15 with a circular hole of radius 9 cut from its center, leaving a ring. What is the probability a random dart lands in the ring?",
+      "answer": {
+        "kind": "number",
+        "value": "16/25"
+      },
+      "explanation": [
+        "The ring's area is the big circle's area minus the hole's area: pi times 15^2 - pi times 9^2.",
+        "Dividing by the big circle's area gives (15^2 - 9^2)/15^2 = 16/25."
+      ],
+      "useAgain": "when a target region is a ring between two circles, not a solid circle.",
+      "hints": [
+        "The ring's area is the outer circle's area minus the inner circle's area.",
+        "Divide that difference by the outer circle's area."
+      ],
+      "socraticHint": "What is the ring's area, compared to the whole outer circle?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A target is a circle of radius 20 with a circular hole of radius 12 cut from its center, leaving a ring. What is the probability a random dart lands in the ring?",
+        "answer": {
+          "kind": "number",
+          "value": "16/25"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A ring between radius 9 and radius 15.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0,
+              "fill": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 57.0,
+              "fill": "paper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p29",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "choice",
+      "prompt": "Which of these random events is most likely?",
+      "options": [
+        "a sector of 50 degrees",
+        "a segment of length 3 out of 20",
+        "a square of side 2 in a square of side 10",
+        "a circle of radius 2 in a circle of radius 8"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Work out each event's probability as a fraction.",
+        "Compare the four fractions to find the largest."
+      ],
+      "useAgain": "when you must compare several length, area, or angle probabilities at a glance.",
+      "hints": [
+        "Convert each description into a probability fraction.",
+        "A common denominator or a decimal estimate makes the four easy to compare."
+      ],
+      "socraticHint": "What is each event's probability, as a single fraction?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which of these random events is most likely?",
+        "options": [
+          "a sector of 40 degrees",
+          "a square of side 3 in a square of side 15",
+          "a circle of radius 2 in a circle of radius 10",
+          "a segment of length 4 out of 24"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p30",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "choice",
+      "prompt": "Which of these random events is most likely?",
+      "options": [
+        "a sector of 30 degrees",
+        "a square of side 3 in a square of side 12",
+        "a segment of length 5 out of 40",
+        "a circle of radius 3 in a circle of radius 15"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Work out each event's probability as a fraction.",
+        "Compare the four fractions to find the largest."
+      ],
+      "useAgain": "when you must compare several length, area, or angle probabilities at a glance.",
+      "hints": [
+        "Convert each description into a probability fraction.",
+        "A common denominator or a decimal estimate makes the four easy to compare."
+      ],
+      "socraticHint": "What is each event's probability, as a single fraction?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which of these random events is most likely?",
+        "options": [
+          "a sector of 90 degrees",
+          "a segment of length 6 out of 30",
+          "a square of side 2 in a square of side 8",
+          "a circle of radius 3 in a circle of radius 12"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p31",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart lands at random inside a square with side 10. A triangular region in one corner, a right triangle with both legs 4, is marked as a miss. What is the probability the dart is NOT in the marked triangle?",
+      "answer": {
+        "kind": "number",
+        "value": "23/25"
+      },
+      "explanation": [
+        "The square's area is 10^2 = 100.",
+        "The triangle's area is (4 times 4)/2 = 8.",
+        "The probability of missing it is (100 - 8)/100 = 23/25."
+      ],
+      "useAgain": "when a target region is the whole shape with a smaller piece cut out.",
+      "hints": [
+        "Find the square's area and the triangle's area separately.",
+        "Subtract the triangle's area before dividing by the square's area."
+      ],
+      "socraticHint": "What is the triangle's area, using both legs?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A dart lands at random inside a square with side 8. A triangular region in one corner, a right triangle with both legs 3, is marked as a miss. What is the probability the dart is NOT in the marked triangle?",
+        "answer": {
+          "kind": "number",
+          "value": "119/128"
+        }
+      },
+      "figure": {
+        "kind": "diagram",
+        "alt": "A square of side 10 with a corner triangle marked.",
+        "spec": {
+          "w": 280,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60.0,
+                  20.0
+                ],
+                [
+                  220.0,
+                  20.0
+                ],
+                [
+                  220.0,
+                  180.0
+                ],
+                [
+                  60.0,
+                  180.0
+                ]
+              ]
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60.0,
+                  20.0
+                ],
+                [
+                  124.0,
+                  20.0
+                ],
+                [
+                  60.0,
+                  84.0
+                ]
+              ],
+              "fill": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p32",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart lands at random inside a square with side 12. A triangular region in one corner, a right triangle with both legs 6, is marked as a miss. What is the probability the dart is NOT in the marked triangle?",
+      "answer": {
+        "kind": "number",
+        "value": "7/8"
+      },
+      "explanation": [
+        "The square's area is 12^2 = 144.",
+        "The triangle's area is (6 times 6)/2 = 18.",
+        "The probability of missing it is (144 - 18)/144 = 7/8."
+      ],
+      "useAgain": "when a target region is the whole shape with a smaller piece cut out.",
+      "hints": [
+        "Find the square's area and the triangle's area separately.",
+        "Subtract the triangle's area before dividing by the square's area."
+      ],
+      "socraticHint": "What is the triangle's area, using both legs?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A dart lands at random inside a square with side 14. A triangular region in one corner, a right triangle with both legs 7, is marked as a miss. What is the probability the dart is NOT in the marked triangle?",
+        "answer": {
+          "kind": "number",
+          "value": "7/8"
+        }
+      },
+      "figure": {
+        "kind": "diagram",
+        "alt": "A square of side 12 with a corner triangle marked.",
+        "spec": {
+          "w": 280,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60.0,
+                  20.0
+                ],
+                [
+                  220.0,
+                  20.0
+                ],
+                [
+                  220.0,
+                  180.0
+                ],
+                [
+                  60.0,
+                  180.0
+                ]
+              ]
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60.0,
+                  20.0
+                ],
+                [
+                  140.0,
+                  20.0
+                ],
+                [
+                  60.0,
+                  100.0
+                ]
+              ],
+              "fill": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p33",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart lands at random inside a square with side 16. A triangular region in one corner, a right triangle with both legs 8, is marked as a miss. What is the probability the dart is NOT in the marked triangle?",
+      "answer": {
+        "kind": "number",
+        "value": "7/8"
+      },
+      "explanation": [
+        "The square's area is 16^2 = 256.",
+        "The triangle's area is (8 times 8)/2 = 32.",
+        "The probability of missing it is (256 - 32)/256 = 7/8."
+      ],
+      "useAgain": "when a target region is the whole shape with a smaller piece cut out.",
+      "hints": [
+        "Find the square's area and the triangle's area separately.",
+        "Subtract the triangle's area before dividing by the square's area."
+      ],
+      "socraticHint": "What is the triangle's area, using both legs?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A dart lands at random inside a square with side 18. A triangular region in one corner, a right triangle with both legs 9, is marked as a miss. What is the probability the dart is NOT in the marked triangle?",
+        "answer": {
+          "kind": "number",
+          "value": "7/8"
+        }
+      },
+      "figure": {
+        "kind": "diagram",
+        "alt": "A square of side 16 with a corner triangle marked.",
+        "spec": {
+          "w": 280,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60.0,
+                  20.0
+                ],
+                [
+                  220.0,
+                  20.0
+                ],
+                [
+                  220.0,
+                  180.0
+                ],
+                [
+                  60.0,
+                  180.0
+                ]
+              ]
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60.0,
+                  20.0
+                ],
+                [
+                  140.0,
+                  20.0
+                ],
+                [
+                  60.0,
+                  100.0
+                ]
+              ],
+              "fill": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p34",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart lands at random inside a square with side 20. A triangular region in one corner, a right triangle with both legs 5, is marked as a miss. What is the probability the dart is NOT in the marked triangle?",
+      "answer": {
+        "kind": "number",
+        "value": "31/32"
+      },
+      "explanation": [
+        "The square's area is 20^2 = 400.",
+        "The triangle's area is (5 times 5)/2 = 25/2.",
+        "The probability of missing it is (400 - 25/2)/400 = 31/32."
+      ],
+      "useAgain": "when a target region is the whole shape with a smaller piece cut out.",
+      "hints": [
+        "Find the square's area and the triangle's area separately.",
+        "Subtract the triangle's area before dividing by the square's area."
+      ],
+      "socraticHint": "What is the triangle's area, using both legs?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A dart lands at random inside a square with side 15. A triangular region in one corner, a right triangle with both legs 6, is marked as a miss. What is the probability the dart is NOT in the marked triangle?",
+        "answer": {
+          "kind": "number",
+          "value": "23/25"
+        }
+      },
+      "figure": {
+        "kind": "diagram",
+        "alt": "A square of side 20 with a corner triangle marked.",
+        "spec": {
+          "w": 280,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60.0,
+                  20.0
+                ],
+                [
+                  220.0,
+                  20.0
+                ],
+                [
+                  220.0,
+                  180.0
+                ],
+                [
+                  60.0,
+                  180.0
+                ]
+              ]
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60.0,
+                  20.0
+                ],
+                [
+                  100.0,
+                  20.0
+                ],
+                [
+                  60.0,
+                  60.0
+                ]
+              ],
+              "fill": "rust"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p35",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart hits a first target's marked region with probability 1/4. An independent second dart hits a second target's marked region with probability 1/3. What is the probability both hit?",
+      "answer": {
+        "kind": "number",
+        "value": "1/12"
+      },
+      "explanation": [
+        "Independent probabilities multiply.",
+        "That is 1/4 times 1/3 = 1/12."
+      ],
+      "useAgain": "when two geometric probability events happen one after the other, independently.",
+      "hints": [
+        "Two independent events both happening means multiplying their probabilities.",
+        "Multiply the numerators together and the denominators together."
+      ],
+      "socraticHint": "What do you do with two independent probabilities to find both happening?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A dart hits a first target's marked region with probability 1/5. An independent second dart hits a second target's marked region with probability 1/2. What is the probability both hit?",
+        "answer": {
+          "kind": "number",
+          "value": "1/10"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p36",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart hits a first target's marked region with probability 2/5. An independent second dart hits a second target's marked region with probability 1/2. What is the probability both hit?",
+      "answer": {
+        "kind": "number",
+        "value": "1/5"
+      },
+      "explanation": [
+        "Independent probabilities multiply.",
+        "That is 2/5 times 1/2 = 1/5."
+      ],
+      "useAgain": "when two geometric probability events happen one after the other, independently.",
+      "hints": [
+        "Two independent events both happening means multiplying their probabilities.",
+        "Multiply the numerators together and the denominators together."
+      ],
+      "socraticHint": "What do you do with two independent probabilities to find both happening?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A dart hits a first target's marked region with probability 3/4. An independent second dart hits a second target's marked region with probability 1/3. What is the probability both hit?",
+        "answer": {
+          "kind": "number",
+          "value": "1/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p37",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart hits a first target's marked region with probability 3/8. An independent second dart hits a second target's marked region with probability 2/3. What is the probability both hit?",
+      "answer": {
+        "kind": "number",
+        "value": "1/4"
+      },
+      "explanation": [
+        "Independent probabilities multiply.",
+        "That is 3/8 times 2/3 = 1/4."
+      ],
+      "useAgain": "when two geometric probability events happen one after the other, independently.",
+      "hints": [
+        "Two independent events both happening means multiplying their probabilities.",
+        "Multiply the numerators together and the denominators together."
+      ],
+      "socraticHint": "What do you do with two independent probabilities to find both happening?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A dart hits a first target's marked region with probability 1/2. An independent second dart hits a second target's marked region with probability 5/6. What is the probability both hit?",
+        "answer": {
+          "kind": "number",
+          "value": "5/12"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p38",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A circular target has radius 10. A circular bullseye at its center has probability 9/25 of being hit. What is the bullseye's radius?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The probability is r^2/R^2, so r^2/10^2 = 9/25.",
+        "That gives r^2 = 9/25 times 100 = 36, so r = 6."
+      ],
+      "useAgain": "when a bullseye's probability is known and its radius is missing.",
+      "hints": [
+        "Set up r squared over R squared equal to the given probability.",
+        "Solve for r squared first, then take the square root."
+      ],
+      "socraticHint": "What equation relates r, R, and the given probability?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A circular target has radius 9. A circular bullseye at its center has probability 4/9 of being hit. What is the bullseye's radius?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p39",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A circular target has radius 12. A circular bullseye at its center has probability 4/9 of being hit. What is the bullseye's radius?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "The probability is r^2/R^2, so r^2/12^2 = 4/9.",
+        "That gives r^2 = 4/9 times 144 = 64, so r = 8."
+      ],
+      "useAgain": "when a bullseye's probability is known and its radius is missing.",
+      "hints": [
+        "Set up r squared over R squared equal to the given probability.",
+        "Solve for r squared first, then take the square root."
+      ],
+      "socraticHint": "What equation relates r, R, and the given probability?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A circular target has radius 14. A circular bullseye at its center has probability 9/49 of being hit. What is the bullseye's radius?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p40",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A circular target has radius 15. A circular bullseye at its center has probability 16/25 of being hit. What is the bullseye's radius?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "The probability is r^2/R^2, so r^2/15^2 = 16/25.",
+        "That gives r^2 = 16/25 times 225 = 144, so r = 12."
+      ],
+      "useAgain": "when a bullseye's probability is known and its radius is missing.",
+      "hints": [
+        "Set up r squared over R squared equal to the given probability.",
+        "Solve for r squared first, then take the square root."
+      ],
+      "socraticHint": "What equation relates r, R, and the given probability?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A circular target has radius 10. A circular bullseye at its center has probability 9/100 of being hit. What is the bullseye's radius?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p41",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A circular target has radius 20. A circular bullseye at its center has probability 1/4 of being hit. What is the bullseye's radius?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The probability is r^2/R^2, so r^2/20^2 = 1/4.",
+        "That gives r^2 = 1/4 times 400 = 100, so r = 10."
+      ],
+      "useAgain": "when a bullseye's probability is known and its radius is missing.",
+      "hints": [
+        "Set up r squared over R squared equal to the given probability.",
+        "Solve for r squared first, then take the square root."
+      ],
+      "socraticHint": "What equation relates r, R, and the given probability?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A circular target has radius 16. A circular bullseye at its center has probability 1/4 of being hit. What is the bullseye's radius?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p42",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "order",
+      "prompt": "A target is a circle of radius 10 with a hole of radius 5 cut from its center. Put these steps for finding the probability a dart lands in the ring in order.",
+      "items": [
+        "Subtract to get the ring's area, then divide by the outer circle's area: (10^2 - 5^2)/10^2 = 3/4.",
+        "Find the outer circle's area: pi times 10^2.",
+        "Find the inner circle's area: pi times 5^2."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Find both circles' areas before subtracting them.",
+        "Only divide by the outer area at the very end."
+      ],
+      "useAgain": "when a target's probability comes from a ring between two circles.",
+      "hints": [
+        "Which area do you need before you can subtract anything?",
+        "The division by the outer area always comes last."
+      ],
+      "socraticHint": "Which two areas do you need before you can find the ring's area?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A target is a circle of radius 12 with a hole of radius 6 cut from its center. Put these steps for finding the probability a dart lands in the ring in order.",
+        "items": [
+          "Subtract to get the ring's area, then divide by the outer circle's area: (12^2 - 6^2)/12^2 = 3/4.",
+          "Find the outer circle's area: pi times 12^2.",
+          "Find the inner circle's area: pi times 6^2."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "diagram",
+        "alt": "A ring between radius 5 and radius 10.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0,
+              "fill": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 47.5,
+              "fill": "paper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p43",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "order",
+      "prompt": "A target is a circle of radius 9 with a hole of radius 3 cut from its center. Put these steps for finding the probability a dart lands in the ring in order.",
+      "items": [
+        "Subtract to get the ring's area, then divide by the outer circle's area: (9^2 - 3^2)/9^2 = 8/9.",
+        "Find the outer circle's area: pi times 9^2.",
+        "Find the inner circle's area: pi times 3^2."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Find both circles' areas before subtracting them.",
+        "Only divide by the outer area at the very end."
+      ],
+      "useAgain": "when a target's probability comes from a ring between two circles.",
+      "hints": [
+        "Which area do you need before you can subtract anything?",
+        "The division by the outer area always comes last."
+      ],
+      "socraticHint": "Which two areas do you need before you can find the ring's area?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A target is a circle of radius 15 with a hole of radius 9 cut from its center. Put these steps for finding the probability a dart lands in the ring in order.",
+        "items": [
+          "Subtract to get the ring's area, then divide by the outer circle's area: (15^2 - 9^2)/15^2 = 16/25.",
+          "Find the outer circle's area: pi times 15^2.",
+          "Find the inner circle's area: pi times 9^2."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "diagram",
+        "alt": "A ring between radius 3 and radius 9.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0,
+              "fill": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 31.666666666666664,
+              "fill": "paper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p44",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A target has radius 12, a bullseye of radius 4, and a middle ring reaching out to radius 8. What is the probability a dart lands in the middle ring?",
+      "answer": {
+        "kind": "number",
+        "value": "1/3"
+      },
+      "explanation": [
+        "The middle ring's area is the area out to radius 8 minus the bullseye's own area: pi times 8^2 - pi times 4^2.",
+        "Dividing by the whole target's area gives (8^2 - 4^2)/12^2 = 1/3."
+      ],
+      "useAgain": "when a target has three regions instead of just a bullseye and one ring.",
+      "hints": [
+        "The middle ring's area is the disk out to its outer edge, minus the bullseye inside it.",
+        "Divide that difference by the area of the whole target, using its full radius."
+      ],
+      "socraticHint": "What two circles' areas does the middle ring sit between?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A target has radius 20, a bullseye of radius 5, and a middle ring reaching out to radius 10. What is the probability a dart lands in the middle ring?",
+        "answer": {
+          "kind": "number",
+          "value": "3/16"
+        }
+      },
+      "figure": {
+        "kind": "diagram",
+        "alt": "A target with a bullseye of radius 4, a middle ring out to radius 8, and an outer ring out to radius 12.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0,
+              "fill": "sand"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 63.333333333333336,
+              "fill": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 31.666666666666668,
+              "fill": "paper"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p45",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A target has radius 15, a bullseye of radius 3, and a middle ring reaching out to radius 9. What is the probability a dart lands in the middle ring?",
+      "answer": {
+        "kind": "number",
+        "value": "8/25"
+      },
+      "explanation": [
+        "The middle ring's area is the area out to radius 9 minus the bullseye's own area: pi times 9^2 - pi times 3^2.",
+        "Dividing by the whole target's area gives (9^2 - 3^2)/15^2 = 8/25."
+      ],
+      "useAgain": "when a target has three regions instead of just a bullseye and one ring.",
+      "hints": [
+        "The middle ring's area is the disk out to its outer edge, minus the bullseye inside it.",
+        "Divide that difference by the area of the whole target, using its full radius."
+      ],
+      "socraticHint": "What two circles' areas does the middle ring sit between?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A target has radius 18, a bullseye of radius 6, and a middle ring reaching out to radius 12. What is the probability a dart lands in the middle ring?",
+        "answer": {
+          "kind": "number",
+          "value": "1/3"
+        }
+      },
+      "figure": {
+        "kind": "diagram",
+        "alt": "A target with a bullseye of radius 3, a middle ring out to radius 9, and an outer ring out to radius 15.",
+        "spec": {
+          "w": 220,
+          "h": 220,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 95.0,
+              "fill": "sand"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 57.0,
+              "fill": "rust"
+            },
+            {
+              "t": "circle",
+              "cx": 110.0,
+              "cy": 110.0,
+              "r": 19.0,
+              "fill": "paper"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-ge-geometric-probability-p46",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "Two points are chosen independently at random on a segment 10 units long. What is the probability they land within 4 units of each other?",
+      "answer": {
+        "kind": "number",
+        "value": "16/25"
+      },
+      "explanation": [
+        "Picture the two points' positions x and y as a random point in an 10 by 10 square.",
+        "The points are within 4 of each other unless x and y differ by more than 4.",
+        "That happens in two corner triangles, each a right triangle with legs 6.",
+        "Those two triangles cover (6)^2 / 10^2 of the square, so the answer is 1 - (6)^2/10^2 = 16/25."
+      ],
+      "useAgain": "when two independent random positions are compared to each other, not to a fixed point.",
+      "hints": [
+        "Picture the two positions as a single point in a square, one coordinate for each.",
+        "The two corner regions where the points are far apart are the easier area to find first."
+      ],
+      "socraticHint": "What does the pair of random positions look like as a single point in a square?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Two points are chosen independently at random on a segment 12 units long. What is the probability they land within 3 units of each other?",
+        "answer": {
+          "kind": "number",
+          "value": "7/16"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p47",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart lands at random inside a circle of radius R. What is the probability it lands closer to the center than to the circle's boundary?",
+      "answer": {
+        "kind": "number",
+        "value": "1/4"
+      },
+      "explanation": [
+        "A point at distance x from the center is closer to the center exactly when x < R - x.",
+        "That simplifies to x < R/2.",
+        "That region is a smaller circle of radius R/2.",
+        "Its area is pi(R/2)^2 = pi R^2/4, which is 1/4 of the whole circle's area."
+      ],
+      "useAgain": "when a probability compares distance to the center against distance to the edge of a circle.",
+      "hints": [
+        "Write the condition 'closer to the center than to the boundary' as an inequality in x, the distance from the center.",
+        "That inequality describes a smaller circle inside the original one."
+      ],
+      "socraticHint": "At what distance from the center are you exactly as close to the center as to the boundary?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A dart lands at random inside a circle of radius R. What is the probability it lands more than half of R away from the center?",
+        "answer": {
+          "kind": "number",
+          "value": "3/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p48",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A circular target has radius 15. The probability of hitting its bullseye is 1/9. What is the bullseye's radius?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "r^2/15^2 = 1/9, so r^2 = 1/9 times 225 = 25.",
+        "The square root of 25 is 5."
+      ],
+      "useAgain": "when a bullseye's probability is a clean fraction and its radius is missing.",
+      "hints": [
+        "Set up r squared over R squared equal to the given probability, as always.",
+        "Solve for r squared first, then take the square root."
+      ],
+      "socraticHint": "What equation relates the bullseye's radius to the given probability?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A circular target has radius 20. The probability of hitting its bullseye is 1/16. What is the bullseye's radius?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p49",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A dart has probability 1/4 of hitting a target's marked region on each independent throw. What is the probability of hitting it on both of two throws?",
+      "answer": {
+        "kind": "number",
+        "value": "1/16"
+      },
+      "explanation": [
+        "Independent probabilities multiply.",
+        "That is 1/4 times 1/4 = 1/16."
+      ],
+      "useAgain": "when the same geometric probability event repeats more than once, independently.",
+      "hints": [
+        "Two independent hits means multiplying the same probability by itself.",
+        "Multiply numerator by numerator and denominator by denominator."
+      ],
+      "socraticHint": "What do you do with the same independent probability twice in a row?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A dart has probability 1/3 of hitting a target's marked region on each independent throw. What is the probability of hitting it on both of two throws?",
+        "answer": {
+          "kind": "number",
+          "value": "1/9"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-geometric-probability-p50",
+      "lane": "skills",
+      "ideaId": "ge-geometric-probability",
+      "kind": "number",
+      "prompt": "A spinner has 5 sectors. Four of them measure 70, 55, 95, 60 degrees. What is the probability the spinner stops in the largest sector?",
+      "answer": {
+        "kind": "number",
+        "value": "19/72"
+      },
+      "explanation": [
+        "The five sectors add to 360, so the missing one is 360 - (70 + 55 + 95 + 60) = 80.",
+        "The largest of the five sectors is 95 degrees, so the probability is 95/360 = 19/72."
+      ],
+      "useAgain": "when a spinner problem first needs an unknown angle found before any probability.",
+      "hints": [
+        "Find the missing sector's degree measure first, since all five must add to 360.",
+        "Then compare all five sectors to find the largest one."
+      ],
+      "socraticHint": "What must all five sector measures add up to?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.area"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A spinner has 5 sectors. Four of them measure 80, 65, 45, 90 degrees. What is the probability the spinner stops in the largest sector?",
+        "answer": {
+          "kind": "number",
+          "value": "1/4"
+        }
+      }
+    }
+  ]
+}

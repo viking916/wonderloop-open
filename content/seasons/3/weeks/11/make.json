@@ -1,0 +1,430 @@
+{
+  "id": "s3-w11-make",
+  "season": 3,
+  "week": 11,
+  "track": "make",
+  "title": "A proportional fix for the drift, and the board mounted",
+  "summary": "Read both wheel encoders, add a proportional correction that keeps their counts equal, mount the fabricated sensor board, and drive a one-metre square.",
+  "minutes": 60,
+  "materials": [
+    "the rover chassis, motors, H-bridge, ESP32 and battery from week 10",
+    "the fabricated sensor board from week 9",
+    "tape measure",
+    "masking tape for the square's corners",
+    "graph paper and pencil",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.electronics",
+    "make.mechanisms",
+    "make.measurement"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s3-w11-make-01",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A dashed square, one metre on each side, marked on the floor with its four corners labelled. The rover starts at corner 1, and a green arrow near corner 2 shows the 90 degree turn it makes at each corner while driving all four sides.",
+        "spec": {
+          "w": 300,
+          "h": 260,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 150,
+              "y": 14,
+              "s": "The one-metre square, marked before driving",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  70,
+                  60
+                ],
+                [
+                  230,
+                  60
+                ],
+                [
+                  230,
+                  220
+                ],
+                [
+                  70,
+                  220
+                ]
+              ],
+              "fill": "none",
+              "dashed": true
+            },
+            {
+              "t": "dot",
+              "cx": 70,
+              "cy": 220,
+              "label": "Start",
+              "side": "left"
+            },
+            {
+              "t": "dot",
+              "cx": 230,
+              "cy": 220,
+              "label": "Corner 2",
+              "side": "right"
+            },
+            {
+              "t": "dot",
+              "cx": 230,
+              "cy": 60,
+              "label": "Corner 3",
+              "side": "right"
+            },
+            {
+              "t": "dot",
+              "cx": 70,
+              "cy": 60,
+              "label": "Corner 4",
+              "side": "left"
+            },
+            {
+              "t": "dim",
+              "x1": 70,
+              "y1": 235,
+              "x2": 230,
+              "y2": 235,
+              "label": "1 m"
+            },
+            {
+              "t": "line",
+              "x1": 210,
+              "y1": 210,
+              "x2": 225,
+              "y2": 190,
+              "arrow": true,
+              "color": "green",
+              "label": "90 degree turn"
+            }
+          ]
+        }
+      },
+      "title": "Ask, imagine, plan",
+      "body": "Week 10's drift gets a real fix this week, and the board finally rides the rover: ask, imagine, plan, build, test, fix.\n\nAsk: if the motors never match exactly, can the rover correct itself instead of just drifting?\n\nImagine: each wheel's encoder reporting how far it has actually turned. Code nudges the slower motor's power up whenever the two counts fall out of step.\n\nPlan: mount the fabricated sensor board from week 9 onto the printed chassis. Mark a one-metre square on the floor with tape, one corner at the rover's starting position."
+    },
+    {
+      "kind": "science",
+      "id": "s3-w11-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The left encoder counts more ticks than the right, a 4-tick error. A green arrow shows the correction added to the right motor: 4 ticks times 2 percent per tick equals an 8 percent power boost. A caption notes the correction eases off as the gap between the two counts closes.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 14,
+              "s": "Correction scales with how far off you are",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 50,
+              "w": 100,
+              "h": 40,
+              "label": "Left encoder",
+              "sub": "count",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 240,
+              "y": 50,
+              "w": 100,
+              "h": 40,
+              "label": "Right encoder",
+              "sub": "4 ticks fewer",
+              "fill": "sand"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 70,
+              "s": "error = 4 ticks",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 290,
+              "y1": 90,
+              "x2": 290,
+              "y2": 130,
+              "arrow": true,
+              "color": "green",
+              "label": "+8%"
+            },
+            {
+              "t": "box",
+              "x": 240,
+              "y": 140,
+              "w": 100,
+              "h": 35,
+              "label": "Right motor",
+              "sub": "gets the boost",
+              "fill": "accent"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 190,
+              "s": "Bigger error, bigger nudge; eases as gap closes",
+              "size": 9,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 800,
+              "caption": "left counts more ticks than right",
+              "set": {
+                "1": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "the gap is the error",
+              "set": {
+                "2": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "a correction nudges the right motor",
+              "set": {
+                "4": {
+                  "color": "green"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "boosted, it catches up",
+              "set": {
+                "5": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "Correct by how far off you are",
+      "ideaId": "correct-by-how-far-off-you-are",
+      "body": "A proportional controller does not just say faster or slower. It corrects by an amount that matches how far off the reading actually is.\n\nEvery short interval, the code compares the left wheel's encoder count with the right wheel's. The difference between them is the error.\n\nA small error gets a small nudge, and a big error gets a bigger one. If the left wheel counts 4 more ticks than the right, a controller might add 2 percent power per tick of error. That boosts the right motor by 8 percentage points: 4 times 2 is 8.\n\nAs the counts come back into step, the error shrinks, and so does the correction. That is the whole idea: push harder the further off you are, and ease off as the gap closes."
+    },
+    {
+      "kind": "task",
+      "id": "s3-w11-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A wiring diagram: the sensor board, mounted above, reports readings down to the ESP32. The ESP32 reads tick counts from the left and right encoders on either side, computes a correction, and sends it down to the H-bridge, which drives motor L and motor R on the outer edges.",
+        "spec": {
+          "w": 460,
+          "h": 260,
+          "wide": true,
+          "items": [
+            {
+              "t": "text",
+              "x": 230,
+              "y": 14,
+              "s": "ESP32 reads both encoders, corrects the slower wheel",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 180,
+              "y": 100,
+              "w": 100,
+              "h": 50,
+              "label": "ESP32",
+              "fill": "green"
+            },
+            {
+              "t": "box",
+              "x": 180,
+              "y": 180,
+              "w": 100,
+              "h": 40,
+              "label": "H-bridge",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 180,
+              "w": 80,
+              "h": 40,
+              "label": "Motor L",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 340,
+              "y": 180,
+              "w": 80,
+              "h": 40,
+              "label": "Motor R",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 100,
+              "w": 80,
+              "h": 40,
+              "label": "Encoder L",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 340,
+              "y": 100,
+              "w": 80,
+              "h": 40,
+              "label": "Encoder R",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 180,
+              "y": 30,
+              "w": 100,
+              "h": 40,
+              "label": "Sensor board",
+              "sub": "mounted, reporting",
+              "fill": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 120,
+              "y1": 120,
+              "x2": 180,
+              "y2": 120,
+              "arrow": true,
+              "dashed": true,
+              "color": "accent",
+              "label": "ticks"
+            },
+            {
+              "t": "line",
+              "x1": 280,
+              "y1": 120,
+              "x2": 340,
+              "y2": 120,
+              "arrow": true,
+              "dashed": true,
+              "color": "accent",
+              "label": "ticks"
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 150,
+              "x2": 230,
+              "y2": 180,
+              "arrow": true,
+              "color": "green",
+              "label": "correction"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 200,
+              "x2": 120,
+              "y2": 200,
+              "arrow": true,
+              "color": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 280,
+              "y1": 200,
+              "x2": 340,
+              "y2": 200,
+              "arrow": true,
+              "color": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 70,
+              "x2": 230,
+              "y2": 100,
+              "arrow": true,
+              "dashed": true,
+              "color": "rust",
+              "label": "reports readings"
+            }
+          ]
+        }
+      },
+      "title": "Wire the correction, mount the board, drive the square",
+      "body": "Write code that reads both encoders, computes the difference in counts since the last check, and adds a proportional correction to the slower wheel's power.\n\nTest the correction alone first: command equal power and confirm the rover drives closer to straight than in week 10. Do this before anything else changes.\n\nMount the fabricated sensor board on the chassis, wired the same way it was tested in week 9. It only needs to sit still and report readings this week; nothing yet reacts to what it senses.\n\nDrive the one-metre square: forward one metre, turn ninety degrees, and repeat for all four sides, using the proportional correction the whole way. After each side, measure the actual distance travelled with the tape measure, in metres.\n\nRun the full square three times, twelve side measurements in total.",
+      "checklist": [
+        "The correction code compares both encoders' counts and adjusts the slower wheel's power",
+        "The rover drove closer to straight than in week 10 before the board was mounted",
+        "The fabricated sensor board is mounted and wired, reporting readings even though nothing reacts yet",
+        "The one-metre square was driven three full times, twelve side measurements in total"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s3-w11-make-04",
+      "title": "Target versus measured distance per side",
+      "ideaId": "correct-by-how-far-off-you-are",
+      "body": "The chassis, the correction code and the commanded one-metre target stay the same for every row. Only which side of which run is being measured changes.\n\nDrive the square three times, four sides each, twelve rows in total. For each side, write which side it was, the one-metre target, and the distance the tape measure read.",
+      "columns": [
+        "Side (1 to 4)",
+        "Target distance (m)",
+        "Measured distance (m)"
+      ],
+      "minRows": 12,
+      "question": "On average, how many centimetres off from the one-metre target was each side?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s3-w11-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: the correction pushing so hard that the rover overshoots and wobbles, instead of settling toward straight.\n\nAlso watch for an encoder wire that came loose when the board was mounted. And watch for a turn angle that drifted slightly off ninety degrees, throwing off every side after the first."
+    },
+    {
+      "kind": "artifact",
+      "id": "s3-w11-make-06",
+      "title": "Show it",
+      "prompt": "Photo of the mounted sensor board on the chassis, the taped square on the floor, and your twelve-row table of target and measured distance",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s3-w11-make-07",
+      "variant": "maker"
+    }
+  ]
+}

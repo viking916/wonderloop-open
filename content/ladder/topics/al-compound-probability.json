@@ -1,0 +1,2186 @@
+{
+  "id": "al-compound-probability",
+  "idea": {
+    "body": "One event can change the chances of the next, or leave them exactly the same. Two events are independent when neither changes the other's chances, like a coin flip and a die roll. Their combined probability is just one probability times the other. Two events are dependent when the first changes what can happen in the second. Drawing 2 marbles from a bag without putting the first one back is one example. A tree with a fraction on every branch tracks this: each path down the tree multiplies its own branches together. Expected value extends this idea. Multiply every outcome by its own probability, then add them all up, to find the average result over many tries.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A two-stage tree for drawing 2 marbles without replacement from 3 red and 2 blue. Each branch is labelled with its own fraction.",
+      "spec": {
+        "w": 300,
+        "h": 175,
+        "items": [
+          {
+            "t": "dot",
+            "cx": 20,
+            "cy": 85,
+            "side": "right"
+          },
+          {
+            "t": "line",
+            "x1": 20,
+            "y1": 85,
+            "x2": 130,
+            "y2": 35,
+            "label": "3/5",
+            "arrow": true
+          },
+          {
+            "t": "dot",
+            "cx": 130,
+            "cy": 35,
+            "side": "above",
+            "label": "red"
+          },
+          {
+            "t": "line",
+            "x1": 20,
+            "y1": 85,
+            "x2": 130,
+            "y2": 135,
+            "label": "2/5",
+            "arrow": true
+          },
+          {
+            "t": "dot",
+            "cx": 130,
+            "cy": 135,
+            "side": "below",
+            "label": "blue"
+          },
+          {
+            "t": "line",
+            "x1": 130,
+            "y1": 35,
+            "x2": 235,
+            "y2": 20,
+            "label": "2/4",
+            "arrow": true
+          },
+          {
+            "t": "dot",
+            "cx": 235,
+            "cy": 20,
+            "side": "above",
+            "label": "red"
+          },
+          {
+            "t": "line",
+            "x1": 130,
+            "y1": 35,
+            "x2": 235,
+            "y2": 55,
+            "label": "2/4",
+            "arrow": true
+          },
+          {
+            "t": "dot",
+            "cx": 235,
+            "cy": 55,
+            "side": "below",
+            "label": "blue"
+          },
+          {
+            "t": "line",
+            "x1": 130,
+            "y1": 135,
+            "x2": 235,
+            "y2": 115,
+            "label": "3/4",
+            "arrow": true
+          },
+          {
+            "t": "dot",
+            "cx": 235,
+            "cy": 115,
+            "side": "above",
+            "label": "red"
+          },
+          {
+            "t": "line",
+            "x1": 130,
+            "y1": 135,
+            "x2": 235,
+            "y2": 155,
+            "label": "1/4",
+            "arrow": true
+          },
+          {
+            "t": "dot",
+            "cx": 235,
+            "cy": 155,
+            "side": "below",
+            "label": "blue"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A bag has 3 red marbles and 2 blue marbles. Two are drawn one at a time, without putting the first one back. What is the probability both are red?",
+    "steps": [
+      "The first draw has 3 red out of 5 total marbles: 3/5.",
+      "With one red marble gone, the second draw has 2 red out of 4 total: 2/4.",
+      "Multiply the two branches of the tree together: 3/5 times 2/4.",
+      "3/5 times 2/4 is 6/20, which reduces to 3/10."
+    ]
+  },
+  "ways": [
+    {
+      "id": "al-compound-probability-w1",
+      "name": "The tree with fractions on branches",
+      "when": "Use this default method whenever one draw changes the chances of the next.",
+      "steps": [
+        "Draw a tree: the first branch shows the first draw, red or blue.",
+        "Label the red branch 3/5, since 3 of the 5 marbles are red.",
+        "After a red marble is gone, the second red branch is 2/4, since 2 of 4 remain red.",
+        "Multiply along the branches: 3/5 times 2/4 is 6/20, which reduces to 3/10."
+      ],
+      "example": "A bag has 3 red and 2 blue marbles. Draw 2 without replacing. Find P(both red).",
+      "answer": "3/10",
+      "trap": "Using 3/5 again for the second red branch, forgetting one red marble is already gone.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A probability tree: Start branches to Red 3/5 or Blue 2/5, and Red branches again to Red 2/4 or Blue 2/4.",
+        "spec": {
+          "w": 300,
+          "h": 190,
+          "items": [
+            {
+              "t": "box",
+              "x": 10,
+              "y": 75,
+              "w": 50,
+              "h": 40,
+              "fill": "paper",
+              "label": "Start"
+            },
+            {
+              "t": "box",
+              "x": 110,
+              "y": 15,
+              "w": 60,
+              "h": 44,
+              "fill": "sand",
+              "label": "Red",
+              "sub": "3/5"
+            },
+            {
+              "t": "box",
+              "x": 110,
+              "y": 130,
+              "w": 60,
+              "h": 44,
+              "fill": "sand",
+              "label": "Blue",
+              "sub": "2/5"
+            },
+            {
+              "t": "box",
+              "x": 220,
+              "y": 10,
+              "w": 60,
+              "h": 40,
+              "fill": "accent",
+              "label": "Red",
+              "sub": "2/4"
+            },
+            {
+              "t": "box",
+              "x": 220,
+              "y": 60,
+              "w": 60,
+              "h": 40,
+              "fill": "sand",
+              "label": "Blue",
+              "sub": "2/4"
+            },
+            {
+              "t": "line",
+              "x1": 60,
+              "y1": 95,
+              "x2": 110,
+              "y2": 37
+            },
+            {
+              "t": "line",
+              "x1": 60,
+              "y1": 95,
+              "x2": 110,
+              "y2": 152
+            },
+            {
+              "t": "line",
+              "x1": 170,
+              "y1": 37,
+              "x2": 220,
+              "y2": 30
+            },
+            {
+              "t": "line",
+              "x1": 170,
+              "y1": 37,
+              "x2": 220,
+              "y2": 80
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Start: about to draw a marble.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Draw a tree: the first branch shows the",
+              "set": {
+                "1": {
+                  "sub": ""
+                },
+                "2": {
+                  "sub": ""
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Label the red branch 3/5, since 3 of",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "After a red marble is gone, the second",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "Multiply along the branches: 3/5 times 2/4 is",
+              "set": {
+                "1": {
+                  "fill": "green"
+                },
+                "5": {
+                  "color": "green"
+                },
+                "7": {
+                  "color": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "al-compound-probability-w2",
+      "name": "The table of outcomes",
+      "when": "Use this when the total number of equally likely outcomes is small enough to list.",
+      "steps": [
+        "List every outcome: 2 coin results times 6 die results is 12 equally likely outcomes.",
+        "Mark the outcomes that match heads and an even number: heads with 2, 4 and 6.",
+        "That is 3 outcomes out of the 12 total.",
+        "3 out of 12 reduces to 1/4."
+      ],
+      "example": "Flip a coin and roll a die. Find P(heads and an even number).",
+      "answer": "1/4",
+      "trap": "Counting only the die outcomes and forgetting to include both coin sides."
+    },
+    {
+      "id": "al-compound-probability-w3",
+      "name": "Multiply along the branch",
+      "when": "Use this when the two events do not affect each other at all.",
+      "steps": [
+        "Check that the two events do not affect each other: the spinner and the die are independent.",
+        "Independent events multiply straight through, with no branch fractions to update.",
+        "Multiply the two probabilities: 1/3 times 1/6.",
+        "1/3 times 1/6 is 1/18."
+      ],
+      "example": "A spinner lands red with P = 1/3. A die shows 6 with P = 1/6. Find P(both).",
+      "answer": "1/18",
+      "trap": "Adding the two probabilities instead of multiplying them."
+    },
+    {
+      "id": "al-compound-probability-w4",
+      "name": "The complement",
+      "when": "Use this when the wanted event is hard to count but its opposite is easy.",
+      "steps": [
+        "\"At least one blue\" is hard to count directly, so find its opposite: no blue at all.",
+        "No blue means both draws are red: 4/5 times 3/4.",
+        "4/5 times 3/4 is 12/20, which reduces to 3/5.",
+        "Subtract from 1: 1 minus 3/5 is 2/5."
+      ],
+      "example": "A bag has 4 red and 1 blue marble. Draw 2 without replacing. Find P(at least one blue).",
+      "answer": "2/5",
+      "trap": "Forgetting to subtract from 1 and giving the complement's own probability as the answer."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-al-compound-probability-p01",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A coin lands heads (probability 1/2) and a die shows a 4 (probability 1/6). These two events are independent. What is the probability both happen?",
+      "answer": {
+        "kind": "number",
+        "value": "1/12"
+      },
+      "explanation": [
+        "Independent events multiply: 1/2 times 1/6.",
+        "That gives 1/12."
+      ],
+      "useAgain": "when two events do not affect each other and both need to happen.",
+      "hints": [
+        "Independent events happening together multiply their two probabilities.",
+        "Multiply 1/2 by 1/6."
+      ],
+      "socraticHint": "Does the first event happening change the chances of the second, or leave them exactly the same?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A coin lands heads (probability 1/2) and a spinner with 4 equal sections lands on section 1 (probability 1/4). These two events are independent. What is the probability both happen?",
+        "answer": {
+          "kind": "number",
+          "value": "1/8"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p02",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A die shows an even number (probability 1/2) and a coin lands tails (probability 1/2). These two events are independent. What is the probability both happen?",
+      "answer": {
+        "kind": "number",
+        "value": "1/4"
+      },
+      "explanation": [
+        "Independent events multiply: 1/2 times 1/2.",
+        "That gives 1/4."
+      ],
+      "useAgain": "when two events do not affect each other and both need to happen.",
+      "hints": [
+        "Independent events happening together multiply their two probabilities.",
+        "Multiply 1/2 by 1/2."
+      ],
+      "socraticHint": "Does the first event happening change the chances of the second, or leave them exactly the same?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A die shows an odd number (probability 1/2) and a spinner with 3 equal sections lands on section 1 (probability 1/3). These two events are independent. What is the probability both happen?",
+        "answer": {
+          "kind": "number",
+          "value": "1/6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p03",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "Two dice are rolled. Both show a 6 (each with probability 1/6). These two events are independent. What is the probability both happen?",
+      "answer": {
+        "kind": "number",
+        "value": "1/36"
+      },
+      "explanation": [
+        "Independent events multiply: 1/6 times 1/6.",
+        "That gives 1/36."
+      ],
+      "useAgain": "when two events do not affect each other and both need to happen.",
+      "hints": [
+        "Independent events happening together multiply their two probabilities.",
+        "Multiply 1/6 by 1/6."
+      ],
+      "socraticHint": "Does the first event happening change the chances of the second, or leave them exactly the same?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Two coins are flipped. Both land heads (each with probability 1/2). These two events are independent. What is the probability both happen?",
+        "answer": {
+          "kind": "number",
+          "value": "1/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p04",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A spinner with 5 equal sections lands on section 1 (probability 1/5), and a die shows a 6 (probability 1/6). These two events are independent. What is the probability both happen?",
+      "answer": {
+        "kind": "number",
+        "value": "1/30"
+      },
+      "explanation": [
+        "Independent events multiply: 1/5 times 1/6.",
+        "That gives 1/30."
+      ],
+      "useAgain": "when two events do not affect each other and both need to happen.",
+      "hints": [
+        "Independent events happening together multiply their two probabilities.",
+        "Multiply 1/5 by 1/6."
+      ],
+      "socraticHint": "Does the first event happening change the chances of the second, or leave them exactly the same?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A spinner with 4 equal sections lands on section 1 (probability 1/4), and a die shows under 4 (probability 1/2). These two events are independent. What is the probability both happen?",
+        "answer": {
+          "kind": "number",
+          "value": "1/8"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p05",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A robot's sensor reports clear (probability 3/4), and its battery reads full (probability 2/5), independently of each other. These two events are independent. What is the probability both happen?",
+      "answer": {
+        "kind": "number",
+        "value": "3/10"
+      },
+      "explanation": [
+        "Independent events multiply: 3/4 times 2/5.",
+        "That gives 3/10."
+      ],
+      "useAgain": "when two events do not affect each other and both need to happen.",
+      "hints": [
+        "Independent events happening together multiply their two probabilities.",
+        "Multiply 3/4 by 2/5."
+      ],
+      "socraticHint": "Does the first event happening change the chances of the second, or leave them exactly the same?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A drone's camera reports steady (probability 4/5), and its signal reads strong (probability 3/8), independently of each other. These two events are independent. What is the probability both happen?",
+        "answer": {
+          "kind": "number",
+          "value": "3/10"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p06",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bag has 5 red marbles and 3 blue marbles. Two are drawn one at a time, without putting the first one back. What is the probability both are red marbles?",
+      "answer": {
+        "kind": "number",
+        "value": "5/14"
+      },
+      "explanation": [
+        "The first draw has 5 out of 8 chances of being red marbles: 5/8.",
+        "With one red marble gone, the second draw has 4 out of 7 chances: 4/7.",
+        "Multiplying the two gives 5/14."
+      ],
+      "useAgain": "when items are drawn one after another without being replaced, changing the chances each time.",
+      "hints": [
+        "The first draw is 5/8.",
+        "The second draw's chances change, since one item is now missing from the bag."
+      ],
+      "socraticHint": "Does removing the first item change how many are left for the second draw?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A bag has 6 orange marbles and 3 purple marbles. Two are drawn one at a time, without putting the first one back. What is the probability both are orange marbles?",
+        "answer": {
+          "kind": "number",
+          "value": "5/12"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p07",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bag has 6 green tiles and 2 yellow tiles. Two are drawn one at a time, without putting the first one back. What is the probability both are green tiles?",
+      "answer": {
+        "kind": "number",
+        "value": "15/28"
+      },
+      "explanation": [
+        "The first draw has 6 out of 8 chances of being green tiles: 3/4.",
+        "With one green tile gone, the second draw has 5 out of 7 chances: 5/7.",
+        "Multiplying the two gives 15/28."
+      ],
+      "useAgain": "when items are drawn one after another without being replaced, changing the chances each time.",
+      "hints": [
+        "The first draw is 3/4.",
+        "The second draw's chances change, since one item is now missing from the bag."
+      ],
+      "socraticHint": "Does removing the first item change how many are left for the second draw?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A bag has 5 blue tiles and 3 red tiles. Two are drawn one at a time, without putting the first one back. What is the probability both are blue tiles?",
+        "answer": {
+          "kind": "number",
+          "value": "5/14"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p08",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bag has 4 large gears and 4 small gears. Two are drawn one at a time, without putting the first one back. What is the probability both are large gears?",
+      "answer": {
+        "kind": "number",
+        "value": "3/14"
+      },
+      "explanation": [
+        "The first draw has 4 out of 8 chances of being large gears: 1/2.",
+        "With one large gear gone, the second draw has 3 out of 7 chances: 3/7.",
+        "Multiplying the two gives 3/14."
+      ],
+      "useAgain": "when items are drawn one after another without being replaced, changing the chances each time.",
+      "hints": [
+        "The first draw is 1/2.",
+        "The second draw's chances change, since one item is now missing from the bag."
+      ],
+      "socraticHint": "Does removing the first item change how many are left for the second draw?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A bag has 5 large gears and 3 small gears. Two are drawn one at a time, without putting the first one back. What is the probability both are large gears?",
+        "answer": {
+          "kind": "number",
+          "value": "5/14"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p09",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bag has 7 circuit boards and 3 sensor boards. Two are drawn one at a time, without putting the first one back. What is the probability both are circuit boards?",
+      "answer": {
+        "kind": "number",
+        "value": "7/15"
+      },
+      "explanation": [
+        "The first draw has 7 out of 10 chances of being circuit boards: 7/10.",
+        "With one circuit board gone, the second draw has 6 out of 9 chances: 2/3.",
+        "Multiplying the two gives 7/15."
+      ],
+      "useAgain": "when items are drawn one after another without being replaced, changing the chances each time.",
+      "hints": [
+        "The first draw is 7/10.",
+        "The second draw's chances change, since one item is now missing from the bag."
+      ],
+      "socraticHint": "Does removing the first item change how many are left for the second draw?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A bag has 6 circuit boards and 4 sensor boards. Two are drawn one at a time, without putting the first one back. What is the probability both are circuit boards?",
+        "answer": {
+          "kind": "number",
+          "value": "1/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p10",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bag has 5 left gloves and 5 right gloves. Two are drawn one at a time, without putting the first one back. What is the probability both are left gloves?",
+      "answer": {
+        "kind": "number",
+        "value": "2/9"
+      },
+      "explanation": [
+        "The first draw has 5 out of 10 chances of being left gloves: 1/2.",
+        "With one left glove gone, the second draw has 4 out of 9 chances: 4/9.",
+        "Multiplying the two gives 2/9."
+      ],
+      "useAgain": "when items are drawn one after another without being replaced, changing the chances each time.",
+      "hints": [
+        "The first draw is 1/2.",
+        "The second draw's chances change, since one item is now missing from the bag."
+      ],
+      "socraticHint": "Does removing the first item change how many are left for the second draw?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A bag has 6 left gloves and 4 right gloves. Two are drawn one at a time, without putting the first one back. What is the probability both are left gloves?",
+        "answer": {
+          "kind": "number",
+          "value": "1/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p11",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "The probability a rocket launch is delayed is 3/8. What is the probability it is not delayed?",
+      "answer": {
+        "kind": "number",
+        "value": "5/8"
+      },
+      "explanation": [
+        "The probability of an event and its opposite always add to 1.",
+        "1 minus 3/8 is 5/8."
+      ],
+      "useAgain": "when the probability of an event is known and the probability of it not happening is wanted.",
+      "hints": [
+        "An event and its exact opposite always add up to 1.",
+        "Subtract 3/8 from 1."
+      ],
+      "socraticHint": "What do the probability of an event and the probability of it not happening always add up to?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "The probability a rocket launch is delayed is 2/7. What is the probability it is not delayed?",
+        "answer": {
+          "kind": "number",
+          "value": "5/7"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p12",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "The probability a rocket launch is delayed is 5/9. What is the probability it is not delayed?",
+      "answer": {
+        "kind": "number",
+        "value": "4/9"
+      },
+      "explanation": [
+        "The probability of an event and its opposite always add to 1.",
+        "1 minus 5/9 is 4/9."
+      ],
+      "useAgain": "when the probability of an event is known and the probability of it not happening is wanted.",
+      "hints": [
+        "An event and its exact opposite always add up to 1.",
+        "Subtract 5/9 from 1."
+      ],
+      "socraticHint": "What do the probability of an event and the probability of it not happening always add up to?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "The probability a rocket launch is delayed is 1/4. What is the probability it is not delayed?",
+        "answer": {
+          "kind": "number",
+          "value": "3/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p13",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "The probability a rocket launch is delayed is 7/12. What is the probability it is not delayed?",
+      "answer": {
+        "kind": "number",
+        "value": "5/12"
+      },
+      "explanation": [
+        "The probability of an event and its opposite always add to 1.",
+        "1 minus 7/12 is 5/12."
+      ],
+      "useAgain": "when the probability of an event is known and the probability of it not happening is wanted.",
+      "hints": [
+        "An event and its exact opposite always add up to 1.",
+        "Subtract 7/12 from 1."
+      ],
+      "socraticHint": "What do the probability of an event and the probability of it not happening always add up to?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "The probability a rocket launch is delayed is 3/10. What is the probability it is not delayed?",
+        "answer": {
+          "kind": "number",
+          "value": "7/10"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p14",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "truefalse",
+      "prompt": "Drawing 2 cards from a deck one at a time, without putting the first one back, is an example of dependent events.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Removing the first card changes what is left for the second draw.",
+        "Since the second draw's chances depend on the first, these are dependent events."
+      ],
+      "useAgain": "when you need to check whether two events are independent or dependent.",
+      "hints": [
+        "Check whether the first event changes what is available for the second.",
+        "Not replacing an item always makes the two draws dependent."
+      ],
+      "socraticHint": "Does removing the first card change the deck the second card is drawn from?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Flipping a coin twice in a row is an example of dependent events.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p15",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "truefalse",
+      "prompt": "Rolling a die and then flipping a coin are independent events, since the die does not affect the coin.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The die landing on any number has no effect on how the coin lands.",
+        "Since neither event changes the other's chances, they are independent."
+      ],
+      "useAgain": "when you need to check whether two events are independent or dependent.",
+      "hints": [
+        "Check whether the outcome of one event changes the chances of the other.",
+        "Two separate objects, like a die and a coin, usually do not affect each other."
+      ],
+      "socraticHint": "Does the number the die shows change the chances of the coin landing heads or tails?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Drawing a marble, keeping it, then drawing another from the same bag are independent events.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p16",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A coin flip, a die roll, and a spinner with 4 sections. Each result is independent of the others, with probabilities 1/2, 1/6 and 1/4 of the outcome wanted. What is the probability all three wanted outcomes happen?",
+      "answer": {
+        "kind": "number",
+        "value": "1/48"
+      },
+      "explanation": [
+        "Independent events all multiply together, even with three of them.",
+        "1/2 times 1/6 times 1/4 is 1/48."
+      ],
+      "useAgain": "when three or more independent events all need to happen together.",
+      "hints": [
+        "Multiply all three probabilities together, the same way as with two.",
+        "Being independent means none of the three events change the others' chances."
+      ],
+      "socraticHint": "Does adding a third independent event change how the probabilities combine?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A coin flip, a die roll, and a spinner with 5 sections. Each result is independent of the others, with probabilities 1/2, 1/6 and 1/5 of the outcome wanted. What is the probability all three wanted outcomes happen?",
+        "answer": {
+          "kind": "number",
+          "value": "1/60"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p17",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "Two dice and a coin flip. Each result is independent of the others, with probabilities 1/6, 1/6 and 1/2 of the outcome wanted. What is the probability all three wanted outcomes happen?",
+      "answer": {
+        "kind": "number",
+        "value": "1/72"
+      },
+      "explanation": [
+        "Independent events all multiply together, even with three of them.",
+        "1/6 times 1/6 times 1/2 is 1/72."
+      ],
+      "useAgain": "when three or more independent events all need to happen together.",
+      "hints": [
+        "Multiply all three probabilities together, the same way as with two.",
+        "Being independent means none of the three events change the others' chances."
+      ],
+      "socraticHint": "Does adding a third independent event change how the probabilities combine?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two dice and a spinner with 3 sections. Each result is independent of the others, with probabilities 1/6, 1/6 and 1/3 of the outcome wanted. What is the probability all three wanted outcomes happen?",
+        "answer": {
+          "kind": "number",
+          "value": "1/108"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p18",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A rover's three sensors, each independently reporting clear. Each result is independent of the others, with probabilities 4/5, 3/4 and 2/3 of the outcome wanted. What is the probability all three wanted outcomes happen?",
+      "answer": {
+        "kind": "number",
+        "value": "2/5"
+      },
+      "explanation": [
+        "Independent events all multiply together, even with three of them.",
+        "4/5 times 3/4 times 2/3 is 2/5."
+      ],
+      "useAgain": "when three or more independent events all need to happen together.",
+      "hints": [
+        "Multiply all three probabilities together, the same way as with two.",
+        "Being independent means none of the three events change the others' chances."
+      ],
+      "socraticHint": "Does adding a third independent event change how the probabilities combine?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone's three sensors, each independently reporting clear. Each result is independent of the others, with probabilities 3/4, 2/3 and 4/5 of the outcome wanted. What is the probability all three wanted outcomes happen?",
+        "answer": {
+          "kind": "number",
+          "value": "2/5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p19",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A game's three independent loot rolls. Each result is independent of the others, with probabilities 1/3, 1/4 and 1/5 of the outcome wanted. What is the probability all three wanted outcomes happen?",
+      "answer": {
+        "kind": "number",
+        "value": "1/60"
+      },
+      "explanation": [
+        "Independent events all multiply together, even with three of them.",
+        "1/3 times 1/4 times 1/5 is 1/60."
+      ],
+      "useAgain": "when three or more independent events all need to happen together.",
+      "hints": [
+        "Multiply all three probabilities together, the same way as with two.",
+        "Being independent means none of the three events change the others' chances."
+      ],
+      "socraticHint": "Does adding a third independent event change how the probabilities combine?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game's three independent loot rolls, with different odds. Each result is independent of the others, with probabilities 1/2, 1/3 and 1/6 of the outcome wanted. What is the probability all three wanted outcomes happen?",
+        "answer": {
+          "kind": "number",
+          "value": "1/36"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p20",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A rocket's three independent stage checks, each passing. Each result is independent of the others, with probabilities 9/10, 4/5 and 3/4 of the outcome wanted. What is the probability all three wanted outcomes happen?",
+      "answer": {
+        "kind": "number",
+        "value": "27/50"
+      },
+      "explanation": [
+        "Independent events all multiply together, even with three of them.",
+        "9/10 times 4/5 times 3/4 is 27/50."
+      ],
+      "useAgain": "when three or more independent events all need to happen together.",
+      "hints": [
+        "Multiply all three probabilities together, the same way as with two.",
+        "Being independent means none of the three events change the others' chances."
+      ],
+      "socraticHint": "Does adding a third independent event change how the probabilities combine?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer's three independent part checks, each passing. Each result is independent of the others, with probabilities 4/5, 3/4 and 2/3 of the outcome wanted. What is the probability all three wanted outcomes happen?",
+        "answer": {
+          "kind": "number",
+          "value": "2/5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p21",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bin has 6 silver bolts and 4 gold bolts. Three are drawn one at a time, without replacement. What is the probability all three are silver bolts?",
+      "answer": {
+        "kind": "number",
+        "value": "1/6"
+      },
+      "explanation": [
+        "The first draw is 3/5.",
+        "The second draw, with one silver bolt gone, is 5/9.",
+        "The third draw, with two gone, is 1/2.",
+        "Multiplying all three gives 1/6."
+      ],
+      "useAgain": "when several items are drawn one after another without replacement.",
+      "hints": [
+        "The chances shrink each time, since the bin has one fewer silver bolt and one fewer item overall.",
+        "Multiply all three draws' probabilities together, in order."
+      ],
+      "socraticHint": "How do the total items left in the bin change after each draw?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A bin has 7 silver bolts and 4 gold bolts. Three are drawn one at a time, without replacement. What is the probability all three are silver bolts?",
+        "answer": {
+          "kind": "number",
+          "value": "7/33"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p22",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bin has 7 blue caps and 3 red caps. Three are drawn one at a time, without replacement. What is the probability all three are blue caps?",
+      "answer": {
+        "kind": "number",
+        "value": "7/24"
+      },
+      "explanation": [
+        "The first draw is 7/10.",
+        "The second draw, with one blue cap gone, is 2/3.",
+        "The third draw, with two gone, is 5/8.",
+        "Multiplying all three gives 7/24."
+      ],
+      "useAgain": "when several items are drawn one after another without replacement.",
+      "hints": [
+        "The chances shrink each time, since the bin has one fewer blue cap and one fewer item overall.",
+        "Multiply all three draws' probabilities together, in order."
+      ],
+      "socraticHint": "How do the total items left in the bin change after each draw?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A bin has 6 blue caps and 3 red caps. Three are drawn one at a time, without replacement. What is the probability all three are blue caps?",
+        "answer": {
+          "kind": "number",
+          "value": "5/21"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p23",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bin has 5 small screws and 4 large screws. Three are drawn one at a time, without replacement. What is the probability all three are small screws?",
+      "answer": {
+        "kind": "number",
+        "value": "5/42"
+      },
+      "explanation": [
+        "The first draw is 5/9.",
+        "The second draw, with one small screw gone, is 1/2.",
+        "The third draw, with two gone, is 3/7.",
+        "Multiplying all three gives 5/42."
+      ],
+      "useAgain": "when several items are drawn one after another without replacement.",
+      "hints": [
+        "The chances shrink each time, since the bin has one fewer small screw and one fewer item overall.",
+        "Multiply all three draws' probabilities together, in order."
+      ],
+      "socraticHint": "How do the total items left in the bin change after each draw?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A bin has 6 small screws and 4 large screws. Three are drawn one at a time, without replacement. What is the probability all three are small screws?",
+        "answer": {
+          "kind": "number",
+          "value": "1/6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p24",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bin has 8 flat washers and 4 lock washers. Three are drawn one at a time, without replacement. What is the probability all three are flat washers?",
+      "answer": {
+        "kind": "number",
+        "value": "14/55"
+      },
+      "explanation": [
+        "The first draw is 2/3.",
+        "The second draw, with one flat washer gone, is 7/11.",
+        "The third draw, with two gone, is 3/5.",
+        "Multiplying all three gives 14/55."
+      ],
+      "useAgain": "when several items are drawn one after another without replacement.",
+      "hints": [
+        "The chances shrink each time, since the bin has one fewer flat washer and one fewer item overall.",
+        "Multiply all three draws' probabilities together, in order."
+      ],
+      "socraticHint": "How do the total items left in the bin change after each draw?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A bin has 7 flat washers and 4 lock washers. Three are drawn one at a time, without replacement. What is the probability all three are flat washers?",
+        "answer": {
+          "kind": "number",
+          "value": "7/33"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p25",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bin has 6 round beads and 5 square beads. Three are drawn one at a time, without replacement. What is the probability all three are round beads?",
+      "answer": {
+        "kind": "number",
+        "value": "4/33"
+      },
+      "explanation": [
+        "The first draw is 6/11.",
+        "The second draw, with one round bead gone, is 1/2.",
+        "The third draw, with two gone, is 4/9.",
+        "Multiplying all three gives 4/33."
+      ],
+      "useAgain": "when several items are drawn one after another without replacement.",
+      "hints": [
+        "The chances shrink each time, since the bin has one fewer round bead and one fewer item overall.",
+        "Multiply all three draws' probabilities together, in order."
+      ],
+      "socraticHint": "How do the total items left in the bin change after each draw?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A bin has 7 round beads and 5 square beads. Three are drawn one at a time, without replacement. What is the probability all three are round beads?",
+        "answer": {
+          "kind": "number",
+          "value": "7/44"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p26",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "choice",
+      "prompt": "A spinner is spun, then a coin is flipped. Are these two events independent or dependent, and why?",
+      "options": [
+        "Dependent: the spinner changes the coin's chances",
+        "Independent: the coin always lands heads",
+        "Dependent: only one of them can happen",
+        "Independent: the spinner does not affect the coin"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Check whether the outcome of the first event changes what can happen in the second.",
+        "If nothing about the second event's chances changes, the two events are independent.",
+        "Spinning the spinner does not change what the coin can do, so the two events are independent."
+      ],
+      "useAgain": "when it is unclear whether two events affect each other or not.",
+      "hints": [
+        "Ask whether anything is removed, used up, or changed by the first event before the second happens.",
+        "If the setup for the second event is exactly the same either way, the events are independent."
+      ],
+      "socraticHint": "Does anything about the situation change between the first event and the second?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A die is rolled, then a spinner is spun. Are these two events independent or dependent, and why?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "Independent: the die does not affect the spinner",
+          "Dependent: the die changes the spinner's chances",
+          "Independent: the spinner always lands the same way",
+          "Dependent: only one of them can happen"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p27",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "choice",
+      "prompt": "A marble is drawn from a bag and kept out, then a second marble is drawn from the same bag. Are these two events independent or dependent, and why?",
+      "options": [
+        "Independent: the bag refills itself each time",
+        "Dependent: the first draw changes what is left",
+        "Dependent: the two draws are actually the same event",
+        "Independent: removing a marble changes nothing"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Check whether the outcome of the first event changes what can happen in the second.",
+        "If nothing about the second event's chances changes, the two events are independent.",
+        "Keeping the first marble out changes what is left in the bag, so the two events are dependent."
+      ],
+      "useAgain": "when it is unclear whether two events affect each other or not.",
+      "hints": [
+        "Ask whether anything is removed, used up, or changed by the first event before the second happens.",
+        "If the setup for the second event is exactly the same either way, the events are independent."
+      ],
+      "socraticHint": "Does anything about the situation change between the first event and the second?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A card is drawn from a deck and kept out, then a second card is drawn from the same deck. Are these two events independent or dependent, and why?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "Independent: the deck refills itself each time",
+          "Dependent: the two draws are actually the same event",
+          "Dependent: the first draw changes what is left",
+          "Independent: removing a card changes nothing"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p28",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "choice",
+      "prompt": "A coin is flipped, and the result is recorded, then the same coin is flipped again. Are these two events independent or dependent, and why?",
+      "options": [
+        "Independent: the first flip does not affect the second",
+        "Dependent: the coin remembers its last result",
+        "Independent: only heads can happen twice",
+        "Dependent: the second flip cannot happen"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Check whether the outcome of the first event changes what can happen in the second.",
+        "If nothing about the second event's chances changes, the two events are independent.",
+        "The first flip does not change what the coin can do on the second flip, so the two events are independent."
+      ],
+      "useAgain": "when it is unclear whether two events affect each other or not.",
+      "hints": [
+        "Ask whether anything is removed, used up, or changed by the first event before the second happens.",
+        "If the setup for the second event is exactly the same either way, the events are independent."
+      ],
+      "socraticHint": "Does anything about the situation change between the first event and the second?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A die is rolled, and the result is recorded, then the same die is rolled again. Are these two events independent or dependent, and why?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "Dependent: the die remembers its last result",
+          "Independent: only sixes can happen twice",
+          "Dependent: the second roll cannot happen",
+          "Independent: the first roll does not affect the second"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p29",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "order",
+      "prompt": "A bag has 5 red and 3 blue marbles. Put these steps in order to find the probability of drawing 2 red in a row, without replacement.",
+      "items": [
+        "Multiply the two probabilities together",
+        "Find the second draw's probability: 4 red left out of 7 total",
+        "Find the first draw's probability: 5 red out of 8 total"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "The first draw's probability is found using the bag exactly as it starts.",
+        "The second draw's probability is found only after accounting for the first marble being gone.",
+        "Multiplying the two draws together gives the final answer."
+      ],
+      "useAgain": "when you need to lay out a dependent probability chain in the right order.",
+      "hints": [
+        "The first draw has to be worked out before the second, since the second depends on it.",
+        "The final multiplication always comes last."
+      ],
+      "socraticHint": "Can the second draw's probability be found before knowing what the first draw removed?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A bag has 6 blue and 2 red marbles. Put these steps in order to find the probability of drawing 2 blue in a row, without replacement.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0
+          ]
+        },
+        "items": [
+          "Multiply the two probabilities together",
+          "Find the second draw's probability: 5 blue left out of 7 total",
+          "Find the first draw's probability: 6 blue out of 8 total"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p30",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "order",
+      "prompt": "Put these steps in order to decide whether two events are independent.",
+      "items": [
+        "Conclude independent if nothing changed, dependent if it did",
+        "Check whether the first event's outcome changes the second event's setup",
+        "Identify exactly what the first event does to the situation"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "What the first event actually does has to be identified before anything else.",
+        "That change, or lack of one, is then checked against the second event's setup.",
+        "The conclusion follows directly from whether anything actually changed."
+      ],
+      "useAgain": "when you need to lay out deciding independence versus dependence in the right order.",
+      "hints": [
+        "Identifying what the first event does always comes before checking its effect.",
+        "The conclusion is the very last step, after the check is made."
+      ],
+      "socraticHint": "Can independence be concluded before checking what the first event actually changes?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to decide whether two draws from a bag, without replacement, are independent.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0
+          ]
+        },
+        "items": [
+          "Conclude independent if nothing changed, dependent if it did",
+          "Check whether the first draw's outcome changes the second draw's setup",
+          "Identify exactly what removing the first item does to the bag"
+        ]
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p31",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A game awards: 8 points with probability 1/3, 5 points with probability 1/3, 2 points with probability 1/3. What is the expected number of points?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Multiply each outcome by its own probability, then add them all together.",
+        "That gives 5."
+      ],
+      "useAgain": "when a game or situation has several outcomes, each with its own probability, and an average result is wanted.",
+      "hints": [
+        "Multiply every outcome by its own probability first.",
+        "Add all of those products together for the expected value."
+      ],
+      "socraticHint": "What does multiplying each outcome by its own probability, then adding, represent?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game awards: 9 points with probability 1/3, 6 points with probability 1/3, 3 points with probability 1/3. What is the expected number of points?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p32",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A game awards: 10 points with probability 1/4, 2 points with probability 1/2, 0 points with probability 1/4. What is the expected number of points?",
+      "answer": {
+        "kind": "number",
+        "value": "7/2"
+      },
+      "explanation": [
+        "Multiply each outcome by its own probability, then add them all together.",
+        "That gives 7/2."
+      ],
+      "useAgain": "when a game or situation has several outcomes, each with its own probability, and an average result is wanted.",
+      "hints": [
+        "Multiply every outcome by its own probability first.",
+        "Add all of those products together for the expected value."
+      ],
+      "socraticHint": "What does multiplying each outcome by its own probability, then adding, represent?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game awards: 12 points with probability 1/4, 4 points with probability 1/2, 0 points with probability 1/4. What is the expected number of points?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p33",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A game awards: 6 points with probability 1/2, 0 points with probability 1/2. What is the expected number of points?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Multiply each outcome by its own probability, then add them all together.",
+        "That gives 3."
+      ],
+      "useAgain": "when a game or situation has several outcomes, each with its own probability, and an average result is wanted.",
+      "hints": [
+        "Multiply every outcome by its own probability first.",
+        "Add all of those products together for the expected value."
+      ],
+      "socraticHint": "What does multiplying each outcome by its own probability, then adding, represent?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game awards: 8 points with probability 1/2, 0 points with probability 1/2. What is the expected number of points?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p34",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A game awards: 20 points with probability 1/10, 5 points with probability 3/10, 0 points with probability 3/5. What is the expected number of points?",
+      "answer": {
+        "kind": "number",
+        "value": "7/2"
+      },
+      "explanation": [
+        "Multiply each outcome by its own probability, then add them all together.",
+        "That gives 7/2."
+      ],
+      "useAgain": "when a game or situation has several outcomes, each with its own probability, and an average result is wanted.",
+      "hints": [
+        "Multiply every outcome by its own probability first.",
+        "Add all of those products together for the expected value."
+      ],
+      "socraticHint": "What does multiplying each outcome by its own probability, then adding, represent?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game awards: 30 points with probability 1/10, 10 points with probability 3/10, 0 points with probability 3/5. What is the expected number of points?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p35",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A game awards: 4 points with probability 1/6, 3 points with probability 1/3, 1 point with probability 1/2. What is the expected number of points?",
+      "answer": {
+        "kind": "number",
+        "value": "13/6"
+      },
+      "explanation": [
+        "Multiply each outcome by its own probability, then add them all together.",
+        "That gives 13/6."
+      ],
+      "useAgain": "when a game or situation has several outcomes, each with its own probability, and an average result is wanted.",
+      "hints": [
+        "Multiply every outcome by its own probability first.",
+        "Add all of those products together for the expected value."
+      ],
+      "socraticHint": "What does multiplying each outcome by its own probability, then adding, represent?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game awards: 6 points with probability 1/6, 3 points with probability 1/3, 0 points with probability 1/2. What is the expected number of points?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p36",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A game awards x points with probability 1/4, and 4 points with probability 3/4. Its expected value is 7 points. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "The expected value equation is x times 1/4, plus 4 times 3/4, equals 7.",
+        "4 times 3/4 is 3.",
+        "x times 1/4 equals 7 minus 3, which is 4.",
+        "Dividing by 1/4 gives x = 16."
+      ],
+      "useAgain": "when the expected value of a game is known but one outcome's value is the unknown.",
+      "hints": [
+        "Write the expected value as an equation with x in it, then solve like any other equation.",
+        "x times 1/4 plus 4 times 3/4 equals 7."
+      ],
+      "socraticHint": "Once the known outcome's contribution is subtracted from the target, what equation is left for x?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game awards x points with probability 1/4, and 6 points with probability 3/4. Its expected value is 9 points. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p37",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A game awards x points with probability 1/3, and 3 points with probability 2/3. Its expected value is 6 points. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "The expected value equation is x times 1/3, plus 3 times 2/3, equals 6.",
+        "3 times 2/3 is 2.",
+        "x times 1/3 equals 6 minus 2, which is 4.",
+        "Dividing by 1/3 gives x = 12."
+      ],
+      "useAgain": "when the expected value of a game is known but one outcome's value is the unknown.",
+      "hints": [
+        "Write the expected value as an equation with x in it, then solve like any other equation.",
+        "x times 1/3 plus 3 times 2/3 equals 6."
+      ],
+      "socraticHint": "Once the known outcome's contribution is subtracted from the target, what equation is left for x?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game awards x points with probability 1/3, and 6 points with probability 2/3. Its expected value is 9 points. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p38",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A game awards x points with probability 2/5, and 5 points with probability 3/5. Its expected value is 8 points. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "25/2"
+      },
+      "explanation": [
+        "The expected value equation is x times 2/5, plus 5 times 3/5, equals 8.",
+        "5 times 3/5 is 3.",
+        "x times 2/5 equals 8 minus 3, which is 5.",
+        "Dividing by 2/5 gives x = 25/2."
+      ],
+      "useAgain": "when the expected value of a game is known but one outcome's value is the unknown.",
+      "hints": [
+        "Write the expected value as an equation with x in it, then solve like any other equation.",
+        "x times 2/5 plus 5 times 3/5 equals 8."
+      ],
+      "socraticHint": "Once the known outcome's contribution is subtracted from the target, what equation is left for x?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game awards x points with probability 2/5, and 10 points with probability 3/5. Its expected value is 13 points. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "35/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p39",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A game awards x points with probability 1/2, and 2 points with probability 1/2. Its expected value is 10 points. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "The expected value equation is x times 1/2, plus 2 times 1/2, equals 10.",
+        "2 times 1/2 is 1.",
+        "x times 1/2 equals 10 minus 1, which is 9.",
+        "Dividing by 1/2 gives x = 18."
+      ],
+      "useAgain": "when the expected value of a game is known but one outcome's value is the unknown.",
+      "hints": [
+        "Write the expected value as an equation with x in it, then solve like any other equation.",
+        "x times 1/2 plus 2 times 1/2 equals 10."
+      ],
+      "socraticHint": "Once the known outcome's contribution is subtracted from the target, what equation is left for x?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game awards x points with probability 1/2, and 4 points with probability 1/2. Its expected value is 12 points. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p40",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A game awards x points with probability 3/8, and 6 points with probability 5/8. Its expected value is 9 points. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "The expected value equation is x times 3/8, plus 6 times 5/8, equals 9.",
+        "6 times 5/8 is 15/4.",
+        "x times 3/8 equals 9 minus 15/4, which is 21/4.",
+        "Dividing by 3/8 gives x = 14."
+      ],
+      "useAgain": "when the expected value of a game is known but one outcome's value is the unknown.",
+      "hints": [
+        "Write the expected value as an equation with x in it, then solve like any other equation.",
+        "x times 3/8 plus 6 times 5/8 equals 9."
+      ],
+      "socraticHint": "Once the known outcome's contribution is subtracted from the target, what equation is left for x?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game awards x points with probability 3/8, and 8 points with probability 5/8. Its expected value is 11 points. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p41",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bin has 5 red counters and 3 blue counters, 8 total. A handful of 2 is grabbed all at once. Using combinations, what is the probability all 2 are red counters?",
+      "answer": {
+        "kind": "number",
+        "value": "5/14"
+      },
+      "explanation": [
+        "The number of ways to grab 2 red counters out of 5 is 5 choose 2.",
+        "The number of ways to grab any 2 out of all 8 is 8 choose 2.",
+        "Dividing the first by the second gives 5/14."
+      ],
+      "useAgain": "when a probability without replacement is easier to find by counting combinations than by chaining fractions.",
+      "hints": [
+        "Count how many ways to choose 2 red counters from just the red counters, using a combination.",
+        "Divide by how many ways to choose 2 from the whole bin."
+      ],
+      "socraticHint": "Does grabbing a handful all at once change the probability compared to drawing one at a time without replacement?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bin has 6 red counters and 3 blue counters, 9 total. A handful of 2 is grabbed all at once. Using combinations, what is the probability all 2 are red counters?",
+        "answer": {
+          "kind": "number",
+          "value": "5/12"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p42",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bin has 6 steel bolts and 4 brass bolts, 10 total. A handful of 2 is grabbed all at once. Using combinations, what is the probability all 2 are steel bolts?",
+      "answer": {
+        "kind": "number",
+        "value": "1/3"
+      },
+      "explanation": [
+        "The number of ways to grab 2 steel bolts out of 6 is 6 choose 2.",
+        "The number of ways to grab any 2 out of all 10 is 10 choose 2.",
+        "Dividing the first by the second gives 1/3."
+      ],
+      "useAgain": "when a probability without replacement is easier to find by counting combinations than by chaining fractions.",
+      "hints": [
+        "Count how many ways to choose 2 steel bolts from just the steel bolts, using a combination.",
+        "Divide by how many ways to choose 2 from the whole bin."
+      ],
+      "socraticHint": "Does grabbing a handful all at once change the probability compared to drawing one at a time without replacement?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bin has 7 steel bolts and 4 brass bolts, 11 total. A handful of 2 is grabbed all at once. Using combinations, what is the probability all 2 are steel bolts?",
+        "answer": {
+          "kind": "number",
+          "value": "21/55"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p43",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bin has 7 game tokens and 3 bonus tokens, 10 total. A handful of 3 is grabbed all at once. Using combinations, what is the probability all 3 are game tokens?",
+      "answer": {
+        "kind": "number",
+        "value": "7/24"
+      },
+      "explanation": [
+        "The number of ways to grab 3 game tokens out of 7 is 7 choose 3.",
+        "The number of ways to grab any 3 out of all 10 is 10 choose 3.",
+        "Dividing the first by the second gives 7/24."
+      ],
+      "useAgain": "when a probability without replacement is easier to find by counting combinations than by chaining fractions.",
+      "hints": [
+        "Count how many ways to choose 3 game tokens from just the game tokens, using a combination.",
+        "Divide by how many ways to choose 3 from the whole bin."
+      ],
+      "socraticHint": "Does grabbing a handful all at once change the probability compared to drawing one at a time without replacement?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bin has 8 game tokens and 3 bonus tokens, 11 total. A handful of 3 is grabbed all at once. Using combinations, what is the probability all 3 are game tokens?",
+        "answer": {
+          "kind": "number",
+          "value": "56/165"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p44",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bin has 4 small parts and 6 large parts, 10 total. A handful of 2 is grabbed all at once. Using combinations, what is the probability all 2 are small parts?",
+      "answer": {
+        "kind": "number",
+        "value": "2/15"
+      },
+      "explanation": [
+        "The number of ways to grab 2 small parts out of 4 is 4 choose 2.",
+        "The number of ways to grab any 2 out of all 10 is 10 choose 2.",
+        "Dividing the first by the second gives 2/15."
+      ],
+      "useAgain": "when a probability without replacement is easier to find by counting combinations than by chaining fractions.",
+      "hints": [
+        "Count how many ways to choose 2 small parts from just the small parts, using a combination.",
+        "Divide by how many ways to choose 2 from the whole bin."
+      ],
+      "socraticHint": "Does grabbing a handful all at once change the probability compared to drawing one at a time without replacement?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bin has 5 small parts and 6 large parts, 11 total. A handful of 2 is grabbed all at once. Using combinations, what is the probability all 2 are small parts?",
+        "answer": {
+          "kind": "number",
+          "value": "2/11"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p45",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A bin has 8 filament spools and 2 resin bottles, 10 total. A handful of 2 is grabbed all at once. Using combinations, what is the probability all 2 are filament spools?",
+      "answer": {
+        "kind": "number",
+        "value": "28/45"
+      },
+      "explanation": [
+        "The number of ways to grab 2 filament spools out of 8 is 8 choose 2.",
+        "The number of ways to grab any 2 out of all 10 is 10 choose 2.",
+        "Dividing the first by the second gives 28/45."
+      ],
+      "useAgain": "when a probability without replacement is easier to find by counting combinations than by chaining fractions.",
+      "hints": [
+        "Count how many ways to choose 2 filament spools from just the filament spools, using a combination.",
+        "Divide by how many ways to choose 2 from the whole bin."
+      ],
+      "socraticHint": "Does grabbing a handful all at once change the probability compared to drawing one at a time without replacement?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bin has 9 filament spools and 2 resin bottles, 11 total. A handful of 2 is grabbed all at once. Using combinations, what is the probability all 2 are filament spools?",
+        "answer": {
+          "kind": "number",
+          "value": "36/55"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-al-compound-probability-p46",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A robot's sensor has a 1/3 chance of detecting an obstacle on any single scan. It scans 3 times, independently. What is the probability it detects the obstacle at least once?",
+      "answer": {
+        "kind": "number",
+        "value": "19/27"
+      },
+      "explanation": [
+        "It is easier to find the chance it detects nothing at all, then subtract from 1.",
+        "Missing every time is 2/3 cubed, since each scan is independent.",
+        "2/3 cubed is 8/27, so 1 minus 8/27 is 19/27."
+      ],
+      "useAgain": "when at least one success among several independent tries is wanted.",
+      "hints": [
+        "Finding the chance of missing every single time is easier than finding at least one hit directly.",
+        "Subtract the chance of missing every time from 1."
+      ],
+      "socraticHint": "Is it easier to count every way to get at least one hit, or the one way to miss every time?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot's sensor has a 1/4 chance of detecting an obstacle on any single scan. It scans 3 times, independently. What is the probability it detects the obstacle at least once?",
+        "answer": {
+          "kind": "number",
+          "value": "37/64"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p47",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "Among 20 drones, 12 have long-range radios, and of those, 9 also have high-capacity batteries. A drone is picked at random from the 12 with long-range radios. What is the probability it also has a high-capacity battery?",
+      "answer": {
+        "kind": "number",
+        "value": "3/4"
+      },
+      "explanation": [
+        "Since the drone is already picked from just the 12 with long-range radios, the total to consider is 12, not 20.",
+        "9 of those 12 also have high-capacity batteries.",
+        "9 out of 12 reduces to 3/4."
+      ],
+      "useAgain": "when a probability is conditioned on already knowing one fact about the item.",
+      "hints": [
+        "The group to consider is only the 12 drones already known to have long-range radios.",
+        "Divide the count with both features by that smaller group, not by all 20."
+      ],
+      "socraticHint": "Once it is known the drone has a long-range radio, does the group of 20 still matter, or only the 12?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Among 24 rovers, 15 have solar panels, and of those, 10 also have extra wheels. A rover is picked at random from the 15 with solar panels. What is the probability it also has extra wheels?",
+        "answer": {
+          "kind": "number",
+          "value": "2/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p48",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A game pays 12 points with probability 1/5, 4 points with an unknown probability, and 0 points the rest of the time. The chance of scoring 0 is 3 times the chance of scoring 4. What entry fee makes the game exactly break even, on average?",
+      "answer": {
+        "kind": "number",
+        "value": "16/5"
+      },
+      "explanation": [
+        "Let the chance of scoring 4 be p, so the chance of scoring 0 is 3p, since it happens 3 times as often.",
+        "All the chances add to 1, so 1/5 plus p plus 3p equals 1, giving 4p equals 4/5.",
+        "That makes p equal 1/5, so scoring 4 happens 1/5 of the time and scoring 0 happens 3/5.",
+        "The expected payout is 12 times 1/5, plus 4 times 1/5, plus 0 times 3/5.",
+        "That adds up to 16/5."
+      ],
+      "useAgain": "when a game's chances are only partly known and a ratio clue fills in the rest before a fair price can be found.",
+      "hints": [
+        "Give the unknown probability a letter, then use the ratio clue to write the other probability in terms of it.",
+        "All the probabilities in the game must add up to 1."
+      ],
+      "socraticHint": "If every probability in a game must add to 1, what equation do the pieces here make?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game pays 15 points with probability 1/4, 3 points with an unknown probability, and 0 points the rest of the time. The chance of scoring 0 is 2 times the chance of scoring 3. What entry fee makes the game exactly break even, on average?",
+        "answer": {
+          "kind": "number",
+          "value": "9/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p49",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A batch of 10 3D printed parts has 4 defective ones. Two parts are chosen at random together. What is the probability neither chosen part is defective?",
+      "answer": {
+        "kind": "number",
+        "value": "1/3"
+      },
+      "explanation": [
+        "Neither defective means both parts come from the 6 good parts.",
+        "Choosing 2 good parts from 6 is 6 choose 2, which is 15.",
+        "Choosing any 2 parts from all 10 is 10 choose 2, which is 45.",
+        "15 divided by 45 is 1/3."
+      ],
+      "useAgain": "when a probability asks for none of a certain type among a group chosen together.",
+      "hints": [
+        "Count the ways to choose 2 parts using only the good ones.",
+        "Divide by the ways to choose any 2 parts from the whole batch."
+      ],
+      "socraticHint": "If neither part chosen can be defective, which smaller group do both parts have to come from?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A batch of 10 3D printed parts has 3 defective ones. Two parts are chosen at random together. What is the probability neither chosen part is defective?",
+        "answer": {
+          "kind": "number",
+          "value": "7/15"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-compound-probability-p50",
+      "lane": "skills",
+      "ideaId": "al-compound-probability",
+      "kind": "number",
+      "prompt": "A player has a 1/3 chance of winning game A and a 1/4 chance of winning game B, independently. What is the probability of winning exactly one of the two games?",
+      "answer": {
+        "kind": "number",
+        "value": "5/12"
+      },
+      "explanation": [
+        "Winning exactly one means either A and not B, or B and not A.",
+        "A and not B is 1/3 times 3/4, which is 1/4.",
+        "B and not A is 2/3 times 1/4, which is 1/6.",
+        "Adding 1/4 and 1/6 together gives 5/12."
+      ],
+      "useAgain": "when exactly one of two independent events happening is wanted, not both and not neither.",
+      "hints": [
+        "Winning exactly one splits into two separate cases: A but not B, or B but not A.",
+        "Find each case's probability separately, then add them."
+      ],
+      "socraticHint": "How many different ways are there to win exactly one of the two games?",
+      "skills": [
+        "think.skills.probability",
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A player has a 2/5 chance of winning game A and a 1/3 chance of winning game B, independently. What is the probability of winning exactly one of the two games?",
+        "answer": {
+          "kind": "number",
+          "value": "7/15"
+        }
+      }
+    }
+  ]
+}

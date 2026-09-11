@@ -1,0 +1,352 @@
+{
+  "id": "s4-w03-build",
+  "season": 4,
+  "week": 3,
+  "track": "build",
+  "title": "Two costumes, one plan, and a stopwatch to settle it",
+  "summary": "Meet vectors and functions in C++, rebuild last season's shop tally in the stricter tongue from a plan you write yourself, then race the two languages on ten million loop turns and write the gap down as a measured number.",
+  "minutes": 60,
+  "materials": [
+    "laptop with g++ and the editor, both installed and verified before the season",
+    "the shop tally Python program from last season",
+    "the Error Bestiary notebook opened in week 1",
+    "a stopwatch that shows tenths of a second, on a phone or a kitchen timer",
+    "the bug diary and the maker's log"
+  ],
+  "skills": [
+    "build.cpp",
+    "build.functions",
+    "build.data",
+    "build.debugging"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w03-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop, same six moves as always: ask, imagine, plan, build, test, fix.\n\nAsk: how fast is fast? You have heard people say compiled languages are faster. That is a slogan, and a slogan is somebody else's measurement. Today you take your own. By the end of the hour there will be two numbers in your log, both of them read off your own stopwatch, and one number worked out from them. If your number disagrees with the slogan, your number wins, because you were there.\n\nImagine: the shop tally you wrote last season, running twice on the same list of prices, once in each language, printing the same total both times. One plan, two costumes. Nothing about the plan changed. Everything about the clothes did.\n\nPlan: three jobs, in this order. One, two new tools in C++: the vector, which is a box that grows, and the function, which is a job with a name and a promise attached. Two, Rosetta number two: the shop tally program, rewritten in the stricter tongue from a description you write yourself, not translated line by line. Three, the race, with the stopwatch, and the number written down.\n\nOne rule carried over from week 1 and not repeating itself after today: the keyboard is yours. A parent may sit and watch and be interested, and they do not type."
+    },
+    {
+      "kind": "typing",
+      "id": "s4-w03-build-02",
+      "minutes": 5,
+      "body": "Five minutes on your typing site. Warm up on the home row, then drill the punctuation this week is made of, because every one of these stops a compile dead when it is wrong: the angle brackets in <vector>, the two colons in std::vector, the semicolon at the end of a statement, and the round brackets of a function's parameter list.\n\nThen type the line std::vector<int> prices; ten times without looking down. Then type for (int p : prices) ten times. Both go into a real program in about fifteen minutes, and a hunted key is a broken train of thought."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w03-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two ways the same loop gets carried out. Interpreted: every single turn, Python's interpreter looks at the instruction, works out what it means, then does it, ten million times over. Compiled: g++ reads the whole program once before the loop ever runs and turns it into machine instructions, so at run time the chip just does them, turn after turn, with no re-interpreting.",
+        "spec": {
+          "w": 400,
+          "h": 230,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 30,
+              "y": 30,
+              "w": 100,
+              "h": 50,
+              "label": "loop turn",
+              "sub": "python"
+            },
+            {
+              "t": "line",
+              "x1": 130,
+              "y1": 55,
+              "x2": 230,
+              "y2": 55,
+              "arrow": true,
+              "dashed": true,
+              "label": "look, then do"
+            },
+            {
+              "t": "box",
+              "x": 230,
+              "y": 30,
+              "w": 110,
+              "h": 50,
+              "label": "next turn",
+              "sub": "looked at again"
+            },
+            {
+              "t": "text",
+              "x": 60,
+              "y": 15,
+              "s": "repeated 10,000,000×",
+              "size": 10
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 130,
+              "w": 120,
+              "h": 50,
+              "label": "whole program",
+              "sub": "g++, once"
+            },
+            {
+              "t": "line",
+              "x1": 150,
+              "y1": 155,
+              "x2": 250,
+              "y2": 155,
+              "arrow": true,
+              "label": "compiled once"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 130,
+              "w": 120,
+              "h": 50,
+              "label": "machine code",
+              "sub": "already decided"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 200,
+              "s": "chip just runs it, turn after turn",
+              "size": 10
+            }
+          ]
+        }
+      },
+      "title": "A translator in the room, or a letter translated last week",
+      "body": "Two ways to run a program, and today you meet the second one properly.\n\nThe Python on your laptop is CPython, and it works like this. Your source is turned into a compact list of small instructions, and then a program called the interpreter walks that list and carries each instruction out. Round a loop it goes back and looks again. Every single turn, it looks at the instruction, works out what it means, and only then does it. The looking is not free, and the looking happens ten million times if your loop turns ten million times.\n\nThe g++ on your laptop does the looking once, before your program ever runs. It reads the whole book, works out what every line means, and writes out machine instructions, the only language the chip actually speaks. At run time nothing is being worked out. The chip reads instructions that were already decided and does them.\n\nThe picture to keep: an interpreter standing next to you, translating each sentence as you say it, against a letter you had translated last week and printed. The person in the room is more flexible. The printed letter is faster, and it was decided in advance.\n\nTwo honest halves of this. The interpreter is buying something with that cost: it can change its mind about what a name means mid-run, which is why your first year of programming felt easy. A plan that is wrong is wrong at any speed, and that idea has a name: Big-O, the shape of a step count. Two shapes you already know from season 3: one pass over the data is O(n), and a check of every pair is O(n squared). Today meet a third: O(1), a lookup that never grows, like finding one cow's number in a list, which takes the same single step whether the list holds ten cows or ten thousand. A slow language on an O(n) plan beats a fast language on an O(n squared) one once n is big enough, which today's race never tests, since both programs ran the same one-pass plan.\n\nOne more thing that matters today. Because g++ reads the whole book first, it is allowed to work parts of the answer out in advance, before your program runs at all. That is why the race in this hour is compiled with no optimisation flag: with the optimiser turned up, the compiler can do a whole loop by itself while compiling, and your stopwatch would be timing a program that never counted anything."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w03-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A vector of prices growing as push_back adds to the end: indices 0, 1, 2 and 3 each hold one price, and prices.size() counts how many slots are filled. Pushing a new price on lands it in the next free slot and the vector grows to fit it, unlike a plain C array, which cannot grow at all.",
+        "spec": {
+          "w": 380,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 60,
+              "w": 50,
+              "h": 50,
+              "label": "4",
+              "sub": "[0]"
+            },
+            {
+              "t": "box",
+              "x": 78,
+              "y": 60,
+              "w": 50,
+              "h": 50,
+              "label": "9",
+              "sub": "[1]"
+            },
+            {
+              "t": "box",
+              "x": 136,
+              "y": 60,
+              "w": 50,
+              "h": 50,
+              "label": "2",
+              "sub": "[2]"
+            },
+            {
+              "t": "box",
+              "x": 194,
+              "y": 60,
+              "w": 50,
+              "h": 50,
+              "label": "7",
+              "sub": "[3]"
+            },
+            {
+              "t": "line",
+              "x1": 244,
+              "y1": 85,
+              "x2": 310,
+              "y2": 85,
+              "arrow": true,
+              "label": "push_back"
+            },
+            {
+              "t": "box",
+              "x": 310,
+              "y": 60,
+              "w": 50,
+              "h": 50,
+              "label": "5",
+              "sub": "[4]",
+              "fill": "accent"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 145,
+              "s": "prices.size() = 5",
+              "size": 12
+            }
+          ]
+        }
+      },
+      "title": "A box that grows, and a job with a name",
+      "body": "Two tools, one program. Write a small program from scratch that holds a list of prices and totals them.\n\nThe box that grows. A vector is C++'s list, and it needs #include <vector> at the top of the file. Declare one with std::vector<int> prices; and it starts empty. prices.push_back(4); puts a 4 on the end and the vector grows to fit it. prices.size() answers how many are in there. prices[0] is the first one, counting from zero, exactly as in Python.\n\nThe difference from a Python list is in the angle brackets. std::vector<int> means a vector of int and nothing else, forever. That is week 2's contract again, one level up: the box declares what it holds and the language holds you to it. Try prices.push_back(\"four\"); on purpose. The compiler refuses, and the message is long, mentions no matching function for call to push_back, and then prints a wall of every version it considered. Do not be frightened by the wall. Read the first line only, and write that first line into the Bestiary in your own words.\n\nWalking it. Write for (int p : prices) and the loop hands you one price at a time, the same shape as Python's for p in prices. That is the Rosetta pair for the next step, so learn it here where the program is small.\n\nThe job with a name. A function in C++ announces its promise before it does anything: the type it will hand back comes first, then the name, then what it needs. Write one called total that takes the vector and hands back the sum, and give it the return type long long rather than int, because you already know from last week what happens when a total outgrows its box. Put the whole function above main, because C++ reads top to bottom and main cannot call a name it has not met yet. If you put it below, the compile stops on a line saying total was not declared in this scope, which sounds mysterious and only means it was not read yet.\n\nThen break it once, deliberately, for the Bestiary. Change your function's return type from long long to void and leave the return line where it is. The compiler catches the broken promise and says so, in a message about a return statement with a value in a function returning void. That is the strictest reader being the kindest one: the disagreement was between the first line of your function and its last line, and you would never have found it by running the program.\n\nA note about the exact words. These messages are quoted the way GCC prints them. If your compiler is clang or MSVC instead, or a different version of GCC, the meaning is the same and the wording will not be. Write down what yours actually said, not what this page says it says.",
+      "checklist": [
+        "The program declares a vector of int, pushes at least five prices into it, and prints prices.size()",
+        "A function written above main takes the vector and returns the total, and its declared return type is long long",
+        "I offered a vector of int something that is not an int, on purpose, and wrote the first line of the error into the Bestiary in my own words",
+        "I broke the return type on purpose, read what the compiler said about the promise, and wrote that down too",
+        "Every message I wrote down is the one my compiler printed, not the one this page predicted"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s4-w03-build-05",
+      "title": "Rosetta two: the shop tally, in the stricter tongue",
+      "body": "Open the shop tally program you wrote last season, the one that added up a day of takings. If that exact file is not the one you want, pick any Python program of yours that reads a list of numbers and reports something about them. It has to be yours and it has to already work.\n\nRead it all the way through before you open a C++ file. Then close it and write on paper, in three lines, what it does. Not how. What. Something in the shape of: it reads a list of prices, it totals them, it prints the total and the count.\n\nNow write the C++ from those three lines. This is the whole method and it matters: you are not translating word by word, you are building the same plan again in different clothes. Line by line translation teaches you a phrasebook. Rebuilding from the plan teaches you that the plan was never made of Python in the first place.\n\nThree places C++ will make you say something Python let you leave out, and all three are worth writing in the Bestiary:\n\nOne, the list becomes a vector and has to declare what it holds. Python let a list hold a number and a word side by side. A vector of int will not.\n\nTwo, every name has to be declared with a type before it is used. In Python total = 0 both makes the name and fills it. In C++ you say long long total = 0; and the type is part of the sentence.\n\nThree, and this one is a real trap that compiles perfectly and gives you a wrong answer: if you divide two ints in C++, the remainder is thrown away. In C++, 15 / 2 is 7, not 7.5. In Python 3, 15 / 2 is 7.5, and 15 // 2 is the one that gives 7. So if your tally program works out an average, it will quietly be wrong in C++ until one of the two numbers is a double. Nothing warns you. The program compiles, runs, prints a number, and lies.\n\nWhen both programs run, feed them the same prices and compare the two outputs line by line. If your prices have cents in them, expect one difference that is not a bug: Python prints a total of seven dollars as 7.0 and C++ prints it as 7, because the two languages have different default ideas about how much of a decimal to show. That is a printing difference, not a wrong total, and it earns a Bestiary line of its own. Any difference in the totals themselves is a different matter, and you do not patch the C++ until you know why. The plan is the same in both, so one of the two costumes is telling you something true about itself.",
+      "checklist": [
+        "I wrote the three lines describing what the program does before opening a C++ file",
+        "The C++ version was built from those three lines, not translated line by line from the Python",
+        "Both programs run on the same prices and print the same total, and the only difference left is how the two languages print a decimal",
+        "At least two places where C++ made me say something Python let me leave out are in the Bestiary",
+        "Where the outputs differed, I found the reason before I changed a single line"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s4-w03-build-06",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The race loop as a flowchart: start with total at zero and counter at zero, then check whether counter is less than N. If yes, add counter to total, add one to counter, and loop back to the check. If no, print the total. The same shape runs in both languages; only how fast each turn happens differs.",
+        "spec": {
+          "w": 380,
+          "h": 240,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 100,
+              "y": 10,
+              "w": 120,
+              "h": 34,
+              "label": "total=0",
+              "sub": "counter=0"
+            },
+            {
+              "t": "line",
+              "x1": 160,
+              "y1": 52,
+              "x2": 160,
+              "y2": 74,
+              "arrow": true
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  160,
+                  74
+                ],
+                [
+                  215,
+                  110
+                ],
+                [
+                  160,
+                  146
+                ],
+                [
+                  105,
+                  110
+                ]
+              ],
+              "label": "counter<N?"
+            },
+            {
+              "t": "line",
+              "x1": 215,
+              "y1": 110,
+              "x2": 260,
+              "y2": 110,
+              "arrow": true,
+              "label": "yes"
+            },
+            {
+              "t": "box",
+              "x": 260,
+              "y": 90,
+              "w": 110,
+              "h": 40,
+              "label": "total+=counter",
+              "sub": "counter+=1"
+            },
+            {
+              "t": "line",
+              "x1": 315,
+              "y1": 130,
+              "x2": 160,
+              "y2": 146,
+              "arrow": true,
+              "dashed": true,
+              "label": "repeat"
+            },
+            {
+              "t": "line",
+              "x1": 160,
+              "y1": 146,
+              "x2": 160,
+              "y2": 186,
+              "arrow": true,
+              "label": "no"
+            },
+            {
+              "t": "box",
+              "x": 110,
+              "y": 186,
+              "w": 100,
+              "h": 30,
+              "label": "print total"
+            }
+          ]
+        }
+      },
+      "title": "The race, and the number it leaves in your log",
+      "body": "The same tiny plan in both languages. Start a total at zero. Let a counter run from 0 up to ten million. Add the counter to the total each turn. Print the total at the end. Print it, always: a loop whose answer is never used is a loop a compiler is allowed to skip.\n\nIn C++ the total must be long long, and here is the arithmetic reason rather than a rule. The sum of every whole number from 0 to 9,999,999 is 49,999,995,000,000. Last week's wall for an int was 2,147,483,647. The answer is more than twenty thousand times past the wall. Run it once in an int on purpose and look at what comes out, then put it back to long long. C++ does not promise what an int does when it overflows, so what you see is what your machine chose to do, not a law. Write down what actually happened on your machine, in those words.\n\nCompile the C++ with a plain g++ race.cpp -o race and no optimisation flag, for the reason in today's science moment.\n\nNow the stopwatch. Run the Python one and time it. Expect somewhere around a second, and if yours is half that or double it, that is your laptop and your number is the one that counts. Write the seconds down before you think about them.\n\nThen run the C++ one and time it. It will be finished before your thumb comes off the button. That is not a failure and it is not a broken program: it is your first real finding of the morning, and the finding is about the stopwatch, not about C++. A tool that cannot see the thing you are measuring gives you no number at all.\n\nSo fix the measurement rather than guessing the number. Give C++ a hundred times the work: change ten million to a thousand million and run it again. Now the stopwatch has something to catch.\n\nTwo timings, two amounts of work, and one honest way to compare them: turns per second. Python's ten million divided by its seconds. C++'s thousand million divided by its seconds. Then divide the second number by the first, and that is the gap, written as a number you measured rather than a word you were handed.\n\nLast, turn the optimiser up. Compile again with g++ -O2 race.cpp -o race and time it once more. If the time collapses to almost nothing, that is the compiler having read the whole book and worked out the ending before the program ever started. Write down what changed. Then say out loud the sentence that keeps all of this honest: a bad plan is still bad at any speed, and in December you will be writing Python.",
+      "checklist": [
+        "Both programs print the same total, the C++ total is a long long, and I ran it once in an int on purpose to see what my own machine actually printed",
+        "Both timings were read off the stopwatch and written down before I worked anything out",
+        "When C++ finished too fast to time, I gave it more work instead of guessing a number",
+        "The gap is in my log as turns per second for each language and one number dividing them",
+        "I said out loud that this race measures a language's speed, not a plan's shape, and named today's loop O(n), one pass over n turns"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w03-build-07",
+      "title": "Bug diary and the Error Bestiary",
+      "body": "The bug diary, and its C++ chapter, the Error Bestiary. Today should add three or four entries. Each entry is the message in your own words, what actually caused it, and what you would look at first next time.\n\nToday's likely catch, in the order they usually arrive.\n\n'vector' is not a member of 'std': the #include <vector> line is missing. Recent versions of GCC are kind here and add a note naming the header you forgot; older ones just stop. Worth knowing: if you had written vector without the std:: in front of it, the very same missing header gives a completely different sentence, about a name not being declared in this scope. One cause, two messages, and which one you get depends on how you spelled the name.\n\nAnd that error's twin, which is not an error at all and is worth a page anyway: sometimes another header you did include quietly drags vector in behind your back, and the program compiles even though your own include line is missing. If that happens on your laptop, write it down. A program that only compiles by accident is a program that fails on somebody else's machine, and the fix is to include what you use.\n\nexpected ';' before something: a missing semicolon. Notice where the compiler points, because it is almost always the line after the one you need to fix. It only noticed at the next line, which is a useful thing to know about every error message you will ever read.\n\nno matching function for call to push_back, followed by a wall of candidates: you offered the vector something that is not its declared type. The wall is the compiler listing everything it tried. The first line is the whole message.\n\ntotal was not declared in this scope: the function is written below the place that calls it, or the two spellings do not match.\n\nThen one that is not an error at all, and is worth its own page. If you compile with warnings turned on, with -Wall, and you compare a plain int counter against prices.size(), the compiler says something about a comparison of integer expressions of different signedness. The program still compiles and still runs. A warning is the compiler saying: this is legal, and I still do not trust it. Warnings are worth reading for exactly that reason.\n\nAnd last, the one nothing catches, which is the one to be afraid of. Ask a vector of three prices for prices[10]. It compiles. It runs. Nothing warns you at all. What it prints is whatever happened to be sitting in that memory, and C++ makes no promise about it: it might print rubbish, it might print zero, it might stop the program. Write prices.at(10) instead and the vector does check, and stops the program with a message about being out of range. That is a program that compiles, runs and is still wrong, and it is the thing this whole season keeps circling: looking right and being right are different, and you check against the truth, not against the look of it.\n\nOne more line in tonight's diary. Pick two or three programs you have already written this season and label each with one of today's three shapes, O(n), O(n squared) or O(1), and say in one sentence why."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w03-build-08",
+      "title": "Show it",
+      "prompt": "Both tally programs, the Python and the C++, plus the race program in C++. Then the two stopwatch times written in your own hand with the work each one covered, the turns per second for each language, and the one number that divides them. Then a photo of today's Bestiary pages.",
+      "accepts": [
+        "code",
+        "photo",
+        "text"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w03-build-09",
+      "variant": "maker"
+    }
+  ]
+}

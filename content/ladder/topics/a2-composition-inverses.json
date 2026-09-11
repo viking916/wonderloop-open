@@ -1,0 +1,2067 @@
+{
+  "id": "a2-composition-inverses",
+  "idea": {
+    "body": "Composing two functions means feeding one function's output into another. f(g(x)) means find g(x) first, then use that result as the input to f. The order matters: f(g(x)) and g(f(x)) usually give different answers. An inverse function undoes another function completely. If f(x) = 2x + 3, its inverse is f inverse of x = (x - 3)/2. Applying one after the other always returns the original input. Not every function has an inverse. A function must be one-to-one, meaning no two inputs ever give the same output. A line with a nonzero slope is always one-to-one, but a full parabola is not, unless its domain is restricted to one branch.",
+    "figure": {
+      "kind": "plane",
+      "alt": "y = 2x + 3 and its inverse y = (x - 3)/2, mirror images that swap the points (0, 3) and (3, 0).",
+      "spec": {
+        "range": 8,
+        "points": [
+          {
+            "x": 0,
+            "y": 3
+          },
+          {
+            "x": 3,
+            "y": 0
+          }
+        ],
+        "polylines": [
+          [
+            [
+              -5.5,
+              -8
+            ],
+            [
+              2.5,
+              8
+            ]
+          ],
+          [
+            [
+              -8,
+              -5.5
+            ],
+            [
+              8,
+              2.5
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "f(x) = 3x - 4. Find f inverse of x, then use it to check that f(f inverse of 5) = 5.",
+    "steps": [
+      "Write y = 3x - 4, then swap x and y: x = 3y - 4.",
+      "Solve for y: y = (x + 4)/3, so f inverse of x = (x + 4)/3.",
+      "Find f inverse of 5: (5 + 4)/3 = 3.",
+      "Find f(3): 3(3) - 4 = 5.",
+      "It matches, confirming f and f inverse undo each other."
+    ]
+  },
+  "ways": [
+    {
+      "id": "a2-composition-inverses-w1",
+      "name": "Substitute inside out",
+      "when": "when you have f(x) and g(x) and need f(g(x)) evaluated.",
+      "steps": [
+        "Find g(x) first using your given input.",
+        "Use that result as the input to f.",
+        "Write f(g(x)) and substitute from the inside.",
+        "Simplify to get your answer."
+      ],
+      "example": "f(x) = 2x + 1, g(x) = x - 3. Find f(g(2)).",
+      "answer": "-3",
+      "trap": "Doing f(x) first then g on that result, which is the wrong order."
+    },
+    {
+      "id": "a2-composition-inverses-w2",
+      "name": "Swap x and y then solve",
+      "when": "when you need to find the inverse of f(x) = ax + b.",
+      "steps": [
+        "Write y = ax + b.",
+        "Swap x and y: x = ay + b.",
+        "Solve for y by undoing operations in reverse order.",
+        "Your result is the inverse."
+      ],
+      "example": "f(x) = 3x - 5",
+      "answer": "f inverse(x) = (x + 5)/3",
+      "trap": "Not swapping x and y, or solving incorrectly after the swap."
+    },
+    {
+      "id": "a2-composition-inverses-w3",
+      "name": "The machine run backwards",
+      "when": "when you picture f as a machine and need to undo its steps.",
+      "steps": [
+        "List every step f performs: first multiply by a, then add b.",
+        "Write those steps in reverse with opposite operations.",
+        "Subtract b first, then divide by a.",
+        "That order is your inverse."
+      ],
+      "example": "f(x) = 4x + 2: multiply by 4, add 2.",
+      "answer": "Inverse: subtract 2, divide by 4. So f inverse(x) = (x - 2)/4.",
+      "trap": "Reversing the operations but forgetting to reverse the order."
+    },
+    {
+      "id": "a2-composition-inverses-w4",
+      "name": "The reflection over y = x",
+      "when": "when you can visualize f and its inverse as reflections.",
+      "steps": [
+        "Graph f(x) on a coordinate plane.",
+        "The inverse graph is f reflected over the line y = x.",
+        "Check: if (a, b) is on f, then (b, a) is on f inverse.",
+        "Swapping coordinates confirms the reflection."
+      ],
+      "example": "f(x) = 2x. The point (2, 4) is on f.",
+      "answer": "(4, 2) is on f inverse. The graphs are mirror images.",
+      "trap": "Confusing which direction to reflect, or forgetting to swap coordinates.",
+      "figure": {
+        "kind": "plane",
+        "alt": "The line y = 2x through (2, 4), its inverse y = x/2 through (4, 2), and the dashed mirror line y = x.",
+        "spec": {
+          "range": 6,
+          "points": [
+            {
+              "x": 2,
+              "y": 4,
+              "label": "(2, 4)"
+            },
+            {
+              "x": 4,
+              "y": 2,
+              "label": "(4, 2)"
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -3,
+                -6
+              ],
+              [
+                3,
+                6
+              ]
+            ],
+            [
+              [
+                -6,
+                -3
+              ],
+              [
+                6,
+                3
+              ]
+            ],
+            {
+              "points": [
+                [
+                  -6,
+                  -6
+                ],
+                [
+                  6,
+                  6
+                ]
+              ],
+              "dashed": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-composition-inverses-p01",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = 4x + 3 and g(x) = -3x - 4. What is f(g(-5))?",
+      "answer": {
+        "kind": "number",
+        "value": "47"
+      },
+      "explanation": [
+        "First find g(-5): -3(-5) - 4 = 11.",
+        "Then find f(11): 4(11) + 3 = 47."
+      ],
+      "useAgain": "when one function's output feeds directly into another.",
+      "hints": [
+        "Work from the inside out: evaluate g first.",
+        "Then use that result as the input to f."
+      ],
+      "socraticHint": "What is g(-5)?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = x + 5 and g(x) = 2x + 1. What is f(g(6))?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p02",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = 2x + 5 and g(x) = 5x + 6. What is f(g(-2))?",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "First find g(-2): 5(-2) + 6 = -4.",
+        "Then find f(-4): 2(-4) + 5 = -3."
+      ],
+      "useAgain": "when one function's output feeds directly into another.",
+      "hints": [
+        "Work from the inside out: evaluate g first.",
+        "Then use that result as the input to f."
+      ],
+      "socraticHint": "What is g(-2)?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = 4x + 9 and g(x) = x - 4. What is f(g(-6))?",
+        "answer": {
+          "kind": "number",
+          "value": "-31"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p03",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = 5x + 8 and g(x) = 4x - 6. What is f(g(5))?",
+      "answer": {
+        "kind": "number",
+        "value": "78"
+      },
+      "explanation": [
+        "First find g(5): 4(5) - 6 = 14.",
+        "Then find f(14): 5(14) + 8 = 78."
+      ],
+      "useAgain": "when one function's output feeds directly into another.",
+      "hints": [
+        "Work from the inside out: evaluate g first.",
+        "Then use that result as the input to f."
+      ],
+      "socraticHint": "What is g(5)?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = 4x + 8 and g(x) = 5x + 4. What is f(g(2))?",
+        "answer": {
+          "kind": "number",
+          "value": "64"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p04",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = 3x + 9 and g(x) = 3x - 9. What is f(g(4))?",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "First find g(4): 3(4) - 9 = 3.",
+        "Then find f(3): 3(3) + 9 = 18."
+      ],
+      "useAgain": "when one function's output feeds directly into another.",
+      "hints": [
+        "Work from the inside out: evaluate g first.",
+        "Then use that result as the input to f."
+      ],
+      "socraticHint": "What is g(4)?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = -4x + 5 and g(x) = -2x - 3. What is f(g(-4))?",
+        "answer": {
+          "kind": "number",
+          "value": "-15"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p05",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = -3x + 4 and g(x) = 3x + 2. What is g(f(-1))?",
+      "answer": {
+        "kind": "number",
+        "value": "23"
+      },
+      "explanation": [
+        "First find f(-1): -3(-1) + 4 = 7.",
+        "Then find g(7): 3(7) + 2 = 23.",
+        "Composing in the other order usually gives a different result."
+      ],
+      "useAgain": "when the order functions are composed in changes the answer.",
+      "hints": [
+        "Work from the inside out: evaluate f first this time.",
+        "Then use that result as the input to g."
+      ],
+      "socraticHint": "What is f(-1)?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = x - 9 and g(x) = -2x - 1. What is g(f(0))?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p06",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = -2x + 6 and g(x) = 5x - 1. What is g(f(-3))?",
+      "answer": {
+        "kind": "number",
+        "value": "59"
+      },
+      "explanation": [
+        "First find f(-3): -2(-3) + 6 = 12.",
+        "Then find g(12): 5(12) - 1 = 59.",
+        "Composing in the other order usually gives a different result."
+      ],
+      "useAgain": "when the order functions are composed in changes the answer.",
+      "hints": [
+        "Work from the inside out: evaluate f first this time.",
+        "Then use that result as the input to g."
+      ],
+      "socraticHint": "What is f(-3)?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = 3x - 1 and g(x) = 3x - 7. What is g(f(1))?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p07",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = -5x - 9 and g(x) = -5x - 7. What is g(f(3))?",
+      "answer": {
+        "kind": "number",
+        "value": "113"
+      },
+      "explanation": [
+        "First find f(3): -5(3) - 9 = -24.",
+        "Then find g(-24): -5(-24) - 7 = 113.",
+        "Composing in the other order usually gives a different result."
+      ],
+      "useAgain": "when the order functions are composed in changes the answer.",
+      "hints": [
+        "Work from the inside out: evaluate f first this time.",
+        "Then use that result as the input to g."
+      ],
+      "socraticHint": "What is f(3)?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = 3x - 5 and g(x) = -x - 3. What is g(f(-2))?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p08",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = -2x - 7. What is f inverse of x?",
+      "options": [
+        "y = (x - 7)/-2",
+        "y = (x + 7)/2",
+        "y = -2x + 7",
+        "y = (x + 7)/-2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Write y = ax + b, then swap x and y and solve for the new y.",
+        "x = -2y - 7 leads to y = (x + 7)/-2."
+      ],
+      "useAgain": "when you need to undo a linear function completely.",
+      "hints": [
+        "Swap x and y in the equation, then solve for y.",
+        "Undo the addition of b first, then the multiplication by a."
+      ],
+      "socraticHint": "What do you get when you swap x and y in y = ax + b?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = -5x - 2. What is f inverse of x?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "y = (x + 2)/-5",
+          "y = (x - 2)/-5",
+          "y = (x + 2)/5",
+          "y = -5x + 2"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p09",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = 4x - 7. What is f inverse of x?",
+      "options": [
+        "y = (x - 7)/4",
+        "y = (x + 7)/4",
+        "y = (x + 7)/-4",
+        "y = 4x + 7"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Write y = ax + b, then swap x and y and solve for the new y.",
+        "x = 4y - 7 leads to y = (x + 7)/4."
+      ],
+      "useAgain": "when you need to undo a linear function completely.",
+      "hints": [
+        "Swap x and y in the equation, then solve for y.",
+        "Undo the addition of b first, then the multiplication by a."
+      ],
+      "socraticHint": "What do you get when you swap x and y in y = ax + b?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = 5x - 8. What is f inverse of x?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "y = (x - 8)/5",
+          "y = (x + 8)/-5",
+          "y = (x + 8)/5",
+          "y = 5x + 8"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p10",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = 5x + 3. What is f inverse of x?",
+      "options": [
+        "y = (x + 3)/5",
+        "y = (x - 3)/-5",
+        "y = 5x - 3",
+        "y = (x - 3)/5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Write y = ax + b, then swap x and y and solve for the new y.",
+        "x = 5y + 3 leads to y = (x - 3)/5."
+      ],
+      "useAgain": "when you need to undo a linear function completely.",
+      "hints": [
+        "Swap x and y in the equation, then solve for y.",
+        "Undo the addition of b first, then the multiplication by a."
+      ],
+      "socraticHint": "What do you get when you swap x and y in y = ax + b?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = x - 2. What is f inverse of x?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "y = (x - 2)/1",
+          "y = (x + 2)/1",
+          "y = (x + 2)/-1",
+          "y = -x + 2"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p11",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = x + 4 and g(x) = x - 4. What is f(g(-3))?",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "g is built to be exactly f's inverse.",
+        "Applying f after g always returns the original input.",
+        "So f(g(-3)) = -3."
+      ],
+      "useAgain": "when you need to check that two functions truly are inverses.",
+      "hints": [
+        "g is f's inverse function.",
+        "A function and its inverse undo each other completely."
+      ],
+      "socraticHint": "What does a function composed with its own inverse always give back?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = 3x + 8 and g(x) = (x - 8)/3. What is f(g(5))?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p12",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = 5x - 6 and g(x) = (x + 6)/5. What is f(g(-5))?",
+      "answer": {
+        "kind": "number",
+        "value": "-5"
+      },
+      "explanation": [
+        "g is built to be exactly f's inverse.",
+        "Applying f after g always returns the original input.",
+        "So f(g(-5)) = -5."
+      ],
+      "useAgain": "when you need to check that two functions truly are inverses.",
+      "hints": [
+        "g is f's inverse function.",
+        "A function and its inverse undo each other completely."
+      ],
+      "socraticHint": "What does a function composed with its own inverse always give back?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = -3x + 9 and g(x) = (x - 9)/-3. What is f(g(3))?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p13",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = 5x + 9 and g(x) = (x - 9)/5. What is f(g(4))?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "g is built to be exactly f's inverse.",
+        "Applying f after g always returns the original input.",
+        "So f(g(4)) = 4."
+      ],
+      "useAgain": "when you need to check that two functions truly are inverses.",
+      "hints": [
+        "g is f's inverse function.",
+        "A function and its inverse undo each other completely."
+      ],
+      "socraticHint": "What does a function composed with its own inverse always give back?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = -x + 4 and g(x) = (x - 4)/-1. What is f(g(-1))?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p14",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = -x + 8 and g(x) = x^2 + 8. What is f(g(-2))?",
+      "answer": {
+        "kind": "number",
+        "value": "-4"
+      },
+      "explanation": [
+        "First find g(-2): (-2)^2 + 8 = 12.",
+        "Then find f(12): -1(12) + 8 = -4."
+      ],
+      "useAgain": "when a composition mixes a linear and a squared function.",
+      "hints": [
+        "Evaluate the inside function first, squaring before adding.",
+        "Then use that result as the input to the outside function."
+      ],
+      "socraticHint": "What is g(-2)?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = -x - 8 and g(x) = x^2 - 8. What is f(g(5))?",
+        "answer": {
+          "kind": "number",
+          "value": "-25"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p15",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = -3x - 9 and g(x) = x^2 - 1. What is f(g(-6))?",
+      "answer": {
+        "kind": "number",
+        "value": "-114"
+      },
+      "explanation": [
+        "First find g(-6): (-6)^2 - 1 = 35.",
+        "Then find f(35): -3(35) - 9 = -114."
+      ],
+      "useAgain": "when a composition mixes a linear and a squared function.",
+      "hints": [
+        "Evaluate the inside function first, squaring before adding.",
+        "Then use that result as the input to the outside function."
+      ],
+      "socraticHint": "What is g(-6)?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "f(x) = 5x + 7 and g(x) = x^2 + 7. What is f(g(5))?",
+        "answer": {
+          "kind": "number",
+          "value": "167"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p16",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = -x + 9 and g(x) = -x - 2. What is f(g(x))?",
+      "options": [
+        "x + 9",
+        "x - 11",
+        "x + 11",
+        "-2x + 11"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Substitute g(x) for x in f: -1(-x - 2) + 9.",
+        "Distribute -1 across both terms of g(x), then combine the constants.",
+        "That gives x + 11."
+      ],
+      "useAgain": "when you need a single formula for a composed function.",
+      "hints": [
+        "Substitute the whole formula for g(x) everywhere x appears in f.",
+        "Distribute before combining like terms."
+      ],
+      "socraticHint": "What do you get when you put -x - 2 in place of x in f?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = -4x - 6 and g(x) = x + 2. What is f(g(x))?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "-4x - 14",
+          "-4x - 6",
+          "-4x - 4",
+          "-3x - 14"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p17",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = 4x - 9 and g(x) = -5x - 1. What is f(g(x))?",
+      "options": [
+        "-20x - 9",
+        "-20x - 13",
+        "-20x + 44",
+        "-x - 13"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Substitute g(x) for x in f: 4(-5x - 1) - 9.",
+        "Distribute 4 across both terms of g(x), then combine the constants.",
+        "That gives -20x - 13."
+      ],
+      "useAgain": "when you need a single formula for a composed function.",
+      "hints": [
+        "Substitute the whole formula for g(x) everywhere x appears in f.",
+        "Distribute before combining like terms."
+      ],
+      "socraticHint": "What do you get when you put -5x - 1 in place of x in f?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = -3x + 6 and g(x) = 4x - 8. What is f(g(x))?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "-12x + 30",
+          "-12x + 6",
+          "-12x + 16",
+          "x + 30"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p18",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = 2x + 7 and g(x) = -5x + 7. What is f(g(x))?",
+      "options": [
+        "-10x + 7",
+        "-10x - 28",
+        "-3x + 21",
+        "-10x + 21"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Substitute g(x) for x in f: 2(-5x + 7) + 7.",
+        "Distribute 2 across both terms of g(x), then combine the constants.",
+        "That gives -10x + 21."
+      ],
+      "useAgain": "when you need a single formula for a composed function.",
+      "hints": [
+        "Substitute the whole formula for g(x) everywhere x appears in f.",
+        "Distribute before combining like terms."
+      ],
+      "socraticHint": "What do you get when you put -5x + 7 in place of x in f?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = 2x - 8 and g(x) = -2x + 3. What is f(g(x))?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "-4x - 8",
+          "-4x + 19",
+          "-4x - 2",
+          "0x - 2"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p19",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = (x - 6)/-4. What is f inverse of x?",
+      "options": [
+        "-4x + 6",
+        "-4x - 6",
+        "x + 6",
+        "4x + 6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Write y = (x - b)/a, then swap x and y and solve for the new y.",
+        "x = (y - (6))/-4 leads to y = -4x + 6.",
+        "So f inverse of x is -4x + 6."
+      ],
+      "useAgain": "when a function is written as a fraction and you need its inverse.",
+      "hints": [
+        "Swap x and y, then solve for y.",
+        "Multiply both sides by a first, then add b."
+      ],
+      "socraticHint": "What do you get when you swap x and y and solve for y?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = (x - 9)/-4. What is f inverse of x?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "-4x - 9",
+          "x + 9",
+          "4x + 9",
+          "-4x + 9"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p20",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = (x + 5)/-4. What is f inverse of x?",
+      "options": [
+        "-4x + 5",
+        "x - 5",
+        "-4x - 5",
+        "4x - 5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Write y = (x - b)/a, then swap x and y and solve for the new y.",
+        "x = (y - (-5))/-4 leads to y = -4x - 5.",
+        "So f inverse of x is -4x - 5."
+      ],
+      "useAgain": "when a function is written as a fraction and you need its inverse.",
+      "hints": [
+        "Swap x and y, then solve for y.",
+        "Multiply both sides by a first, then add b."
+      ],
+      "socraticHint": "What do you get when you swap x and y and solve for y?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = (x + 9)/5. What is f inverse of x?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "5x + 9",
+          "5x - 9",
+          "x - 9",
+          "-5x - 9"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p21",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = (x + 2)/4. What is f inverse of x?",
+      "options": [
+        "4x + 2",
+        "x - 2",
+        "-4x - 2",
+        "4x - 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Write y = (x - b)/a, then swap x and y and solve for the new y.",
+        "x = (y - (-2))/4 leads to y = 4x - 2.",
+        "So f inverse of x is 4x - 2."
+      ],
+      "useAgain": "when a function is written as a fraction and you need its inverse.",
+      "hints": [
+        "Swap x and y, then solve for y.",
+        "Multiply both sides by a first, then add b."
+      ],
+      "socraticHint": "What do you get when you swap x and y and solve for y?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = (x - 3)/3. What is f inverse of x?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "3x - 3",
+          "3x + 3",
+          "x + 3",
+          "-3x + 3"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p22",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "truefalse",
+      "prompt": "f(x) = x^2 - 6 for x >= 0 only. Is f one-to-one?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Restricting to x >= 0 keeps only the increasing half, so no output repeats.",
+        "So the statement is true."
+      ],
+      "useAgain": "when you must check a function is one-to-one before inverting it.",
+      "hints": [
+        "Picture the graph and check the horizontal line test.",
+        "A horizontal line crossing the graph twice means it is not one-to-one."
+      ],
+      "socraticHint": "Does any horizontal line cross this graph more than once?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = x^2 - 8 for all real x. Is f one-to-one?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p23",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "truefalse",
+      "prompt": "f(x) = -2 for every x. Is f one-to-one?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "f gives the same output for every input, so many inputs share one output.",
+        "So the statement is false."
+      ],
+      "useAgain": "when you must check a function is one-to-one before inverting it.",
+      "hints": [
+        "Picture the graph and check the horizontal line test.",
+        "A horizontal line crossing the graph twice means it is not one-to-one."
+      ],
+      "socraticHint": "Does any horizontal line cross this graph more than once?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = x^2 - 7 for x >= 0 only. Is f one-to-one?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p24",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "truefalse",
+      "prompt": "f(x) = x^2 + 3 for all real x. Is f one-to-one?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "A full parabola fails the horizontal line test: f(x) and f(-x) give the same output.",
+        "So the statement is false."
+      ],
+      "useAgain": "when you must check a function is one-to-one before inverting it.",
+      "hints": [
+        "Picture the graph and check the horizontal line test.",
+        "A horizontal line crossing the graph twice means it is not one-to-one."
+      ],
+      "socraticHint": "Does any horizontal line cross this graph more than once?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = x^2 + 7 for all real x. Is f one-to-one?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p25",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = x - 3 and g(x) = x^2 - 9. What is f(g(x))?",
+      "options": [
+        "x^2 - 3",
+        "x^2 - 10",
+        "x^2 - 12",
+        "x^2 - 6x"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Substitute g(x) for x in f: 1(x^2 - 9) - 3.",
+        "Distribute 1 across both terms, then combine the constants.",
+        "That gives x^2 - 12."
+      ],
+      "useAgain": "when a composed function mixes a line and a parabola.",
+      "hints": [
+        "Substitute the whole formula for g(x) everywhere x appears in f.",
+        "Distribute the outside coefficient across both terms first."
+      ],
+      "socraticHint": "What do you get when you put x^2 - 9 in place of x in f?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = 2x + 6 and g(x) = x^2 + 9. What is f(g(x))?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "2x^2 + 24",
+          "2x^2 + 6",
+          "2x^2 + 15",
+          "4x^2 + 24x + 45"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p26",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = -5x + 3 and g(x) = x^2 + 1. What is f(g(x))?",
+      "options": [
+        "-5x^2 - 2",
+        "-5x^2 + 3",
+        "-5x^2 + 4",
+        "25x^2 - 30x + 10"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Substitute g(x) for x in f: -5(x^2 + 1) + 3.",
+        "Distribute -5 across both terms, then combine the constants.",
+        "That gives -5x^2 - 2."
+      ],
+      "useAgain": "when a composed function mixes a line and a parabola.",
+      "hints": [
+        "Substitute the whole formula for g(x) everywhere x appears in f.",
+        "Distribute the outside coefficient across both terms first."
+      ],
+      "socraticHint": "What do you get when you put x^2 + 1 in place of x in f?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = -5x + 6 and g(x) = x^2 - 5. What is f(g(x))?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "-5x^2 + 6",
+          "-5x^2 + 31",
+          "-5x^2 + 1",
+          "25x^2 - 60x + 31"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p27",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = 5x - 2 and g(x) = x^2 + 4. What is f(g(x))?",
+      "options": [
+        "5x^2 - 2",
+        "5x^2 + 2",
+        "25x^2 - 20x + 8",
+        "5x^2 + 18"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Substitute g(x) for x in f: 5(x^2 + 4) - 2.",
+        "Distribute 5 across both terms, then combine the constants.",
+        "That gives 5x^2 + 18."
+      ],
+      "useAgain": "when a composed function mixes a line and a parabola.",
+      "hints": [
+        "Substitute the whole formula for g(x) everywhere x appears in f.",
+        "Distribute the outside coefficient across both terms first."
+      ],
+      "socraticHint": "What do you get when you put x^2 + 4 in place of x in f?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = -2x + 7 and g(x) = x^2 + 5. What is f(g(x))?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "-2x^2 + 7",
+          "-2x^2 + 12",
+          "-2x^2 - 3",
+          "4x^2 - 28x + 54"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p28",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "truefalse",
+      "prompt": "f(x) = -4x - 3 and g(x) = (x + 3)/4. Testing x = -6: is f(g(-6)) equal to -6?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "g(-6) = -3/4.",
+        "f(-3/4) = 0.",
+        "That does not equal -6, so g is not f's inverse."
+      ],
+      "useAgain": "when you need to check a candidate inverse on a specific value.",
+      "hints": [
+        "Work out g of the test value first.",
+        "Then plug that result into f and compare it to the test value."
+      ],
+      "socraticHint": "What is g(-6), and what is f of that?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = 3x - 3 and g(x) = (x + 3)/-3. Testing x = 6: is f(g(6)) equal to 6?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p29",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "truefalse",
+      "prompt": "f(x) = -x - 7 and g(x) = (x - 7)/-1. Testing x = 0: is f(g(0)) equal to 0?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "g(0) = 7.",
+        "f(7) = -14.",
+        "That does not equal 0, so g is not f's inverse."
+      ],
+      "useAgain": "when you need to check a candidate inverse on a specific value.",
+      "hints": [
+        "Work out g of the test value first.",
+        "Then plug that result into f and compare it to the test value."
+      ],
+      "socraticHint": "What is g(0), and what is f of that?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = 3x - 2 and g(x) = (x + 2)/-3. Testing x = 1: is f(g(1)) equal to 1?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p30",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "truefalse",
+      "prompt": "f(x) = -4x - 7 and g(x) = (x + 7)/4. Testing x = -4: is f(g(-4)) equal to -4?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "g(-4) = 3/4.",
+        "f(3/4) = -10.",
+        "That does not equal -4, so g is not f's inverse."
+      ],
+      "useAgain": "when you need to check a candidate inverse on a specific value.",
+      "hints": [
+        "Work out g of the test value first.",
+        "Then plug that result into f and compare it to the test value."
+      ],
+      "socraticHint": "What is g(-4), and what is f of that?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "f(x) = 2x - 9 and g(x) = (x + 9)/-2. Testing x = 2: is f(g(2)) equal to 2?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p31",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = (-x + 1)/(x + 4). What is f inverse of x?",
+      "options": [
+        "(4x + 1)/(x + 1)",
+        "(-4x + 1)/(x - 1)",
+        "(-4x - 1)/(x + 1)",
+        "(-4x + 1)/(x + 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Write y = f(x), swap x and y, and solve for the new y.",
+        "Clear the fraction by multiplying both sides by the denominator, then collect the y terms.",
+        "That gives (-4x + 1)/(x + 1)."
+      ],
+      "useAgain": "when a function written as a fraction needs to be inverted.",
+      "hints": [
+        "Swap x and y first, then clear the fraction.",
+        "Collect every term with the new y on one side before dividing."
+      ],
+      "socraticHint": "What do you get when you multiply both sides by the denominator?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = (4x - 3)/(x + 5). What is f inverse of x?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "(-5x - 3)/(x - 4)",
+          "(5x - 3)/(x - 4)",
+          "(-5x - 3)/(x + 4)",
+          "(-5x + 3)/(x - 4)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p32",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = (-4x - 3)/(x - 1). What is f inverse of x?",
+      "options": [
+        "(-x - 3)/(x + 4)",
+        "(x - 3)/(x + 4)",
+        "(x - 3)/(x - 4)",
+        "(x + 3)/(x + 4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Write y = f(x), swap x and y, and solve for the new y.",
+        "Clear the fraction by multiplying both sides by the denominator, then collect the y terms.",
+        "That gives (x - 3)/(x + 4)."
+      ],
+      "useAgain": "when a function written as a fraction needs to be inverted.",
+      "hints": [
+        "Swap x and y first, then clear the fraction.",
+        "Collect every term with the new y on one side before dividing."
+      ],
+      "socraticHint": "What do you get when you multiply both sides by the denominator?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = (-5x + 4)/(x + 2). What is f inverse of x?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(2x + 4)/(x + 5)",
+          "(-2x + 4)/(x - 5)",
+          "(-2x + 4)/(x + 5)",
+          "(-2x - 4)/(x + 5)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p33",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = (-x - 6)/(x - 3). What is f inverse of x?",
+      "options": [
+        "(-3x - 6)/(x + 1)",
+        "(3x - 6)/(x - 1)",
+        "(3x + 6)/(x + 1)",
+        "(3x - 6)/(x + 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Write y = f(x), swap x and y, and solve for the new y.",
+        "Clear the fraction by multiplying both sides by the denominator, then collect the y terms.",
+        "That gives (3x - 6)/(x + 1)."
+      ],
+      "useAgain": "when a function written as a fraction needs to be inverted.",
+      "hints": [
+        "Swap x and y first, then clear the fraction.",
+        "Collect every term with the new y on one side before dividing."
+      ],
+      "socraticHint": "What do you get when you multiply both sides by the denominator?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = (-2x - 5)/(x - 1). What is f inverse of x?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "(-x - 5)/(x + 2)",
+          "(x - 5)/(x + 2)",
+          "(x - 5)/(x - 2)",
+          "(x + 5)/(x + 2)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p34",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = (x - 4)^2 - 2 for x >= 4. What is f inverse of 14?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Set y = (x - 4)^2 - 2 and solve for x: x = 4 + sqrt(y - (-2)).",
+        "At y = 14, sqrt(14 - (-2)) = sqrt(16) = 4.",
+        "So f inverse of 14 is 4 + 4 = 8."
+      ],
+      "useAgain": "when a parabola is restricted to one branch so it can be inverted.",
+      "hints": [
+        "Swap x and y, then solve for y, keeping the positive square root.",
+        "The restriction x >= h means only the positive root is used."
+      ],
+      "socraticHint": "What does the restriction x >= h tell you about which square root to use?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = (x - 4)^2 + 7 for x >= 4. What is f inverse of 8?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p35",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = (x - 5)^2 + 9 for x >= 5. What is f inverse of 18?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Set y = (x - 5)^2 + 9 and solve for x: x = 5 + sqrt(y - (9)).",
+        "At y = 18, sqrt(18 - (9)) = sqrt(9) = 3.",
+        "So f inverse of 18 is 5 + 3 = 8."
+      ],
+      "useAgain": "when a parabola is restricted to one branch so it can be inverted.",
+      "hints": [
+        "Swap x and y, then solve for y, keeping the positive square root.",
+        "The restriction x >= h means only the positive root is used."
+      ],
+      "socraticHint": "What does the restriction x >= h tell you about which square root to use?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = (x + 5)^2 - 6 for x >= -5. What is f inverse of -5?",
+        "answer": {
+          "kind": "number",
+          "value": "-4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p36",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = (x - 1)^2 + 7 for x >= 1. What is f inverse of 11?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Set y = (x - 1)^2 + 7 and solve for x: x = 1 + sqrt(y - (7)).",
+        "At y = 11, sqrt(11 - (7)) = sqrt(4) = 2.",
+        "So f inverse of 11 is 1 + 2 = 3."
+      ],
+      "useAgain": "when a parabola is restricted to one branch so it can be inverted.",
+      "hints": [
+        "Swap x and y, then solve for y, keeping the positive square root.",
+        "The restriction x >= h means only the positive root is used."
+      ],
+      "socraticHint": "What does the restriction x >= h tell you about which square root to use?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = (x + 5)^2 - 6 for x >= -5. What is f inverse of 3?",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p37",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = -2x + 5 and g(x) = -5x - 6. For what value of x does f(g(x)) = -8?",
+      "answer": {
+        "kind": "number",
+        "value": "-5/2"
+      },
+      "explanation": [
+        "f(g(x)) = -2(-5x - 6) + 5, which simplifies to 10x + 17.",
+        "Setting that equal to -8 and solving gives x = -5/2."
+      ],
+      "useAgain": "when you must undo a whole composed function to find its input.",
+      "hints": [
+        "Find the single formula for f(g(x)) first.",
+        "Then set it equal to the target value and solve for x."
+      ],
+      "socraticHint": "What single linear equation do you get once f(g(x)) is simplified?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = 4x + 7 and g(x) = -2x + 9. For what value of x does f(g(x)) = 5?",
+        "answer": {
+          "kind": "number",
+          "value": "19/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p38",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = -5x - 4 and g(x) = -2x - 9. For what value of x does f(g(x)) = 14?",
+      "answer": {
+        "kind": "number",
+        "value": "-27/10"
+      },
+      "explanation": [
+        "f(g(x)) = -5(-2x - 9) - 4, which simplifies to 10x + 41.",
+        "Setting that equal to 14 and solving gives x = -27/10."
+      ],
+      "useAgain": "when you must undo a whole composed function to find its input.",
+      "hints": [
+        "Find the single formula for f(g(x)) first.",
+        "Then set it equal to the target value and solve for x."
+      ],
+      "socraticHint": "What single linear equation do you get once f(g(x)) is simplified?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = 4x + 4 and g(x) = 4x + 6. For what value of x does f(g(x)) = 28?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p39",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = x + 9 and g(x) = -x - 4. For what value of x does f(g(x)) = 19?",
+      "answer": {
+        "kind": "number",
+        "value": "-14"
+      },
+      "explanation": [
+        "f(g(x)) = 1(-x - 4) + 9, which simplifies to -x + 5.",
+        "Setting that equal to 19 and solving gives x = -14."
+      ],
+      "useAgain": "when you must undo a whole composed function to find its input.",
+      "hints": [
+        "Find the single formula for f(g(x)) first.",
+        "Then set it equal to the target value and solve for x."
+      ],
+      "socraticHint": "What single linear equation do you get once f(g(x)) is simplified?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = 4x - 3 and g(x) = -x - 1. For what value of x does f(g(x)) = 23?",
+        "answer": {
+          "kind": "number",
+          "value": "-15/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p40",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = x + 3. The point where x = -6 is on the graph of y = f(x). What point is on the graph of y = f inverse of x?",
+      "options": [
+        "(-3, -6)",
+        "(-6, -3)",
+        "(3, -6)",
+        "(-3, 6)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "On f, that point is (-6, -3).",
+        "A function and its inverse swap x and y coordinates for every point.",
+        "So the inverse's graph has the point (-3, -6)."
+      ],
+      "useAgain": "when you need a point on an inverse graph without finding the whole inverse formula.",
+      "hints": [
+        "First find the point on f itself.",
+        "Then swap its two coordinates for the inverse."
+      ],
+      "socraticHint": "What is f(-6), and what happens when you swap coordinates?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = 2x - 4. The point where x = -4 is on the graph of y = f(x). What point is on the graph of y = f inverse of x?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(-4, -12)",
+          "(12, -4)",
+          "(-12, -4)",
+          "(-12, 4)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p41",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = -5x + 9. The point where x = 1 is on the graph of y = f(x). What point is on the graph of y = f inverse of x?",
+      "options": [
+        "(1, 4)",
+        "(-4, 1)",
+        "(4, 1)",
+        "(4, -1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "On f, that point is (1, 4).",
+        "A function and its inverse swap x and y coordinates for every point.",
+        "So the inverse's graph has the point (4, 1)."
+      ],
+      "useAgain": "when you need a point on an inverse graph without finding the whole inverse formula.",
+      "hints": [
+        "First find the point on f itself.",
+        "Then swap its two coordinates for the inverse."
+      ],
+      "socraticHint": "What is f(1), and what happens when you swap coordinates?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = -3x + 2. The point where x = 6 is on the graph of y = f(x). What point is on the graph of y = f inverse of x?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "(6, -16)",
+          "(16, 6)",
+          "(-16, -6)",
+          "(-16, 6)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p42",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "choice",
+      "prompt": "f(x) = -3x + 5. The point where x = 5 is on the graph of y = f(x). What point is on the graph of y = f inverse of x?",
+      "options": [
+        "(5, -10)",
+        "(-10, 5)",
+        "(10, 5)",
+        "(-10, -5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "On f, that point is (5, -10).",
+        "A function and its inverse swap x and y coordinates for every point.",
+        "So the inverse's graph has the point (-10, 5)."
+      ],
+      "useAgain": "when you need a point on an inverse graph without finding the whole inverse formula.",
+      "hints": [
+        "First find the point on f itself.",
+        "Then swap its two coordinates for the inverse."
+      ],
+      "socraticHint": "What is f(5), and what happens when you swap coordinates?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = 4x + 5. The point where x = 0 is on the graph of y = f(x). What point is on the graph of y = f inverse of x?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "(5, 0)",
+          "(0, 5)",
+          "(-5, 0)",
+          "(5, 2)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p43",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "truefalse",
+      "prompt": "f(x) = (x - 4)^2 + 3 for x >= 4. Is f inverse of 19 equal to 9?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "f inverse of 19 is 4 + sqrt(16), which is 8.",
+        "That does not match 9."
+      ],
+      "useAgain": "when you need to check a claimed inverse value on a restricted domain.",
+      "hints": [
+        "Work out f inverse of that value yourself first.",
+        "The restriction x >= h keeps only the positive square root."
+      ],
+      "socraticHint": "What does f inverse actually give at that value?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = (x + 6)^2 - 8 for x >= -6. Is f inverse of 8 equal to -10?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p44",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "truefalse",
+      "prompt": "f(x) = (x - 2)^2 - 2 for x >= 2. Is f inverse of 14 equal to -2?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "f inverse of 14 is 2 + sqrt(16), which is 6.",
+        "That does not match -2."
+      ],
+      "useAgain": "when you need to check a claimed inverse value on a restricted domain.",
+      "hints": [
+        "Work out f inverse of that value yourself first.",
+        "The restriction x >= h keeps only the positive square root."
+      ],
+      "socraticHint": "What does f inverse actually give at that value?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = (x - 4)^2 - 9 for x >= 4. Is f inverse of -8 equal to 6?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p45",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "truefalse",
+      "prompt": "f(x) = (x - 3)^2 - 4 for x >= 3. Is f inverse of -3 equal to 4?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "f inverse of -3 is 3 + sqrt(1), which is 4.",
+        "That does match 4."
+      ],
+      "useAgain": "when you need to check a claimed inverse value on a restricted domain.",
+      "hints": [
+        "Work out f inverse of that value yourself first.",
+        "The restriction x >= h keeps only the positive square root."
+      ],
+      "socraticHint": "What does f inverse actually give at that value?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = (x - 4)^2 - 6 for x >= 4. Is f inverse of -5 equal to 3?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-composition-inverses-p46",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = 2x - 3. What is f(f(f(4)))?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "f(4) = 5.",
+        "f(5) = 7.",
+        "f(7) = 11."
+      ],
+      "useAgain": "when a function is applied to its own output more than once.",
+      "hints": [
+        "Apply f once, then apply it again to that result.",
+        "Apply f a third time to get the final answer."
+      ],
+      "socraticHint": "What is f of the previous result each time?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = -3x + 5. What is f(f(f(2)))?",
+        "answer": {
+          "kind": "number",
+          "value": "-19"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p47",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = -x + 7. What is f(f(5))?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "f(5) = 2.",
+        "f(2) = 5.",
+        "Applying f twice always returns the original input, since f undoes itself."
+      ],
+      "useAgain": "when a function turns out to be its own inverse.",
+      "hints": [
+        "Work out f of the input, then f of that result.",
+        "A function that is its own inverse always returns the start."
+      ],
+      "socraticHint": "What kind of function undoes itself when applied twice?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = -x - 4. What is f(f(-8))?",
+        "answer": {
+          "kind": "number",
+          "value": "-8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p48",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = ax + 6. If f(f(x)) = x for every x, what is a?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "f(f(x)) = a(ax + 6) + 6, which expands to a^2 x + 6(a + 1).",
+        "For that to equal x always, the x coefficient must be 1 and the constant must be 0.",
+        "So a^2 = 1 and a + 1 = 0. Only a = -1 satisfies both."
+      ],
+      "useAgain": "when a function composed with itself must equal the identity.",
+      "hints": [
+        "Expand f(f(x)) and collect it as a polynomial in x.",
+        "Every coefficient except the constant term you allow must vanish."
+      ],
+      "socraticHint": "What must the coefficient of x be, and what must the constant term be?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = ax - 9. If f(f(x)) = x for every x, what is a?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p49",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f and g are inverse functions. f(3) = 8 and f(8) = 15. What is g(15) - g(8)?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Since g undoes f, g(8) = 3 and g(15) = 8.",
+        "Their difference is 8 - 3 = 5."
+      ],
+      "useAgain": "when you know facts about f and need facts about its inverse without a formula.",
+      "hints": [
+        "Use the inverse relationship to read off g at each given value.",
+        "Then subtract."
+      ],
+      "socraticHint": "If f(p) = q, what must g(q) be?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f and g are inverse functions. f(-2) = 6 and f(6) = 20. What is g(20) - g(6)?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-composition-inverses-p50",
+      "lane": "skills",
+      "ideaId": "a2-composition-inverses",
+      "kind": "number",
+      "prompt": "f(x) = (x - 2)^2 - 3 for x >= 2, and g is its inverse. For how many integers n from 6 to 50 is g(n) an integer?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "g(n) = 2 + sqrt(n - (-3)), which is an integer exactly when n - (-3) is a perfect square.",
+        "Among n from 6 to 50, that happens 5 times."
+      ],
+      "useAgain": "when counting depends on a square root coming out as a whole number.",
+      "hints": [
+        "Write g(n) as a formula involving a square root.",
+        "Count how often the expression under the root is a perfect square."
+      ],
+      "socraticHint": "For g(n) to be an integer, what must be true of n minus k?",
+      "skills": [
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "f(x) = (x + 1)^2 + 4 for x >= -1, and g is its inverse. For how many integers n from 5 to 60 is g(n) an integer?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    }
+  ]
+}

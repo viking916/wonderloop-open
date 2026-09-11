@@ -1,0 +1,2185 @@
+{
+  "id": "ar-add-sub-multi",
+  "idea": {
+    "body": "Adding and subtracting big numbers both work one place at a time, starting from the ones. Addition sometimes needs a carry: when a column totals 10 or more, write the ones digit and carry the rest into the next column. Subtraction sometimes needs a borrow: when the top digit is smaller than the bottom one, borrow a ten from the next column over. A rover's log showing 3,482 plus 2,159 needs one carry to reach 5,641. That same log showing 5,000 minus 2,387 needs several borrows in a row, since every digit after the 5 starts as a zero."
+  },
+  "workedExample": {
+    "prompt": "A workshop had 5,000 bolts. It used 2,387 of them. How many bolts are left?",
+    "steps": [
+      "Line up 5,000 and 2,387 by place value.",
+      "The ones column needs to borrow, but the tens, hundreds and thousands columns are all zero, so the borrow chains back to the 5.",
+      "The 5 becomes a 4, and every zero along the way becomes a 9, except the ones place, which becomes 10.",
+      "Now subtract each column: 10 minus 7 is 3, 9 minus 8 is 1, 9 minus 3 is 6, 4 minus 2 is 2.",
+      "That gives 2,613 bolts left."
+    ]
+  },
+  "ways": [
+    {
+      "id": "ar-add-sub-multi-w1",
+      "name": "Column method with carrying",
+      "when": "Use this for any multi-digit addition or subtraction, with room to line up columns.",
+      "steps": [
+        "Line up 3,482 and 2,159 by place value, ones under ones.",
+        "Add the ones: 2 plus 9 is 11, write 1, carry 1.",
+        "Add the tens: 8 plus 5 plus the carried 1 is 14, write 4, carry 1.",
+        "Add the hundreds: 4 plus 1 plus the carried 1 is 6.",
+        "Add the thousands: 3 plus 2 is 5.",
+        "The total is 5,641."
+      ],
+      "example": "3,482 + 2,159",
+      "answer": "5641",
+      "trap": "Forgetting to add the carried 1 into the next column."
+    },
+    {
+      "id": "ar-add-sub-multi-w2",
+      "name": "Round and adjust",
+      "when": "Use this when one number sits close to a round number.",
+      "steps": [
+        "Round 398 up to 400, an easier number to add.",
+        "Add the rounded number: 400 plus 256 is 656.",
+        "398 is 2 less than 400, so 2 extra got added.",
+        "Subtract that 2 back off: 656 minus 2 is 654."
+      ],
+      "example": "398 + 256",
+      "answer": "654",
+      "trap": "Rounding the number but forgetting to adjust the answer back at the end."
+    },
+    {
+      "id": "ar-add-sub-multi-w3",
+      "name": "Counting up in jumps",
+      "when": "Use this for subtraction, especially when the two numbers sit far apart.",
+      "steps": [
+        "Start at the smaller number, 2,387.",
+        "Jump to a friendly number: add 13 to reach 2,400.",
+        "Jump in a big round step: add 600 to reach 3,000.",
+        "Jump the rest of the way: add 2,000 to reach 5,000.",
+        "Add the jumps: 13 plus 600 plus 2,000 is 2,613."
+      ],
+      "example": "5,000 - 2,387",
+      "answer": "2613",
+      "trap": "Losing track of one jump and leaving it out of the final sum.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Three jump boxes from 2,387 to 5,000: plus 13, plus 600, plus 2,000, totalling 2,613.",
+        "spec": {
+          "w": 370,
+          "h": 150,
+          "items": [
+            {
+              "t": "box",
+              "x": 10,
+              "y": 40,
+              "w": 90,
+              "h": 60,
+              "fill": "paper",
+              "label": "+13",
+              "sub": "2387 to 2400"
+            },
+            {
+              "t": "box",
+              "x": 110,
+              "y": 40,
+              "w": 130,
+              "h": 60,
+              "fill": "paper",
+              "label": "+600",
+              "sub": "2400 to 3000"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 40,
+              "w": 100,
+              "h": 60,
+              "fill": "paper",
+              "label": "+2000",
+              "sub": "3000 to 5000"
+            },
+            {
+              "t": "text",
+              "x": 185,
+              "y": 130,
+              "s": "Total: 2,613",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Start at the smaller number, 2,387.",
+              "set": {
+                "0": {
+                  "hidden": true
+                },
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Jump to a friendly number: add 13.",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                },
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Jump a big round step: add 600.",
+              "set": {
+                "1": {
+                  "fill": "accent"
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Jump the rest of the way: +2,000.",
+              "set": {
+                "2": {
+                  "fill": "accent"
+                },
+                "3": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Add the jumps: total is 2,613.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ar-add-sub-multi-w4",
+      "name": "Partial sums",
+      "when": "Use this for addition when you would rather not carry as you go.",
+      "steps": [
+        "Break each number into place-value parts: 456 is 400 plus 50 plus 6.",
+        "382 is 300 plus 80 plus 2.",
+        "Add the hundreds parts: 400 plus 300 is 700.",
+        "Add the tens parts: 50 plus 80 is 130.",
+        "Add the ones parts: 6 plus 2 is 8.",
+        "Add the three partial sums: 700 plus 130 plus 8 is 838."
+      ],
+      "example": "456 + 382",
+      "answer": "838",
+      "trap": "Forgetting to add all the partial sums together at the end."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-ar-add-sub-multi-p01",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a rover's distance log, one entry is 348 and 217. What is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "565"
+      },
+      "explanation": [
+        "Add starting from the ones place, the way the column method does.",
+        "The ones column totals 15, so write 5 and carry 1.",
+        "Adding it all up gives 565."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when two or more counts need to be combined into one total.",
+      "hints": [
+        "Line the numbers up by place value before adding.",
+        "Work from the ones place, carrying a ten into the next place whenever a column reaches 10 or more."
+      ],
+      "socraticHint": "Which column has to be added first so a carry is ready before you need it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a workshop's bolt bin, one entry is 449 and 318. What is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "767"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p02",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a 3D printer's parts counter, one entry is 456 and 382. What is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "838"
+      },
+      "explanation": [
+        "Add starting from the ones place, the way the column method does.",
+        "The tens column totals 13, so write 3 and carry 1.",
+        "Adding it all up gives 838."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when two or more counts need to be combined into one total.",
+      "hints": [
+        "Line the numbers up by place value before adding.",
+        "Work from the ones place, carrying a ten into the next place whenever a column reaches 10 or more."
+      ],
+      "socraticHint": "Which column has to be added first so a carry is ready before you need it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a game's point tracker, one entry is 557 and 483. What is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "1040"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a garden's seed count, one entry is 1,234 and 2,567. What is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "3801"
+      },
+      "explanation": [
+        "Add starting from the ones place, the way the column method does.",
+        "The ones column totals 11, so write 1 and carry 1.",
+        "The tens column totals 10, so write 0 and carry 1.",
+        "Adding it all up gives 3,801."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when two or more counts need to be combined into one total.",
+      "hints": [
+        "Line the numbers up by place value before adding.",
+        "Work from the ones place, carrying a ten into the next place whenever a column reaches 10 or more."
+      ],
+      "socraticHint": "Which column has to be added first so a carry is ready before you need it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a library's book-scan log, one entry is 1,335 and 2,668. What is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "4003"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p04",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On an aquarium's fish count, one entry is 528 and 391. What is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "919"
+      },
+      "explanation": [
+        "Add starting from the ones place, the way the column method does.",
+        "The tens column totals 11, so write 1 and carry 1.",
+        "Adding it all up gives 919."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when two or more counts need to be combined into one total.",
+      "hints": [
+        "Line the numbers up by place value before adding.",
+        "Work from the ones place, carrying a ten into the next place whenever a column reaches 10 or more."
+      ],
+      "socraticHint": "Which column has to be added first so a carry is ready before you need it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a robotics club's gear inventory, one entry is 629 and 492. What is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "1121"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p05",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a workshop's bolt bin, the count was 542. After 218 were taken away, what was left?",
+      "answer": {
+        "kind": "number",
+        "value": "324"
+      },
+      "explanation": [
+        "Subtract starting from the ones place.",
+        "Borrow from the next column wherever the top digit is too small, like the ones place.",
+        "That leaves 324."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when one count is taken away from another and you need what is left.",
+      "hints": [
+        "Line the numbers up by place value before subtracting.",
+        "Work from the ones place, borrowing from the next column whenever the top digit is too small."
+      ],
+      "socraticHint": "Which column will you need to borrow into before you can subtract it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a robotics club's gear inventory, the count was 597. After 238 were taken away, what was left?",
+        "answer": {
+          "kind": "number",
+          "value": "359"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a game's point tracker, the count was 831. After 456 were taken away, what was left?",
+      "answer": {
+        "kind": "number",
+        "value": "375"
+      },
+      "explanation": [
+        "Subtract starting from the ones place.",
+        "Borrow from the next column wherever the top digit is too small, like the ones and tens places.",
+        "That leaves 375."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when one count is taken away from another and you need what is left.",
+      "hints": [
+        "Line the numbers up by place value before subtracting.",
+        "Work from the ones place, borrowing from the next column whenever the top digit is too small."
+      ],
+      "socraticHint": "Which column will you need to borrow into before you can subtract it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a coding club's point board, the count was 886. After 476 were taken away, what was left?",
+        "answer": {
+          "kind": "number",
+          "value": "410"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p07",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a library's book-scan log, the count was 1,000. After 372 were taken away, what was left?",
+      "answer": {
+        "kind": "number",
+        "value": "628"
+      },
+      "explanation": [
+        "Subtract starting from the ones place.",
+        "Borrow from the next column wherever the top digit is too small, like the ones and tens places.",
+        "That leaves 628."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when one count is taken away from another and you need what is left.",
+      "hints": [
+        "Line the numbers up by place value before subtracting.",
+        "Work from the ones place, borrowing from the next column whenever the top digit is too small."
+      ],
+      "socraticHint": "Which column will you need to borrow into before you can subtract it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a food truck's order counter, the count was 1,055. After 392 were taken away, what was left?",
+        "answer": {
+          "kind": "number",
+          "value": "663"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robotics club's gear inventory starts the day with 214 gears. It collects 158 more. How many gears are there now?",
+      "answer": {
+        "kind": "number",
+        "value": "372"
+      },
+      "explanation": [
+        "Start with 214.",
+        "Add the 158 that were gained.",
+        "214 plus 158 is 372."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a story says a count starts somewhere and then gains some more.",
+      "hints": [
+        "Decide first whether the count is growing or shrinking.",
+        "Line the two numbers up by place value before you compute."
+      ],
+      "socraticHint": "Does the story say the count is getting bigger or smaller?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A coding club's point board starts the day with 254 points. It collects 173 more. How many points are there now?",
+        "answer": {
+          "kind": "number",
+          "value": "427"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coding club's point board starts the day with 612 points. It gives away 275 of them. How many points are left?",
+      "answer": {
+        "kind": "number",
+        "value": "337"
+      },
+      "explanation": [
+        "Start with 612.",
+        "Take away the 275 that were lost.",
+        "612 minus 275 is 337."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a story says a count starts somewhere and then loses some more.",
+      "hints": [
+        "Decide first whether the count is growing or shrinking.",
+        "Line the two numbers up by place value before you compute."
+      ],
+      "socraticHint": "Does the story say the count is getting bigger or smaller?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A food truck's order counter starts the day with 652 orders. It gives away 290 of them. How many orders are left?",
+        "answer": {
+          "kind": "number",
+          "value": "362"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p10",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A food truck's order counter needs 274 and 358 added together. Which choice is the correct total?",
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Add from the ones place, carrying into the next column whenever a column totals 10 or more.",
+        "That gives 632.",
+        "A total that skips the carries lands on the wrong choice."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a listed answer looks close but skipped a carry.",
+      "hints": [
+        "Add column by column starting from the ones place.",
+        "Do not forget to carry when a column's total reaches 10 or more."
+      ],
+      "socraticHint": "If you added each column without ever carrying, would your total come out too small or too large?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "options": [
+        "522",
+        "622",
+        "732",
+        "632"
+      ],
+      "variant": {
+        "prompt": "A vending machine's snack stock needs 307 and 391 added together. Which choice is the correct total?",
+        "options": [
+          "688",
+          "698",
+          "738",
+          "798"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p11",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A print shop's page count needs 462 and 179 added together. Which choice is the correct total?",
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Add from the ones place, carrying into the next column whenever a column totals 10 or more.",
+        "That gives 641.",
+        "A total that skips the carries lands on the wrong choice."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a listed answer looks close but skipped a carry.",
+      "hints": [
+        "Add column by column starting from the ones place.",
+        "Do not forget to carry when a column's total reaches 10 or more."
+      ],
+      "socraticHint": "If you added each column without ever carrying, would your total come out too small or too large?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "options": [
+        "641",
+        "531",
+        "631",
+        "741"
+      ],
+      "variant": {
+        "prompt": "A rover's distance log needs 495 and 212 added together. Which choice is the correct total?",
+        "options": [
+          "607",
+          "697",
+          "707",
+          "807"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p12",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A vending machine's snack stock needs 623 minus 287. Which choice is correct?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Subtract from the ones place, borrowing from the next column whenever the top digit is too small.",
+        "That gives 336.",
+        "Subtracting the smaller digit from the larger one in every column, without borrowing, gives a wrong answer."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a listed answer looks close but skipped a borrow.",
+      "hints": [
+        "Subtract column by column starting from the ones place.",
+        "Borrow from the next column whenever the top digit cannot cover the bottom digit."
+      ],
+      "socraticHint": "In the column where the top digit is smaller than the bottom digit, what has to happen before you can subtract?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "options": [
+        "326",
+        "336",
+        "436",
+        "464"
+      ],
+      "variant": {
+        "prompt": "A 3d printer's parts counter needs 645 minus 297. Which choice is correct?",
+        "options": [
+          "338",
+          "448",
+          "348",
+          "452"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p13",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A rover's distance log needs 740 minus 265. Which choice is correct?",
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Subtract from the ones place, borrowing from the next column whenever the top digit is too small.",
+        "That gives 475.",
+        "Subtracting the smaller digit from the larger one in every column, without borrowing, gives a wrong answer."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a listed answer looks close but skipped a borrow.",
+      "hints": [
+        "Subtract column by column starting from the ones place.",
+        "Borrow from the next column whenever the top digit cannot cover the bottom digit."
+      ],
+      "socraticHint": "In the column where the top digit is smaller than the bottom digit, what has to happen before you can subtract?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "options": [
+        "475",
+        "465",
+        "525",
+        "575"
+      ],
+      "variant": {
+        "prompt": "A garden's seed count needs 762 minus 275. Which choice is correct?",
+        "options": [
+          "477",
+          "513",
+          "587",
+          "487"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p14",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "On a 3D printer's parts counter: 3,842 plus 2,159 equals 6,001. True or false?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Work out the real sum first: it is 6,001.",
+        "Compare that to the claimed 6,001.",
+        "The statement is true."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you are handed someone else's addition or subtraction and asked to check it.",
+      "hints": [
+        "Compute the real answer yourself before checking the claim.",
+        "Compare place by place, not just by how the numbers look."
+      ],
+      "socraticHint": "Is it faster here to compute the real answer first, or to guess from how close the claim looks?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a garden's seed count: 2,731 plus 1,548 equals 4,279. True or false?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p15",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "An aquarium's fish count logged these calculations: 214 + 108, 512 + 87, 330 + 45, 198 + 76. Order their results from least to greatest.",
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          0,
+          2,
+          1
+        ]
+      },
+      "explanation": [
+        "Work out each result first.",
+        "The results are 322, 599, 375, 274 in the order given.",
+        "From least to greatest that is 274, 322, 375, 599."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when several calculations need to be lined up by their results, smallest to biggest.",
+      "hints": [
+        "Compute every result before trying to order them.",
+        "Compare the actual results, not how the expressions look written out."
+      ],
+      "socraticHint": "Can you tell which result is biggest just by looking at the expressions, or do you need to compute first?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "items": [
+        "214 + 108",
+        "512 + 87",
+        "330 + 45",
+        "198 + 76"
+      ],
+      "variant": {
+        "prompt": "A workshop's bolt bin logged these calculations: 324 + 118, 612 + 97, 430 + 55, 298 + 86. Order their results from least to greatest.",
+        "items": [
+          "324 + 118",
+          "612 + 97",
+          "430 + 55",
+          "298 + 86"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            0,
+            2,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p16",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a game's point tracker, one entry is 1,284 and 3,671 and 2,049. What is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "7004"
+      },
+      "explanation": [
+        "Add starting from the ones place, the way the column method does.",
+        "The ones column totals 14, so write 4 and carry 1.",
+        "The tens column totals 20, so write 0 and carry 2.",
+        "Adding it all up gives 7,004."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when two or more counts need to be combined into one total.",
+      "hints": [
+        "Line the numbers up by place value before adding.",
+        "Work from the ones place, carrying a ten into the next place whenever a column reaches 10 or more."
+      ],
+      "socraticHint": "Which column has to be added first so a carry is ready before you need it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a coding club's point board, one entry is 1,495 and 3,882 and 2,260. What is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "7637"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p17",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a library's book-scan log, one entry is 4,218 and 1,937 and 2,856. What is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "9011"
+      },
+      "explanation": [
+        "Add starting from the ones place, the way the column method does.",
+        "The ones column totals 21, so write 1 and carry 2.",
+        "The tens column totals 11, so write 1 and carry 1.",
+        "Adding it all up gives 9,011."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when two or more counts need to be combined into one total.",
+      "hints": [
+        "Line the numbers up by place value before adding.",
+        "Work from the ones place, carrying a ten into the next place whenever a column reaches 10 or more."
+      ],
+      "socraticHint": "Which column has to be added first so a carry is ready before you need it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a food truck's order counter, one entry is 4,429 and 2,148 and 3,067. What is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "9644"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p18",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a robotics club's gear inventory, one entry is 3,654 and 2,189 and 1,477. What is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "7320"
+      },
+      "explanation": [
+        "Add starting from the ones place, the way the column method does.",
+        "The ones column totals 20, so write 0 and carry 2.",
+        "The tens column totals 22, so write 2 and carry 2.",
+        "Adding it all up gives 7,320."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when two or more counts need to be combined into one total.",
+      "hints": [
+        "Line the numbers up by place value before adding.",
+        "Work from the ones place, carrying a ten into the next place whenever a column reaches 10 or more."
+      ],
+      "socraticHint": "Which column has to be added first so a carry is ready before you need it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a print shop's page count, one entry is 3,865 and 2,400 and 1,688. What is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "7953"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p19",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a coding club's point board, the count was 52,140. After 28,376 were taken away, what was left?",
+      "answer": {
+        "kind": "number",
+        "value": "23764"
+      },
+      "explanation": [
+        "Subtract starting from the ones place.",
+        "Borrow from the next column wherever the top digit is too small, like the ones and tens places.",
+        "That leaves 23,764."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when one count is taken away from another and you need what is left.",
+      "hints": [
+        "Line the numbers up by place value before subtracting.",
+        "Work from the ones place, borrowing from the next column whenever the top digit is too small."
+      ],
+      "socraticHint": "Which column will you need to borrow into before you can subtract it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a print shop's page count, the count was 53,340. After 29,176 were taken away, what was left?",
+        "answer": {
+          "kind": "number",
+          "value": "24164"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p20",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a food truck's order counter, the count was 73,215. After 45,698 were taken away, what was left?",
+      "answer": {
+        "kind": "number",
+        "value": "27517"
+      },
+      "explanation": [
+        "Subtract starting from the ones place.",
+        "Borrow from the next column wherever the top digit is too small, like the ones and tens places.",
+        "That leaves 27,517."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when one count is taken away from another and you need what is left.",
+      "hints": [
+        "Line the numbers up by place value before subtracting.",
+        "Work from the ones place, borrowing from the next column whenever the top digit is too small."
+      ],
+      "socraticHint": "Which column will you need to borrow into before you can subtract it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a vending machine's snack stock, the count was 74,415. After 46,498 were taken away, what was left?",
+        "answer": {
+          "kind": "number",
+          "value": "27917"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p21",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a print shop's page count, the count was 61,042. After 37,865 were taken away, what was left?",
+      "answer": {
+        "kind": "number",
+        "value": "23177"
+      },
+      "explanation": [
+        "Subtract starting from the ones place.",
+        "Borrow from the next column wherever the top digit is too small, like the ones and tens places.",
+        "That leaves 23,177."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when one count is taken away from another and you need what is left.",
+      "hints": [
+        "Line the numbers up by place value before subtracting.",
+        "Work from the ones place, borrowing from the next column whenever the top digit is too small."
+      ],
+      "socraticHint": "Which column will you need to borrow into before you can subtract it?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a rover's distance log, the count was 62,242. After 38,665 were taken away, what was left?",
+        "answer": {
+          "kind": "number",
+          "value": "23577"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A vending machine's snack stock starts with 3,200 snacks. Then it gains 1,450 more snacks, then it loses 980 snacks. How many snacks are there at the end?",
+      "answer": {
+        "kind": "number",
+        "value": "3670"
+      },
+      "explanation": [
+        "Start at 3,200.",
+        "Add 1,450: 4,650.",
+        "Subtract 980: 3,670."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a story chains several gains and losses together before asking for the final count.",
+      "hints": [
+        "Work through the story one change at a time, in the order it happens.",
+        "Keep a running total after each step instead of trying to do it all at once."
+      ],
+      "socraticHint": "Does the order of the gains and losses in the story matter to the final total?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rover's distance log starts with 3,500 meters. Then it gains 1,500 more meters, then it loses 1,030 meters. How many meters are there at the end?",
+        "answer": {
+          "kind": "number",
+          "value": "3970"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p23",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover's distance log starts with 4,500 meters. Then it loses 1,220 meters, then it gains 630 more meters. How many meters are there at the end?",
+      "answer": {
+        "kind": "number",
+        "value": "3910"
+      },
+      "explanation": [
+        "Start at 4,500.",
+        "Subtract 1,220: 3,280.",
+        "Add 630: 3,910."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a story chains several gains and losses together before asking for the final count.",
+      "hints": [
+        "Work through the story one change at a time, in the order it happens.",
+        "Keep a running total after each step instead of trying to do it all at once."
+      ],
+      "socraticHint": "Does the order of the gains and losses in the story matter to the final total?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3d printer's parts counter starts with 4,800 parts. Then it loses 1,270 parts, then it gains 680 more parts. How many parts are there at the end?",
+        "answer": {
+          "kind": "number",
+          "value": "4210"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p24",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On an aquarium's fish count, the counts are 4,821 and 2,896. Round each to the nearest hundred and subtract for an estimate. How far off is that estimate from the real difference?",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "Rounded to the nearest hundred, 4,821 becomes 4,800 and 2,896 becomes 2,900.",
+        "The estimate is 4,800 minus 2,900, which is 1,900.",
+        "The real difference is 4,821 minus 2,896, which is 1,925.",
+        "The estimate is off by 25."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you need to know how good a rounded estimate really was.",
+      "hints": [
+        "Round both numbers to the nearest hundred before subtracting for the estimate.",
+        "Then subtract the exact numbers for the real difference, and compare the two results."
+      ],
+      "socraticHint": "Does rounding both numbers the same way tend to keep an estimate close, or push it further off?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a workshop's bolt bin, the counts are 5,734 and 3,198. Round each to the nearest hundred and subtract for an estimate. How far off is that estimate from the real difference?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p25",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A game's point tracker needs 4,218 and 3,157 added together. Which choice is the correct total?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Add from the ones place, carrying into the next column whenever a column totals 10 or more.",
+        "That gives 7,375.",
+        "A total that skips the carries lands on the wrong choice."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a listed answer looks close but skipped a carry.",
+      "hints": [
+        "Add column by column starting from the ones place.",
+        "Do not forget to carry when a column's total reaches 10 or more."
+      ],
+      "socraticHint": "If you added each column without ever carrying, would your total come out too small or too large?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "options": [
+        "7,365",
+        "7,375",
+        "7,415",
+        "7,475"
+      ],
+      "variant": {
+        "prompt": "A library's book-scan log needs 4,339 and 3,278 added together. Which choice is the correct total?",
+        "options": [
+          "7,507",
+          "7,607",
+          "7,717",
+          "7,617"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p26",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A library's book-scan log needs 5,624 and 2,879 added together. Which choice is the correct total?",
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Add from the ones place, carrying into the next column whenever a column totals 10 or more.",
+        "That gives 8,503.",
+        "A total that skips the carries lands on the wrong choice."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a listed answer looks close but skipped a carry.",
+      "hints": [
+        "Add column by column starting from the ones place.",
+        "Do not forget to carry when a column's total reaches 10 or more."
+      ],
+      "socraticHint": "If you added each column without ever carrying, would your total come out too small or too large?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "options": [
+        "8,503",
+        "7,493",
+        "8,493",
+        "8,603"
+      ],
+      "variant": {
+        "prompt": "A robotics club's gear inventory needs 5,745 and 3,000 added together. Which choice is the correct total?",
+        "options": [
+          "8,735",
+          "8,785",
+          "8,745",
+          "8,845"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p27",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A robotics club's gear inventory needs 8,213 minus 3,476. Which choice is correct?",
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Subtract from the ones place, borrowing from the next column whenever the top digit is too small.",
+        "That gives 4,737.",
+        "Subtracting the smaller digit from the larger one in every column, without borrowing, gives a wrong answer."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a listed answer looks close but skipped a borrow.",
+      "hints": [
+        "Subtract column by column starting from the ones place.",
+        "Borrow from the next column whenever the top digit cannot cover the bottom digit."
+      ],
+      "socraticHint": "In the column where the top digit is smaller than the bottom digit, what has to happen before you can subtract?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "options": [
+        "4,727",
+        "4,837",
+        "4,737",
+        "5,263"
+      ],
+      "variant": {
+        "prompt": "A coding club's point board needs 8,513 minus 3,626. Which choice is correct?",
+        "options": [
+          "4,877",
+          "4,987",
+          "5,113",
+          "4,887"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p28",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A coding club's point board needs 9,042 minus 5,687. Which choice is correct?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Subtract from the ones place, borrowing from the next column whenever the top digit is too small.",
+        "That gives 3,355.",
+        "Subtracting the smaller digit from the larger one in every column, without borrowing, gives a wrong answer."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a listed answer looks close but skipped a borrow.",
+      "hints": [
+        "Subtract column by column starting from the ones place.",
+        "Borrow from the next column whenever the top digit cannot cover the bottom digit."
+      ],
+      "socraticHint": "In the column where the top digit is smaller than the bottom digit, what has to happen before you can subtract?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "options": [
+        "3,345",
+        "3,355",
+        "3,455",
+        "4,645"
+      ],
+      "variant": {
+        "prompt": "A food truck's order counter needs 9,342 minus 5,837. Which choice is correct?",
+        "options": [
+          "3,505",
+          "3,495",
+          "3,605",
+          "4,515"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p29",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "On a food truck's order counter: 15,420 minus 8,765 equals 6,655. True or false?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Work out the real difference first: it is 6,655.",
+        "Compare that to the claimed 6,655.",
+        "The statement is true."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you are handed someone else's addition or subtraction and asked to check it.",
+      "hints": [
+        "Compute the real answer yourself before checking the claim.",
+        "Compare place by place, not just by how the numbers look."
+      ],
+      "socraticHint": "Is it faster here to compute the real answer first, or to guess from how close the claim looks?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a print shop's page count: 24,310 minus 9,876 equals 14,434. True or false?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p30",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "A vending machine's snack stock logged these calculations: 4,200 - 1,875, 5,310 - 2,960, 3,800 - 990, 6,100 - 3,480. Order their results from least to greatest.",
+      "answer": {
+        "kind": "order",
+        "order": [
+          0,
+          1,
+          3,
+          2
+        ]
+      },
+      "explanation": [
+        "Work out each result first.",
+        "The results are 2,325, 2,350, 2,810, 2,620 in the order given.",
+        "From least to greatest that is 2,325, 2,350, 2,620, 2,810."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when several calculations need to be lined up by their results, smallest to biggest.",
+      "hints": [
+        "Compute every result before trying to order them.",
+        "Compare the actual results, not how the expressions look written out."
+      ],
+      "socraticHint": "Can you tell which result is biggest just by looking at the expressions, or do you need to compute first?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "items": [
+        "4,200 - 1,875",
+        "5,310 - 2,960",
+        "3,800 - 990",
+        "6,100 - 3,480"
+      ],
+      "variant": {
+        "prompt": "A rover's distance log logged these calculations: 5,300 - 2,100, 6,410 - 3,600, 4,900 - 1,250, 7,200 - 4,380. Order their results from least to greatest.",
+        "items": [
+          "5,300 - 2,100",
+          "6,410 - 3,600",
+          "4,900 - 1,250",
+          "7,200 - 4,380"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            3,
+            0,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p31",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a 3D printer's parts counter, 8,000 counters are on hand and 3,647 are used up. How many counters are left?",
+      "answer": {
+        "kind": "number",
+        "value": "4353"
+      },
+      "explanation": [
+        "Borrowing across zeros means each zero has to borrow from the next column before it can lend anything.",
+        "Working through 8,000 minus 3,647 carefully gives 4,353."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when subtracting means borrowing through one or more zero columns in a row.",
+      "hints": [
+        "When a zero column needs to borrow, it must first borrow from further left.",
+        "That turns each zero along the way into a 9; work one column at a time."
+      ],
+      "socraticHint": "When every digit you meet is a zero, where does the very first real borrow finally come from?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a garden's seed count, 10,000 counters are on hand and 4,547 are used up. How many counters are left?",
+        "answer": {
+          "kind": "number",
+          "value": "5453"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p32",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a garden's seed count, 50,000 counters are on hand and 27,384 are used up. How many counters are left?",
+      "answer": {
+        "kind": "number",
+        "value": "22616"
+      },
+      "explanation": [
+        "Borrowing across zeros means each zero has to borrow from the next column before it can lend anything.",
+        "Working through 50,000 minus 27,384 carefully gives 22,616."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when subtracting means borrowing through one or more zero columns in a row.",
+      "hints": [
+        "When a zero column needs to borrow, it must first borrow from further left.",
+        "That turns each zero along the way into a 9; work one column at a time."
+      ],
+      "socraticHint": "When every digit you meet is a zero, where does the very first real borrow finally come from?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On an aquarium's fish count, 52,000 counters are on hand and 28,284 are used up. How many counters are left?",
+        "answer": {
+          "kind": "number",
+          "value": "23716"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On an aquarium's fish count, 10,005 counters are on hand and 4,238 are used up. How many counters are left?",
+      "answer": {
+        "kind": "number",
+        "value": "5767"
+      },
+      "explanation": [
+        "Borrowing across zeros means each zero has to borrow from the next column before it can lend anything.",
+        "Working through 10,005 minus 4,238 carefully gives 5,767."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when subtracting means borrowing through one or more zero columns in a row.",
+      "hints": [
+        "When a zero column needs to borrow, it must first borrow from further left.",
+        "That turns each zero along the way into a 9; work one column at a time."
+      ],
+      "socraticHint": "When every digit you meet is a zero, where does the very first real borrow finally come from?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a workshop's bolt bin, 12,005 counters are on hand and 5,138 are used up. How many counters are left?",
+        "answer": {
+          "kind": "number",
+          "value": "6867"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p34",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a workshop's bolt bin, a count started at some number, then 2,874 more were added, reaching 9,000 in total. What number did it start at?",
+      "answer": {
+        "kind": "number",
+        "value": "6126"
+      },
+      "explanation": [
+        "The start plus 2,874 equals 9,000.",
+        "So the start is 9,000 minus 2,874.",
+        "9,000 minus 2,874 is 6,126."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you know the final total and one added amount, but not the starting count.",
+      "hints": [
+        "Turn the addition around into a subtraction to undo it.",
+        "Subtract the known added amount from the final total."
+      ],
+      "socraticHint": "If adding got you to the total, what operation undoes adding?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a game's point tracker, a count started at some number, then 3,174 more were added, reaching 9,500 in total. What number did it start at?",
+        "answer": {
+          "kind": "number",
+          "value": "6326"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a game's point tracker, a count started at some number, then 15,420 more were added, reaching 30,000 in total. What number did it start at?",
+      "answer": {
+        "kind": "number",
+        "value": "14580"
+      },
+      "explanation": [
+        "The start plus 15,420 equals 30,000.",
+        "So the start is 30,000 minus 15,420.",
+        "30,000 minus 15,420 is 14,580."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you know the final total and one added amount, but not the starting count.",
+      "hints": [
+        "Turn the addition around into a subtraction to undo it.",
+        "Subtract the known added amount from the final total."
+      ],
+      "socraticHint": "If adding got you to the total, what operation undoes adding?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a library's book-scan log, a count started at some number, then 15,720 more were added, reaching 30,500 in total. What number did it start at?",
+        "answer": {
+          "kind": "number",
+          "value": "14780"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a library's book-scan log, a count started at some number, then 6,215 more were added, reaching 12,000 in total. What number did it start at?",
+      "answer": {
+        "kind": "number",
+        "value": "5785"
+      },
+      "explanation": [
+        "The start plus 6,215 equals 12,000.",
+        "So the start is 12,000 minus 6,215.",
+        "12,000 minus 6,215 is 5,785."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you know the final total and one added amount, but not the starting count.",
+      "hints": [
+        "Turn the addition around into a subtraction to undo it.",
+        "Subtract the known added amount from the final total."
+      ],
+      "socraticHint": "If adding got you to the total, what operation undoes adding?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a robotics club's gear inventory, a count started at some number, then 6,515 more were added, reaching 12,500 in total. What number did it start at?",
+        "answer": {
+          "kind": "number",
+          "value": "5985"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robotics club's gear inventory starts with 12,500 gears. Then it gains 4,300 more gears, then it loses 6,800 gears, then it gains 900 more gears. How many gears are there at the end?",
+      "answer": {
+        "kind": "number",
+        "value": "10900"
+      },
+      "explanation": [
+        "Start at 12,500.",
+        "Add 4,300: 16,800.",
+        "Subtract 6,800: 10,000.",
+        "Add 900: 10,900."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a story chains several gains and losses together before asking for the final count.",
+      "hints": [
+        "Work through the story one change at a time, in the order it happens.",
+        "Keep a running total after each step instead of trying to do it all at once."
+      ],
+      "socraticHint": "Does the order of the gains and losses in the story matter to the final total?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A coding club's point board starts with 13,000 points. Then it gains 4,400 more points, then it loses 6,900 points, then it gains 1,000 more points. How many points are there at the end?",
+        "answer": {
+          "kind": "number",
+          "value": "11500"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p38",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coding club's point board starts with 20,000 points. Then it loses 8,450 points, then it gains 3,200 more points, then it loses 1,750 points. How many points are there at the end?",
+      "answer": {
+        "kind": "number",
+        "value": "13000"
+      },
+      "explanation": [
+        "Start at 20,000.",
+        "Subtract 8,450: 11,550.",
+        "Add 3,200: 14,750.",
+        "Subtract 1,750: 13,000."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a story chains several gains and losses together before asking for the final count.",
+      "hints": [
+        "Work through the story one change at a time, in the order it happens.",
+        "Keep a running total after each step instead of trying to do it all at once."
+      ],
+      "socraticHint": "Does the order of the gains and losses in the story matter to the final total?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A food truck's order counter starts with 20,500 orders. Then it loses 8,550 orders, then it gains 3,300 more orders, then it loses 1,850 orders. How many orders are there at the end?",
+        "answer": {
+          "kind": "number",
+          "value": "13400"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p39",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A food truck's order counter starts with 9,600 orders. Then it gains 5,400 more orders, then it gains 2,100 more orders, then it loses 7,300 orders. How many orders are there at the end?",
+      "answer": {
+        "kind": "number",
+        "value": "9800"
+      },
+      "explanation": [
+        "Start at 9,600.",
+        "Add 5,400: 15,000.",
+        "Add 2,100: 17,100.",
+        "Subtract 7,300: 9,800."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a story chains several gains and losses together before asking for the final count.",
+      "hints": [
+        "Work through the story one change at a time, in the order it happens.",
+        "Keep a running total after each step instead of trying to do it all at once."
+      ],
+      "socraticHint": "Does the order of the gains and losses in the story matter to the final total?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A print shop's page count starts with 10,100 pages. Then it gains 5,500 more pages, then it gains 2,200 more pages, then it loses 7,400 pages. How many pages are there at the end?",
+        "answer": {
+          "kind": "number",
+          "value": "10400"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p40",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A print shop's page count has 5,280 pages. Another 1,740 pages arrive. Which number sentence finds the new total?",
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Decide first whether the story means the count grows or shrinks.",
+        "Arriving means the count grows, so the sentence adds.",
+        "That matches 5,280 + 1,740."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you need to pick the right number sentence for a story before computing anything.",
+      "hints": [
+        "Read the story for a growing word or a shrinking word before picking an operation.",
+        "The two counts must appear in the same order the story gives them."
+      ],
+      "socraticHint": "Does the story describe something arriving, or something being taken away?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "options": [
+        "5,280 - 1,740",
+        "1,740 - 5,280",
+        "5,280 + 5,280",
+        "5,280 + 1,740"
+      ],
+      "variant": {
+        "prompt": "A vending machine's snack stock has 5,500 snacks. Another 1,850 snacks arrive. Which number sentence finds the new total?",
+        "options": [
+          "5,500 - 1,850",
+          "1,850 - 5,500",
+          "5,500 + 1,850",
+          "5,500 + 5,500"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p41",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A vending machine's snack stock has 7,300 snacks. Then 2,650 snacks are taken away. Which number sentence finds how many are left?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Decide first whether the story means the count grows or shrinks.",
+        "Taken away means the count shrinks, so the sentence subtracts.",
+        "That matches 7,300 - 2,650."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you need to pick the right number sentence for a story before computing anything.",
+      "hints": [
+        "Read the story for a growing word or a shrinking word before picking an operation.",
+        "The two counts must appear in the same order the story gives them."
+      ],
+      "socraticHint": "Does the story describe something arriving, or something being taken away?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "options": [
+        "7,300 + 2,650",
+        "7,300 - 2,650",
+        "2,650 - 7,300",
+        "7,300 + 7,300"
+      ],
+      "variant": {
+        "prompt": "A rover's distance log has 7,520 meters. Then 2,760 meters are taken away. Which number sentence finds how many are left?",
+        "options": [
+          "7,520 - 2,760",
+          "7,520 + 2,760",
+          "2,760 - 7,520",
+          "7,520 + 7,520"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p42",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A rover's distance log has 4,180 meters. Another 990 meters arrive. Which number sentence finds the new total?",
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Decide first whether the story means the count grows or shrinks.",
+        "Arriving means the count grows, so the sentence adds.",
+        "That matches 4,180 + 990."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you need to pick the right number sentence for a story before computing anything.",
+      "hints": [
+        "Read the story for a growing word or a shrinking word before picking an operation.",
+        "The two counts must appear in the same order the story gives them."
+      ],
+      "socraticHint": "Does the story describe something arriving, or something being taken away?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "options": [
+        "4,180 - 990",
+        "990 - 4,180",
+        "4,180 + 990",
+        "4,180 + 4,180"
+      ],
+      "variant": {
+        "prompt": "A 3d printer's parts counter has 4,400 parts. Another 1,100 parts arrive. Which number sentence finds the new total?",
+        "options": [
+          "4,400 + 1,100",
+          "4,400 - 1,100",
+          "1,100 - 4,400",
+          "4,400 + 4,400"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p43",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A 3d printer's parts counter has 6,040 parts. Then 2,385 parts are taken away. Which number sentence finds how many are left?",
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Decide first whether the story means the count grows or shrinks.",
+        "Taken away means the count shrinks, so the sentence subtracts.",
+        "That matches 6,040 - 2,385."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you need to pick the right number sentence for a story before computing anything.",
+      "hints": [
+        "Read the story for a growing word or a shrinking word before picking an operation.",
+        "The two counts must appear in the same order the story gives them."
+      ],
+      "socraticHint": "Does the story describe something arriving, or something being taken away?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "options": [
+        "6,040 + 2,385",
+        "2,385 - 6,040",
+        "6,040 + 6,040",
+        "6,040 - 2,385"
+      ],
+      "variant": {
+        "prompt": "A garden's seed count has 6,260 seeds. Then 2,495 seeds are taken away. Which number sentence finds how many are left?",
+        "options": [
+          "6,260 + 2,495",
+          "6,260 - 2,495",
+          "2,495 - 6,260",
+          "6,260 + 6,260"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p44",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "On a garden's seed count: 9,000 minus 4,387 equals 4,613. True or false?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Work out the real difference first: it is 4,613.",
+        "Compare that to the claimed 4,613.",
+        "The statement is true."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you are handed someone else's addition or subtraction and asked to check it.",
+      "hints": [
+        "Compute the real answer yourself before checking the claim.",
+        "Compare place by place, not just by how the numbers look."
+      ],
+      "socraticHint": "Is it faster here to compute the real answer first, or to guess from how close the claim looks?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On an aquarium's fish count: 7,000 minus 2,895 equals 4,115. True or false?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p45",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "A workshop's bolt bin logged these calculations: 8,000 - 3,647, 9,500 - 2,180, 7,600 - 5,299, 6,400 - 1,875, 10,000 - 6,543. Order their results from least to greatest.",
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          4,
+          0,
+          3,
+          1
+        ]
+      },
+      "explanation": [
+        "Work out each result first.",
+        "The results are 4,353, 7,320, 2,301, 4,525, 3,457 in the order given.",
+        "From least to greatest that is 2,301, 3,457, 4,353, 4,525, 7,320."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when several calculations need to be lined up by their results, smallest to biggest.",
+      "hints": [
+        "Compute every result before trying to order them.",
+        "Compare the actual results, not how the expressions look written out."
+      ],
+      "socraticHint": "Can you tell which result is biggest just by looking at the expressions, or do you need to compute first?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "items": [
+        "8,000 - 3,647",
+        "9,500 - 2,180",
+        "7,600 - 5,299",
+        "6,400 - 1,875",
+        "10,000 - 6,543"
+      ],
+      "variant": {
+        "prompt": "A game's point tracker logged these calculations: 9,000 - 4,647, 10,500 - 3,180, 8,600 - 6,299, 7,400 - 2,875, 11,000 - 7,543. Order their results from least to greatest.",
+        "items": [
+          "9,000 - 4,647",
+          "10,500 - 3,180",
+          "8,600 - 6,299",
+          "7,400 - 2,875",
+          "11,000 - 7,543"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            4,
+            0,
+            3,
+            1
+          ]
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-ar-add-sub-multi-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Take the number 47. Reverse its digits to get 74. What is 47 plus 74?",
+      "answer": {
+        "kind": "number",
+        "value": "121"
+      },
+      "explanation": [
+        "Reversing 47 gives 74.",
+        "47 plus 74 is 121.",
+        "That total is always a multiple of 11 for any 2-digit start."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a number and its digit-reversal are added together.",
+      "hints": [
+        "Reverse the digits first, then add the two numbers.",
+        "A 2-digit number and its reverse always add to a multiple of 11; use that to check your work."
+      ],
+      "socraticHint": "Why might a number and its digit-reversal always add to a multiple of 11?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Take the number 38. Reverse its digits to get 83. What is 38 plus 83?",
+        "answer": {
+          "kind": "number",
+          "value": "121"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Take the number 482. Reverse its digits to get 284. What is the difference between 482 and 284?",
+      "answer": {
+        "kind": "number",
+        "value": "198"
+      },
+      "explanation": [
+        "Reversing 482 gives 284.",
+        "The difference between 482 and 284 is 198.",
+        "That difference is always a multiple of 99 for any 3-digit start with different first and last digits."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a number and its digit-reversal are compared by subtraction.",
+      "hints": [
+        "Reverse the digits first, then subtract the smaller from the bigger.",
+        "A 3-digit number and its reverse always differ by a multiple of 99; use that to check your work."
+      ],
+      "socraticHint": "What happens to this puzzle if the first and last digits of the starting number are the same?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Take the number 731. Reverse its digits to get 137. What is the difference between 731 and 137?",
+        "answer": {
+          "kind": "number",
+          "value": "594"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p48",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A 2-digit number added to its own digit-reversal always lands on a multiple of 11. Which of these sums could NOT come from that?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Every 2-digit number added to its reverse is a multiple of 11.",
+        "Checking each choice against that rule, 150 is not a multiple of 11.",
+        "So that one could not be a real reversal-sum."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you need to test several numbers against a pattern instead of computing each one from scratch.",
+      "hints": [
+        "Divide each choice by 11 and see which one does not come out even.",
+        "Only one of the choices fails the multiple-of-11 test."
+      ],
+      "socraticHint": "How can you test whether a number is a multiple of 11 without listing every multiple?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "options": [
+        "88",
+        "150",
+        "121",
+        "143"
+      ],
+      "variant": {
+        "prompt": "A 2-digit number added to its own digit-reversal always lands on a multiple of 11. Which of these sums could NOT come from that?",
+        "options": [
+          "170",
+          "66",
+          "132",
+          "165"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p49",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover's distance log starts with 15,800 meters. Then it gains 6,250 more meters, then it loses 4,900 meters, then it loses 3,175 meters, then it gains 1,020 more meters. How many meters are there at the end?",
+      "answer": {
+        "kind": "number",
+        "value": "14995"
+      },
+      "explanation": [
+        "Start at 15,800.",
+        "Add 6,250: 22,050.",
+        "Subtract 4,900: 17,150.",
+        "Subtract 3,175: 13,975.",
+        "Add 1,020: 14,995."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when a story chains several gains and losses together before asking for the final count.",
+      "hints": [
+        "Work through the story one change at a time, in the order it happens.",
+        "Keep a running total after each step instead of trying to do it all at once."
+      ],
+      "socraticHint": "Does the order of the gains and losses in the story matter to the final total?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3d printer's parts counter starts with 18,200 parts. Then it gains 7,150 more parts, then it loses 5,600 parts, then it loses 2,890 parts, then it gains 1,340 more parts. How many parts are there at the end?",
+        "answer": {
+          "kind": "number",
+          "value": "18200"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-add-sub-multi-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A garden's seed count starts at some count. It gains 342 seeds, then it loses 187 seeds, then it gains 96 seeds, ending at 5,000 seeds. What was the starting count?",
+      "answer": {
+        "kind": "number",
+        "value": "4749"
+      },
+      "explanation": [
+        "Work backward from the end, undoing each change in reverse order.",
+        "Undo a gain of 96 by subtracting it: 4,904.",
+        "Undo a loss of 187 by adding it back: 5,091.",
+        "Undo a gain of 342 by subtracting it: 4,749."
+      ],
+      "ideaId": "ar-add-sub-multi",
+      "useAgain": "when you know the ending count and the changes, but need the starting count.",
+      "hints": [
+        "Start from the ending count and undo the last change first.",
+        "A gain undoes by subtracting; a loss undoes by adding back."
+      ],
+      "socraticHint": "To undo a change, do you repeat the same operation or use its opposite?",
+      "skills": [
+        "think.number-sense",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An aquarium's fish count starts at some count. It gains 415 fish, then it loses 260 fish, then it gains 128 fish, ending at 6,000 fish. What was the starting count?",
+        "answer": {
+          "kind": "number",
+          "value": "5717"
+        }
+      }
+    }
+  ]
+}

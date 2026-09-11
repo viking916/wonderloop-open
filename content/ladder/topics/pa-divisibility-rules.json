@@ -1,0 +1,1949 @@
+{
+  "id": "pa-divisibility-rules",
+  "idea": {
+    "body": "A divisibility rule checks whether one number divides another by looking only at its digits, with no long division. For 2, look at the last digit: even means yes. For 5, the last digit must be 0 or 5. For 3 or 9, add the digits: if that sum divides by 3 (or 9), so does the whole number. For 4, check only the last two digits, and for 8, only the last three. A number passes 6 only when it passes both 2 and 3. A drone's flight log has 918 entries to split into equal batches. Its digits add to 18, which divides by 9, so 918 does too, with no division at all."
+  },
+  "workedExample": {
+    "prompt": "A rocket crew has 4158 liters of fuel to split evenly across bays. They check 2, 3, 4, 6, and 9. Which of these divide 4158 evenly?",
+    "steps": [
+      "The last digit of 4158 is 8, which is even, so 2 divides 4158.",
+      "The digits of 4158 add to 18, and 18 does divide evenly by 9, so 3 and 9 divide 4158.",
+      "4158 passes the check for 2 and passes the check for 3, so 6 divides 4158.",
+      "The last two digits of 4158 are 58, and 58 does not divide evenly by 4, so 4 does not divide 4158.",
+      "So 2, 3, 6, and 9 all divide 4158, but 4 does not."
+    ]
+  },
+  "ways": [
+    {
+      "id": "pa-divisibility-rules-w1",
+      "name": "The digit rules",
+      "when": "Use this for any divisor with a known digit pattern, like 2, 3, 4, 5, 6, 8, 9, or 10.",
+      "steps": [
+        "The last digit of 6318 is 8, which is even, so 2 divides 6318.",
+        "The digits of 6318 add to 18, and 18 divides evenly by 9, so 3 and 9 divide 6318 too.",
+        "6318 passes the checks for both 2 and 3, so 6 divides 6318 as well.",
+        "The last two digits, 18, do not divide evenly by 4, so 4 does not divide 6318."
+      ],
+      "example": "Which of 2, 3, 4, 6, and 9 divide 6318 evenly?",
+      "answer": "2, 3, 6, and 9 divide it; 4 does not.",
+      "trap": "Using the wrong rule for a divisor, like the digit sum instead of the last two digits."
+    },
+    {
+      "id": "pa-divisibility-rules-w2",
+      "name": "The nearest multiple",
+      "when": "Use this when the number sits close to a round multiple you already know.",
+      "steps": [
+        "Pick a multiple of 3 close to 4527, like 4500, since 4500 divides evenly by 3.",
+        "Subtract: 4527 minus 4500 is 27.",
+        "Check whether 27 divides evenly by 3: 27 is 3 times 9, so it does.",
+        "Since both 4500 and 27 divide by 3, their sum, 4527, divides by 3 too."
+      ],
+      "example": "Is 4527 divisible by 3?",
+      "answer": "Yes, 4527 divides evenly by 3.",
+      "trap": "Picking a nearby number that is not actually a multiple of the divisor."
+    },
+    {
+      "id": "pa-divisibility-rules-w3",
+      "name": "Combined rule check",
+      "when": "Use this when the divisor splits into two smaller checks that share no common factor, like 6, 12, or 15.",
+      "steps": [
+        "12 is 3 times 4, and 3 and 4 share no common factor, so check them separately.",
+        "The digits of 936 add to 18, which divides evenly by 3, so 936 passes the check for 3.",
+        "The last two digits of 936 are 36, and 36 divides evenly by 4, so 936 passes the check for 4.",
+        "936 passes both checks, so 12 divides 936 evenly."
+      ],
+      "example": "Does 936 divide evenly by 12?",
+      "answer": "Yes, 12 divides 936.",
+      "trap": "Stopping after only one of the two checks passes, instead of requiring both."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-pa-divisibility-rules-p01",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A rover's step counter reads 372 steps. 372 is divisible by 2.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The last digit of 372 is 2, which is even, so 2 divides 372.",
+        "So the statement is true."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 2 divides a number without doing long division.",
+      "hints": [
+        "Check 372 with the divisibility rule for 2.",
+        "Look only at the last digit."
+      ],
+      "socraticHint": "Which digits of 372 does the rule for 2 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover's step counter reads 379 steps. 379 is divisible by 2.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p02",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A 3D printer numbers its finished prints. Which of these print numbers is divisible by 3?",
+      "options": [
+        "507",
+        "508",
+        "509",
+        "511"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The digits of 508 add to 13, and 13 does not divide evenly by 3, so 3 does not divide 508.",
+        "The digits of 509 add to 14, and 14 does not divide evenly by 3, so 3 does not divide 509.",
+        "The digits of 511 add to 7, and 7 does not divide evenly by 3, so 3 does not divide 511.",
+        "The digits of 507 add to 12, and 12 does divide evenly by 3, so 3 divides 507."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to spot the one number in a list that 3 actually divides.",
+      "hints": [
+        "Try the divisibility rule for 3 on each option.",
+        "Add up all the digits and check that total."
+      ],
+      "socraticHint": "Only one of these four numbers passes the rule for 3. Which digits decide that?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A 3D printer numbers its finished prints. Which of these print numbers is divisible by 3?",
+        "options": [
+          "548",
+          "546",
+          "550",
+          "547"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover logs four battery readings: 646, 651, 663 and 659. How many of them are divisible by 5?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "The last digit of 646 is 6, which is not 0 or 5, so 5 does not divide 646.",
+        "The last digit of 651 is 1, which is not 0 or 5, so 5 does not divide 651.",
+        "The last digit of 663 is 3, which is not 0 or 5, so 5 does not divide 663.",
+        "The last digit of 659 is 9, which is not 0 or 5, so 5 does not divide 659.",
+        "That makes 0 of them divisible by 5."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to sort a list of numbers by whether 5 divides them.",
+      "hints": [
+        "Check each number with the divisibility rule for 5.",
+        "Look only at the last digit."
+      ],
+      "socraticHint": "If you check all 4 numbers one at a time, how many pass the rule for 5?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover logs four battery readings: 687, 692, 704 and 700. How many of them are divisible by 5?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p04",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A game's save file sits at level 783. 783 is divisible by 9.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The digits of 783 add to 18, and 18 does divide evenly by 9, so 9 divides 783.",
+        "So the statement is true."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 9 divides a number without doing long division.",
+      "hints": [
+        "Check 783 with the divisibility rule for 9.",
+        "Add up all the digits and check that total."
+      ],
+      "socraticHint": "Which digits of 783 does the rule for 9 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game's save file sits at level 811. 811 is divisible by 9.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p05",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A rocket team numbers its fuel readings. Which of these numbers is divisible by 10?",
+      "options": [
+        "921",
+        "922",
+        "920",
+        "923"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The last digit of 920 is 0, so 10 divides 920.",
+        "The last digit of 921 is 1, so 10 does not divide 921.",
+        "The last digit of 922 is 2, so 10 does not divide 922.",
+        "The last digit of 923 is 3, so 10 does not divide 923."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to spot the one number in a list that 10 actually divides.",
+      "hints": [
+        "Try the divisibility rule for 10 on each option.",
+        "Look only at the last digit."
+      ],
+      "socraticHint": "Only one of these four numbers passes the rule for 10. Which digits decide that?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rocket team numbers its fuel readings. Which of these numbers is divisible by 10?",
+        "options": [
+          "951",
+          "952",
+          "953",
+          "950"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Four save files sit in a game studio's folder, at 1057, 1059, 1074 and 1064. How many of them are divisible by 2?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The last digit of 1057 is 7, which is odd, so 2 does not divide 1057.",
+        "The last digit of 1059 is 9, which is odd, so 2 does not divide 1059.",
+        "The last digit of 1074 is 4, which is even, so 2 divides 1074.",
+        "The last digit of 1064 is 4, which is even, so 2 divides 1064.",
+        "That makes 2 of them divisible by 2."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to sort a list of numbers by whether 2 divides them.",
+      "hints": [
+        "Check each number with the divisibility rule for 2.",
+        "Look only at the last digit."
+      ],
+      "socraticHint": "If you check all 4 numbers one at a time, how many pass the rule for 2?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Four save files sit in a game studio's folder, at 1098, 1100, 1115 and 1105. How many of them are divisible by 2?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p07",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A robot arm has sorted 1194 parts today. 1194 is divisible by 3.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The digits of 1194 add to 15, and 15 does divide evenly by 3, so 3 divides 1194.",
+        "So the statement is true."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 3 divides a number without doing long division.",
+      "hints": [
+        "Check 1194 with the divisibility rule for 3.",
+        "Add up all the digits and check that total."
+      ],
+      "socraticHint": "Which digits of 1194 does the rule for 3 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A robot arm has sorted 1204 parts today. 1204 is divisible by 3.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p08",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A piano app numbers its saved songs. Which of these song numbers is divisible by 5?",
+      "options": [
+        "1333",
+        "1331",
+        "1330",
+        "1332"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The last digit of 1333 is 3, which is not 0 or 5, so 5 does not divide 1333.",
+        "The last digit of 1330 is 0, which is 0 or 5, so 5 divides 1330.",
+        "The last digit of 1331 is 1, which is not 0 or 5, so 5 does not divide 1331.",
+        "The last digit of 1332 is 2, which is not 0 or 5, so 5 does not divide 1332."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to spot the one number in a list that 5 actually divides.",
+      "hints": [
+        "Try the divisibility rule for 5 on each option.",
+        "Look only at the last digit."
+      ],
+      "socraticHint": "Only one of these four numbers passes the rule for 5. Which digits decide that?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A piano app numbers its saved songs. Which of these song numbers is divisible by 5?",
+        "options": [
+          "1366",
+          "1367",
+          "1368",
+          "1365"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D printer's queue shows job numbers 1468, 1477, 1485 and 1489. How many of them are divisible by 9?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The digits of 1468 add to 19, and 19 does not divide evenly by 9, so 9 does not divide 1468.",
+        "The digits of 1477 add to 19, and 19 does not divide evenly by 9, so 9 does not divide 1477.",
+        "The digits of 1485 add to 18, and 18 does divide evenly by 9, so 9 divides 1485.",
+        "The digits of 1489 add to 22, and 22 does not divide evenly by 9, so 9 does not divide 1489.",
+        "That makes 1 of them divisible by 9."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to sort a list of numbers by whether 9 divides them.",
+      "hints": [
+        "Check each number with the divisibility rule for 9.",
+        "Add up all the digits and check that total."
+      ],
+      "socraticHint": "If you check all 4 numbers one at a time, how many pass the rule for 9?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A 3D printer's queue shows job numbers 1509, 1518, 1526 and 1530. How many of them are divisible by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p10",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A kitchen scale shows a reading of 1605 grams. 1605 is divisible by 10.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "The last digit of 1605 is 5, so 10 does not divide 1605.",
+        "So the statement is false."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 10 divides a number without doing long division.",
+      "hints": [
+        "Check 1605 with the divisibility rule for 10.",
+        "Look only at the last digit."
+      ],
+      "socraticHint": "Which digits of 1605 does the rule for 10 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A kitchen scale shows a reading of 1636 grams. 1636 is divisible by 10.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p11",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A drone logs its flight numbers. Which of these flight numbers is divisible by 2?",
+      "options": [
+        "1745",
+        "1742",
+        "1747",
+        "1743"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The last digit of 1745 is 5, which is odd, so 2 does not divide 1745.",
+        "The last digit of 1747 is 7, which is odd, so 2 does not divide 1747.",
+        "The last digit of 1742 is 2, which is even, so 2 divides 1742.",
+        "The last digit of 1743 is 3, which is odd, so 2 does not divide 1743."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to spot the one number in a list that 2 actually divides.",
+      "hints": [
+        "Try the divisibility rule for 2 on each option.",
+        "Look only at the last digit."
+      ],
+      "socraticHint": "Only one of these four numbers passes the rule for 2. Which digits decide that?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A drone logs its flight numbers. Which of these flight numbers is divisible by 2?",
+        "options": [
+          "1778",
+          "1783",
+          "1779",
+          "1781"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p12",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot counted parts in four bins: 1879, 1882, 1896 and 1888. How many of them are divisible by 3?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The digits of 1879 add to 25, and 25 does not divide evenly by 3, so 3 does not divide 1879.",
+        "The digits of 1882 add to 19, and 19 does not divide evenly by 3, so 3 does not divide 1882.",
+        "The digits of 1896 add to 24, and 24 does divide evenly by 3, so 3 divides 1896.",
+        "The digits of 1888 add to 25, and 25 does not divide evenly by 3, so 3 does not divide 1888.",
+        "That makes 1 of them divisible by 3."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to sort a list of numbers by whether 3 divides them.",
+      "hints": [
+        "Check each number with the divisibility rule for 3.",
+        "Add up all the digits and check that total."
+      ],
+      "socraticHint": "If you check all 4 numbers one at a time, how many pass the rule for 3?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A robot counted parts in four bins: 1920, 1923, 1937 and 1929. How many of them are divisible by 3?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p13",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A piano app has counted 2016 notes played. 2016 is divisible by 5.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "The last digit of 2016 is 6, which is not 0 or 5, so 5 does not divide 2016.",
+        "So the statement is false."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 5 divides a number without doing long division.",
+      "hints": [
+        "Check 2016 with the divisibility rule for 5.",
+        "Look only at the last digit."
+      ],
+      "socraticHint": "Which digits of 2016 does the rule for 5 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A piano app has counted 2032 notes played. 2032 is divisible by 5.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p14",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A garden club numbers its plots. Which of these plot numbers is divisible by 9?",
+      "options": [
+        "2152",
+        "2153",
+        "2151",
+        "2154"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The digits of 2152 add to 10, and 10 does not divide evenly by 9, so 9 does not divide 2152.",
+        "The digits of 2153 add to 11, and 11 does not divide evenly by 9, so 9 does not divide 2153.",
+        "The digits of 2154 add to 12, and 12 does not divide evenly by 9, so 9 does not divide 2154.",
+        "The digits of 2151 add to 9, and 9 does divide evenly by 9, so 9 divides 2151."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to spot the one number in a list that 9 actually divides.",
+      "hints": [
+        "Try the divisibility rule for 9 on each option.",
+        "Add up all the digits and check that total."
+      ],
+      "socraticHint": "Only one of these four numbers passes the rule for 9. Which digits decide that?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A garden club numbers its plots. Which of these plot numbers is divisible by 9?",
+        "options": [
+          "2189",
+          "2187",
+          "2190",
+          "2188"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p15",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A kitchen scale showed four readings in grams: 2290, 2300, 2307 and 2313. How many of them are divisible by 10?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The last digit of 2290 is 0, so 10 divides 2290.",
+        "The last digit of 2300 is 0, so 10 divides 2300.",
+        "The last digit of 2307 is 7, so 10 does not divide 2307.",
+        "The last digit of 2313 is 3, so 10 does not divide 2313.",
+        "That makes 2 of them divisible by 10."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to sort a list of numbers by whether 10 divides them.",
+      "hints": [
+        "Check each number with the divisibility rule for 10.",
+        "Look only at the last digit."
+      ],
+      "socraticHint": "If you check all 4 numbers one at a time, how many pass the rule for 10?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A kitchen scale showed four readings in grams: 2331, 2341, 2348 and 2354. How many of them are divisible by 10?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p16",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A number divisible by 6 must pass the checks for both 2 and 3. Which of these divides by 6?",
+      "options": [
+        "499",
+        "500",
+        "501",
+        "498"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "499 ends in 9, which is odd, so it fails the check for 2.",
+        "500 has digits adding to 5, which 3 does not divide, so it fails the check for 3.",
+        "501 ends in 1, which is odd, so it fails the check for 2.",
+        "498 ends in 8, which is even, and has digits adding to 21, which 3 does divide, so 6 divides 498.",
+        "Only a number that passes both checks is a multiple of 6."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a compound number like 6 is built from two smaller checks that both must pass.",
+      "hints": [
+        "Check each option against the rule for 2.",
+        "Then check the survivors against the rule for 3."
+      ],
+      "socraticHint": "A number that passes only one of the two checks is not enough. Why does it need both?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A number divisible by 6 must pass the checks for both 2 and 3. Which of these divides by 6?",
+        "options": [
+          "552",
+          "553",
+          "554",
+          "555"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p17",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A number divisible by 12 must pass the checks for both 3 and 4. Which of these divides by 12?",
+      "options": [
+        "601",
+        "600",
+        "602",
+        "603"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "601 has digits adding to 7, which 3 does not divide, so it fails the check for 3.",
+        "600 has digits adding to 6, which 3 does divide, and ends in 00, which 4 does divide, so 12 divides 600.",
+        "602 has digits adding to 8, which 3 does not divide, so it fails the check for 3.",
+        "603 ends in 03, which 4 does not divide, so it fails the check for 4.",
+        "Only a number that passes both checks is a multiple of 12."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a compound number like 12 is built from two smaller checks that both must pass.",
+      "hints": [
+        "Check each option against the rule for 3.",
+        "Then check the survivors against the rule for 4."
+      ],
+      "socraticHint": "A number that passes only one of the two checks is not enough. Why does it need both?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A number divisible by 12 must pass the checks for both 3 and 4. Which of these divides by 12?",
+        "options": [
+          "650",
+          "651",
+          "649",
+          "648"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p18",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A number divisible by 18 must pass the checks for both 2 and 9. Which of these divides by 18?",
+      "options": [
+        "684",
+        "686",
+        "687",
+        "685"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "684 ends in 4, which is even, and has digits adding to 18, which 9 does divide, so 18 divides 684.",
+        "686 has digits adding to 20, which 9 does not divide, so it fails the check for 9.",
+        "687 ends in 7, which is odd, so it fails the check for 2.",
+        "685 ends in 5, which is odd, so it fails the check for 2.",
+        "Only a number that passes both checks is a multiple of 18."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a compound number like 18 is built from two smaller checks that both must pass.",
+      "hints": [
+        "Check each option against the rule for 2.",
+        "Then check the survivors against the rule for 9."
+      ],
+      "socraticHint": "A number that passes only one of the two checks is not enough. Why does it need both?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A number divisible by 18 must pass the checks for both 2 and 9. Which of these divides by 18?",
+        "options": [
+          "741",
+          "739",
+          "738",
+          "740"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p19",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A number divisible by 15 must pass the checks for both 3 and 5. Which of these divides by 15?",
+      "options": [
+        "852",
+        "853",
+        "854",
+        "855"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "852 ends in 2, not 0 or 5, so 5 does not, so it fails the check for 5.",
+        "853 has digits adding to 16, which 3 does not divide, so it fails the check for 3.",
+        "854 has digits adding to 17, which 3 does not divide, so it fails the check for 3.",
+        "855 has digits adding to 18, which 3 does divide, and ends in 5, so 5 divides it, so 15 divides 855.",
+        "Only a number that passes both checks is a multiple of 15."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a compound number like 12 is built from two smaller checks that both must pass.",
+      "hints": [
+        "Check each option against the rule for 3 first.",
+        "Then check the survivors against the rule for 5."
+      ],
+      "socraticHint": "A number that passes only one of the two checks is not enough. Why does it need both?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A number divisible by 15 must pass the checks for both 3 and 5. Which of these divides by 15?",
+        "options": [
+          "944",
+          "945",
+          "946",
+          "947"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p20",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the missing digit, from 1 to 9, that makes 3_84 divisible by 9?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The known digits of 3_84 add to 15.",
+        "For 9 to divide the number, all the digits together must add to a multiple of 9.",
+        "15 plus 3 is 18, a multiple of 9.",
+        "So the missing digit is 3, making the number 3384."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a digit is missing and the number must divide evenly by 9.",
+      "hints": [
+        "Add up the digits you already know.",
+        "Find the digit from 1 to 9 that brings that total to a multiple of 9."
+      ],
+      "socraticHint": "What total do all the digits of a multiple of 9 always add up to?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the missing digit, from 1 to 9, that makes 5_06 divisible by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p21",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the missing digit, from 1 to 9, that makes 5_67 divisible by 9?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "The known digits of 5_67 add to 18.",
+        "For 9 to divide the number, all the digits together must add to a multiple of 9.",
+        "18 plus 9 is 27, a multiple of 9.",
+        "So the missing digit is 9, making the number 5967."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a digit is missing and the number must divide evenly by 9.",
+      "hints": [
+        "Add up the digits you already know.",
+        "Find the digit from 1 to 9 that brings that total to a multiple of 9."
+      ],
+      "socraticHint": "What total do all the digits of a multiple of 9 always add up to?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the missing digit, from 1 to 9, that makes 7_89 divisible by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the missing digit, from 1 to 9, that makes 62_5 divisible by 9?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The known digits of 62_5 add to 13.",
+        "For 9 to divide the number, all the digits together must add to a multiple of 9.",
+        "13 plus 5 is 18, a multiple of 9.",
+        "So the missing digit is 5, making the number 6255."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a digit is missing and the number must divide evenly by 9.",
+      "hints": [
+        "Add up the digits you already know.",
+        "Find the digit from 1 to 9 that brings that total to a multiple of 9."
+      ],
+      "socraticHint": "What total do all the digits of a multiple of 9 always add up to?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is the missing digit, from 1 to 9, that makes 84_7 divisible by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p23",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A 3D printer has just finished job number 4536. 4536 is divisible by 4.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The last two digits of 4536 are 36, and 36 does divide evenly by 4, so 4 divides 4536.",
+        "So the statement is true."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 4 divides a number without doing long division.",
+      "hints": [
+        "Check 4536 with the divisibility rule for 4.",
+        "Look only at the last two digits."
+      ],
+      "socraticHint": "Which digits of 4536 does the rule for 4 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer has just finished job number 4549. 4549 is divisible by 4.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p24",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A drone's flight log shows 7208 minutes flown. 7208 is divisible by 4.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The last two digits of 7208 are 08, and 8 does divide evenly by 4, so 4 divides 7208.",
+        "So the statement is true."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 4 divides a number without doing long division.",
+      "hints": [
+        "Check 7208 with the divisibility rule for 4.",
+        "Look only at the last two digits."
+      ],
+      "socraticHint": "Which digits of 7208 does the rule for 4 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone's flight log shows 7221 minutes flown. 7221 is divisible by 4.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p25",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A rocket's mission log shows 6534 seconds on the clock. 6534 is divisible by 6.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "6534 passes the check for 2 and passes the check for 3, so 6 divides 6534.",
+        "So the statement is true."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 6 divides a number without doing long division.",
+      "hints": [
+        "Check 6534 with the divisibility rule for 6.",
+        "Check the rule for 2 first, then the rule for 3."
+      ],
+      "socraticHint": "Which digits of 6534 does the rule for 6 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rocket's mission log shows 6553 seconds on the clock. 6553 is divisible by 6.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p26",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A video game marks every 6th level as a bonus level, so the bonus levels are exactly the multiples of 6. How many multiples of 6 lie between 100 and 300, inclusive?",
+      "answer": {
+        "kind": "number",
+        "value": "34"
+      },
+      "explanation": [
+        "The first multiple of 6 at or above 100 is 102, and the last one at or below 300 is 300.",
+        "From 102 to 300 is 198, which is 33 steps of 6.",
+        "33 steps means 34 multiples, because the first one counts too.",
+        "The trap is forgetting to count the starting multiple."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to count every multiple of 6 inside a range of numbers.",
+      "hints": [
+        "Find the first and the last multiple of 6 inside the range.",
+        "Count the steps of 6 between them, then add one for the starting multiple."
+      ],
+      "socraticHint": "If every 6th number counts, about how many of them fit between 100 and 300?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A video game marks every 6th level as a bonus level, so the bonus levels are exactly the multiples of 6. How many multiples of 6 lie between 250 and 500, inclusive?",
+        "answer": {
+          "kind": "number",
+          "value": "42"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p27",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D printer runs a cleaning cycle every 9th print job, so the cleaning-cycle jobs are the multiples of 9. How many multiples of 9 lie between 200 and 500, inclusive?",
+      "answer": {
+        "kind": "number",
+        "value": "33"
+      },
+      "explanation": [
+        "The first multiple of 9 at or above 200 is 207, and the last one at or below 500 is 495.",
+        "From 207 to 495 is 288, which is 32 steps of 9.",
+        "32 steps means 33 multiples, because the first one counts too.",
+        "The trap is forgetting to count the starting multiple."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to count every multiple of 9 inside a range of numbers.",
+      "hints": [
+        "Find the first and the last multiple of 9 inside the range.",
+        "Count the steps of 9 between them, then add one for the starting multiple."
+      ],
+      "socraticHint": "If every 9th number counts, about how many of them fit between 200 and 500?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer runs a cleaning cycle every 9th print job, so the cleaning-cycle jobs are the multiples of 9. How many multiples of 9 lie between 400 and 800, inclusive?",
+        "answer": {
+          "kind": "number",
+          "value": "44"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p28",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket team logs four fuel readings: 318, 402, 540 and 726. How many of them are divisible by 6?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "318 passes the check for 2 and passes the check for 3, so 6 divides 318.",
+        "402 passes the check for 2 and passes the check for 3, so 6 divides 402.",
+        "540 passes the check for 2 and passes the check for 3, so 6 divides 540.",
+        "726 passes the check for 2 and passes the check for 3, so 6 divides 726.",
+        "That makes 4 of them divisible by 6."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to sort a list of numbers by whether 6 divides them.",
+      "hints": [
+        "Check each number with the divisibility rule for 6.",
+        "Check the rule for 2 first, then the rule for 3."
+      ],
+      "socraticHint": "If you check all 4 numbers one at a time, how many pass the rule for 6?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rocket team logs four fuel readings: 359, 443, 581 and 767. How many of them are divisible by 6?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p29",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone's four flights lasted, in seconds, 432, 501, 693 and 810. How many of them are divisible by 9?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The digits of 432 add to 9, and 9 does divide evenly by 9, so 9 divides 432.",
+        "The digits of 501 add to 6, and 6 does not divide evenly by 9, so 9 does not divide 501.",
+        "The digits of 693 add to 18, and 18 does divide evenly by 9, so 9 divides 693.",
+        "The digits of 810 add to 9, and 9 does divide evenly by 9, so 9 divides 810.",
+        "That makes 3 of them divisible by 9."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to sort a list of numbers by whether 9 divides them.",
+      "hints": [
+        "Check each number with the divisibility rule for 9.",
+        "Add up all the digits and check that total."
+      ],
+      "socraticHint": "If you check all 4 numbers one at a time, how many pass the rule for 9?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone's four flights lasted, in seconds, 473, 542, 734 and 851. How many of them are divisible by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p30",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A garden club counted seedlings in four beds: 216, 350, 512 and 618. How many of them are divisible by 4?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The last two digits of 216 are 16, and 16 does divide evenly by 4, so 4 divides 216.",
+        "The last two digits of 350 are 50, and 50 does not divide evenly by 4, so 4 does not divide 350.",
+        "The last two digits of 512 are 12, and 12 does divide evenly by 4, so 4 divides 512.",
+        "The last two digits of 618 are 18, and 18 does not divide evenly by 4, so 4 does not divide 618.",
+        "That makes 2 of them divisible by 4."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to sort a list of numbers by whether 4 divides them.",
+      "hints": [
+        "Check each number with the divisibility rule for 4.",
+        "Look only at the last two digits."
+      ],
+      "socraticHint": "If you check all 4 numbers one at a time, how many pass the rule for 4?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A garden club counted seedlings in four beds: 257, 391, 553 and 659. How many of them are divisible by 4?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p31",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A garden bed is numbered plot 27384. 27384 is divisible by 8.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The last three digits of 27384 are 384, and 384 does divide evenly by 8, so 8 divides 27384.",
+        "So the statement is true."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 8 divides a number without doing long division.",
+      "hints": [
+        "Check 27384 with the divisibility rule for 8.",
+        "Look only at the last three digits."
+      ],
+      "socraticHint": "Which digits of 27384 does the rule for 8 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A garden bed is numbered plot 27409. 27409 is divisible by 8.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p32",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A rover has sent home 41912 pings so far. 41912 is divisible by 8.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The last three digits of 41912 are 912, and 912 does divide evenly by 8, so 8 divides 41912.",
+        "So the statement is true."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 8 divides a number without doing long division.",
+      "hints": [
+        "Check 41912 with the divisibility rule for 8.",
+        "Look only at the last three digits."
+      ],
+      "socraticHint": "Which digits of 41912 does the rule for 8 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover has sent home 41937 pings so far. 41937 is divisible by 8.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p33",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A game archive holds save file number 6248. 6248 is divisible by 11.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Start from the right and alternate signs: 8 - 4 + 2 - 6 = 0.",
+        "11 divides 0, so 11 divides 6248.",
+        "So the statement is true."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 11 divides a number without doing long division.",
+      "hints": [
+        "Check 6248 with the divisibility rule for 11.",
+        "Add and subtract the digits from the right, alternating as you go."
+      ],
+      "socraticHint": "Which digits of 6248 does the rule for 11 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game archive holds save file number 6282. 6282 is divisible by 11.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p34",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A robot has sorted 9273 boxes today. 9273 is divisible by 11.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Start from the right and alternate signs: 3 - 7 + 2 - 9 = -11.",
+        "11 divides -11, so 11 divides 9273.",
+        "So the statement is true."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 11 divides a number without doing long division.",
+      "hints": [
+        "Check 9273 with the divisibility rule for 11.",
+        "Add and subtract the digits from the right, alternating as you go."
+      ],
+      "socraticHint": "Which digits of 9273 does the rule for 11 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot has sorted 9307 boxes today. 9307 is divisible by 11.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p35",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "A kitchen scale has logged batch number 15928. 15928 is divisible by 11.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Start from the right and alternate signs: 8 - 2 + 9 - 5 + 1 = 11.",
+        "11 divides 11, so 11 divides 15928.",
+        "So the statement is true."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to know if 11 divides a number without doing long division.",
+      "hints": [
+        "Check 15928 with the divisibility rule for 11.",
+        "Add and subtract the digits from the right, alternating as you go."
+      ],
+      "socraticHint": "Which digits of 15928 does the rule for 11 actually look at?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen scale has logged batch number 15962. 15962 is divisible by 11.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A kitchen scale beeps to remind you to reset it every 8th weighing, so the beeps land on multiples of 8. How many multiples of 8 lie between 300 and 1200, inclusive?",
+      "answer": {
+        "kind": "number",
+        "value": "113"
+      },
+      "explanation": [
+        "The first multiple of 8 at or above 300 is 304, and the last one at or below 1200 is 1200.",
+        "From 304 to 1200 is 896, which is 112 steps of 8.",
+        "112 steps means 113 multiples, because the first one counts too.",
+        "The trap is forgetting to count the starting multiple."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to count every multiple of 8 inside a range of numbers.",
+      "hints": [
+        "Find the first and the last multiple of 8 inside the range.",
+        "Count the steps of 8 between them, then add one for the starting multiple."
+      ],
+      "socraticHint": "If every 8th number counts, about how many of them fit between 300 and 1200?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen scale beeps to remind you to reset it every 8th weighing, so the beeps land on multiples of 8. How many multiples of 8 lie between 500 and 1500, inclusive?",
+        "answer": {
+          "kind": "number",
+          "value": "125"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A piano app marks every 11th practice run as a milestone, so the milestones are the multiples of 11. How many multiples of 11 lie between 500 and 2000, inclusive?",
+      "answer": {
+        "kind": "number",
+        "value": "136"
+      },
+      "explanation": [
+        "The first multiple of 11 at or above 500 is 506, and the last one at or below 2000 is 1991.",
+        "From 506 to 1991 is 1485, which is 135 steps of 11.",
+        "135 steps means 136 multiples, because the first one counts too.",
+        "The trap is forgetting to count the starting multiple."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to count every multiple of 11 inside a range of numbers.",
+      "hints": [
+        "Find the first and the last multiple of 11 inside the range.",
+        "Count the steps of 11 between them, then add one for the starting multiple."
+      ],
+      "socraticHint": "If every 11th number counts, about how many of them fit between 500 and 2000?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A piano app marks every 11th practice run as a milestone, so the milestones are the multiples of 11. How many multiples of 11 lie between 700 and 2200, inclusive?",
+        "answer": {
+          "kind": "number",
+          "value": "137"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p38",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game studio flags every 12th level in its archive for a bug check, so the flagged levels are the multiples of 12. How many multiples of 12 lie between 1000 and 3000, inclusive?",
+      "answer": {
+        "kind": "number",
+        "value": "167"
+      },
+      "explanation": [
+        "The first multiple of 12 at or above 1000 is 1008, and the last one at or below 3000 is 3000.",
+        "From 1008 to 3000 is 1992, which is 166 steps of 12.",
+        "166 steps means 167 multiples, because the first one counts too.",
+        "The trap is forgetting to count the starting multiple."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need to count every multiple of 12 inside a range of numbers.",
+      "hints": [
+        "Find the first and the last multiple of 12 inside the range.",
+        "Count the steps of 12 between them, then add one for the starting multiple."
+      ],
+      "socraticHint": "If every 12th number counts, about how many of them fit between 1000 and 3000?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game studio flags every 12th level in its archive for a bug check, so the flagged levels are the multiples of 12. How many multiples of 12 lie between 1200 and 3600, inclusive?",
+        "answer": {
+          "kind": "number",
+          "value": "201"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p39",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Which of these numbers is divisible by both 3 and 8?",
+      "options": [
+        "792",
+        "793",
+        "794",
+        "795"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "792 has digits adding to 18, which 3 does divide, and ends in 792, which 8 does divide, so 24 divides 792.",
+        "793 has digits adding to 19, which 3 does not divide, so it fails the check for 3.",
+        "794 has digits adding to 20, which 3 does not divide, so it fails the check for 3.",
+        "795 ends in 795, which 8 does not divide, so it fails the check for 8.",
+        "Passing one rule is not enough; the number must pass both 3 and 8."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a number has to divide evenly by two different checks at once.",
+      "hints": [
+        "Check the rule for 3 on each option first.",
+        "Only keep the ones that also pass the rule for 8."
+      ],
+      "socraticHint": "Passing one of the two rules is not enough here. What has to be true of both?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Which of these numbers is divisible by both 3 and 8?",
+        "options": [
+          "841",
+          "842",
+          "840",
+          "843"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p40",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Which of these numbers is divisible by both 4 and 9?",
+      "options": [
+        "973",
+        "974",
+        "975",
+        "972"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "973 ends in 73, which 4 does not divide, so it fails the check for 4.",
+        "974 ends in 74, which 4 does not divide, so it fails the check for 4.",
+        "975 ends in 75, which 4 does not divide, so it fails the check for 4.",
+        "972 ends in 72, which 4 does divide, and has digits adding to 18, which 9 does divide, so 36 divides 972.",
+        "Passing one rule is not enough; the number must pass both 4 and 9."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a number has to divide evenly by two different checks at once.",
+      "hints": [
+        "Check the rule for 4 on each option first.",
+        "Only keep the ones that also pass the rule for 9."
+      ],
+      "socraticHint": "Passing one of the two rules is not enough here. What has to be true of both?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Which of these numbers is divisible by both 4 and 9?",
+        "options": [
+          "1046",
+          "1047",
+          "1044",
+          "1045"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p41",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Which of these numbers is divisible by both 2 and 11?",
+      "options": [
+        "288",
+        "286",
+        "289",
+        "287"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "288 gives 2 when its digits are added and subtracted in turn, which 11 does not divide, so it fails the check for 11.",
+        "286 ends in 6, so it is even. Its digits added and subtracted in turn give 0, which 11 divides, so 22 divides 286.",
+        "289 ends in 9, which is odd, so it fails the check for 2.",
+        "287 ends in 7, which is odd, so it fails the check for 2.",
+        "Passing one rule is not enough; the number must pass both 2 and 11."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a number has to divide evenly by two different checks at once.",
+      "hints": [
+        "Check the rule for 2 on each option first.",
+        "Only keep the ones that also pass the rule for 11."
+      ],
+      "socraticHint": "Passing one of the two rules is not enough here. What has to be true of both?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Which of these numbers is divisible by both 2 and 11?",
+        "options": [
+          "352",
+          "355",
+          "353",
+          "354"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p42",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover only pauses to recharge when its step count is a multiple of 8. What is the smallest multiple of 8 greater than 4187?",
+      "answer": {
+        "kind": "number",
+        "value": "4192"
+      },
+      "explanation": [
+        "4187 divided by 8 is 523 with remainder 3, so 4187 sits 3 past the multiple 4184.",
+        "The next multiple of 8 is 8 minus 3, which is 5, further on.",
+        "4187 plus 5 is 4192, the first multiple of 8 past 4187.",
+        "Check with the rule for 8: the last three digits, 192, divide evenly by 8."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need the very next multiple of 8 after a given number.",
+      "hints": [
+        "Divide 4187 by 8 to see how far past the last multiple it sits.",
+        "Add just enough to reach the next multiple of 8."
+      ],
+      "socraticHint": "How far is 4187 past the last multiple of 8 below it?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover only pauses to recharge when its step count is a multiple of 8. What is the smallest multiple of 8 greater than 4337?",
+        "answer": {
+          "kind": "number",
+          "value": "4344"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p43",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D printer packs finished parts in trays of 9 and only ships full trays. What is the smallest multiple of 9 greater than 5502?",
+      "answer": {
+        "kind": "number",
+        "value": "5508"
+      },
+      "explanation": [
+        "The digits of 5502 add to 12, and 12 is 3 past 9, so 5502 is 3 past a multiple of 9.",
+        "The next multiple of 9 is 9 minus 3, which is 6, further on.",
+        "5502 plus 6 is 5508, the first multiple of 9 past 5502.",
+        "Check: the digits of 5508 add to 18, a multiple of 9."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when you need the very next multiple of 9 after a given number.",
+      "hints": [
+        "Add the digits of 5502 to see how far past a multiple of 9 it sits.",
+        "Add just enough to bring the digit sum up to the next multiple of 9."
+      ],
+      "socraticHint": "How far past a multiple of 9 is 5502, and how do the digits tell you?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printer packs finished parts in trays of 9 and only ships full trays. What is the smallest multiple of 9 greater than 5652?",
+        "answer": {
+          "kind": "number",
+          "value": "5661"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p44",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the missing digit, from 1 to 9, that makes 7_138 divisible by 9?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "The known digits of 7_138 add to 19.",
+        "For 9 to divide the number, all the digits together must add to a multiple of 9.",
+        "19 plus 8 is 27, a multiple of 9.",
+        "So the missing digit is 8, making the number 78138."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a digit is missing and the number must divide evenly by 9.",
+      "hints": [
+        "Add up the digits you already know.",
+        "Find the digit from 1 to 9 that brings that total to a multiple of 9."
+      ],
+      "socraticHint": "What total do all the digits of a multiple of 9 always add up to?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the missing digit, from 1 to 9, that makes 9_350 divisible by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p45",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the missing digit, from 0 to 9, that makes 5_837 divisible by 11?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Adding and subtracting the known digits from the right gives 17.",
+        "The missing digit adds in with a minus sign.",
+        "17 minus 6 comes to a multiple of 11.",
+        "So the missing digit is 6, making the number 56837."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a digit is missing and the number must divide evenly by 11.",
+      "hints": [
+        "Add and subtract the known digits from the right, alternating signs.",
+        "Find the digit from 0 to 9 that brings that total to a multiple of 11."
+      ],
+      "socraticHint": "Once you alternate the known digits, what total are you trying to reach?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the missing digit, from 0 to 9, that makes 8_160 divisible by 11?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-pa-divisibility-rules-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many three-digit multiples of 6 have digits that add up to 9?",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "A multiple of 6 must be even and have a digit sum that 3 divides. A digit sum of 9 already passes 3, so only the even check is left.",
+        "Split by the last digit, which must be 0, 2, 4, 6 or 8. The first two digits then add to 9, 7, 5, 3 or 1.",
+        "Two digits adding to 9 with the first at least 1: 9 ways. Adding to 7: 7 ways. To 5: 5. To 3: 3. To 1: 1.",
+        "9 plus 7 plus 5 plus 3 plus 1 is 25."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a digit-sum condition and a divisibility rule combine into one search.",
+      "hints": [
+        "A multiple of 6 must pass the checks for both 2 and 3; the digit sum 9 already settles one of them.",
+        "Split by the last digit, which has to be even, and count the first two digits for each case."
+      ],
+      "socraticHint": "If the digit sum is already 9, which of the two checks for 6 still needs testing?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "34"
+        },
+        "prompt": "How many three-digit multiples of 6 have digits that add up to 12?"
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many whole numbers from 100 to 500 are divisible by 7 or by 11?",
+      "answer": {
+        "kind": "number",
+        "value": "88"
+      },
+      "explanation": [
+        "There are 57 multiples of 7 in that range and 36 multiples of 11.",
+        "Adding those counts double counts the multiples of both, the multiples of 77, and there are 5 of those.",
+        "57 plus 36 minus 5 gives 88."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when two divisibility counts overlap and adding them would double count some numbers.",
+      "hints": [
+        "Count the multiples of 7, then the multiples of 11, separately.",
+        "Numbers divisible by both 7 and 11 get counted twice, so subtract those once."
+      ],
+      "socraticHint": "A number divisible by both 7 and 11 would get counted in both lists. How do you fix that?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "66"
+        },
+        "prompt": "How many whole numbers from 100 to 400 are divisible by 6 or by 9?"
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p48",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many three-digit multiples of 45 have three different digits?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "A multiple of 45 passes the checks for 9 and 5. So it ends in 0 or 5, and its digits add to a multiple of 9.",
+        "The three-digit multiples of 45 run from 135 up to 990 in steps of 45, which makes 20 of them.",
+        "Five of them repeat a digit: 225, 585, 855, 900 and 990.",
+        "20 minus 5 leaves 15 with three different digits."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a divisor like 45 is really two smaller divisibility checks stacked together.",
+      "hints": [
+        "45 is 9 times 5, so both of those rules must pass.",
+        "List the three-digit multiples of 45, then strike out any with a repeated digit."
+      ],
+      "socraticHint": "How many three-digit multiples of 45 are there, and which of them repeat a digit?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many three-digit multiples of 36 have three different digits?",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p49",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A five-digit number uses each of the digits 1, 2, 3, 4 and 5 exactly once. In how many of its arrangements is the number divisible by 4?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "Divisibility by 4 depends only on the last two digits of the number.",
+        "The pairs from 1, 2, 3, 4, 5 that make a multiple of 4 are 12, 24, 32 and 52.",
+        "For each pair, the other three digits can go in front in 3 times 2 times 1, or 6, orders.",
+        "4 pairs times 6 orders gives 24."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a divisibility rule only cares about a few digits, freeing the rest to arrange however.",
+      "hints": [
+        "Only the last two digits decide whether 4 divides the whole number.",
+        "Find every pair from 1, 2, 3, 4, 5 that makes a multiple of 4, then count the arrangements in front."
+      ],
+      "socraticHint": "If only the last two digits matter for 4, how many ways can the other three digits go in front?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        },
+        "prompt": "A five-digit number uses each of the digits 1, 2, 3, 4 and 6 exactly once. In how many of its arrangements is the number divisible by 4?"
+      }
+    },
+    {
+      "id": "ladder-pa-divisibility-rules-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many three-digit multiples of 12 have 4 as their tens digit?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "A multiple of 12 must pass the checks for both 3 and 4, and the number looks like _4_.",
+        "For 4, the last two digits 4_ must divide by 4, so the last digit is 0, 4 or 8.",
+        "For 3, the digit sum must divide by 3. Ending in 0 the first digit is 2, 5 or 8. Ending in 4 it is 1, 4 or 7. Ending in 8 it is 3, 6 or 9.",
+        "Three choices in each of three cases gives 9."
+      ],
+      "ideaId": "pa-divisibility-rules",
+      "useAgain": "when a fixed digit narrows a divisibility search down to a smaller list.",
+      "hints": [
+        "12 is 3 times 4, so both of those checks must pass.",
+        "Only look at three-digit numbers with a 4 in the tens place."
+      ],
+      "socraticHint": "Fixing one digit still leaves two free. How does that change how many numbers you must check?",
+      "skills": [
+        "think.skills.gcd-lcm"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        },
+        "prompt": "How many three-digit multiples of 15 have 4 as their tens digit?"
+      }
+    }
+  ]
+}

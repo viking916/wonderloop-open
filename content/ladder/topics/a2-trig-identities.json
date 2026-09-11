@@ -1,0 +1,2037 @@
+{
+  "id": "a2-trig-identities",
+  "idea": {
+    "body": "Some tangled trig expressions are secretly the same thing in disguise. The Pythagorean identity sin^2(x) + cos^2(x) = 1 rearranges into 1 + tan^2(x) = sec^2(x) and 1 + cot^2(x) = csc^2(x). The sum formula sin(a + b) = sin(a) cos(b) + cos(a) sin(b) gives exact values at angles like 75 degrees. Setting a = b = x gives the double angle formulas, sin(2x) = 2 sin(x) cos(x) and cos(2x) = 1 - 2 sin^2(x). To prove an identity, start from one side and use these tools, one step at a time, until it matches the other side. For example, sin(x) + sin(x) cot^2(x) factors to sin(x)(1 + cot^2(x)), which is sin(x) times csc^2(x), which is csc(x): the two sides really are equal."
+  },
+  "workedExample": {
+    "prompt": "Prove that cos(x) sec(x) = 1.",
+    "steps": [
+      "Write sec(x) as 1/cos(x), using the reciprocal identity.",
+      "The left side becomes cos(x) times 1/cos(x).",
+      "The cos(x) terms cancel, leaving 1.",
+      "The left side equals 1, matching the right side."
+    ]
+  },
+  "ways": [
+    {
+      "id": "a2-trig-identities-w1",
+      "name": "Rewrite in sine and cosine",
+      "when": "Use this first whenever an identity mixes tangent, cotangent, secant or cosecant.",
+      "steps": [
+        "Prove tan(x) cos(x) = sin(x).",
+        "Rewrite tan(x) as sin(x)/cos(x), using the quotient identity.",
+        "The left side becomes (sin(x)/cos(x)) times cos(x).",
+        "The cos(x) terms cancel, leaving sin(x), which matches the right side."
+      ],
+      "example": "Prove tan(x) cos(x) = sin(x).",
+      "answer": "sin(x)",
+      "trap": "Forgetting the quotient identity and leaving tan(x) unrewritten."
+    },
+    {
+      "id": "a2-trig-identities-w2",
+      "name": "The Pythagorean identity substitution",
+      "when": "Use this when an expression has 1 minus cos^2 or 1 minus sin^2 hiding inside it.",
+      "steps": [
+        "Simplify (1 - cos^2(x))/sin(x).",
+        "The Pythagorean identity sin^2(x) + cos^2(x) = 1 rearranges to 1 - cos^2(x) = sin^2(x).",
+        "Substitute: the expression becomes sin^2(x)/sin(x).",
+        "One factor of sin(x) cancels, leaving sin(x)."
+      ],
+      "example": "Simplify (1 - cos^2(x))/sin(x).",
+      "answer": "sin(x)",
+      "trap": "Expanding 1 - cos^2(x) some other way instead of spotting the Pythagorean pattern."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-trig-identities-p01",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A drone's tilt sensor measures an angle where sin(x) = 3/5, with x in quadrant I. Find cos(x).",
+      "answer": {
+        "kind": "number",
+        "value": "4/5"
+      },
+      "explanation": [
+        "The Pythagorean identity is sin^2(x) + cos^2(x) = 1.",
+        "cos^2(x) = 1 - (3/5)^2 = 16/25.",
+        "In quadrant I cosine is positive, so cos(x) = 4/5."
+      ],
+      "hints": [
+        "Use sin^2(x) + cos^2(x) = 1 to find cos^2(x) first.",
+        "Quadrant I means both sine and cosine are positive."
+      ],
+      "socraticHint": "Which identity connects sine and cosine of the same angle?",
+      "useAgain": "when one of sine or cosine is known as a fraction and the other is not.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover's arm angle measures an angle where sin(x) = 20/29, with x in quadrant I. Find cos(x).",
+        "answer": {
+          "kind": "number",
+          "value": "21/29"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p02",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A robot's balance sensor measures an angle where sin(x) = 5/13, with x in quadrant I. Find cos(x).",
+      "answer": {
+        "kind": "number",
+        "value": "12/13"
+      },
+      "explanation": [
+        "The Pythagorean identity is sin^2(x) + cos^2(x) = 1.",
+        "cos^2(x) = 1 - (5/13)^2 = 144/169.",
+        "In quadrant I cosine is positive, so cos(x) = 12/13."
+      ],
+      "hints": [
+        "Use sin^2(x) + cos^2(x) = 1 to find cos^2(x) first.",
+        "Quadrant I means both sine and cosine are positive."
+      ],
+      "socraticHint": "Which identity connects sine and cosine of the same angle?",
+      "useAgain": "when one of sine or cosine is known as a fraction and the other is not.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game physics engine measures an angle where sin(x) = 12/37, with x in quadrant I. Find cos(x).",
+        "answer": {
+          "kind": "number",
+          "value": "35/37"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p03",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A 3D printer's calibration check measures an angle where sin(x) = 8/17, with x in quadrant I. Find cos(x).",
+      "answer": {
+        "kind": "number",
+        "value": "15/17"
+      },
+      "explanation": [
+        "The Pythagorean identity is sin^2(x) + cos^2(x) = 1.",
+        "cos^2(x) = 1 - (8/17)^2 = 225/289.",
+        "In quadrant I cosine is positive, so cos(x) = 15/17."
+      ],
+      "hints": [
+        "Use sin^2(x) + cos^2(x) = 1 to find cos^2(x) first.",
+        "Quadrant I means both sine and cosine are positive."
+      ],
+      "socraticHint": "Which identity connects sine and cosine of the same angle?",
+      "useAgain": "when one of sine or cosine is known as a fraction and the other is not.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rocket's guidance check measures an angle where sin(x) = 28/53, with x in quadrant I. Find cos(x).",
+        "answer": {
+          "kind": "number",
+          "value": "45/53"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p04",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A kitchen scale's angle sensor measures an angle where sin(x) = 7/25, with x in quadrant I. Find cos(x).",
+      "answer": {
+        "kind": "number",
+        "value": "24/25"
+      },
+      "explanation": [
+        "The Pythagorean identity is sin^2(x) + cos^2(x) = 1.",
+        "cos^2(x) = 1 - (7/25)^2 = 576/625.",
+        "In quadrant I cosine is positive, so cos(x) = 24/25."
+      ],
+      "hints": [
+        "Use sin^2(x) + cos^2(x) = 1 to find cos^2(x) first.",
+        "Quadrant I means both sine and cosine are positive."
+      ],
+      "socraticHint": "Which identity connects sine and cosine of the same angle?",
+      "useAgain": "when one of sine or cosine is known as a fraction and the other is not.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A security camera's swing check measures an angle where sin(x) = 11/61, with x in quadrant I. Find cos(x).",
+        "answer": {
+          "kind": "number",
+          "value": "60/61"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p05",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A wind turbine's pitch sensor measures an angle where sin(x) = 9/41, with x in quadrant I. Find cos(x).",
+      "answer": {
+        "kind": "number",
+        "value": "40/41"
+      },
+      "explanation": [
+        "The Pythagorean identity is sin^2(x) + cos^2(x) = 1.",
+        "cos^2(x) = 1 - (9/41)^2 = 1600/1681.",
+        "In quadrant I cosine is positive, so cos(x) = 40/41."
+      ],
+      "hints": [
+        "Use sin^2(x) + cos^2(x) = 1 to find cos^2(x) first.",
+        "Quadrant I means both sine and cosine are positive."
+      ],
+      "socraticHint": "Which identity connects sine and cosine of the same angle?",
+      "useAgain": "when one of sine or cosine is known as a fraction and the other is not.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A record turntable's arm check measures an angle where sin(x) = 33/65, with x in quadrant I. Find cos(x).",
+        "answer": {
+          "kind": "number",
+          "value": "56/65"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p06",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A search drone's gimbal check needs a simpler form. Which expression equals 1 - sin^2(x)?",
+      "options": [
+        "sin^2(x)",
+        "1 + cos^2(x)",
+        "-cos^2(x)",
+        "cos^2(x)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "This matches one of the three Pythagorean identities or a reciprocal identity.",
+        "1 - sin^2(x) simplifies to cos^2(x)."
+      ],
+      "hints": [
+        "Compare the expression to sin^2(x) + cos^2(x) = 1 and its two rearranged forms.",
+        "1 + tan^2(x) = sec^2(x) and 1 + cot^2(x) = csc^2(x) are the other two Pythagorean identities."
+      ],
+      "socraticHint": "Does this expression match sin and cosine, or one of the other four ratios?",
+      "useAgain": "when a trig expression needs to be rewritten in its simplest identity form.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A solar panel's tilt motor needs a simpler form. Which expression equals 1 - cos^2(x)?",
+        "options": [
+          "cos^2(x)",
+          "sin^2(x)",
+          "1 + sin^2(x)",
+          "-sin^2(x)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p07",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A drone's tilt sensor needs a simpler form. Which expression equals sec^2(x) - 1?",
+      "options": [
+        "cot^2(x)",
+        "1 - tan^2(x)",
+        "tan^2(x)",
+        "sin^2(x)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "This matches one of the three Pythagorean identities or a reciprocal identity.",
+        "sec^2(x) - 1 simplifies to tan^2(x)."
+      ],
+      "hints": [
+        "Compare the expression to sin^2(x) + cos^2(x) = 1 and its two rearranged forms.",
+        "1 + tan^2(x) = sec^2(x) and 1 + cot^2(x) = csc^2(x) are the other two Pythagorean identities."
+      ],
+      "socraticHint": "Does this expression match sin and cosine, or one of the other four ratios?",
+      "useAgain": "when a trig expression needs to be rewritten in its simplest identity form.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover's arm angle needs a simpler form. Which expression equals csc^2(x) - 1?",
+        "options": [
+          "cot^2(x)",
+          "tan^2(x)",
+          "1 - cot^2(x)",
+          "cos^2(x)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p08",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A robot's balance sensor needs a simpler form. Which expression equals csc^2(x) - cot^2(x)?",
+      "options": [
+        "0",
+        "-1",
+        "sin^2(x)",
+        "1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "This matches one of the three Pythagorean identities or a reciprocal identity.",
+        "csc^2(x) - cot^2(x) simplifies to 1."
+      ],
+      "hints": [
+        "Compare the expression to sin^2(x) + cos^2(x) = 1 and its two rearranged forms.",
+        "1 + tan^2(x) = sec^2(x) and 1 + cot^2(x) = csc^2(x) are the other two Pythagorean identities."
+      ],
+      "socraticHint": "Does this expression match sin and cosine, or one of the other four ratios?",
+      "useAgain": "when a trig expression needs to be rewritten in its simplest identity form.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game physics engine needs a simpler form. Which expression equals sec^2(x) - tan^2(x)?",
+        "options": [
+          "1",
+          "0",
+          "-1",
+          "cos^2(x)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p09",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A 3D printer's calibration check needs a simpler form. Which expression equals sin(x)/cos(x)?",
+      "options": [
+        "cot(x)",
+        "sec(x)",
+        "tan(x)",
+        "csc(x)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "This matches one of the three Pythagorean identities or a reciprocal identity.",
+        "sin(x)/cos(x) simplifies to tan(x)."
+      ],
+      "hints": [
+        "Compare the expression to sin^2(x) + cos^2(x) = 1 and its two rearranged forms.",
+        "1 + tan^2(x) = sec^2(x) and 1 + cot^2(x) = csc^2(x) are the other two Pythagorean identities."
+      ],
+      "socraticHint": "Does this expression match sin and cosine, or one of the other four ratios?",
+      "useAgain": "when a trig expression needs to be rewritten in its simplest identity form.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rocket's guidance check needs a simpler form. Which expression equals cos(x)/sin(x)?",
+        "options": [
+          "tan(x)",
+          "cot(x)",
+          "csc(x)",
+          "sec(x)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p10",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A kitchen scale's angle sensor measures an angle where sin(x) = 2/5. Find csc(x).",
+      "answer": {
+        "kind": "number",
+        "value": "5/2"
+      },
+      "explanation": [
+        "Csc is the reciprocal of sin.",
+        "Flipping 2/5 gives 5/2."
+      ],
+      "hints": [
+        "Cosecant, secant and cotangent are the reciprocals of sine, cosine and tangent.",
+        "To find a reciprocal, swap the numerator and denominator."
+      ],
+      "socraticHint": "Which of sine, cosine or tangent is this ratio the reciprocal of?",
+      "useAgain": "when a problem asks for cosecant, secant or cotangent instead of sine, cosine or tangent.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A security camera's swing check measures an angle where sin(x) = 3/8. Find csc(x).",
+        "answer": {
+          "kind": "number",
+          "value": "8/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p11",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A wind turbine's pitch sensor measures an angle where cos(x) = 3/7. Find sec(x).",
+      "answer": {
+        "kind": "number",
+        "value": "7/3"
+      },
+      "explanation": [
+        "Sec is the reciprocal of cos.",
+        "Flipping 3/7 gives 7/3."
+      ],
+      "hints": [
+        "Cosecant, secant and cotangent are the reciprocals of sine, cosine and tangent.",
+        "To find a reciprocal, swap the numerator and denominator."
+      ],
+      "socraticHint": "Which of sine, cosine or tangent is this ratio the reciprocal of?",
+      "useAgain": "when a problem asks for cosecant, secant or cotangent instead of sine, cosine or tangent.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A record turntable's arm check measures an angle where cos(x) = 4/9. Find sec(x).",
+        "answer": {
+          "kind": "number",
+          "value": "9/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p12",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A search drone's gimbal check measures an angle where tan(x) = 5/12. Find cot(x).",
+      "answer": {
+        "kind": "number",
+        "value": "12/5"
+      },
+      "explanation": [
+        "Cot is the reciprocal of tan.",
+        "Flipping 5/12 gives 12/5."
+      ],
+      "hints": [
+        "Cosecant, secant and cotangent are the reciprocals of sine, cosine and tangent.",
+        "To find a reciprocal, swap the numerator and denominator."
+      ],
+      "socraticHint": "Which of sine, cosine or tangent is this ratio the reciprocal of?",
+      "useAgain": "when a problem asks for cosecant, secant or cotangent instead of sine, cosine or tangent.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A solar panel's tilt motor measures an angle where tan(x) = 7/10. Find cot(x).",
+        "answer": {
+          "kind": "number",
+          "value": "10/7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p13",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "truefalse",
+      "prompt": "True or false: tan(x) = sin(x)/cos(x) for every x where cos(x) is not 0.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "This is the definition of tangent, not a coincidence that needs proving.",
+        "So the statement is true."
+      ],
+      "hints": [
+        "Decide whether this is a definition that always holds, or a coincidence at a few angles.",
+        "Try the claim at a specific angle like x = 0 or x = pi/2 to test it."
+      ],
+      "socraticHint": "Does this hold for every angle, or does it just happen to work at one angle?",
+      "useAgain": "when checking whether a claimed trig statement is a real identity or a one-time coincidence.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: cot(x) = cos(x)/sin(x) for every x where sin(x) is not 0.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p14",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "truefalse",
+      "prompt": "True or false: sin(x) + cos(x) = 1 is true for every x.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "This only happens to be true at a few special angles, not for every x.",
+        "So the statement is false."
+      ],
+      "hints": [
+        "Decide whether this is a definition that always holds, or a coincidence at a few angles.",
+        "Try the claim at a specific angle like x = 0 or x = pi/2 to test it."
+      ],
+      "socraticHint": "Does this hold for every angle, or does it just happen to work at one angle?",
+      "useAgain": "when checking whether a claimed trig statement is a real identity or a one-time coincidence.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: sin(x) - cos(x) = 0 is true for every x.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p15",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "truefalse",
+      "prompt": "True or false: sec(x) = 1/cos(x) for every x where cos(x) is not 0.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "This is the definition of secant as the reciprocal of cosine.",
+        "So the statement is true."
+      ],
+      "hints": [
+        "Decide whether this is a definition that always holds, or a coincidence at a few angles.",
+        "Try the claim at a specific angle like x = 0 or x = pi/2 to test it."
+      ],
+      "socraticHint": "Does this hold for every angle, or does it just happen to work at one angle?",
+      "useAgain": "when checking whether a claimed trig statement is a real identity or a one-time coincidence.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: csc(x) = 1/sin(x) for every x where sin(x) is not 0.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p16",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A game physics engine measures an angle where sin(x) = 3/5 and cos(x) = 4/5, with x in quadrant I. Find sin(2x).",
+      "answer": {
+        "kind": "number",
+        "value": "24/25"
+      },
+      "explanation": [
+        "The double angle identity is sin(2x) = 2 sin(x) cos(x).",
+        "2 times 3/5 times 4/5 is 24/25."
+      ],
+      "hints": [
+        "Use sin(2x) = 2 sin(x) cos(x) directly.",
+        "Multiply the two given fractions together, then double the result."
+      ],
+      "socraticHint": "What does the double angle identity for sine say to multiply together?",
+      "useAgain": "when sine and cosine of an angle are both known and sine of double that angle is wanted.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer's calibration check measures an angle where sin(x) = 12/37 and cos(x) = 35/37, with x in quadrant I. Find sin(2x).",
+        "answer": {
+          "kind": "number",
+          "value": "840/1369"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p17",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A rocket's guidance check measures an angle where sin(x) = 5/13 and cos(x) = 12/13, with x in quadrant I. Find sin(2x).",
+      "answer": {
+        "kind": "number",
+        "value": "120/169"
+      },
+      "explanation": [
+        "The double angle identity is sin(2x) = 2 sin(x) cos(x).",
+        "2 times 5/13 times 12/13 is 120/169."
+      ],
+      "hints": [
+        "Use sin(2x) = 2 sin(x) cos(x) directly.",
+        "Multiply the two given fractions together, then double the result."
+      ],
+      "socraticHint": "What does the double angle identity for sine say to multiply together?",
+      "useAgain": "when sine and cosine of an angle are both known and sine of double that angle is wanted.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A kitchen scale's angle sensor measures an angle where sin(x) = 28/53 and cos(x) = 45/53, with x in quadrant I. Find sin(2x).",
+        "answer": {
+          "kind": "number",
+          "value": "2520/2809"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p18",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A security camera's swing check measures an angle where sin(x) = 8/17 and cos(x) = 15/17, with x in quadrant I. Find sin(2x).",
+      "answer": {
+        "kind": "number",
+        "value": "240/289"
+      },
+      "explanation": [
+        "The double angle identity is sin(2x) = 2 sin(x) cos(x).",
+        "2 times 8/17 times 15/17 is 240/289."
+      ],
+      "hints": [
+        "Use sin(2x) = 2 sin(x) cos(x) directly.",
+        "Multiply the two given fractions together, then double the result."
+      ],
+      "socraticHint": "What does the double angle identity for sine say to multiply together?",
+      "useAgain": "when sine and cosine of an angle are both known and sine of double that angle is wanted.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A wind turbine's pitch sensor measures an angle where sin(x) = 11/61 and cos(x) = 60/61, with x in quadrant I. Find sin(2x).",
+        "answer": {
+          "kind": "number",
+          "value": "1320/3721"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p19",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A record turntable's arm check measures an angle where sin(x) = 7/25 and cos(x) = 24/25, with x in quadrant I. Find sin(2x).",
+      "answer": {
+        "kind": "number",
+        "value": "336/625"
+      },
+      "explanation": [
+        "The double angle identity is sin(2x) = 2 sin(x) cos(x).",
+        "2 times 7/25 times 24/25 is 336/625."
+      ],
+      "hints": [
+        "Use sin(2x) = 2 sin(x) cos(x) directly.",
+        "Multiply the two given fractions together, then double the result."
+      ],
+      "socraticHint": "What does the double angle identity for sine say to multiply together?",
+      "useAgain": "when sine and cosine of an angle are both known and sine of double that angle is wanted.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A search drone's gimbal check measures an angle where sin(x) = 33/65 and cos(x) = 56/65, with x in quadrant I. Find sin(2x).",
+        "answer": {
+          "kind": "number",
+          "value": "3696/4225"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p20",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A solar panel's tilt motor measures an angle where sin(x) = 20/29 and cos(x) = 21/29, with x in quadrant I. Find sin(2x).",
+      "answer": {
+        "kind": "number",
+        "value": "840/841"
+      },
+      "explanation": [
+        "The double angle identity is sin(2x) = 2 sin(x) cos(x).",
+        "2 times 20/29 times 21/29 is 840/841."
+      ],
+      "hints": [
+        "Use sin(2x) = 2 sin(x) cos(x) directly.",
+        "Multiply the two given fractions together, then double the result."
+      ],
+      "socraticHint": "What does the double angle identity for sine say to multiply together?",
+      "useAgain": "when sine and cosine of an angle are both known and sine of double that angle is wanted.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone's tilt sensor measures an angle where sin(x) = 16/65 and cos(x) = 63/65, with x in quadrant I. Find sin(2x).",
+        "answer": {
+          "kind": "number",
+          "value": "2016/4225"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p21",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A rover's arm angle measures an angle where sin(x) = 9/41 and cos(x) = 40/41, with x in quadrant I. Find sin(2x).",
+      "answer": {
+        "kind": "number",
+        "value": "720/1681"
+      },
+      "explanation": [
+        "The double angle identity is sin(2x) = 2 sin(x) cos(x).",
+        "2 times 9/41 times 40/41 is 720/1681."
+      ],
+      "hints": [
+        "Use sin(2x) = 2 sin(x) cos(x) directly.",
+        "Multiply the two given fractions together, then double the result."
+      ],
+      "socraticHint": "What does the double angle identity for sine say to multiply together?",
+      "useAgain": "when sine and cosine of an angle are both known and sine of double that angle is wanted.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A robot's balance sensor measures an angle where sin(x) = 48/73 and cos(x) = 55/73, with x in quadrant I. Find sin(2x).",
+        "answer": {
+          "kind": "number",
+          "value": "5280/5329"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p22",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A game physics engine needs an exact value. Using 75 = 45 + 30, find sin(75 degrees).",
+      "options": [
+        "(sqrt(6) - sqrt(2))/4",
+        "-(sqrt(2) + sqrt(6))/4",
+        "(sqrt(2) + sqrt(6))/4",
+        "sqrt(2)/2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Write 75 degrees as 45 + 30 degrees and apply the sum or difference formula.",
+        "That gives sin(75 degrees) = (sqrt(2) + sqrt(6))/4."
+      ],
+      "hints": [
+        "Split the angle into two special angles first, as the problem suggests.",
+        "Apply the sum or difference formula for sine, cosine or tangent."
+      ],
+      "socraticHint": "Which two special angles add up or subtract to give this angle?",
+      "useAgain": "when an angle is not special on its own, but splits into two that are.",
+      "thinkMinutes": 6,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer's calibration check needs an exact value. Using 75 = 45 + 30, find cos(75 degrees).",
+        "options": [
+          "(sqrt(6) + sqrt(2))/4",
+          "(sqrt(2) - sqrt(6))/4",
+          "sqrt(2)/2",
+          "(sqrt(6) - sqrt(2))/4"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p23",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A rocket's guidance check needs an exact value. Using 105 = 60 + 45, find cos(105 degrees).",
+      "options": [
+        "(sqrt(2) + sqrt(6))/4",
+        "(sqrt(2) - sqrt(6))/4",
+        "(sqrt(6) - sqrt(2))/4",
+        "sqrt(2)/2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Write 105 degrees as 60 + 45 degrees and apply the sum or difference formula.",
+        "That gives cos(105 degrees) = (sqrt(2) - sqrt(6))/4."
+      ],
+      "hints": [
+        "Split the angle into two special angles first, as the problem suggests.",
+        "Apply the sum or difference formula for sine, cosine or tangent."
+      ],
+      "socraticHint": "Which two special angles add up or subtract to give this angle?",
+      "useAgain": "when an angle is not special on its own, but splits into two that are.",
+      "thinkMinutes": 6,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A kitchen scale's angle sensor needs an exact value. Using 105 = 60 + 45, find sin(105 degrees).",
+        "options": [
+          "(sqrt(2) + sqrt(6))/4",
+          "(sqrt(6) - sqrt(2))/4",
+          "-(sqrt(2) + sqrt(6))/4",
+          "sqrt(2)/2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p24",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A security camera's swing check needs an exact value. Using 15 = 45 - 30, find tan(15 degrees).",
+      "options": [
+        "2 - sqrt(3)",
+        "2 + sqrt(3)",
+        "sqrt(3) - 2",
+        "1/2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Write 15 degrees as 45 - 30 degrees and apply the sum or difference formula.",
+        "That gives tan(15 degrees) = 2 - sqrt(3)."
+      ],
+      "hints": [
+        "Split the angle into two special angles first, as the problem suggests.",
+        "Apply the sum or difference formula for sine, cosine or tangent."
+      ],
+      "socraticHint": "Which two special angles add up or subtract to give this angle?",
+      "useAgain": "when an angle is not special on its own, but splits into two that are.",
+      "thinkMinutes": 6,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A wind turbine's pitch sensor needs an exact value. Using 75 = 45 + 30, find tan(75 degrees).",
+        "options": [
+          "2 - sqrt(3)",
+          "2 + sqrt(3)",
+          "-2 - sqrt(3)",
+          "1/2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p25",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A record turntable's arm check needs an exact value. Using 15 = 45 - 30, find sin(15 degrees).",
+      "options": [
+        "(sqrt(6) + sqrt(2))/4",
+        "(sqrt(2) - sqrt(6))/4",
+        "(sqrt(6) - sqrt(2))/4",
+        "sqrt(2)/2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Write 15 degrees as 45 - 30 degrees and apply the sum or difference formula.",
+        "That gives sin(15 degrees) = (sqrt(6) - sqrt(2))/4."
+      ],
+      "hints": [
+        "Split the angle into two special angles first, as the problem suggests.",
+        "Apply the sum or difference formula for sine, cosine or tangent."
+      ],
+      "socraticHint": "Which two special angles add up or subtract to give this angle?",
+      "useAgain": "when an angle is not special on its own, but splits into two that are.",
+      "thinkMinutes": 6,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A search drone's gimbal check needs an exact value. Using 15 = 45 - 30, find cos(15 degrees).",
+        "options": [
+          "(sqrt(6) - sqrt(2))/4",
+          "-(sqrt(2) + sqrt(6))/4",
+          "sqrt(2)/2",
+          "(sqrt(2) + sqrt(6))/4"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p26",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A solar panel's tilt motor needs a simpler form. Simplify 1 - 2 sin^2(x).",
+      "options": [
+        "sin(2x)",
+        "cos(2x)",
+        "1 - cos(2x)",
+        "2 cos^2(x)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Match the expression to a known identity, or expand it out first.",
+        "1 - 2 sin^2(x) simplifies to cos(2x)."
+      ],
+      "hints": [
+        "Try matching this to a double angle or Pythagorean identity first.",
+        "If nothing matches directly, expand any parentheses or combine fractions first."
+      ],
+      "socraticHint": "Does the expression already look like one side of a known identity?",
+      "useAgain": "when a trig expression needs to be simplified to a single term or a known form.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone's tilt sensor needs a simpler form. Simplify 2 cos^2(x) - 1.",
+        "options": [
+          "sin(2x)",
+          "1 - cos(2x)",
+          "cos(2x)",
+          "2 sin^2(x)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p27",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A rover's arm angle needs a simpler form. Simplify sec^2(x) - tan^2(x).",
+      "options": [
+        "-1",
+        "sin^2(x)",
+        "cos^2(x)",
+        "1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Match the expression to a known identity, or expand it out first.",
+        "sec^2(x) - tan^2(x) simplifies to 1."
+      ],
+      "hints": [
+        "Try matching this to a double angle or Pythagorean identity first.",
+        "If nothing matches directly, expand any parentheses or combine fractions first."
+      ],
+      "socraticHint": "Does the expression already look like one side of a known identity?",
+      "useAgain": "when a trig expression needs to be simplified to a single term or a known form.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A robot's balance sensor needs a simpler form. Simplify csc^2(x) - cot^2(x).",
+        "options": [
+          "1",
+          "-1",
+          "cos^2(x)",
+          "sin^2(x)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p28",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A game physics engine needs a simpler form. Simplify csc(x) sin(x).",
+      "options": [
+        "1",
+        "0",
+        "sin^2(x)",
+        "csc^2(x)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Match the expression to a known identity, or expand it out first.",
+        "csc(x) sin(x) simplifies to 1."
+      ],
+      "hints": [
+        "Try matching this to a double angle or Pythagorean identity first.",
+        "If nothing matches directly, expand any parentheses or combine fractions first."
+      ],
+      "socraticHint": "Does the expression already look like one side of a known identity?",
+      "useAgain": "when a trig expression needs to be simplified to a single term or a known form.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer's calibration check needs a simpler form. Simplify sec(x) cos(x).",
+        "options": [
+          "0",
+          "1",
+          "cos^2(x)",
+          "sec^2(x)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p29",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A rocket's guidance check needs a simpler form. Simplify (sin(x) + cos(x))^2.",
+      "options": [
+        "1 + sin(x) cos(x)",
+        "sin^2(x) + cos^2(x)",
+        "1 + 2 sin(x) cos(x)",
+        "1 - 2 sin(x) cos(x)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Match the expression to a known identity, or expand it out first.",
+        "(sin(x) + cos(x))^2 simplifies to 1 + 2 sin(x) cos(x)."
+      ],
+      "hints": [
+        "Try matching this to a double angle or Pythagorean identity first.",
+        "If nothing matches directly, expand any parentheses or combine fractions first."
+      ],
+      "socraticHint": "Does the expression already look like one side of a known identity?",
+      "useAgain": "when a trig expression needs to be simplified to a single term or a known form.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A kitchen scale's angle sensor needs a simpler form. Simplify (sin(x) - cos(x))^2.",
+        "options": [
+          "1 - sin(x) cos(x)",
+          "sin^2(x) - cos^2(x)",
+          "1 + 2 sin(x) cos(x)",
+          "1 - 2 sin(x) cos(x)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p30",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "A security camera's swing check needs a simpler form. Simplify tan(x) + cot(x).",
+      "options": [
+        "1/(sin(x) cos(x))",
+        "sin(x) cos(x)",
+        "sin(x) + cos(x)",
+        "csc(x) + sec(x)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Match the expression to a known identity, or expand it out first.",
+        "tan(x) + cot(x) simplifies to 1/(sin(x) cos(x))."
+      ],
+      "hints": [
+        "Try matching this to a double angle or Pythagorean identity first.",
+        "If nothing matches directly, expand any parentheses or combine fractions first."
+      ],
+      "socraticHint": "Does the expression already look like one side of a known identity?",
+      "useAgain": "when a trig expression needs to be simplified to a single term or a known form.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A wind turbine's pitch sensor needs a simpler form. Simplify cot(x) + tan(x).",
+        "options": [
+          "sin(x) cos(x)",
+          "sin(x) - cos(x)",
+          "csc(x) - sec(x)",
+          "1/(sin(x) cos(x))"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p31",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "order",
+      "prompt": "A record turntable's arm check: Prove that 1 + tan^2(x) = sec^2(x). Put the proof's steps in a valid order.",
+      "items": [
+        "That gives tan^2(x) + 1 = sec^2(x).",
+        "sin^2(x)/cos^2(x) is tan^2(x), and 1/cos^2(x) is sec^2(x).",
+        "Start from the Pythagorean identity sin^2(x) + cos^2(x) = 1.",
+        "Divide every term by cos^2(x)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          3,
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "Each step follows from the one before it, using one identity at a time.",
+        "Reading the steps in order shows the two sides really are equal."
+      ],
+      "hints": [
+        "Look for the step that states the starting identity or fact.",
+        "Each later step should use exactly one identity or algebra move on the step before it."
+      ],
+      "socraticHint": "Which step has to come first, before any identity can be applied?",
+      "useAgain": "when asked to prove that two trig expressions are equal.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A search drone's gimbal check: Prove that 1 + cot^2(x) = csc^2(x). Put the proof's steps in a valid order.",
+        "items": [
+          "cos^2(x)/sin^2(x) is cot^2(x), and 1/sin^2(x) is csc^2(x).",
+          "That gives cot^2(x) + 1 = csc^2(x).",
+          "Start from the Pythagorean identity sin^2(x) + cos^2(x) = 1.",
+          "Divide every term by sin^2(x)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            3,
+            0,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p32",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "order",
+      "prompt": "A solar panel's tilt motor: Prove that sin(x) + sin(x) cot^2(x) = csc(x). Put the proof's steps in a valid order.",
+      "items": [
+        "Since csc(x) is 1/sin(x), sin(x) times csc^2(x) equals csc(x).",
+        "The left side becomes sin(x) times csc^2(x).",
+        "Use the Pythagorean identity 1 + cot^2(x) = csc^2(x).",
+        "Factor sin(x) out of the left side: sin(x)(1 + cot^2(x))."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          2,
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "Each step follows from the one before it, using one identity at a time.",
+        "Reading the steps in order shows the two sides really are equal."
+      ],
+      "hints": [
+        "Look for the step that states the starting identity or fact.",
+        "Each later step should use exactly one identity or algebra move on the step before it."
+      ],
+      "socraticHint": "Which step has to come first, before any identity can be applied?",
+      "useAgain": "when asked to prove that two trig expressions are equal.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A drone's tilt sensor: Prove that cos(x) + cos(x) tan^2(x) = sec(x). Put the proof's steps in a valid order.",
+        "items": [
+          "The left side becomes cos(x) times sec^2(x).",
+          "Since sec(x) is 1/cos(x), cos(x) times sec^2(x) equals sec(x).",
+          "Factor cos(x) out of the left side: cos(x)(1 + tan^2(x)).",
+          "Use the Pythagorean identity 1 + tan^2(x) = sec^2(x)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            3,
+            0,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p33",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "order",
+      "prompt": "A rover's arm angle: Prove that sin(2x) = 2 sin(x) cos(x). Put the proof's steps in a valid order.",
+      "items": [
+        "Both terms on the right are the same, so this is 2 sin(x) cos(x).",
+        "Write sin(2x) as sin(x + x).",
+        "Apply the sum formula: sin(x + x) = sin(x) cos(x) + cos(x) sin(x)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Each step follows from the one before it, using one identity at a time.",
+        "Reading the steps in order shows the two sides really are equal."
+      ],
+      "hints": [
+        "Look for the step that states the starting identity or fact.",
+        "Each later step should use exactly one identity or algebra move on the step before it."
+      ],
+      "socraticHint": "Which step has to come first, before any identity can be applied?",
+      "useAgain": "when asked to prove that two trig expressions are equal.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot's balance sensor: Prove that cos(2x) = cos^2(x) - sin^2(x). Put the proof's steps in a valid order.",
+        "items": [
+          "That is cos(x) times cos(x) minus sin(x) times sin(x), which is cos^2(x) - sin^2(x).",
+          "Write cos(2x) as cos(x + x).",
+          "Apply the sum formula: cos(x + x) = cos(x) cos(x) - sin(x) sin(x)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p34",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "order",
+      "prompt": "A game physics engine: Prove that cos(2x) = 1 - 2 sin^2(x). Put the proof's steps in a valid order.",
+      "items": [
+        "That gives 1 - sin^2(x) - sin^2(x).",
+        "Start from cos(2x) = cos^2(x) - sin^2(x).",
+        "Combine like terms to get 1 - 2 sin^2(x).",
+        "Replace cos^2(x) with 1 - sin^2(x), from the Pythagorean identity."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          3,
+          0,
+          2
+        ]
+      },
+      "explanation": [
+        "Each step follows from the one before it, using one identity at a time.",
+        "Reading the steps in order shows the two sides really are equal."
+      ],
+      "hints": [
+        "Look for the step that states the starting identity or fact.",
+        "Each later step should use exactly one identity or algebra move on the step before it."
+      ],
+      "socraticHint": "Which step has to come first, before any identity can be applied?",
+      "useAgain": "when asked to prove that two trig expressions are equal.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printer's calibration check: Prove that cos(2x) = 2 cos^2(x) - 1. Put the proof's steps in a valid order.",
+        "items": [
+          "Replace sin^2(x) with 1 - cos^2(x), from the Pythagorean identity.",
+          "Combine like terms to get 2 cos^2(x) - 1.",
+          "Start from cos(2x) = cos^2(x) - sin^2(x).",
+          "That gives cos^2(x) - 1 + cos^2(x)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            0,
+            3,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p35",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "order",
+      "prompt": "A rocket's guidance check: Prove that (1 - cos(x))(1 + cos(x)) = sin^2(x). Put the proof's steps in a valid order.",
+      "items": [
+        "Use the Pythagorean identity to replace 1 - cos^2(x) with sin^2(x).",
+        "The left side now equals sin^2(x), matching the right side.",
+        "Multiply out the left side using the difference of squares pattern: 1 - cos^2(x)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Each step follows from the one before it, using one identity at a time.",
+        "Reading the steps in order shows the two sides really are equal."
+      ],
+      "hints": [
+        "Look for the step that states the starting identity or fact.",
+        "Each later step should use exactly one identity or algebra move on the step before it."
+      ],
+      "socraticHint": "Which step has to come first, before any identity can be applied?",
+      "useAgain": "when asked to prove that two trig expressions are equal.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen scale's angle sensor: Prove that (1 - sin(x))(1 + sin(x)) = cos^2(x). Put the proof's steps in a valid order.",
+        "items": [
+          "The left side now equals cos^2(x), matching the right side.",
+          "Multiply out the left side using the difference of squares pattern: 1 - sin^2(x).",
+          "Use the Pythagorean identity to replace 1 - sin^2(x) with cos^2(x)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p36",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "order",
+      "prompt": "A security camera's swing check: Prove that tan(x) cos(x) = sin(x). Put the proof's steps in a valid order.",
+      "items": [
+        "Multiply by cos(x): (sin(x)/cos(x)) times cos(x).",
+        "The cos(x) terms cancel, leaving sin(x).",
+        "Write tan(x) as sin(x)/cos(x)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Each step follows from the one before it, using one identity at a time.",
+        "Reading the steps in order shows the two sides really are equal."
+      ],
+      "hints": [
+        "Look for the step that states the starting identity or fact.",
+        "Each later step should use exactly one identity or algebra move on the step before it."
+      ],
+      "socraticHint": "Which step has to come first, before any identity can be applied?",
+      "useAgain": "when asked to prove that two trig expressions are equal.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A wind turbine's pitch sensor: Prove that cot(x) sin(x) = cos(x). Put the proof's steps in a valid order.",
+        "items": [
+          "The sin(x) terms cancel, leaving cos(x).",
+          "Write cot(x) as cos(x)/sin(x).",
+          "Multiply by sin(x): (cos(x)/sin(x)) times sin(x)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p37",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "Dividing sin^2(x) + cos^2(x) = 1 by cos^2(x), what does sin^2(x)/cos^2(x) become?",
+      "options": [
+        "cot^2(x)",
+        "tan^2(x)",
+        "sec^2(x)",
+        "csc^2(x)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "This step comes from one of the Pythagorean, sum, difference or double angle identities.",
+        "The correct replacement is tan^2(x)."
+      ],
+      "hints": [
+        "Match this step to the identity it is built from.",
+        "The three Pythagorean identities, the sum and difference formulas, and the double angle formulas cover every step like this."
+      ],
+      "socraticHint": "Which named identity does this particular step come from?",
+      "useAgain": "when checking one step of someone else's proof, not building the whole thing.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Dividing cos^2(x) + sin^2(x) = 1 by sin^2(x), what does cos^2(x)/sin^2(x) become?",
+        "options": [
+          "tan^2(x)",
+          "csc^2(x)",
+          "cot^2(x)",
+          "sec^2(x)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p38",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "Dividing sin^2(x) + cos^2(x) = 1 by sin^2(x), what does cos^2(x)/sin^2(x) become?",
+      "options": [
+        "tan^2(x)",
+        "csc^2(x)",
+        "sec^2(x)",
+        "cot^2(x)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "This step comes from one of the Pythagorean, sum, difference or double angle identities.",
+        "The correct replacement is cot^2(x)."
+      ],
+      "hints": [
+        "Match this step to the identity it is built from.",
+        "The three Pythagorean identities, the sum and difference formulas, and the double angle formulas cover every step like this."
+      ],
+      "socraticHint": "Which named identity does this particular step come from?",
+      "useAgain": "when checking one step of someone else's proof, not building the whole thing.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Dividing cos^2(x) + sin^2(x) = 1 by cos^2(x), what does sin^2(x)/cos^2(x) become?",
+        "options": [
+          "tan^2(x)",
+          "cot^2(x)",
+          "sec^2(x)",
+          "csc^2(x)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p39",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "Proving cos(2x) = 1 - 2 sin^2(x), what replaces cos^2(x) in cos^2(x) - sin^2(x)?",
+      "options": [
+        "1 + sin^2(x)",
+        "sin^2(x) - 1",
+        "1 - sin^2(x)",
+        "2 sin^2(x) - 1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "This step comes from one of the Pythagorean, sum, difference or double angle identities.",
+        "The correct replacement is 1 - sin^2(x)."
+      ],
+      "hints": [
+        "Match this step to the identity it is built from.",
+        "The three Pythagorean identities, the sum and difference formulas, and the double angle formulas cover every step like this."
+      ],
+      "socraticHint": "Which named identity does this particular step come from?",
+      "useAgain": "when checking one step of someone else's proof, not building the whole thing.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Proving cos(2x) = 2 cos^2(x) - 1, what replaces sin^2(x) in cos^2(x) - sin^2(x)?",
+        "options": [
+          "1 + cos^2(x)",
+          "1 - cos^2(x)",
+          "cos^2(x) - 1",
+          "2 cos^2(x) - 1"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p40",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "choice",
+      "prompt": "In the sum formula, what is the correct expansion of sin(a + b)?",
+      "options": [
+        "sin(a) cos(b) - cos(a) sin(b)",
+        "cos(a) cos(b) - sin(a) sin(b)",
+        "sin(a) sin(b) + cos(a) cos(b)",
+        "sin(a) cos(b) + cos(a) sin(b)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "This step comes from one of the Pythagorean, sum, difference or double angle identities.",
+        "The correct replacement is sin(a) cos(b) + cos(a) sin(b)."
+      ],
+      "hints": [
+        "Match this step to the identity it is built from.",
+        "The three Pythagorean identities, the sum and difference formulas, and the double angle formulas cover every step like this."
+      ],
+      "socraticHint": "Which named identity does this particular step come from?",
+      "useAgain": "when checking one step of someone else's proof, not building the whole thing.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "In the difference formula, what is the correct expansion of cos(a - b)?",
+        "options": [
+          "cos(a) cos(b) + sin(a) sin(b)",
+          "cos(a) cos(b) - sin(a) sin(b)",
+          "sin(a) cos(b) - cos(a) sin(b)",
+          "sin(a) sin(b) - cos(a) cos(b)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p41",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A rocket's guidance check measures an angle where sin(x) = 3/5, with x in quadrant I. Find cos(2x).",
+      "answer": {
+        "kind": "number",
+        "value": "7/25"
+      },
+      "explanation": [
+        "Find cos(x) first from the Pythagorean identity: cos(x) = 4/5.",
+        "Then apply the double angle formula for the quantity asked for.",
+        "That gives cos(2x) = 7/25."
+      ],
+      "hints": [
+        "Find the missing ratio (sine or cosine) first, using the Pythagorean identity.",
+        "cos(2x) = 1 - 2 sin^2(x); sin(2x) = 2 sin(x) cos(x); tan(2x) = sin(2x)/cos(2x)."
+      ],
+      "socraticHint": "What do you need to know before any double angle formula can be used here?",
+      "useAgain": "when a double angle value is wanted but only one ratio is given to start.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kitchen scale's angle sensor measures an angle where sin(x) = 9/41, with x in quadrant I. Find cos(2x).",
+        "answer": {
+          "kind": "number",
+          "value": "1519/1681"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p42",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A security camera's swing check measures an angle where sin(x) = 5/13, with x in quadrant I. Find cos(2x).",
+      "answer": {
+        "kind": "number",
+        "value": "119/169"
+      },
+      "explanation": [
+        "Find cos(x) first from the Pythagorean identity: cos(x) = 12/13.",
+        "Then apply the double angle formula for the quantity asked for.",
+        "That gives cos(2x) = 119/169."
+      ],
+      "hints": [
+        "Find the missing ratio (sine or cosine) first, using the Pythagorean identity.",
+        "cos(2x) = 1 - 2 sin^2(x); sin(2x) = 2 sin(x) cos(x); tan(2x) = sin(2x)/cos(2x)."
+      ],
+      "socraticHint": "What do you need to know before any double angle formula can be used here?",
+      "useAgain": "when a double angle value is wanted but only one ratio is given to start.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A wind turbine's pitch sensor measures an angle where sin(x) = 12/37, with x in quadrant I. Find cos(2x).",
+        "answer": {
+          "kind": "number",
+          "value": "1081/1369"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p43",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A record turntable's arm check measures an angle where sin(x) = 8/17, with x in quadrant I. Find tan(2x).",
+      "answer": {
+        "kind": "number",
+        "value": "240/161"
+      },
+      "explanation": [
+        "Find cos(x) first from the Pythagorean identity: cos(x) = 15/17.",
+        "Then apply the double angle formula for the quantity asked for.",
+        "That gives tan(2x) = 240/161."
+      ],
+      "hints": [
+        "Find the missing ratio (sine or cosine) first, using the Pythagorean identity.",
+        "cos(2x) = 1 - 2 sin^2(x); sin(2x) = 2 sin(x) cos(x); tan(2x) = sin(2x)/cos(2x)."
+      ],
+      "socraticHint": "What do you need to know before any double angle formula can be used here?",
+      "useAgain": "when a double angle value is wanted but only one ratio is given to start.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A search drone's gimbal check measures an angle where sin(x) = 11/61, with x in quadrant I. Find tan(2x).",
+        "answer": {
+          "kind": "number",
+          "value": "1320/3479"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p44",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A solar panel's tilt motor measures an angle where sin(x) = 7/25, with x in quadrant I. Find cos(2x).",
+      "answer": {
+        "kind": "number",
+        "value": "527/625"
+      },
+      "explanation": [
+        "Find cos(x) first from the Pythagorean identity: cos(x) = 24/25.",
+        "Then apply the double angle formula for the quantity asked for.",
+        "That gives cos(2x) = 527/625."
+      ],
+      "hints": [
+        "Find the missing ratio (sine or cosine) first, using the Pythagorean identity.",
+        "cos(2x) = 1 - 2 sin^2(x); sin(2x) = 2 sin(x) cos(x); tan(2x) = sin(2x)/cos(2x)."
+      ],
+      "socraticHint": "What do you need to know before any double angle formula can be used here?",
+      "useAgain": "when a double angle value is wanted but only one ratio is given to start.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A drone's tilt sensor measures an angle where sin(x) = 28/53, with x in quadrant I. Find cos(2x).",
+        "answer": {
+          "kind": "number",
+          "value": "1241/2809"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p45",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "A rover's arm angle measures an angle where sin(x) = 20/29, with x in quadrant I. Find tan(2x).",
+      "answer": {
+        "kind": "number",
+        "value": "840/41"
+      },
+      "explanation": [
+        "Find cos(x) first from the Pythagorean identity: cos(x) = 21/29.",
+        "Then apply the double angle formula for the quantity asked for.",
+        "That gives tan(2x) = 840/41."
+      ],
+      "hints": [
+        "Find the missing ratio (sine or cosine) first, using the Pythagorean identity.",
+        "cos(2x) = 1 - 2 sin^2(x); sin(2x) = 2 sin(x) cos(x); tan(2x) = sin(2x)/cos(2x)."
+      ],
+      "socraticHint": "What do you need to know before any double angle formula can be used here?",
+      "useAgain": "when a double angle value is wanted but only one ratio is given to start.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot's balance sensor measures an angle where sin(x) = 33/65, with x in quadrant I. Find tan(2x).",
+        "answer": {
+          "kind": "number",
+          "value": "3696/2047"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-trig-identities-p46",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "If tan(x) + cot(x) = 4, find tan^2(x) + cot^2(x).",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "Square both sides: (tan(x) + cot(x))^2 = tan^2(x) + 2 tan(x) cot(x) + cot^2(x).",
+        "tan(x) times cot(x) is always 1, so the middle term is 2.",
+        "16 = tan^2(x) + cot^2(x) + 2, so tan^2(x) + cot^2(x) = 14."
+      ],
+      "hints": [
+        "Square the given equation first.",
+        "tan(x) and cot(x) are reciprocals, so their product is always 1."
+      ],
+      "socraticHint": "What is tan(x) times cot(x), for any x?",
+      "useAgain": "when a sum is given and a sum of squares is wanted, without solving for x itself.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "If tan(x) + cot(x) = 5, find tan^2(x) + cot^2(x).",
+        "answer": {
+          "kind": "number",
+          "value": "23"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p47",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "If sin(x) + cos(x) = 6/5, find sin(x) cos(x).",
+      "answer": {
+        "kind": "number",
+        "value": "11/50"
+      },
+      "explanation": [
+        "Square both sides: (sin(x) + cos(x))^2 = 1 + 2 sin(x) cos(x).",
+        "(6/5)^2 is 36/25, so 36/25 = 1 + 2 sin(x) cos(x).",
+        "Solving gives sin(x) cos(x) = 11/50."
+      ],
+      "hints": [
+        "Square the given equation and use sin^2(x) + cos^2(x) = 1.",
+        "The cross term 2 sin(x) cos(x) appears once you square the sum."
+      ],
+      "socraticHint": "What identity appears once you square sin(x) + cos(x)?",
+      "useAgain": "when a sum of sine and cosine is given and their product is wanted.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "If sin(x) + cos(x) = 7/5, find sin(x) cos(x).",
+        "answer": {
+          "kind": "number",
+          "value": "12/25"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p48",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "If sec(x) - tan(x) = 1/3, find sec(x) + tan(x).",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The Pythagorean identity sec^2(x) - tan^2(x) = 1 factors as (sec(x) - tan(x))(sec(x) + tan(x)) = 1.",
+        "Dividing both sides by 1/3 gives sec(x) + tan(x) = 3."
+      ],
+      "hints": [
+        "Factor sec^2(x) minus tan^2(x) as a difference of squares.",
+        "That product always equals 1, so divide 1 by the given value."
+      ],
+      "socraticHint": "What does sec squared minus tan squared always equal?",
+      "useAgain": "when one factor of a Pythagorean-identity product is known and the other is not.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "If sec(x) - tan(x) = 1/4, find sec(x) + tan(x).",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p49",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "Given sin(x) = 3/5, with x in quadrant I, and cos(y) = 5/13, with y in quadrant I, find sin(x + y).",
+      "answer": {
+        "kind": "number",
+        "value": "63/65"
+      },
+      "explanation": [
+        "Find the missing ratios: cos(x) = 4/5 and sin(y) = 12/13.",
+        "sin(x + y) = sin(x) cos(y) + cos(x) sin(y).",
+        "That is (3/5)(5/13) + (4/5)(12/13), which is 63/65."
+      ],
+      "hints": [
+        "Find cos(x) and sin(y) first, using the Pythagorean identity.",
+        "Then apply the sum formula for sine."
+      ],
+      "socraticHint": "What two extra ratios do you need before the sum formula can be used?",
+      "useAgain": "when two different angles each have one ratio given, and a sum formula is wanted.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Given sin(x) = 8/17, with x in quadrant I, and cos(y) = 7/25, with y in quadrant I, find sin(x + y).",
+        "answer": {
+          "kind": "number",
+          "value": "416/425"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-trig-identities-p50",
+      "lane": "skills",
+      "ideaId": "a2-trig-identities",
+      "skills": [
+        "think.skills.identities"
+      ],
+      "kind": "number",
+      "prompt": "If cos(x) - sin(x) = 1/2, find 1 - sin(2x).",
+      "answer": {
+        "kind": "number",
+        "value": "1/4"
+      },
+      "explanation": [
+        "Square both sides: (cos(x) - sin(x))^2 = cos^2(x) - 2 sin(x) cos(x) + sin^2(x).",
+        "That simplifies to 1 - sin(2x), using the Pythagorean and double angle identities.",
+        "(1/2)^2 is 1/4, so 1 - sin(2x) = 1/4."
+      ],
+      "hints": [
+        "Square the given equation directly.",
+        "sin^2(x) + cos^2(x) is 1, and 2 sin(x) cos(x) is sin(2x)."
+      ],
+      "socraticHint": "What double angle identity shows up when you square cos(x) minus sin(x)?",
+      "useAgain": "when a difference of sine and cosine is given and a double angle expression is wanted.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "If cos(x) - sin(x) = 1/3, find 1 - sin(2x).",
+        "answer": {
+          "kind": "number",
+          "value": "1/9"
+        }
+      }
+    }
+  ]
+}

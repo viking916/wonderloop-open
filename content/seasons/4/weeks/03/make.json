@@ -1,0 +1,339 @@
+{
+  "id": "s4-w03-make",
+  "season": 4,
+  "week": 3,
+  "track": "make",
+  "title": "A reference aircraft flies a square, blind",
+  "summary": "Fly a programmable SDK drone through a coded square with no position sensor to help it. Measure how far it drifts from a taped square on the floor.",
+  "minutes": 60,
+  "materials": [
+    "programmable SDK drone (Tello EDU class)",
+    "laptop with the drone's SDK and a code editor",
+    "tape measure",
+    "masking tape, for a floor square",
+    "graph paper and pencil",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.electronics",
+    "make.measurement",
+    "make.notebook"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w03-make-01",
+      "title": "Ask, imagine, plan",
+      "body": "A second kind of aircraft joins the season, one built and proven already: ask, imagine, plan, build, test, fix.\n\nAsk: if a drone is only told how far to move and which way to turn, with no sensor telling it where it truly is. How far off can it land?\n\nImagine: a coded flight plan sent once, forward, turn, forward, turn, with the drone trusting its own sense of motion the whole way round.\n\nPlan: tape a one-metre square on the floor before the drone leaves the ground, and write the exact sequence of commands the flight will send."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w03-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A dashed square shows the drone's planned flight path, four equal sides with 90 degree turns, returning to the takeoff point. A solid line shows the actual flight, gradually bowing away from the planned corners as small errors in each move and turn stack up. The actual path lands about 8 centimetres from the takeoff point instead of exactly on it.",
+        "spec": {
+          "w": 360,
+          "h": 225,
+          "wide": false,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60,
+                  180
+                ],
+                [
+                  60,
+                  60
+                ],
+                [
+                  180,
+                  60
+                ],
+                [
+                  180,
+                  180
+                ],
+                [
+                  60,
+                  180
+                ]
+              ],
+              "dashed": true,
+              "fill": "none"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60,
+                  180
+                ],
+                [
+                  64,
+                  58
+                ],
+                [
+                  184,
+                  55
+                ],
+                [
+                  190,
+                  178
+                ],
+                [
+                  120,
+                  215
+                ]
+              ],
+              "fill": "none"
+            },
+            {
+              "t": "dot",
+              "cx": 60,
+              "cy": 180,
+              "label": "takeoff",
+              "side": "left"
+            },
+            {
+              "t": "dot",
+              "cx": 120,
+              "cy": 215,
+              "label": "landing",
+              "side": "right"
+            },
+            {
+              "t": "dim",
+              "x1": 60,
+              "y1": 180,
+              "x2": 120,
+              "y2": 215,
+              "label": "drift ~8 cm"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 60,
+              "s": "planned square",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 195,
+              "y": 100,
+              "s": "actual flight",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "title": "Small errors add up",
+      "ideaId": "dead-reckoning-drifts",
+      "body": "This drone has no camera or beacon telling it its true position in the room. It flies by dead reckoning instead, estimating its own motion from its spinning rotors and a motion sensor. That is the way a ship's crew once tracked a course with only a compass and a clock.\n\nEvery estimate carries a small error. A one-metre command might really move 1.02 metres, or a 90 degree turn might really turn 88 degrees. One small error barely matters on its own.\n\nA square asks the drone to repeat that estimate four times in a row, so the errors do not cancel out, they stack. A drone with a 2 percent error per move flies four one-metre sides. That could land it roughly 8 percent of a metre away, about 8 centimetres, from where it started. The real gap is often bigger once the turns are counted too."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w03-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Three dashed squares share the same taped takeoff corner: a 0.5 metre square, a 1.0 metre square, and a 1.5 metre square, one inside the next. After each flight the drone's landing spot is marked near the takeoff point, and a dimension line shows the landing distance measured from takeoff to that spot in centimetres.",
+        "spec": {
+          "w": 360,
+          "h": 230,
+          "wide": false,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60,
+                  190
+                ],
+                [
+                  60,
+                  130
+                ],
+                [
+                  120,
+                  130
+                ],
+                [
+                  120,
+                  190
+                ]
+              ],
+              "dashed": true,
+              "fill": "none"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60,
+                  190
+                ],
+                [
+                  60,
+                  70
+                ],
+                [
+                  180,
+                  70
+                ],
+                [
+                  180,
+                  190
+                ]
+              ],
+              "dashed": true,
+              "fill": "none"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  60,
+                  190
+                ],
+                [
+                  60,
+                  10
+                ],
+                [
+                  240,
+                  10
+                ],
+                [
+                  240,
+                  190
+                ]
+              ],
+              "dashed": true,
+              "fill": "none"
+            },
+            {
+              "t": "dot",
+              "cx": 60,
+              "cy": 190
+            },
+            {
+              "t": "line",
+              "x1": 60,
+              "y1": 190,
+              "x2": 20,
+              "y2": 218,
+              "color": "ink"
+            },
+            {
+              "t": "text",
+              "x": 5,
+              "y": 226,
+              "s": "takeoff point (fixed)",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 125,
+              "y": 125,
+              "s": "0.5 m",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 185,
+              "y": 65,
+              "s": "1.0 m",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 245,
+              "y": 18,
+              "s": "1.5 m",
+              "size": 11
+            },
+            {
+              "t": "dot",
+              "cx": 75,
+              "cy": 205
+            },
+            {
+              "t": "line",
+              "x1": 75,
+              "y1": 205,
+              "x2": 150,
+              "y2": 222,
+              "color": "ink"
+            },
+            {
+              "t": "text",
+              "x": 155,
+              "y": 226,
+              "s": "landing spot",
+              "size": 11
+            },
+            {
+              "t": "dim",
+              "x1": 60,
+              "y1": 190,
+              "x2": 75,
+              "y2": 205
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 195,
+              "s": "landing dist (cm)",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "title": "Fly the square, three sizes",
+      "body": "With the drone's SDK, write code for a simple square: forward a fixed distance, turn 90 degrees, four times, then land. Test it first on a small square, such as 0.5 metres a side.\n\nMark the drone's exact takeoff point with tape. After it lands, measure the straight-line distance from the takeoff point to the landing point in centimetres.\n\nRun the same coded square at three side lengths, 0.5, 1.0 and 1.5 metres, twice each, six flights in total. Keep the same coded turn logic for every flight, only the side length changes.",
+      "checklist": [
+        "The same takeoff point and coded square logic were used for all six flights",
+        "Three side lengths were each flown twice",
+        "The landing distance from the takeoff point was measured the same way every time",
+        "The results were compared with the drift the science step predicts"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s4-w03-make-04",
+      "title": "Commanded side length versus landing error",
+      "ideaId": "dead-reckoning-drifts",
+      "body": "The takeoff point, the coded turn logic and the flight code stay the same for every row. Only the commanded side length changes.\n\nFly three side lengths, twice each, six rows in total. For each flight, write the commanded side length in metres and the landing distance from the takeoff point in centimetres.",
+      "columns": [
+        "Side length (m)",
+        "Landing error (cm)"
+      ],
+      "minRows": 6,
+      "question": "Did the landing error grow as the square got bigger, and by about how many centimetres from the smallest to the largest square?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w03-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: a low battery changing the drone's actual thrust partway through a flight, throwing off the whole square.\n\nAlso watch for a takeoff point that shifted between flights. And watch for a measurement taken to the wrong corner of the drone instead of its true landing spot."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w03-make-06",
+      "title": "Show it",
+      "prompt": "Photo of the taped square with the drone's landing spots marked, plus your flight code and your six-row table",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w03-make-07",
+      "variant": "maker"
+    }
+  ]
+}
