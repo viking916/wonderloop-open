@@ -1,0 +1,48 @@
+rules_version = '2';
+
+// Cross-service rule: looks up the matching household document in Firestore
+// to decide who counts as a member. Requires the Firestore and Storage
+// emulators (or the deployed services) to be running together.
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Task 3b: mirrors firestore.rules' emailAllowed()/isMember() gate via the same
+    // cross-service firestore.get/exists lookup isMember below already uses. A
+    // non-allowlisted address can read or write no artifact, even one addressed to a household
+    // it is somehow listed as a member of.
+    function emailAllowed() {
+      return request.auth != null
+        && request.auth.token.email != null
+        && firestore.exists(/databases/(default)/documents/allowedEmails/$(request.auth.token.email.lower()));
+    }
+
+    function isMember(hid) {
+      return request.auth != null
+        && emailAllowed()
+        && request.auth.uid in
+          firestore.get(/databases/(default)/documents/households/$(hid)).data.memberUids;
+    }
+
+    // Recordings (audio, video) may run to 200 MB: a phone's own camera app makes a one-minute
+    // talk at 60 to 100 MB, and web/lib/domain/recording.ts's RECORDING_MAX_BYTES is the same
+    // number, refused in the browser before an upload starts. Photos and text keep 20 MB.
+    match /households/{hid}/profiles/{pid}/artifacts/{file} {
+      allow read: if isMember(hid);
+      // create and update carry a resource to inspect; a delete carries none, and a rule that
+      // reads request.resource on a delete fails closed (found 7 September 2026 while chasing
+      // the owner's week-one save failures: the device check's own clean-up delete was refused).
+      allow delete: if isMember(hid);
+      allow create, update: if isMember(hid)
+        && (
+          (request.resource.contentType.matches('audio/.*|video/.*')
+            && request.resource.size <= 200 * 1024 * 1024)
+          || (request.resource.contentType.matches('image/.*|text/.*')
+            && request.resource.size < 20 * 1024 * 1024)
+        );
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

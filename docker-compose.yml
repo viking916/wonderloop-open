@@ -1,0 +1,67 @@
+# Wonderloop fully local: the app plus the Firebase emulator suite, no Firebase account needed.
+#
+#   docker compose up --build          # app on http://localhost:3000, emulator UI on :4300
+#   docker compose run --rm seed       # a demo household with sample progress (optional)
+#
+# Sign-in on the emulator accepts any made-up Google account; the seeded household's parent is
+# allowlisted by the seed script. Data lives in the emulators for the life of the containers.
+services:
+  emulators:
+    image: node:22-alpine
+    working_dir: /srv
+    command: >
+      sh -c "apk add --no-cache openjdk21-jre-headless >/dev/null
+      && npm install --no-audit --no-fund -g firebase-tools@13 >/dev/null
+      && firebase emulators:start --only auth,firestore,storage --project wonderloop-dev --config firebase.docker.json"
+    volumes:
+      - ./firebase.docker.json:/srv/firebase.docker.json:ro
+      - ./firestore.rules:/srv/firestore.rules:ro
+      - ./firestore.indexes.json:/srv/firestore.indexes.json:ro
+      - ./storage.rules:/srv/storage.rules:ro
+    ports:
+      - "9390:9390"
+      - "8380:8380"
+      - "9490:9490"
+      - "4300:4300"
+      - "4390:4390"
+      - "4490:4490"
+    healthcheck:
+      # The Firestore port answers plain HTTP once the suite is up; the UI port is not reachable
+      # over localhost inside the container.
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8380/"]
+      interval: 5s
+      timeout: 3s
+      retries: 60
+
+  app:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_USE_EMULATORS: "true"
+        NEXT_PUBLIC_EMULATOR_HOST: localhost
+    environment:
+      FIRESTORE_EMULATOR_HOST: emulators:8380
+      FIREBASE_AUTH_EMULATOR_HOST: emulators:9390
+      FIREBASE_STORAGE_EMULATOR_HOST: emulators:9490
+      AI_KEY_SECRET: local-only-not-a-secret
+    ports:
+      - "3000:3000"
+    depends_on:
+      emulators:
+        condition: service_healthy
+
+  seed:
+    profiles: ["tools"]
+    image: node:22-alpine
+    working_dir: /app/web
+    command: sh -c "npm ci --no-audit --no-fund >/dev/null && npx tsx scripts/seed-emulators.ts"
+    environment:
+      FIRESTORE_EMULATOR_HOST: emulators:8380
+      FIREBASE_AUTH_EMULATOR_HOST: emulators:9390
+      FIREBASE_STORAGE_EMULATOR_HOST: emulators:9490
+    volumes:
+      - ./web:/app/web
+      - ./content:/app/content
+    depends_on:
+      emulators:
+        condition: service_healthy

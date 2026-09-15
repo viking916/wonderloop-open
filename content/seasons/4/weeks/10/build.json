@@ -1,0 +1,242 @@
+{
+  "id": "s4-w10-build",
+  "season": 4,
+  "week": 10,
+  "track": "build",
+  "title": "Read two, then walk one alone",
+  "summary": "A maintenance week. Read and annotate two clean C++ solutions to farms you have already beaten, then take one unseen easy past Bronze problem start to finish in C++, untimed, on the real grader, using nothing you did not already own.",
+  "minutes": 60,
+  "materials": [
+    "laptop with g++ and the editor, and a grown-up to sign in to the usaco.org account",
+    "the past contests archive on usaco.org, which is where today's problem comes from",
+    "two official solution pages printed on paper, one per problem, with wide margins",
+    "a coloured pen for the margins and a second colour for questions",
+    "mixmilk.cpp and gymnastics.cpp, your own, from week 6",
+    "the Error Bestiary notebook opened in week 1",
+    "paper and a pencil for the three lines and the step count"
+  ],
+  "skills": [
+    "build.cpp",
+    "build.debugging",
+    "build.functions",
+    "build.data"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w10-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop, same six moves: ask, imagine, plan, build, test, fix.\n\nFirst, what this week is. It is a maintenance week, and that is a real thing rather than a soft one. Nothing new gets taught in this hour. The language firewall closed last week: no new C++ concepts after week 9. You said it out loud yourself while the reference solution was still warm, and wrote it into the Maker's Log the same morning. Everything you touch today is already yours.\n\nAnd this weekend carries nothing. No crossing, no dawn, no clock. Look at the map: the three suns are drawn where they are drawn, and this Saturday is not one of them. Rest is in the plan on purpose, not because the plan ran out of ideas, and the science moment in a few minutes is about why.\n\nAsk: you have written C++ for nine weeks and you have read almost none of anybody else's. Can you take an unfamiliar problem, alone, in the stricter tongue, from the page to a verdict, with nobody handing you a skeleton?\n\nImagine: a problem page you have never seen, three lines of plan in your own handwriting, a .cpp file that is entirely yours, and a verdict screen. Whatever colour it comes back.\n\nPlan, two jobs, and the order matters. First you read, because strong programmers read far more code than they write and you have been doing it the other way round all season. Two clean solutions, written by people who do this for a living, to two farms you have already beaten yourself. Then you descend: one unseen easy Bronze problem, start to finish, in C++, untimed.\n\nThree rules said out loud.\n\nReading is not copying, and it is not learning a new concept either. You will meet C++ today that you have never written, because other people write differently from you. You do not have to understand all of it and you are not being taught it. When something is unfamiliar you write the question in the margin and move on. A question written down is honest. A guess written as if it were a fact is the mirage.\n\nNothing new goes into the descent. If the problem you pick starts wanting machinery you have never written, that is not a sign to go and learn it this morning. It is a sign the problem is not the easy one you were looking for, and swapping it for another is a legal move that costs nothing.\n\nNo clock anywhere in this hour. C++ never meets a clock this season, and this is the week that proves the rule rather than tests it. If the descent takes the whole morning, it took the whole morning."
+    },
+    {
+      "kind": "typing",
+      "id": "s4-w10-build-02",
+      "minutes": 5,
+      "body": "Five minutes, and today the drill is also the reading. Every line below is copied off one of the two official solution pages you are about to annotate, so your fingers meet them before your eyes argue with them.\n\nType these four, five times each:\n\nusing namespace std;\nvoid pour(int& c1, int& m1, int& c2, int& m2) {\nint amt = min(m1, c2 - m2);\nbool better(int a, int b, int session)\n\nThen these two, five times each:\n\nint N, K;\nint data[10][20];\n\nThree things to notice while your hands are busy, and all three are questions rather than facts. You write std::min and std::cout with the std:: on the front every single time; these programs write using namespace std; once at the top instead. What do you think that line is buying, and what do you think it costs? Second, both of these programs have a job with a name in them, pour and better, sitting outside main. You learned to give a job a name in week 3, so ask what each of those two names is promising. Third, and this is the one to be genuinely curious about: there is an ampersand in pour's brackets that you have never typed in your life. Do not look it up yet. Type it, and hold the question.\n\nCheck every line against the real page before you trust it. This page is a copy, and copies drift."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w10-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two days compared: one where practice is followed by staying awake, one where practice is followed by a night of sleep. Both are tested the next day, and the sleeping group generally performs better on what it practised, while a night without sleep leaves attention and new learning worse off, and the tired brain worse at noticing that it is worse.",
+        "spec": {
+          "w": 320,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 30,
+              "w": 70,
+              "h": 30,
+              "label": "practice"
+            },
+            {
+              "t": "line",
+              "x1": 90,
+              "y1": 45,
+              "x2": 170,
+              "y2": 45,
+              "arrow": true,
+              "label": "stay awake"
+            },
+            {
+              "t": "box",
+              "x": 170,
+              "y": 30,
+              "w": 100,
+              "h": 30,
+              "label": "test",
+              "sub": "next day"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 110,
+              "w": 70,
+              "h": 30,
+              "label": "practice"
+            },
+            {
+              "t": "line",
+              "x1": 90,
+              "y1": 125,
+              "x2": 170,
+              "y2": 125,
+              "arrow": true,
+              "label": "sleep"
+            },
+            {
+              "t": "box",
+              "x": 170,
+              "y": 110,
+              "w": 100,
+              "h": 30,
+              "label": "test",
+              "sub": "next day, better",
+              "fill": "green"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 170,
+              "s": "sleep group generally does better",
+              "size": 10
+            }
+          ]
+        }
+      },
+      "title": "What sleep does to the day's learning",
+      "body": "This week has a rest written into it, so here is what rest is actually doing.\n\nThe well-supported part first. Learning does not finish when the hour finishes. Something happens overnight that makes what you practised today stick better tomorrow, and this has been measured many times, in many labs, in ways that agree with each other. Learn a list of words, or a finger sequence on a piano, or a route through a maze, then test it after a night of sleep against the same amount of time spent awake: the sleeping group does better. Going the other way, take sleep away and two things fall over quickly, your attention and your ability to lay down new memories at all. A tired brain is worse at learning than a rested one, and it is also worse at noticing that it is worse, which is the dangerous half.\n\nThe part that is real but less settled. Scientists call it consolidation: the day's fresh, fragile memories being strengthened and filed while you are asleep. In rats you can actually record it happening. Run a rat through a maze, then record the same cells firing in the same order while it sleeps, faster than the rat ever ran. That is replay, and it is a genuine measurement. In people it is mostly inferred rather than watched directly, and the arguments about which stage of sleep does which job, and how much each stage matters, are still live arguments. So when somebody tells you a confident, tidy story about one kind of sleep doing facts and another doing skills, that story is tidier than the evidence is.\n\nThe numbers, from the people who publish them. The sleep medicine bodies recommend nine to twelve hours a night for somebody your age. That is a recommendation rather than a law, and the honest test is whether you wake up without being dragged out of it.\n\nNow the part that belongs to this season, because two things you already believe get their explanation today. Parking a problem and coming back to it works, and coming back the next morning works better than coming back after lunch, which is week 7's fresh eyes with a night added to them. And practice spread out beats practice piled up, which is exactly why the peaks come back week after week instead of arriving in one heap.\n\nWhich is why this weekend is empty. Before a long climb you do less, not more. Rest is not the gap between the training. On the day before something hard, it is the training."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w10-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A reference parameter is not a copy: when pour(int& c1, ...) changes c1 inside the function, it changes the same box that main's c1 already was, because int& makes the parameter another name for the caller's own variable rather than a fresh copy. An ordinary int parameter, without the ampersand, gets its own separate copy, and changes to it never show up back in main.",
+        "spec": {
+          "w": 340,
+          "h": 230,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 30,
+              "y": 40,
+              "w": 100,
+              "h": 40,
+              "label": "main: c1 = 5"
+            },
+            {
+              "t": "line",
+              "x1": 130,
+              "y1": 60,
+              "x2": 200,
+              "y2": 60,
+              "arrow": true,
+              "dashed": true,
+              "label": "int& c1"
+            },
+            {
+              "t": "box",
+              "x": 200,
+              "y": 40,
+              "w": 100,
+              "h": 40,
+              "label": "pour: c1",
+              "sub": "same box"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 100,
+              "s": "changes here show up in main too",
+              "size": 10
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 150,
+              "w": 100,
+              "h": 40,
+              "label": "main: n = 5"
+            },
+            {
+              "t": "line",
+              "x1": 130,
+              "y1": 170,
+              "x2": 200,
+              "y2": 170,
+              "arrow": true,
+              "label": "int n"
+            },
+            {
+              "t": "box",
+              "x": 200,
+              "y": 150,
+              "w": 100,
+              "h": 40,
+              "label": "func: n",
+              "sub": "separate box"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 210,
+              "s": "changes here stay inside the function",
+              "size": 10
+            }
+          ]
+        }
+      },
+      "title": "Read two solutions like a book",
+      "body": "Two problems, both of which you have already beaten with your own hands: Mixing Milk, from the December 2018 contest, Bronze, and Cow Gymnastics, from the December 2019 contest, Bronze. Go to the past contests page on usaco.org and open each contest's results page. Beside every problem name there is a solution link. Open both of those, and print them, because this is a paper job.\n\nOne thing to notice before you read a single line, and it is about who wrote them. Each of those pages names the person who wrote the analysis and the person who wrote the code. Read the names. This is not code that fell out of a machine. It is code somebody chose to write that way, and every choice in it can be asked about.\n\nThe reading protocol, three passes.\n\nPass one, no pen at all. Read the whole program top to bottom without stopping, the way you read the first page of a story. You are only after the shape: where it starts, where the work happens, where the answer leaves.\n\nPass two, pen in hand. In the margin beside each chunk write, in your own words, what job that chunk is doing. Not what it says. What it is for. If you cannot say what a chunk is for, that is the interesting chunk, and it gets a bracket round it.\n\nPass three, second colour, three marks only. A tick beside anything you would have written the same way. A cross beside anything you would have written differently, with one line saying how yours differs, not why yours is worse. A question mark beside anything you do not recognise, with the actual question written out as a question.\n\nSix things worth hunting for, and every one of them is a question the pages themselves can answer.\n\nBoth programs open with using namespace std;, and then use names that live in std with nothing on the front. Mixing Milk writes min where you would have written std::min. Cow Gymnastics writes ifstream and ofstream where you would have written std::ifstream and std::ofstream, which are the exact two you typed with the std:: on the front in week 6. You write std:: every time. Work out from the page what that line is doing, then decide in writing which way you will write your own programs from now on, and why.\n\nBoth have a job with a name sitting outside main: pour in one, better in the other. For each, read only the name and the brackets, and write down what you expect that job to do before you read its body. Then read the body and see whether the name told you the truth. A name that tells the truth is the entire point of naming jobs.\n\nThe ampersand. pour takes int& c1 and three more of the same shape. You have never written that. Do not guess in ink. Write the question first, then watch what happens to those numbers inside pour and afterwards outside it, and write your best guess clearly labelled as a guess.\n\nCheck every name in pour's brackets against its body. Is each of them actually used in there? If one is not, that is not a mistake to feel clever about. It is a question: why would somebody hand a job something it never touches?\n\nCow Gymnastics declares int data[10][20]; at the top, outside every function, with the sizes fixed in advance. You used std::vector for that same kind of thing in week 6. Write down one advantage of each way. Then read the problem page's limits and say why those two numbers are 10 and 20.\n\nLast, the boring load-bearing one: how does each program get its input, and where does it put its answer? Both problem pages name files, because both contests are older than the site's switch to typed input. Cow Gymnastics matches its page: find the ifstream and ofstream lines with gymnastics.in and gymnastics.out inside the quotes, and read them out loud. Mixing Milk does not match its page. It reads with scanf and writes with printf, which is the terminal, and mixmilk.in never appears in it anywhere. Stop there, because that is this week's mirage sitting on an official page. Go to the site's own instructions page, find the sentence about output written to stdout on a file-based problem, and write down what that sentence says would happen to this program if it were sent in today. Then do not decide who was wrong. Write it in the margin as a question, like any other.\n\nThen close both pages and put them face down. What you carry into the descent is whatever stayed in your head, which is the whole test of whether you read them or only looked at them.",
+      "checklist": [
+        "Both solution pages are printed, and I read the names of the people who wrote them",
+        "Pass one was pen down, and every chunk of both programs has a margin note in my own words after pass two",
+        "Both pages carry ticks, crosses with a reason, and at least one question mark written out as a real question",
+        "I wrote what I expected pour and better to do from their names alone, before reading their bodies",
+        "The pages were face down before I opened anything for the descent"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s4-w10-build-05",
+      "title": "The first descent, alone and untimed",
+      "body": "Now you go down a face nobody has shown you. One past Bronze problem you have never seen, start to finish, in C++, on the real grader, with no clock anywhere.\n\nPicking it is yours, with two rules. Pick an easy one on purpose; this is not the morning to be brave. And do not take it from a contest you might want to sit whole later, because a contest with one problem already read is not a contest any more. Say out loud which contest you took it from, so the family knows that one is spent.\n\nRead the whole page out loud, including the parts that look like packaging. Then, before anything else, settle where the input comes from and where the answer goes, because this is the most common way a correct program fails on this site.\n\nThere are two shapes, and the contest's date decides which one you are looking at. Older problems name files: the heading reads INPUT FORMAT with a file name in brackets, like lostcow.in, and OUTPUT FORMAT with another, like lostcow.out. From the December 2020 contest onwards the site switched to typed input, and those headings say instead that input arrives from the terminal, or standard input, and that you print your output to the terminal. The site's own instructions page says so and gives that date. So read the heading on your problem's own page and believe that, not this page and not your memory.\n\nIf it names files, you already own the skeleton from week 6: #include <fstream>, then std::ifstream fin(\"name.in\"); and std::ofstream fout(\"name.out\");, with the names copied off the page character for character. If it says the terminal, then the only thing that changes is which stream you are talking to. std::cin >> n; where you would have written fin >> n;, and std::cout << answer where you would have written fout <<. Same chevrons, same direction, different stream. That is not a new idea and it is not a hole in the firewall. It is a tool you already own, pointed somewhere else.\n\nThen the method, which has not changed since week 3 and is not going to.\n\nThree lines on paper first, before the editor opens. What it reads, what it does over and over, what it writes. If you cannot write those three lines, you have not understood the problem yet, and typing will not fix that.\n\nCount the steps on paper, using the limits printed on that page and not limits you remember from another farm. Say the number out loud. If it is enormous, the plan is wrong, and no language rescues a wrong plan.\n\nChoose int or long long by reading the biggest number the page allows and comparing it with the wall you measured yourself in week 2. Say both numbers in one sentence.\n\nWrite it. Use only what you already own: variables, loops, if, jobs with names, vector, string, streams, min. If you catch yourself reaching for something you have never written, go back and look at the plan again, because on a Bronze problem the intended shape is usually the obvious one.\n\nTest it on the page's sample before you go anywhere near the submit button. Build the sample input yourself and compare your output against the page's, line by line, character by character.\n\nThen submit it yourself, and read the verdict letter for what it actually means rather than for how it feels. Green is a good morning. Red is also a morning: find the letter, work out what it is telling you about your plan, change one thing, send it again.\n\nAnd the honest ending, written in before it is needed. If this stalls hard, park it, take a break, and come back to it with somebody sitting beside you rather than in front of you. Then write down what actually happened. The ledger records what happened, not what was supposed to.",
+      "checklist": [
+        "I picked the problem myself, said out loud which contest it came from, and had never seen it before",
+        "I read the input and output headings off the problem's own page and said which of the two shapes it uses before writing any code",
+        "The three lines and the step count are on paper in my handwriting, written before the editor opened",
+        "I said out loud whether I needed int or long long, with the page's biggest number and the week 2 wall both in the sentence",
+        "The program matched the page's sample before I pressed submit, and I pressed submit myself"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w10-build-06",
+      "title": "Bug diary, and the Bestiary on a reading week",
+      "body": "Three or four entries, same shape as always: the message in your own words, what actually caused it, and what you would look at first next time.\n\nOne rule specific to this week. Nothing goes into the Error Bestiary that you did not personally see on your own screen. A reading week is exactly when it becomes tempting to write down an error that somebody else's code would have produced, and a field guide full of animals you never met is not a field guide. If you want one badly enough, go and break something on purpose and meet it properly.\n\nThree that are likely today, and the first is not a compiler error at all.\n\nThe address error, which is this week's mirage. Your program is right, your plan is right, and the grader reports an empty or a missing output file. That is a right answer delivered to the wrong address: printing with cout on a problem whose page names files, or writing into a file on a problem that wanted the terminal. Nothing inside your program is wrong. You sent it somewhere nobody was standing. Read the heading again.\n\nThe missing header. Use a stream you did not include, or min without <algorithm>, and the compiler complains, usually in a sentence naming a thing that is not a member of std. The week 3 twin still applies: sometimes another header drags it in behind your back and the program compiles on your machine and nowhere else. Include what you use.\n\nAnd about the exact words: compiler messages vary. GCC, clang and MSVC word the same complaint differently, and two versions of GCC do not always agree with each other. Write down the sentence your compiler actually printed, not the one you were expecting. The meaning is steady even when the wording is not, and reading the first line rather than the last is still the whole skill.\n\nOne extra page today that is not a bug. On a fresh sheet write the three things you learned by reading rather than by writing. Reading is the half of this craft you have been skipping all season, and if today produced nothing you can name, then you looked rather than read, and that is worth knowing too."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w10-build-07",
+      "title": "Show it",
+      "prompt": "Photographs of both annotated solution pages, margins and all, with the questions readable. Then your descent: the three lines and the step count in your handwriting, the .cpp file, and a photo of the verdict screen whatever it says. Then today's Bestiary pages and the sheet of three things you learned by reading.",
+      "accepts": [
+        "photo",
+        "code",
+        "text"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w10-build-08",
+      "variant": "maker"
+    }
+  ]
+}

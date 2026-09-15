@@ -1,0 +1,366 @@
+{
+  "id": "s4-w02-make",
+  "season": 4,
+  "week": 2,
+  "track": "make",
+  "title": "The brain goes on the quad: first hover",
+  "summary": "Wire a real flight controller and its ESCs onto the season 3 quad. Bind a receiver to a radio, check motor direction and prop order, then fly a first tethered and free hover.",
+  "minutes": 60,
+  "materials": [
+    "the season 3 quad frame with its four motors and propellers",
+    "flight controller with integrated 4-in-1 ESCs (Betaflight, whoop or toothpick class)",
+    "receiver bound to a radio transmitter",
+    "two 1S or 2S batteries and a charger",
+    "kid-size safety glasses",
+    "stopwatch",
+    "an open indoor space, cleared of people and pets",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.electronics",
+    "make.mechanisms",
+    "make.measurement"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w02-make-01",
+      "title": "Ask, imagine, plan",
+      "body": "The bench-tested frame gets a brain: ask, imagine, plan, build, test, fix.\n\nAsk: week 1's ESP-NOW link sent a message roughly ten times a second. Is that fast enough to keep a quad in the air?\n\nImagine: a flight controller that reads a receiver and corrects the quad's tilt hundreds of times a second. That is far faster than any person could react by hand.\n\nPlan: with an adult, wire the flight controller to the four motors and bind the receiver to the radio. Read the safety rules below before the battery goes anywhere near the frame."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w02-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A bar spanning 200 milliseconds represents a human's reaction time. Below it, a row of short tick marks about 1 millisecond apart represents the flight controller's own correction loop, with a label noting that roughly 200 of those corrections happen inside the same 200 millisecond span it takes a person to react once.",
+        "spec": {
+          "w": 360,
+          "h": 180,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 30,
+              "w": 320,
+              "h": 40,
+              "label": "human reaction",
+              "sub": "~200 ms",
+              "fill": "sand"
+            },
+            {
+              "t": "dim",
+              "x1": 20,
+              "y1": 80,
+              "x2": 340,
+              "y2": 80,
+              "label": "200 ms"
+            },
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 100,
+              "x2": 20,
+              "y2": 115,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 50,
+              "y1": 100,
+              "x2": 50,
+              "y2": 115,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 80,
+              "y1": 100,
+              "x2": 80,
+              "y2": 115,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 110,
+              "y1": 100,
+              "x2": 110,
+              "y2": 115,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 140,
+              "y1": 100,
+              "x2": 140,
+              "y2": 115,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 170,
+              "y1": 100,
+              "x2": 170,
+              "y2": 115,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 112,
+              "s": "~200 corrections in 200 ms",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 140,
+              "s": "flight controller loop: ~1 ms each",
+              "size": 11
+            }
+          ],
+          "frames": [
+            {
+              "ms": 600,
+              "caption": "one correction",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 600,
+              "caption": "then another",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 600,
+              "caption": "faster than you can react",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 600,
+              "caption": "hundreds of times over",
+              "set": {}
+            }
+          ]
+        }
+      },
+      "title": "The loop outraces the fall",
+      "ideaId": "the-loop-outraces-the-fall",
+      "body": "A quad has no wings holding it level. Left alone, it tips over and falls within a fraction of a second of any small push.\n\nA flight controller's own loop reads its tilt sensor and adjusts all four motors on a fast repeating cycle. That cycle often runs close to once every millisecond, hundreds to thousands of times a second. A person's reaction time to something seen or felt is about 200 milliseconds.\n\nDivide 200 milliseconds by a 1 millisecond loop. The flight controller has already corrected the tilt about 200 times before a person could react once. That gap is the whole reason a quad can hover: the correcting must happen faster than the falling."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w02-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A top-down view of the quad. The flight controller sits in the centre, wired to a battery above it and a receiver below it, with an arm running to each of four motors at the corners. Diagonal motors spin the same way: M1 and M4 turn clockwise, M2 and M3 turn counter-clockwise, so the pattern alternates around the frame.",
+        "spec": {
+          "w": 480,
+          "h": 260,
+          "wide": true,
+          "items": [
+            {
+              "t": "box",
+              "x": 195,
+              "y": 105,
+              "w": 150,
+              "h": 50,
+              "label": "flight controller",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 195,
+              "y1": 115,
+              "x2": 100,
+              "y2": 60
+            },
+            {
+              "t": "line",
+              "x1": 345,
+              "y1": 115,
+              "x2": 440,
+              "y2": 60
+            },
+            {
+              "t": "line",
+              "x1": 195,
+              "y1": 145,
+              "x2": 100,
+              "y2": 200
+            },
+            {
+              "t": "line",
+              "x1": 345,
+              "y1": 145,
+              "x2": 440,
+              "y2": 200
+            },
+            {
+              "t": "circle",
+              "cx": 90,
+              "cy": 50,
+              "r": 28,
+              "label": "M1 CW",
+              "fill": "sand"
+            },
+            {
+              "t": "circle",
+              "cx": 450,
+              "cy": 50,
+              "r": 28,
+              "label": "M2 CCW",
+              "fill": "sand"
+            },
+            {
+              "t": "circle",
+              "cx": 90,
+              "cy": 210,
+              "r": 28,
+              "label": "M3 CCW",
+              "fill": "sand"
+            },
+            {
+              "t": "circle",
+              "cx": 450,
+              "cy": 210,
+              "r": 28,
+              "label": "M4 CW",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 225,
+              "y": 190,
+              "w": 90,
+              "h": 30,
+              "label": "receiver",
+              "fill": "paper"
+            },
+            {
+              "t": "line",
+              "x1": 270,
+              "y1": 155,
+              "x2": 270,
+              "y2": 190
+            },
+            {
+              "t": "box",
+              "x": 215,
+              "y": 50,
+              "w": 110,
+              "h": 30,
+              "label": "battery 1S/2S",
+              "fill": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 270,
+              "y1": 105,
+              "x2": 270,
+              "y2": 80
+            }
+          ]
+        }
+      },
+      "title": "Bind, check direction, then hover",
+      "body": "With props off, power the flight controller and bind the receiver to the transmitter following its own instructions. Confirm the transmitter's stick movements show up correctly on the flight controller's setup screen.\n\nStill with props off, arm briefly and confirm each motor spins the direction Betaflight's motor tool expects: two spin one way, two the other. Fix any reversed motor before going further.\n\nNow fit the propellers in the order the flight controller software specifies, an adult checking every one. With the adult holding the transmitter, tether the quad with a string held from above and fly a short tethered hover. Once that is steady, try a short free hover indoors, low and slow.",
+      "checklist": [
+        "The receiver was bound to the transmitter with props off",
+        "All four motors were confirmed spinning the correct direction before any prop was fitted",
+        "Propellers were fitted in the order the flight controller software specifies",
+        "A tethered hover and then a free hover were both flown with the adult on the throttle"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s4-w02-make-04",
+      "title": "Tethered versus free hover time",
+      "ideaId": "the-loop-outraces-the-fall",
+      "body": "The quad, the battery and the flight controller settings stay the same for every row. Only whether the tether is attached changes.\n\nFly three tethered hovers and three free hovers, six rows in total. For each attempt, write the mode and how many seconds the hover lasted before landing or a correction was needed.",
+      "columns": [
+        "Mode (tethered or free)",
+        "Hover time (s)"
+      ],
+      "minRows": 6,
+      "question": "Did the free hovers last about as long as the tethered ones, or noticeably shorter?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w02-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: a motor spinning the wrong direction, which makes the quad flip the instant it leaves the ground.\n\nAlso watch for a propeller fitted upside down or in the wrong position, and a receiver that lost its bind after the battery was swapped.\n\nSafety, said plainly: keep every propeller off the motors until the moment you are ready to fly. Only the adult holds the transmitter's throttle stick during any hover."
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w02-make-06",
+      "title": "The rules that come with flying",
+      "body": "A quad under 250 grams needs no registration to fly for fun in the United States. Families outside the United States check their own country's rules before flying, since they differ.\n\nEven under that weight, the adult and the child take the free recreational flyer safety test together before the first free hover. It is short, online, and about the rules rather than a licence.\n\nFly only where it is allowed: not near other people, not above 400 feet. Only fly where you can see the quad the whole time it is in the air."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w02-make-07",
+      "title": "Show it",
+      "prompt": "Photo of the wired flight controller and receiver before the props went on, plus a short recording of the free hover and your six-row table",
+      "accepts": [
+        "photo",
+        "recording"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w02-make-08",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s4-w02-make-x02",
+      "kind": "bonus",
+      "title": "A payload that flies: the ESP32 logs the air on the way up",
+      "minutes": 45,
+      "ideaId": "pressure-that-fades",
+      "body": "A satellite is a payload first: an instrument, a logger and a battery that go somewhere and report back. Yours goes up under the quad.\n\n1. Wire the pressure and temperature sensor to the ESP32: power, ground, and the two data pins its datasheet names. Write a loop that logs pressure, temperature and the time every half second. Print it to the serial monitor first, then save it to a file on the board.\n\n2. Predict first: air pressure drops by about 12 pascals for every metre you climb near the ground. Write in the Maker's Log how many pascals a 20 metre climb should cost.\n\n3. Weigh the payload on the kitchen scale with its battery. Compare it with the quad's spare lift from the week 7 thrust test. It must stay well inside that number, or the quad does not leave the floor.\n\n4. Tape the payload under the quad, fly to about 20 metres with the adult on the throttle, hold, and land. Pull the log off the board.\n\n5. Compare: the pressure at the top against the pressure on the floor. Divide the drop by 12 to get your height in metres, and check it against what the pilot saw.\n\n6. Teach it: explain to someone why a barometer can measure height at all.\n\nWhat to notice: the temperature line. Was the air up there cooler, and by how much, in the ten seconds the quad hovered?"
+    }
+  ]
+}

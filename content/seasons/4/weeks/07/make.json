@@ -1,0 +1,240 @@
+{
+  "id": "s4-w07-make",
+  "season": 4,
+  "week": 7,
+  "track": "make",
+  "title": "A first gait, and where it falls",
+  "summary": "Code a creep gait that always keeps three feet down. Push its speed and step length until it starts to fall, and find the legs' real torque limit.",
+  "minutes": 60,
+  "materials": [
+    "the quadruped walker from week 6",
+    "ESP32 dev board with the PCA9685 servo driver",
+    "tape measure",
+    "stopwatch",
+    "a small set of coins or weights, for a torque check",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.mechanisms",
+    "make.measurement",
+    "make.notebook"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w07-make-01",
+      "title": "Ask, imagine, plan",
+      "body": "A standing walker learns to move: ask, imagine, plan, build, test, fix.\n\nAsk: week 6 found how far the body can lean before a leg must lift. Does that same limit decide how fast the walker can safely step?\n\nImagine: a creep gait, lifting and placing one leg at a time so three feet are always on the ground. Run it first slowly, then faster and faster.\n\nPlan: write the four-step leg order on paper before coding it. Choose one short step length and one longer step length to compare, and two speeds to test at each."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w07-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two support triangles compare gait speed. On the left, a slow gait gives the centre of mass time to settle near the middle of the triangle before the next foot lifts. On the right, a fast gait shows the centre of mass still drifting toward the triangle's edge, marked not settled, when the next foot has already lifted, which is why speed alone can cause a fall.",
+        "spec": {
+          "w": 430,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  20,
+                  170
+                ],
+                [
+                  150,
+                  170
+                ],
+                [
+                  85,
+                  80
+                ]
+              ],
+              "fill": "none"
+            },
+            {
+              "t": "dot",
+              "cx": 85,
+              "cy": 130,
+              "label": "COM settled",
+              "side": "left"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  210,
+                  170
+                ],
+                [
+                  340,
+                  170
+                ],
+                [
+                  275,
+                  80
+                ]
+              ],
+              "fill": "none"
+            },
+            {
+              "t": "dot",
+              "cx": 300,
+              "cy": 104,
+              "label": "COM still drifting",
+              "side": "right"
+            },
+            {
+              "t": "line",
+              "x1": 275,
+              "y1": 130,
+              "x2": 298,
+              "y2": 106,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 195,
+              "s": "slow: settles before next step",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 213,
+              "s": "fast: next foot lifts too soon",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 342,
+              "y": 178,
+              "s": "not settled",
+              "size": 11,
+              "anchor": "start"
+            }
+          ]
+        }
+      },
+      "title": "Speed leaves less time to recover",
+      "ideaId": "stay-inside-the-support-triangle",
+      "body": "A creep gait always keeps three feet down, so the walker always has a support triangle under it, never nothing. The danger is not the shape of that triangle. It is how quickly the body's centre of mass has to settle back over it after each step.\n\nA slow gait gives the body time to shift and settle before the next foot lifts. A fast gait lifts the next foot again before that settling has finished. The centre of mass is still drifting toward the edge of the triangle from the last step.\n\nOnce a lifted foot needs to land to save the walker, and the leg has not physically got there yet, the walker falls. That is a timing failure, not a strength failure, and it is why faster is not simply better."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w07-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A simple footprint layout with the body in the middle and four feet at the corners, numbered 1 through 4 in the order the creep gait lifts them. Only one foot lifts at a time in this order, so three feet are always on the ground between steps.",
+        "spec": {
+          "w": 360,
+          "h": 230,
+          "wide": false,
+          "items": [
+            {
+              "t": "dot",
+              "cx": 80,
+              "cy": 60,
+              "label": "1",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 280,
+              "cy": 60,
+              "label": "3",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 80,
+              "cy": 180,
+              "label": "4",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 280,
+              "cy": 180,
+              "label": "2",
+              "side": "below"
+            },
+            {
+              "t": "box",
+              "x": 140,
+              "y": 100,
+              "w": 80,
+              "h": 40,
+              "label": "body",
+              "fill": "sand"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 20,
+              "s": "creep gait lift order: 1,2,3,4",
+              "size": 12
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 210,
+              "s": "only one foot lifts at a time, three stay down",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "title": "Walk it slow, then fast, then find the limit",
+      "body": "Program the creep gait, lifting each leg in turn and placing it, always leaving three feet down. Test it first at a slow speed with a short step length and confirm it walks without falling.\n\nThen test all four combinations of two step lengths, short and long, and two speeds, slow and fast. Do each combination twice, eight walks in total, on a flat, clear floor. Record whether each walk fell before finishing.\n\nFinally, with the walker standing still, hang a small mass from one foot's ankle joint. Add more mass until that leg's own servo stalls and cannot lift it. That mass is the leg's practical torque limit under its own linkage. Free the leg the moment it stalls, and never leave a stalled servo loaded for more than a few seconds.",
+      "checklist": [
+        "The creep gait always kept three feet down while the fourth moved",
+        "All four combinations of step length and speed were each walked twice",
+        "Whether each walk fell before finishing was recorded honestly",
+        "The leg's stalling mass was found by adding weight until it could not lift"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s4-w07-make-04",
+      "title": "Step length and speed versus falls",
+      "ideaId": "stay-inside-the-support-triangle",
+      "body": "The walker, the floor and the gait code stay the same for every row. Only the step length and the speed change.\n\nTest two step lengths and two speeds, twice each, eight rows in total. For each walk, write the step length in centimetres and the speed in steps per second. Also write whether it fell, 1 for yes and 0 for no.",
+      "columns": [
+        "Step length (cm)",
+        "Speed (steps per second)",
+        "Fell (0 or 1)"
+      ],
+      "minRows": 8,
+      "question": "Did the fast speed fall more often than the slow speed, and did step length change that pattern?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w07-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: a gait timed by a fixed delay that does not actually wait for the leg to finish moving. Faster settings then quietly skip motion instead of speeding it up.\n\nAlso watch for a floor that is not level, which makes some falls about the surface and not the gait."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w07-make-06",
+      "title": "Show it",
+      "prompt": "Photo or short recording of the walker mid-gait, plus your eight-row table and the leg's stalling mass",
+      "accepts": [
+        "photo",
+        "recording",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w07-make-07",
+      "variant": "maker"
+    }
+  ]
+}

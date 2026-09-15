@@ -1,0 +1,966 @@
+{
+  "id": "s1-w09-think",
+  "season": 1,
+  "week": 9,
+  "track": "think",
+  "title": "Ratios, unit price, and halve the search",
+  "summary": "Find the price for one item to spot the better deal, scale a ratio fairly, and guess the middle to halve a search.",
+  "minutes": 90,
+  "materials": ["paper", "pencil"],
+  "skills": ["think.skills.ratios", "think.money", "think.algorithms"],
+  "completion": "all-steps",
+  "steps": [
+    {
+      "kind": "warmup",
+      "id": "s1-w09-think-01",
+      "variant": "fermi",
+      "problems": [
+        {
+          "id": "s1-w09-think-01-p01",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "About how many seconds are in one whole day?",
+          "options": ["about 1,000 seconds", "about 10,000,000 seconds", "about 100,000 seconds"],
+          "answer": { "kind": "choice", "index": 2 },
+          "explanation": [
+            "Guess and round: estimate with easy numbers first, one part at a time.",
+            "A day has about 24 hours, round that to 25.",
+            "Each hour has about 3,600 seconds, round that to 4,000.",
+            "25 x 4,000 is 100,000, so about 100,000 seconds is the closest guess."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a real total is too big to count one at a time, so you break it into easy rounded parts and multiply.",
+          "hints": ["Think about how many seconds are in one hour, not the whole day at once.", "Multiply the rounded seconds in an hour by the rounded hours in a day."],
+          "socraticHint": "About how many seconds pass in just one hour, and how would that number help you estimate a whole day?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "About how many seconds are in one hour?",
+            "options": ["about 30 seconds", "about 3,000 seconds", "about 300,000 seconds"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s1-w09-think-01-p02",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "About how many hairs are on your whole head?",
+          "options": ["about 100,000 hairs", "about 1,000 hairs", "about 10,000,000 hairs"],
+          "answer": { "kind": "choice", "index": 0 },
+          "explanation": [
+            "Guess and round: estimate with easy numbers first, one part at a time.",
+            "Your scalp covers about 500 square centimeters, round that to 500.",
+            "Hair grows at about 200 hairs per square centimeter, round that to 200.",
+            "500 x 200 is 100,000, so about 100,000 hairs is the closest guess."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when something is spread evenly over an area and you can multiply the area by how many fit in one small patch.",
+          "hints": ["Think about the size of your scalp in square centimeters, not the whole head at once.", "Multiply the rounded scalp area by the rounded hairs in one square centimeter."],
+          "socraticHint": "Which is easier to picture accurately, the size of your whole head or the size of one small patch of scalp?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "About how many hairs are in a patch of scalp about 10 square centimeters big?",
+            "options": ["about 20 hairs", "about 200,000 hairs", "about 2,000 hairs"],
+            "answer": { "kind": "choice", "index": 2 }
+          }
+        },
+        {
+          "id": "s1-w09-think-01-p03",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "About how many students in a big city walk to school each day, if the city has about 150 schools, each with about 600 students, and about 1 in 5 students walks?",
+          "options": [
+            "about 18,000 students",
+            "about 1,800 students",
+            "about 180,000 students"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Guess and round: 150 schools times 600 students each is 90,000 students total in the city.",
+            "About 1 in 5 of those students walks, so divide by 5: 90,000 divided by 5 is 18,000.",
+            "About 18,000 students walk to school each day."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a total needs both a multiplication step and a fraction-of step chained together.",
+          "hints": [
+            "Find the total number of students in the city first, before taking a fraction of them.",
+            "Dividing by 5 is the same as taking one fifth."
+          ],
+          "socraticHint": "Does it matter whether you take the fraction before or after multiplying schools by students per school?",
+          "skills": [
+            "think.number-sense"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "About how many students in a big city walk to school each day, if the city has about 200 schools, each with about 500 students, and about 1 in 4 students walks?",
+            "options": [
+              "about 25,000 students",
+              "about 2,500 students",
+              "about 250,000 students"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            }
+          }
+        },
+        {
+          "id": "s1-w09-think-01-p04",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "A city has about 500,000 people. About how many are K-12 students, if roughly 1 in 5 people is one?",
+          "options": [
+            "about 100,000 students",
+            "about 10,000 students",
+            "about 1,000,000 students"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Guess and round: think of the population as made of 5 equal groups, one of which is K-12 students.",
+            "500,000 divided by 5 is 100,000.",
+            "About 100,000 people in the city are K-12 students."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a fraction of a whole population needs to be estimated by dividing the rounded total.",
+          "hints": [
+            "Turn 'roughly 1 in 5' into a division by 5.",
+            "500,000 divided by 5 is an easy round number."
+          ],
+          "socraticHint": "If 1 in 5 people is a student, what fraction of the population is that, and how would you find that fraction of 500,000?",
+          "skills": [
+            "think.number-sense"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A city has about 300,000 people. About how many are K-12 students, if roughly 1 in 6 people is one?",
+            "options": [
+              "about 50,000 students",
+              "about 5,000 students",
+              "about 500,000 students"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            }
+          }
+        },
+        {
+          "id": "s1-w09-think-01-p05",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "About how many times does your heart beat in one whole day?",
+          "options": ["about 1,000 beats", "about 10,000,000 beats", "about 100,000 beats"],
+          "answer": { "kind": "choice", "index": 2 },
+          "explanation": [
+            "Guess and round: estimate with easy numbers first, one part at a time.",
+            "Your heart beats about 70 times a minute, round that to 100 to keep the math easy.",
+            "A day has about 1,440 minutes, round that to 1,000.",
+            "100 x 1,000 is 100,000, so about 100,000 heartbeats is the closest guess."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when something happens at a steady rate every minute and you need a total over a much longer stretch of time.",
+          "hints": ["Think about how many times your heart beats in one minute, not the whole day.", "Multiply the rounded beats per minute by the rounded minutes in a day."],
+          "socraticHint": "Your heart never pauses between minutes, so what single number, beats in one minute, could carry you all the way through a day?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "About how many times does your heart beat during one hour of gym class, when it beats faster, about 150 times a minute?",
+            "options": ["about 90 beats", "about 9,000 beats", "about 900,000 beats"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s1-w09-think-01-p06",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "A streaming service adds about 40 new songs to its library every day. About how many new songs does it add in 5 years?",
+          "options": [
+            "about 70,000 songs",
+            "about 7,000 songs",
+            "about 700,000 songs"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Guess and round: 40 songs a day times about 350 days in a year is 14,000 songs a year.",
+            "Over 5 years, 14,000 x 5 is 70,000 songs.",
+            "About 70,000 new songs get added in 5 years."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a daily rate needs to scale up to a yearly total, then to several years.",
+          "hints": [
+            "Find one year's worth of new songs before multiplying by the number of years.",
+            "350 days is a good round number for one year."
+          ],
+          "socraticHint": "Once you have one year's total, is finding five years' worth just one more easy multiplication?",
+          "skills": [
+            "think.number-sense"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A streaming service adds about 60 new songs every day. About how many new songs does it add in 4 years?",
+            "options": [
+              "about 84,000 songs",
+              "about 8,400 songs",
+              "about 840,000 songs"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            }
+          }
+        },
+        {
+          "id": "s1-w09-think-01-p07",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "Sound travels about 340 metres every second. Your mBot's ultrasonic sensor clicks at a wall 1.7 metres away and waits for the echo. About how many seconds does one round trip take? If the sensor checks the same wall 5 times, about how many seconds total does it spend waiting for echoes?",
+          "options": [
+            "about 0.05 seconds",
+            "about 0.01 seconds",
+            "about 0.5 seconds"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Time the bounce: the click travels out and back, 1.7 metres there and 1.7 metres back, 3.4 metres total.",
+            "Distance divided by speed gives time: 3.4 metres divided by 340 metres a second is 0.01 seconds for one echo.",
+            "5 checks at 0.01 seconds each add up to 0.05 seconds total."
+          ],
+          "ideaId": "time-the-bounce",
+          "useAgain": "when a sensor times a round trip and you need the total time over several repeated checks.",
+          "hints": [
+            "Find the round trip distance first: there and back is double the one-way distance.",
+            "One echo's time times 5 gives the total for 5 echoes."
+          ],
+          "socraticHint": "Does the sound travel 1.7 metres for one whole echo, or twice that?",
+          "skills": [
+            "build.physics",
+            "think.number-sense"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Sound travels about 340 metres every second. mBot's sensor clicks at a wall 3.4 metres away and waits for the echo. About how many seconds does one round trip take? If it checks the same wall 4 times, about how many seconds total does it spend waiting?",
+            "options": [
+              "about 0.08 seconds",
+              "about 0.02 seconds",
+              "about 0.8 seconds"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "puzzle-of-week",
+      "id": "s1-w09-think-02",
+      "problem": {
+        "id": "s1-w09-think-02-p01",
+        "kind": "number",
+        "lane": "puzzle-of-week",
+        "prompt": "A cube is built out of 27 small unit cubes, stacked 3 by 3 by 3 with no gaps, like a giant Rubik's cube. The whole outside of the big cube is painted red, then it is taken apart back into the 27 small cubes. How many of the small cubes end up with no red paint on them at all?",
+        "answer": { "kind": "number", "value": "1" },
+        "explanation": [
+          "Count what you cannot see: picture the big cube sliced into three flat layers, top, middle, bottom, each layer 3 by 3.",
+          "Every small cube on an outside face, edge, or corner of the big cube gets some paint. Paint only misses a cube that is completely buried inside.",
+          "In the middle layer, the four edge cubes and the four corner cubes all touch an outside face of the big cube. Only the very center cube of that middle layer touches no outside face at all.",
+          "That one buried center cube is the only one with no red paint on it."
+        ],
+        "ideaId": "count-what-you-cannot-see",
+        "useAgain": "when a shape is stacked from smaller pieces and you need to count the ones hidden on the inside, not just what you can see from outside.",
+        "hints": ["Picture the big cube sliced into three flat layers, not the whole pile at once.", "Ask which small cubes never touch an outside face of the big cube."],
+        "socraticHint": "Picture the middle layer of the three by three by three cube on its own: which of its cubes might not touch an outside face of the big cube at all?",
+        "skills": ["think.spatial"],
+        "thinkMinutes": 5,
+        "difficulty": 3,
+        "variant": {
+          "prompt": "A cube is built out of 64 small unit cubes, stacked 4 by 4 by 4 with no gaps. The whole outside is painted blue, then it is taken apart. How many of the small cubes end up with no blue paint on them at all?",
+          "answer": { "kind": "number", "value": "8" }
+        }
+      }
+    },
+    {
+      "kind": "problem-set",
+      "id": "s1-w09-think-03",
+      "title": "Ratios and rates",
+      "lane": "skills",
+      "problems": [
+        {
+          "id": "s1-w09-think-03-p01",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "A 4-pack of juice boxes costs $2.00, and a 7-pack of the SAME juice boxes costs $3.85. Which pack has the lower unit price, and by how many dollars per box is it cheaper?",
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Unit price: find the price for one juice box in each pack. 4-pack: 2.00 divided by 4 is $0.50 per box.",
+            "7-pack: 3.85 divided by 7 is $0.55 per box.",
+            "The 4-pack is cheaper per box, by 0.55 minus 0.50, which is $0.05. The answer has to name both the cheaper pack and that amount."
+          ],
+          "ideaId": "unit-price",
+          "introducesIdea": true,
+          "useAgain": "when comparing two packs of the same item and you need not just which is cheaper, but by how much per item.",
+          "hints": [
+            "Find the unit price for both packs before comparing them.",
+            "Subtract the two unit prices to find the difference, not the two total prices."
+          ],
+          "socraticHint": "Is the pack with the bigger total price always the worse deal per item, or does that depend on how many items it has?",
+          "skills": [
+            "think.money",
+            "think.skills.ratios"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A 5-pack of granola bars costs $3.75, and an 8-pack of the SAME bars costs $6.40. Which pack has the lower unit price, and by how many dollars per bar?",
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "options": [
+              "The 5-pack, by $0.05",
+              "The 8-pack, by $0.05",
+              "The 5-pack, by $2.65",
+              "They cost the same per bar"
+            ]
+          },
+          "options": [
+            "The 4-pack, by $0.05",
+            "The 7-pack, by $0.05",
+            "The 4-pack, by $1.85",
+            "They cost the same per box"
+          ]
+        },
+        {
+          "id": "s1-w09-think-03-p02",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Pack A: 6 oranges for $3.60. Pack B: 9 oranges for $4.50. Jamal found the better deal like this:\nLine 1: Pack A's unit price: 3.60 divided by 6 is $0.60 per orange.\nLine 2: Pack B's unit price: 4.50 divided by 6 is $0.75 per orange.\nLine 3: Compare: $0.60 is less than $0.75.\nLine 4: So Pack A is the better deal.\nWhich line is wrong?",
+          "options": [
+            "Line 1",
+            "Line 2",
+            "Line 3",
+            "Line 4",
+            "No line is wrong"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 1
+          },
+          "explanation": [
+            "Line 2 is wrong: Pack B's unit price needs Pack B's own count, 9, not Pack A's count of 6.",
+            "Line 1 is correct: Pack A's unit price is 3.60 divided by 6, which is 0.60 per orange.",
+            "Dividing $4.50 by 6 mixes numbers from two different packs, so line 2's answer is not really Pack B's unit price.",
+            "Pack B's real unit price is 4.50 divided by 9, which is 0.50 per orange. Since 0.50 is less than 0.60, Pack B is actually the better deal."
+          ],
+          "ideaId": "unit-price",
+          "useAgain": "when finding a unit price and making sure the price and the count both come from the very same pack.",
+          "hints": [
+            "Each pack's unit price should use that same pack's own count. Check which count got used for Pack B.",
+            "Recompute each pack's unit price yourself, dividing every pack's price only by its own count, and compare your numbers to the ones in the solution."
+          ],
+          "socraticHint": "If two different packs' numbers get mixed together in one division, whose unit price does the answer actually describe?",
+          "skills": [
+            "think.money",
+            "think.skills.ratios"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Pack A: 4 notebooks for $6.00. Pack B: 10 notebooks for $12.00. Ruth found the better deal like this:\nLine 1: Pack A's unit price: 6.00 divided by 4 is $1.50 per notebook.\nLine 2: Pack B's unit price: 12.00 divided by 4 is $3.00 per notebook.\nLine 3: Compare: $1.50 is less than $3.00.\nLine 4: So Pack A is the better deal.\nWhich line is wrong?",
+            "options": [
+              "Line 1",
+              "Line 2",
+              "Line 3",
+              "Line 4",
+              "No line is wrong"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 1
+            }
+          }
+        },
+        {
+          "id": "s1-w09-think-03-p03",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Apples are sold two ways. Bag A: 2 kilograms for $5.00. Bag B: 3 kilograms for $6.90. Which bag is the better deal, the lower price for one kilogram?",
+          "options": ["Bag A", "Bag B", "They cost the same per kilogram"],
+          "answer": { "kind": "choice", "index": 1 },
+          "explanation": [
+            "Unit price: find the price for one kilogram in each bag, then compare them directly.",
+            "Bag A: 5.00 divided by 2 is 2.50 per kilogram.",
+            "Bag B: 6.90 divided by 3 is 2.30 per kilogram.",
+            "2.30 is less than 2.50, so Bag B is the better deal."
+          ],
+          "ideaId": "unit-price",
+          "useAgain": "when the same kind of item is sold in different sized bags or boxes at different prices.",
+          "hints": ["Divide each bag's price by its weight to get the price for one kilogram.", "Compare the two prices for one kilogram, not the two totals."],
+          "socraticHint": "Bag B costs more in total than Bag A. Does that alone tell you which bag is the better deal?",
+          "skills": ["think.money", "think.skills.ratios"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Rice is sold two ways. Bag A: 4 kilograms for $9.00. Bag B: 5 kilograms for $11.50. Which bag is the better deal, the lower price for one kilogram?",
+            "options": ["Bag A", "Bag B", "They cost the same per kilogram"],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        },
+        {
+          "id": "s1-w09-think-03-p04",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "A car travels 180 miles in 3 hours at a steady speed, then travels another distance in 2.5 hours at that SAME steady speed. How many miles does it travel in those 2.5 hours?",
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Unit price works for speed too: 180 miles in 3 hours is 180 divided by 3, or 60 miles in one hour.",
+            "At that same steady 60 miles per hour, 2.5 hours covers 60 times 2.5.",
+            "60 times 2.5 is 150 miles."
+          ],
+          "ideaId": "unit-price",
+          "useAgain": "when you find a rate from one leg of a trip, then use that same rate to find the distance for a different amount of time.",
+          "hints": [
+            "Find the speed, miles for one hour, before answering the new question.",
+            "Multiply that speed by 2.5 hours, not 3."
+          ],
+          "socraticHint": "Once you know the car's steady speed, does the earlier 3-hour trip matter at all for finding the 2.5-hour distance?",
+          "skills": [
+            "think.skills.ratios"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A train travels 420 miles in 6 hours at a steady speed, then travels for 3.5 hours at that same speed. How many miles does it travel in those 3.5 hours?",
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "options": [
+              "245",
+              "210",
+              "280",
+              "217.5"
+            ]
+          },
+          "options": [
+            "150",
+            "120",
+            "180",
+            "135"
+          ]
+        },
+        {
+          "id": "s1-w09-think-03-p05",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "A 5 kilogram bag of flour costs $4.50, and a 12 kilogram bag of the SAME flour costs $9.60. For at least 20 kilograms of flour, which costs less: four 5kg bags, or two 12kg bags?",
+          "options": [
+            "Four 5 kilogram bags",
+            "Two 12 kilogram bags",
+            "They cost exactly the same"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Unit price: the 5kg bag costs 4.50 divided by 5, which is $0.90 per kilogram. The 12kg bag costs 9.60 divided by 12, which is $0.80 per kilogram, a better unit price.",
+            "But four 5kg bags give exactly 20kg for 4 x 4.50, which is $18.00 total.",
+            "Two 12kg bags give 24kg, more than needed, for 2 x 9.60, which is $19.20 total.",
+            "Even though the 12kg bag has the better unit price, four 5kg bags cost less in total here, since they do not waste any flour."
+          ],
+          "ideaId": "unit-price",
+          "useAgain": "when the cheaper unit price does not always give the cheaper total, because the amount you actually need does not divide evenly into the bigger pack.",
+          "hints": [
+            "Work out the unit price for both bags first, then check how many of each you would actually need to buy.",
+            "Compare the TOTAL cost for buying enough of each bag size, not just the unit prices."
+          ],
+          "socraticHint": "Does having the better price per kilogram always mean the better deal, once you have to buy in whole bags?",
+          "skills": [
+            "think.money",
+            "think.skills.ratios"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A 4 kilogram bag of rice costs $3.40, and a 9 kilogram bag of the SAME rice costs $7.20. For at least 16 kilograms of rice, which costs less: four 4kg bags, or two 9kg bags?",
+            "options": [
+              "Four 4 kilogram bags",
+              "Two 9 kilogram bags",
+              "They cost exactly the same"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            }
+          }
+        },
+        {
+          "id": "s1-w09-think-03-p06",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "A pixel's red value is 51 out of a possible 255. Write that as a fraction in lowest terms.",
+          "answer": { "kind": "number", "value": "1/5" },
+          "explanation": [
+            "Same slice: split both numbers into the same size equal groups so the ratio reduces to its simplest form.",
+            "51 and 255 can both be split into groups of 51: 51 is 1 group of 51, and 255 is 5 groups of 51.",
+            "So 51 out of 255 reduces to 1 out of 5, written as the fraction 1/5."
+          ],
+          "ideaId": "same-slice",
+          "useAgain": "when a ratio has two numbers that share a common factor and you want to write it in its simplest form.",
+          "hints": ["Look for the biggest number that divides evenly into both 51 and 255.", "Divide both numbers by that same amount to shrink the ratio."],
+          "socraticHint": "If you split both 51 and 255 into equal-sized groups, how many groups would let every group look the same?",
+          "skills": ["think.skills.ratios"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A pixel's green value is 85 out of a possible 255. Write that as a fraction in lowest terms.",
+            "answer": { "kind": "number", "value": "1/3" }
+          }
+        },
+        {
+          "id": "s1-w09-think-03-p07",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Suppose you trained 3 hand-sign classes with 30 samples each. What fraction of all your training samples came from one class, in lowest terms?",
+          "answer": {
+            "kind": "number",
+            "value": "1/3"
+          },
+          "explanation": [
+            "Same slice: first find the whole, then split the part and the whole into the same size equal groups.",
+            "The whole set of training samples is 3 classes times 30 samples, which is 90 samples.",
+            "30 out of 90 can both be split into groups of 30: 30 is 1 group of 30, and 90 is 3 groups of 30.",
+            "So one class is 1/3 of the whole set of samples."
+          ],
+          "ideaId": "same-slice",
+          "useAgain": "when you need the fraction one part makes of a whole group, not just a part compared to another part.",
+          "hints": [
+            "Multiply the classes by the samples per class first to find the whole set.",
+            "Divide both the one-class count and the whole-set count by the same common factor."
+          ],
+          "socraticHint": "Is 30 out of the other two classes the same question as 30 out of the whole set of samples?",
+          "skills": [
+            "think.skills.ratios"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Suppose you trained 4 hand-sign classes with 25 samples each. What fraction of all your training samples came from one class, in lowest terms?",
+            "answer": {
+              "kind": "number",
+              "value": "1/4"
+            }
+          }
+        },
+        {
+          "id": "s1-w09-think-03-p08",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "A recipe for 4 people needs 2 cups of rice. Keeping the same ratio, which of these is the amount of rice needed to feed 10 people?",
+          "options": ["5", "4.5", "8", "2.5"],
+          "answer": { "kind": "choice", "index": 0 },
+          "explanation": [
+            "Of means times: scaling a recipe up is the same as multiplying every ingredient by how many times bigger the new group is.",
+            "10 people is 2.5 times as many as the original 4 people, since 10 divided by 4 is 2.5.",
+            "2 cups times 2.5 is 5 cups of rice."
+          ],
+          "ideaId": "of-means-times",
+          "useAgain": "when a recipe or mix needs to serve a different number of people and every ingredient has to scale by the same amount.",
+          "hints": ["Find how many times bigger the new group is compared to the original group.", "Multiply the original amount of rice by that same scale factor."],
+          "socraticHint": "If everything in a recipe must grow by the same factor, does doubling the people always mean doubling every ingredient exactly, even when the numbers do not divide evenly?",
+          "skills": ["think.skills.ratios"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A recipe for 6 people needs 3 cups of flour. Keeping the same ratio, which of these is the amount of flour needed to feed 8 people?",
+            "options": ["4", "3.5", "4.5", "2.67"],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "problem-set",
+      "id": "s1-w09-think-04",
+      "title": "Bebras set A",
+      "lane": "puzzle",
+      "problems": [
+        {
+          "id": "s1-w09-think-04-p01",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "Zara is playing a guessing game with her friend. Her friend picks a whole number from 1 to 100 and keeps it secret. Zara guesses a number, and her friend only ever says 'higher' or 'lower', never the number itself. Zara always guesses the exact middle of the numbers that are still possible. What is the largest number of guesses Zara could ever need to be sure of the secret number?",
+          "answer": { "kind": "number", "value": "7" },
+          "explanation": [
+            "Halve the search: guess the middle of what is still possible, and one answer of higher or lower throws away half the remaining numbers.",
+            "Start with 100 numbers still possible. Guess 1: down to 50 numbers.",
+            "Guess 2, 3 and 4 keep halving it: 25, then 13, then 7 each time. Guess 5, 6 and 7 finish the job: 4, then 2, then 1, the secret number itself.",
+            "Seven guesses always get you down to exactly one number left, so seven guesses are always enough."
+          ],
+          "ideaId": "halve-the-search",
+          "introducesIdea": true,
+          "useAgain": "when you need to find one thing hiding among many, and each check can throw away about half of what is left.",
+          "hints": ["Do not guess one number at a time, guess the exact middle of what could still be true.", "Each answer of higher or lower cuts the number of possibilities roughly in half."],
+          "socraticHint": "Every time the range of possible numbers doubles, does the number of guesses you need also double?",
+          "skills": ["think.algorithms"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Zara's friend picks a whole number from 1 to 1000 instead, and still only ever says 'higher' or 'lower'. What is the largest number of guesses Zara could ever need to be sure of the secret number?",
+            "answer": { "kind": "number", "value": "10" }
+          }
+        },
+        {
+          "id": "s1-w09-think-04-p02",
+          "kind": "order",
+          "lane": "puzzle",
+          "prompt": "The higher-or-lower guessing game has a repeating routine. Picture Zara's routine drawn on a whiteboard as a loop of four boxes. Put these four steps in the order they actually happen, from first to last.",
+          "items": ["Guess the middle of the numbers that are still possible.", "Throw away the half the answer rules out.", "Hear the answer: higher or lower.", "Repeat with the smaller set of numbers still possible."],
+          "answer": { "kind": "order", "order": [0, 2, 1, 3] },
+          "explanation": [
+            "Halve the search: the routine always guesses the middle first, then reacts to the answer.",
+            "First you guess the middle of what is still possible.",
+            "Then you hear whether the answer is higher or lower.",
+            "Then you throw away the half that answer just ruled out, and repeat with what is left."
+          ],
+          "ideaId": "halve-the-search",
+          "useAgain": "when a routine repeats the same few steps over and over until only one possibility remains.",
+          "hints": ["The guess always comes before you know the answer.", "You cannot throw anything away until after you hear higher or lower."],
+          "socraticHint": "In this loop, could you throw away half of what is possible before you have actually heard higher or lower?",
+          "skills": ["think.algorithms"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "The higher-or-lower guessing game routine, described as four steps out of order. Put them in the order they actually happen, from first to last.",
+            "items": ["Throw away the half the answer rules out.", "Repeat with the smaller set of numbers still possible.", "Hear the answer: higher or lower.", "Guess the middle of the numbers that are still possible."],
+            "answer": { "kind": "order", "order": [3, 2, 0, 1] }
+          }
+        },
+        {
+          "id": "s1-w09-think-04-p03",
+          "kind": "order",
+          "lane": "puzzle",
+          "prompt": "A robot calculator evaluates 2 + (3 x (4 - 1)) one step at a time, always working from the inside out. Picture its screen showing the expression with the innermost parentheses highlighted first. Put these four steps in the order the robot actually performs them, from first to last.",
+          "items": ["Subtract inside the innermost parentheses: 4 - 1 = 3.", "Multiply: 3 x 3 = 9.", "Add: 2 + 9 = 11.", "Look at the whole expression: 2 + (3 x (4 - 1))."],
+          "answer": { "kind": "order", "order": [3, 0, 1, 2] },
+          "explanation": [
+            "Do the inside first: work from the innermost parentheses outward, one operation at a time.",
+            "First look at the whole expression to see what is nested inside what.",
+            "The innermost part is (4 - 1), so subtract that first: 4 - 1 = 3.",
+            "Now multiply: 3 x 3 = 9. Then add: 2 + 9 = 11."
+          ],
+          "ideaId": "do-the-inside-first",
+          "useAgain": "when an expression has parentheses inside parentheses and you need to work out which operation happens first.",
+          "hints": ["The very first step is just looking at the expression, not calculating anything yet.", "The innermost parentheses always get solved before anything outside them."],
+          "socraticHint": "Does it matter that the 3 is trapped inside parentheses with a subtraction, rather than sitting right next to the 2?",
+          "skills": ["think.algorithms"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A robot calculator evaluates 5 + (2 x (6 - 4)) one step at a time, always working from the inside out. Put these four steps in the order the robot actually performs them, from first to last.",
+            "items": ["Look at the whole expression: 5 + (2 x (6 - 4)).", "Subtract inside the innermost parentheses: 6 - 4 = 2.", "Multiply: 2 x 2 = 4.", "Add: 5 + 4 = 9."],
+            "answer": { "kind": "order", "order": [0, 1, 2, 3] }
+          }
+        },
+        {
+          "id": "s1-w09-think-04-p04",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "A robot sorts fruit on a conveyor belt using one rule: if the fruit is red, drop it in the Left bin, otherwise drop it in the Right bin. Picture the belt as a straight line, with a cherry first, then a banana, then a red apple, moving toward the robot in that order. Which bin does the banana end up in?",
+          "options": ["Left bin", "Right bin", "It stays on the belt", "Cannot be determined"],
+          "answer": { "kind": "choice", "index": 1 },
+          "explanation": [
+            "If then: check the if part first, then follow only the matching branch.",
+            "The rule only checks one thing: is the fruit red or not.",
+            "A banana is yellow, not red, so the if-red condition is false.",
+            "Since it is not red, the robot drops it in the Right bin."
+          ],
+          "ideaId": "if-then",
+          "useAgain": "when a robot or program only does one of two things, and you have to check the condition before deciding which branch runs.",
+          "hints": ["Check whether the banana matches the if condition, red or not red.", "If the condition is false, the robot takes the other branch."],
+          "socraticHint": "Does the robot's rule ever look at anything about the fruit besides its color?",
+          "skills": ["think.algorithms"],
+          "thinkMinutes": 5,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "The same robot sorts fruit with the same rule: red fruit goes in the Left bin, anything else goes in the Right bin. Picture a yellow lemon, a red strawberry, and a green grape moving toward the robot in that order. Which bin does the red strawberry end up in?",
+            "options": ["Left bin", "Right bin", "It stays on the belt", "Cannot be determined"],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        },
+        {
+          "id": "s1-w09-think-04-p05",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "A robot performs three steps on a hidden number in order: double it, add 6, then subtract 4. The final result is 20. Picture the three steps written as a chain ending at 20. Working backwards from 20, what was the original hidden number?",
+          "options": ["7", "8", "9", "10"],
+          "answer": { "kind": "choice", "index": 2 },
+          "explanation": [
+            "Work backwards: start at the final result and undo each step in reverse order.",
+            "Undo 'subtract 4' by adding 4 back: 20 + 4 = 24.",
+            "Undo 'add 6' by subtracting 6: 24 - 6 = 18.",
+            "Undo 'double it' by dividing by 2: 18 divided by 2 is 9, the original hidden number."
+          ],
+          "ideaId": "work-backwards",
+          "useAgain": "when you know the final result of a chain of steps and need to find where it started.",
+          "hints": ["Undo the last step first, not the first step.", "Reverse each operation: undo add with subtract, undo double with divide by 2."],
+          "socraticHint": "Once you think you have found the hidden number, how could you check your answer by running the three steps forward again?",
+          "skills": ["think.algorithms"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A robot performs three steps on a hidden number in order: triple it, add 4, then subtract 7. The final result is 15. Working backwards from 15, what was the original hidden number?",
+            "options": ["5", "6", "7", "8"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s1-w09-think-04-p06",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "A vending machine has 4 buttons: A, B, C, D. Picture the four buttons in a row on the machine's front panel. Someone presses buttons over and over, in any order, repeats allowed. What is the fewest number of presses that guarantees at least one button was pressed twice?",
+          "options": ["4", "5", "6", "8"],
+          "answer": { "kind": "choice", "index": 1 },
+          "explanation": [
+            "More socks than drawers: with only 4 buttons, once you have pressed one more time than there are buttons, some button must repeat.",
+            "You could press each of the 4 buttons once, using 4 presses, with no repeat yet.",
+            "The 5th press must land on a button already pressed, since there are only 4 different buttons.",
+            "So 5 presses always guarantees a repeat, and 4 do not."
+          ],
+          "ideaId": "pigeonhole",
+          "useAgain": "when you want the fewest tries that guarantee two outcomes repeat, and there are only a few possible outcomes.",
+          "hints": ["Think about how many presses you could make with no repeat at all.", "The next press after that has nowhere new to go."],
+          "socraticHint": "Could you press all four buttons, each exactly once, in some order, and still have no button pressed twice?",
+          "skills": ["think.algorithms"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A different vending machine has 6 buttons in a row. What is the fewest number of presses that guarantees at least one button was pressed twice?",
+            "options": ["5", "6", "7", "9"],
+            "answer": { "kind": "choice", "index": 2 }
+          }
+        },
+        {
+          "id": "s1-w09-think-04-p07",
+          "kind": "grid",
+          "lane": "puzzle",
+          "prompt": "Three robots, Red, Blue and Green, each run a different one of three programs: Line-follower, Maze-solver, Obstacle-avoider. No two robots run the same program. Picture them lined up on a shelf, Red on the left, Blue in the middle, Green on the right. Clue 1: the Maze-solver is not Red. Clue 2: Blue runs the Obstacle-avoider. Clue 3: Green does not run the Line-follower. Cross off what each robot cannot run until only one program is left for each. Which robot runs which program?",
+          "rows": ["Red", "Blue", "Green"],
+          "cols": ["Line-follower", "Maze-solver", "Obstacle-avoider"],
+          "answer": { "kind": "grid", "cells": [[true, false, false], [false, false, true], [false, true, false]] },
+          "explanation": [
+            "Cross it off: use the clue that names an exact program first.",
+            "Blue runs the Obstacle-avoider, so cross off Obstacle-avoider for Red and Green.",
+            "The Maze-solver is not Red, so cross off Maze-solver for Red, leaving only Line-follower for Red.",
+            "Green does not run the Line-follower, and Line-follower is already taken by Red, so the only program left for Green is Maze-solver."
+          ],
+          "ideaId": "cross-it-off",
+          "useAgain": "when three or more clues each rule out one option, and crossing them off one at a time leaves exactly one choice for each.",
+          "hints": ["Start with the clue that names an exact program for a robot, not the clues that only rule things out.", "Once a program is taken by one robot, cross it off for the other two."],
+          "socraticHint": "If you started with a clue that only rules something out, would you have anywhere definite to write yet?",
+          "skills": ["think.algorithms"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Three robots, Ana, Bo and Cy, each run a different one of three programs: Sorter, Searcher, Counter. No two robots run the same program. Clue 1: the Searcher is not Ana. Clue 2: Bo runs the Counter. Clue 3: Cy does not run the Sorter. Which robot runs which program?",
+            "rows": ["Ana", "Bo", "Cy"],
+            "cols": ["Sorter", "Searcher", "Counter"],
+            "answer": { "kind": "grid", "cells": [[true, false, false], [false, false, true], [false, true, false]] }
+          }
+        },
+        {
+          "id": "s1-w09-think-04-p08",
+          "kind": "text",
+          "lane": "puzzle",
+          "prompt": "Explain why guessing numbers one at a time, starting from 1 and going up, could take up to 100 guesses to find a secret number between 1 and 100, while halving the search never takes more than 7 guesses.",
+          "answer": { "kind": "rubric", "mustMention": ["counting up one at a time", "halving throws away about half", "seven guesses is enough"] },
+          "explanation": [
+            "Counting up one at a time only rules out one number per guess. If the secret number happens to be 100, you would need 100 guesses to reach it.",
+            "Halving the search rules out about half of what is left with every single guess, not just one number.",
+            "That is why one method can take up to 100 tries while the other always finishes in at most 7."
+          ],
+          "ideaId": "halve-the-search",
+          "useAgain": "when you want to explain why checking the middle each time beats checking one number at a time.",
+          "hints": ["Think about the worst case for counting up one at a time: what if the number is 100?", "Compare how many possibilities each method throws away with a single guess."],
+          "socraticHint": "Counting up removes exactly one possibility per guess. What does halving remove per guess, and why is that so much more powerful?",
+          "skills": ["think.algorithms"],
+          "thinkMinutes": 5,
+          "difficulty": 2
+        },
+        {
+          "id": "s1-w09-think-04-p09",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "A room is shaped like the letter L: a 5 m by 3 m rectangle with a 2 m by 1 m corner missing, shown shaded. What is its area, in square meters?",
+          "answer": {
+            "kind": "number",
+            "value": "13"
+          },
+          "explanation": [
+            "Start with the full rectangle: 5 times 3 is 15 square meters.",
+            "Subtract the missing corner: 2 times 1 is 2 square meters.",
+            "15 minus 2 is 13 square meters."
+          ],
+          "ideaId": "area-in-pieces",
+          "useAgain": "when an L-shaped room or floor's area is really a full rectangle with a smaller corner missing.",
+          "hints": [
+            "Find the area of the full rectangle first, corner included.",
+            "Subtract the missing corner's own area."
+          ],
+          "socraticHint": "Does a missing corner add to a shape's area, or take away from it?",
+          "skills": [
+            "think.skills.area"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "figure": {
+            "kind": "grid",
+            "alt": "A 5 by 3 grid of squares with the top-right 2 by 1 block of squares left unshaded, showing the L-shaped room with its corner removed.",
+            "spec": {
+              "rows": 3,
+              "cols": 5,
+              "shaded": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  2,
+                  2
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ]
+              ]
+            }
+          },
+          "variant": {
+            "prompt": "A room is shaped like the letter L: a 6 m by 4 m rectangle with a 2 m by 2 m corner missing. What is its area, in square meters?",
+            "answer": {
+              "kind": "number",
+              "value": "20"
+            }
+          }
+        },
+        {
+          "id": "s1-w09-think-04-p10",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "You flip two coins. What is the probability, as a fraction, of getting exactly one head?",
+          "answer": {
+            "kind": "number",
+            "value": "1/2"
+          },
+          "explanation": [
+            "The 4 equally likely results are heads-heads, heads-tails, tails-heads and tails-tails.",
+            "Exactly one head happens in 2 of those 4: heads-tails and tails-heads.",
+            "2 out of 4 simplifies to 1/2."
+          ],
+          "ideaId": "count-the-ways",
+          "useAgain": "when a two-coin probability needs listing all 4 equally likely results before counting the ones you want.",
+          "hints": [
+            "List all 4 possible results of flipping two coins.",
+            "Count how many of those 4 have exactly one head."
+          ],
+          "socraticHint": "Is heads-then-tails a different result from tails-then-heads?",
+          "skills": [
+            "think.skills.probability"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "You flip two coins. What is the probability, as a fraction, of getting two heads?",
+            "answer": {
+              "kind": "number",
+              "value": "1/4"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "s1-w09-think-05",
+      "title": "Explain it in writing",
+      "mode": "written",
+      "prompt": "Write, in your own words, why guessing the exact middle each time beats guessing one number at a time."
+    },
+    {
+      "kind": "explain",
+      "id": "s1-w09-think-06",
+      "title": "Explain it out loud",
+      "mode": "voice",
+      "prompt": "Record yourself explaining why seven guesses are always enough to find a secret number between 1 and 100 using only higher and lower, and say what would change if the range were 1 to 1000 instead.",
+      "problemId": "s1-w09-think-04-p01"
+    }
+  ]
+}

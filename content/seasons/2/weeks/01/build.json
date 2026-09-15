@@ -1,0 +1,822 @@
+{
+  "id": "s2-w01-build",
+  "season": 2,
+  "week": 1,
+  "track": "build",
+  "title": "Switch logic: AND and OR in copper",
+  "summary": "Build AND and OR gates from real buttons on the breadboard so an LED answers a question, then mirror both gates as Python functions on the micro:bit and check the copper against the code.",
+  "minutes": 60,
+  "materials": [
+    "micro:bit v2",
+    "micro USB cable",
+    "laptop with Chrome",
+    "breadboard starter kit",
+    "electronics add-on pack (buttons, LEDs, resistors, battery holder)",
+    "2 AA batteries",
+    "multimeter",
+    "graph paper and pencil"
+  ],
+  "skills": ["build.circuits", "build.python", "build.functions"],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "typing",
+      "id": "s2-w01-build-01",
+      "minutes": 5,
+      "body": "Pick the typing site you like and give it five minutes. Start on the home row, the row your fingers rest on: a s d f and j k l semicolon. Once your fingers find those without looking, move to the four symbols Python leans on constantly: ( ) : and =. Then meet the three small words this week's code is built from: def, and, or. Type each one ten times, fast and without looking down. By Friday your gate functions will be made of exactly these."
+    },
+    {
+      "kind": "instruction",
+      "id": "s2-w01-build-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two schematic ladders side by side. On the left, AND: Battery, Button 1 and Button 2 connected in a single chain leading to Resistor and LED, so current must cross both buttons to light the LED. On the right, OR: Button A and Button B are two separate bridges that both run from the Battery to the same Resistor and LED, so current can take either bridge alone.",
+        "spec": {
+          "w": 500,
+          "h": 240,
+          "wide": true,
+          "items": [
+            {
+              "t": "text",
+              "x": 140,
+              "y": 20,
+              "s": "AND: a chain",
+              "size": 13,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 380,
+              "y": 20,
+              "s": "OR: two bridges",
+              "size": 13,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 220,
+              "y1": 30,
+              "x2": 220,
+              "y2": 210,
+              "dashed": true,
+              "color": "muted"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 40,
+              "w": 150,
+              "h": 28,
+              "label": "Battery"
+            },
+            {
+              "t": "line",
+              "x1": 115,
+              "y1": 68,
+              "x2": 115,
+              "y2": 84,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 84,
+              "w": 150,
+              "h": 28,
+              "label": "Button 1"
+            },
+            {
+              "t": "line",
+              "x1": 115,
+              "y1": 112,
+              "x2": 115,
+              "y2": 128,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 128,
+              "w": 150,
+              "h": 28,
+              "label": "Button 2"
+            },
+            {
+              "t": "line",
+              "x1": 115,
+              "y1": 156,
+              "x2": 115,
+              "y2": 172,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 172,
+              "w": 150,
+              "h": 28,
+              "label": "Resistor + LED"
+            },
+            {
+              "t": "box",
+              "x": 300,
+              "y": 40,
+              "w": 160,
+              "h": 28,
+              "label": "Battery"
+            },
+            {
+              "t": "line",
+              "x1": 340,
+              "y1": 68,
+              "x2": 300,
+              "y2": 96,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 420,
+              "y1": 68,
+              "x2": 460,
+              "y2": 96,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 230,
+              "y": 96,
+              "w": 130,
+              "h": 28,
+              "label": "Button A"
+            },
+            {
+              "t": "box",
+              "x": 370,
+              "y": 96,
+              "w": 130,
+              "h": 28,
+              "label": "Button B"
+            },
+            {
+              "t": "line",
+              "x1": 295,
+              "y1": 124,
+              "x2": 360,
+              "y2": 152,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 435,
+              "y1": 124,
+              "x2": 400,
+              "y2": 152,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 300,
+              "y": 152,
+              "w": 160,
+              "h": 28,
+              "label": "Resistor + LED"
+            }
+          ]
+        }
+      },
+      "title": "Ask, imagine, plan",
+      "body": "The design loop runs this season the same as last: ask, imagine, plan, build, test, fix.\n\nAsk: can a circuit answer a question? Not show a number, not play a sound, just answer one yes-or-no question with a light. This week's questions are 'are both buttons pressed?' and 'is at least one button pressed?' A circuit that answers a yes-or-no question has a name: a gate.\n\nImagine: two buttons and an LED. If the buttons sit in one line, one after the other, current has to get through both to reach the LED. That is the AND gate: the light only comes on when button one AND button two are down. If instead the buttons sit side by side, each on its own little bridge, current can take either bridge. That is the OR gate: the light comes on when either button is down, or both.\n\nPlan: sketch both circuits on graph paper before touching the breadboard. Each one is a single loop that starts at the battery's plus side and ends at its minus side: battery, buttons, resistor, LED, back to battery. If your drawing does not close into a loop, the real circuit will not either. Draw the AND loop with the buttons in a chain, and the OR loop with the buttons as two bridges leaving the same spot and landing on the same spot."
+    },
+    {
+      "kind": "science",
+      "id": "s2-w01-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A transistor drawn as a box labelled electric switch, with a small dashed control current opening or closing the path between its other two legs while current flows in one side and out the other. Below, two transistors wired in a chain are labelled making an AND gate, and two transistors side by side are labelled making an OR gate.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 16,
+              "s": "A transistor: an electric switch",
+              "size": 13,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 40,
+              "w": 100,
+              "h": 50,
+              "label": "Transistor",
+              "sub": "electric switch",
+              "fill": "accent"
+            },
+            {
+              "t": "text",
+              "x": 250,
+              "y": 34,
+              "s": "tiny current in",
+              "size": 10,
+              "anchor": "middle",
+              "color": "#5f7c4f"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 28,
+              "x2": 180,
+              "y2": 40,
+              "arrow": true,
+              "dashed": true,
+              "color": "green"
+            },
+            {
+              "t": "line",
+              "x1": 60,
+              "y1": 65,
+              "x2": 130,
+              "y2": 65,
+              "arrow": true,
+              "label": "current"
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 65,
+              "x2": 300,
+              "y2": 65,
+              "arrow": true,
+              "label": "current"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 112,
+              "s": "No moving parts: a nudge on one leg opens or closes the path",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 148,
+              "w": 50,
+              "h": 34,
+              "label": "T",
+              "sub": "chain"
+            },
+            {
+              "t": "box",
+              "x": 95,
+              "y": 150,
+              "w": 50,
+              "h": 30,
+              "label": "T"
+            },
+            {
+              "t": "line",
+              "x1": 90,
+              "y1": 165,
+              "x2": 95,
+              "y2": 165,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 95,
+              "y": 197,
+              "s": "chain -> AND",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 220,
+              "y": 148,
+              "w": 50,
+              "h": 34,
+              "label": "T",
+              "sub": "side by side"
+            },
+            {
+              "t": "box",
+              "x": 280,
+              "y": 150,
+              "w": 50,
+              "h": 30,
+              "label": "T"
+            },
+            {
+              "t": "text",
+              "x": 275,
+              "y": 197,
+              "s": "side by side -> OR",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 800,
+              "caption": "a nudge arrives on the control leg",
+              "set": {
+                "3": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "the path opens, current flows",
+              "set": {
+                "4": {
+                  "color": "green"
+                },
+                "5": {
+                  "color": "green"
+                },
+                "1": {
+                  "fill": "green"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "remove the nudge, path closes",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "chained transistors make AND",
+              "set": {
+                "7": {
+                  "fill": "accent"
+                },
+                "8": {
+                  "fill": "accent"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "A transistor is a switch flipped by electricity",
+      "body": "Your buttons are switches flipped by a thumb. A transistor is a switch flipped by electricity itself: a tiny nudge of current on one of its legs opens or closes the path between the other two. No moving parts, nothing to press, and it can flip billions of times every second.\n\nThat one trick is the whole secret of computers. The chip on your micro:bit holds billions of transistors, and they are wired into exactly the shapes you are building this week: transistors in a chain make an AND gate, transistors side by side make an OR gate. When people say a computer is just ones and zeros, this is what they mean underneath: billions of tiny switches asking yes-or-no questions about each other, absurdly fast.\n\nSo this week you are not building a toy version of a computer part. You are building the real thing, just bigger and slower, with thumbs doing the pressing instead of electricity."
+    },
+    {
+      "kind": "task",
+      "id": "s2-w01-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A breadboard with Button 1 at columns 4 and 6 and Button 2 at columns 10 and 12, both straddling the centre gap. The red battery wire runs to hole j4, a jumper runs from a6 to j10 chaining the two buttons, then a12 to a16 feeds a resistor at c16 to c19, into the LED's long leg at a19, short leg at a20, and the black battery wire closes the loop at e20. A note reminds to unclip the battery before moving wires.",
+        "spec": {
+          "w": 520,
+          "h": 280,
+          "wide": true,
+          "items": [
+            {
+              "t": "text",
+              "x": 260,
+              "y": 18,
+              "s": "One loop: battery+ -> Button1 -> Button2 -> Resistor -> LED -> battery-",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  20,
+                  55
+                ],
+                [
+                  500,
+                  55
+                ],
+                [
+                  500,
+                  220
+                ],
+                [
+                  20,
+                  220
+                ]
+              ],
+              "fill": "sand"
+            },
+            {
+              "t": "text",
+              "x": 25,
+              "y": 50,
+              "s": "Breadboard",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 85,
+              "w": 80,
+              "h": 34,
+              "label": "Button 1",
+              "sub": "cols 4, 6"
+            },
+            {
+              "t": "line",
+              "x1": 22,
+              "y1": 65,
+              "x2": 60,
+              "y2": 90,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 22,
+              "y": 76,
+              "s": "red wire -> j4",
+              "size": 9,
+              "anchor": "start",
+              "color": "#a33a2a"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 85,
+              "w": 80,
+              "h": 34,
+              "label": "Button 2",
+              "sub": "cols 10, 12"
+            },
+            {
+              "t": "line",
+              "x1": 140,
+              "y1": 102,
+              "x2": 190,
+              "y2": 102,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 165,
+              "y": 118,
+              "s": "a6 -> j10",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 335,
+              "y": 85,
+              "w": 70,
+              "h": 34,
+              "label": "Resistor",
+              "sub": "c16 - c19"
+            },
+            {
+              "t": "line",
+              "x1": 270,
+              "y1": 102,
+              "x2": 335,
+              "y2": 102,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 302,
+              "y": 118,
+              "s": "a12 -> a16",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 435,
+              "y": 85,
+              "w": 55,
+              "h": 34,
+              "label": "LED",
+              "sub": "long leg a19"
+            },
+            {
+              "t": "line",
+              "x1": 405,
+              "y1": 102,
+              "x2": 435,
+              "y2": 102,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 478,
+              "y1": 119,
+              "x2": 478,
+              "y2": 200,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 500,
+              "y": 150,
+              "s": "short leg a20",
+              "size": 9,
+              "anchor": "end"
+            },
+            {
+              "t": "text",
+              "x": 340,
+              "y": 210,
+              "s": "black wire -> e20",
+              "size": 10,
+              "anchor": "middle",
+              "color": "#a33a2a"
+            },
+            {
+              "t": "line",
+              "x1": 155,
+              "y1": 160,
+              "x2": 155,
+              "y2": 218,
+              "dashed": true,
+              "color": "muted"
+            },
+            {
+              "t": "text",
+              "x": 155,
+              "y": 235,
+              "s": "center gap",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 260,
+              "y": 260,
+              "s": "Unclip battery before moving wires",
+              "size": 11,
+              "anchor": "middle",
+              "color": "rust"
+            }
+          ]
+        }
+      },
+      "title": "Build AND: two buttons in a chain",
+      "body": "Push two buttons from the add-on pack into the breadboard so each one straddles the center gap: button one with its legs at columns 4 and 6, button two with its legs at columns 10 and 12. On each button, the two legs that face each other across the gap are already connected inside: one joined pair per column, and pressing the button is what connects the two columns to each other. So wire each button by its columns, one wire to each of its two columns, and either side of the gap works.\n\nClip the two AA batteries into the holder but leave one battery half-turned, so no current can flow yet. Push the holder's red wire into hole j4, on button one's far side. Run a jumper from hole a6 to hole j10: out of button one's near side, into button two's far side. That is the chain: to get anywhere, current must cross button one, then cross button two.\n\nNow the LED's branch. Jumper from a12 to a16. Resistor legs into c16 and c19. LED long leg into a19, short leg into a20. Remember from last season: the long leg is where current goes in, and backwards means dark, not broken. Finish by pushing the battery holder's black wire into hole e20: it lands in the same column as the LED's short leg, and the loop is closed. One loop, start to finish: battery plus, button one, button two, resistor, LED, battery minus.\n\nBefore any power, let the multimeter interview the copper. Set it to the beep setting for continuity, touch one probe to the red battery wire's metal end and the other to the resistor leg at c16, and press both buttons: beep. Let go of either button: silence. The meter just asked your question for you, with no battery in the game.\n\nNow seat the half-turned battery and interview the circuit for real, all four ways: press neither button, only button one, only button two, then both. On graph paper, write the four rows as a little table, a 1 for pressed or lit and a 0 for not. Only the both-pressed row should light the LED. That table has a grown-up name: the truth table of AND.\n\nSafety, same as last season: never run a wire straight from the battery's plus to its minus with nothing in between, and take a battery half out before you move wires around.",
+      "checklist": [
+        "The multimeter beeped only while both buttons were held down",
+        "The LED lights when both buttons are pressed and stays dark the other three ways",
+        "The resistor sits inside the loop, not skipped",
+        "My four-row truth table for AND is written on graph paper"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s2-w01-build-05",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The same breadboard rewired for OR: Button 1 still gets the red wire at j4, but Button 2 now gets its own live feed through a new jumper from i4 to j10. Two bridges, one from a12 to a16 and a new one from a6 to b16, both lead into the same resistor and LED, so either button alone completes a loop.",
+        "spec": {
+          "w": 520,
+          "h": 280,
+          "wide": true,
+          "items": [
+            {
+              "t": "text",
+              "x": 260,
+              "y": 18,
+              "s": "Two bridges, same start and finish: either button lights the LED",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  20,
+                  50
+                ],
+                [
+                  500,
+                  50
+                ],
+                [
+                  500,
+                  225
+                ],
+                [
+                  20,
+                  225
+                ]
+              ],
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 70,
+              "w": 80,
+              "h": 34,
+              "label": "Button 1",
+              "sub": "j4"
+            },
+            {
+              "t": "line",
+              "x1": 22,
+              "y1": 55,
+              "x2": 60,
+              "y2": 75,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 22,
+              "y": 60,
+              "s": "red wire, still j4",
+              "size": 9,
+              "anchor": "start",
+              "color": "#a33a2a"
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 155,
+              "w": 80,
+              "h": 34,
+              "label": "Button 2",
+              "sub": "i4 -> j10"
+            },
+            {
+              "t": "line",
+              "x1": 22,
+              "y1": 140,
+              "x2": 60,
+              "y2": 162,
+              "dashed": true,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 22,
+              "y": 200,
+              "s": "i4 -> j10 (new)",
+              "size": 9,
+              "anchor": "start"
+            },
+            {
+              "t": "box",
+              "x": 335,
+              "y": 110,
+              "w": 70,
+              "h": 34,
+              "label": "Resistor",
+              "sub": "c16 - c19"
+            },
+            {
+              "t": "line",
+              "x1": 140,
+              "y1": 88,
+              "x2": 335,
+              "y2": 118,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 230,
+              "y": 92,
+              "s": "a12 -> a16",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 140,
+              "y1": 172,
+              "x2": 335,
+              "y2": 138,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 230,
+              "y": 172,
+              "s": "a6 -> b16 (new)",
+              "size": 9,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 435,
+              "y": 110,
+              "w": 55,
+              "h": 34,
+              "label": "LED",
+              "sub": "long leg a19"
+            },
+            {
+              "t": "line",
+              "x1": 405,
+              "y1": 127,
+              "x2": 435,
+              "y2": 127,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 478,
+              "y1": 144,
+              "x2": 478,
+              "y2": 205,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 500,
+              "y": 175,
+              "s": "short leg a20",
+              "size": 9,
+              "anchor": "end"
+            },
+            {
+              "t": "text",
+              "x": 340,
+              "y": 218,
+              "s": "black wire -> e20",
+              "size": 10,
+              "anchor": "middle",
+              "color": "#a33a2a"
+            },
+            {
+              "t": "text",
+              "x": 260,
+              "y": 260,
+              "s": "Only two wires changed from the AND wiring",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Rewire to OR: two bridges",
+      "body": "Take a battery half out. The buttons stay where they are; only two wires change.\n\nPull out the jumper that runs from a6 to j10, the one that made the chain. Give each button its own live wire instead: the red battery wire stays in j4, and a new jumper runs from i4 to j10. Hole i4 sits in the battery's own column strip, right beside the red wire, so button two's far side now drinks straight from the battery, just as live as button one's. Then let both buttons pour into the same place: keep the jumper from a12 to a16, and add one from a6 to b16. Two bridges, same start, same finish.\n\nStop and look before you power it. Trace each bridge with your finger: battery plus, across one button, into the resistor, through the LED, home to minus. Two complete loops that share their beginning and their end.\n\nMultimeter first, again: one probe on the red battery wire, one on the resistor leg at c16, beep setting. Press only button one: beep. Only button two: beep. Neither: silence.\n\nSeat the battery and run the same four-way interview: neither, one, the other, both. Write the four rows next to the AND table. This time three rows light and only the neither row stays dark.\n\nSame parts, same board, one different wiring idea, and the circuit answers a completely different question. The shape of the wiring is the logic.",
+      "checklist": [
+        "Only two wires changed between AND and OR, and I can say what each change did",
+        "The multimeter beeped with either button alone, before any battery was in",
+        "The LED lights three of the four ways and stays dark only when neither button is pressed",
+        "My OR truth table sits next to the AND table on the same page"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s2-w01-build-06",
+      "title": "The same gates in Python",
+      "body": "The micro:bit has two buttons of its own, A and B, and Python has the words and and or built in. Time to write the same two gates as code and check the copper against it.\n\nOpen python.microbit.org, start a new project, and type this program exactly, watching the four-space indents:\n\n```python\nfrom microbit import *\n\ndef and_gate(a, b):\n    return a and b\n\ndef or_gate(a, b):\n    return a or b\n\nwhile True:\n    a = button_a.is_pressed()\n    b = button_b.is_pressed()\n    if and_gate(a, b):\n        display.show(1)\n    else:\n        display.show(0)\n```\n\nEach def line packs a gate into a named function, the same move as MakeCode's function blocks last season, just typed. Flash the program to the micro:bit over USB.\n\nInterview the code exactly the way you interviewed the copper: press neither, only A, only B, then both, and write the four rows down. The display should show 1 only while both are held. Put that table beside the breadboard's AND table, row by row. Four rows, same answers: the copper and the code agree.\n\nNow change one word: in the if line, swap and_gate for or_gate. Flash again and run all four rows again. Compare with the breadboard's OR table.\n\nOne changed word in code did what two rewired jumpers did in copper. Same logic, two completely different bodies, and you built both.",
+      "checklist": [
+        "The program flashed and runs, showing 0 or 1 on the display",
+        "With and_gate, the display shows 1 only while A and B are both held",
+        "With or_gate, the display shows 0 only while neither button is held",
+        "The code truth tables match the copper truth tables, all four rows, both gates"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s2-w01-build-07",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. The classics this week: a jumper one hole off from its column, an LED in backwards, a button leg wired on the wrong side of the gap, and in Python, a missing colon at the end of a def line or an indent that is not exactly four spaces. If the multimeter beeped but the LED stayed dark, write down which part of the loop turned out to be the gap."
+    },
+    {
+      "kind": "instruction",
+      "id": "s2-w01-build-08",
+      "title": "The idea page opens",
+      "body": "This season ends with the free build: a real thing, planned, priced and built by you, for a real person you pick. Nobody is picking anything today. Today the idea page opens, and that is all.\n\nTake one fresh page in the Maker's Log and title it The gift build. Write two or three people you might build for, and next to each name, one thing they groan about or wish for. A grandparent who forgets which plant got watered. A friend whose bike light is boring. Anything at all.\n\nThe page stays open all season. Every showcase adds ideas to it, and in week 9 you will pick one person and one idea and pitch it to the family. The best week 9 pitches start as week 1 scribbles."
+    },
+    {
+      "kind": "artifact",
+      "id": "s2-w01-build-09",
+      "title": "Show it",
+      "prompt": "Photo of the breadboard wired as OR next to your two hand-written truth tables, and the Python program pasted as text or a share link",
+      "accepts": ["photo", "code"]
+    },
+    {
+      "kind": "log",
+      "id": "s2-w01-build-10",
+      "variant": "maker"
+    }
+  ]
+}

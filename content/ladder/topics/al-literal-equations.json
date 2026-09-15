@@ -1,0 +1,2108 @@
+{
+  "id": "al-literal-equations",
+  "idea": {
+    "body": "A literal equation is a formula with several letters. Solving it for one letter means isolating that letter the same way you isolate x. Treat every other letter as if it were a plain number. Undo the operations in reverse order: clear any fraction first, then undo addition or subtraction, then undo multiplication or division last. Take P = 2l + 2w, the perimeter of a rectangle. To solve for w, subtract 2l from both sides to get 2w = P - 2l, then divide by 2: w = (P - 2l)/2. A robot's fenced test pad has perimeter 40 and length 12, so its width is (40 - 24)/2 = 8. The steps are the same as any equation; only the names change."
+  },
+  "workedExample": {
+    "prompt": "A rectangle's perimeter is P = 2l + 2w. If P = 40 and l = 12, use the formula to find the width w.",
+    "steps": [
+      "P = 2l + 2w, and P = 40 with l = 12.",
+      "Substitute what you know: 40 = 2(12) + 2w, so 40 = 24 + 2w.",
+      "Subtract 24 from both sides: 2w = 16.",
+      "Divide both sides by 2: w = 8."
+    ]
+  },
+  "ways": [
+    {
+      "id": "al-literal-equations-w1",
+      "name": "Treat the other letters as numbers",
+      "when": "Use this once you know the values of every letter except the one you want.",
+      "steps": [
+        "P = 2l + 2w, with P = 40 and l = 12.",
+        "Treat l like any number: substitute 12 for l, giving 40 = 2(12) + 2w.",
+        "Simplify: 40 = 24 + 2w, so 2w = 16.",
+        "Divide by 2: w = 8."
+      ],
+      "example": "P = 2l + 2w, P = 40, l = 12",
+      "answer": "8",
+      "trap": "Trying to isolate w before substituting the known numbers for the other letters."
+    },
+    {
+      "id": "al-literal-equations-w2",
+      "name": "The same undoing as a numeric equation",
+      "when": "Use this to rearrange a formula for one letter without plugging in any numbers.",
+      "steps": [
+        "F = (9/5)C + 32 has C multiplied by 9/5, then 32 added.",
+        "Undo the addition first, same as any equation: subtract 32 from both sides, giving (9/5)C = F - 32.",
+        "Undo the multiplication last: multiply both sides by 5/9.",
+        "C = 5(F - 32)/9."
+      ],
+      "example": "F = (9/5)C + 32, solve for C",
+      "answer": "5(F - 32)/9",
+      "trap": "Multiplying by 9/5 instead of its reciprocal 5/9 to undo the multiplication.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A chain showing C multiplied by 9/5 then 32 added, giving F.",
+        "spec": {
+          "w": 340,
+          "h": 90,
+          "items": [
+            {
+              "t": "box",
+              "x": 10,
+              "y": 25,
+              "w": 40,
+              "h": 40,
+              "fill": "paper",
+              "label": "C"
+            },
+            {
+              "t": "line",
+              "x1": 50,
+              "y1": 45,
+              "x2": 80,
+              "y2": 45,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 25,
+              "w": 50,
+              "h": 40,
+              "fill": "paper",
+              "label": "×9/5"
+            },
+            {
+              "t": "line",
+              "x1": 140,
+              "y1": 45,
+              "x2": 170,
+              "y2": 45,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 180,
+              "y": 25,
+              "w": 50,
+              "h": 40,
+              "fill": "paper",
+              "label": "+32"
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 45,
+              "x2": 260,
+              "y2": 45,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 270,
+              "y": 25,
+              "w": 50,
+              "h": 40,
+              "fill": "accent",
+              "label": "F"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Start: C, before any operation.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "F = (9/5)C + 32 has C multiplied",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Undo the addition first, same as any equation:",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Undo the multiplication last: multiply both sides by",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "C = 5(F - 32)/9.",
+              "set": {
+                "0": {
+                  "fill": "green"
+                },
+                "6": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "al-literal-equations-w3",
+      "name": "Check by substituting",
+      "when": "Use this to confirm a claimed answer without solving the formula from scratch.",
+      "steps": [
+        "d = r t, with d = 84 and r = 12, and a claimed answer t = 7.",
+        "Substitute all three values into the original formula: 12 times 7.",
+        "12 times 7 = 84, which matches the given d.",
+        "The answer t = 7 checks out."
+      ],
+      "example": "d = r t, d = 84, r = 12, t = 7",
+      "answer": "7",
+      "trap": "Substituting into a rearranged formula instead of the original one, hiding a mistake."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-al-literal-equations-p01",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A 3D-printed toy sells for $45. The markup is $15. Use S = Co + M to find the cost Co.",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "S = Co + M, so Co = S - M.",
+        "Subtract the markup from the selling price."
+      ],
+      "useAgain": "when a formula adds two unknown-looking amounts and you know the total and one of them.",
+      "hints": [
+        "The formula S = Co + M has only one operation between Co and M.",
+        "Undo the addition by subtracting the value you already know."
+      ],
+      "socraticHint": "What operation connects Co and M in S = Co + M, and how do you undo it?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A kit-built rover sells for $60. The markup is $22. Use S = Co + M to find the cost Co.",
+        "answer": {
+          "kind": "number",
+          "value": "38"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p02",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A drone kit sells for $80 and cost $50 to make. Use S = Co + M to find the markup M.",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "S = Co + M, so M = S - Co.",
+        "Subtract the cost from the selling price."
+      ],
+      "useAgain": "when a formula adds two unknown-looking amounts and you know the total and one of them.",
+      "hints": [
+        "The formula S = Co + M has only one operation between Co and M.",
+        "Undo the addition by subtracting the value you already know."
+      ],
+      "socraticHint": "What operation connects Co and M in S = Co + M, and how do you undo it?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A telescope kit sells for $72 and cost $44 to make. Use S = Co + M to find the markup M.",
+        "answer": {
+          "kind": "number",
+          "value": "28"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p03",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A rover covers d = 60 using d = r t, taking t = 5. Find the rate r.",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "d = r t, so r = d/t.",
+        "Divide the distance by the time."
+      ],
+      "useAgain": "when a formula multiplies two unknown-looking amounts and you know the product and one factor.",
+      "hints": [
+        "The formula d = r t has only one operation between r and t.",
+        "Undo the multiplication by dividing by the value you already know."
+      ],
+      "socraticHint": "What operation connects r and t in d = r t, and how do you undo it?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A drone covers d = 72 using d = r t, taking t = 8. Find the rate r.",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p04",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A go-kart covers d = 84 using d = r t, moving at r = 12. Find the time t.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "d = r t, so t = d/r.",
+        "Divide the distance by the rate."
+      ],
+      "useAgain": "when a formula multiplies two unknown-looking amounts and you know the product and one factor.",
+      "hints": [
+        "The formula d = r t has only one operation between r and t.",
+        "Undo the multiplication by dividing by the value you already know."
+      ],
+      "socraticHint": "What operation connects r and t in d = r t, and how do you undo it?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rocket sled covers d = 90 using d = r t, moving at r = 15. Find the time t.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p05",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A 3D-printed part has density D = 3 and volume V = 4, using D = m/V. Find the mass m.",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "D = m/V, so m = D times V.",
+        "Multiply the density by the volume."
+      ],
+      "useAgain": "when a formula divides one unknown-looking amount by another and you know the quotient and one part.",
+      "hints": [
+        "The formula D = m/V has only one operation between m and V.",
+        "Undo the division by multiplying by the value you already know."
+      ],
+      "socraticHint": "What operation connects m and V in D = m/V, and how do you undo it?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A metal bracket has density D = 5 and volume V = 4, using D = m/V. Find the mass m.",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p06",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A kitchen scale's sample has density D = 4 and mass m = 32, using D = m/V. Find the volume V.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "D = m/V, so V = m/D.",
+        "Divide the mass by the density."
+      ],
+      "useAgain": "when a formula divides one unknown-looking amount by another and you know the quotient and one part.",
+      "hints": [
+        "The formula D = m/V has only one operation between m and V.",
+        "Undo the division by dividing by the value you already know."
+      ],
+      "socraticHint": "What operation connects m and V in D = m/V, and how do you undo it?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A 3D-printer spool sample has density D = 6 and mass m = 42, using D = m/V. Find the volume V.",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p07",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A wristband set sells for $52. The markup is $17. Use S = Co + M to find the cost Co.",
+      "answer": {
+        "kind": "number",
+        "value": "35"
+      },
+      "explanation": [
+        "S = Co + M, so Co = S - M.",
+        "Subtract the markup from the selling price."
+      ],
+      "useAgain": "when a formula adds two unknown-looking amounts and you know the total and one of them.",
+      "hints": [
+        "The formula S = Co + M has only one operation between Co and M.",
+        "Undo the addition by subtracting the value you already know."
+      ],
+      "socraticHint": "What operation connects Co and M in S = Co + M, and how do you undo it?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A model rocket kit sells for $64. The markup is $23. Use S = Co + M to find the cost Co.",
+        "answer": {
+          "kind": "number",
+          "value": "41"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p08",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A remote-control car covers d = 96 using d = r t, taking t = 6. Find the rate r.",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "d = r t, so r = d/t.",
+        "Divide the distance by the time."
+      ],
+      "useAgain": "when a formula multiplies two unknown-looking amounts and you know the product and one factor.",
+      "hints": [
+        "The formula d = r t has only one operation between r and t.",
+        "Undo the multiplication by dividing by the value you already know."
+      ],
+      "socraticHint": "What operation connects r and t in d = r t, and how do you undo it?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A jet boat covers d = 75 using d = r t, taking t = 5. Find the rate r.",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p09",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A foam glider wing has density D = 2 and volume V = 9, using D = m/V. Find the mass m.",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "D = m/V, so m = D times V.",
+        "Multiply the density by the volume."
+      ],
+      "useAgain": "when a formula divides one unknown-looking amount by another and you know the quotient and one part.",
+      "hints": [
+        "The formula D = m/V has only one operation between m and V.",
+        "Undo the division by multiplying by the value you already know."
+      ],
+      "socraticHint": "What operation connects m and V in D = m/V, and how do you undo it?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A steel gear has density D = 7 and volume V = 9, using D = m/V. Find the mass m.",
+        "answer": {
+          "kind": "number",
+          "value": "63"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p10",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A conveyor-belt part covers d = 56 using d = r t, moving at r = 8. Find the time t.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "d = r t, so t = d/r.",
+        "Divide the distance by the rate."
+      ],
+      "useAgain": "when a formula multiplies two unknown-looking amounts and you know the product and one factor.",
+      "hints": [
+        "The formula d = r t has only one operation between r and t.",
+        "Undo the multiplication by dividing by the value you already know."
+      ],
+      "socraticHint": "What operation connects r and t in d = r t, and how do you undo it?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A zipline test rig covers d = 63 using d = r t, moving at r = 9. Find the time t.",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p11",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve S = Co + M for Co.",
+      "options": [
+        "S + M",
+        "S - M",
+        "M",
+        "M - S"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "S = Co + M isolates Co by moving M to the other side.",
+        "Co = S - M."
+      ],
+      "useAgain": "when a formula adds two letters and you need just one of them alone.",
+      "hints": [
+        "Only one operation separates Co, M and S: addition.",
+        "Move the letter you do not want to the other side by subtracting it."
+      ],
+      "socraticHint": "Which letter do you move to the other side, and which operation undoes addition?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve S = Co + M for M.",
+        "options": [
+          "S + Co",
+          "Co",
+          "Co - S",
+          "S - Co"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p12",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve d = r t for r.",
+      "options": [
+        "d/t",
+        "d times t",
+        "t/d",
+        "d + t"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "d = r t isolates r by dividing both sides by t.",
+        "r = d/t."
+      ],
+      "useAgain": "when a formula multiplies two letters and you need just one of them alone.",
+      "hints": [
+        "Only one operation separates r, t and d: multiplication.",
+        "Divide both sides by the letter you do not want alone."
+      ],
+      "socraticHint": "Which letter do you divide by to leave the other one alone?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve d = r t for t.",
+        "options": [
+          "d times r",
+          "r/d",
+          "d/r",
+          "d + r"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p13",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve D = m/V for m.",
+      "options": [
+        "D/V",
+        "D times V",
+        "V/D",
+        "D + V"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "D = m/V isolates m by multiplying both sides by V.",
+        "m = D times V."
+      ],
+      "useAgain": "when a formula divides one letter by another and you need just one of them alone.",
+      "hints": [
+        "D = m/V has one letter on top and one on the bottom of a fraction.",
+        "Multiply both sides by the denominator to clear the fraction first."
+      ],
+      "socraticHint": "What do you get when you multiply both sides of D = m/V by V?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve D = m/V for V.",
+        "options": [
+          "m/D",
+          "D times m",
+          "D/m",
+          "D - m"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p14",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve T = n c for n.",
+      "options": [
+        "T times c",
+        "c/T",
+        "T - c",
+        "T/c"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "T = n c isolates n by dividing both sides by c.",
+        "n = T/c."
+      ],
+      "useAgain": "when a formula multiplies two letters and you need just one of them alone.",
+      "hints": [
+        "T = n c has only one operation between n and c: multiplication.",
+        "Divide both sides by the letter you do not want alone."
+      ],
+      "socraticHint": "Which letter do you divide by to leave the other one alone?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve T = n c for c.",
+        "options": [
+          "T times n",
+          "n/T",
+          "T/n",
+          "T - n"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p15",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "truefalse",
+      "prompt": "True or false: rearranging S = Co + M for the cost gives Co = S - M.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "S = Co + M has cost and markup added together.",
+        "Moving M to the other side by subtracting it gives Co = S - M, which is correct."
+      ],
+      "useAgain": "when you want to check a rearranged formula without rederiving it.",
+      "hints": [
+        "Only one operation separates Co and M: addition.",
+        "Undoing addition means subtracting."
+      ],
+      "socraticHint": "What operation undoes the addition in S = Co + M?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: rearranging d = r t for the time gives t = d/r.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p16",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A robot's fenced test pad has perimeter P = 40 and length l = 12. Use P = 2l + 2w to find the width w.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "P = 2l + 2w, so 2w = P - 2l.",
+        "2w = 40 - 24 = 16.",
+        "Divide by 2: w = 8."
+      ],
+      "useAgain": "when a two-term formula adds two multiples of the unknown letter's partner.",
+      "hints": [
+        "Subtract twice the side you know before dividing.",
+        "P = 2l + 2w has two operations between the letter you want and the rest: undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "What do you get once you subtract 2l from both sides of P = 2l + 2w?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A garden plot for a rover trial has perimeter P = 36 and length l = 10. Use P = 2l + 2w to find the width w.",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p17",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A drone landing strip has perimeter P = 52 and width w = 16. Use P = 2l + 2w to find the length l.",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "P = 2l + 2w, so 2l = P - 2w.",
+        "2l = 52 - 20 = 32.",
+        "Divide by 2: l = 16."
+      ],
+      "useAgain": "when a two-term formula adds two multiples of the unknown letter's partner.",
+      "hints": [
+        "Subtract twice the side you know before dividing.",
+        "P = 2l + 2w has two operations between the letter you want and the rest: undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "What do you get once you subtract 2w from both sides of P = 2l + 2w?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A go-kart track section has perimeter P = 44 and width w = 13. Use P = 2l + 2w to find the length l.",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p18",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A 3D-printer's nozzle reads F = 95 on a Fahrenheit gauge. Use F = (9/5)C + 32 to find the Celsius reading C.",
+      "answer": {
+        "kind": "number",
+        "value": "35"
+      },
+      "explanation": [
+        "F = (9/5)C + 32, so (9/5)C = F - 32.",
+        "(9/5)C = 95 - 32 = 63.",
+        "Multiply both sides by 5/9: C = 35."
+      ],
+      "useAgain": "when a formula multiplies the unknown letter's partner by a fraction and then adds a constant.",
+      "hints": [
+        "Subtract 32 before you touch the 9/5.",
+        "Once the 32 is gone, undo multiplying by 9/5 by multiplying by 5/9."
+      ],
+      "socraticHint": "What do you get once you subtract 32 from both sides of F = (9/5)C + 32?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rocket engine test bay reads F = 77 on a Fahrenheit gauge. Use F = (9/5)C + 32 to find the Celsius reading C.",
+        "answer": {
+          "kind": "number",
+          "value": "25"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p19",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A kitchen scale's cold room reads F = 59 on a Fahrenheit gauge. Use F = (9/5)C + 32 to find the Celsius reading C.",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "F = (9/5)C + 32, so (9/5)C = F - 32.",
+        "(9/5)C = 59 - 32 = 27.",
+        "Multiply both sides by 5/9: C = 15."
+      ],
+      "useAgain": "when a formula multiplies the unknown letter's partner by a fraction and then adds a constant.",
+      "hints": [
+        "Subtract 32 before you touch the 9/5.",
+        "Once the 32 is gone, undo multiplying by 9/5 by multiplying by 5/9."
+      ],
+      "socraticHint": "What do you get once you subtract 32 from both sides of F = (9/5)C + 32?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A greenhouse sensor reads F = 68 on a Fahrenheit gauge. Use F = (9/5)C + 32 to find the Celsius reading C.",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p20",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A 3D-printer job: total cost T = 85, setup fee s = 25, cost per part c = 12. Use T = s + n c to find the number of parts n.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "T = s + n c, so n c = T - s.",
+        "n c = 85 - 25 = 60.",
+        "Divide by c = 12: n = 5."
+      ],
+      "useAgain": "when a total is a fixed fee plus a per-item cost, and you need the count or the per-item cost.",
+      "hints": [
+        "Subtract the setup fee before dividing by the per-part cost or the count.",
+        "T = s + n c has two operations between the letter you want and the rest: undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "What do you get once you subtract the setup fee from both sides of T = s + n c?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A laser-cutter batch: total cost T = 94, setup fee s = 22, cost per part c = 9. Use T = s + n c to find the number of parts n.",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p21",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A badge-printing run: total cost T = 70, setup fee s = 10, n = 10 parts made. Use T = s + n c to find the cost per part c.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "T = s + n c, so n c = T - s.",
+        "n c = 70 - 10 = 60.",
+        "Divide by n = 10: c = 6."
+      ],
+      "useAgain": "when a total is a fixed fee plus a per-item cost, and you need the count or the per-item cost.",
+      "hints": [
+        "Subtract the setup fee before dividing by the per-part cost or the count.",
+        "T = s + n c has two operations between the letter you want and the rest: undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "What do you get once you subtract the setup fee from both sides of T = s + n c?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A keychain batch: total cost T = 96, setup fee s = 16, n = 8 parts made. Use T = s + n c to find the cost per part c.",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p22",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A robotics-camp helper's pay: total earnings E = 240, h = 4 hours per day, d = 6 days. Use E = h r d to find the rate r.",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "E = h r d, so r = E/(h d).",
+        "h d = 4 times 6 = 24.",
+        "Divide: r = 240/24 = 10."
+      ],
+      "useAgain": "when a total is a product of three amounts and you know two of them.",
+      "hints": [
+        "E = h r d multiplies three letters together.",
+        "Divide by the two letters you already know to leave the third alone."
+      ],
+      "socraticHint": "What do you get once you multiply the two letters you already know?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A dog-walking route's pay: total earnings E = 216, h = 3 hours per day, d = 6 days. Use E = h r d to find the rate r.",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p23",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A car-wash fundraiser's pay: total earnings E = 280, h = 5 hours per day, rate r = 8. Use E = h r d to find the number of days d.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "E = h r d, so d = E/(h r).",
+        "h r = 5 times 8 = 40.",
+        "Divide: d = 280/40 = 7."
+      ],
+      "useAgain": "when a total is a product of three amounts and you know two of them.",
+      "hints": [
+        "E = h r d multiplies three letters together.",
+        "Divide by the two letters you already know to leave the third alone."
+      ],
+      "socraticHint": "What do you get once you multiply the two letters you already know?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A lemonade-stand's earnings: total earnings E = 198, h = 3 hours per day, rate r = 11. Use E = h r d to find the number of days d.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p24",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve P = 2l + 2w for w.",
+      "options": [
+        "(P - 2l)/2",
+        "P/2 - 2l",
+        "(P + 2l)/2",
+        "P - 2l"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Subtract 2l from both sides: 2w = P - 2l.",
+        "Divide both sides by 2: w = (P - 2l)/2."
+      ],
+      "useAgain": "when a two-term formula adds two multiples of the unknown letter's partner.",
+      "hints": [
+        "Subtract twice the side you know before dividing.",
+        "P = 2l + 2w has two operations between the letter you want and the rest: undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "What has to happen to the term with the other letter before you divide by 2?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve P = 2l + 2w for l.",
+        "options": [
+          "P/2 - 2w",
+          "(P + 2w)/2",
+          "(P - 2w)/2",
+          "P - 2w"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p25",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Rearrange P = 2l + 2w to isolate l.",
+      "options": [
+        "P/2 - 2w",
+        "(P - 2w)/2",
+        "(P + 2w)/2",
+        "P - 2w"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Subtract 2w from both sides: 2l = P - 2w.",
+        "Divide both sides by 2: l = (P - 2w)/2."
+      ],
+      "useAgain": "when a two-term formula adds two multiples of the unknown letter's partner.",
+      "hints": [
+        "Subtract twice the side you know before dividing.",
+        "P = 2l + 2w has two operations between the letter you want and the rest: undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "What has to happen to the term with the other letter before you divide by 2?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Rearrange P = 2l + 2w to isolate w.",
+        "options": [
+          "P/2 - 2l",
+          "(P + 2l)/2",
+          "P - 2l",
+          "(P - 2l)/2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p26",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve F = (9/5)C + 32 for C.",
+      "options": [
+        "5F/9 - 32",
+        "5(F - 32)/9",
+        "(5F + 32)/9",
+        "9(F - 32)/5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Subtract 32 from both sides: (9/5)C = F - 32.",
+        "Multiply both sides by 5/9: C = 5(F - 32)/9."
+      ],
+      "useAgain": "when a formula multiplies the unknown letter's partner by a fraction and then adds a constant.",
+      "hints": [
+        "Subtract 32 before you touch the 9/5.",
+        "Once the 32 is gone, undo multiplying by 9/5 by multiplying by 5/9."
+      ],
+      "socraticHint": "What has to happen to the 32 before you touch the 9/5?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve F = (9/5)C + 32 for C, written with the subtraction first.",
+        "options": [
+          "5F/9 - 32",
+          "(5F + 32)/9",
+          "9(F - 32)/5",
+          "5(F - 32)/9"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p27",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve T = s + n c for n.",
+      "options": [
+        "T/c",
+        "(T + s)/c",
+        "(T - s)/c",
+        "T - s"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Subtract s from both sides: n c = T - s.",
+        "Divide both sides by c: n = (T - s)/c."
+      ],
+      "useAgain": "when a total is a fixed fee plus a per-item cost, and you need the count or the per-item cost.",
+      "hints": [
+        "Subtract the setup fee before dividing by the per-part cost or the count.",
+        "T = s + n c has two operations between the letter you want and the rest: undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "What has to leave the right side before you can divide by the other letter?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve T = s + n c for c.",
+        "options": [
+          "(T - s)/n",
+          "T/n",
+          "(T + s)/n",
+          "T - s"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p28",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Rearrange T = s + n c to isolate c.",
+      "options": [
+        "T/n",
+        "(T + s)/n",
+        "(T - s)/n",
+        "T - s"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Subtract s from both sides: c n = T - s.",
+        "Divide both sides by n: c = (T - s)/n."
+      ],
+      "useAgain": "when a total is a fixed fee plus a per-item cost, and you need the count or the per-item cost.",
+      "hints": [
+        "Subtract the setup fee before dividing by the per-part cost or the count.",
+        "T = s + n c has two operations between the letter you want and the rest: undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "What has to leave the right side before you can divide by the other letter?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Rearrange T = s + n c to isolate n.",
+        "options": [
+          "(T - s)/c",
+          "T/c",
+          "(T + s)/c",
+          "T - s"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p29",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "order",
+      "prompt": "Put these steps in order to solve T = s + n c for n.",
+      "items": [
+        "Divide both sides by the per-part cost c: n = (T - s)/c.",
+        "Subtract the setup fee s from both sides: n c = T - s."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "Subtracting first clears away the constant term.",
+        "Dividing last isolates the letter you want."
+      ],
+      "useAgain": "when a total is a fixed fee plus a per-item cost, and you need the count or the per-item cost.",
+      "hints": [
+        "Subtract the setup fee before dividing by the per-part cost or the count.",
+        "T = s + n c has two operations between the letter you want and the rest: undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "What has to leave the right side before you can divide by c?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to solve T = s + n c for n, starting from the same formula.",
+        "items": [
+          "Divide both sides by the per-part cost c to get n alone.",
+          "Subtract the setup fee s from both sides: n c = T - s."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p30",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "truefalse",
+      "prompt": "True or false: rearranging P = 2l + 2w for the width gives w = (P - 2l)/2.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "P = 2l + 2w has two operations between w and the rest: addition, then multiplication by 2.",
+        "Undoing them in reverse order, subtract 2l first, then divide by 2, giving w = (P - 2l)/2, which matches."
+      ],
+      "useAgain": "when a two-term formula adds two multiples of the unknown letter's partner.",
+      "hints": [
+        "Subtract twice the side you know before dividing.",
+        "P = 2l + 2w has two operations between the letter you want and the rest: undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "Does subtracting 2l first and dividing by 2 last match the claimed formula?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "True or false: rearranging F = (9/5)C + 32 for C gives C = 5(F - 32)/9.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p31",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A ramp's cross-section: area A = 48, parallel sides b1 = 5 and b2 = 7. Use A = (1/2)(b1 + b2)h to find the height h.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "A = (1/2)(b1 + b2)h, so 2A = (b1 + b2)h.",
+        "2A = 96, and b1 + b2 = 12.",
+        "Divide: h = 96/12 = 8."
+      ],
+      "useAgain": "when the unknown letter sits inside a bracket that is itself multiplied by a fraction.",
+      "hints": [
+        "Multiply both sides by 2 first to clear the 1/2.",
+        "Once the fraction is gone, undo the multiplication by the bracket, then isolate the letter inside it."
+      ],
+      "socraticHint": "What do you get once you multiply both sides of A = (1/2)(b1 + b2)h by 2?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A drone-landing wedge: area A = 60, parallel sides b1 = 6 and b2 = 9. Use A = (1/2)(b1 + b2)h to find the height h.",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p32",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A solar-panel wedge: area A = 63, one parallel side b2 = 5, height h = 7. Use A = (1/2)(b1 + b2)h to find the other side b1.",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "A = (1/2)(b1 + b2)h, so 2A = (b1 + b2)h.",
+        "2A = 126, and h = 7, so b1 + b2 = 18.",
+        "Subtract b2 = 5: b1 = 13."
+      ],
+      "useAgain": "when the unknown letter sits inside a bracket that is itself multiplied by a fraction.",
+      "hints": [
+        "Multiply both sides by 2 first to clear the 1/2.",
+        "Once the fraction is gone, undo the multiplication by the bracket, then isolate the letter inside it."
+      ],
+      "socraticHint": "Once you divide by h, what do you still have to undo to reach b1 alone?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A kite's side panel: area A = 72, one parallel side b2 = 4, height h = 8. Use A = (1/2)(b1 + b2)h to find the other side b1.",
+        "answer": {
+          "kind": "number",
+          "value": "14"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p33",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A tutoring co-op's pay: total earnings E = 315, rate r = 9 per hour, d = 5 days. Use E = h r d to find the hours per day h.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "E = h r d, so h = E/(r d).",
+        "r d = 9 times 5 = 45.",
+        "Divide: h = 315/45 = 7."
+      ],
+      "useAgain": "when a total is a product of three amounts and you know two of them.",
+      "hints": [
+        "E = h r d multiplies three letters together.",
+        "Divide by the two letters you already know to leave the third alone."
+      ],
+      "socraticHint": "What do you get once you multiply the two letters you already know?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A garden-work crew's pay: total earnings E = 264, rate r = 11 per hour, d = 4 days. Use E = h r d to find the hours per day h.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p34",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A coding-club fundraiser's pay: total earnings E = 198, h = 4 hours per day, d = 9 days. Use E = h r d to find the rate r.",
+      "answer": {
+        "kind": "number",
+        "value": "11/2"
+      },
+      "explanation": [
+        "E = h r d, so r = E/(h d).",
+        "h d = 4 times 9 = 36.",
+        "Divide: r = 198/36 = 11/2."
+      ],
+      "useAgain": "when a total is a product of three amounts and you know two of them.",
+      "hints": [
+        "E = h r d multiplies three letters together.",
+        "Divide by the two letters you already know to leave the third alone."
+      ],
+      "socraticHint": "What do you get once you multiply the two letters you already know?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A market-stall's earnings: total earnings E = 208, h = 4 hours per day, d = 13 days. Use E = h r d to find the rate r.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p35",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A signage batch: total cost T = 112, n = 9 parts at c = 10 each. Use T = s + n c to find the setup fee s.",
+      "answer": {
+        "kind": "number",
+        "value": "22"
+      },
+      "explanation": [
+        "T = s + n c, so s = T - n c.",
+        "n c = 9 times 10 = 90.",
+        "Subtract: s = 112 - 90 = 22."
+      ],
+      "useAgain": "when a total is a fixed fee plus a per-item cost, and you need the count or the per-item cost.",
+      "hints": [
+        "Subtract the setup fee before dividing by the per-part cost or the count.",
+        "T = s + n c has two operations between the letter you want and the rest: undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "What do you get once you multiply the letters you already know for n and c?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A trophy-engraving batch: total cost T = 101, n = 8 parts at c = 11 each. Use T = s + n c to find the setup fee s.",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p36",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A robotics-team fundraiser's pay: total earnings E = 429, h = 11 hours per day, rate r = 13. Use E = h r d to find the number of days d.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "E = h r d, so d = E/(h r).",
+        "h r = 11 times 13 = 143.",
+        "Divide: d = 429/143 = 3."
+      ],
+      "useAgain": "when a total is a product of three amounts and you know two of them.",
+      "hints": [
+        "E = h r d multiplies three letters together.",
+        "Divide by the two letters you already know to leave the third alone."
+      ],
+      "socraticHint": "What do you get once you multiply the two letters you already know?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bake-sale crew's pay: total earnings E = 340, h = 10 hours per day, rate r = 17. Use E = h r d to find the number of days d.",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p37",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve A = (1/2)(b1 + b2)h for h.",
+      "options": [
+        "A/(b1 + b2)",
+        "2A/(b1 + b2)",
+        "2A/b1 + b2",
+        "2A/(b1 - b2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Multiply both sides by 2: 2A = (b1 + b2)h.",
+        "Divide both sides by (b1 + b2): h = 2A/(b1 + b2)."
+      ],
+      "useAgain": "when the unknown letter sits inside a bracket that is itself multiplied by a fraction.",
+      "hints": [
+        "Multiply both sides by 2 first to clear the 1/2.",
+        "Once the fraction is gone, undo the multiplication by the bracket, then isolate the letter inside it."
+      ],
+      "socraticHint": "What has to happen to the 1/2 before anything else?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve A = (1/2)(b1 + b2)h for h, starting from the same formula.",
+        "options": [
+          "A/(b1 + b2)",
+          "2A/b1 + b2",
+          "2A/(b1 - b2)",
+          "2A/(b1 + b2)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p38",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve A = (1/2)(b1 + b2)h for b1.",
+      "options": [
+        "2A/h - b2",
+        "2A/h + b2",
+        "A/h - b2",
+        "2A/(h - b2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Multiply both sides by 2: 2A = (b1 + b2)h.",
+        "Divide both sides by h: b1 + b2 = 2A/h.",
+        "Subtract b2: b1 = 2A/h - b2."
+      ],
+      "useAgain": "when the unknown letter sits inside a bracket that is itself multiplied by a fraction.",
+      "hints": [
+        "Multiply both sides by 2 first to clear the 1/2.",
+        "Once the fraction is gone, undo the multiplication by the bracket, then isolate the letter inside it."
+      ],
+      "socraticHint": "Once h is divided out, what is left holding b1?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve A = (1/2)(b1 + b2)h for b1, starting from the same formula.",
+        "options": [
+          "2A/h + b2",
+          "2A/h - b2",
+          "A/h - b2",
+          "2A/(h - b2)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p39",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve E = h r d for d.",
+      "options": [
+        "E times h r",
+        "E/h - r",
+        "E/(h r)",
+        "E/h"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Multiply the other two letters together first.",
+        "Divide both sides by that product: d = E/(h r)."
+      ],
+      "useAgain": "when a total is a product of three amounts and you know two of them.",
+      "hints": [
+        "E = h r d multiplies three letters together.",
+        "Divide by the two letters you already know to leave the third alone."
+      ],
+      "socraticHint": "What has to divide E to leave d alone?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve E = h r d for d, starting from the same formula.",
+        "options": [
+          "E times h r",
+          "E/h - r",
+          "E/h",
+          "E/(h r)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p40",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve E = h r d for r.",
+      "options": [
+        "E times h d",
+        "E/h - d",
+        "E/(h d)",
+        "E/h"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Multiply the other two letters together first.",
+        "Divide both sides by that product: r = E/(h d)."
+      ],
+      "useAgain": "when a total is a product of three amounts and you know two of them.",
+      "hints": [
+        "E = h r d multiplies three letters together.",
+        "Divide by the two letters you already know to leave the third alone."
+      ],
+      "socraticHint": "What has to divide E to leave r alone?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve E = h r d for r, starting from the same formula.",
+        "options": [
+          "E/(h d)",
+          "E times h d",
+          "E/h - d",
+          "E/h"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p41",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve T = s + n c for s.",
+      "options": [
+        "T + n c",
+        "T/(n c)",
+        "T - n - c",
+        "T - n c"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "T = s + n c has only one operation between s and the rest of the right side: addition.",
+        "Subtract the product n c from both sides: s = T - n c."
+      ],
+      "useAgain": "when a total is a fixed fee plus a per-item cost, and you need the count or the per-item cost.",
+      "hints": [
+        "Subtract the setup fee before dividing by the per-part cost or the count.",
+        "T = s + n c has two operations between the letter you want and the rest: undo the addition first, then the multiplication."
+      ],
+      "socraticHint": "What is subtracted from both sides to leave s alone?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve T = s + n c for s, starting from the same formula.",
+        "options": [
+          "T + n c",
+          "T - n c",
+          "T/(n c)",
+          "T - n - c"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p42",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "choice",
+      "prompt": "Solve E = h r d for h.",
+      "options": [
+        "E/(r d)",
+        "E times r d",
+        "E/r - d",
+        "E/r"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Multiply the other two letters together first.",
+        "Divide both sides by that product: h = E/(r d)."
+      ],
+      "useAgain": "when a total is a product of three amounts and you know two of them.",
+      "hints": [
+        "E = h r d multiplies three letters together.",
+        "Divide by the two letters you already know to leave the third alone."
+      ],
+      "socraticHint": "What has to divide E to leave h alone?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve E = h r d for h, starting from the same formula.",
+        "options": [
+          "E times r d",
+          "E/r - d",
+          "E/r",
+          "E/(r d)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p43",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "order",
+      "prompt": "Put these steps in order to solve A = (1/2)(b1 + b2)h for b1.",
+      "items": [
+        "Subtract b2 from both sides: b1 = 2A/h - b2.",
+        "Multiply both sides by 2 to clear the 1/2: 2A = (b1 + b2)h.",
+        "Divide both sides by h: b1 + b2 = 2A/h."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Clearing the fraction has to happen before anything else.",
+        "The bracket has to be alone before you can subtract b2 out of it."
+      ],
+      "useAgain": "when the unknown letter sits inside a bracket that is itself multiplied by a fraction.",
+      "hints": [
+        "Multiply both sides by 2 first to clear the 1/2.",
+        "Once the fraction is gone, undo the multiplication by the bracket, then isolate the letter inside it."
+      ],
+      "socraticHint": "What has to happen to the 1/2 before the bracket can be divided out?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps in order to solve A = (1/2)(b1 + b2)h for b1, starting from the same formula.",
+        "items": [
+          "Subtract b2 from both sides to get b1 alone.",
+          "Multiply both sides by 2 to clear the 1/2: 2A = (b1 + b2)h.",
+          "Divide both sides by h to get b1 + b2 alone."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p44",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "order",
+      "prompt": "Put these steps in order to solve E = h r d for h.",
+      "items": [
+        "Divide both sides of E = h r d by that product.",
+        "That leaves h = E/(r d) alone.",
+        "Write the product of the two known letters: r d."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Three letters multiplied together need the other two combined before dividing.",
+        "Dividing by their product leaves the third letter alone."
+      ],
+      "useAgain": "when a total is a product of three amounts and you know two of them.",
+      "hints": [
+        "E = h r d multiplies three letters together.",
+        "Divide by the two letters you already know to leave the third alone."
+      ],
+      "socraticHint": "What do the other two letters need to become before you divide?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps in order to solve E = h r d for r, starting from the same formula.",
+        "items": [
+          "Divide both sides of E = h r d by that product.",
+          "That leaves r = E/(h d) alone.",
+          "Write the product of the two known letters: h d."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            0,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p45",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "truefalse",
+      "prompt": "True or false: rearranging A = (1/2)(b1 + b2)h for h gives h = 2A/(b1 + b2).",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "A = (1/2)(b1 + b2)h, so 2A = (b1 + b2)h once the fraction is cleared.",
+        "Dividing both sides by (b1 + b2) gives h = 2A/(b1 + b2), which matches the claim."
+      ],
+      "useAgain": "when the unknown letter sits inside a bracket that is itself multiplied by a fraction.",
+      "hints": [
+        "Multiply both sides by 2 first to clear the 1/2.",
+        "Once the fraction is gone, undo the multiplication by the bracket, then isolate the letter inside it."
+      ],
+      "socraticHint": "Does clearing the fraction and dividing by the bracket match the claimed formula?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "True or false: rearranging E = h r d for d gives d = E/(h r).",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-al-literal-equations-p46",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A rectangle's perimeter is P = 40, using P = 2l + 2w. If l and w are positive whole numbers with l > w, how many values of w are possible?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "P = 2l + 2w means l + w = 20.",
+        "Both are positive whole numbers, so w can be 1 through 19 and l is 20 - w.",
+        "l > w narrows that further: w can only be 1 through 9.",
+        "That is 9 values."
+      ],
+      "useAgain": "when a formula fixes a sum and you need to count the whole-number splits of it.",
+      "hints": [
+        "P = 2l + 2w means l + w is fixed once P is fixed.",
+        "Count the whole numbers w can be while staying smaller than l."
+      ],
+      "socraticHint": "Once l + w is fixed, what does l > w tell you about how big w can be?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangle's perimeter is P = 30, using P = 2l + 2w. If l and w are positive whole numbers with l > w, how many values of w are possible?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p47",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A 3D-printing job costs T = 50 with a setup fee s = 5, using T = s + n c. If n and c are positive whole numbers, how many values of n are possible?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "T = s + n c means n c = T - s = 45.",
+        "n must be a positive whole-number factor of 45, since c = 45/n must also be a whole number.",
+        "45 has 6 positive whole-number factors, so n has 6 possible values."
+      ],
+      "useAgain": "when a formula's product is fixed and you need to count its whole-number factor pairs.",
+      "hints": [
+        "T = s + n c means n c is a fixed number once T and s are fixed.",
+        "n must be a whole-number factor of that fixed product."
+      ],
+      "socraticHint": "Once n c is a fixed whole number, what has to be true of n for c to stay whole?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D-printing job costs T = 40 with a setup fee s = 4, using T = s + n c. If n and c are positive whole numbers, how many values of n are possible?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p48",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "Using F = (9/5)C + 32, for how many integer values of C from -20 to 40 does F land between 0 and 212?",
+      "answer": {
+        "kind": "number",
+        "value": "58"
+      },
+      "explanation": [
+        "F = (9/5)C + 32 is increasing, so check the endpoints of C's range.",
+        "At C = -20, F = -4, which is below 0, so it fails.",
+        "At C = -19, F = 5/5 more, and F keeps climbing by 9/5 for each whole step in C.",
+        "Counting the integers C where F stays in range gives 58."
+      ],
+      "useAgain": "when a converted range needs counting the integer values of the original letter.",
+      "hints": [
+        "F = (9/5)C + 32 climbs steadily as C climbs.",
+        "Find the smallest and largest C that keep F between 0 and 212, then count the integers between them."
+      ],
+      "socraticHint": "Since F climbs steadily with C, which two values of C are the edges of the range?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Using F = (9/5)C + 32, for how many integer values of C from -10 to 50 does F land between 0 and 212?",
+        "answer": {
+          "kind": "number",
+          "value": "61"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p49",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A crew's total pay is E = 60 for h = 4 hours a day, using E = h r d. If r and d are positive whole numbers, how many values of r are possible?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "E = h r d means r d = E/h = 15.",
+        "r must be a positive whole-number factor of 15, since d = 15/r must also be a whole number.",
+        "15 has 4 positive whole-number factors, so r has 4 possible values."
+      ],
+      "useAgain": "when a formula's remaining product is fixed and you need to count its factor pairs.",
+      "hints": [
+        "E = h r d means r d is fixed once E and h are fixed.",
+        "r must be a whole-number factor of that fixed product."
+      ],
+      "socraticHint": "Once r d is a fixed whole number, what has to be true of r for d to stay whole?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A crew's total pay is E = 48 for h = 3 hours a day, using E = h r d. If r and d are positive whole numbers, how many values of r are possible?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-literal-equations-p50",
+      "lane": "skills",
+      "ideaId": "al-literal-equations",
+      "kind": "number",
+      "prompt": "A wedge has area A = 56 and height h = 7, using A = (1/2)(b1 + b2)h. If b1 and b2 are positive whole numbers, how many values of b1 are possible?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "A = (1/2)(b1 + b2)h means b1 + b2 = 2A/h = 16.",
+        "b1 must be a positive whole number smaller than 16, so b2 = 16 - b1 stays positive.",
+        "That gives 15 possible values of b1."
+      ],
+      "useAgain": "when a formula fixes a sum of two letters and you need to count the whole-number splits.",
+      "hints": [
+        "A = (1/2)(b1 + b2)h means b1 + b2 is fixed once A and h are fixed.",
+        "b1 must be a positive whole number smaller than that fixed sum."
+      ],
+      "socraticHint": "Once b1 + b2 is a fixed whole number, how many positive whole numbers can b1 be?",
+      "skills": [
+        "think.skills.equations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A wedge has area A = 45 and height h = 5, using A = (1/2)(b1 + b2)h. If b1 and b2 are positive whole numbers, how many values of b1 are possible?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    }
+  ]
+}

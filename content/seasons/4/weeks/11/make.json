@@ -1,0 +1,230 @@
+{
+  "id": "s4-w11-make",
+  "season": 4,
+  "week": 11,
+  "track": "make",
+  "title": "The Mars mission: rover, arm and the delay",
+  "summary": "Mount the arm on the scratch rover, and write a mission plan with real numbers. Drive to a marked sample and pick it up under commands sent with the light-time delay honoured.",
+  "minutes": 60,
+  "materials": [
+    "the scratch rover from season 3, chassis, motors, encoders and the fabricated sensor board",
+    "the arm and gripper from week 5, mounted on the rover",
+    "a second ESP32, for sending commands",
+    "a marked sample object and a marked course",
+    "tape measure",
+    "stopwatch",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.electronics",
+    "make.mechanisms",
+    "make.measurement"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w11-make-01",
+      "title": "Ask, imagine, plan",
+      "body": "Every part built this season comes together on one machine: ask, imagine, plan, build, test, fix.\n\nAsk: can a rover drive to a sample and pick it up when nobody is watching it live? That is how a real Mars mission has to work.\n\nImagine: the arm bolted onto the rover's chassis. A full command sequence, drive here, pick this up, is sent from a second ESP32. A delay is honoured before it starts, and nobody touches the rover while it runs.\n\nPlan: write the mission plan now, on paper. State an assumed power budget in watts and a survivable temperature range for the electronics. State the round-trip command delay too, at Mars's farthest distance: roughly 22 minutes one way, over 40 minutes round trip. Then mark the sample's position and the rover's starting point."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w11-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two timelines compare delay lengths. The short delay's line from command sent to executes is short, leaving little time for anything to change. The long delay's line is much longer, and a mark partway along it shows an unexpected bump happening during the wait, one the plan cannot react to because nobody is watching live.",
+        "spec": {
+          "w": 360,
+          "h": 190,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 20,
+              "y": 20,
+              "s": "short delay",
+              "size": 12
+            },
+            {
+              "t": "line",
+              "x1": 40,
+              "y1": 40,
+              "x2": 110,
+              "y2": 40,
+              "color": "green"
+            },
+            {
+              "t": "dot",
+              "cx": 40,
+              "cy": 40,
+              "label": "command sent",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 110,
+              "cy": 40,
+              "label": "executes",
+              "side": "below"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 100,
+              "s": "long delay (stand-in for the real ~22 min)",
+              "size": 11
+            },
+            {
+              "t": "line",
+              "x1": 40,
+              "y1": 130,
+              "x2": 320,
+              "y2": 130,
+              "color": "rust"
+            },
+            {
+              "t": "dot",
+              "cx": 40,
+              "cy": 130,
+              "label": "command sent",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 320,
+              "cy": 130,
+              "label": "executes",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 180,
+              "cy": 130,
+              "label": "unexpected bump",
+              "side": "above"
+            }
+          ]
+        }
+      },
+      "title": "Light time limits control",
+      "ideaId": "light-time-limits-control",
+      "body": "A real round-trip delay to Mars can run well past 40 minutes at its worst. No home test can honestly wait that long every run. Today's delay stands in for it instead: a short wait of a few seconds against a longer wait of about two minutes. It keeps the same shape without the same length.\n\nThe short delay barely matters, since almost nothing has changed in a few seconds. The longer delay matters more. A bump the rover did not expect, or a wheel that slipped since the plan was written, is never corrected once the wait has started.\n\nThat is the whole problem the real delay creates. Nobody can watch and steer a Mars rover live, so the plan has to be right before it is sent, arm and wheels both."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w11-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A top-down course: the rover, with the arm mounted on it, starts on the left and drives a marked path to the sample on the right. A second ESP32 above sends the full command sequence to the rover over a dashed link labelled command plus delay, the wait honoured before the rover moves at all.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 150,
+              "w": 90,
+              "h": 40,
+              "label": "rover",
+              "sub": "arm mounted",
+              "fill": "sand"
+            },
+            {
+              "t": "dot",
+              "cx": 300,
+              "cy": 170,
+              "label": "sample",
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 110,
+              "y1": 170,
+              "x2": 290,
+              "y2": 170,
+              "arrow": true,
+              "color": "ink",
+              "label": "drive path"
+            },
+            {
+              "t": "box",
+              "x": 140,
+              "y": 40,
+              "w": 110,
+              "h": 40,
+              "label": "ESP32 #2",
+              "sub": "sends commands",
+              "fill": "paper"
+            },
+            {
+              "t": "line",
+              "x1": 195,
+              "y1": 80,
+              "x2": 65,
+              "y2": 150,
+              "dashed": true,
+              "arrow": true,
+              "color": "green",
+              "label": "command + delay"
+            }
+          ]
+        }
+      },
+      "title": "Mount, plan, then run it under delay",
+      "body": "Bolt the arm onto the rover's chassis and confirm it still reaches and grips correctly once mounted, since the rover's weight and balance have changed.\n\nWrite one command sequence that drives the rover to the marked sample, stops, and closes the gripper on it. Load that same sequence onto the rover every time.\n\nRun the full sequence three times with the short delay honoured before it starts. Run it three more times with the long delay honoured, six runs in total. After each run, measure the rover's final distance from the sample in centimetres, whether or not the pickup succeeded.",
+      "checklist": [
+        "The arm was tested on the rover and still reached and gripped correctly once mounted",
+        "The same command sequence was used to drive to the sample and pick it up every run",
+        "Three short-delay runs and three long-delay runs were completed",
+        "The final distance from the sample was measured the same way every run"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s4-w11-make-04",
+      "title": "Delay length versus distance from the sample",
+      "ideaId": "light-time-limits-control",
+      "body": "The command sequence, the starting position and the sample's position stay the same for every row. Only the length of the delay before the run starts changes.\n\nTest short and long delays, three times each, six rows in total. For each run, write which delay it was and the final distance from the sample in centimetres.",
+      "columns": [
+        "Delay (short or long)",
+        "Distance from sample (cm)"
+      ],
+      "minRows": 6,
+      "question": "Did the long delay end up further from the sample on average, and by how many centimetres?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w11-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: someone nudging the rover or the sample during the wait, which is not a fair test of the delay itself.\n\nAlso watch for the arm's grip loosening after the mount vibrated loose, and a starting position that drifted slightly between runs."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w11-make-06",
+      "title": "Show it",
+      "prompt": "Photo of the arm mounted on the rover next to the marked sample, plus your six-row table comparing short and long delay results",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w11-make-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s4-w11-make-x01",
+      "kind": "bonus",
+      "title": "Listen to a satellite: a weather picture from orbit, on your own radio",
+      "minutes": 60,
+      "ideaId": "signal-fades-with-obstacles",
+      "body": "Real satellites talk to the ground on radio, and some of them talk to anyone who listens. The weather satellites pass overhead several times a day and send a picture of the clouds below them, unencrypted, at about 137 megahertz.\n\n1. Build the antenna from the kit as a V dipole. Each element is about 53 centimetres long, and the two open to a 120 degree V. Hold it horizontal with the V facing north.\n\n2. Plug the software-defined radio into the laptop and install the free receiver and decoder programs the kit names. Tune to a strong local station first, to prove the radio hears anything at all.\n\n3. Find the next pass: a free pass-prediction site or app lists when a weather satellite rises above your horizon and how high it climbs. Pick a pass that climbs above 40 degrees.\n\n4. Predict first: write in the Maker's Log how long the pass will last and from which direction it will come.\n\n5. Record the whole pass on the radio at the satellite's frequency. Expect the signal to fade in, peak, and fade out; expect a house or a hill between you and the horizon to cut it.\n\n6. Decode the recording into a picture. Even a noisy strip with clouds in it counts.\n\n7. Compare: the picture's clouds against the sky you can see, and the pass length against your prediction. Teach it: explain to someone what the satellite was doing while you listened.\n\nWhat to notice: where the noise bands in the picture line up with the moments something stood between you and the satellite."
+    }
+  ]
+}

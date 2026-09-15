@@ -1,0 +1,316 @@
+{
+  "id": "s1-w10-build",
+  "season": 1,
+  "week": 10,
+  "track": "build",
+  "title": "Python first steps: turtle",
+  "summary": "Type real Python code instead of snapping blocks, and draw a square, a star and a spiral with a turtle.",
+  "minutes": 60,
+  "materials": ["laptop or tablet with a browser", "paper and pencil for sketching", "phone with a stopwatch for the physics extra"],
+  "skills": ["build.python", "build.loops", "build.variables"],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s1-w10-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop again: ask, imagine, plan, build, test, fix. This week you write real code instead of snapping blocks. You use a turtle, a little arrow that draws a line everywhere it moves.\n\nAsk: what should the turtle draw? Three shapes this week: a square, a five-point star, and a spiral that grows outward.\n\nImagine before you build. On paper, sketch all three shapes first.\n\n1. For the square, picture the turtle drawing one side, then turning, four times in a row.\n2. For the star, picture the turtle drawing a line, then turning by a bigger angle than a square's turn. Five turns in a row make the lines cross into points.\n3. For the spiral, picture the turtle drawing a short line, then turning a quarter turn. It repeats with a slightly longer line each time, so the path spreads outward.\n\nPlan the pieces before you open the site: how many times each shape repeats, and how much the turtle turns each time. Work out the star's angle yourself."
+    },
+    {
+      "kind": "typing",
+      "id": "s1-w10-build-02",
+      "minutes": 5,
+      "body": "Five minutes on the same typing site you have been using. This week practise two things Python leans on heavily: the colon key and the Tab key. Type a few practice lines that end in a colon, like for i in range(4): typed out in full, then press Tab once and type the next line indented, then press Backspace or Shift+Tab to get back to the left edge before typing a line with no indent. Colon then Tab is the whole trick your code leans on this week, so get comfortable reaching for both without looking down."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w10-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A nested block, repeat 4 times containing forward 100, next to the same idea written as text: for i in range(4): with an indented line t.forward(100) underneath it. A caption says the colon starts a block and the indent says what is inside it.",
+        "spec": {
+          "w": 360,
+          "h": 205,
+          "wide": false,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  15,
+                  30
+                ],
+                [
+                  145,
+                  30
+                ],
+                [
+                  145,
+                  160
+                ],
+                [
+                  15,
+                  160
+                ]
+              ],
+              "fill": "sand"
+            },
+            {
+              "t": "text",
+              "x": 80,
+              "y": 45,
+              "s": "block: repeat 4 times",
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 35,
+              "y": 80,
+              "w": 90,
+              "h": 60,
+              "label": "forward 100",
+              "fill": "paper"
+            },
+            {
+              "t": "line",
+              "x1": 150,
+              "y1": 105,
+              "x2": 185,
+              "y2": 105,
+              "arrow": true,
+              "label": "same idea"
+            },
+            {
+              "t": "text",
+              "x": 205,
+              "y": 75,
+              "s": "for i in range(4):",
+              "size": 12
+            },
+            {
+              "t": "text",
+              "x": 205,
+              "y": 100,
+              "s": "    t.forward(100)",
+              "size": 12
+            },
+            {
+              "t": "dim",
+              "x1": 205,
+              "y1": 130,
+              "x2": 225,
+              "y2": 130,
+              "label": "indent = inside the loop"
+            },
+            {
+              "t": "text",
+              "x": 185,
+              "y": 180,
+              "s": "colon starts a block; indent says what's inside it",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Why text, not blocks",
+      "body": "Every block you have snapped together in Scratch or the micro:bit editor could be written instead as a line or two of text. In the micro:bit editor, MakeCode, you can flip a switch and see exactly that: the blocks turn into the same program written out in JavaScript or Python, block for block. Scratch keeps its blocks as blocks and never shows you the text underneath, but the same ideas inside those blocks, loops, ifs, variables, are there in every text language too, just typed instead of snapped.\n\nText scales to big programs in a way blocks do not. A small project might use twenty blocks, easy to see on one screen at once. A real program, the kind that runs a website or a game, can be hundreds of thousands of lines long.\n\nNobody drags hundreds of thousands of blocks around a screen. Typing lines of text, one after another, in files you can search and copy and paste, is what makes a program that big possible to build and to fix.\n\nEvery real programming language used to build real software, not just to teach beginners, is written as text, not blocks. Python is one of those languages, and it needs its own rules for showing what is inside what, since there are no block shapes left to snap together.\n\nA colon at the end of a line tells Python a new block is about to start. Indenting the lines under it, moving them in from the left edge, tells Python which lines belong inside that block. Colons and indents together are how Python reads structure that a block language would have shown with shape alone."
+    },
+    {
+      "kind": "task",
+      "id": "s1-w10-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A five-pointed star path the turtle draws, forward 100 along each edge and a turn of 144 degrees at each point, so five turns add up to 720 degrees. Small notes compare it to the square's four 90 degree turns and the spiral's 90 degree turn with a step that grows by 5 each time.",
+        "spec": {
+          "w": 360,
+          "h": 238,
+          "wide": false,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  180,
+                  30
+                ],
+                [
+                  199,
+                  84
+                ],
+                [
+                  256,
+                  85
+                ],
+                [
+                  210,
+                  120
+                ],
+                [
+                  227,
+                  175
+                ],
+                [
+                  180,
+                  142
+                ],
+                [
+                  133,
+                  175
+                ],
+                [
+                  150,
+                  120
+                ],
+                [
+                  104,
+                  85
+                ],
+                [
+                  161,
+                  84
+                ]
+              ],
+              "fill": "accent"
+            },
+            {
+              "t": "text",
+              "x": 235,
+              "y": 50,
+              "s": "forward(100)",
+              "size": 11
+            },
+            {
+              "t": "dot",
+              "cx": 256,
+              "cy": 85,
+              "label": "turn 144",
+              "side": "right"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 15,
+              "s": "why 144? 5 turns must add to 720",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 208,
+              "s": "square: 4 x 90 = 360",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 226,
+              "s": "spiral: turn 90, step +5 each loop",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 186,
+              "s": "star: 5 x turn 144",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 800,
+              "caption": "turtle turns 144 degrees",
+              "set": {
+                "2": {
+                  "cx": 180,
+                  "cy": 30
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "and again at the next point",
+              "set": {
+                "2": {
+                  "cx": 104,
+                  "cy": 85
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "five turns finish the star",
+              "set": {}
+            }
+          ]
+        }
+      },
+      "title": "Type turtle code in the browser",
+      "body": "Getting ready:\n\n1. https://trinket.io is a website where you type Python code and run it right in the browser.\n2. No install is needed; it runs the moment you press play.\n3. Every indented line lines up exactly four spaces in from the left edge, under the line above it.\n\nDraw the square:\n\n1. Go to https://trinket.io and start a new Python trinket.\n2. Delete any starter code.\n3. Type `import turtle` on the first line.\n4. Type `t = turtle.Turtle()` on the next line.\n5. Type `for i in range(4):` on the next line.\n6. Indent the next line four spaces and type `t.forward(100)`.\n7. Indent the next line four spaces and type `t.right(90)`.\n8. Run it and check the turtle draws a closed square, turning 90 degrees at each corner.\n\nDraw the star:\n\n1. Predict first: a square's four 90-degree turns add up to 360, and a star's five turns must add to 720. What angle, repeated 5 times, makes 720?\n2. Delete the square's loop, or add new lines below it.\n3. Type `for i in range(5):` on its own line.\n4. Indent the next line and type `t.forward(100)`.\n5. Indent the next line and type `t.right(144)`.\n6. Run it and check your answer against 144: the lines should cross into five points.\n\nDraw the spiral:\n\n1. Type `step = 10` on its own line.\n2. Type `for i in range(30):` on the next line.\n3. Indent the next line and type `t.forward(step)`.\n4. Indent the next line and type `t.right(90)`.\n5. Indent the next line and type `step = step + 5`.\n6. Run it and check the path spreads outward instead of closing into a square.",
+      "checklist": [
+        "The square runs and closes into four sides using a for loop that repeats 4 times",
+        "The star runs and shows five points, using t.right(144) inside a loop that repeats 5 times",
+        "The spiral runs and spreads outward, using a variable named step that starts at 10 and grows by 5 each trip through the loop",
+        "Every line meant to run inside a loop is indented four spaces under its for line, not lined up with the for line itself",
+        "I wrote down, in the bug diary, why 144 degrees makes a star, before I typed it"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w10-build-05",
+      "title": "Bug diary",
+      "body": "Typing code instead of snapping blocks means new kinds of mistakes are possible, ones a block language would not even let you make. Three show up constantly for beginners.\n\nA missing colon: forgetting the colon at the end of a for line. Python needs that colon to know a new block is starting, and without it, the very next line confuses it.\n\nA wrong indent: a line that should be inside the loop typed back at the left edge, or a line that should be outside the loop typed with extra spaces in front of it. Python uses the indent itself to decide what is inside the loop, so an indent in the wrong place changes what the program actually does, even if every word is spelled right.\n\nA capital letter where Python expects a lowercase one, or the other way round: Turtle with a capital T is the name of the turtle tool itself, but a variable you name yourself, like step or t, is whatever case you typed it, and Python treats step and Step as two completely different names.\n\nWhen the code breaks, Python prints an error message, often several lines long. Read it from the bottom line first, not the top. The bottom line usually names the actual problem in plain words, while the lines above it just show which line was running when it broke. Write down, in your bug diary, one real error you hit today, what the bottom line of the message said, and what you changed to fix it. Also write down how you worked out the star's angle, and what happened if you tried a wrong guess before landing on 144."
+    },
+    {
+      "kind": "artifact",
+      "id": "s1-w10-build-06",
+      "title": "Show it",
+      "prompt": "A photo of your three shapes on screen, the square, the star and the spiral, and the code you typed for the spiral, copied out or screenshotted.",
+      "accepts": ["photo", "code"]
+    },
+    {
+      "kind": "log",
+      "id": "s1-w10-build-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s1-w10-build-x01",
+      "kind": "bonus",
+      "title": "Draw a hexagon",
+      "minutes": 15,
+      "body": "Use the same loop pattern to draw a shape with six sides instead of four or five.\n\n1. Open your trinket at https://trinket.io.\n2. Add a new `for i in range(6):` loop below your existing shapes.\n3. Predict first: six turns must add up to 360 degrees. What angle, repeated six times, makes 360?\n4. Indent the next line and type `t.forward(80)`.\n5. Indent the next line and type `t.right(60)`.\n6. Run it and check the shape closes into a six-sided hexagon.\n\nWhat to notice: as the number of sides goes up, the turn angle goes down."
+    },
+    {
+      "id": "s1-w10-build-x02",
+      "kind": "bonus",
+      "title": "Give each shape its own colour",
+      "minutes": 15,
+      "body": "Add colour to your turtle so each shape stands out from the others.\n\n1. Open your trinket at https://trinket.io.\n2. Right after `t = turtle.Turtle()`, type `t.pencolor(\"blue\")`.\n3. Before your star loop, type `t.pencolor(\"red\")`.\n4. Before your spiral loop, type `t.pencolor(\"green\")`.\n5. Run the program and check each shape now draws in its own colour.\n\nWhat to notice: the colour only changes what is drawn after that line, not lines drawn earlier."
+    },
+    {
+      "id": "s1-w10-build-x03",
+      "kind": "invent",
+      "title": "Draw a shape of your own",
+      "minutes": 25,
+      "body": "What shape, sign or pattern do you want to teach the turtle to draw?\n\nDesign your own shape using a loop, the way this week's shapes worked.\n\nIt must use a `for` loop and a colon, the way this week's shapes did.\nIt must have one number you choose by testing, like the number of sides or the angle.\nIt must be shown running to someone in your house, with the code visible.\n\nSketch it on paper and work out the angle yourself first.\n\nHow to know it works: the shape on screen matches your sketch closely enough that someone recognizes it."
+    },
+    {
+      "id": "s1-w10-build-x04",
+      "kind": "bonus",
+      "title": "How many flips make it look smooth?",
+      "minutes": 20,
+      "ideaId": "persistence-of-vision",
+      "body": "Find out how many flips each second your own flipbook needs before the drawing looks like it is truly moving.\n\n1. Predict first: guess the number of flips each second where the pictures will start to look like smooth motion instead of separate drawings. Write your number in the Maker's Log.\n2. Draw 10 simple pictures on paper corners, each one a small step further than the last, like a bouncing ball.\n3. Flip through them slowly with a phone stopwatch running, and time how many seconds 10 flips take.\n4. Flip through them as fast as you can, timing 10 flips again.\n5. Divide 10 by each time in seconds to get flips per second for both speeds.\n\nCompare: at which speed did the motion look smooth, and was that close to your prediction?\n\nTeach it: tell a grown-up in two sentences why separate drawings can look like one smooth motion when they flip by fast enough."
+    },
+    {
+      "id": "s1-w10-build-x05",
+      "kind": "bonus",
+      "title": "Turn a turtle all the way around the world",
+      "minutes": 15,
+      "ideaId": "a-full-turn-is-the-whole-globe",
+      "body": "Find out how the turtle's own turns connect to the size of the real Earth.\n\n1. Write a short turtle program that turns 1 degree and moves forward a tiny step, 360 times in a loop.\n2. Run it and watch the turtle trace a full circle back to where it started.\n3. Look up or recall that the Earth's circumference at the equator is about 40,075 kilometres.\n4. Divide 40,075 by 360 to find how many kilometres one degree covers on the real Earth.\n\nWhat to notice: a full turn is 360 degrees for a turtle on screen and for the planet itself. On Earth's equator each one of those degrees is about 111 kilometres."
+    }
+  ]
+}

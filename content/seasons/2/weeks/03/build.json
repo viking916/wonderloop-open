@@ -1,0 +1,544 @@
+{
+  "id": "s2-w03-build",
+  "season": 2,
+  "week": 3,
+  "track": "build",
+  "title": "The machine that adds",
+  "summary": "Discover XOR, the gate that fires exactly when two inputs disagree, then wire two buttons and two LEDs into a one-bit adder that cannot miss.",
+  "minutes": 60,
+  "materials": [
+    "micro:bit v2",
+    "micro USB cable",
+    "laptop with Chrome",
+    "micro:bit edge connector breakout",
+    "breadboard starter kit",
+    "electronics add-on pack: buttons, LEDs, resistors, jumper wires",
+    "paper and pencil for the truth table"
+  ],
+  "skills": [
+    "build.circuits",
+    "build.python",
+    "build.functions",
+    "build.conditionals"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s2-w03-build-01",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A block diagram where A and B both feed into an XOR gate and an AND gate. The XOR gate's output is labelled Sum, on when A and B disagree. The AND gate's output is labelled Carry, on when both are on. A small table below lists all four one-bit sums, ending in 1+1=10, sum 0 carry 1.",
+        "spec": {
+          "w": 400,
+          "h": 240,
+          "items": [
+            {
+              "t": "text",
+              "x": 200,
+              "y": 16,
+              "s": "One-bit adder: A, B feed two gates",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 50,
+              "w": 50,
+              "h": 28,
+              "label": "A"
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 110,
+              "w": 50,
+              "h": 28,
+              "label": "B"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 48,
+              "w": 70,
+              "h": 34,
+              "label": "XOR",
+              "sub": "differ?",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 108,
+              "w": 70,
+              "h": 34,
+              "label": "AND",
+              "sub": "both?"
+            },
+            {
+              "t": "line",
+              "x1": 80,
+              "y1": 64,
+              "x2": 150,
+              "y2": 64,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 80,
+              "y1": 64,
+              "x2": 150,
+              "y2": 118,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 80,
+              "y1": 124,
+              "x2": 150,
+              "y2": 64,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 80,
+              "y1": 124,
+              "x2": 150,
+              "y2": 124,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 260,
+              "y": 50,
+              "w": 60,
+              "h": 28,
+              "label": "Sum"
+            },
+            {
+              "t": "box",
+              "x": 260,
+              "y": 110,
+              "w": 60,
+              "h": 28,
+              "label": "Carry"
+            },
+            {
+              "t": "line",
+              "x1": 220,
+              "y1": 64,
+              "x2": 260,
+              "y2": 64,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 220,
+              "y1": 124,
+              "x2": 260,
+              "y2": 124,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 200,
+              "y": 180,
+              "s": "0+0=0  0+1=1  1+0=1  1+1=10 (sum 0, carry 1)",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 200,
+              "y": 200,
+              "s": "Sum = XOR(A,B): on when A, B disagree",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 200,
+              "y": 218,
+              "s": "Carry = AND(A,B): on when both are on",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Ask, imagine, plan",
+      "body": "The design loop again: ask, imagine, plan, build, test, fix.\n\nAsk: in week 1 your gates answered questions with one light. In week 2 your LEDs wrote numbers in binary. This week the ask joins them: can a circuit made of question-answering gates do actual arithmetic, with nobody inside doing the thinking?\n\nImagine: before touching anything, write the whole addition table for one-bit numbers on paper. There are only four rows: 0 plus 0 is 0, 0 plus 1 is 1, 1 plus 0 is 1, and 1 plus 1 is 2. But 2 written in binary is 10, which takes two digits. So the machine needs two output lights: a sum light for the right-hand digit and a carry light for the left-hand digit. Add those two columns to your table now, one sum digit and one carry digit per row.\n\nStare at the sum column: 0, 1, 1, 0. The sum light is on exactly when the two inputs disagree. That is not AND, which fires only when both are on. It is not OR, which fires in three of the four rows. No gate you own does this job. The machine that adds needs a brand-new gate: XOR, the difference detector, on exactly when its inputs disagree.\n\nNow stare at the carry column: 0, 0, 0, 1. On only when both inputs are on. You built that gate in week 1 with two buttons in series. The carry is AND, an old friend with a new job.\n\nPlan: two buttons are the inputs A and B. Two LEDs are the outputs, sum and carry. Your Python gate functions from week 1 do the deciding, and one new function, XOR, joins the family today."
+    },
+    {
+      "kind": "typing",
+      "id": "s2-w03-build-02",
+      "minutes": 5,
+      "body": "Five minutes on your typing site. Warm up on the home row, then spend most of the time on the symbols this week's code leans on: the equals sign typed twice for asking whether two things are equal, the exclamation mark followed by equals for asking whether they differ, and the parentheses and colon every function needs. Your XOR function is one line of asking whether a and b differ, so let your fingers learn that shape before the code does."
+    },
+    {
+      "kind": "science",
+      "id": "s2-w03-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Three boxes labelled Adder for bit 0, bit 1 and bit 2 in a row, each passing its carry output as an arrow into the next adder to its right. Text notes that 8 chained adders reach 255 and 32 chained adders reach the billions, all built from the same one-bit adder, copied and connected.",
+        "spec": {
+          "w": 400,
+          "h": 200,
+          "items": [
+            {
+              "t": "text",
+              "x": 200,
+              "y": 16,
+              "s": "Adders chained: carry feeds next column",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 60,
+              "w": 80,
+              "h": 40,
+              "label": "Adder",
+              "sub": "bit 0"
+            },
+            {
+              "t": "box",
+              "x": 140,
+              "y": 60,
+              "w": 80,
+              "h": 40,
+              "label": "Adder",
+              "sub": "bit 1"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 60,
+              "w": 80,
+              "h": 40,
+              "label": "Adder",
+              "sub": "bit 2"
+            },
+            {
+              "t": "line",
+              "x1": 110,
+              "y1": 72,
+              "x2": 140,
+              "y2": 72,
+              "arrow": true,
+              "label": "carry"
+            },
+            {
+              "t": "line",
+              "x1": 220,
+              "y1": 72,
+              "x2": 250,
+              "y2": 72,
+              "arrow": true,
+              "label": "carry"
+            },
+            {
+              "t": "text",
+              "x": 200,
+              "y": 135,
+              "s": "8 adders chained reach 255; 32 chained reach the billions",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 200,
+              "y": 160,
+              "s": "Gates make adders; adders make a processor. Same trick, copied.",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 800,
+              "caption": "bit 0 adds, carry moves right",
+              "set": {
+                "1": {
+                  "fill": "accent"
+                },
+                "4": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "bit 1 adds, carry moves again",
+              "set": {
+                "2": {
+                  "fill": "accent"
+                },
+                "5": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "bit 2 finishes the sum",
+              "set": {
+                "3": {
+                  "fill": "accent"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "From adder to CPU",
+      "body": "One adder handles one column of a sum, and that is the whole secret of how computers add big numbers: layers of the same trick.\n\nTo add numbers bigger than 1, a computer lines up adders side by side, one per binary digit, and lets each adder pass its carry to the neighbour on its left, exactly the way you carry a 1 when adding on paper. Eight adders chained like that add numbers up to 255. Thirty-two of them add numbers in the billions. Nothing new is invented along the way: it is your one-bit adder, copied and connected.\n\nAnd the layers keep going up. Gates make adders. Adders and their cousins, comparers and choosers and rememberers, make a processor. A processor runs programs. Every sum any computer has ever done, every game score, every rocket course, bottoms out in a circuit shaped like the one on your desk this hour.\n\nRemember week 1: each gate is transistors, switches flipped by electricity, and a modern chip packs billions of them. Billions of copies of an idea you can now hold whole in your head."
+    },
+    {
+      "kind": "task",
+      "id": "s2-w03-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A breadboard bench with Button A wired to pin 1 and Button B wired to pin 2, each also wired to a GND pin, both straddling the centre gap. An LED labelled Sum sits in a loop from pin 0 through a 330 ohm resistor, and an LED labelled Carry sits in an identical loop from pin 8. Paper flags label A, B, SUM and CARRY, and a note reminds the battery stays unclipped while wiring.",
+        "spec": {
+          "w": 460,
+          "h": 220,
+          "wide": true,
+          "items": [
+            {
+              "t": "text",
+              "x": 70,
+              "y": 25,
+              "s": "flag: A",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 38.0,
+              "w": 60,
+              "h": 34,
+              "label": "Button A",
+              "sub": "pin 1"
+            },
+            {
+              "t": "line",
+              "x1": 110,
+              "y1": 55,
+              "x2": 150,
+              "y2": 55,
+              "label": "GND"
+            },
+            {
+              "t": "text",
+              "x": 70,
+              "y": 138,
+              "s": "flag: B",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 88.0,
+              "w": 60,
+              "h": 34,
+              "label": "Button B",
+              "sub": "pin 2"
+            },
+            {
+              "t": "line",
+              "x1": 110,
+              "y1": 105,
+              "x2": 150,
+              "y2": 105,
+              "label": "GND"
+            },
+            {
+              "t": "text",
+              "x": 285,
+              "y": 25,
+              "s": "flag: SUM",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 38.0,
+              "w": 70,
+              "h": 34,
+              "label": "LED: Sum",
+              "sub": "pin 0, 330 ohm"
+            },
+            {
+              "t": "text",
+              "x": 285,
+              "y": 138,
+              "s": "flag: CARRY",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 88.0,
+              "w": 78,
+              "h": 34,
+              "label": "LED: Carry",
+              "sub": "pin 8, 330 ohm"
+            },
+            {
+              "t": "text",
+              "x": 210,
+              "y": 165,
+              "s": "Each button straddles the centre gap, wires on opposite sides",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 210,
+              "y": 195,
+              "s": "Battery unclipped while wiring",
+              "size": 10,
+              "anchor": "middle",
+              "color": "rust"
+            }
+          ]
+        }
+      },
+      "title": "Wire the inputs and the outputs",
+      "body": "Inputs first. Push two buttons across the breadboard's center gap, a few columns apart, each straddling the gap the way the breakout board does. For the first button, run a jumper wire from the pin labeled 1 on the breakout board to a hole in the same column as one of its legs, and a second wire from a GND pin to the leg on the other side of the gap. Do the same for the second button using the pin labeled 2 and another GND pin. That first button is input A, the second is input B.\n\nOutputs next, and you have wired this loop before: it is the same loop you built four of in week 2. For the sum light, run a wire from the pin labeled 0 into an empty column, then a 330 ohm resistor to a nearby column, then the LED's long leg in that column and its short leg in the next one, then a wire from the short leg's column back to GND. For the carry light, build the identical loop from the pin labeled 8, with its own resistor and its own LED. Every LED gets its own resistor, always.\n\nTear four small paper flags and label the board: A and B under the buttons, SUM and CARRY under the LEDs. On showcase day the family should be able to read your machine without you saying a word.\n\nKeep the battery pack unclipped while your hands are moving wires, same rule as always: never work inside a live circuit.",
+      "checklist": [
+        "Each button straddles the center gap, with its two wires on opposite sides of the gap",
+        "Each LED loop has its own resistor, not shared and not skipped",
+        "Paper flags label A, B, SUM and CARRY so anyone can read the machine",
+        "The battery stayed unclipped while I moved wires"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s2-w03-build-05",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A flow showing a button's raw read of 0 when pressed being flipped by 1 minus the reading into a value of 1 when pressed. Below, the Carry output is shown as the 2s place and the Sum output as the 1s place of a small binary number, with the example: both buttons held gives Carry 1, Sum 0, which reads as binary 10, matching the number 2 the display shows directly.",
+        "spec": {
+          "w": 380,
+          "h": 230,
+          "items": [
+            {
+              "t": "text",
+              "x": 190,
+              "y": 16,
+              "s": "Pull-up flip, then SUM+CARRY as binary",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 43,
+              "w": 120,
+              "h": 34,
+              "label": "read_digital()",
+              "sub": "pressed = 0"
+            },
+            {
+              "t": "line",
+              "x1": 150,
+              "y1": 60,
+              "x2": 180,
+              "y2": 60,
+              "arrow": true,
+              "label": "1 - x"
+            },
+            {
+              "t": "box",
+              "x": 180,
+              "y": 43,
+              "w": 100,
+              "h": 34,
+              "label": "a (or b)",
+              "sub": "pressed = 1"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 105,
+              "s": "Carry and Sum together read as one binary number",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 100,
+              "y": 128,
+              "w": 70,
+              "h": 34,
+              "label": "Carry",
+              "sub": "2s place"
+            },
+            {
+              "t": "box",
+              "x": 210,
+              "y": 128,
+              "w": 70,
+              "h": 34,
+              "label": "Sum",
+              "sub": "1s place"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 190,
+              "s": "Both held: Carry=1, Sum=0 -> binary 10 = 2",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 212,
+              "s": "display.show(a+b) shows the same answer directly",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Teach it to add",
+      "body": "Open python.microbit.org and start a new project. Type this program, keeping the indented lines exactly four spaces in:\n\nfrom microbit import *\n\npin1.set_pull(pin1.PULL_UP)\npin2.set_pull(pin2.PULL_UP)\n\ndef and_gate(a, b):\n    if a == 1 and b == 1:\n        return 1\n    return 0\n\ndef xor_gate(a, b):\n    if a != b:\n        return 1\n    return 0\n\nwhile True:\n    a = 1 - pin1.read_digital()\n    b = 1 - pin2.read_digital()\n    pin0.write_digital(xor_gate(a, b))\n    pin8.write_digital(and_gate(a, b))\n    display.show(a + b)\n\nTwo lines deserve a close look. With pull up switched on, an untouched button reads 1 and a pressed one reads 0, which is backwards from your paper table. The line a = 1 - pin1.read_digital() flips it, so pressed means 1, exactly like the table. And display.show(a + b) makes the micro:bit's own screen do the sum the easy way, so you can check your gates against it: the screen is the answer in ordinary numbers, the two LEDs are the same answer in binary. Carry off and sum off is 0. Carry off and sum on is 1. Carry on and sum off is binary 10, which is 2.\n\nDownload it to the micro:bit. Now run the whole truth table on the real machine: press nothing, then only A, then only B, then both at once. Before each press, say your prediction out loud from the paper table, then press and watch. Four rows, four predictions, and if the wiring and the functions are right, the machine agrees with your paper every single time. That is the trick for the week 4 showcase: it is not luck, and you know why.",
+      "checklist": [
+        "All four button combinations match the paper truth table, and I said each prediction out loud before pressing",
+        "Both buttons held: the carry LED is on, the sum LED is off, and the screen shows 2",
+        "The code has two separate gate functions, one for XOR and one for AND",
+        "I can point at the carry and sum LEDs and read them together as a binary number"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s2-w03-build-06",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. The usual suspects this week: an LED in backwards, a wire one hole off from its column, a missing set_pull line making a button read wrong even when nobody touches it, or an indent that puts a return line outside its function. If one input always reads 1, check its button's wires really sit on opposite sides of the center gap. None of these mean anything is broken; every one of them is a fix you already know how to make."
+    },
+    {
+      "kind": "artifact",
+      "id": "s2-w03-build-07",
+      "title": "Show it",
+      "prompt": "Photo of the adder running with both buttons held down and the carry LED lit, plus the Python code copied from the editor",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s2-w03-build-08",
+      "variant": "maker"
+    }
+  ]
+}

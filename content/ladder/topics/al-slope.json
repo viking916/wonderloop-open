@@ -1,0 +1,2964 @@
+{
+  "id": "al-slope",
+  "idea": {
+    "body": "Slope measures how steep a line is: the amount y changes for every step x changes. Between two points, the rise is the change in y and the run is the change in x. Slope is rise over run: m = (y2 - y1)/(x2 - x1). A line climbing left to right has positive slope; a line falling has negative slope. A flat line has slope 0, and a straight-up-and-down line has undefined slope, since its run is 0. Between (1, 1) and (4, 3), the rise is 3 - 1 = 2. The run is 4 - 1 = 3, so the slope is 2/3. Subtract in the same order for both the y-values and the x-values, or the sign comes out wrong.",
+    "figure": {
+      "kind": "plane",
+      "alt": "A line through (1, 1) and (4, 3), rising 2 for every 3 it runs.",
+      "spec": {
+        "range": 6,
+        "polylines": [
+          [
+            [
+              -6.0,
+              -3.6666666666666665
+            ],
+            [
+              6.0,
+              4.333333333333333
+            ]
+          ]
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": 1,
+            "label": "(1, 1)"
+          },
+          {
+            "x": 4,
+            "y": 3,
+            "label": "(4, 3)"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A drone rises from 2 meters at t = 1 second to 10 meters at t = 3 seconds. Find its rate of climb.",
+    "steps": [
+      "A drone rises from 2 meters at t = 1 second to 10 meters at t = 3 seconds.",
+      "The rise is the change in height: 10 - 2 = 8.",
+      "The run is the change in time: 3 - 1 = 2.",
+      "Slope is rise over run: 8/2 = 4.",
+      "The drone climbs 4 meters every second."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "A line through (1, 2) and (3, 10), climbing 4 units for every 1 it runs.",
+      "spec": {
+        "range": 10,
+        "polylines": [
+          [
+            [
+              -2.0,
+              -10.0
+            ],
+            [
+              3.0,
+              10.0
+            ]
+          ]
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": 2,
+            "label": "(1, 2)"
+          },
+          {
+            "x": 3,
+            "y": 10,
+            "label": "(3, 10)"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "al-slope-w1",
+      "name": "Rise over run from two points",
+      "when": "Use this as the default way whenever you know two points on a line.",
+      "steps": [
+        "Find the slope between (1, 1) and (4, 3).",
+        "Rise is the change in y: 3 - 1 = 2.",
+        "Run is the change in x: 4 - 1 = 3.",
+        "Slope is rise over run: 2/3."
+      ],
+      "example": "(1, 1) and (4, 3)",
+      "answer": "2/3",
+      "trap": "Subtracting the x-values and y-values in different orders, flipping the sign."
+    },
+    {
+      "id": "al-slope-w2",
+      "name": "Count on the graph",
+      "when": "Use this when the line is already drawn and you can see its grid corners.",
+      "steps": [
+        "Look at the line's graph and pick two points where it crosses grid corners: (-2, -1) and (2, 3).",
+        "Count the rise by counting grid squares up from the first point to the second: 4 up.",
+        "Count the run by counting grid squares right: 4 across.",
+        "Slope is rise over run: 4/4 = 1."
+      ],
+      "example": "the line through (-2, -1) and (2, 3), read from its graph",
+      "answer": "1",
+      "trap": "Counting diagonally instead of counting up and across separately.",
+      "figure": {
+        "kind": "plane",
+        "alt": "A line through (-2, -1) and (2, 3).",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -6.0,
+                -5.0
+              ],
+              [
+                5.0,
+                6.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": -2,
+              "y": -1,
+              "label": "(-2, -1)"
+            },
+            {
+              "x": 2,
+              "y": 3,
+              "label": "(2, 3)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "al-slope-w3",
+      "name": "The change table",
+      "when": "Use this when several x and y readings are given as a list, not as a graph.",
+      "steps": [
+        "A rover's readings: x = 0, 1, 2, 3 gives y = 2, 5, 8, 11.",
+        "Find the change in y for each step of 1 in x: 3, then 3, then 3 again.",
+        "The change is the same each time: 3.",
+        "The slope is 3, the constant change per step."
+      ],
+      "example": "x: 0, 1, 2, 3 gives y: 2, 5, 8, 11",
+      "answer": "3",
+      "trap": "Computing the change between non-consecutive rows, skipping a step of x.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A table of x and y values with a constant change of 3 between rows.",
+        "spec": {
+          "w": 220,
+          "h": 170,
+          "items": [
+            {
+              "t": "text",
+              "x": 60,
+              "y": 20,
+              "s": "x",
+              "size": 13,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 20,
+              "s": "y",
+              "size": 13,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 32,
+              "x2": 200,
+              "y2": 32
+            },
+            {
+              "t": "text",
+              "x": 60,
+              "y": 55,
+              "s": "0",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 55,
+              "s": "2",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 60,
+              "y": 85,
+              "s": "1",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 85,
+              "s": "5",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 60,
+              "y": 115,
+              "s": "2",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 115,
+              "s": "8",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 60,
+              "y": 145,
+              "s": "3",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 145,
+              "s": "11",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 110,
+              "y": 70,
+              "s": "+3",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 110,
+              "y": 100,
+              "s": "+3",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 110,
+              "y": 130,
+              "s": "+3",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 110,
+              "y": 162,
+              "s": "slope = 3",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "The table's headers, no readings yet.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                },
+                "13": {
+                  "hidden": true
+                },
+                "14": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "A rover's readings: x = 0, 1, 2,",
+              "set": {
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                },
+                "13": {
+                  "hidden": true
+                },
+                "14": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Find the change in y for each step",
+              "set": {
+                "14": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "The change is the same each time: 3.",
+              "set": {
+                "14": {
+                  "s": "always +3"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "The slope is 3, the constant change per",
+              "set": {}
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-al-slope-p01",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (1, 2) and (4, 8).",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Rise is the change in y: 8 - 2 = 6.",
+        "Run is the change in x: 4 - 1 = 3.",
+        "Slope is rise over run: 6/3 = 2."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the slope of the line through (1, 1) and (3, 5).",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p02",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (0, 1) and (3, 7).",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Rise is the change in y: 7 - 1 = 6.",
+        "Run is the change in x: 3 - 0 = 3.",
+        "Slope is rise over run: 6/3 = 2."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the slope of the line through (0, 2) and (4, 10).",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p03",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (2, 5) and (5, 6).",
+      "answer": {
+        "kind": "number",
+        "value": "1/3"
+      },
+      "explanation": [
+        "Rise is the change in y: 6 - 5 = 1.",
+        "Run is the change in x: 5 - 2 = 3.",
+        "Slope is rise over run: 1/3 = 1/3."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the slope of the line through (1, 4) and (7, 7).",
+        "answer": {
+          "kind": "number",
+          "value": "1/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p04",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (0, 0) and (6, 2).",
+      "answer": {
+        "kind": "number",
+        "value": "1/3"
+      },
+      "explanation": [
+        "Rise is the change in y: 2 - 0 = 2.",
+        "Run is the change in x: 6 - 0 = 6.",
+        "Slope is rise over run: 2/6 = 1/3."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the slope of the line through (0, 0) and (9, 3).",
+        "answer": {
+          "kind": "number",
+          "value": "1/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p05",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (1, 8) and (4, 2).",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Rise is the change in y: 2 - 8 = -6.",
+        "Run is the change in x: 4 - 1 = 3.",
+        "Slope is rise over run: -6/3 = -2."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the slope of the line through (2, 9) and (5, 3).",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p06",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (0, 6) and (3, 0).",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Rise is the change in y: 0 - 6 = -6.",
+        "Run is the change in x: 3 - 0 = 3.",
+        "Slope is rise over run: -6/3 = -2."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the slope of the line through (0, 8) and (4, 0).",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p07",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (1, 1) and (5, 1).",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "Rise is the change in y: 1 - 1 = 0.",
+        "Run is the change in x: 5 - 1 = 4.",
+        "Slope is rise over run: 0/4 = 0."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the slope of the line through (2, 4) and (6, 4).",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p08",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (2, 3) and (8, 6).",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "Rise is the change in y: 6 - 3 = 3.",
+        "Run is the change in x: 8 - 2 = 6.",
+        "Slope is rise over run: 3/6 = 1/2."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the slope of the line through (1, 2) and (7, 5).",
+        "answer": {
+          "kind": "number",
+          "value": "1/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p09",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (0, 2) and (5, 7).",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Rise is the change in y: 7 - 2 = 5.",
+        "Run is the change in x: 5 - 0 = 5.",
+        "Slope is rise over run: 5/5 = 1."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the slope of the line through (0, 3) and (6, 9).",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p10",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (3, 9) and (6, 3).",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Rise is the change in y: 3 - 9 = -6.",
+        "Run is the change in x: 6 - 3 = 3.",
+        "Slope is rise over run: -6/3 = -2."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the slope of the line through (2, 7) and (5, 1).",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p11",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "choice",
+      "prompt": "What is the slope of the line through (4, 2) and (4, 9)?",
+      "options": [
+        "0",
+        "7",
+        "1/7",
+        "undefined"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Both points share x = 4, so the line is vertical.",
+        "A vertical line has undefined slope."
+      ],
+      "useAgain": "when two points share the same x-value, making the line vertical.",
+      "hints": [
+        "Check whether the two points share the same x-value or the same y-value first.",
+        "A shared x-value makes a vertical line; a shared y-value makes a horizontal line."
+      ],
+      "socraticHint": "Do the two points share the same x-value or the same y-value?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the slope of the line through (6, 3) and (6, 11)?",
+        "options": [
+          "undefined",
+          "0",
+          "8",
+          "1/8"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p12",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "choice",
+      "prompt": "What is the slope of the line through (2, 5) and (8, 5)?",
+      "options": [
+        "undefined",
+        "6",
+        "0",
+        "1/6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Both points share y = 5, so the line is horizontal.",
+        "A horizontal line has slope 0."
+      ],
+      "useAgain": "when two points share the same y-value, making the line horizontal.",
+      "hints": [
+        "Check whether the two points share the same x-value or the same y-value first.",
+        "A shared x-value makes a vertical line; a shared y-value makes a horizontal line."
+      ],
+      "socraticHint": "Do the two points share the same x-value or the same y-value?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the slope of the line through (1, 4) and (9, 4)?",
+        "options": [
+          "undefined",
+          "0",
+          "8",
+          "1/8"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p13",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "choice",
+      "prompt": "Which of these lines rises as x increases: the one through (1, 2) and (4, 8), or the one through (1, 8) and (4, 2)?",
+      "options": [
+        "Through (1, 2) and (4, 8)",
+        "Through (1, 8) and (4, 2)",
+        "Both rise the same way",
+        "Neither rises"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The first line's y-values go up as x goes up, so its slope is positive.",
+        "The second line's y-values go down as x goes up, so its slope is negative."
+      ],
+      "useAgain": "when you need to tell a rising line from a falling one without computing the exact slope.",
+      "hints": [
+        "Check whether the two points share the same x-value or the same y-value first.",
+        "A shared x-value makes a vertical line; a shared y-value makes a horizontal line."
+      ],
+      "socraticHint": "As x increases from the first point to the second, does y go up or down?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Which of these lines rises as x increases: the one through (0, 1) and (3, 7), or the one through (0, 7) and (3, 1)?",
+        "options": [
+          "Through (0, 7) and (3, 1)",
+          "Through (0, 1) and (3, 7)",
+          "Both rise the same way",
+          "Neither rises"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p14",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "truefalse",
+      "prompt": "True or false: the line through (1, 5) and (4, 2) has negative slope.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "y goes from 5 down to 2 as x goes from 1 to 4.",
+        "Since y decreases as x increases, the slope is negative."
+      ],
+      "useAgain": "when you want to check a slope's sign without computing its exact value.",
+      "hints": [
+        "Check whether y goes up or down as x increases from the first point to the second.",
+        "A line that falls from left to right has negative slope."
+      ],
+      "socraticHint": "As x increases from 1 to 4, does y go up or down?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: the line through (2, 3) and (6, 9) has negative slope.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p15",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "truefalse",
+      "prompt": "True or false: the line through (0, 0) and (5, 5) has slope 1.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Rise is 5 - 0 = 5, and run is 5 - 0 = 5.",
+        "Slope is 5/5 = 1, which matches the claim."
+      ],
+      "useAgain": "when you want to check a claimed slope value without redoing the whole computation.",
+      "hints": [
+        "Compute the rise and the run separately before dividing.",
+        "A line where the rise always equals the run has slope 1."
+      ],
+      "socraticHint": "What is the rise, and what is the run, between these two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: the line through (0, 0) and (4, 6) has slope 1.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p16",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (-2, 3) and (4, -3).",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "Rise is the change in y: -3 - 3 = -6.",
+        "Run is the change in x: 4 - (-2) = 6.",
+        "Slope is rise over run: -6/6 = -1."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the slope of the line through (-1, 5) and (3, -3).",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p17",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (-3, -4) and (1, 4).",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Rise is the change in y: 4 - (-4) = 8.",
+        "Run is the change in x: 1 - (-3) = 4.",
+        "Slope is rise over run: 8/4 = 2."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer's job log tracks material used. Find the slope of the line through (-2, -5) and (2, 3).",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p18",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (-1, 6) and (5, 0).",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "Rise is the change in y: 0 - 6 = -6.",
+        "Run is the change in x: 5 - (-1) = 6.",
+        "Slope is rise over run: -6/6 = -1."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the slope of the line through (-2, 7) and (4, 1).",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p19",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (2, -3) and (5, 3).",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Rise is the change in y: 3 - (-3) = 6.",
+        "Run is the change in x: 5 - 2 = 3.",
+        "Slope is rise over run: 6/3 = 2."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer's job log tracks material used. Find the slope of the line through (1, -4) and (4, 2).",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p20",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (-4, 2) and (2, 5).",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "Rise is the change in y: 5 - 2 = 3.",
+        "Run is the change in x: 2 - (-4) = 6.",
+        "Slope is rise over run: 3/6 = 1/2."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the slope of the line through (-6, 1) and (0, 4).",
+        "answer": {
+          "kind": "number",
+          "value": "1/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p21",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (3, -2) and (-3, 6).",
+      "answer": {
+        "kind": "number",
+        "value": "-4/3"
+      },
+      "explanation": [
+        "Rise is the change in y: 6 - (-2) = 8.",
+        "Run is the change in x: -3 - 3 = -6.",
+        "Slope is rise over run: 8/-6 = -4/3."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer's job log tracks material used. Find the slope of the line through (2, -3) and (-4, 5).",
+        "answer": {
+          "kind": "number",
+          "value": "-4/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p22",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (-5, -1) and (3, 5).",
+      "answer": {
+        "kind": "number",
+        "value": "3/4"
+      },
+      "explanation": [
+        "Rise is the change in y: 5 - (-1) = 6.",
+        "Run is the change in x: 3 - (-5) = 8.",
+        "Slope is rise over run: 6/8 = 3/4."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the slope of the line through (-4, -2) and (4, 4).",
+        "answer": {
+          "kind": "number",
+          "value": "3/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p23",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line through (4, 7) and (-2, -5).",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Rise is the change in y: -5 - 7 = -12.",
+        "Run is the change in x: -2 - 4 = -6.",
+        "Slope is rise over run: -12/-6 = 2."
+      ],
+      "useAgain": "when you know two points on a line and need its steepness.",
+      "hints": [
+        "Subtract the y-values for the rise, and the x-values for the run, in the same order.",
+        "Slope is the rise divided by the run."
+      ],
+      "socraticHint": "What is the change in y, and what is the change in x, between the two points?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer's job log tracks material used. Find the slope of the line through (3, 6) and (-3, -6).",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p24",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "choice",
+      "prompt": "Find the slope of the line through (1, 2) and (5, 10).",
+      "options": [
+        "-2",
+        "1/2",
+        "3",
+        "2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Rise is 10 - 2 = 8; run is 5 - 1 = 4.",
+        "Slope is rise over run: 2."
+      ],
+      "useAgain": "when a wrong slope comes from subtracting in mismatched order or swapping rise and run.",
+      "hints": [
+        "Subtract the y-values in the same order you subtract the x-values.",
+        "Rise goes on top and run goes on the bottom, never the other way around."
+      ],
+      "socraticHint": "Did you subtract the y-values and the x-values in the same order?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the slope of the line through (2, 1) and (6, 9).",
+        "options": [
+          "-2",
+          "1/2",
+          "2",
+          "3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p25",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "choice",
+      "prompt": "Find the slope of the line through (0, 5) and (4, 1).",
+      "options": [
+        "1",
+        "0",
+        "-1",
+        "2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Rise is 1 - 5 = -4; run is 4 - 0 = 4.",
+        "Slope is rise over run: -1."
+      ],
+      "useAgain": "when a wrong slope comes from subtracting in mismatched order or swapping rise and run.",
+      "hints": [
+        "Subtract the y-values in the same order you subtract the x-values.",
+        "Rise goes on top and run goes on the bottom, never the other way around."
+      ],
+      "socraticHint": "Did you subtract the y-values and the x-values in the same order?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the slope of the line through (1, 6) and (5, 2).",
+        "options": [
+          "-1",
+          "1",
+          "0",
+          "2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p26",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "choice",
+      "prompt": "Find the slope of the line through (-2, -1) and (4, 5).",
+      "options": [
+        "-1",
+        "2",
+        "3",
+        "1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Rise is 5 - (-1) = 6; run is 4 - (-2) = 6.",
+        "Slope is rise over run: 1."
+      ],
+      "useAgain": "when a wrong slope comes from subtracting in mismatched order or swapping rise and run.",
+      "hints": [
+        "Subtract the y-values in the same order you subtract the x-values.",
+        "Rise goes on top and run goes on the bottom, never the other way around."
+      ],
+      "socraticHint": "Did you subtract the y-values and the x-values in the same order?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the slope of the line through (-3, -2) and (3, 4).",
+        "options": [
+          "-1",
+          "1",
+          "2",
+          "3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p27",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "choice",
+      "prompt": "Find the slope of the line through (2, 8) and (6, 0).",
+      "options": [
+        "2",
+        "-2",
+        "-1/2",
+        "-1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Rise is 0 - 8 = -8; run is 6 - 2 = 4.",
+        "Slope is rise over run: -2."
+      ],
+      "useAgain": "when a wrong slope comes from subtracting in mismatched order or swapping rise and run.",
+      "hints": [
+        "Subtract the y-values in the same order you subtract the x-values.",
+        "Rise goes on top and run goes on the bottom, never the other way around."
+      ],
+      "socraticHint": "Did you subtract the y-values and the x-values in the same order?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the slope of the line through (1, 9) and (5, 1).",
+        "options": [
+          "-2",
+          "2",
+          "-1/2",
+          "-1"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p28",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "order",
+      "prompt": "Put these steps in order to find the slope of the line through (2, 1) and (6, 9).",
+      "items": [
+        "Write the rise over the run: (8)/(4).",
+        "Subtract the y-values in order: 9 - 1 = 8.",
+        "Simplify to get the slope: 2.",
+        "Subtract the x-values in the same order: 6 - 2 = 4."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          3,
+          0,
+          2
+        ]
+      },
+      "explanation": [
+        "The y-values are subtracted before the x-values are written as the run.",
+        "The order you subtract the y-values in must match the order for the x-values."
+      ],
+      "useAgain": "when computing slope needs its steps done in a fixed order.",
+      "hints": [
+        "Subtract in the same order for both the y-values and the x-values.",
+        "Rise always sits over run, never the other way around."
+      ],
+      "socraticHint": "Which subtraction happens first: the y-values, or the x-values?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to find the slope of the line through (1, 2) and (5, 8).",
+        "items": [
+          "Simplify to get the slope: 3/2.",
+          "Subtract the x-values in the same order: 5 - 1 = 4.",
+          "Subtract the y-values in order: 8 - 2 = 6.",
+          "Write the rise over the run: (6)/(4)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            3,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p29",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "order",
+      "prompt": "Put these steps in order to find the slope of the line through (-1, 4) and (3, -4).",
+      "items": [
+        "Subtract the x-values in the same order: 3 - (-1) = 4.",
+        "Simplify to get the slope: -2.",
+        "Subtract the y-values in order: -4 - 4 = -8.",
+        "Write the rise over the run: (-8)/(4)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          0,
+          3,
+          1
+        ]
+      },
+      "explanation": [
+        "The y-values are subtracted before the x-values are written as the run.",
+        "The order you subtract the y-values in must match the order for the x-values."
+      ],
+      "useAgain": "when computing slope needs its steps done in a fixed order.",
+      "hints": [
+        "Subtract in the same order for both the y-values and the x-values.",
+        "Rise always sits over run, never the other way around."
+      ],
+      "socraticHint": "Which subtraction happens first: the y-values, or the x-values?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps in order to find the slope of the line through (-2, 5) and (2, -3).",
+        "items": [
+          "Write the rise over the run: (-8)/(4).",
+          "Subtract the y-values in order: -3 - 5 = -8.",
+          "Simplify to get the slope: -2.",
+          "Subtract the x-values in the same order: 2 - (-2) = 4."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            3,
+            0,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p30",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "truefalse",
+      "prompt": "True or false: the line through (2, -1) and (6, 7) has slope 2.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Rise is 7 - (-1) = 8; run is 6 - 2 = 4.",
+        "Slope is 8/4 = 2, which matches the claim."
+      ],
+      "useAgain": "when you want to check a claimed slope without redoing the whole computation.",
+      "hints": [
+        "Subtracting a negative number is the same as adding its opposite.",
+        "Compute the rise and run separately before dividing."
+      ],
+      "socraticHint": "What is 7 minus negative 1?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "True or false: the line through (1, -2) and (5, 10) has slope 2.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p31",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the rover's graphed path.",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Read two points on the line: (-2, -1) and (2, 3).",
+        "Rise is 3 - (-1) = 4; run is 2 - (-2) = 4.",
+        "Slope is rise over run: 1."
+      ],
+      "useAgain": "when a line's slope has to be read straight from its graph.",
+      "hints": [
+        "Pick two points where the line crosses a grid corner.",
+        "Count the rise and the run between those two points."
+      ],
+      "socraticHint": "Which two grid-crossing points can you read cleanly off this line?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the slope of the drone's graphed climb.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A line through (-3, -2) and (1, 2).",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  -6.0,
+                  -5.0
+                ],
+                [
+                  5.0,
+                  6.0
+                ]
+              ]
+            ],
+            "points": [
+              {
+                "x": -3,
+                "y": -2,
+                "label": "(-3, -2)"
+              },
+              {
+                "x": 1,
+                "y": 2,
+                "label": "(1, 2)"
+              }
+            ]
+          }
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A line through (-2, -1) and (2, 3).",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -6.0,
+                -5.0
+              ],
+              [
+                5.0,
+                6.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": -2,
+              "y": -1,
+              "label": "(-2, -1)"
+            },
+            {
+              "x": 2,
+              "y": 3,
+              "label": "(2, 3)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p32",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line on the game's map.",
+      "answer": {
+        "kind": "number",
+        "value": "-2/3"
+      },
+      "explanation": [
+        "Read two points on the line: (-4, 2) and (2, -2).",
+        "Rise is -2 - 2 = -4; run is 2 - (-4) = 6.",
+        "Slope is rise over run: -2/3."
+      ],
+      "useAgain": "when a line's slope has to be read straight from its graph.",
+      "hints": [
+        "Pick two points where the line crosses a grid corner.",
+        "Count the rise and the run between those two points."
+      ],
+      "socraticHint": "Which two grid-crossing points can you read cleanly off this line?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the slope of the robot arm's graphed sweep.",
+        "answer": {
+          "kind": "number",
+          "value": "-2/3"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A line through (-3, 3) and (3, -1).",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  -6.0,
+                  5.0
+                ],
+                [
+                  6.0,
+                  -3.0
+                ]
+              ]
+            ],
+            "points": [
+              {
+                "x": -3,
+                "y": 3,
+                "label": "(-3, 3)"
+              },
+              {
+                "x": 3,
+                "y": -1,
+                "label": "(3, -1)"
+              }
+            ]
+          }
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A line through (-4, 2) and (2, -2).",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -6.0,
+                3.3333333333333335
+              ],
+              [
+                6.0,
+                -4.666666666666667
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": -4,
+              "y": 2,
+              "label": "(-4, 2)"
+            },
+            {
+              "x": 2,
+              "y": -2,
+              "label": "(2, -2)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p33",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the 3D printer's graphed toolpath.",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Read two points on the line: (-3, -4) and (3, 2).",
+        "Rise is 2 - (-4) = 6; run is 3 - (-3) = 6.",
+        "Slope is rise over run: 1."
+      ],
+      "useAgain": "when a line's slope has to be read straight from its graph.",
+      "hints": [
+        "Pick two points where the line crosses a grid corner.",
+        "Count the rise and the run between those two points."
+      ],
+      "socraticHint": "Which two grid-crossing points can you read cleanly off this line?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the slope of the rocket's graphed ascent.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A line through (-2, -3) and (4, 3).",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  -5.0,
+                  -6.0
+                ],
+                [
+                  6.0,
+                  5.0
+                ]
+              ]
+            ],
+            "points": [
+              {
+                "x": -2,
+                "y": -3,
+                "label": "(-2, -3)"
+              },
+              {
+                "x": 4,
+                "y": 3,
+                "label": "(4, 3)"
+              }
+            ]
+          }
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A line through (-3, -4) and (3, 2).",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -6.0
+              ],
+              [
+                6.0,
+                5.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": -3,
+              "y": -4,
+              "label": "(-3, -4)"
+            },
+            {
+              "x": 3,
+              "y": 2,
+              "label": "(3, 2)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p34",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the kitchen scale's graphed reading.",
+      "answer": {
+        "kind": "number",
+        "value": "3/2"
+      },
+      "explanation": [
+        "Read two points on the line: (-1, -3) and (3, 3).",
+        "Rise is 3 - (-3) = 6; run is 3 - (-1) = 4.",
+        "Slope is rise over run: 3/2."
+      ],
+      "useAgain": "when a line's slope has to be read straight from its graph.",
+      "hints": [
+        "Pick two points where the line crosses a grid corner.",
+        "Count the rise and the run between those two points."
+      ],
+      "socraticHint": "Which two grid-crossing points can you read cleanly off this line?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the slope of the drone's graphed battery drain.",
+        "answer": {
+          "kind": "number",
+          "value": "3/2"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A line through (-2, -2) and (2, 4).",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  -4.666666666666667,
+                  -6.0
+                ],
+                [
+                  3.3333333333333335,
+                  6.0
+                ]
+              ]
+            ],
+            "points": [
+              {
+                "x": -2,
+                "y": -2,
+                "label": "(-2, -2)"
+              },
+              {
+                "x": 2,
+                "y": 4,
+                "label": "(2, 4)"
+              }
+            ]
+          }
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A line through (-1, -3) and (3, 3).",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -3.0,
+                -6.0
+              ],
+              [
+                5.0,
+                6.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": -1,
+              "y": -3,
+              "label": "(-1, -3)"
+            },
+            {
+              "x": 3,
+              "y": 3,
+              "label": "(3, 3)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p35",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the rover's graphed speed trial.",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "Read two points on the line: (-4, -1) and (4, 3).",
+        "Rise is 3 - (-1) = 4; run is 4 - (-4) = 8.",
+        "Slope is rise over run: 1/2."
+      ],
+      "useAgain": "when a line's slope has to be read straight from its graph.",
+      "hints": [
+        "Pick two points where the line crosses a grid corner.",
+        "Count the rise and the run between those two points."
+      ],
+      "socraticHint": "Which two grid-crossing points can you read cleanly off this line?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the slope of the go-kart's graphed speed trial.",
+        "answer": {
+          "kind": "number",
+          "value": "1/2"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A line through (-5, -2) and (3, 2).",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  -6.0,
+                  -2.5
+                ],
+                [
+                  6.0,
+                  3.5
+                ]
+              ]
+            ],
+            "points": [
+              {
+                "x": -5,
+                "y": -2,
+                "label": "(-5, -2)"
+              },
+              {
+                "x": 3,
+                "y": 2,
+                "label": "(3, 2)"
+              }
+            ]
+          }
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A line through (-4, -1) and (4, 3).",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -6.0,
+                -2.0
+              ],
+              [
+                6.0,
+                4.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": -4,
+              "y": -1,
+              "label": "(-4, -1)"
+            },
+            {
+              "x": 4,
+              "y": 3,
+              "label": "(4, 3)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p36",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the drone's graphed descent.",
+      "answer": {
+        "kind": "number",
+        "value": "-4/3"
+      },
+      "explanation": [
+        "Read two points on the line: (-2, 4) and (4, -4).",
+        "Rise is -4 - 4 = -8; run is 4 - (-2) = 6.",
+        "Slope is rise over run: -4/3."
+      ],
+      "useAgain": "when a line's slope has to be read straight from its graph.",
+      "hints": [
+        "Pick two points where the line crosses a grid corner.",
+        "Count the rise and the run between those two points."
+      ],
+      "socraticHint": "Which two grid-crossing points can you read cleanly off this line?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the slope of the rocket's graphed re-entry path.",
+        "answer": {
+          "kind": "number",
+          "value": "-3/2"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A line through (-1, 3) and (3, -3).",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  -3.0,
+                  6.0
+                ],
+                [
+                  5.0,
+                  -6.0
+                ]
+              ]
+            ],
+            "points": [
+              {
+                "x": -1,
+                "y": 3,
+                "label": "(-1, 3)"
+              },
+              {
+                "x": 3,
+                "y": -3,
+                "label": "(3, -3)"
+              }
+            ]
+          }
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A line through (-2, 4) and (4, -4).",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -3.5,
+                6.0
+              ],
+              [
+                5.5,
+                -6.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": -2,
+              "y": 4,
+              "label": "(-2, 4)"
+            },
+            {
+              "x": 4,
+              "y": -4,
+              "label": "(4, -4)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p37",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the robot's graphed obstacle run.",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Read two points on the line: (-5, -3) and (1, 3).",
+        "Rise is 3 - (-3) = 6; run is 1 - (-5) = 6.",
+        "Slope is rise over run: 1."
+      ],
+      "useAgain": "when a line's slope has to be read straight from its graph.",
+      "hints": [
+        "Pick two points where the line crosses a grid corner.",
+        "Count the rise and the run between those two points."
+      ],
+      "socraticHint": "Which two grid-crossing points can you read cleanly off this line?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the slope of the rover's graphed obstacle run.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A line through (-4, -4) and (2, 2).",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  -6.0,
+                  -6.0
+                ],
+                [
+                  6.0,
+                  6.0
+                ]
+              ]
+            ],
+            "points": [
+              {
+                "x": -4,
+                "y": -4,
+                "label": "(-4, -4)"
+              },
+              {
+                "x": 2,
+                "y": 2,
+                "label": "(2, 2)"
+              }
+            ]
+          }
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A line through (-5, -3) and (1, 3).",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -6.0,
+                -4.0
+              ],
+              [
+                4.0,
+                6.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": -5,
+              "y": -3,
+              "label": "(-5, -3)"
+            },
+            {
+              "x": 1,
+              "y": 3,
+              "label": "(1, 3)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p38",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "Find the slope of the line on the game's graphed ramp.",
+      "answer": {
+        "kind": "number",
+        "value": "-2/3"
+      },
+      "explanation": [
+        "Read two points on the line: (-6, 1) and (0, -3).",
+        "Rise is -3 - 1 = -4; run is 0 - (-6) = 6.",
+        "Slope is rise over run: -2/3."
+      ],
+      "useAgain": "when a line's slope has to be read straight from its graph.",
+      "hints": [
+        "Pick two points where the line crosses a grid corner.",
+        "Count the rise and the run between those two points."
+      ],
+      "socraticHint": "Which two grid-crossing points can you read cleanly off this line?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the slope of the skate-park ramp, graphed for a robot toy.",
+        "answer": {
+          "kind": "number",
+          "value": "-2/3"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A line through (-5, 2) and (1, -2).",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  -6.0,
+                  2.6666666666666665
+                ],
+                [
+                  6.0,
+                  -5.333333333333333
+                ]
+              ]
+            ],
+            "points": [
+              {
+                "x": -5,
+                "y": 2,
+                "label": "(-5, 2)"
+              },
+              {
+                "x": 1,
+                "y": -2,
+                "label": "(1, -2)"
+              }
+            ]
+          }
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A line through (-6, 1) and (0, -3).",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -6.0,
+                1.0
+              ],
+              [
+                4.5,
+                -6.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": -6,
+              "y": 1,
+              "label": "(-6, 1)"
+            },
+            {
+              "x": 0,
+              "y": -3,
+              "label": "(0, -3)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p39",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "choice",
+      "prompt": "Two lines are graphed. Which one is steeper?",
+      "options": [
+        "The line through (-3, 2) and (3, -1)",
+        "Both lines are equally steep",
+        "The line through (-3, -1) and (3, 5)",
+        "Neither line has a defined steepness"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The first line has slope 1.",
+        "The second line has slope -1/2.",
+        "Steepness compares the sizes of the slopes, ignoring their signs."
+      ],
+      "useAgain": "when you need to compare how steep two lines are, not just their direction.",
+      "hints": [
+        "Steepness is about the size of the slope, not its sign.",
+        "Compute both slopes, then compare their sizes."
+      ],
+      "socraticHint": "Which slope is bigger once you ignore the plus or minus sign?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Two lines are graphed. Which one is steeper?",
+        "options": [
+          "The line through (-4, 1) and (2, -2)",
+          "Both lines are equally steep",
+          "Neither line has a defined steepness",
+          "The line through (-4, -2) and (2, 4)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Two lines graphed on the same grid.",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  -6.0,
+                  -4.0
+                ],
+                [
+                  4.0,
+                  6.0
+                ]
+              ],
+              [
+                [
+                  -6.0,
+                  2.0
+                ],
+                [
+                  6.0,
+                  -4.0
+                ]
+              ]
+            ],
+            "points": [
+              {
+                "x": -4,
+                "y": -2,
+                "label": "(-4, -2)"
+              },
+              {
+                "x": 2,
+                "y": 4,
+                "label": "(2, 4)"
+              },
+              {
+                "x": -4,
+                "y": 1,
+                "label": "(-4, 1)"
+              },
+              {
+                "x": 2,
+                "y": -2,
+                "label": "(2, -2)"
+              }
+            ]
+          }
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Two lines graphed on the same grid.",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -6.0,
+                -4.0
+              ],
+              [
+                4.0,
+                6.0
+              ]
+            ],
+            [
+              [
+                -6.0,
+                3.5
+              ],
+              [
+                6.0,
+                -2.5
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": -3,
+              "y": -1,
+              "label": "(-3, -1)"
+            },
+            {
+              "x": 3,
+              "y": 5,
+              "label": "(3, 5)"
+            },
+            {
+              "x": -3,
+              "y": 2,
+              "label": "(-3, 2)"
+            },
+            {
+              "x": 3,
+              "y": -1,
+              "label": "(3, -1)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p40",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "choice",
+      "prompt": "Two lines are graphed. Which one is steeper?",
+      "options": [
+        "The line through (-4, -1) and (4, 2)",
+        "Both lines are equally steep",
+        "Neither line has a defined steepness",
+        "The line through (-2, -4) and (2, 4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The first line has slope 2.",
+        "The second line has slope 3/8.",
+        "Steepness compares the sizes of the slopes, ignoring their signs."
+      ],
+      "useAgain": "when you need to compare how steep two lines are, not just their direction.",
+      "hints": [
+        "Steepness is about the size of the slope, not its sign.",
+        "Compute both slopes, then compare their sizes."
+      ],
+      "socraticHint": "Which slope is bigger once you ignore the plus or minus sign?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Two lines are graphed. Which one is steeper?",
+        "options": [
+          "The line through (-5, -2) and (5, 3)",
+          "The line through (-1, -5) and (1, 5)",
+          "Both lines are equally steep",
+          "Neither line has a defined steepness"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Two lines graphed on the same grid.",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  -1.2,
+                  -6.0
+                ],
+                [
+                  1.2,
+                  6.0
+                ]
+              ],
+              [
+                [
+                  -6.0,
+                  -2.5
+                ],
+                [
+                  6.0,
+                  3.5
+                ]
+              ]
+            ],
+            "points": [
+              {
+                "x": -1,
+                "y": -5,
+                "label": "(-1, -5)"
+              },
+              {
+                "x": 1,
+                "y": 5,
+                "label": "(1, 5)"
+              },
+              {
+                "x": -5,
+                "y": -2,
+                "label": "(-5, -2)"
+              },
+              {
+                "x": 5,
+                "y": 3,
+                "label": "(5, 3)"
+              }
+            ]
+          }
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Two lines graphed on the same grid.",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -3.0,
+                -6.0
+              ],
+              [
+                3.0,
+                6.0
+              ]
+            ],
+            [
+              [
+                -6.0,
+                -1.75
+              ],
+              [
+                6.0,
+                2.75
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": -2,
+              "y": -4,
+              "label": "(-2, -4)"
+            },
+            {
+              "x": 2,
+              "y": 4,
+              "label": "(2, 4)"
+            },
+            {
+              "x": -4,
+              "y": -1,
+              "label": "(-4, -1)"
+            },
+            {
+              "x": 4,
+              "y": 2,
+              "label": "(4, 2)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p41",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "choice",
+      "prompt": "A line through (2, 3) and (2, -4) is compared to a line through (2, 3) and (9, 3). Which statement is true?",
+      "options": [
+        "The first is horizontal, the second is vertical",
+        "Both lines are vertical",
+        "The first is vertical, the second is horizontal",
+        "Both lines are horizontal"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The first pair shares x = 2, so that line is vertical.",
+        "The second pair shares y = 3, so that line is horizontal."
+      ],
+      "useAgain": "when telling a vertical line from a horizontal one by looking at shared coordinates.",
+      "hints": [
+        "Check whether the two points share the same x-value or the same y-value first.",
+        "A shared x-value makes a vertical line; a shared y-value makes a horizontal line."
+      ],
+      "socraticHint": "Which pair of points shares an x-value, and which shares a y-value?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A line through (5, 1) and (5, 8) is compared to a line through (5, 1) and (11, 1). Which statement is true?",
+        "options": [
+          "The first is vertical, the second is horizontal",
+          "The first is horizontal, the second is vertical",
+          "Both lines are vertical",
+          "Both lines are horizontal"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p42",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "choice",
+      "prompt": "A line has slope 3/4. A second line is parallel to it. What is the second line's slope?",
+      "options": [
+        "3/4",
+        "-3/4",
+        "4/3",
+        "-4/3"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Parallel lines never meet, so they climb at exactly the same rate.",
+        "The second line's slope is also 3/4."
+      ],
+      "useAgain": "when a problem describes two lines as parallel and asks for the second slope.",
+      "hints": [
+        "Check whether the two points share the same x-value or the same y-value first.",
+        "A shared x-value makes a vertical line; a shared y-value makes a horizontal line."
+      ],
+      "socraticHint": "What has to be true of two lines that never cross?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A line has slope 2/5. A second line is parallel to it. What is the second line's slope?",
+        "options": [
+          "-2/5",
+          "5/2",
+          "2/5",
+          "-5/2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p43",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "choice",
+      "prompt": "A skateboard ramp's slope is 0. What does that tell you about the ramp?",
+      "options": [
+        "It is a vertical wall",
+        "It is perfectly flat",
+        "It climbs steeply",
+        "It cannot be graphed"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "A slope of 0 means the rise is 0 for any run.",
+        "No rise at all means the ramp is flat."
+      ],
+      "useAgain": "when a slope of exactly 0 needs to be read as a real-world flatness.",
+      "hints": [
+        "Check whether the two points share the same x-value or the same y-value first.",
+        "A shared x-value makes a vertical line; a shared y-value makes a horizontal line."
+      ],
+      "socraticHint": "If the rise between any two points on the ramp is always 0, what shape is the ramp?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A conveyor belt's slope is 0. What does that tell you about the belt?",
+        "options": [
+          "It is a vertical wall",
+          "It climbs steeply",
+          "It cannot be graphed",
+          "It is perfectly flat"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p44",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "order",
+      "prompt": "Put these steps in order to find the slope of the line through (-3, -5) and (4, 9).",
+      "items": [
+        "Simplify to get the slope: 2.",
+        "Subtract the x-values in the same order: 4 - (-3) = 7.",
+        "Subtract the y-values in order: 9 - (-5) = 14.",
+        "Write the rise over the run: (14)/(7)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          3,
+          0
+        ]
+      },
+      "explanation": [
+        "The y-values are subtracted before the x-values are written as the run.",
+        "The order you subtract the y-values in must match the order for the x-values."
+      ],
+      "useAgain": "when computing slope needs its steps done in a fixed order.",
+      "hints": [
+        "Subtract in the same order for both the y-values and the x-values.",
+        "Rise always sits over run, never the other way around."
+      ],
+      "socraticHint": "Which subtraction happens first: the y-values, or the x-values?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps in order to find the slope of the line through (-4, -6) and (3, 8).",
+        "items": [
+          "Write the rise over the run: (14)/(7).",
+          "Subtract the y-values in order: 8 - (-6) = 14.",
+          "Simplify to get the slope: 2.",
+          "Subtract the x-values in the same order: 3 - (-4) = 7."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            3,
+            0,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p45",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "truefalse",
+      "prompt": "True or false: a line through (3, -2) and (3, 6) has undefined slope.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Both points share x = 3, so the line is vertical.",
+        "A vertical line has undefined slope, which matches the claim."
+      ],
+      "useAgain": "when you want to check whether a line is vertical without graphing it.",
+      "hints": [
+        "Check whether the two points share the same x-value.",
+        "A shared x-value with different y-values makes a vertical line."
+      ],
+      "socraticHint": "Do the two points share the same x-value?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "True or false: a line through (5, -3) and (5, 4) has undefined slope.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-al-slope-p46",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "A line through (3, 5) and (6, k) has slope 2. Find k.",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "Slope is rise over run: (k - 5)/(6 - 3) = 2.",
+        "So k - 5 = 2 times 3 = 6.",
+        "k = 11."
+      ],
+      "useAgain": "when a slope is given and one coordinate is missing.",
+      "hints": [
+        "Write the slope formula with k in place of the unknown y-value.",
+        "Solve the resulting equation for k."
+      ],
+      "socraticHint": "What equation do you get when you set the slope formula equal to the given slope?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A line through (2, 4) and (7, k) has slope 3. Find k.",
+        "answer": {
+          "kind": "number",
+          "value": "19"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p47",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "A line through (-2, 1) and (4, k) has slope 5/3. Find k.",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "Slope is rise over run: (k - 1)/(4 - (-2)) = 5/3.",
+        "So k - 1 = (5/3) times 6 = 10.",
+        "k = 11."
+      ],
+      "useAgain": "when a fractional slope is given and one coordinate is missing.",
+      "hints": [
+        "Write the slope formula with k in place of the unknown y-value.",
+        "Solve the resulting equation for k, keeping the fraction exact."
+      ],
+      "socraticHint": "What does the run equal here, and what does that make the rise?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A line through (-3, 2) and (3, k) has slope 4/3. Find k.",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p48",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "A line passes through (2, 3) and (k, 9), where k is an integer not equal to 2. For how many values of k is the slope an integer?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "The slope is (9 - 3)/(k - 2) = 6/(k - 2).",
+        "For the slope to be an integer, k - 2 must be a factor of 6, positive or negative.",
+        "6 has 8 such factors, so k has 8 possible values."
+      ],
+      "useAgain": "when a slope's denominator has to divide its numerator evenly, and you count the ways.",
+      "hints": [
+        "Write the slope as a fraction with k - 2 on the bottom.",
+        "The slope is an integer only when the bottom divides the top evenly."
+      ],
+      "socraticHint": "For the slope to be an integer, what has to be true of k - 2?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A line passes through (3, 5) and (k, 13), where k is an integer not equal to 3. For how many values of k is the slope an integer?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p49",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "A line passes through (5, -1) and (k, 11), where k is an integer not equal to 5. For how many values of k is the slope an integer?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "The slope is (11 - (-1))/(k - 5) = 12/(k - 5).",
+        "For the slope to be an integer, k - 5 must be a factor of 12, positive or negative.",
+        "12 has 12 such factors, so k has 12 possible values."
+      ],
+      "useAgain": "when a slope's denominator has to divide its numerator evenly, and you count the ways.",
+      "hints": [
+        "Write the slope as a fraction with k - 5 on the bottom.",
+        "The slope is an integer only when the bottom divides the top evenly."
+      ],
+      "socraticHint": "For the slope to be an integer, what has to be true of k - 5?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A line passes through (4, -2) and (k, 8), where k is an integer not equal to 4. For how many values of k is the slope an integer?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-al-slope-p50",
+      "lane": "skills",
+      "ideaId": "al-slope",
+      "kind": "number",
+      "prompt": "A line through (1, -2) and (k, 10) has slope 3. Find k.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Slope is rise over run: (10 - (-2))/(k - 1) = 3.",
+        "So 12/(k - 1) = 3, which means k - 1 = 4.",
+        "k = 5."
+      ],
+      "useAgain": "when a slope is given and the missing coordinate is x instead of y.",
+      "hints": [
+        "Write the slope formula with k in place of the unknown x-value.",
+        "Solve the resulting equation for k."
+      ],
+      "socraticHint": "What equation do you get when you set the slope formula equal to the given slope, with k on the bottom?",
+      "skills": [
+        "think.skills.linear"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A line through (2, -3) and (k, 15) has slope 4. Find k.",
+        "answer": {
+          "kind": "number",
+          "value": "13/2"
+        }
+      }
+    }
+  ]
+}

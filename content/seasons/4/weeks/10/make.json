@@ -1,0 +1,332 @@
+{
+  "id": "s4-w10-make",
+  "season": 4,
+  "week": 10,
+  "track": "make",
+  "title": "A logic circuit on a chip",
+  "summary": "Rebuild the season 2 adder from a 74HC00 and a 74HC86 chip, then find real evidence that switching a gate costs time and current.",
+  "minutes": 60,
+  "materials": [
+    "74HC00 quad NAND chip",
+    "74HC86 quad XOR chip",
+    "breadboard starter kit",
+    "multimeter",
+    "a battery-powered AM radio",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.electronics",
+    "make.measurement"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w10-make-01",
+      "title": "Ask, imagine, plan",
+      "body": "The season 2 adder gets a proper chip version: ask, imagine, plan, build, test, fix.\n\nAsk: the adder was once built from copper switches. Can two real logic chips do the same job, and does switching a gate actually cost anything?\n\nImagine: a half adder, sum from an XOR gate, carry from an AND gate, built this time from real chips instead of copper.\n\nPlan: sketch the half adder's two gates on paper first, sum equals A XOR B, carry equals A AND B. Decide how the AND will be built from two NAND gates."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w10-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Five NAND gates, each wired as an inverter, connect in a ring, each one's output feeding the next one's input, with the last one's output looping back with a dashed feedback arrow to the first. Text below notes that five gates at about 9 nanoseconds delay each makes the ring oscillate at roughly 11 million times a second, far too fast to see or hear directly.",
+        "spec": {
+          "w": 360,
+          "h": 260,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 155,
+              "y": 35,
+              "w": 50,
+              "h": 30,
+              "label": "NAND",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 245,
+              "y": 95,
+              "w": 50,
+              "h": 30,
+              "label": "NAND",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 215,
+              "y": 195,
+              "w": 50,
+              "h": 30,
+              "label": "NAND",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 105,
+              "y": 195,
+              "w": 50,
+              "h": 30,
+              "label": "NAND",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 75,
+              "y": 95,
+              "w": 50,
+              "h": 30,
+              "label": "NAND",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 205,
+              "y1": 50,
+              "x2": 250,
+              "y2": 100,
+              "arrow": true,
+              "color": "green"
+            },
+            {
+              "t": "line",
+              "x1": 265,
+              "y1": 125,
+              "x2": 245,
+              "y2": 195,
+              "arrow": true,
+              "color": "green"
+            },
+            {
+              "t": "line",
+              "x1": 215,
+              "y1": 210,
+              "x2": 155,
+              "y2": 210,
+              "arrow": true,
+              "color": "green"
+            },
+            {
+              "t": "line",
+              "x1": 105,
+              "y1": 195,
+              "x2": 95,
+              "y2": 125,
+              "arrow": true,
+              "color": "green"
+            },
+            {
+              "t": "line",
+              "x1": 95,
+              "y1": 95,
+              "x2": 155,
+              "y2": 50,
+              "arrow": true,
+              "dashed": true,
+              "color": "rust",
+              "label": "feedback"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 235,
+              "s": "5 gates, ~9 ns delay each",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 250,
+              "s": "oscillates around 11 million times a second",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "title": "A signal takes time through a gate",
+      "ideaId": "signal-takes-time-through-a-gate",
+      "body": "Even a fast logic gate does not respond the instant its inputs change. It takes a small delay, called propagation delay, typically around 9 nanoseconds for a 74HC-series gate, a fraction of a millionth of a second.\n\nThat delay is tiny, but wiring several gates in a loop makes it visible in a different way. A ring of an odd number of NAND gates, each wired as an inverter, feeds its own output back to its input. It never settles. Instead it oscillates at a frequency set by how many gates are in the ring and how long each one's delay is. With 9 nanoseconds a gate, a ring of just five gates would oscillate somewhere around 11 million times a second. That is far too fast to see, hear or count with ordinary tools.\n\nWhat you can measure honestly with a multimeter is that switching costs something real. A chip flipping its output millions of times a second draws more current than the same chip sitting still. Every flip charges and discharges tiny amounts of electrical energy inside it."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w10-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A half adder wired from two chips. Inputs A and B feed a 74HC86 gate (pins 1 and 2 into pin 3) whose output is the sum. The same A and B also feed a 74HC00 gate (pins 1 and 2 into pin 3) as a NAND, and that gate's output feeds both inputs of a second 74HC00 gate (pins 4 and 5 into pin 6), wired as an inverter, whose output is the carry.",
+        "spec": {
+          "w": 420,
+          "h": 200,
+          "wide": true,
+          "items": [
+            {
+              "t": "text",
+              "x": 20,
+              "y": 40,
+              "s": "A",
+              "size": 13
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 100,
+              "s": "B",
+              "size": 13
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 30,
+              "w": 110,
+              "h": 50,
+              "label": "74HC86 gate1",
+              "sub": "pins 1,2 to 3",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 35,
+              "y1": 40,
+              "x2": 90,
+              "y2": 45,
+              "color": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 35,
+              "y1": 100,
+              "x2": 90,
+              "y2": 65,
+              "color": "ink"
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 55,
+              "s": "Sum",
+              "size": 12
+            },
+            {
+              "t": "line",
+              "x1": 200,
+              "y1": 55,
+              "x2": 215,
+              "y2": 55,
+              "color": "green"
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 110,
+              "w": 110,
+              "h": 50,
+              "label": "74HC00 gate1",
+              "sub": "pins 1,2 to 3",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 35,
+              "y1": 40,
+              "x2": 90,
+              "y2": 120,
+              "color": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 35,
+              "y1": 100,
+              "x2": 90,
+              "y2": 145,
+              "color": "ink"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 110,
+              "w": 100,
+              "h": 50,
+              "label": "74HC00 gate2",
+              "sub": "pins 4,5 to 6",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 200,
+              "y1": 135,
+              "x2": 250,
+              "y2": 135,
+              "color": "green"
+            },
+            {
+              "t": "text",
+              "x": 225,
+              "y": 185,
+              "s": "both inputs tied",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 380,
+              "y": 135,
+              "s": "Carry",
+              "size": 12
+            },
+            {
+              "t": "line",
+              "x1": 350,
+              "y1": 135,
+              "x2": 375,
+              "y2": 135,
+              "color": "green"
+            }
+          ]
+        }
+      },
+      "title": "Build it, verify it, then make it switch fast",
+      "body": "Wire the half adder. Use one 74HC86 gate as the sum, with its two inputs A and B. Use two 74HC00 gates as the carry: the first a NAND of A and B, the second inverting that result to make an AND. Test all four input combinations against the correct sum and carry.\n\nMeasure the chips' total supply current with the multimeter while the circuit sits static, inputs held fixed, three readings.\n\nThen wire five spare NAND gates from the two chips into a ring. Each one's output feeds the next one's input, and the last one feeds back to the first. There are no fixed inputs at all. Hold a battery-powered AM radio close to it and listen for a change in the static, proof that something is switching fast. Measure the chips' total supply current again with the ring running, three readings.",
+      "checklist": [
+        "The half adder matched the correct sum and carry on all four input combinations",
+        "Supply current was measured three times with the circuit held static",
+        "The AM radio's static changed when held near the running ring, confirming it is switching",
+        "Supply current was measured three times again with the ring oscillating"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s4-w10-make-04",
+      "title": "Static versus oscillating current draw",
+      "ideaId": "signal-takes-time-through-a-gate",
+      "body": "The chips, the wiring and the supply voltage stay the same for every row. Only whether the ring is oscillating changes.\n\nMeasure each state three times, six rows in total. For each reading, write the state and the total supply current in milliamps.",
+      "columns": [
+        "State (static or oscillating)",
+        "Supply current (mA)"
+      ],
+      "minRows": 6,
+      "question": "Did the circuit draw more current while oscillating, and by how many milliamps?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w10-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: the ring wired with an even number of gates, which settles instead of oscillating, since it needs an odd number to never agree with itself.\n\nAlso watch for the AM radio tuned to a station instead of a gap of static. And watch for a current reading taken on the multimeter's wrong range, showing 0.00 for a real but small current."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w10-make-06",
+      "title": "Show it",
+      "prompt": "Photo of the wired half adder with all four combinations verified, plus a photo of the radio held next to the running ring and your six-row current table",
+      "accepts": [
+        "photo"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w10-make-07",
+      "variant": "maker"
+    }
+  ]
+}

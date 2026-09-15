@@ -1,0 +1,2198 @@
+{
+  "id": "a2-probability-distributions",
+  "idea": {
+    "body": "A probability distribution lists every outcome of a random count alongside its own probability. The expected value E(X) is the long-run average: multiply each outcome by its probability and add the results. A spinner landing on 1, 2, or 3 with probabilities 1/4, 1/2, 1/4 has E(X) = 1(1/4) + 2(1/2) + 3(1/4) = 2. A binomial count is the number of successes in n independent tries with success probability p on each. It has its own shortcuts: E(X) = np, and P(X=k) = C(n, k) p^k (1 - p)^(n-k). Variance measures spread: for a binomial, Var(X) = np(1-p); for any distribution, Var(X) = E(X^2) - E(X)^2, squaring each outcome before averaging.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A probability table with two columns, x and P(x), for a three-outcome distribution.",
+      "spec": {
+        "w": 200,
+        "h": 130,
+        "items": [
+          {
+            "t": "text",
+            "x": 70,
+            "y": 20,
+            "s": "x",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 150,
+            "y": 20,
+            "s": "P(x)",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 70,
+            "y": 46,
+            "s": "1",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 150,
+            "y": 46,
+            "s": "1/4",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 70,
+            "y": 72,
+            "s": "2",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 150,
+            "y": 72,
+            "s": "1/2",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 70,
+            "y": 98,
+            "s": "3",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 150,
+            "y": 98,
+            "s": "1/4",
+            "size": 12,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A vending machine's coin sensor accepts X coins out of 2 tries. P(X=0) = 1/9, P(X=1) = 4/9, P(X=2) = 4/9. Find E(X).",
+    "steps": [
+      "E(X) is the sum of each outcome times its own probability.",
+      "E(X) = 0 times 1/9 + 1 times 4/9 + 2 times 4/9.",
+      "That is 0 + 4/9 + 8/9 = 12/9.",
+      "E(X) = 12/9 = 4/3."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "A probability table with two columns, x and P(x), for the coin sensor's three outcomes.",
+      "spec": {
+        "w": 200,
+        "h": 130,
+        "items": [
+          {
+            "t": "text",
+            "x": 70,
+            "y": 20,
+            "s": "x",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 150,
+            "y": 20,
+            "s": "P(x)",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 70,
+            "y": 46,
+            "s": "0",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 150,
+            "y": 46,
+            "s": "1/9",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 70,
+            "y": 72,
+            "s": "1",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 150,
+            "y": 72,
+            "s": "4/9",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 70,
+            "y": 98,
+            "s": "2",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 150,
+            "y": 98,
+            "s": "4/9",
+            "size": 12,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "a2-probability-distributions-w1",
+      "name": "The table",
+      "when": "List all outcomes and their probabilities in a table to compute E(X).",
+      "steps": [
+        "Make a table with columns x (outcome) and P(x) (probability).",
+        "x: 1, 2, 3; P(x): 1/4, 1/2, 1/4.",
+        "E(X) = 1(1/4) + 2(1/2) + 3(1/4) = 1/4 + 2/4 + 3/4 = 6/4.",
+        "E(X) = 3/2 = 1.5."
+      ],
+      "example": "Find E(X) for outcomes 1, 2, 3 with probabilities 1/4, 1/2, 1/4.",
+      "answer": "3/2",
+      "trap": "Adding probabilities instead of multiplying by outcomes; forgetting to add all products.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A probability table: outcome 1 with probability 1/4, outcome 2 with probability 1/2, outcome 3 with probability 1/4.",
+        "spec": {
+          "w": 240,
+          "h": 210,
+          "items": [
+            {
+              "t": "text",
+              "x": 70,
+              "y": 30,
+              "s": "x",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 30,
+              "s": "P(x)",
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 42,
+              "x2": 210,
+              "y2": 42
+            },
+            {
+              "t": "text",
+              "x": 70,
+              "y": 72,
+              "s": "1",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 72,
+              "s": "1/4",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 70,
+              "y": 106,
+              "s": "2",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 106,
+              "s": "1/2",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 70,
+              "y": 140,
+              "s": "3",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 140,
+              "s": "1/4",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 120,
+              "y": 165,
+              "s": "E(X) = 1(1/4) + 2(1/2) + 3(1/4) = 6/4",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 120,
+              "y": 190,
+              "s": "E(X) = 3/2 = 1.5",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Find E(X) for outcomes 1, 2, 3.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Make a table with columns x and P(x).",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "x: 1, 2, 3; P(x): 1/4, 1/2, 1/4.",
+              "set": {
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "E(X) = 1(1/4) + 2(1/2) + 3(1/4) = 6/4.",
+              "set": {
+                "10": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "E(X) = 3/2 = 1.5.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a2-probability-distributions-w2",
+      "name": "The weighted average",
+      "when": "Think of E(X) as the long-run average value you expect to see.",
+      "steps": [
+        "Weight each outcome by how often it occurs (its probability).",
+        "Average: (1 times 0.25) + (2 times 0.5) + (3 times 0.25) = 0.25 + 1 + 0.75 = 2.0. Wait...",
+        "Let me recalculate: (1 times 1/4) + (2 times 1/2) + (3 times 1/4).",
+        "= 1/4 + 2/4 + 3/4 = 6/4 = 1.5."
+      ],
+      "example": "Find the weighted average of 1, 2, 3 with weights 1/4, 1/2, 1/4.",
+      "answer": "1.5",
+      "trap": "Using wrong weights; forgetting to use fractions consistently with integer outcomes."
+    },
+    {
+      "id": "a2-probability-distributions-w3",
+      "name": "Binomial formula for exact counts",
+      "when": "Use P(X = k) = C(n, k) p^k (1-p)^(n-k) for a fixed number of trials.",
+      "steps": [
+        "A coin flips 3 times, heads with probability 1/2.",
+        "P(exactly 2 heads) = C(3, 2) (1/2)^2 (1/2)^1.",
+        "C(3, 2) = 3. (1/2)^3 = 1/8.",
+        "P = 3 times 1/8 = 3/8."
+      ],
+      "example": "Find P(exactly 2 heads in 3 fair coin flips).",
+      "answer": "3/8",
+      "trap": "Using the wrong power of p or q; confusing C(n, k) for the exponents."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-probability-distributions-p01",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "True or false: for a distribution with P(X=1) = 1/3, P(X=2) = 1/3, P(X=3) = 1/3, the probabilities add to 1.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "1/3 + 1/3 + 1/3 = 1.",
+        "Every valid probability distribution's probabilities must add to exactly 1.",
+        "So the statement is true."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you want to check that a table of probabilities is actually valid.",
+      "hints": [
+        "Add the probabilities listed and compare the total to 1.",
+        "A distribution is only valid when its total probability is exactly 1."
+      ],
+      "socraticHint": "What does 1/3 plus 1/3 plus 1/3 equal?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: for a distribution with P(X=1) = 1/2, P(X=2) = 1/4, P(X=3) = 1/8, the probabilities add to 1.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p02",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A vending machine's coin sensor gives X with P(X=0) = 1/3, P(X=1) = 1/3, P(X=2) = 1/3. Find E(X), the expected value.",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "E(X) is the sum of each value times its own probability.",
+        "E(X) = 0 times 1/3 + 1 times 1/3 + 2 times 1/3 = 1."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the long-run average outcome of a random pick.",
+      "hints": [
+        "Multiply each outcome by its own probability before adding.",
+        "Add every one of those products together for E(X)."
+      ],
+      "socraticHint": "What do you multiply each outcome by?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A drone's target selector gives X with P(X=0) = 1/6, P(X=1) = 1/2, P(X=2) = 1/3. Find E(X), the expected value.",
+        "answer": {
+          "kind": "number",
+          "value": "7/6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot's dice roller gives X with P(X=2) = 1/2, P(X=4) = 1/4, P(X=6) = 1/4. Find E(X), the expected value.",
+      "answer": {
+        "kind": "number",
+        "value": "7/2"
+      },
+      "explanation": [
+        "E(X) is the sum of each value times its own probability.",
+        "E(X) = 2 times 1/2 + 4 times 1/4 + 6 times 1/4 = 7/2."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the long-run average outcome of a random pick.",
+      "hints": [
+        "Multiply each outcome by its own probability before adding.",
+        "Add every one of those products together for E(X)."
+      ],
+      "socraticHint": "What do you multiply each outcome by?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A sensor's fault check gives X with P(X=2) = 1/4, P(X=4) = 1/4, P(X=6) = 1/2. Find E(X), the expected value.",
+        "answer": {
+          "kind": "number",
+          "value": "9/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p04",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A quiz bot's random pick gives X with P(X=1) = 1/8, P(X=2) = 3/8, P(X=3) = 3/8, P(X=4) = 1/8. Find E(X), the expected value.",
+      "answer": {
+        "kind": "number",
+        "value": "5/2"
+      },
+      "explanation": [
+        "E(X) is the sum of each value times its own probability.",
+        "E(X) = 1 times 1/8 + 2 times 3/8 + 3 times 3/8 + 4 times 1/8 = 5/2."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the long-run average outcome of a random pick.",
+      "hints": [
+        "Multiply each outcome by its own probability before adding.",
+        "Add every one of those products together for E(X)."
+      ],
+      "socraticHint": "What do you multiply each outcome by?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "An assembly line's part check gives X with P(X=1) = 1/4, P(X=2) = 1/4, P(X=3) = 1/4, P(X=4) = 1/4. Find E(X), the expected value.",
+        "answer": {
+          "kind": "number",
+          "value": "5/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p05",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A claw machine's grab gives X with P(X=0) = 3/5, P(X=5) = 3/10, P(X=10) = 1/10. Find E(X), the expected value.",
+      "answer": {
+        "kind": "number",
+        "value": "5/2"
+      },
+      "explanation": [
+        "E(X) is the sum of each value times its own probability.",
+        "E(X) = 0 times 3/5 + 5 times 3/10 + 10 times 1/10 = 5/2."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the long-run average outcome of a random pick.",
+      "hints": [
+        "Multiply each outcome by its own probability before adding.",
+        "Add every one of those products together for E(X)."
+      ],
+      "socraticHint": "What do you multiply each outcome by?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "An arcade token slot gives X with P(X=0) = 1/2, P(X=5) = 3/10, P(X=10) = 1/5. Find E(X), the expected value.",
+        "answer": {
+          "kind": "number",
+          "value": "7/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A fair coin is flipped 3 times. Find the probability of exactly 2 heads, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "3/8"
+      },
+      "explanation": [
+        "P(X = 2) = C(3, 2) times (1/2)^2 times (1/2)^1 = C(3, 2) times (1/2)^3.",
+        "C(3, 2) = 3, and (1/2)^3 = 1/8.",
+        "P(X = 2) = 3/8 = 3/8."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when every trial has an equal chance of the two outcomes.",
+      "hints": [
+        "A fair coin has probability 1/2 of heads on each flip.",
+        "Use C(n, k) times p^k times (1 - p)^(n - k) with n = 3, k = 2, p = 1/2."
+      ],
+      "socraticHint": "What is C(3, 2)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A fair coin is flipped 4 times. Find the probability of exactly 2 heads, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "3/8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p07",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A fair coin is flipped 4 times. Find the probability of exactly 1 heads, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/4"
+      },
+      "explanation": [
+        "P(X = 1) = C(4, 1) times (1/2)^1 times (1/2)^3 = C(4, 1) times (1/2)^4.",
+        "C(4, 1) = 4, and (1/2)^4 = 1/16.",
+        "P(X = 1) = 4/16 = 1/4."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when every trial has an equal chance of the two outcomes.",
+      "hints": [
+        "A fair coin has probability 1/2 of heads on each flip.",
+        "Use C(n, k) times p^k times (1 - p)^(n - k) with n = 4, k = 1, p = 1/2."
+      ],
+      "socraticHint": "What is C(4, 1)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A fair coin is flipped 5 times. Find the probability of exactly 1 heads, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "5/32"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A fair coin is flipped 4 times. Find the probability of exactly 3 heads, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/4"
+      },
+      "explanation": [
+        "P(X = 3) = C(4, 3) times (1/2)^3 times (1/2)^1 = C(4, 3) times (1/2)^4.",
+        "C(4, 3) = 4, and (1/2)^4 = 1/16.",
+        "P(X = 3) = 4/16 = 1/4."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when every trial has an equal chance of the two outcomes.",
+      "hints": [
+        "A fair coin has probability 1/2 of heads on each flip.",
+        "Use C(n, k) times p^k times (1 - p)^(n - k) with n = 4, k = 3, p = 1/2."
+      ],
+      "socraticHint": "What is C(4, 3)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A fair coin is flipped 5 times. Find the probability of exactly 4 heads, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "5/32"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A fair coin is flipped 5 times. Find the probability of exactly 2 heads, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "5/16"
+      },
+      "explanation": [
+        "P(X = 2) = C(5, 2) times (1/2)^2 times (1/2)^3 = C(5, 2) times (1/2)^5.",
+        "C(5, 2) = 10, and (1/2)^5 = 1/32.",
+        "P(X = 2) = 10/32 = 5/16."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when every trial has an equal chance of the two outcomes.",
+      "hints": [
+        "A fair coin has probability 1/2 of heads on each flip.",
+        "Use C(n, k) times p^k times (1 - p)^(n - k) with n = 5, k = 2, p = 1/2."
+      ],
+      "socraticHint": "What is C(5, 2)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A fair coin is flipped 6 times. Find the probability of exactly 2 heads, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "15/64"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p10",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A fair coin is flipped 6 times. Find the probability of exactly 4 heads, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "15/64"
+      },
+      "explanation": [
+        "P(X = 4) = C(6, 4) times (1/2)^4 times (1/2)^2 = C(6, 4) times (1/2)^6.",
+        "C(6, 4) = 15, and (1/2)^6 = 1/64.",
+        "P(X = 4) = 15/64 = 15/64."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when every trial has an equal chance of the two outcomes.",
+      "hints": [
+        "A fair coin has probability 1/2 of heads on each flip.",
+        "Use C(n, k) times p^k times (1 - p)^(n - k) with n = 6, k = 4, p = 1/2."
+      ],
+      "socraticHint": "What is C(6, 4)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A fair coin is flipped 7 times. Find the probability of exactly 4 heads, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "35/128"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p11",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "Put these steps for finding E(X) of a distribution X with values 1, 2, 3 in the order you would do them.",
+      "items": [
+        "Add 1 times 1/2, 2 times 1/4, and 3 times 1/4 together.",
+        "Multiply each outcome by its own probability: 1 times 1/2, 2 times 1/4, 3 times 1/4.",
+        "List each outcome next to its probability: (1, 1/2), (2, 1/4), (3, 1/4).",
+        "Report the total, 7/4, as E(X)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0,
+          3
+        ]
+      },
+      "explanation": [
+        "Multiply each outcome by its own probability.",
+        "Add every one of those products together.",
+        "List each outcome next to its probability.",
+        "Report the total as E(X)."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you want to keep the steps of an expected value calculation straight.",
+      "hints": [
+        "The products cannot be formed until each outcome is paired with its probability.",
+        "The addition step always comes right after every product is found."
+      ],
+      "socraticHint": "What has to be listed before you can multiply anything?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Put these steps for finding E(X) of a distribution X with values 0, 1, 2 in the order you would do them.",
+        "items": [
+          "Add 0 times 1/4, 1 times 1/2, and 2 times 1/4 together.",
+          "Multiply each outcome by its own probability: 0 times 1/4, 1 times 1/2, 2 times 1/4.",
+          "List each outcome next to its probability: (0, 1/4), (1, 1/2), (2, 1/4).",
+          "Report the total, 1, as E(X)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p12",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A card game's draw gives X with P(X=0) = 1/5, P(X=1) = 3/5, P(X=2) = 1/5. Which value of x is the most likely outcome?",
+      "options": [
+        "x = 0",
+        "x = 2",
+        "x = 1",
+        "x = 5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The most likely outcome is the one with the largest probability, not the largest x.",
+        "Comparing the probabilities given, 3/5 is the largest.",
+        "That belongs to x = 1."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the single most likely outcome of a distribution, not its average.",
+      "hints": [
+        "Compare the probabilities themselves, not the outcome values.",
+        "The biggest fraction in the list points to the most likely outcome."
+      ],
+      "socraticHint": "Which fraction in the list is the largest?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A sensor's fault check gives X with P(X=0) = 3/5, P(X=1) = 1/5, P(X=2) = 1/5. Which value of x is the most likely outcome?",
+        "options": [
+          "x = 0",
+          "x = 1",
+          "x = 2",
+          "x = 5"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p13",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A drone's target selector gives X with P(X=4) = 1/6, P(X=5) = 1/3, P(X=6) = 1/2. Which value of x is the most likely outcome?",
+      "options": [
+        "x = 4",
+        "x = 6",
+        "x = 5",
+        "x = 9"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The most likely outcome is the one with the largest probability, not the largest x.",
+        "Comparing the probabilities given, 1/2 is the largest.",
+        "That belongs to x = 6."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the single most likely outcome of a distribution, not its average.",
+      "hints": [
+        "Compare the probabilities themselves, not the outcome values.",
+        "The biggest fraction in the list points to the most likely outcome."
+      ],
+      "socraticHint": "Which fraction in the list is the largest?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "An assembly line's part check gives X with P(X=4) = 1/2, P(X=5) = 1/3, P(X=6) = 1/6. Which value of x is the most likely outcome?",
+        "options": [
+          "x = 5",
+          "x = 6",
+          "x = 9",
+          "x = 4"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p14",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A sensor's fault check gives X with P(X=1) = 1/2, P(X=2) = 3/10, P(X=3) = 1/5. Which value of x is the most likely outcome?",
+      "options": [
+        "x = 1",
+        "x = 2",
+        "x = 3",
+        "x = 6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The most likely outcome is the one with the largest probability, not the largest x.",
+        "Comparing the probabilities given, 1/2 is the largest.",
+        "That belongs to x = 1."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the single most likely outcome of a distribution, not its average.",
+      "hints": [
+        "Compare the probabilities themselves, not the outcome values.",
+        "The biggest fraction in the list points to the most likely outcome."
+      ],
+      "socraticHint": "Which fraction in the list is the largest?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "An arcade token slot gives X with P(X=1) = 1/5, P(X=2) = 3/10, P(X=3) = 1/2. Which value of x is the most likely outcome?",
+        "options": [
+          "x = 1",
+          "x = 3",
+          "x = 2",
+          "x = 6"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p15",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "An assembly line's part check gives X with P(X=0) = 1/8, P(X=1) = 1/4, P(X=2) = 1/2, P(X=3) = 1/8. Which value of x is the most likely outcome?",
+      "options": [
+        "x = 0",
+        "x = 1",
+        "x = 3",
+        "x = 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The most likely outcome is the one with the largest probability, not the largest x.",
+        "Comparing the probabilities given, 1/2 is the largest.",
+        "That belongs to x = 2."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the single most likely outcome of a distribution, not its average.",
+      "hints": [
+        "Compare the probabilities themselves, not the outcome values.",
+        "The biggest fraction in the list points to the most likely outcome."
+      ],
+      "socraticHint": "Which fraction in the list is the largest?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A weather bot's forecast pick gives X with P(X=0) = 1/2, P(X=1) = 1/4, P(X=2) = 1/8, P(X=3) = 1/8. Which value of x is the most likely outcome?",
+        "options": [
+          "x = 1",
+          "x = 2",
+          "x = 0",
+          "x = 3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p16",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's spinner succeeds with probability 1/3 on each of 4 independent tries. Find the probability of exactly 2 successes, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "8/27"
+      },
+      "explanation": [
+        "P(X = 2) = C(4, 2) times 1/3^2 times 2/3^2.",
+        "C(4, 2) = 6.",
+        "1/3^2 times 2/3^2 = 1/9 times 4/9 = 4/81.",
+        "P(X = 2) = 6 times 4/81 = 8/27."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when repeated tries have an unequal chance of success and you need one exact count.",
+      "hints": [
+        "Here q = 1 - p = 2/3 is the probability of failure on one try.",
+        "Use C(n, k) times p^k times q^(n - k), keeping every factor as a fraction."
+      ],
+      "socraticHint": "What is q, the failure probability, here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A vending machine's coin sensor succeeds with probability 1/3 on each of 6 independent tries. Find the probability of exactly 3 successes, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "160/729"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p17",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "True or false: for a binomial count with n = 10 and p = 1/2, E(X) = 5.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "E(X) = np for a binomial count.",
+        "E(X) = 10 times 1/2 = 5.",
+        "The statement is true."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you want a fast check on a binomial's expected count.",
+      "hints": [
+        "Use E(X) = n times p directly.",
+        "Multiply the number of trials by the success probability."
+      ],
+      "socraticHint": "What is 10 times 1/2?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "True or false: for a binomial count with n = 12 and p = 1/3, E(X) = 3.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p18",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot's dice roller succeeds with probability 1/4 on each of 4 independent tries. Find the probability of exactly 1 successes, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "27/64"
+      },
+      "explanation": [
+        "P(X = 1) = C(4, 1) times 1/4^1 times 3/4^3.",
+        "C(4, 1) = 4.",
+        "1/4^1 times 3/4^3 = 1/4 times 27/64 = 27/256.",
+        "P(X = 1) = 4 times 27/256 = 27/64."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when repeated tries have an unequal chance of success and you need one exact count.",
+      "hints": [
+        "Here q = 1 - p = 3/4 is the probability of failure on one try.",
+        "Use C(n, k) times p^k times q^(n - k), keeping every factor as a fraction."
+      ],
+      "socraticHint": "What is q, the failure probability, here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A quiz bot's random pick succeeds with probability 1/4 on each of 6 independent tries. Find the probability of exactly 1 successes, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "729/2048"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p19",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A quiz bot's random pick succeeds with probability 3/5 on each of 5 independent tries. Find the probability of exactly 2 successes, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "144/625"
+      },
+      "explanation": [
+        "P(X = 2) = C(5, 2) times 3/5^2 times 2/5^3.",
+        "C(5, 2) = 10.",
+        "3/5^2 times 2/5^3 = 9/25 times 8/125 = 72/3125.",
+        "P(X = 2) = 10 times 72/3125 = 144/625."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when repeated tries have an unequal chance of success and you need one exact count.",
+      "hints": [
+        "Here q = 1 - p = 2/5 is the probability of failure on one try.",
+        "Use C(n, k) times p^k times q^(n - k), keeping every factor as a fraction."
+      ],
+      "socraticHint": "What is q, the failure probability, here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A claw machine's grab succeeds with probability 3/5 on each of 7 independent tries. Find the probability of exactly 2 successes, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "6048/78125"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p20",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A claw machine's grab succeeds with probability 1/3 on each of 6 independent tries. Find the probability of exactly 2 successes, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "80/243"
+      },
+      "explanation": [
+        "P(X = 2) = C(6, 2) times 1/3^2 times 2/3^4.",
+        "C(6, 2) = 15.",
+        "1/3^2 times 2/3^4 = 1/9 times 16/81 = 16/729.",
+        "P(X = 2) = 15 times 16/729 = 80/243."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when repeated tries have an unequal chance of success and you need one exact count.",
+      "hints": [
+        "Here q = 1 - p = 2/3 is the probability of failure on one try.",
+        "Use C(n, k) times p^k times q^(n - k), keeping every factor as a fraction."
+      ],
+      "socraticHint": "What is q, the failure probability, here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A card game's draw succeeds with probability 1/3 on each of 8 independent tries. Find the probability of exactly 2 successes, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1792/6561"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p21",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A quiz bot's random pick succeeds with probability 1/5 on each of 10 independent tries. Find E(X), the expected number of successes.",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "For a binomial count, E(X) = n times p.",
+        "E(X) = 10 times 1/5 = 2."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the average count of successes over many independent tries.",
+      "hints": [
+        "The expected count from n independent tries is n times the success probability.",
+        "Multiply the number of tries by the probability of success on one try."
+      ],
+      "socraticHint": "What is n times p here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A claw machine's grab succeeds with probability 1/5 on each of 20 independent tries. Find E(X), the expected number of successes.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A claw machine's grab succeeds with probability 1/4 on each of 12 independent tries. Find E(X), the expected number of successes.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "For a binomial count, E(X) = n times p.",
+        "E(X) = 12 times 1/4 = 3."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the average count of successes over many independent tries.",
+      "hints": [
+        "The expected count from n independent tries is n times the success probability.",
+        "Multiply the number of tries by the probability of success on one try."
+      ],
+      "socraticHint": "What is n times p here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A card game's draw succeeds with probability 1/4 on each of 16 independent tries. Find E(X), the expected number of successes.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p23",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A card game's draw succeeds with probability 3/4 on each of 8 independent tries. Find E(X), the expected number of successes.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "For a binomial count, E(X) = n times p.",
+        "E(X) = 8 times 3/4 = 6."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the average count of successes over many independent tries.",
+      "hints": [
+        "The expected count from n independent tries is n times the success probability.",
+        "Multiply the number of tries by the probability of success on one try."
+      ],
+      "socraticHint": "What is n times p here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone's target selector succeeds with probability 3/4 on each of 12 independent tries. Find E(X), the expected number of successes.",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p24",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone's target selector succeeds with probability 2/5 on each of 15 independent tries. Find E(X), the expected number of successes.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "For a binomial count, E(X) = n times p.",
+        "E(X) = 15 times 2/5 = 6."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the average count of successes over many independent tries.",
+      "hints": [
+        "The expected count from n independent tries is n times the success probability.",
+        "Multiply the number of tries by the probability of success on one try."
+      ],
+      "socraticHint": "What is n times p here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A sensor's fault check succeeds with probability 2/5 on each of 10 independent tries. Find E(X), the expected number of successes.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p25",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A sensor's fault check succeeds with probability 1/3 on each of 9 independent tries. Find E(X), the expected number of successes.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "For a binomial count, E(X) = n times p.",
+        "E(X) = 9 times 1/3 = 3."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need the average count of successes over many independent tries.",
+      "hints": [
+        "The expected count from n independent tries is n times the success probability.",
+        "Multiply the number of tries by the probability of success on one try."
+      ],
+      "socraticHint": "What is n times p here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "An assembly line's part check succeeds with probability 1/3 on each of 18 independent tries. Find E(X), the expected number of successes.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p26",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A card game's draw succeeds with probability 1/5 on each of 10 independent tries. Find Var(X), the variance of the number of successes.",
+      "answer": {
+        "kind": "number",
+        "value": "8/5"
+      },
+      "explanation": [
+        "For a binomial count, Var(X) = n times p times (1 - p).",
+        "1 - p = 4/5.",
+        "Var(X) = 10 times 1/5 times 4/5 = 8/5."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need how spread out a binomial count typically is.",
+      "hints": [
+        "Var(X) = n times p times q, where q = 1 - p.",
+        "Multiply all three factors together, keeping fractions exact."
+      ],
+      "socraticHint": "What is q here, and what is n times p times q?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone's target selector succeeds with probability 1/5 on each of 20 independent tries. Find Var(X), the variance of the number of successes.",
+        "answer": {
+          "kind": "number",
+          "value": "16/5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p27",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone's target selector succeeds with probability 1/4 on each of 8 independent tries. Find Var(X), the variance of the number of successes.",
+      "answer": {
+        "kind": "number",
+        "value": "3/2"
+      },
+      "explanation": [
+        "For a binomial count, Var(X) = n times p times (1 - p).",
+        "1 - p = 3/4.",
+        "Var(X) = 8 times 1/4 times 3/4 = 3/2."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need how spread out a binomial count typically is.",
+      "hints": [
+        "Var(X) = n times p times q, where q = 1 - p.",
+        "Multiply all three factors together, keeping fractions exact."
+      ],
+      "socraticHint": "What is q here, and what is n times p times q?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A sensor's fault check succeeds with probability 1/4 on each of 12 independent tries. Find Var(X), the variance of the number of successes.",
+        "answer": {
+          "kind": "number",
+          "value": "9/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p28",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A sensor's fault check succeeds with probability 1/3 on each of 12 independent tries. Find Var(X), the variance of the number of successes.",
+      "answer": {
+        "kind": "number",
+        "value": "8/3"
+      },
+      "explanation": [
+        "For a binomial count, Var(X) = n times p times (1 - p).",
+        "1 - p = 2/3.",
+        "Var(X) = 12 times 1/3 times 2/3 = 8/3."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need how spread out a binomial count typically is.",
+      "hints": [
+        "Var(X) = n times p times q, where q = 1 - p.",
+        "Multiply all three factors together, keeping fractions exact."
+      ],
+      "socraticHint": "What is q here, and what is n times p times q?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "An assembly line's part check succeeds with probability 1/3 on each of 18 independent tries. Find Var(X), the variance of the number of successes.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p29",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "An assembly line's part check succeeds with probability 2/3 on each of 9 independent tries. Find Var(X), the variance of the number of successes.",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "For a binomial count, Var(X) = n times p times (1 - p).",
+        "1 - p = 1/3.",
+        "Var(X) = 9 times 2/3 times 1/3 = 2."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need how spread out a binomial count typically is.",
+      "hints": [
+        "Var(X) = n times p times q, where q = 1 - p.",
+        "Multiply all three factors together, keeping fractions exact."
+      ],
+      "socraticHint": "What is q here, and what is n times p times q?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "An arcade token slot succeeds with probability 2/3 on each of 15 independent tries. Find Var(X), the variance of the number of successes.",
+        "answer": {
+          "kind": "number",
+          "value": "10/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p30",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "An arcade token slot succeeds with probability 1/4 on each of 16 independent tries. Find Var(X), the variance of the number of successes.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "For a binomial count, Var(X) = n times p times (1 - p).",
+        "1 - p = 3/4.",
+        "Var(X) = 16 times 1/4 times 3/4 = 3."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need how spread out a binomial count typically is.",
+      "hints": [
+        "Var(X) = n times p times q, where q = 1 - p.",
+        "Multiply all three factors together, keeping fractions exact."
+      ],
+      "socraticHint": "What is q here, and what is n times p times q?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A weather bot's forecast pick succeeds with probability 1/4 on each of 24 independent tries. Find Var(X), the variance of the number of successes.",
+        "answer": {
+          "kind": "number",
+          "value": "9/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p31",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's spinner gives X with P(X=1) = 1/4, P(X=2) = 1/2, P(X=3) = 1/4. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "E(X) = 1 times 1/4 + 2 times 1/2 + 3 times 1/4 = 2.",
+        "E(X^2) = 1^2 times 1/4 + 2^2 times 1/2 + 3^2 times 1/4 = 9/2.",
+        "Var(X) = 9/2 - (2)^2 = 9/2 - 4 = 1/2."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a distribution's spread, not just its average, is what you need.",
+      "hints": [
+        "Find E(X) first, then E(X^2) using each value squared.",
+        "Var(X) is E(X^2) minus the square of E(X), not the other way around."
+      ],
+      "socraticHint": "What is E(X^2) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A sensor's fault check gives X with P(X=1) = 1/2, P(X=2) = 1/4, P(X=3) = 1/4. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+        "answer": {
+          "kind": "number",
+          "value": "11/16"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p32",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A vending machine's coin sensor gives X with P(X=0) = 1/2, P(X=1) = 1/3, P(X=2) = 1/6. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+      "answer": {
+        "kind": "number",
+        "value": "5/9"
+      },
+      "explanation": [
+        "E(X) = 0 times 1/2 + 1 times 1/3 + 2 times 1/6 = 2/3.",
+        "E(X^2) = 0^2 times 1/2 + 1^2 times 1/3 + 2^2 times 1/6 = 1.",
+        "Var(X) = 1 - (2/3)^2 = 1 - 4/9 = 5/9."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a distribution's spread, not just its average, is what you need.",
+      "hints": [
+        "Find E(X) first, then E(X^2) using each value squared.",
+        "Var(X) is E(X^2) minus the square of E(X), not the other way around."
+      ],
+      "socraticHint": "What is E(X^2) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An assembly line's part check gives X with P(X=0) = 1/3, P(X=1) = 1/3, P(X=2) = 1/3. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+        "answer": {
+          "kind": "number",
+          "value": "2/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot's dice roller gives X with P(X=2) = 1/2, P(X=4) = 1/4, P(X=6) = 1/4. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+      "answer": {
+        "kind": "number",
+        "value": "11/4"
+      },
+      "explanation": [
+        "E(X) = 2 times 1/2 + 4 times 1/4 + 6 times 1/4 = 7/2.",
+        "E(X^2) = 2^2 times 1/2 + 4^2 times 1/4 + 6^2 times 1/4 = 15.",
+        "Var(X) = 15 - (7/2)^2 = 15 - 49/4 = 11/4."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a distribution's spread, not just its average, is what you need.",
+      "hints": [
+        "Find E(X) first, then E(X^2) using each value squared.",
+        "Var(X) is E(X^2) minus the square of E(X), not the other way around."
+      ],
+      "socraticHint": "What is E(X^2) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An arcade token slot gives X with P(X=2) = 1/4, P(X=4) = 1/4, P(X=6) = 1/2. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+        "answer": {
+          "kind": "number",
+          "value": "11/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p34",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "Put these steps for finding Var(X) of a distribution in the order you would do them.",
+      "items": [
+        "Subtract E(X) squared from E(X^2) to get Var(X).",
+        "Compute E(X^2), squaring each outcome first.",
+        "Compute E(X), the plain expected value, first.",
+        "Report the difference as Var(X)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0,
+          3
+        ]
+      },
+      "explanation": [
+        "Compute E(X^2) by squaring each outcome before multiplying by its probability.",
+        "Subtract E(X) squared from E(X^2).",
+        "Compute E(X) first, the plain expected value.",
+        "Report that difference as Var(X)."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you want to keep the steps of a variance calculation straight.",
+      "hints": [
+        "E(X) is needed on its own before it can be squared or reused.",
+        "The subtraction is the very last arithmetic step, right before reporting the answer."
+      ],
+      "socraticHint": "Which expected value do you need first, E(X) or E(X^2)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps for finding the standard measure of spread Var(X) of a distribution in the order you would do them.",
+        "items": [
+          "Subtract E(X) squared from E(X^2) to get Var(X).",
+          "Compute E(X^2), squaring each outcome first.",
+          "Compute E(X), the plain expected value, first.",
+          "Report the difference as Var(X)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A claw machine's grab gives X with P(X=0) = 1/4, P(X=2) = 1/2, P(X=4) = 1/4. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "E(X) = 0 times 1/4 + 2 times 1/2 + 4 times 1/4 = 2.",
+        "E(X^2) = 0^2 times 1/4 + 2^2 times 1/2 + 4^2 times 1/4 = 6.",
+        "Var(X) = 6 - (2)^2 = 6 - 4 = 2."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a distribution's spread, not just its average, is what you need.",
+      "hints": [
+        "Find E(X) first, then E(X^2) using each value squared.",
+        "Var(X) is E(X^2) minus the square of E(X), not the other way around."
+      ],
+      "socraticHint": "What is E(X^2) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A puzzle box's lock try gives X with P(X=0) = 1/2, P(X=2) = 1/4, P(X=4) = 1/4. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+        "answer": {
+          "kind": "number",
+          "value": "11/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A vending machine's coin sensor succeeds with probability 1/2 on each of 4 independent tries. Find the probability of at least 3 successes, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "5/16"
+      },
+      "explanation": [
+        "At least 3 successes means adding P(X=3) + P(X=4).",
+        "Compute each P(X=k) = C(4, k) times 1/2^k times 1/2^(4-k) and add them.",
+        "The total is 5/16."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a probability question covers a range of counts, not just one exact count.",
+      "hints": [
+        "List exactly which counts k satisfy 'at least 3'.",
+        "Add the binomial probability of each of those counts."
+      ],
+      "socraticHint": "Which values of k does 'at least 3' include?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot's dice roller succeeds with probability 1/2 on each of 5 independent tries. Find the probability of at least 4 successes, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "3/16"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot's dice roller succeeds with probability 1/3 on each of 5 independent tries. Find the probability of at most 1 successes, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "112/243"
+      },
+      "explanation": [
+        "At most 1 successes means adding P(X=0) + P(X=1).",
+        "Compute each P(X=k) = C(5, k) times 1/3^k times 2/3^(5-k) and add them.",
+        "The total is 112/243."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a probability question covers a range of counts, not just one exact count.",
+      "hints": [
+        "List exactly which counts k satisfy 'at most 1'.",
+        "Add the binomial probability of each of those counts."
+      ],
+      "socraticHint": "Which values of k does 'at most 1' include?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A quiz bot's random pick succeeds with probability 1/3 on each of 6 independent tries. Find the probability of at most 1 successes, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "256/729"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p38",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A quiz bot's random pick succeeds with probability 1/4 on each of 4 independent tries. Find the probability of at least 3 successes, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "13/256"
+      },
+      "explanation": [
+        "At least 3 successes means adding P(X=3) + P(X=4).",
+        "Compute each P(X=k) = C(4, k) times 1/4^k times 3/4^(4-k) and add them.",
+        "The total is 13/256."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a probability question covers a range of counts, not just one exact count.",
+      "hints": [
+        "List exactly which counts k satisfy 'at least 3'.",
+        "Add the binomial probability of each of those counts."
+      ],
+      "socraticHint": "Which values of k does 'at least 3' include?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A claw machine's grab succeeds with probability 1/4 on each of 5 independent tries. Find the probability of at least 4 successes, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1/64"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p39",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A claw machine's grab succeeds with probability 2/5 on each of 5 independent tries. Find the probability of at most 1 successes, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1053/3125"
+      },
+      "explanation": [
+        "At most 1 successes means adding P(X=0) + P(X=1).",
+        "Compute each P(X=k) = C(5, k) times 2/5^k times 3/5^(5-k) and add them.",
+        "The total is 1053/3125."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a probability question covers a range of counts, not just one exact count.",
+      "hints": [
+        "List exactly which counts k satisfy 'at most 1'.",
+        "Add the binomial probability of each of those counts."
+      ],
+      "socraticHint": "Which values of k does 'at most 1' include?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A card game's draw succeeds with probability 2/5 on each of 6 independent tries. Find the probability of at most 1 successes, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "729/3125"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p40",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A card game's draw succeeds with probability 1/2 on each of 6 independent tries. Find the probability of at least 5 successes, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "7/64"
+      },
+      "explanation": [
+        "At least 5 successes means adding P(X=5) + P(X=6).",
+        "Compute each P(X=k) = C(6, k) times 1/2^k times 1/2^(6-k) and add them.",
+        "The total is 7/64."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a probability question covers a range of counts, not just one exact count.",
+      "hints": [
+        "List exactly which counts k satisfy 'at least 5'.",
+        "Add the binomial probability of each of those counts."
+      ],
+      "socraticHint": "Which values of k does 'at least 5' include?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A drone's target selector succeeds with probability 1/2 on each of 7 independent tries. Find the probability of at least 6 successes, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1/16"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p41",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A binomial count has n trials and success probability p. Which expression gives Var(X)?",
+      "options": [
+        "np",
+        "np^2",
+        "np(1 - p)",
+        "n(1 - p)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "For a binomial count, the mean is E(X) = np and the variance is Var(X) = np(1 - p).",
+        "Match the expression asked for to the right one of those two formulas."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need to recall which formula is the binomial's mean and which is its variance.",
+      "hints": [
+        "A binomial's mean and variance are two different, fixed formulas.",
+        "Variance always includes both p and (1 - p); the mean uses only p."
+      ],
+      "socraticHint": "Does the question ask for the average, or for the spread?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A binomial count has n trials and success probability p. Which expression gives the standard deviation squared of X?",
+        "options": [
+          "np(1 - p)",
+          "np",
+          "np^2",
+          "n(1 - p)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p42",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A binomial count has n trials and success probability p. Which expression gives E(X)?",
+      "options": [
+        "np(1 - p)",
+        "n(1 - p)",
+        "p(1 - p)",
+        "np"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "For a binomial count, the mean is E(X) = np and the variance is Var(X) = np(1 - p).",
+        "Match the expression asked for to the right one of those two formulas."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when you need to recall which formula is the binomial's mean and which is its variance.",
+      "hints": [
+        "A binomial's mean and variance are two different, fixed formulas.",
+        "Variance always includes both p and (1 - p); the mean uses only p."
+      ],
+      "socraticHint": "Does the question ask for the average, or for the spread?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A binomial count has n trials and success probability p. Which expression gives the mean of X?",
+        "options": [
+          "np(1 - p)",
+          "np",
+          "n(1 - p)",
+          "p(1 - p)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p43",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "An assembly line's part check gives X with P(X=1) = 1/5, P(X=2) = 3/5, P(X=3) = 1/5. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+      "answer": {
+        "kind": "number",
+        "value": "2/5"
+      },
+      "explanation": [
+        "E(X) = 1 times 1/5 + 2 times 3/5 + 3 times 1/5 = 2.",
+        "E(X^2) = 1^2 times 1/5 + 2^2 times 3/5 + 3^2 times 1/5 = 22/5.",
+        "Var(X) = 22/5 - (2)^2 = 2/5."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a distribution's spread, not just its average, is what you need.",
+      "hints": [
+        "Find E(X) first, then E(X^2) using each value squared.",
+        "Subtract the square of E(X) from E(X^2) last."
+      ],
+      "socraticHint": "What is E(X) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An assembly line's part check gives X with P(X=1) = 3/5, P(X=2) = 1/5, P(X=3) = 1/5. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+        "answer": {
+          "kind": "number",
+          "value": "16/25"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p44",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "An arcade token slot gives X with P(X=0) = 1/4, P(X=1) = 1/2, P(X=2) = 1/4. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "E(X) = 0 times 1/4 + 1 times 1/2 + 2 times 1/4 = 1.",
+        "E(X^2) = 0^2 times 1/4 + 1^2 times 1/2 + 2^2 times 1/4 = 3/2.",
+        "Var(X) = 3/2 - (1)^2 = 1/2."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a distribution's spread, not just its average, is what you need.",
+      "hints": [
+        "Find E(X) first, then E(X^2) using each value squared.",
+        "Subtract the square of E(X) from E(X^2) last."
+      ],
+      "socraticHint": "What is E(X) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An arcade token slot gives X with P(X=0) = 1/2, P(X=1) = 1/4, P(X=2) = 1/4. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+        "answer": {
+          "kind": "number",
+          "value": "11/16"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p45",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A weather bot's forecast pick gives X with P(X=2) = 1/3, P(X=3) = 1/3, P(X=4) = 1/3. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+      "answer": {
+        "kind": "number",
+        "value": "2/3"
+      },
+      "explanation": [
+        "E(X) = 2 times 1/3 + 3 times 1/3 + 4 times 1/3 = 3.",
+        "E(X^2) = 2^2 times 1/3 + 3^2 times 1/3 + 4^2 times 1/3 = 29/3.",
+        "Var(X) = 29/3 - (3)^2 = 2/3."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a distribution's spread, not just its average, is what you need.",
+      "hints": [
+        "Find E(X) first, then E(X^2) using each value squared.",
+        "Subtract the square of E(X) from E(X^2) last."
+      ],
+      "socraticHint": "What is E(X) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A weather bot's forecast pick gives X with P(X=2) = 1/2, P(X=3) = 1/4, P(X=4) = 1/4. Find Var(X) using Var(X) = E(X^2) - E(X)^2.",
+        "answer": {
+          "kind": "number",
+          "value": "11/16"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-probability-distributions-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A weighted coin lands heads with probability 2/3. It is flipped 5 times. Find the probability of exactly 3 heads, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "80/243"
+      },
+      "explanation": [
+        "P(X = 3) = C(5, 3) times (2/3)^3 times (1/3)^2.",
+        "C(5, 3) = 10, (2/3)^3 = 8/27, (1/3)^2 = 1/9.",
+        "10 times 8/27 times 1/9 = 80/243."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a coin or trial is unfair and you still need one exact binomial probability.",
+      "hints": [
+        "Use C(n, k) times p^k times (1 - p)^(n - k) with the weighted probability.",
+        "Multiply the three fractions exactly, without rounding."
+      ],
+      "socraticHint": "What is C(5, 3)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A weighted coin lands heads with probability 3/4. It is flipped 4 times. Find the probability of exactly 2 heads, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "27/128"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two independent fair coins are each flipped 3 times. Let X be the total number of heads across both coins (0 to 6). Find P(X = 3), as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "5/16"
+      },
+      "explanation": [
+        "Let A be heads on the first coin's 3 flips and B on the second's; X = A + B.",
+        "P(X = 3) is the sum over j of P(A = j) times P(B = 3 - j), for j from 0 to 3.",
+        "Each P(A = j) = C(3, j)/8 and P(B = 3-j) = C(3, 3-j)/8.",
+        "Adding all four products gives 5/16."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when two independent random counts are added and you need the probability of their sum.",
+      "hints": [
+        "Split the total into every way the two coins' counts could add to 3.",
+        "Multiply each pair of binomial probabilities and add every pair's contribution."
+      ],
+      "socraticHint": "If the first coin shows j heads, how many must the second show?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Two independent fair coins are each flipped 4 times. Let X be the total number of heads across both coins (0 to 8). Find P(X = 4), as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "35/128"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p48",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A binomial count has n = 8 trials. Its expected value is 6. What is p, the success probability?",
+      "answer": {
+        "kind": "number",
+        "value": "3/4"
+      },
+      "explanation": [
+        "E(X) = np, so 6 = 8 times p.",
+        "p = 6/8 = 3/4."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a binomial's expected value is known and you need its success probability.",
+      "hints": [
+        "Set n times p equal to the given expected value.",
+        "Solve that equation for p and reduce the fraction."
+      ],
+      "socraticHint": "What is 6 divided by 8, in lowest terms?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A binomial count has n = 12 trials. Its expected value is 9. What is p, the success probability?",
+        "answer": {
+          "kind": "number",
+          "value": "3/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p49",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game pays 10 if a fair die shows a 6, and costs 1 to play otherwise (a loss of 1). Find the expected net value of one play.",
+      "answer": {
+        "kind": "number",
+        "value": "5/6"
+      },
+      "explanation": [
+        "P(6) = 1/6 with payout 10; P(not 6) = 5/6 with payout -1.",
+        "E = 1/6 times 10 + 5/6 times (-1) = 10/6 - 5/6 = 5/6."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a game or bet has a win and a loss, and you need its expected net result.",
+      "hints": [
+        "Treat the loss as a negative payout in the same expected value sum.",
+        "Multiply each payout by its own probability, then add."
+      ],
+      "socraticHint": "What are the two possible net payouts here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game pays 20 if a fair die shows a 6, and costs 2 to play otherwise (a loss of 2). Find the expected net value of one play.",
+        "answer": {
+          "kind": "number",
+          "value": "5/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-distributions-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A binomial count has E(X) = 6 and Var(X) = 3. Find n, the number of trials.",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "E(X) = np = 6 and Var(X) = np(1 - p) = 3.",
+        "Divide Var(X) by E(X): np(1 - p) / (np) = 1 - p = 3/6 = 1/2.",
+        "So p = 1/2, and n = E(X) / p = 6 / (1/2) = 12."
+      ],
+      "ideaId": "a2-probability-distributions",
+      "useAgain": "when a binomial's mean and variance are both known and you need the trial count.",
+      "hints": [
+        "Divide Var(X) by E(X) to isolate 1 - p directly.",
+        "Once you know p, get n from n = E(X) / p."
+      ],
+      "socraticHint": "What does Var(X) divided by E(X) simplify to?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A binomial count has E(X) = 10 and Var(X) = 5. Find n, the number of trials.",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,585 @@
+{
+  "id": "s1-w03-build",
+  "season": 1,
+  "week": 3,
+  "track": "build",
+  "title": "Breadboard week one: LED and button",
+  "summary": "Light an LED from a micro:bit pin through a resistor on a real breadboard, then wire a button as real input.",
+  "minutes": 60,
+  "materials": [
+    "micro:bit v2",
+    "micro USB cable",
+    "laptop with Chrome",
+    "micro:bit edge connector breakout",
+    "breadboard starter kit",
+    "multimeter for the physics extra"
+  ],
+  "skills": ["build.sensors", "build.conditionals"],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s1-w03-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop again: ask, imagine, plan, build, test, fix. This week nothing lives on the micro:bit's own 5 by 5 screen. The circuit lives outside it, on a breadboard, and that changes what can go wrong.\n\nAsk: what do you want to build? A light you switch on from code, running through a real wire, a real resistor and a real LED, not pixels on a grid. Then a button, wired the same way, that your code can actually read.\n\nImagine before you build. Sketch the loop on paper: a line out of the micro:bit's pin 0, through the resistor, into the LED, and back to GND. A loop is a full circle that ends exactly where it started. If your drawing does not close into a loop, the real circuit will not either.\n\nPlan the pieces before you touch the breadboard:\n\n1. The micro:bit clips onto the edge connector breakout board, so its tiny edge pins can reach a breadboard hole.\n2. Pin 0, a wire, the resistor and the LED complete one loop back to GND.\n3. The button is a second loop later, from a different pin to GND."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w03-build-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A current loop drawn as four labelled boxes joined by arrows going one way around: P0, where the current starts, into the resistor labelled 330 ohms (minimum 220 ohms), into the LED, which only conducts from anode to cathode, and back to GND, where the current returns, closing the loop back at P0.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 30,
+              "y": 30,
+              "w": 100,
+              "h": 40,
+              "label": "P0",
+              "sub": "current starts here"
+            },
+            {
+              "t": "box",
+              "x": 230,
+              "y": 30,
+              "w": 110,
+              "h": 40,
+              "label": "resistor",
+              "sub": "330 ohm (min 220 ohm)"
+            },
+            {
+              "t": "box",
+              "x": 230,
+              "y": 140,
+              "w": 110,
+              "h": 40,
+              "label": "LED",
+              "sub": "anode -> cathode only"
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 140,
+              "w": 100,
+              "h": 40,
+              "label": "GND",
+              "sub": "current returns here"
+            },
+            {
+              "t": "line",
+              "x1": 130,
+              "y1": 50,
+              "x2": 230,
+              "y2": 50,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 285,
+              "y1": 70,
+              "x2": 285,
+              "y2": 140,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 230,
+              "y1": 160,
+              "x2": 130,
+              "y2": 160,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 80,
+              "y1": 140,
+              "x2": 80,
+              "y2": 70,
+              "arrow": true,
+              "dashed": true,
+              "label": "loop closes"
+            },
+            {
+              "t": "text",
+              "x": 185,
+              "y": 195,
+              "s": "LED backwards: no current, no light",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 185,
+              "y": 15,
+              "s": "330 ohm holds the current near 3 mA",
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "current leaves P0",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                },
+                "4": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 900,
+              "caption": "flows through the resistor",
+              "set": {
+                "1": {
+                  "fill": "accent"
+                },
+                "5": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 900,
+              "caption": "lights the LED",
+              "set": {
+                "2": {
+                  "fill": "accent"
+                },
+                "6": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 900,
+              "caption": "returns to GND, loop closes",
+              "set": {
+                "3": {
+                  "fill": "accent"
+                },
+                "7": {
+                  "color": "accent"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "ideaId": "current-is-a-flow",
+      "title": "Current, resistance and the loop",
+      "body": "Electricity only does something useful when it moves, and current is the name for that movement: the amount of electric charge flowing past a point every second, the same way a current in a river is water moving past a rock. A wire gives that charge a path to flow through, the same way a pipe gives water a path.\n\nA resistor does exactly what its name says: it resists, slowing the current down. An LED cannot handle much current, and neither can a micro:bit pin, so without a resistor in the way, too much current would rush through in an instant and burn out the LED's thin filament, or damage the pin. 330 ohms, the value you start with here, is small enough to barely notice and big enough to hold the current down to about 3 thousandths of an amp, plenty to light the LED and nowhere near enough to hurt it.\n\nYou met this in week 1: an LED is a one-way valve for electricity. Current only flows from its longer leg to its shorter leg, never backwards.\n\nPut it in the wrong way around and no current flows at all, not a dim light, not a flicker, nothing. That is not a broken LED. It is a working LED wired backwards, and the fix is to turn it around.\n\nEvery part of this circuit only works as one unbroken loop, out from pin 0, through the resistor, through the LED, and back to GND. Code can have one wrong block and still mostly work. A circuit cannot. If a single wire sits in the wrong hole, even one hole off from where it belongs, the whole loop breaks and nothing lights up anywhere on it, not just near the mistake."
+    },
+    {
+      "kind": "task",
+      "id": "s1-w03-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A wiring diagram of the LED breadboard circuit. The edge connector breakout's P0 pin wires to hole a6, a 330-ohm-or-higher resistor bridges column 6 to column 9 in row c, the LED sits in row a from column 9 (anode) to column 10 (cathode), and a wire runs from hole c10 back to the breakout's GND pin, closing the loop.",
+        "spec": {
+          "w": 520,
+          "h": 290,
+          "wide": true,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 90,
+              "w": 170,
+              "h": 130,
+              "label": "edge connector breakout",
+              "sub": "clipped onto micro:bit"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  230,
+                  60
+                ],
+                [
+                  500,
+                  60
+                ],
+                [
+                  500,
+                  250
+                ],
+                [
+                  230,
+                  250
+                ]
+              ],
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 400,
+              "y": 78,
+              "s": "breadboard",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 400,
+              "y": 95,
+              "s": "rows a-e joined per column",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "dot",
+              "cx": 205,
+              "cy": 125,
+              "label": "P0",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 205,
+              "cy": 210,
+              "label": "GND",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 280,
+              "cy": 125,
+              "label": "a6",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 280,
+              "cy": 210,
+              "label": "c6",
+              "side": "above"
+            },
+            {
+              "t": "box",
+              "x": 280,
+              "y": 210,
+              "w": 100,
+              "h": 26,
+              "label": "resistor",
+              "sub": "330 ohm (min 220 ohm)"
+            },
+            {
+              "t": "dot",
+              "cx": 390,
+              "cy": 132,
+              "label": "a9",
+              "side": "above"
+            },
+            {
+              "t": "box",
+              "x": 370,
+              "y": 132,
+              "w": 120,
+              "h": 32,
+              "label": "LED",
+              "sub": "anode a9, cathode a10"
+            },
+            {
+              "t": "dot",
+              "cx": 450,
+              "cy": 210,
+              "label": "c10",
+              "side": "above"
+            },
+            {
+              "t": "line",
+              "x1": 205,
+              "y1": 125,
+              "x2": 280,
+              "y2": 125,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 450,
+              "y1": 210,
+              "x2": 205,
+              "y2": 210,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 280,
+              "y": 270,
+              "s": "6",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 380,
+              "y": 270,
+              "s": "9",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 450,
+              "y": 270,
+              "s": "10",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 320,
+              "y": 22,
+              "s": "P0, resistor, LED, GND: one loop",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Wire the LED and light it",
+      "body": "Getting ready:\n\n1. The micro:bit clips into the edge connector breakout board so it can reach the breadboard.\n2. Holes in rows a to e of the same column are already connected to each other.\n3. Never choose a resistor below 220 ohms; 330 ohms is where you start.\n\nWire the LED:\n\n1. Push the micro:bit into the edge connector breakout board, gold pins first, until it sits snug.\n2. Push the breakout board's legs into the breadboard so it straddles the center gap.\n3. Run a jumper wire from the pin labeled `0` on the breakout board to hole a6.\n4. Leave a second jumper wire ready near a `GND` pin, for the last step.\n5. Find the coloured stripes or the printed number on each resistor in your kit.\n6. Predict first: will a smaller-value resistor make the LED glow brighter or dimmer than a bigger one?\n7. Bend a resistor of 220 ohms or higher into a wide U shape.\n8. Push one resistor leg into hole c6, the same column as your `0` wire.\n9. Push the other resistor leg into hole c9.\n10. Find the LED's long leg, the anode, and its short leg, next to the flat side.\n11. Push the LED's long leg into hole a9, the same column as the resistor's second leg.\n12. Push the LED's short leg into hole a10, the column next to it.\n13. Run your last jumper wire from hole c10 to a `GND` pin on the breakout board.\n14. If you have a second resistor value, 220 ohms or higher, swap it in and compare the brightness.\n\nThe loop is now complete: pin 0, the wire, the resistor, the LED, another wire, back to GND.\n\nLight it up:\n\n1. Open https://makecode.microbit.org and start a new project.\n2. From `Basic`, drag an `on start` block onto the canvas.\n3. From `Pins`, snap a `digital write pin` block inside `on start`, set to P0, value 1.\n4. Press `Download` to send the program to your micro:bit over USB.\n5. The LED should light up the moment the program runs and stay lit.\n6. If nothing lights up, check every hole against this page before assuming it is broken.\n7. If it still does not light up, check whether the LED is in backwards.",
+      "checklist": [
+        "The LED lights up steady the moment the program runs",
+        "The resistor sits in the loop between P0 and the LED, not skipped",
+        "If nothing lit up, I checked whether the LED was in backwards before assuming it was broken",
+        "Every wire and leg sits in the exact hole this page named, not one hole off",
+        "I wrote down which resistor value I chose (220 ohms or higher, starting from 330) and what I noticed about its brightness"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s1-w03-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A wiring diagram of the button added across the breadboard's center gap. A button straddles the gap with legs in row e (top half) and row f (bottom half). A wire runs from the breakout's P1 pin to row e, and a wire from GND to row f. Text notes that P1 is pulled up, so it reads 1 loose and 0 pressed, and repeats two safety lines: unclip the battery before moving wires, and never bridge 3V straight to GND.",
+        "spec": {
+          "w": 480,
+          "h": 280,
+          "wide": true,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 60,
+              "w": 170,
+              "h": 160,
+              "label": "edge connector breakout",
+              "sub": "pin 1, GND"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  230,
+                  50
+                ],
+                [
+                  460,
+                  50
+                ],
+                [
+                  460,
+                  130
+                ],
+                [
+                  230,
+                  130
+                ]
+              ],
+              "fill": "paper"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  230,
+                  140
+                ],
+                [
+                  460,
+                  140
+                ],
+                [
+                  460,
+                  220
+                ],
+                [
+                  230,
+                  220
+                ]
+              ],
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 400,
+              "y": 65,
+              "s": "breadboard top half",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 400,
+              "y": 80,
+              "s": "rows a-e",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 400,
+              "y": 195,
+              "s": "breadboard bottom half",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 400,
+              "y": 210,
+              "s": "rows f-j",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 280,
+              "y": 100,
+              "w": 100,
+              "h": 70,
+              "label": "button",
+              "sub": "straddles the gap",
+              "fill": "accent"
+            },
+            {
+              "t": "dot",
+              "cx": 300,
+              "cy": 93,
+              "label": "row e",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 300,
+              "cy": 177,
+              "label": "row f",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 205,
+              "cy": 93,
+              "label": "P1",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 205,
+              "cy": 177,
+              "label": "GND",
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 205,
+              "y1": 93,
+              "x2": 300,
+              "y2": 93,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 205,
+              "y1": 177,
+              "x2": 300,
+              "y2": 177,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 350,
+              "y": 25,
+              "s": "pulled up: reads 1 loose, 0 pressed",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 280,
+              "y": 250,
+              "s": "unclip the battery before moving wires",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 280,
+              "y": 268,
+              "s": "never bridge 3V straight to GND: short circuit",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Add the button",
+      "body": "Getting ready:\n\n1. The LED circuit from the last step stays wired exactly as it was.\n2. Unclip the battery pack before you move any wires, so your hands are never inside a live circuit.\n\nWire the button:\n\n1. Push a push button across the breadboard's center gap, a few columns over from the LED.\n2. Land two of its legs in row e and two in row f, straddling the gap.\n3. Run a jumper wire from the pin labeled `1` on the breakout board to a hole in row e.\n4. Land that wire in the same column as one of the button's legs.\n5. Run another jumper wire from any `GND` pin to a hole in row f.\n6. Use the column where a leg on the other side of the gap landed.\n\nPressing the button joins those two sides together; letting go separates them again.\n\nBuild the code:\n\n1. Open your project in https://makecode.microbit.org.\n2. From the `Pins` `Advanced` drawer, drag a `set pull pin` block onto `on start`, set to P1, pull up.\n3. Delete the `digital write pin` block from the last step.\n4. From `Basic`, drag a `forever` block onto the canvas.\n5. From `Logic`, drag an `if then else` block inside `forever`.\n6. Build the check `digital read pin P1 = 0`, using an `=` block from `Logic`.\n7. Inside the `if` branch, snap in `digital write pin P0 to 1`.\n8. Inside the `else` branch, snap in `digital write pin P0 to 0`.\n\nRun it on the board:\n\n1. Press `Download` to send the program to your micro:bit over USB.\n2. The LED should stay dark until you press the button.\n3. It should light up for as long as you hold the button, and go dark when you let go.\n\nSafety: 3V and `GND` on the micro:bit are both safe to touch. Never wire 3V straight to `GND` with nothing in between; that is a short circuit.",
+      "checklist": [
+        "The LED is off until I press the button, and on while I hold it down",
+        "The button straddles the center gap of the breadboard, not sitting on one side only",
+        "The two wires to the button are on opposite sides of the gap, not the same side",
+        "I unclipped the battery before moving any wires"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w03-build-05",
+      "title": "Bug diary",
+      "body": "Write one line for each thing that did not work the first time and what you tried. If the LED never lit at all, say which of the two classic breadboard mistakes it turned out to be: a wire in the wrong hole, or the LED in backwards. If the button did not change anything, check that its two wires really are on opposite sides of the center gap, not the same side. If you compared two resistor values, say which one you kept and why."
+    },
+    {
+      "kind": "artifact",
+      "id": "s1-w03-build-06",
+      "title": "Show it",
+      "prompt": "Photo of the breadboard circuit running, and paste the MakeCode share link or the JavaScript from the editor",
+      "accepts": ["photo", "code"]
+    },
+    {
+      "kind": "log",
+      "id": "s1-w03-build-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s1-w03-build-x01",
+      "kind": "bonus",
+      "title": "Make the LED blink instead of glow steady",
+      "minutes": 15,
+      "body": "Turn the steady LED into a blinking one, using only code.\n\n1. Open your project at https://makecode.microbit.org.\n2. Keep the wiring you already built: pin 0, the resistor, the LED, and back to GND.\n3. Inside your `forever` block, delete the `if then else` block that reads the button.\n4. Inside `forever`, snap `digital write pin P0 to 1`, then a `pause (ms)` block.\n5. Type a number into `pause (ms)`, then snap `digital write pin P0 to 0` and another `pause (ms)` with the same number.\n6. Press `Download` and watch the LED blink.\n\nWhat to notice: below about 20 milliseconds per step, the blink looks steady again, the same trick from week one's screen."
+    },
+    {
+      "id": "s1-w03-build-x02",
+      "kind": "bonus",
+      "title": "Hold for fast, let go for slow",
+      "minutes": 20,
+      "body": "Make the button change how fast the LED blinks, instead of only turning it on and off.\n\n1. Keep the button wired the way you built it, on pin 1 with `set pull pin` set to pull up.\n2. From `Variables`, make a new variable called `blinkTime` and set it to 400 in `on start`.\n3. From `Logic`, drag an `if then else` block inside your `forever` loop.\n4. Build the check `digital read pin P1 = 0`, using an `=` block from `Logic`.\n5. In the `if` branch, snap `set blinkTime to 100`.\n6. In the `else` branch, snap `set blinkTime to 400`.\n7. Below the `if then else`, snap `digital write pin P0 to 1`, then a `pause (ms)` block using `blinkTime`.\n8. After that, snap `digital write pin P0 to 0`, then another `pause (ms)` block using `blinkTime`.\n9. Press `Download` and compare the blink held down against the blink let go.\n\nWhat to notice: the LED reads the button fresh every trip through the loop, so it can change speed mid-blink."
+    },
+    {
+      "id": "s1-w03-build-x03",
+      "kind": "invent",
+      "title": "Design your own signal",
+      "minutes": 25,
+      "body": "What could a single LED and a single button tell someone, without any words on a screen?\n\nDesign one new signal using the LED and button you wired this week.\n\nIt must use the button you wired this week.\nIt must have one number you choose by testing, like a pause or a count.\nIt must be shown to someone in your house, working on the real breadboard.\n\nSketch your signal on paper before you touch the breadboard.\n\nHow to know it works: someone who has never seen it can guess what it means after watching once."
+    },
+    {
+      "id": "s1-w03-build-x04",
+      "kind": "bonus",
+      "title": "Measure the resistor's narrowing",
+      "minutes": 20,
+      "ideaId": "narrow-the-pipe",
+      "body": "Find out how the resistor and the LED share the same voltage between them.\n\n1. Predict first: guess how many volts the multimeter will read across just the LED. Write your number in the Maker's Log.\n2. Set a multimeter to measure DC volts.\n3. With your circuit built and lit, touch the two probes across the LED's two legs and read the number.\n4. Now touch the two probes across the resistor's two legs and read that number too.\n5. Add the two readings together in the Maker's Log.\n\nCompare: was your prediction close to the LED's real reading, and do the two readings together roughly match the voltage your circuit gets?\n\nTeach it: tell a grown-up in two sentences why the resistor and the LED share the voltage instead of the LED getting all of it."
+    }
+  ]
+}

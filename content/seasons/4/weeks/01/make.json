@@ -1,0 +1,266 @@
+{
+  "id": "s4-w01-make",
+  "season": 4,
+  "week": 1,
+  "track": "make",
+  "title": "An ESP32 says hello, then finds its twin",
+  "summary": "Set up an ESP32 and measure one loop's real time. Wire a second ESP32 and send it numbered messages over ESP-NOW.",
+  "minutes": 60,
+  "materials": [
+    "two ESP32 dev boards",
+    "USB cables",
+    "laptop with the Arduino IDE and ESP32 board support installed",
+    "a simple sensor from the electronics kit (a photoresistor or a potentiometer)",
+    "tape measure",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.electronics",
+    "make.measurement",
+    "make.notebook"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w01-make-01",
+      "title": "Ask, imagine, plan",
+      "body": "A new season opens on a real microcontroller: ask, imagine, plan, build, test, fix.\n\nAsk: can a board built for real projects read a sensor fast enough to matter? Can two of these boards talk with no wire between them?\n\nImagine: a loop function that repeats forever, reading a sensor each time round. A second board sits close by, able to hear whatever the first one sends.\n\nPlan: with a grown-up, install the Arduino IDE and ESP32 board support before this week's hour starts. Sketch on paper what one pass through the loop should do, then decide which board will send and which will listen."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w01-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two timelines compare one pass through loop(). Without a delay, a short loop-pass box takes about 5 milliseconds and repeats around 200 times a second. With delay(100) added, the same short loop-pass box is followed by a much wider box for the 100 millisecond delay, stretching the whole period to about 105 milliseconds and cutting the rate to about 9 times a second.",
+        "spec": {
+          "w": 360,
+          "h": 190,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 40,
+              "w": 70,
+              "h": 30,
+              "label": "loop pass",
+              "fill": "sand"
+            },
+            {
+              "t": "dim",
+              "x1": 20,
+              "y1": 80,
+              "x2": 90,
+              "y2": 80,
+              "label": "5 ms"
+            },
+            {
+              "t": "text",
+              "x": 110,
+              "y": 60,
+              "s": "repeats ~200x/second",
+              "size": 11
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 120,
+              "w": 70,
+              "h": 30,
+              "label": "loop pass",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 90,
+              "y": 120,
+              "w": 210,
+              "h": 30,
+              "label": "delay(100)",
+              "sub": "100 ms",
+              "fill": "rust"
+            },
+            {
+              "t": "dim",
+              "x1": 20,
+              "y1": 160,
+              "x2": 300,
+              "y2": 160,
+              "label": "~105 ms total"
+            },
+            {
+              "t": "text",
+              "x": 310,
+              "y": 140,
+              "s": "~9/s",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "title": "The loop has a cost",
+      "ideaId": "the-loop-has-a-cost",
+      "body": "A microcontroller program is built around one function that repeats forever, usually called loop. Every statement inside it, reading a pin, doing some maths, printing a message, takes real time to finish before the next line can start.\n\nAdd those small costs together and you get the loop's period, how long one full pass actually takes. If a loop takes 5 milliseconds, it runs about 200 times a second. A single line that waits, such as a fixed delay, can dominate that whole period.\n\nThis matters whenever the loop has to notice something quick, like a button tap or a fast-changing sensor. A loop busy waiting on a slow line can simply miss the event. That is the same way checking your phone once a minute misses a call that only rings for ten seconds."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w01-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The sensor wires into ESP32 #1, the sender, which connects by USB to a laptop showing its serial monitor with loop times in milliseconds. ESP32 #1 sends ten numbered messages over ESP-NOW, shown as a dashed green arrow, to ESP32 #2, the receiver, which connects by its own USB to a second serial monitor showing the received numbers 1 through 10.",
+        "spec": {
+          "w": 480,
+          "h": 220,
+          "wide": true,
+          "items": [
+            {
+              "t": "box",
+              "x": 10,
+              "y": 60,
+              "w": 70,
+              "h": 40,
+              "label": "sensor",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 110,
+              "y": 50,
+              "w": 90,
+              "h": 60,
+              "label": "ESP32 #1",
+              "sub": "sender",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 80,
+              "y1": 80,
+              "x2": 110,
+              "y2": 80,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 110,
+              "y": 140,
+              "w": 120,
+              "h": 40,
+              "label": "serial monitor",
+              "sub": "loop times (ms)",
+              "fill": "paper"
+            },
+            {
+              "t": "line",
+              "x1": 155,
+              "y1": 110,
+              "x2": 155,
+              "y2": 140,
+              "label": "USB"
+            },
+            {
+              "t": "box",
+              "x": 340,
+              "y": 50,
+              "w": 90,
+              "h": 60,
+              "label": "ESP32 #2",
+              "sub": "receiver",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 200,
+              "y1": 80,
+              "x2": 340,
+              "y2": 80,
+              "dashed": true,
+              "arrow": true,
+              "color": "green",
+              "label": "ESP-NOW x10"
+            },
+            {
+              "t": "box",
+              "x": 340,
+              "y": 140,
+              "w": 120,
+              "h": 40,
+              "label": "serial monitor",
+              "sub": "received 1-10",
+              "fill": "paper"
+            },
+            {
+              "t": "line",
+              "x1": 385,
+              "y1": 110,
+              "x2": 385,
+              "y2": 140,
+              "label": "USB"
+            }
+          ]
+        }
+      },
+      "title": "Time the loop, then find its twin",
+      "body": "Wire the sensor to one ESP32 and write a sketch that reads it every pass through loop. Use micros() to measure how long each pass took, and print the value to the serial monitor.\n\nRun it as written first, and record five loop times. Then add a single delay(100) line inside loop, upload it again, and record five more loop times. The measured difference should be close to 100 milliseconds.\n\nNow wire the second ESP32. Program the first board to send ten numbered messages over ESP-NOW, one after another. Program the second board to print each number it receives to its own serial monitor.",
+      "checklist": [
+        "The sketch reads the sensor and prints a loop time on every pass",
+        "Five loop times were recorded with no delay and five more with delay(100) added",
+        "The measured difference between the two sets is close to 100 milliseconds",
+        "The second board received and printed all ten numbered messages"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s4-w01-make-04",
+      "title": "No delay versus a 100 millisecond delay",
+      "ideaId": "the-loop-has-a-cost",
+      "body": "The sketch, the sensor and the board stay the same for every row. Only whether the delay(100) line is present changes.\n\nRecord five loop times for each setup, ten rows in total. For each row, write the setup and the loop time in milliseconds from the serial monitor.",
+      "columns": [
+        "Setup (no delay or 100 ms delay)",
+        "Loop time (ms)"
+      ],
+      "minRows": 10,
+      "question": "How many more milliseconds did each loop take with the delay, and does that match the 100 milliseconds added?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w01-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: the serial monitor showing nothing, because its speed setting does not match the sketch's Serial.begin() number.\n\nAlso watch for the ESP32 not appearing in the upload menu, because board support was never added. And watch for micros() printed as a strange giant number, since it overflows after a long time running.\n\nFor the radio half, watch for the receiving board's MAC address typed wrong into the sender's code, so nothing arrives at all."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w01-make-06",
+      "title": "Show it",
+      "prompt": "Photo of the serial monitor showing loop times for both setups and the second board's ten received messages, plus both sketches pasted as code",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w01-make-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s4-w01-make-x01",
+      "kind": "bonus",
+      "title": "How far does the signal really reach",
+      "minutes": 30,
+      "ideaId": "signal-fades-with-obstacles",
+      "body": "1. Keep the sender fixed in one spot and send 20 numbered messages instead of ten.\n\n2. Count how many distinct numbers the receiver actually gets, in the same room as the sender.\n\n3. Move the receiver one wall away and repeat the 20-message send, counting again.\n\n4. Move the receiver outdoors to a measured distance and repeat once more.\n\nNotice whether the room with a wall in between lost more messages than the greater distance outdoors with a clear line of sight."
+    },
+    {
+      "id": "s4-w01-make-x02",
+      "kind": "bonus",
+      "title": "Does the tilt show up in your own log",
+      "minutes": 20,
+      "ideaId": "the-tilt-makes-the-season",
+      "body": "Find out whether Earth's 23.4 degree tilt has already left a mark on your own dawn log.\n\nPredict first: write in the Maker's Log a guess. Will the morning low in a later week be warmer or cooler than the morning low from week 1? The reason, if so, is purely the tilt.\n\nMeasure it with the week's own kit. Read your dawn log's morning low from week 1, then read the morning low from the most recent week you have logged.\n\nCompare: line the two numbers up next to your prediction.\n\nTeach it: explain to the family why the tilt, not the distance to the sun, causes whatever change you found."
+    }
+  ]
+}

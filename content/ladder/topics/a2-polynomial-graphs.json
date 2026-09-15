@@ -1,0 +1,4044 @@
+{
+  "id": "a2-polynomial-graphs",
+  "idea": {
+    "body": "A polynomial's factored form shows its zeros directly. In P(x) = (x - 2)^3(x + 1)^2, the graph crosses the x-axis at x = 2 and touches it at x = -1. An odd power crosses the axis, and an even power only touches it. The degree is the sum of all the powers. It bounds the turning points at one less than the degree. Together with the sign of the leading coefficient, it also gives the end behavior. A positive leading coefficient on an even degree sends both ends up; an odd degree sends the ends in opposite directions. For P(x) = (x - 2)^3(x + 1)^2, the degree is 5, so the graph falls on the left and rises on the right.",
+    "figure": {
+      "kind": "plane",
+      "alt": "The graph of (x - 2)^3(x + 1)^2, crossing at x = 2 and touching at x = -1.",
+      "spec": {
+        "range": 9,
+        "points": [
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": -1,
+            "y": 0
+          }
+        ],
+        "polylines": [
+          [
+            [
+              -1.0,
+              0.0
+            ],
+            [
+              -0.75,
+              -1.3
+            ],
+            [
+              -0.5,
+              -3.906
+            ],
+            [
+              -0.25,
+              -6.407
+            ],
+            [
+              0.0,
+              -8.0
+            ],
+            [
+              0.25,
+              -8.374
+            ],
+            [
+              0.5,
+              -7.594
+            ],
+            [
+              0.75,
+              -5.981
+            ],
+            [
+              1.0,
+              -4.0
+            ],
+            [
+              1.25,
+              -2.136
+            ],
+            [
+              1.5,
+              -0.781
+            ],
+            [
+              1.75,
+              -0.118
+            ],
+            [
+              2.0,
+              0.0
+            ],
+            [
+              2.25,
+              0.165
+            ],
+            [
+              2.5,
+              1.531
+            ],
+            [
+              2.75,
+              5.933
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "P(x) = -(x + 3)(x - 1)^2(x - 4). Describe the end behavior and what happens at each zero.",
+    "steps": [
+      "The zeros are x = -3 (multiplicity 1, crosses), x = 1 (multiplicity 2, touches), and x = 4 (multiplicity 1, crosses).",
+      "The degree is 1 + 2 + 1 = 4, an even number.",
+      "The leading coefficient is -1, since multiplying out the factors' leading terms gives -x^4.",
+      "An even degree with a negative leading coefficient falls on both the left and the right."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "The graph of -(x + 3)(x - 1)^2(x - 4) near x = 1, touching the axis there without crossing. The zeros at x = -3 and x = 4 lie outside this window.",
+      "spec": {
+        "range": 12,
+        "points": [
+          {
+            "x": 1,
+            "y": 0
+          }
+        ],
+        "polylines": [
+          [
+            [
+              0.0,
+              12.0
+            ],
+            [
+              0.25,
+              6.855
+            ],
+            [
+              0.5,
+              3.062
+            ],
+            [
+              0.75,
+              0.762
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.25,
+              0.73
+            ],
+            [
+              1.5,
+              2.812
+            ],
+            [
+              1.75,
+              6.012
+            ],
+            [
+              2.0,
+              10.0
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "a2-polynomial-graphs-w1",
+      "name": "The sign chart",
+      "when": "when you want to see where P(x) is positive or negative.",
+      "steps": [
+        "Plot every zero of P(x) on a number line.",
+        "Test one point in each interval between zeros.",
+        "Record plus or minus for each interval based on that test point.",
+        "Read the pattern off the chart to sketch the graph."
+      ],
+      "example": "P(x) = (x - 1)(x + 2)(x - 3)",
+      "answer": "Negatives on (-infinity, -2), (1, 3). Positives on (-2, 1), (3, infinity).",
+      "trap": "Testing at a zero instead of strictly between zeros, which gives 0, not a sign.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A sign chart for (x - 1)(x + 2)(x - 3): zeros marked at -2, 1 and 3 on a number line, with minus, plus, minus, plus written in the four intervals.",
+        "spec": {
+          "w": 300,
+          "h": 100,
+          "items": [
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 60,
+              "x2": 280,
+              "y2": 60
+            },
+            {
+              "t": "dot",
+              "cx": 80,
+              "cy": 60,
+              "side": "below",
+              "label": "-2"
+            },
+            {
+              "t": "dot",
+              "cx": 160,
+              "cy": 60,
+              "side": "below",
+              "label": "1"
+            },
+            {
+              "t": "dot",
+              "cx": 220,
+              "cy": 60,
+              "side": "below",
+              "label": "3"
+            },
+            {
+              "t": "text",
+              "x": 50,
+              "y": 40,
+              "s": "minus",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 120,
+              "y": 40,
+              "s": "plus",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 40,
+              "s": "minus",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 255,
+              "y": 40,
+              "s": "plus",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Sign chart for (x - 1)(x + 2)(x - 3).",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Plot every zero of P(x) on a number line.",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Test one point in each interval.",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Record plus or minus for each interval.",
+              "set": {
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Read the pattern to sketch the graph.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a2-polynomial-graphs-w2",
+      "name": "End behavior from the leading term",
+      "when": "when you need to know which way the graph goes as x grows large.",
+      "steps": [
+        "The degree tells you even or odd.",
+        "The leading coefficient tells you positive or negative.",
+        "Even degree, positive lead: both ends up.",
+        "Odd degree, positive lead: left down, right up."
+      ],
+      "example": "P(x) = -2x^4 + 3x^2 - 1",
+      "answer": "Degree 4 (even), leading coefficient -2 (negative). Both ends fall.",
+      "trap": "Ignoring the sign of the leading coefficient, or getting the degree wrong."
+    },
+    {
+      "id": "a2-polynomial-graphs-w3",
+      "name": "The rational root list",
+      "when": "when you search for possible rational zeros before graphing.",
+      "steps": [
+        "List factors of the constant term.",
+        "List factors of the leading coefficient.",
+        "Every ratio (factor of constant) / (factor of leading) is a candidate.",
+        "Test each with the remainder theorem to find actual roots."
+      ],
+      "example": "P(x) = 2x^3 - 3x^2 - 8x + 12",
+      "answer": "Candidates: plus or minus 1, 2, 3, 4, 6, 12, 1/2, 3/2, etc.",
+      "trap": "Forgetting the plus or minus, or including the leading coefficient in the numerator."
+    },
+    {
+      "id": "a2-polynomial-graphs-w4",
+      "name": "Sum and product of roots",
+      "when": "when you know the roots exist but do not know them individually.",
+      "steps": [
+        "For ax^2 + bx + c, the sum of roots is -b/a.",
+        "The product of roots is c/a.",
+        "These values constrain what the roots can be.",
+        "Useful to check if a factorization is correct."
+      ],
+      "example": "x^2 - 7x + 12",
+      "answer": "Sum 7, product 12. Roots are 3 and 4.",
+      "trap": "Forgetting to divide by a, or getting the sign of the sum wrong."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-polynomial-graphs-p01",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "P(x) has degree 3 and leading coefficient 4. What does its graph do at the far left and far right?",
+      "options": [
+        "rises to the left and rises to the right",
+        "rises to the left and falls to the right",
+        "falls to the left and rises to the right",
+        "falls to the left and falls to the right"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The degree 3 is odd, and the leading coefficient is positive.",
+        "An odd degree with that sign means the graph falls to the left and rises to the right."
+      ],
+      "useAgain": "when you need a polynomial's behavior far from the origin.",
+      "hints": [
+        "An even degree sends both ends the same direction; an odd degree sends them opposite ways.",
+        "A positive leading coefficient ends up on the right; a negative one ends down."
+      ],
+      "socraticHint": "Is the degree even or odd, and is the leading coefficient positive or negative?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) has degree 6 and leading coefficient -4. What does its graph do at the far left and far right?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "falls to the left and falls to the right",
+          "rises to the left and rises to the right",
+          "rises to the left and falls to the right",
+          "falls to the left and rises to the right"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p02",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "P(x) has degree 4 and leading coefficient -1. What does its graph do at the far left and far right?",
+      "options": [
+        "rises to the left and rises to the right",
+        "falls to the left and falls to the right",
+        "rises to the left and falls to the right",
+        "falls to the left and rises to the right"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The degree 4 is even, and the leading coefficient is negative.",
+        "An even degree with that sign means the graph falls to the left and falls to the right."
+      ],
+      "useAgain": "when you need a polynomial's behavior far from the origin.",
+      "hints": [
+        "An even degree sends both ends the same direction; an odd degree sends them opposite ways.",
+        "A positive leading coefficient ends up on the right; a negative one ends down."
+      ],
+      "socraticHint": "Is the degree even or odd, and is the leading coefficient positive or negative?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) has degree 3 and leading coefficient -2. What does its graph do at the far left and far right?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "rises to the left and rises to the right",
+          "falls to the left and rises to the right",
+          "falls to the left and falls to the right",
+          "rises to the left and falls to the right"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p03",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "P(x) has degree 6 and leading coefficient -3. What does its graph do at the far left and far right?",
+      "options": [
+        "rises to the left and rises to the right",
+        "rises to the left and falls to the right",
+        "falls to the left and rises to the right",
+        "falls to the left and falls to the right"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The degree 6 is even, and the leading coefficient is negative.",
+        "An even degree with that sign means the graph falls to the left and falls to the right."
+      ],
+      "useAgain": "when you need a polynomial's behavior far from the origin.",
+      "hints": [
+        "An even degree sends both ends the same direction; an odd degree sends them opposite ways.",
+        "A positive leading coefficient ends up on the right; a negative one ends down."
+      ],
+      "socraticHint": "Is the degree even or odd, and is the leading coefficient positive or negative?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) has degree 3 and leading coefficient 1. What does its graph do at the far left and far right?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "falls to the left and rises to the right",
+          "rises to the left and rises to the right",
+          "rises to the left and falls to the right",
+          "falls to the left and falls to the right"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p04",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = (x + 5)^3(x + 1). How many distinct x-intercepts does its graph have?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Each different factor gives a different x-intercept, no matter its multiplicity.",
+        "There are 2 different factors here, so 2 distinct x-intercepts."
+      ],
+      "useAgain": "when you need the count of x-intercepts, not the degree.",
+      "hints": [
+        "Count the different roots, not the total degree.",
+        "A repeated factor is still just one x-intercept."
+      ],
+      "socraticHint": "How many different values of x make one of the factors 0?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = (x + 4)^2(x - 3)^3(x + 6)(x - 0). How many distinct x-intercepts does its graph have?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p05",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = (x + 5)^3(x + 3)^2. How many distinct x-intercepts does its graph have?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Each different factor gives a different x-intercept, no matter its multiplicity.",
+        "There are 2 different factors here, so 2 distinct x-intercepts."
+      ],
+      "useAgain": "when you need the count of x-intercepts, not the degree.",
+      "hints": [
+        "Count the different roots, not the total degree.",
+        "A repeated factor is still just one x-intercept."
+      ],
+      "socraticHint": "How many different values of x make one of the factors 0?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = (x - 2)^3(x + 4)^2(x - 6)^3. How many distinct x-intercepts does its graph have?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p06",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = (x - 5)^3(x - 3)^3(x - 4)^2(x - 0). How many distinct x-intercepts does its graph have?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Each different factor gives a different x-intercept, no matter its multiplicity.",
+        "There are 4 different factors here, so 4 distinct x-intercepts."
+      ],
+      "useAgain": "when you need the count of x-intercepts, not the degree.",
+      "hints": [
+        "Count the different roots, not the total degree.",
+        "A repeated factor is still just one x-intercept."
+      ],
+      "socraticHint": "How many different values of x make one of the factors 0?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = (x - 0)^2(x + 6)^2. How many distinct x-intercepts does its graph have?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p07",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = (x + 6)^3(x + 2)(x - 4)^2. What is the multiplicity of the zero at x = -6?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The multiplicity is the exponent on that zero's factor in the factored form.",
+        "Here that exponent is 3."
+      ],
+      "useAgain": "when you need how many times a particular zero repeats.",
+      "hints": [
+        "Find the factor for that particular zero.",
+        "The multiplicity is the power that factor is raised to."
+      ],
+      "socraticHint": "What power is the factor for x = -6 raised to?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = (x - 1)^2(x - 2)^2(x + 2)^3(x - 5)^3. What is the multiplicity of the zero at x = 5?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p08",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = (x - 2)(x + 1)^3(x + 5). What is the multiplicity of the zero at x = 2?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The multiplicity is the exponent on that zero's factor in the factored form.",
+        "Here that exponent is 1."
+      ],
+      "useAgain": "when you need how many times a particular zero repeats.",
+      "hints": [
+        "Find the factor for that particular zero.",
+        "The multiplicity is the power that factor is raised to."
+      ],
+      "socraticHint": "What power is the factor for x = 2 raised to?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = (x + 1)^2(x - 6)^2. What is the multiplicity of the zero at x = -1?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p09",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = (x + 3)^2(x + 2)^3. What is the multiplicity of the zero at x = -2?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The multiplicity is the exponent on that zero's factor in the factored form.",
+        "Here that exponent is 3."
+      ],
+      "useAgain": "when you need how many times a particular zero repeats.",
+      "hints": [
+        "Find the factor for that particular zero.",
+        "The multiplicity is the power that factor is raised to."
+      ],
+      "socraticHint": "What power is the factor for x = -2 raised to?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = (x + 6)^2(x - 2)^3. What is the multiplicity of the zero at x = 2?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p10",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "truefalse",
+      "prompt": "P(x) = (x - 2)^2(x + 2)^2(x - 4)^2. Does the graph cross the x-axis at x = 4, rather than just touch it?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "The zero at x = 4 has multiplicity 2.",
+        "An odd multiplicity crosses the axis; an even multiplicity only touches it.",
+        "So the statement is false."
+      ],
+      "useAgain": "when you need to tell whether a graph crosses or bounces off the x-axis.",
+      "hints": [
+        "Find that zero's multiplicity first.",
+        "Odd multiplicities cross; even multiplicities touch."
+      ],
+      "socraticHint": "Is the multiplicity at x = 4 odd or even?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = (x - 6)(x - 0)^2. Does the graph cross the x-axis at x = 6, rather than just touch it?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p11",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "truefalse",
+      "prompt": "P(x) = (x - 2)^3(x - 0)^3. Does the graph cross the x-axis at x = 0, rather than just touch it?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The zero at x = 0 has multiplicity 3.",
+        "An odd multiplicity crosses the axis; an even multiplicity only touches it.",
+        "So the statement is true."
+      ],
+      "useAgain": "when you need to tell whether a graph crosses or bounces off the x-axis.",
+      "hints": [
+        "Find that zero's multiplicity first.",
+        "Odd multiplicities cross; even multiplicities touch."
+      ],
+      "socraticHint": "Is the multiplicity at x = 0 odd or even?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = (x - 0)(x - 6)(x - 1)^3. Does the graph cross the x-axis at x = 0, rather than just touch it?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p12",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "truefalse",
+      "prompt": "P(x) = (x - 4)(x - 5)^3(x + 1). Does the graph cross the x-axis at x = -1, rather than just touch it?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The zero at x = -1 has multiplicity 1.",
+        "An odd multiplicity crosses the axis; an even multiplicity only touches it.",
+        "So the statement is true."
+      ],
+      "useAgain": "when you need to tell whether a graph crosses or bounces off the x-axis.",
+      "hints": [
+        "Find that zero's multiplicity first.",
+        "Odd multiplicities cross; even multiplicities touch."
+      ],
+      "socraticHint": "Is the multiplicity at x = -1 odd or even?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = (x + 3)^2(x + 5)^2. Does the graph cross the x-axis at x = -5, rather than just touch it?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p13",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = -3(x + 2)^2(x - 4)^2. What is the y-intercept?",
+      "answer": {
+        "kind": "number",
+        "value": "-192"
+      },
+      "explanation": [
+        "The y-intercept is P(0), found by substituting x = 0 into every factor.",
+        "That gives -192."
+      ],
+      "useAgain": "when you need where a factored polynomial crosses the y-axis.",
+      "hints": [
+        "Substitute x = 0 into the factored form directly.",
+        "Do not forget the leading coefficient out front."
+      ],
+      "socraticHint": "What is each factor worth when x = 0?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = -2(x + 5)(x - 0)^2(x - 3)^2. What is the y-intercept?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p14",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = -(x - 2)^2(x + 2)^2(x + 4)^2. What is the y-intercept?",
+      "answer": {
+        "kind": "number",
+        "value": "-256"
+      },
+      "explanation": [
+        "The y-intercept is P(0), found by substituting x = 0 into every factor.",
+        "That gives -256."
+      ],
+      "useAgain": "when you need where a factored polynomial crosses the y-axis.",
+      "hints": [
+        "Substitute x = 0 into the factored form directly.",
+        "Do not forget the leading coefficient out front."
+      ],
+      "socraticHint": "What is each factor worth when x = 0?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = 2(x + 1)(x + 4)^2. What is the y-intercept?",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p15",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = -(x - 1)(x - 4)^2. What is the y-intercept?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "The y-intercept is P(0), found by substituting x = 0 into every factor.",
+        "That gives 16."
+      ],
+      "useAgain": "when you need where a factored polynomial crosses the y-axis.",
+      "hints": [
+        "Substitute x = 0 into the factored form directly.",
+        "Do not forget the leading coefficient out front."
+      ],
+      "socraticHint": "What is each factor worth when x = 0?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(x) = 2(x + 5)(x - 5)^2. What is the y-intercept?",
+        "answer": {
+          "kind": "number",
+          "value": "250"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p16",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = (x + 5)^3(x - 0). What is the greatest number of turning points its graph could have?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The degree is the sum of the multiplicities: 3 + 1 = 4.",
+        "A degree 4 polynomial has at most 3 turning points."
+      ],
+      "useAgain": "when you need the most turning points a graph of a given degree could show.",
+      "hints": [
+        "First add up the multiplicities to find the degree.",
+        "The turning point limit is always one less than the degree."
+      ],
+      "socraticHint": "What is the total degree, adding every multiplicity together?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = (x - 1)^2(x - 0). What is the greatest number of turning points its graph could have?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p17",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = (x + 5)^3(x + 2)(x + 4)^3. What is the greatest number of turning points its graph could have?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The degree is the sum of the multiplicities: 3 + 1 + 3 = 7.",
+        "A degree 7 polynomial has at most 6 turning points."
+      ],
+      "useAgain": "when you need the most turning points a graph of a given degree could show.",
+      "hints": [
+        "First add up the multiplicities to find the degree.",
+        "The turning point limit is always one less than the degree."
+      ],
+      "socraticHint": "What is the total degree, adding every multiplicity together?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = (x + 4)^2(x + 3)^2(x - 1). What is the greatest number of turning points its graph could have?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p18",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = (x - 5)^2(x - 2)^2. What is the greatest number of turning points its graph could have?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The degree is the sum of the multiplicities: 2 + 2 = 4.",
+        "A degree 4 polynomial has at most 3 turning points."
+      ],
+      "useAgain": "when you need the most turning points a graph of a given degree could show.",
+      "hints": [
+        "First add up the multiplicities to find the degree.",
+        "The turning point limit is always one less than the degree."
+      ],
+      "socraticHint": "What is the total degree, adding every multiplicity together?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = (x - 6)^2(x + 2)^3. What is the greatest number of turning points its graph could have?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p19",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "A polynomial's zeros are x = 4 with multiplicity 3. x = -4 with multiplicity 1. x = -1 with multiplicity 3. Which factored form matches?",
+      "options": [
+        "(x + 4)^3(x - 4)(x - 1)^3",
+        "(x - 4)^3(x + 4)(x + 1)^4",
+        "(x - 4)^3(x + 4)(x + 1)^3",
+        "(x - 4)^3(x + 4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Each zero r with multiplicity m becomes a factor (x - r) raised to the m power.",
+        "Putting every zero together gives (x - 4)^3(x + 4)(x + 1)^3."
+      ],
+      "useAgain": "when you need to write a factored polynomial from a list of zeros.",
+      "hints": [
+        "Turn each zero into a factor of the form (x minus that zero).",
+        "Raise each factor to its own multiplicity."
+      ],
+      "socraticHint": "What factor does the zero at each given value turn into?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A polynomial's zeros are x = 0 with multiplicity 1. x = -4 with multiplicity 1. x = 5 with multiplicity 1. Which factored form matches?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "(x - 0)(x - 4)(x + 5)",
+          "(x - 0)(x + 4)(x - 5)",
+          "(x - 0)(x + 4)(x - 5)^2",
+          "(x - 0)(x + 4)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p20",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "A polynomial's zeros are x = -2 with multiplicity 3. x = 3 with multiplicity 1. x = 1 with multiplicity 2. Which factored form matches?",
+      "options": [
+        "(x + 2)^3(x - 3)(x - 1)^2",
+        "(x - 2)^3(x + 3)(x + 1)^2",
+        "(x + 2)^3(x - 3)(x - 1)^3",
+        "(x + 2)^3(x - 3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Each zero r with multiplicity m becomes a factor (x - r) raised to the m power.",
+        "Putting every zero together gives (x + 2)^3(x - 3)(x - 1)^2."
+      ],
+      "useAgain": "when you need to write a factored polynomial from a list of zeros.",
+      "hints": [
+        "Turn each zero into a factor of the form (x minus that zero).",
+        "Raise each factor to its own multiplicity."
+      ],
+      "socraticHint": "What factor does the zero at each given value turn into?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A polynomial's zeros are x = -1 with multiplicity 2. x = 2 with multiplicity 1. x = 1 with multiplicity 1. Which factored form matches?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(x - 1)^2(x + 2)(x + 1)",
+          "(x + 1)^2(x - 2)(x - 1)^2",
+          "(x + 1)^2(x - 2)(x - 1)",
+          "(x + 1)^2(x - 2)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p21",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "A polynomial's zeros are x = 2 with multiplicity 3. x = -1 with multiplicity 2. x = 1 with multiplicity 2. Which factored form matches?",
+      "options": [
+        "(x + 2)^3(x - 1)^2(x + 1)^2",
+        "(x - 2)^3(x + 1)^2(x - 1)^2",
+        "(x - 2)^3(x + 1)^2(x - 1)^3",
+        "(x - 2)^3(x + 1)^2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Each zero r with multiplicity m becomes a factor (x - r) raised to the m power.",
+        "Putting every zero together gives (x - 2)^3(x + 1)^2(x - 1)^2."
+      ],
+      "useAgain": "when you need to write a factored polynomial from a list of zeros.",
+      "hints": [
+        "Turn each zero into a factor of the form (x minus that zero).",
+        "Raise each factor to its own multiplicity."
+      ],
+      "socraticHint": "What factor does the zero at each given value turn into?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A polynomial's zeros are x = 3 with multiplicity 3. x = -1 with multiplicity 2. x = -5 with multiplicity 1. Which factored form matches?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "(x + 3)^3(x - 1)^2(x - 5)",
+          "(x - 3)^3(x + 1)^2(x + 5)^2",
+          "(x - 3)^3(x + 1)^2",
+          "(x - 3)^3(x + 1)^2(x + 5)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p22",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "P(x) = 3(x + 1)(x + 5)^3. Which statement about its graph is true?",
+      "options": [
+        "The graph rises to the left and rises to the right, and it crosses the x-axis at x = -5.",
+        "The graph rises to the left and falls to the right, and it crosses the x-axis at x = -5.",
+        "The graph rises to the left and rises to the right, and it only touches the x-axis at x = -5.",
+        "The graph rises to the left and falls to the right, and it only touches the x-axis at x = -5."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The degree is 4 and the leading coefficient is 3, giving the end behavior.",
+        "The zero at x = -5 has multiplicity 3, which is odd."
+      ],
+      "useAgain": "when a single question asks about both end behavior and a crossing at once.",
+      "hints": [
+        "Work out the end behavior from the degree and leading coefficient first.",
+        "Then check that one zero's multiplicity separately."
+      ],
+      "socraticHint": "Is the degree even or odd, and is that particular multiplicity even or odd?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = -(x + 3)^3(x - 5). Which statement about its graph is true?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "The graph rises to the left and rises to the right, and it crosses the x-axis at x = 5.",
+          "The graph falls to the left and falls to the right, and it only touches the x-axis at x = 5.",
+          "The graph rises to the left and rises to the right, and it only touches the x-axis at x = 5.",
+          "The graph falls to the left and falls to the right, and it crosses the x-axis at x = 5."
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p23",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "P(x) = 3(x + 4)^3(x + 2)^3(x - 3)^2. Which statement about its graph is true?",
+      "options": [
+        "The graph rises to the left and falls to the right, and it crosses the x-axis at x = -2.",
+        "The graph rises to the left and rises to the right, and it only touches the x-axis at x = -2.",
+        "The graph rises to the left and rises to the right, and it crosses the x-axis at x = -2.",
+        "The graph rises to the left and falls to the right, and it only touches the x-axis at x = -2."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The degree is 8 and the leading coefficient is 3, giving the end behavior.",
+        "The zero at x = -2 has multiplicity 3, which is odd."
+      ],
+      "useAgain": "when a single question asks about both end behavior and a crossing at once.",
+      "hints": [
+        "Work out the end behavior from the degree and leading coefficient first.",
+        "Then check that one zero's multiplicity separately."
+      ],
+      "socraticHint": "Is the degree even or odd, and is that particular multiplicity even or odd?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = 3(x - 4)^3(x - 2)^2(x - 5). Which statement about its graph is true?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "The graph rises to the left and falls to the right, and it only touches the x-axis at x = 2.",
+          "The graph rises to the left and rises to the right, and it only touches the x-axis at x = 2.",
+          "The graph rises to the left and rises to the right, and it crosses the x-axis at x = 2.",
+          "The graph rises to the left and falls to the right, and it crosses the x-axis at x = 2."
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p24",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "P(x) = -3(x - 1)(x - 0)^3(x + 1). Which statement about its graph is true?",
+      "options": [
+        "The graph rises to the left and rises to the right, and it crosses the x-axis at x = -1.",
+        "The graph rises to the left and falls to the right, and it crosses the x-axis at x = -1.",
+        "The graph rises to the left and falls to the right, and it only touches the x-axis at x = -1.",
+        "The graph rises to the left and rises to the right, and it only touches the x-axis at x = -1."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The degree is 5 and the leading coefficient is -3, giving the end behavior.",
+        "The zero at x = -1 has multiplicity 1, which is odd."
+      ],
+      "useAgain": "when a single question asks about both end behavior and a crossing at once.",
+      "hints": [
+        "Work out the end behavior from the degree and leading coefficient first.",
+        "Then check that one zero's multiplicity separately."
+      ],
+      "socraticHint": "Is the degree even or odd, and is that particular multiplicity even or odd?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "P(x) = -(x - 2)(x + 2)^2(x + 4)^2. Which statement about its graph is true?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "The graph rises to the left and rises to the right, and it only touches the x-axis at x = -4.",
+          "The graph rises to the left and falls to the right, and it crosses the x-axis at x = -4.",
+          "The graph rises to the left and rises to the right, and it crosses the x-axis at x = -4.",
+          "The graph rises to the left and falls to the right, and it only touches the x-axis at x = -4."
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p25",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "The figure shows a polynomial's graph. How many x-intercepts does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Count every point where the curve crosses or touches the x-axis.",
+        "This graph has 2 of them."
+      ],
+      "figure": {
+        "kind": "plane",
+        "alt": "A polynomial's graph crossing the x-axis at its real zeros.",
+        "spec": {
+          "range": 8,
+          "polylines": [
+            [
+              [
+                -3.25,
+                -7.812
+              ],
+              [
+                -3.0,
+                -6.0
+              ],
+              [
+                -2.75,
+                -4.312
+              ],
+              [
+                -2.5,
+                -2.75
+              ],
+              [
+                -2.25,
+                -1.312
+              ],
+              [
+                -2.0,
+                0.0
+              ],
+              [
+                -1.75,
+                1.188
+              ],
+              [
+                -1.5,
+                2.25
+              ],
+              [
+                -1.25,
+                3.188
+              ],
+              [
+                -1.0,
+                4.0
+              ],
+              [
+                -0.75,
+                4.688
+              ],
+              [
+                -0.5,
+                5.25
+              ],
+              [
+                -0.25,
+                5.688
+              ],
+              [
+                0.0,
+                6.0
+              ],
+              [
+                0.25,
+                6.188
+              ],
+              [
+                0.5,
+                6.25
+              ],
+              [
+                0.75,
+                6.188
+              ],
+              [
+                1.0,
+                6.0
+              ],
+              [
+                1.25,
+                5.688
+              ],
+              [
+                1.5,
+                5.25
+              ],
+              [
+                1.75,
+                4.688
+              ],
+              [
+                2.0,
+                4.0
+              ],
+              [
+                2.25,
+                3.188
+              ],
+              [
+                2.5,
+                2.25
+              ],
+              [
+                2.75,
+                1.188
+              ],
+              [
+                3.0,
+                0.0
+              ],
+              [
+                3.25,
+                -1.312
+              ],
+              [
+                3.5,
+                -2.75
+              ],
+              [
+                3.75,
+                -4.312
+              ],
+              [
+                4.0,
+                -6.0
+              ],
+              [
+                4.25,
+                -7.812
+              ]
+            ]
+          ]
+        }
+      },
+      "useAgain": "when you need to read a graph's zeros directly from the picture.",
+      "hints": [
+        "Look for every place the curve meets the x-axis, not just where it looks steepest.",
+        "A touch counts as one intercept, the same as a crossing."
+      ],
+      "socraticHint": "How many separate places does the curve meet the x-axis?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "This figure shows a different polynomial's graph. How many x-intercepts does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A polynomial's graph crossing the x-axis at its real zeros.",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  -3.25,
+                  -5.312
+                ],
+                [
+                  -3.0,
+                  -4.0
+                ],
+                [
+                  -2.75,
+                  -2.812
+                ],
+                [
+                  -2.5,
+                  -1.75
+                ],
+                [
+                  -2.25,
+                  -0.812
+                ],
+                [
+                  -2.0,
+                  0.0
+                ],
+                [
+                  -1.75,
+                  0.688
+                ],
+                [
+                  -1.5,
+                  1.25
+                ],
+                [
+                  -1.25,
+                  1.688
+                ],
+                [
+                  -1.0,
+                  2.0
+                ],
+                [
+                  -0.75,
+                  2.188
+                ],
+                [
+                  -0.5,
+                  2.25
+                ],
+                [
+                  -0.25,
+                  2.188
+                ],
+                [
+                  0.0,
+                  2.0
+                ],
+                [
+                  0.25,
+                  1.688
+                ],
+                [
+                  0.5,
+                  1.25
+                ],
+                [
+                  0.75,
+                  0.688
+                ],
+                [
+                  1.0,
+                  0.0
+                ],
+                [
+                  1.25,
+                  -0.812
+                ],
+                [
+                  1.5,
+                  -1.75
+                ],
+                [
+                  1.75,
+                  -2.812
+                ],
+                [
+                  2.0,
+                  -4.0
+                ],
+                [
+                  2.25,
+                  -5.312
+                ]
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p26",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "The figure shows a polynomial's graph. How many x-intercepts does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Count every point where the curve crosses or touches the x-axis.",
+        "This graph has 2 of them."
+      ],
+      "figure": {
+        "kind": "plane",
+        "alt": "A polynomial's graph crossing the x-axis at its real zeros.",
+        "spec": {
+          "range": 8,
+          "polylines": [
+            [
+              [
+                -4.25,
+                -7.812
+              ],
+              [
+                -4.0,
+                -6.0
+              ],
+              [
+                -3.75,
+                -4.312
+              ],
+              [
+                -3.5,
+                -2.75
+              ],
+              [
+                -3.25,
+                -1.312
+              ],
+              [
+                -3.0,
+                0.0
+              ],
+              [
+                -2.75,
+                1.188
+              ],
+              [
+                -2.5,
+                2.25
+              ],
+              [
+                -2.25,
+                3.188
+              ],
+              [
+                -2.0,
+                4.0
+              ],
+              [
+                -1.75,
+                4.688
+              ],
+              [
+                -1.5,
+                5.25
+              ],
+              [
+                -1.25,
+                5.688
+              ],
+              [
+                -1.0,
+                6.0
+              ],
+              [
+                -0.75,
+                6.188
+              ],
+              [
+                -0.5,
+                6.25
+              ],
+              [
+                -0.25,
+                6.188
+              ],
+              [
+                0.0,
+                6.0
+              ],
+              [
+                0.25,
+                5.688
+              ],
+              [
+                0.5,
+                5.25
+              ],
+              [
+                0.75,
+                4.688
+              ],
+              [
+                1.0,
+                4.0
+              ],
+              [
+                1.25,
+                3.188
+              ],
+              [
+                1.5,
+                2.25
+              ],
+              [
+                1.75,
+                1.188
+              ],
+              [
+                2.0,
+                0.0
+              ],
+              [
+                2.25,
+                -1.312
+              ],
+              [
+                2.5,
+                -2.75
+              ],
+              [
+                2.75,
+                -4.312
+              ],
+              [
+                3.0,
+                -6.0
+              ],
+              [
+                3.25,
+                -7.812
+              ]
+            ]
+          ]
+        }
+      },
+      "useAgain": "when you need to read a graph's zeros directly from the picture.",
+      "hints": [
+        "Look for every place the curve meets the x-axis, not just where it looks steepest.",
+        "A touch counts as one intercept, the same as a crossing."
+      ],
+      "socraticHint": "How many separate places does the curve meet the x-axis?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "This figure shows a different polynomial's graph. How many x-intercepts does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A polynomial's graph crossing the x-axis at its real zeros.",
+          "spec": {
+            "range": 10,
+            "polylines": [
+              [
+                [
+                  -4.25,
+                  -9.062
+                ],
+                [
+                  -4.0,
+                  -7.0
+                ],
+                [
+                  -3.75,
+                  -5.062
+                ],
+                [
+                  -3.5,
+                  -3.25
+                ],
+                [
+                  -3.25,
+                  -1.562
+                ],
+                [
+                  -3.0,
+                  0.0
+                ],
+                [
+                  -2.75,
+                  1.438
+                ],
+                [
+                  -2.5,
+                  2.75
+                ],
+                [
+                  -2.25,
+                  3.938
+                ],
+                [
+                  -2.0,
+                  5.0
+                ],
+                [
+                  -1.75,
+                  5.938
+                ],
+                [
+                  -1.5,
+                  6.75
+                ],
+                [
+                  -1.25,
+                  7.438
+                ],
+                [
+                  -1.0,
+                  8.0
+                ],
+                [
+                  -0.75,
+                  8.438
+                ],
+                [
+                  -0.5,
+                  8.75
+                ],
+                [
+                  -0.25,
+                  8.938
+                ],
+                [
+                  0.0,
+                  9.0
+                ],
+                [
+                  0.25,
+                  8.938
+                ],
+                [
+                  0.5,
+                  8.75
+                ],
+                [
+                  0.75,
+                  8.438
+                ],
+                [
+                  1.0,
+                  8.0
+                ],
+                [
+                  1.25,
+                  7.438
+                ],
+                [
+                  1.5,
+                  6.75
+                ],
+                [
+                  1.75,
+                  5.938
+                ],
+                [
+                  2.0,
+                  5.0
+                ],
+                [
+                  2.25,
+                  3.938
+                ],
+                [
+                  2.5,
+                  2.75
+                ],
+                [
+                  2.75,
+                  1.438
+                ],
+                [
+                  3.0,
+                  0.0
+                ],
+                [
+                  3.25,
+                  -1.562
+                ],
+                [
+                  3.5,
+                  -3.25
+                ],
+                [
+                  3.75,
+                  -5.062
+                ],
+                [
+                  4.0,
+                  -7.0
+                ],
+                [
+                  4.25,
+                  -9.062
+                ]
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p27",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "The figure shows a polynomial's graph. How many x-intercepts does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Count every point where the curve crosses or touches the x-axis.",
+        "This graph has 2 of them."
+      ],
+      "figure": {
+        "kind": "plane",
+        "alt": "A polynomial's graph crossing the x-axis at its real zeros.",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                1.0,
+                6.0
+              ],
+              [
+                1.25,
+                4.812
+              ],
+              [
+                1.5,
+                3.75
+              ],
+              [
+                1.75,
+                2.812
+              ],
+              [
+                2.0,
+                2.0
+              ],
+              [
+                2.25,
+                1.312
+              ],
+              [
+                2.5,
+                0.75
+              ],
+              [
+                2.75,
+                0.312
+              ],
+              [
+                3.0,
+                0.0
+              ],
+              [
+                3.25,
+                -0.188
+              ],
+              [
+                3.5,
+                -0.25
+              ],
+              [
+                3.75,
+                -0.188
+              ],
+              [
+                4.0,
+                0.0
+              ],
+              [
+                4.25,
+                0.312
+              ],
+              [
+                4.5,
+                0.75
+              ],
+              [
+                4.75,
+                1.312
+              ],
+              [
+                5.0,
+                2.0
+              ],
+              [
+                5.25,
+                2.812
+              ],
+              [
+                5.5,
+                3.75
+              ],
+              [
+                5.75,
+                4.812
+              ],
+              [
+                6.0,
+                6.0
+              ]
+            ]
+          ]
+        }
+      },
+      "useAgain": "when you need to read a graph's zeros directly from the picture.",
+      "hints": [
+        "Look for every place the curve meets the x-axis, not just where it looks steepest.",
+        "A touch counts as one intercept, the same as a crossing."
+      ],
+      "socraticHint": "How many separate places does the curve meet the x-axis?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "This figure shows a different polynomial's graph. How many x-intercepts does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A polynomial's graph crossing the x-axis at its real zeros.",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  0.5,
+                  -5.25
+                ],
+                [
+                  0.75,
+                  -4.062
+                ],
+                [
+                  1.0,
+                  -3.0
+                ],
+                [
+                  1.25,
+                  -2.062
+                ],
+                [
+                  1.5,
+                  -1.25
+                ],
+                [
+                  1.75,
+                  -0.562
+                ],
+                [
+                  2.0,
+                  0.0
+                ],
+                [
+                  2.25,
+                  0.438
+                ],
+                [
+                  2.5,
+                  0.75
+                ],
+                [
+                  2.75,
+                  0.938
+                ],
+                [
+                  3.0,
+                  1.0
+                ],
+                [
+                  3.25,
+                  0.938
+                ],
+                [
+                  3.5,
+                  0.75
+                ],
+                [
+                  3.75,
+                  0.438
+                ],
+                [
+                  4.0,
+                  0.0
+                ],
+                [
+                  4.25,
+                  -0.562
+                ],
+                [
+                  4.5,
+                  -1.25
+                ],
+                [
+                  4.75,
+                  -2.062
+                ],
+                [
+                  5.0,
+                  -3.0
+                ],
+                [
+                  5.25,
+                  -4.062
+                ],
+                [
+                  5.5,
+                  -5.25
+                ]
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p28",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "A polynomial's real zeros are x = 4 with multiplicity 2. x = 2 with multiplicity 2. What is the smallest possible degree?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The smallest possible degree just adds up every given multiplicity.",
+        "2 + 2 = 4."
+      ],
+      "useAgain": "when a graph's zeros are described in words and you need the least degree they require.",
+      "hints": [
+        "Add up the multiplicities of every zero listed.",
+        "The polynomial could have a higher degree, but not a lower one."
+      ],
+      "socraticHint": "What do the multiplicities add up to?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A polynomial's real zeros are x = 1 with multiplicity 3. x = 6 with multiplicity 1. x = -4 with multiplicity 2. x = 5 with multiplicity 1. What is the smallest possible degree?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p29",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "A polynomial's real zeros are x = 2 with multiplicity 2. x = -2 with multiplicity 3. x = -5 with multiplicity 2. x = -1 with multiplicity 3. What is the smallest possible degree?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The smallest possible degree just adds up every given multiplicity.",
+        "2 + 3 + 2 + 3 = 10."
+      ],
+      "useAgain": "when a graph's zeros are described in words and you need the least degree they require.",
+      "hints": [
+        "Add up the multiplicities of every zero listed.",
+        "The polynomial could have a higher degree, but not a lower one."
+      ],
+      "socraticHint": "What do the multiplicities add up to?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A polynomial's real zeros are x = 2 with multiplicity 2. x = 0 with multiplicity 3. x = -5 with multiplicity 3. What is the smallest possible degree?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p30",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "A polynomial's real zeros are x = -4 with multiplicity 2. x = -2 with multiplicity 1. x = 3 with multiplicity 3. What is the smallest possible degree?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The smallest possible degree just adds up every given multiplicity.",
+        "2 + 1 + 3 = 6."
+      ],
+      "useAgain": "when a graph's zeros are described in words and you need the least degree they require.",
+      "hints": [
+        "Add up the multiplicities of every zero listed.",
+        "The polynomial could have a higher degree, but not a lower one."
+      ],
+      "socraticHint": "What do the multiplicities add up to?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A polynomial's real zeros are x = -6 with multiplicity 1. x = 4 with multiplicity 3. What is the smallest possible degree?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p31",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "A polynomial has zeros x = -2 with multiplicity 1. x = 3 with multiplicity 1, and a y-intercept of -24. What is the polynomial?",
+      "options": [
+        "4(x + 2)(x - 3)",
+        "-4(x + 2)(x - 3)",
+        "(x + 2)(x - 3)",
+        "5(x + 2)(x - 3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Write the factored form with an unknown leading coefficient a, then substitute x = 0.",
+        "Solving for a using the y-intercept -24 gives a = 4."
+      ],
+      "useAgain": "when a factored polynomial's leading coefficient is not yet known.",
+      "hints": [
+        "Write the zeros as factors first, with an unknown coefficient a out front.",
+        "Substitute x = 0 and solve for a using the given y-intercept."
+      ],
+      "socraticHint": "What single equation does the y-intercept give you for a?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A polynomial has zeros x = 5 with multiplicity 1. x = 4 with multiplicity 1. x = 3 with multiplicity 1, and a y-intercept of 240. What is the polynomial?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "4(x - 5)(x - 4)(x - 3)",
+          "(x - 5)(x - 4)(x - 3)",
+          "-4(x - 5)(x - 4)(x - 3)",
+          "-3(x - 5)(x - 4)(x - 3)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p32",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "A polynomial has zeros x = 2 with multiplicity 2. x = -5 with multiplicity 1, and a y-intercept of 80. What is the polynomial?",
+      "options": [
+        "4(x - 2)^2(x + 5)",
+        "-4(x - 2)^2(x + 5)",
+        "(x - 2)^2(x + 5)",
+        "5(x - 2)^2(x + 5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Write the factored form with an unknown leading coefficient a, then substitute x = 0.",
+        "Solving for a using the y-intercept 80 gives a = 4."
+      ],
+      "useAgain": "when a factored polynomial's leading coefficient is not yet known.",
+      "hints": [
+        "Write the zeros as factors first, with an unknown coefficient a out front.",
+        "Substitute x = 0 and solve for a using the given y-intercept."
+      ],
+      "socraticHint": "What single equation does the y-intercept give you for a?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A polynomial has zeros x = 1 with multiplicity 1. x = -2 with multiplicity 2, and a y-intercept of 12. What is the polynomial?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "3(x - 1)(x + 2)^2",
+          "(x - 1)(x + 2)^2",
+          "-3(x - 1)(x + 2)^2",
+          "-2(x - 1)(x + 2)^2"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p33",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "A polynomial has zeros x = 2 with multiplicity 1. x = -3 with multiplicity 1, and a y-intercept of 24. What is the polynomial?",
+      "options": [
+        "4(x - 2)(x + 3)",
+        "(x - 2)(x + 3)",
+        "-3(x - 2)(x + 3)",
+        "-4(x - 2)(x + 3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Write the factored form with an unknown leading coefficient a, then substitute x = 0.",
+        "Solving for a using the y-intercept 24 gives a = -4."
+      ],
+      "useAgain": "when a factored polynomial's leading coefficient is not yet known.",
+      "hints": [
+        "Write the zeros as factors first, with an unknown coefficient a out front.",
+        "Substitute x = 0 and solve for a using the given y-intercept."
+      ],
+      "socraticHint": "What single equation does the y-intercept give you for a?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A polynomial has zeros x = -3 with multiplicity 2. x = -4 with multiplicity 2, and a y-intercept of -576. What is the polynomial?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "4(x + 3)^2(x + 4)^2",
+          "-4(x + 3)^2(x + 4)^2",
+          "(x + 3)^2(x + 4)^2",
+          "-3(x + 3)^2(x + 4)^2"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p34",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "The figure shows a polynomial's graph, with every zero having multiplicity 1. Which factored form matches?",
+      "options": [
+        "-(x + 3)(x + 1)",
+        "(x + 3)(x + 1)",
+        "-(x + 3)(x + 6)",
+        "-(x + 3)^2(x + 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Read each x-intercept off the graph, and note whether the ends rise or fall.",
+        "That gives the zeros -3, -1, matching -(x + 3)(x + 1)."
+      ],
+      "figure": {
+        "kind": "plane",
+        "alt": "A polynomial's graph.",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -4.5,
+                -5.25
+              ],
+              [
+                -4.25,
+                -4.062
+              ],
+              [
+                -4.0,
+                -3.0
+              ],
+              [
+                -3.75,
+                -2.062
+              ],
+              [
+                -3.5,
+                -1.25
+              ],
+              [
+                -3.25,
+                -0.562
+              ],
+              [
+                -3.0,
+                0.0
+              ],
+              [
+                -2.75,
+                0.438
+              ],
+              [
+                -2.5,
+                0.75
+              ],
+              [
+                -2.25,
+                0.938
+              ],
+              [
+                -2.0,
+                1.0
+              ],
+              [
+                -1.75,
+                0.938
+              ],
+              [
+                -1.5,
+                0.75
+              ],
+              [
+                -1.25,
+                0.438
+              ],
+              [
+                -1.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.562
+              ],
+              [
+                -0.5,
+                -1.25
+              ],
+              [
+                -0.25,
+                -2.062
+              ],
+              [
+                0.0,
+                -3.0
+              ],
+              [
+                0.25,
+                -4.062
+              ],
+              [
+                0.5,
+                -5.25
+              ]
+            ]
+          ]
+        }
+      },
+      "useAgain": "when a graph needs to be turned back into a factored equation.",
+      "hints": [
+        "Read the x-intercepts straight off the graph first.",
+        "Check the end behavior to settle the sign of the leading coefficient."
+      ],
+      "socraticHint": "What are the graph's x-intercepts, and which way do the ends point?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The figure shows a polynomial's graph, with every zero having multiplicity 1. Which factored form matches?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "-(x - 2)(x - 3)(x - 4)",
+          "(x - 2)(x - 3)(x - 0)",
+          "(x - 2)(x - 3)(x - 4)",
+          "(x - 2)^2(x - 3)(x - 4)"
+        ],
+        "figure": {
+          "kind": "plane",
+          "alt": "A polynomial's graph.",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  1.0,
+                  -6.0
+                ],
+                [
+                  1.25,
+                  -3.609
+                ],
+                [
+                  1.5,
+                  -1.875
+                ],
+                [
+                  1.75,
+                  -0.703
+                ],
+                [
+                  2.0,
+                  0.0
+                ],
+                [
+                  2.25,
+                  0.328
+                ],
+                [
+                  2.5,
+                  0.375
+                ],
+                [
+                  2.75,
+                  0.234
+                ],
+                [
+                  3.0,
+                  0.0
+                ],
+                [
+                  3.25,
+                  -0.234
+                ],
+                [
+                  3.5,
+                  -0.375
+                ],
+                [
+                  3.75,
+                  -0.328
+                ],
+                [
+                  4.0,
+                  0.0
+                ],
+                [
+                  4.25,
+                  0.703
+                ],
+                [
+                  4.5,
+                  1.875
+                ],
+                [
+                  4.75,
+                  3.609
+                ],
+                [
+                  5.0,
+                  6.0
+                ]
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p35",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "The figure shows a polynomial's graph, with every zero having multiplicity 1. Which factored form matches?",
+      "options": [
+        "(x + 2)(x + 1)",
+        "-(x + 2)(x + 1)",
+        "-(x + 2)(x - 2)",
+        "-(x + 2)^2(x + 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Read each x-intercept off the graph, and note whether the ends rise or fall.",
+        "That gives the zeros -2, -1, matching -(x + 2)(x + 1)."
+      ],
+      "figure": {
+        "kind": "plane",
+        "alt": "A polynomial's graph.",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -4.0,
+                -6.0
+              ],
+              [
+                -3.75,
+                -4.812
+              ],
+              [
+                -3.5,
+                -3.75
+              ],
+              [
+                -3.25,
+                -2.812
+              ],
+              [
+                -3.0,
+                -2.0
+              ],
+              [
+                -2.75,
+                -1.312
+              ],
+              [
+                -2.5,
+                -0.75
+              ],
+              [
+                -2.25,
+                -0.312
+              ],
+              [
+                -2.0,
+                0.0
+              ],
+              [
+                -1.75,
+                0.188
+              ],
+              [
+                -1.5,
+                0.25
+              ],
+              [
+                -1.25,
+                0.188
+              ],
+              [
+                -1.0,
+                0.0
+              ],
+              [
+                -0.75,
+                -0.312
+              ],
+              [
+                -0.5,
+                -0.75
+              ],
+              [
+                -0.25,
+                -1.312
+              ],
+              [
+                0.0,
+                -2.0
+              ],
+              [
+                0.25,
+                -2.812
+              ],
+              [
+                0.5,
+                -3.75
+              ],
+              [
+                0.75,
+                -4.812
+              ],
+              [
+                1.0,
+                -6.0
+              ]
+            ]
+          ]
+        }
+      },
+      "useAgain": "when a graph needs to be turned back into a factored equation.",
+      "hints": [
+        "Read the x-intercepts straight off the graph first.",
+        "Check the end behavior to settle the sign of the leading coefficient."
+      ],
+      "socraticHint": "What are the graph's x-intercepts, and which way do the ends point?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The figure shows a polynomial's graph, with every zero having multiplicity 1. Which factored form matches?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "-(x + 2)(x + 1)(x - 1)",
+          "(x + 2)(x + 1)(x + 4)",
+          "(x + 2)^2(x + 1)(x - 1)",
+          "(x + 2)(x + 1)(x - 1)"
+        ],
+        "figure": {
+          "kind": "plane",
+          "alt": "A polynomial's graph.",
+          "spec": {
+            "range": 8,
+            "polylines": [
+              [
+                [
+                  -2.75,
+                  -4.922
+                ],
+                [
+                  -2.5,
+                  -2.625
+                ],
+                [
+                  -2.25,
+                  -1.016
+                ],
+                [
+                  -2.0,
+                  0.0
+                ],
+                [
+                  -1.75,
+                  0.516
+                ],
+                [
+                  -1.5,
+                  0.625
+                ],
+                [
+                  -1.25,
+                  0.422
+                ],
+                [
+                  -1.0,
+                  0.0
+                ],
+                [
+                  -0.75,
+                  -0.547
+                ],
+                [
+                  -0.5,
+                  -1.125
+                ],
+                [
+                  -0.25,
+                  -1.641
+                ],
+                [
+                  0.0,
+                  -2.0
+                ],
+                [
+                  0.25,
+                  -2.109
+                ],
+                [
+                  0.5,
+                  -1.875
+                ],
+                [
+                  0.75,
+                  -1.203
+                ],
+                [
+                  1.0,
+                  0.0
+                ],
+                [
+                  1.25,
+                  1.828
+                ],
+                [
+                  1.5,
+                  4.375
+                ],
+                [
+                  1.75,
+                  7.734
+                ]
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p36",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "The figure shows a polynomial's graph, with every zero having multiplicity 1. Which factored form matches?",
+      "options": [
+        "(x - 1)(x - 4)",
+        "-(x - 1)(x - 0)",
+        "-(x - 1)^2(x - 4)",
+        "-(x - 1)(x - 4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Read each x-intercept off the graph, and note whether the ends rise or fall.",
+        "That gives the zeros 1, 4, matching -(x - 1)(x - 4)."
+      ],
+      "figure": {
+        "kind": "plane",
+        "alt": "A polynomial's graph.",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -0.25,
+                -5.312
+              ],
+              [
+                0.0,
+                -4.0
+              ],
+              [
+                0.25,
+                -2.812
+              ],
+              [
+                0.5,
+                -1.75
+              ],
+              [
+                0.75,
+                -0.812
+              ],
+              [
+                1.0,
+                0.0
+              ],
+              [
+                1.25,
+                0.688
+              ],
+              [
+                1.5,
+                1.25
+              ],
+              [
+                1.75,
+                1.688
+              ],
+              [
+                2.0,
+                2.0
+              ],
+              [
+                2.25,
+                2.188
+              ],
+              [
+                2.5,
+                2.25
+              ],
+              [
+                2.75,
+                2.188
+              ],
+              [
+                3.0,
+                2.0
+              ],
+              [
+                3.25,
+                1.688
+              ],
+              [
+                3.5,
+                1.25
+              ],
+              [
+                3.75,
+                0.688
+              ],
+              [
+                4.0,
+                0.0
+              ],
+              [
+                4.25,
+                -0.812
+              ],
+              [
+                4.5,
+                -1.75
+              ],
+              [
+                4.75,
+                -2.812
+              ],
+              [
+                5.0,
+                -4.0
+              ],
+              [
+                5.25,
+                -5.312
+              ]
+            ]
+          ]
+        }
+      },
+      "useAgain": "when a graph needs to be turned back into a factored equation.",
+      "hints": [
+        "Read the x-intercepts straight off the graph first.",
+        "Check the end behavior to settle the sign of the leading coefficient."
+      ],
+      "socraticHint": "What are the graph's x-intercepts, and which way do the ends point?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The figure shows a polynomial's graph, with every zero having multiplicity 1. Which factored form matches?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "-(x + 2)(x + 1)(x - 0)",
+          "(x + 2)(x + 1)(x - 0)",
+          "(x + 2)(x + 1)(x - 6)",
+          "(x + 2)^2(x + 1)(x - 0)"
+        ],
+        "figure": {
+          "kind": "plane",
+          "alt": "A polynomial's graph.",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  -3.0,
+                  -6.0
+                ],
+                [
+                  -2.75,
+                  -3.609
+                ],
+                [
+                  -2.5,
+                  -1.875
+                ],
+                [
+                  -2.25,
+                  -0.703
+                ],
+                [
+                  -2.0,
+                  0.0
+                ],
+                [
+                  -1.75,
+                  0.328
+                ],
+                [
+                  -1.5,
+                  0.375
+                ],
+                [
+                  -1.25,
+                  0.234
+                ],
+                [
+                  -1.0,
+                  0.0
+                ],
+                [
+                  -0.75,
+                  -0.234
+                ],
+                [
+                  -0.5,
+                  -0.375
+                ],
+                [
+                  -0.25,
+                  -0.328
+                ],
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.25,
+                  0.703
+                ],
+                [
+                  0.5,
+                  1.875
+                ],
+                [
+                  0.75,
+                  3.609
+                ],
+                [
+                  1.0,
+                  6.0
+                ]
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p37",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "The figure shows a polynomial's graph. How many turning points does it show?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "A turning point is where the curve switches from rising to falling, or falling to rising.",
+        "This graph turns 1 time(s)."
+      ],
+      "figure": {
+        "kind": "plane",
+        "alt": "A polynomial's graph.",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -3.5,
+                4.125
+              ],
+              [
+                -3.25,
+                1.641
+              ],
+              [
+                -3.0,
+                0.0
+              ],
+              [
+                -2.75,
+                -0.891
+              ],
+              [
+                -2.5,
+                -1.125
+              ],
+              [
+                -2.25,
+                -0.797
+              ],
+              [
+                -2.0,
+                0.0
+              ],
+              [
+                -1.75,
+                1.172
+              ],
+              [
+                -1.5,
+                2.625
+              ],
+              [
+                -1.25,
+                4.266
+              ],
+              [
+                -1.0,
+                6.0
+              ]
+            ]
+          ]
+        }
+      },
+      "useAgain": "when you need a graph's turning points read straight from the picture.",
+      "hints": [
+        "Trace the curve from left to right and count each time it changes direction.",
+        "A turning point is never at an x-intercept unless the curve bounces there."
+      ],
+      "socraticHint": "How many times does the curve change from rising to falling or back?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "This figure shows a different polynomial's graph. How many turning points does it show?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A polynomial's graph.",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  2.0,
+                  -6.0
+                ],
+                [
+                  2.25,
+                  -4.266
+                ],
+                [
+                  2.5,
+                  -2.625
+                ],
+                [
+                  2.75,
+                  -1.172
+                ],
+                [
+                  3.0,
+                  0.0
+                ],
+                [
+                  3.25,
+                  0.797
+                ],
+                [
+                  3.5,
+                  1.125
+                ],
+                [
+                  3.75,
+                  0.891
+                ],
+                [
+                  4.0,
+                  0.0
+                ],
+                [
+                  4.25,
+                  -1.641
+                ],
+                [
+                  4.5,
+                  -4.125
+                ]
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p38",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "The figure shows a polynomial's graph. How many turning points does it show?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "A turning point is where the curve switches from rising to falling, or falling to rising.",
+        "This graph turns 1 time(s)."
+      ],
+      "figure": {
+        "kind": "plane",
+        "alt": "A polynomial's graph.",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -4.5,
+                5.25
+              ],
+              [
+                -4.25,
+                4.062
+              ],
+              [
+                -4.0,
+                3.0
+              ],
+              [
+                -3.75,
+                2.062
+              ],
+              [
+                -3.5,
+                1.25
+              ],
+              [
+                -3.25,
+                0.562
+              ],
+              [
+                -3.0,
+                0.0
+              ],
+              [
+                -2.75,
+                -0.438
+              ],
+              [
+                -2.5,
+                -0.75
+              ],
+              [
+                -2.25,
+                -0.938
+              ],
+              [
+                -2.0,
+                -1.0
+              ],
+              [
+                -1.75,
+                -0.938
+              ],
+              [
+                -1.5,
+                -0.75
+              ],
+              [
+                -1.25,
+                -0.438
+              ],
+              [
+                -1.0,
+                0.0
+              ],
+              [
+                -0.75,
+                0.562
+              ],
+              [
+                -0.5,
+                1.25
+              ],
+              [
+                -0.25,
+                2.062
+              ],
+              [
+                0.0,
+                3.0
+              ],
+              [
+                0.25,
+                4.062
+              ],
+              [
+                0.5,
+                5.25
+              ]
+            ]
+          ]
+        }
+      },
+      "useAgain": "when you need a graph's turning points read straight from the picture.",
+      "hints": [
+        "Trace the curve from left to right and count each time it changes direction.",
+        "A turning point is never at an x-intercept unless the curve bounces there."
+      ],
+      "socraticHint": "How many times does the curve change from rising to falling or back?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "This figure shows a different polynomial's graph. How many turning points does it show?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A polynomial's graph.",
+          "spec": {
+            "range": 5,
+            "polylines": [
+              [
+                [
+                  -5.0,
+                  -5.0
+                ],
+                [
+                  -4.75,
+                  -3.562
+                ],
+                [
+                  -4.5,
+                  -2.25
+                ],
+                [
+                  -4.25,
+                  -1.062
+                ],
+                [
+                  -4.0,
+                  0.0
+                ],
+                [
+                  -3.75,
+                  0.938
+                ],
+                [
+                  -3.5,
+                  1.75
+                ],
+                [
+                  -3.25,
+                  2.438
+                ],
+                [
+                  -3.0,
+                  3.0
+                ],
+                [
+                  -2.75,
+                  3.438
+                ],
+                [
+                  -2.5,
+                  3.75
+                ],
+                [
+                  -2.25,
+                  3.938
+                ],
+                [
+                  -2.0,
+                  4.0
+                ],
+                [
+                  -1.75,
+                  3.938
+                ],
+                [
+                  -1.5,
+                  3.75
+                ],
+                [
+                  -1.25,
+                  3.438
+                ],
+                [
+                  -1.0,
+                  3.0
+                ],
+                [
+                  -0.75,
+                  2.438
+                ],
+                [
+                  -0.5,
+                  1.75
+                ],
+                [
+                  -0.25,
+                  0.938
+                ],
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.25,
+                  -1.062
+                ],
+                [
+                  0.5,
+                  -2.25
+                ],
+                [
+                  0.75,
+                  -3.562
+                ],
+                [
+                  1.0,
+                  -5.0
+                ]
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p39",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "The figure shows a polynomial's graph. How many turning points does it show?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "A turning point is where the curve switches from rising to falling, or falling to rising.",
+        "This graph turns 1 time(s)."
+      ],
+      "figure": {
+        "kind": "plane",
+        "alt": "A polynomial's graph.",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -1.0,
+                6.0
+              ],
+              [
+                -0.75,
+                4.812
+              ],
+              [
+                -0.5,
+                3.75
+              ],
+              [
+                -0.25,
+                2.812
+              ],
+              [
+                0.0,
+                2.0
+              ],
+              [
+                0.25,
+                1.312
+              ],
+              [
+                0.5,
+                0.75
+              ],
+              [
+                0.75,
+                0.312
+              ],
+              [
+                1.0,
+                0.0
+              ],
+              [
+                1.25,
+                -0.188
+              ],
+              [
+                1.5,
+                -0.25
+              ],
+              [
+                1.75,
+                -0.188
+              ],
+              [
+                2.0,
+                0.0
+              ],
+              [
+                2.25,
+                0.312
+              ],
+              [
+                2.5,
+                0.75
+              ],
+              [
+                2.75,
+                1.312
+              ],
+              [
+                3.0,
+                2.0
+              ],
+              [
+                3.25,
+                2.812
+              ],
+              [
+                3.5,
+                3.75
+              ],
+              [
+                3.75,
+                4.812
+              ],
+              [
+                4.0,
+                6.0
+              ]
+            ]
+          ]
+        }
+      },
+      "useAgain": "when you need a graph's turning points read straight from the picture.",
+      "hints": [
+        "Trace the curve from left to right and count each time it changes direction.",
+        "A turning point is never at an x-intercept unless the curve bounces there."
+      ],
+      "socraticHint": "How many times does the curve change from rising to falling or back?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "This figure shows a different polynomial's graph. How many turning points does it show?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "A polynomial's graph.",
+          "spec": {
+            "range": 6,
+            "polylines": [
+              [
+                [
+                  2.0,
+                  6.0
+                ],
+                [
+                  2.25,
+                  4.266
+                ],
+                [
+                  2.5,
+                  2.625
+                ],
+                [
+                  2.75,
+                  1.172
+                ],
+                [
+                  3.0,
+                  0.0
+                ],
+                [
+                  3.25,
+                  -0.797
+                ],
+                [
+                  3.5,
+                  -1.125
+                ],
+                [
+                  3.75,
+                  -0.891
+                ],
+                [
+                  4.0,
+                  0.0
+                ],
+                [
+                  4.25,
+                  1.641
+                ],
+                [
+                  4.5,
+                  4.125
+                ]
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p40",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "A drone's lift model is a degree 3 polynomial with leading coefficient -2. What happens to it as the input grows very large?",
+      "options": [
+        "drops without bound as the input grows very large",
+        "grows without bound as the input grows very large",
+        "settles down and stops changing as the input grows very large",
+        "oscillates back and forth forever as the input grows very large"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "For large positive input, only the leading term matters.",
+        "A negative leading coefficient means the value drops without bound as the input grows very large."
+      ],
+      "useAgain": "when a modeling context asks what happens far from the starting point.",
+      "hints": [
+        "Only the leading term matters once the input is very large.",
+        "The leading coefficient's sign decides which way it heads."
+      ],
+      "socraticHint": "What sign is the leading coefficient, and what does that mean for very large input?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A drone's lift model is a degree 7 polynomial with leading coefficient 5. What happens to it as the input grows very large?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "drops without bound as the input grows very large",
+          "settles down and stops changing as the input grows very large",
+          "grows without bound as the input grows very large",
+          "oscillates back and forth forever as the input grows very large"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p41",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "A rover's power draw model is a degree 5 polynomial with leading coefficient 2. What happens to it as the input grows very large?",
+      "options": [
+        "drops without bound as the input grows very large",
+        "grows without bound as the input grows very large",
+        "settles down and stops changing as the input grows very large",
+        "oscillates back and forth forever as the input grows very large"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "For large positive input, only the leading term matters.",
+        "A positive leading coefficient means the value grows without bound as the input grows very large."
+      ],
+      "useAgain": "when a modeling context asks what happens far from the starting point.",
+      "hints": [
+        "Only the leading term matters once the input is very large.",
+        "The leading coefficient's sign decides which way it heads."
+      ],
+      "socraticHint": "What sign is the leading coefficient, and what does that mean for very large input?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover's power draw model is a degree 3 polynomial with leading coefficient -1. What happens to it as the input grows very large?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "grows without bound as the input grows very large",
+          "settles down and stops changing as the input grows very large",
+          "drops without bound as the input grows very large",
+          "oscillates back and forth forever as the input grows very large"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p42",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "A game's difficulty curve is a degree 7 polynomial with leading coefficient -3. What happens to it as the input grows very large?",
+      "options": [
+        "drops without bound as the input grows very large",
+        "grows without bound as the input grows very large",
+        "settles down and stops changing as the input grows very large",
+        "oscillates back and forth forever as the input grows very large"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "For large positive input, only the leading term matters.",
+        "A negative leading coefficient means the value drops without bound as the input grows very large."
+      ],
+      "useAgain": "when a modeling context asks what happens far from the starting point.",
+      "hints": [
+        "Only the leading term matters once the input is very large.",
+        "The leading coefficient's sign decides which way it heads."
+      ],
+      "socraticHint": "What sign is the leading coefficient, and what does that mean for very large input?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game's difficulty curve is a degree 5 polynomial with leading coefficient -4. What happens to it as the input grows very large?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "grows without bound as the input grows very large",
+          "settles down and stops changing as the input grows very large",
+          "oscillates back and forth forever as the input grows very large",
+          "drops without bound as the input grows very large"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p43",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "P(x) = -x^5 - 11x^4 - 40x^3 - 44x^2 + 32x + 64. What is its fully factored form?",
+      "options": [
+        "(x + 4)^2(x - 1)(x + 2)^2",
+        "-(x + 4)^3(x - 1)(x + 2)^2",
+        "-(x + 4)^2(x - 1)(x + 2)^2",
+        "-(x - 4)^2(x + 1)(x - 2)^2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Test small integer divisors of the constant term to find a root, then divide it out.",
+        "Repeating that process finds every real zero and its multiplicity.",
+        "That gives -(x + 4)^2(x - 1)(x + 2)^2."
+      ],
+      "useAgain": "when a polynomial is given expanded and you need its zeros.",
+      "hints": [
+        "Try small integer candidates using the rational root theorem.",
+        "Divide out each root you find and keep going on the quotient."
+      ],
+      "socraticHint": "Which small integers are worth testing as roots first?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = -x^4 + 14x^3 - 73x^2 + 168x - 144. What is its fully factored form?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "-(x - 4)^2(x - 3)^2",
+          "(x - 4)^2(x - 3)^2",
+          "-(x - 4)^3(x - 3)^2",
+          "-(x + 4)^2(x + 3)^2"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p44",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "P(x) = x^6 - 4x^5 - 6x^4 + 32x^3 + x^2 - 60x + 36. What is its fully factored form?",
+      "options": [
+        "-(x - 3)^2(x - 1)^2(x + 2)^2",
+        "(x - 3)^2(x - 1)^2(x + 2)^2",
+        "(x - 3)^3(x - 1)^2(x + 2)^2",
+        "(x + 3)^2(x + 1)^2(x - 2)^2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Test small integer divisors of the constant term to find a root, then divide it out.",
+        "Repeating that process finds every real zero and its multiplicity.",
+        "That gives (x - 3)^2(x - 1)^2(x + 2)^2."
+      ],
+      "useAgain": "when a polynomial is given expanded and you need its zeros.",
+      "hints": [
+        "Try small integer candidates using the rational root theorem.",
+        "Divide out each root you find and keep going on the quotient."
+      ],
+      "socraticHint": "Which small integers are worth testing as roots first?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = x^4 + 2x^3 + x^2. What is its fully factored form?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "-(x - 0)^2(x + 1)^2",
+          "(x - 0)^3(x + 1)^2",
+          "(x - 0)^2(x - 1)^2",
+          "(x - 0)^2(x + 1)^2"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p45",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "choice",
+      "prompt": "P(x) = -x^4 - 9x^3 - 28x^2 - 36x - 16. What is its fully factored form?",
+      "options": [
+        "(x + 1)(x + 2)^2(x + 4)",
+        "-(x + 1)^2(x + 2)^2(x + 4)",
+        "-(x - 1)(x - 2)^2(x - 4)",
+        "-(x + 1)(x + 2)^2(x + 4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Test small integer divisors of the constant term to find a root, then divide it out.",
+        "Repeating that process finds every real zero and its multiplicity.",
+        "That gives -(x + 1)(x + 2)^2(x + 4)."
+      ],
+      "useAgain": "when a polynomial is given expanded and you need its zeros.",
+      "hints": [
+        "Try small integer candidates using the rational root theorem.",
+        "Divide out each root you find and keep going on the quotient."
+      ],
+      "socraticHint": "Which small integers are worth testing as roots first?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = x^4 - 12x^3 + 53x^2 - 102x + 72. What is its fully factored form?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "-(x - 2)(x - 4)(x - 3)^2",
+          "(x - 2)(x - 4)(x - 3)^2",
+          "(x - 2)^2(x - 4)(x - 3)^2",
+          "(x + 2)(x + 4)(x + 3)^2"
+        ]
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-polynomial-graphs-p46",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "A polynomial's graph crosses the x-axis at x = 1, x = 4, and touches without crossing at x = -2. What is the smallest possible degree?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Each crossing needs an odd multiplicity, at least 1.",
+        "Each touch needs an even multiplicity, at least 2.",
+        "Adding the smallest multiplicity for every zero gives 4."
+      ],
+      "useAgain": "when a graph's crossings and touches must add up to a minimum degree.",
+      "hints": [
+        "A crossing needs at least multiplicity 1.",
+        "A touch needs at least multiplicity 2."
+      ],
+      "socraticHint": "What is the smallest multiplicity each kind of zero could have?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A polynomial's graph crosses the x-axis at x = -1, x = 2, x = 5, and touches without crossing at x = 3. What is the smallest possible degree?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p47",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = a(x - 1)(x + 2)(x - 4)(x + 3), and its y-intercept is -48. What is a?",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Substitute x = 0: each factor becomes -1; 2; -4; 3 to its own power.",
+        "That leaves a single equation for a, giving a = -2."
+      ],
+      "useAgain": "when four or more factors need to be evaluated together to find a.",
+      "hints": [
+        "Substitute x = 0 into the whole factored form, unknown a and all.",
+        "Solve the resulting one-step equation for a."
+      ],
+      "socraticHint": "What does each factor equal at x = 0?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = a(x - 2)(x + 1)(x - 3)(x + 4), and its y-intercept is 72. What is a?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p48",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "A degree 7 polynomial's real zeros are x = -3 with multiplicity 1. x = 0 with multiplicity 3. x = 4 with multiplicity 1. x = 6 with multiplicity 2. At how many of them does the graph actually cross the x-axis?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "A zero crosses the axis exactly when its multiplicity is odd.",
+        "Check each multiplicity in turn.",
+        "That gives 3 crossings."
+      ],
+      "useAgain": "when several zeros need to be checked for crossing all at once.",
+      "hints": [
+        "Check each zero's multiplicity one at a time.",
+        "Odd means crossing; even means touching only."
+      ],
+      "socraticHint": "Which of the listed multiplicities are odd?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A degree 7 polynomial's real zeros are x = -4 with multiplicity 2. x = -1 with multiplicity 1. x = 2 with multiplicity 3. x = 5 with multiplicity 1. At how many of them does the graph actually cross the x-axis?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p49",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "A degree 6 polynomial has 3 real zeros with positive integer multiplicities that add to 6, no two multiplicities equal. How many different ordered multiplicity assignments are possible?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "List every way to pick 3 distinct positive integers that add to 6.",
+        "Count every ordering of each such set across the zeros.",
+        "That gives 6 assignments."
+      ],
+      "useAgain": "when a counting problem restricts multiplicities to be all different.",
+      "hints": [
+        "Start by finding the smallest set of distinct positive integers with that sum.",
+        "Then count how many ways that set can be ordered."
+      ],
+      "socraticHint": "What is the smallest possible set of distinct positive integers that could add to the target?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A degree 9 polynomial has 3 real zeros with positive integer multiplicities that add to 9, no two multiplicities equal. How many different ordered multiplicity assignments are possible?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polynomial-graphs-p50",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-graphs",
+      "kind": "number",
+      "prompt": "P(x) = -(x + 1)^2(x - 2)(x - 3). What is P(5)?",
+      "answer": {
+        "kind": "number",
+        "value": "-216"
+      },
+      "explanation": [
+        "Substitute x = 5 into every factor.",
+        "Multiply them all together with the leading coefficient -1.",
+        "That gives -216."
+      ],
+      "useAgain": "when a factored polynomial with a repeated factor needs a specific value.",
+      "hints": [
+        "Substitute the given x-value into each factor separately.",
+        "Then multiply every result together with the leading coefficient."
+      ],
+      "socraticHint": "What does each factor equal at that x-value?",
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.functions"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "P(x) = 2(x - 1)^2(x + 2)(x + 4). What is P(3)?",
+        "answer": {
+          "kind": "number",
+          "value": "280"
+        }
+      }
+    }
+  ]
+}

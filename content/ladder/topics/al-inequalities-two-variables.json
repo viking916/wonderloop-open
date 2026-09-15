@@ -1,0 +1,3399 @@
+{
+  "id": "al-inequalities-two-variables",
+  "idea": {
+    "body": "An inequality in two variables, like y > 2x + 1, has a whole half of the plane as its solution, not just one line. First draw the boundary line y = 2x + 1: solid if the sign includes equals, dashed if it is strict. Then test one point not on the line, such as (0, 0). Since 0 > 2(0) + 1 is false, the origin is not a solution, so the shading goes on the other side. Every point on the shaded side, and only those points, make the inequality true.",
+    "figure": {
+      "kind": "plane",
+      "alt": "The boundary line y = 2x + 1, with a solution point marked above it.",
+      "spec": {
+        "range": 6,
+        "polylines": [
+          {
+            "points": [
+              [
+                -3.5,
+                -6.0
+              ],
+              [
+                2.5,
+                6.0
+              ]
+            ],
+            "dashed": true
+          }
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": 3,
+            "label": "(-1, 3)"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "Graph y <= -x + 4 and decide whether (5, 1) is a solution.",
+    "steps": [
+      "Draw the boundary line y = -x + 4, solid since the sign includes equals.",
+      "Test a point not on the line, such as (0, 0): 0 <= -(0) + 4 is true, so the origin's side is shaded.",
+      "Check (5, 1): -(5) + 4 = -1, and 1 <= -1 is false.",
+      "So (5, 1) is on the unshaded side and is not a solution."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "The boundary line y = -x + 4, with the origin on the shaded side and (5, 1) marked away from it.",
+      "spec": {
+        "range": 6,
+        "polylines": [
+          [
+            [
+              6.0,
+              -2.0
+            ],
+            [
+              -2.0,
+              6.0
+            ]
+          ]
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 0,
+            "label": "(0, 0)"
+          },
+          {
+            "x": 5,
+            "y": 1,
+            "label": "(5, 1)"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "al-inequalities-two-variables-w1",
+      "name": "Boundary line, then test a point",
+      "when": "Use this for any inequality in two variables as the default, reliable method.",
+      "steps": [
+        "y > x - 2: draw the boundary line y = x - 2, dashed since the sign is strict.",
+        "Test a point not on the line, such as (0, 0): 0 > 0 - 2 is 0 > -2, which is true.",
+        "Since the test point works, shade the side of the line containing (0, 0).",
+        "Every point on that shaded side makes y > x - 2 true."
+      ],
+      "example": "y > x - 2",
+      "answer": "shade above the dashed line y = x - 2",
+      "trap": "Drawing the line solid when the inequality is strict, when it should be dashed.",
+      "figure": {
+        "kind": "plane",
+        "alt": "The dashed boundary line y = x - 2, with the origin marked on the shaded side.",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            {
+              "points": [
+                [
+                  -4,
+                  -6
+                ],
+                [
+                  6,
+                  4
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "al-inequalities-two-variables-w2",
+      "name": "Read the shading straight from the symbol",
+      "when": "Use this when the inequality is already solved for y and a test point feels slow.",
+      "steps": [
+        "y <= 2x - 1 is already solved for y, so read the shading straight from the symbol.",
+        "Draw the boundary starting at (0, -1), then step up 2 and right 1 to find more points.",
+        "Make the line solid since the sign includes equals.",
+        "The symbol is <=, less than or equal, so shade below the line.",
+        "Every point on or below the line is a solution."
+      ],
+      "example": "y <= 2x - 1",
+      "answer": "shade on or below the solid line y = 2x - 1",
+      "trap": "Shading above the line just because the numbers are positive, instead of reading the < or > symbol.",
+      "figure": {
+        "kind": "plane",
+        "alt": "The solid boundary line y = 2x - 1, with two labelled points on the shaded side below it.",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            [
+              [
+                -2.5,
+                -6
+              ],
+              [
+                3.5,
+                6
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": -3,
+              "label": "(0, -3)"
+            },
+            {
+              "x": 2,
+              "y": 1,
+              "label": "(2, 1)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "al-inequalities-two-variables-w3",
+      "name": "Pick another test point when the line hits the origin",
+      "when": "Use this when the boundary line already passes through (0, 0).",
+      "steps": [
+        "y < 3x has a boundary line through the origin, so (0, 0) cannot be the test point.",
+        "Draw the boundary line y = 3x, dashed since the sign is strict.",
+        "Pick a different point off the line, such as (1, 1): 1 < 3(1) is 1 < 3, which is true.",
+        "Shade the side containing (1, 1), the side below the line."
+      ],
+      "example": "y < 3x",
+      "answer": "shade below the dashed line y = 3x, the side with (1, 1)",
+      "trap": "Trying to use the origin as the test point even though it lies exactly on the boundary line.",
+      "figure": {
+        "kind": "plane",
+        "alt": "The dashed boundary line y = 3x through the origin, with (1, 1) marked on the shaded side.",
+        "spec": {
+          "range": 6,
+          "polylines": [
+            {
+              "points": [
+                [
+                  -2,
+                  -6
+                ],
+                [
+                  2,
+                  6
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 1,
+              "label": "(1, 1)"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "kind": "truefalse",
+      "prompt": "Is the point (1, 5) a solution to y > 2x + 1?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute x = 1 into the boundary: y = 2x + 1 gives 3.",
+        "Compare the point's y-value, 5, to 3 using >: the statement is true."
+      ],
+      "hints": [
+        "Substitute the point's x-value into the right side to get a number to compare against.",
+        "Compare the point's own y-value to that number, using the inequality sign."
+      ],
+      "socraticHint": "What number does the boundary line give at this x-value, and how does the point's y compare to it?",
+      "useAgain": "when checking whether one specific point satisfies a two-variable inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = 2x + 1 with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            {
+              "points": [
+                [
+                  -5.0,
+                  -9.0
+                ],
+                [
+                  4.0,
+                  9.0
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 1.0,
+              "y": 5.0,
+              "label": "(1, 5)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Is the point (1, 6) a solution to y > 2x + 2?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p01",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "Is the point (2, 2) a solution to y < x + 2?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute x = 2 into the boundary: y = x + 2 gives 4.",
+        "Compare the point's y-value, 2, to 4 using <: the statement is true."
+      ],
+      "hints": [
+        "Substitute the point's x-value into the right side to get a number to compare against.",
+        "Compare the point's own y-value to that number, using the inequality sign."
+      ],
+      "socraticHint": "What number does the boundary line give at this x-value, and how does the point's y compare to it?",
+      "useAgain": "when checking whether one specific point satisfies a two-variable inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = x + 2 with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            {
+              "points": [
+                [
+                  -9.0,
+                  -7.0
+                ],
+                [
+                  7.0,
+                  9.0
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 2.0,
+              "label": "(2, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Is the point (2, 3) a solution to y < x + 3?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p02",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "Is the point (1, 1) a solution to y >= 2x - 1?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute x = 1 into the boundary: y = 2x - 1 gives 1.",
+        "Compare the point's y-value, 1, to 1 using >=: the statement is true."
+      ],
+      "hints": [
+        "Substitute the point's x-value into the right side to get a number to compare against.",
+        "Compare the point's own y-value to that number, using the inequality sign."
+      ],
+      "socraticHint": "What number does the boundary line give at this x-value, and how does the point's y compare to it?",
+      "useAgain": "when checking whether one specific point satisfies a two-variable inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = 2x - 1 with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -4.0,
+                -9.0
+              ],
+              [
+                5.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 1.0,
+              "y": 1.0,
+              "label": "(1, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Is the point (1, 2) a solution to y >= 2x?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p03",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "Is the point (2, 4) a solution to y <= x + 3?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute x = 2 into the boundary: y = x + 3 gives 5.",
+        "Compare the point's y-value, 4, to 5 using <=: the statement is true."
+      ],
+      "hints": [
+        "Substitute the point's x-value into the right side to get a number to compare against.",
+        "Compare the point's own y-value to that number, using the inequality sign."
+      ],
+      "socraticHint": "What number does the boundary line give at this x-value, and how does the point's y compare to it?",
+      "useAgain": "when checking whether one specific point satisfies a two-variable inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = x + 3 with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -6.0
+              ],
+              [
+                6.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 4.0,
+              "label": "(2, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Is the point (2, 5) a solution to y <= x + 4?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p04",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "Is the point (1, 4) a solution to y > 2x?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute x = 1 into the boundary: y = 2x gives 2.",
+        "Compare the point's y-value, 4, to 2 using >: the statement is true."
+      ],
+      "hints": [
+        "Substitute the point's x-value into the right side to get a number to compare against.",
+        "Compare the point's own y-value to that number, using the inequality sign."
+      ],
+      "socraticHint": "What number does the boundary line give at this x-value, and how does the point's y compare to it?",
+      "useAgain": "when checking whether one specific point satisfies a two-variable inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = 2x with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            {
+              "points": [
+                [
+                  -4.5,
+                  -9.0
+                ],
+                [
+                  4.5,
+                  9.0
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 1.0,
+              "y": 4.0,
+              "label": "(1, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Is the point (1, 6) a solution to y > 3x + 1?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p05",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which of these points is a solution to y > 2x + 1?",
+      "options": [
+        "(0, 2)",
+        "(2, 5)",
+        "(0, 0)",
+        "(2, 0)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Substitute each candidate point's x into the boundary line to get a number to compare against.",
+        "Only (0, 2) makes the inequality true."
+      ],
+      "hints": [
+        "Try each candidate point in the inequality, one at a time.",
+        "A point on the boundary line itself is never a strict solution."
+      ],
+      "socraticHint": "Does each candidate point actually make the inequality true?",
+      "useAgain": "when several candidate points are offered and only one solves the inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = 2x + 1 with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            {
+              "points": [
+                [
+                  -5.0,
+                  -9.0
+                ],
+                [
+                  4.0,
+                  9.0
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 2.0,
+              "label": "(0, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which of these points is a solution to y > 2x + 2?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "(2, 6)",
+          "(0, 3)",
+          "(0, 1)",
+          "(3, 0)"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p06",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which of these points is a solution to y < x + 2?",
+      "options": [
+        "(2, 4)",
+        "(0, 3)",
+        "(1, 5)",
+        "(0, 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Substitute each candidate point's x into the boundary line to get a number to compare against.",
+        "Only (0, 1) makes the inequality true."
+      ],
+      "hints": [
+        "Try each candidate point in the inequality, one at a time.",
+        "A point on the boundary line itself is never a strict solution."
+      ],
+      "socraticHint": "Does each candidate point actually make the inequality true?",
+      "useAgain": "when several candidate points are offered and only one solves the inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = x + 2 with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            {
+              "points": [
+                [
+                  -9.0,
+                  -7.0
+                ],
+                [
+                  7.0,
+                  9.0
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 1.0,
+              "label": "(0, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which of these points is a solution to y < x + 3?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(2, 5)",
+          "(0, 4)",
+          "(0, 2)",
+          "(2, 6)"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p07",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which of these points is a solution to y >= 2x - 1?",
+      "options": [
+        "(2, 2)",
+        "(0, -2)",
+        "(0, 0)",
+        "(3, 4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Substitute each candidate point's x into the boundary line to get a number to compare against.",
+        "Only (0, 0) makes the inequality true."
+      ],
+      "hints": [
+        "Try each candidate point in the inequality, one at a time.",
+        "A point on the boundary line itself is never a strict solution."
+      ],
+      "socraticHint": "Does each candidate point actually make the inequality true?",
+      "useAgain": "when several candidate points are offered and only one solves the inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = 2x - 1 with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -4.0,
+                -9.0
+              ],
+              [
+                5.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 0.0,
+              "label": "(0, 0)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which of these points is a solution to y >= 2x?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "(2, 3)",
+          "(0, 1)",
+          "(0, -1)",
+          "(1, 0)"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p08",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which of these points is a solution to y <= x + 3?",
+      "options": [
+        "(0, 2)",
+        "(2, 6)",
+        "(0, 4)",
+        "(1, 6)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Substitute each candidate point's x into the boundary line to get a number to compare against.",
+        "Only (0, 2) makes the inequality true."
+      ],
+      "hints": [
+        "Try each candidate point in the inequality, one at a time.",
+        "A point on the boundary line itself is never a strict solution."
+      ],
+      "socraticHint": "Does each candidate point actually make the inequality true?",
+      "useAgain": "when several candidate points are offered and only one solves the inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = x + 3 with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -6.0
+              ],
+              [
+                6.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 2.0,
+              "label": "(0, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which of these points is a solution to y <= x + 4?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "(2, 7)",
+          "(0, 5)",
+          "(1, 7)",
+          "(0, 3)"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p09",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which of these points is a solution to y > 2x?",
+      "options": [
+        "(2, 4)",
+        "(0, -1)",
+        "(0, 1)",
+        "(1, 0)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Substitute each candidate point's x into the boundary line to get a number to compare against.",
+        "Only (0, 1) makes the inequality true."
+      ],
+      "hints": [
+        "Try each candidate point in the inequality, one at a time.",
+        "A point on the boundary line itself is never a strict solution."
+      ],
+      "socraticHint": "Does each candidate point actually make the inequality true?",
+      "useAgain": "when several candidate points are offered and only one solves the inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = 2x with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            {
+              "points": [
+                [
+                  -4.5,
+                  -9.0
+                ],
+                [
+                  4.5,
+                  9.0
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 1.0,
+              "label": "(0, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which of these points is a solution to y > 3x + 1?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "(2, 7)",
+          "(0, 0)",
+          "(2, 0)",
+          "(0, 2)"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p10",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "Is the point (1, 1) a solution to 2x + 3y < 12?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute the point into the left side: 2(1) + 3(1) = 5.",
+        "Compare 5 to 12 using <: the statement is true."
+      ],
+      "hints": [
+        "Substitute the point's x and y directly into the left side.",
+        "Compare the resulting number to the right side using the inequality sign."
+      ],
+      "socraticHint": "What number does the left side become, and does the inequality hold?",
+      "useAgain": "when a two-variable inequality is written in ax + by form rather than y equals form.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for 2x + 3y = 12 with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            {
+              "points": [
+                [
+                  9.0,
+                  -2.0
+                ],
+                [
+                  -7.5,
+                  9.0
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 1.0,
+              "y": 1.0,
+              "label": "(1, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Is the point (1, 2) a solution to 2x + 3y < 14?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p11",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "Is the point (2, 2) a solution to 3x + 2y > 15?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Substitute the point into the left side: 3(2) + 2(2) = 10.",
+        "Compare 10 to 15 using >: the statement is false."
+      ],
+      "hints": [
+        "Substitute the point's x and y directly into the left side.",
+        "Compare the resulting number to the right side using the inequality sign."
+      ],
+      "socraticHint": "What number does the left side become, and does the inequality hold?",
+      "useAgain": "when a two-variable inequality is written in ax + by form rather than y equals form.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for 3x + 2y = 15 with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            {
+              "points": [
+                [
+                  9.0,
+                  -6.0
+                ],
+                [
+                  -1.0,
+                  9.0
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 2.0,
+              "label": "(2, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Is the point (2, 3) a solution to 3x + 2y > 17?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p12",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "Is the point (1, 2) a solution to 2x + y <= 8?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute the point into the left side: 2(1) + 1(2) = 4.",
+        "Compare 4 to 8 using <=: the statement is true."
+      ],
+      "hints": [
+        "Substitute the point's x and y directly into the left side.",
+        "Compare the resulting number to the right side using the inequality sign."
+      ],
+      "socraticHint": "What number does the left side become, and does the inequality hold?",
+      "useAgain": "when a two-variable inequality is written in ax + by form rather than y equals form.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for 2x + y = 8 with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                8.5,
+                -9.0
+              ],
+              [
+                -0.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 1.0,
+              "y": 2.0,
+              "label": "(1, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Is the point (1, 3) a solution to 2x + y <= 9?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p13",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "Is the point (2, 1) a solution to x + 4y >= 10?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Substitute the point into the left side: 1(2) + 4(1) = 6.",
+        "Compare 6 to 10 using >=: the statement is false."
+      ],
+      "hints": [
+        "Substitute the point's x and y directly into the left side.",
+        "Compare the resulting number to the right side using the inequality sign."
+      ],
+      "socraticHint": "What number does the left side become, and does the inequality hold?",
+      "useAgain": "when a two-variable inequality is written in ax + by form rather than y equals form.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for x + 4y = 10 with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                4.75
+              ],
+              [
+                9.0,
+                0.25
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 1.0,
+              "label": "(2, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Is the point (2, 2) a solution to x + 4y >= 12?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p14",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "Is the point (1, 1) a solution to 3x + y < 9?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute the point into the left side: 3(1) + 1(1) = 4.",
+        "Compare 4 to 9 using <: the statement is true."
+      ],
+      "hints": [
+        "Substitute the point's x and y directly into the left side.",
+        "Compare the resulting number to the right side using the inequality sign."
+      ],
+      "socraticHint": "What number does the left side become, and does the inequality hold?",
+      "useAgain": "when a two-variable inequality is written in ax + by form rather than y equals form.",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for 3x + y = 9 with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            {
+              "points": [
+                [
+                  6.0,
+                  -9.0
+                ],
+                [
+                  0.0,
+                  9.0
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 1.0,
+              "y": 1.0,
+              "label": "(1, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Is the point (1, 2) a solution to 3x + y < 11?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p15",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A graph shows the boundary line y = 2x + 1, drawn solid, shaded above the line. Which inequality matches?",
+      "options": [
+        "y > 2x + 1",
+        "y >= 2x + 1",
+        "y <= 2x + 1",
+        "y < 2x + 1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Shaded above the line means y is greater than the boundary.",
+        "A solid line means the boundary points are included, so the sign includes equals."
+      ],
+      "hints": [
+        "Above the line means y is greater; below means y is less.",
+        "A solid line includes the boundary; a dashed line does not."
+      ],
+      "socraticHint": "Does shading above mean y is greater or less than the line, and does solid include the boundary?",
+      "useAgain": "when a graph's shading and line style need to become an inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = 2x + 1, with a point on the shaded side marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 3.0,
+              "label": "(0, 3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A graph shows the boundary line y = 2x + 2, drawn solid, shaded above the line. Which inequality matches?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "y >= 2x + 2",
+          "y > 2x + 2",
+          "y <= 2x + 2",
+          "y < 2x + 2"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p16",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A graph shows the boundary line y = x + 2, drawn dashed, shaded below the line. Which inequality matches?",
+      "options": [
+        "y >= x + 2",
+        "y < x + 2",
+        "y > x + 2",
+        "y <= x + 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Shaded below the line means y is less than the boundary.",
+        "A dashed line means the boundary points are not included, so the sign is strict."
+      ],
+      "hints": [
+        "Above the line means y is greater; below means y is less.",
+        "A solid line includes the boundary; a dashed line does not."
+      ],
+      "socraticHint": "Does shading above mean y is greater or less than the line, and does solid include the boundary?",
+      "useAgain": "when a graph's shading and line style need to become an inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = x + 2, with a point on the shaded side marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -7.0
+              ],
+              [
+                7.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 0.0,
+              "label": "(0, 0)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A graph shows the boundary line y = x + 3, drawn dashed, shaded below the line. Which inequality matches?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "y < x + 3",
+          "y >= x + 3",
+          "y > x + 3",
+          "y <= x + 3"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p17",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A graph shows the boundary line y = 2x - 1, drawn dashed, shaded above the line. Which inequality matches?",
+      "options": [
+        "y >= 2x - 1",
+        "y <= 2x - 1",
+        "y < 2x - 1",
+        "y > 2x - 1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Shaded above the line means y is greater than the boundary.",
+        "A dashed line means the boundary points are not included, so the sign is strict."
+      ],
+      "hints": [
+        "Above the line means y is greater; below means y is less.",
+        "A solid line includes the boundary; a dashed line does not."
+      ],
+      "socraticHint": "Does shading above mean y is greater or less than the line, and does solid include the boundary?",
+      "useAgain": "when a graph's shading and line style need to become an inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = 2x - 1, with a point on the shaded side marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -4.0,
+                -9.0
+              ],
+              [
+                5.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 1.0,
+              "label": "(0, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A graph shows the boundary line y = 2x, drawn dashed, shaded above the line. Which inequality matches?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "y >= 2x",
+          "y <= 2x",
+          "y > 2x",
+          "y < 2x"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p18",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A graph shows the boundary line y = x + 3, drawn solid, shaded below the line. Which inequality matches?",
+      "options": [
+        "y <= x + 3",
+        "y >= x + 3",
+        "y > x + 3",
+        "y < x + 3"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Shaded below the line means y is less than the boundary.",
+        "A solid line means the boundary points are included, so the sign includes equals."
+      ],
+      "hints": [
+        "Above the line means y is greater; below means y is less.",
+        "A solid line includes the boundary; a dashed line does not."
+      ],
+      "socraticHint": "Does shading above mean y is greater or less than the line, and does solid include the boundary?",
+      "useAgain": "when a graph's shading and line style need to become an inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = x + 3, with a point on the shaded side marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -6.0
+              ],
+              [
+                6.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 1.0,
+              "label": "(0, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A graph shows the boundary line y = x + 4, drawn solid, shaded below the line. Which inequality matches?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "y >= x + 4",
+          "y <= x + 4",
+          "y > x + 4",
+          "y < x + 4"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p19",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A graph shows the boundary line y = 2x, drawn solid, shaded above the line. Which inequality matches?",
+      "options": [
+        "y > 2x",
+        "y <= 2x",
+        "y >= 2x",
+        "y < 2x"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Shaded above the line means y is greater than the boundary.",
+        "A solid line means the boundary points are included, so the sign includes equals."
+      ],
+      "hints": [
+        "Above the line means y is greater; below means y is less.",
+        "A solid line includes the boundary; a dashed line does not."
+      ],
+      "socraticHint": "Does shading above mean y is greater or less than the line, and does solid include the boundary?",
+      "useAgain": "when a graph's shading and line style need to become an inequality.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = 2x, with a point on the shaded side marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -4.5,
+                -9.0
+              ],
+              [
+                4.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 2.0,
+              "label": "(0, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A graph shows the boundary line y = 3x + 1, drawn solid, shaded above the line. Which inequality matches?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "y > 3x + 1",
+          "y <= 3x + 1",
+          "y < 3x + 1",
+          "y >= 3x + 1"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p20",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For the inequality 2x + 4y < 12, what is the slope of its boundary line?",
+      "answer": {
+        "kind": "number",
+        "value": "-1/2"
+      },
+      "explanation": [
+        "Rewrite the boundary as an equation and solve for y: 2x + 4y = 12 becomes y = (-1/2)x + 3.",
+        "The slope is -1/2."
+      ],
+      "hints": [
+        "Rewrite the boundary line in y = mx + b form first.",
+        "Read the slope or the y-intercept straight from that form."
+      ],
+      "socraticHint": "What does the boundary line look like once it is solved for y?",
+      "useAgain": "when an inequality is given in ax + by form and you need to graph its boundary.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "For the inequality 2x + 4y < 16, what is the slope of its boundary line?",
+        "answer": {
+          "kind": "number",
+          "value": "-1/2"
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p21",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For the inequality 3x + 3y > 9, what is the y-intercept of its boundary line?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Rewrite the boundary as an equation and solve for y: 3x + 3y = 9 becomes y = -x + 3.",
+        "The y-intercept is 3."
+      ],
+      "hints": [
+        "Rewrite the boundary line in y = mx + b form first.",
+        "Read the slope or the y-intercept straight from that form."
+      ],
+      "socraticHint": "What does the boundary line look like once it is solved for y?",
+      "useAgain": "when an inequality is given in ax + by form and you need to graph its boundary.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "For the inequality 3x + 3y > 12, what is the y-intercept of its boundary line?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p22",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For the inequality 2x + 5y <= 20, what is the slope of its boundary line?",
+      "answer": {
+        "kind": "number",
+        "value": "-2/5"
+      },
+      "explanation": [
+        "Rewrite the boundary as an equation and solve for y: 2x + 5y = 20 becomes y = (-2/5)x + 4.",
+        "The slope is -2/5."
+      ],
+      "hints": [
+        "Rewrite the boundary line in y = mx + b form first.",
+        "Read the slope or the y-intercept straight from that form."
+      ],
+      "socraticHint": "What does the boundary line look like once it is solved for y?",
+      "useAgain": "when an inequality is given in ax + by form and you need to graph its boundary.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "For the inequality 2x + 5y <= 25, what is the slope of its boundary line?",
+        "answer": {
+          "kind": "number",
+          "value": "-2/5"
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p23",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For the inequality 4x + 2y >= 8, what is the y-intercept of its boundary line?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Rewrite the boundary as an equation and solve for y: 4x + 2y = 8 becomes y = -2x + 4.",
+        "The y-intercept is 4."
+      ],
+      "hints": [
+        "Rewrite the boundary line in y = mx + b form first.",
+        "Read the slope or the y-intercept straight from that form."
+      ],
+      "socraticHint": "What does the boundary line look like once it is solved for y?",
+      "useAgain": "when an inequality is given in ax + by form and you need to graph its boundary.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "For the inequality 4x + 2y >= 12, what is the y-intercept of its boundary line?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p24",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For the inequality 3x + 6y < 18, what is the slope of its boundary line?",
+      "answer": {
+        "kind": "number",
+        "value": "-1/2"
+      },
+      "explanation": [
+        "Rewrite the boundary as an equation and solve for y: 3x + 6y = 18 becomes y = (-1/2)x + 3.",
+        "The slope is -1/2."
+      ],
+      "hints": [
+        "Rewrite the boundary line in y = mx + b form first.",
+        "Read the slope or the y-intercept straight from that form."
+      ],
+      "socraticHint": "What does the boundary line look like once it is solved for y?",
+      "useAgain": "when an inequality is given in ax + by form and you need to graph its boundary.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "For the inequality 3x + 6y < 24, what is the slope of its boundary line?",
+        "answer": {
+          "kind": "number",
+          "value": "-1/2"
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p25",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "The boundary line 2x + 3y = 12 is drawn solid. The point (3, 4) is a solution. Which inequality is it?",
+      "options": [
+        "2x + 3y <= 12",
+        "2x + 3y > 12",
+        "2x + 3y < 12",
+        "2x + 3y >= 12"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Substitute the point into the left side: 2(3) + 3(4) = 18, which is greater than 12.",
+        "A solid line means the sign includes equals."
+      ],
+      "hints": [
+        "Substitute the given point to see which side of the boundary it sits on.",
+        "A solid boundary includes equals; a dashed one does not."
+      ],
+      "socraticHint": "Does the point make the left side greater or less than the right side?",
+      "useAgain": "when you must build the correct inequality from a boundary line and one known solution.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for 2x + 3y = 12, with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                9.0,
+                -2.0
+              ],
+              [
+                -7.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3.0,
+              "y": 4.0,
+              "label": "(3, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "The boundary line 2x + 3y = 14 is drawn solid. The point (3, 5) is a solution. Which inequality is it?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "2x + 3y <= 14",
+          "2x + 3y > 14",
+          "2x + 3y >= 14",
+          "2x + 3y < 14"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p26",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "The boundary line 3x + 2y = 15 is drawn dashed. The point (1, 2) is a solution. Which inequality is it?",
+      "options": [
+        "3x + 2y < 15",
+        "3x + 2y > 15",
+        "3x + 2y <= 15",
+        "3x + 2y < 16"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Substitute the point into the left side: 3(1) + 2(2) = 7, which is less than 15.",
+        "A dashed line means the sign does not include equals."
+      ],
+      "hints": [
+        "Substitute the given point to see which side of the boundary it sits on.",
+        "A solid boundary includes equals; a dashed one does not."
+      ],
+      "socraticHint": "Does the point make the left side greater or less than the right side?",
+      "useAgain": "when you must build the correct inequality from a boundary line and one known solution.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for 3x + 2y = 15, with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                9.0,
+                -6.0
+              ],
+              [
+                -1.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 1.0,
+              "y": 2.0,
+              "label": "(1, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "The boundary line 3x + 2y = 17 is drawn dashed. The point (1, 3) is a solution. Which inequality is it?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "3x + 2y > 17",
+          "3x + 2y < 17",
+          "3x + 2y <= 17",
+          "3x + 2y < 18"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p27",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "The boundary line 2x + y = 8 is drawn solid. The point (4, 5) is a solution. Which inequality is it?",
+      "options": [
+        "2x + y <= 8",
+        "2x + y > 8",
+        "2x + y >= 8",
+        "2x + y < 8"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Substitute the point into the left side: 2(4) + 1(5) = 13, which is greater than 8.",
+        "A solid line means the sign includes equals."
+      ],
+      "hints": [
+        "Substitute the given point to see which side of the boundary it sits on.",
+        "A solid boundary includes equals; a dashed one does not."
+      ],
+      "socraticHint": "Does the point make the left side greater or less than the right side?",
+      "useAgain": "when you must build the correct inequality from a boundary line and one known solution.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for 2x + y = 8, with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                8.5,
+                -9.0
+              ],
+              [
+                -0.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4.0,
+              "y": 5.0,
+              "label": "(4, 5)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "The boundary line 2x + y = 9 is drawn solid. The point (4, 6) is a solution. Which inequality is it?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "2x + y <= 9",
+          "2x + y > 9",
+          "2x + y < 9",
+          "2x + y >= 9"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p28",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "The boundary line x + 4y = 10 is drawn dashed. The point (0, 0) is a solution. Which inequality is it?",
+      "options": [
+        "x + 4y > 10",
+        "x + 4y < 10",
+        "x + 4y <= 10",
+        "x + 4y < 11"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Substitute the point into the left side: 1(0) + 4(0) = 0, which is less than 10.",
+        "A dashed line means the sign does not include equals."
+      ],
+      "hints": [
+        "Substitute the given point to see which side of the boundary it sits on.",
+        "A solid boundary includes equals; a dashed one does not."
+      ],
+      "socraticHint": "Does the point make the left side greater or less than the right side?",
+      "useAgain": "when you must build the correct inequality from a boundary line and one known solution.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for x + 4y = 10, with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                4.75
+              ],
+              [
+                9.0,
+                0.25
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 0.0,
+              "label": "(0, 0)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "The boundary line x + 4y = 12 is drawn dashed. The point (0, 1) is a solution. Which inequality is it?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "x + 4y < 12",
+          "x + 4y > 12",
+          "x + 4y <= 12",
+          "x + 4y < 13"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p29",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "The boundary line 3x + y = 9 is drawn solid. The point (0, 1) is a solution. Which inequality is it?",
+      "options": [
+        "3x + y >= 9",
+        "3x + y < 9",
+        "3x + y <= 9",
+        "3x + y > 9"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Substitute the point into the left side: 3(0) + 1(1) = 1, which is less than 9.",
+        "A solid line means the sign includes equals."
+      ],
+      "hints": [
+        "Substitute the given point to see which side of the boundary it sits on.",
+        "A solid boundary includes equals; a dashed one does not."
+      ],
+      "socraticHint": "Does the point make the left side greater or less than the right side?",
+      "useAgain": "when you must build the correct inequality from a boundary line and one known solution.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for 3x + y = 9, with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                6.0,
+                -9.0
+              ],
+              [
+                0.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 1.0,
+              "label": "(0, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "The boundary line 3x + y = 11 is drawn solid. The point (0, 2) is a solution. Which inequality is it?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "3x + y >= 11",
+          "3x + y <= 11",
+          "3x + y < 11",
+          "3x + y > 11"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p30",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which of these points is NOT a solution to 2x + y < 8?",
+      "options": [
+        "(0, 0)",
+        "(1, 1)",
+        "(2, 2)",
+        "(4, 4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Substitute each point into the left side and compare it to the right side.",
+        "Only (4, 4) fails to satisfy the inequality."
+      ],
+      "hints": [
+        "Test each of the four points in turn.",
+        "Only one of the four fails the inequality."
+      ],
+      "socraticHint": "Which point, when substituted in, breaks the inequality?",
+      "useAgain": "when most candidate points solve an inequality and only one does not.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for 2x + y = 8 with two solution points marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            {
+              "points": [
+                [
+                  8.5,
+                  -9.0
+                ],
+                [
+                  -0.5,
+                  9.0
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 0.0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 1.0,
+              "y": 1.0,
+              "label": "(1, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which of these points is NOT a solution to 2x + y < 10?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "(5, 5)",
+          "(0, 0)",
+          "(1, 1)",
+          "(2, 2)"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p31",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which of these points is NOT a solution to x + 3y > 9?",
+      "options": [
+        "(3, 3)",
+        "(0, 0)",
+        "(4, 4)",
+        "(5, 5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Substitute each point into the left side and compare it to the right side.",
+        "Only (0, 0) fails to satisfy the inequality."
+      ],
+      "hints": [
+        "Test each of the four points in turn.",
+        "Only one of the four fails the inequality."
+      ],
+      "socraticHint": "Which point, when substituted in, breaks the inequality?",
+      "useAgain": "when most candidate points solve an inequality and only one does not.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for x + 3y = 9 with two solution points marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            {
+              "points": [
+                [
+                  -9.0,
+                  6.0
+                ],
+                [
+                  9.0,
+                  0.0
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 3.0,
+              "y": 3.0,
+              "label": "(3, 3)"
+            },
+            {
+              "x": 4.0,
+              "y": 4.0,
+              "label": "(4, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which of these points is NOT a solution to x + 3y > 12?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(4, 4)",
+          "(5, 5)",
+          "(0, 0)",
+          "(6, 6)"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p32",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which of these points is NOT a solution to 2x - y <= 6?",
+      "options": [
+        "(0, 0)",
+        "(1, 0)",
+        "(2, 1)",
+        "(5, 3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Substitute each point into the left side and compare it to the right side.",
+        "Only (5, 3) fails to satisfy the inequality."
+      ],
+      "hints": [
+        "Test each of the four points in turn.",
+        "Only one of the four fails the inequality."
+      ],
+      "socraticHint": "Which point, when substituted in, breaks the inequality?",
+      "useAgain": "when most candidate points solve an inequality and only one does not.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for 2x - y = 6 with two solution points marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -1.5,
+                -9.0
+              ],
+              [
+                7.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 0.0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 1.0,
+              "y": 0.0,
+              "label": "(1, 0)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which of these points is NOT a solution to 2x - y <= 8?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "(6, 3)",
+          "(0, 0)",
+          "(1, 0)",
+          "(3, 1)"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p33",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which of these points is NOT a solution to x + 4y >= 12?",
+      "options": [
+        "(0, 0)",
+        "(0, 4)",
+        "(4, 3)",
+        "(8, 2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Substitute each point into the left side and compare it to the right side.",
+        "Only (0, 0) fails to satisfy the inequality."
+      ],
+      "hints": [
+        "Test each of the four points in turn.",
+        "Only one of the four fails the inequality."
+      ],
+      "socraticHint": "Which point, when substituted in, breaks the inequality?",
+      "useAgain": "when most candidate points solve an inequality and only one does not.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for x + 4y = 12 with two solution points marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                5.25
+              ],
+              [
+                9.0,
+                0.75
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 4.0,
+              "label": "(0, 4)"
+            },
+            {
+              "x": 4.0,
+              "y": 3.0,
+              "label": "(4, 3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which of these points is NOT a solution to x + 4y >= 14?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(0, 4)",
+          "(6, 3)",
+          "(0, 0)",
+          "(2, 4)"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p34",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which of these points is NOT a solution to 3x + y < 10?",
+      "options": [
+        "(0, 0)",
+        "(1, 1)",
+        "(2, 2)",
+        "(3, 3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Substitute each point into the left side and compare it to the right side.",
+        "Only (3, 3) fails to satisfy the inequality."
+      ],
+      "hints": [
+        "Test each of the four points in turn.",
+        "Only one of the four fails the inequality."
+      ],
+      "socraticHint": "Which point, when substituted in, breaks the inequality?",
+      "useAgain": "when most candidate points solve an inequality and only one does not.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line for 3x + y = 10 with two solution points marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            {
+              "points": [
+                [
+                  6.333333333333333,
+                  -9.0
+                ],
+                [
+                  0.3333333333333333,
+                  9.0
+                ]
+              ],
+              "dashed": true
+            }
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 0.0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 1.0,
+              "y": 1.0,
+              "label": "(1, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Which of these points is NOT a solution to 3x + y < 13?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "(0, 0)",
+          "(4, 3)",
+          "(1, 1)",
+          "(2, 2)"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p35",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A boundary line passes through (0, 1) and (2, 5), drawn solid. The point (4, 0) is a solution. Which inequality is it?",
+      "options": [
+        "y >= 2x + 1",
+        "y <= 2x + 1",
+        "y < 2x + 1",
+        "y <= -2x + 1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The slope between the two points is (5 - 1) / (2 - 0) = 2, giving boundary y = 2x + 1.",
+        "Substituting the test point's x gives 9; since 0 is less, the sign is <=."
+      ],
+      "hints": [
+        "Find the boundary line's equation from the two given points first.",
+        "Then test the solution point to see which direction the inequality points."
+      ],
+      "socraticHint": "What is the boundary line's equation, and which side does the solution point sit on?",
+      "useAgain": "when the boundary line is only given as two points, not as an equation.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line through (0, 1) and (2, 5), with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4.0,
+              "y": 0.0,
+              "label": "(4, 0)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A boundary line passes through (0, 2) and (2, 6), drawn solid. The point (4, 0) is a solution. Which inequality is it?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "y <= 2x + 2",
+          "y >= 2x + 2",
+          "y < 2x + 2",
+          "y <= -2x + 2"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p36",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A boundary line passes through (0, 2) and (3, 8), drawn dashed. The point (4, 0) is a solution. Which inequality is it?",
+      "options": [
+        "y > 2x + 2",
+        "y <= 2x + 2",
+        "y < 2x + 2",
+        "y < -2x + 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The slope between the two points is (8 - 2) / (3 - 0) = 2, giving boundary y = 2x + 2.",
+        "Substituting the test point's x gives 10; since 0 is less, the sign is <."
+      ],
+      "hints": [
+        "Find the boundary line's equation from the two given points first.",
+        "Then test the solution point to see which direction the inequality points."
+      ],
+      "socraticHint": "What is the boundary line's equation, and which side does the solution point sit on?",
+      "useAgain": "when the boundary line is only given as two points, not as an equation.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line through (0, 2) and (3, 8), with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.5,
+                -9.0
+              ],
+              [
+                3.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4.0,
+              "y": 0.0,
+              "label": "(4, 0)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A boundary line passes through (0, 3) and (3, 9), drawn dashed. The point (4, 0) is a solution. Which inequality is it?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "y > 2x + 3",
+          "y <= 2x + 3",
+          "y < -2x + 3",
+          "y < 2x + 3"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p37",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A boundary line passes through (1, 1) and (3, 5), drawn dashed. The point (0, 0) is a solution. Which inequality is it?",
+      "options": [
+        "y < 2x - 1",
+        "y >= 2x - 1",
+        "y > -2x - 1",
+        "y > 2x - 1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The slope between the two points is (5 - 1) / (3 - 1) = 2, giving boundary y = 2x - 1.",
+        "Substituting the test point's x gives -1; since 0 is greater, the sign is >."
+      ],
+      "hints": [
+        "Find the boundary line's equation from the two given points first.",
+        "Then test the solution point to see which direction the inequality points."
+      ],
+      "socraticHint": "What is the boundary line's equation, and which side does the solution point sit on?",
+      "useAgain": "when the boundary line is only given as two points, not as an equation.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line through (1, 1) and (3, 5), with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -4.0,
+                -9.0
+              ],
+              [
+                5.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 0.0,
+              "label": "(0, 0)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A boundary line passes through (1, 3) and (3, 7), drawn dashed. The point (0, 0) is a solution. Which inequality is it?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "y > 2x + 1",
+          "y <= 2x + 1",
+          "y < -2x + 1",
+          "y < 2x + 1"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p38",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A boundary line passes through (0, 3) and (2, 7), drawn solid. The point (4, 1) is a solution. Which inequality is it?",
+      "options": [
+        "y >= 2x + 3",
+        "y <= 2x + 3",
+        "y < 2x + 3",
+        "y <= -2x + 3"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The slope between the two points is (7 - 3) / (2 - 0) = 2, giving boundary y = 2x + 3.",
+        "Substituting the test point's x gives 11; since 1 is less, the sign is <=."
+      ],
+      "hints": [
+        "Find the boundary line's equation from the two given points first.",
+        "Then test the solution point to see which direction the inequality points."
+      ],
+      "socraticHint": "What is the boundary line's equation, and which side does the solution point sit on?",
+      "useAgain": "when the boundary line is only given as two points, not as an equation.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line through (0, 3) and (2, 7), with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -6.0,
+                -9.0
+              ],
+              [
+                3.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4.0,
+              "y": 1.0,
+              "label": "(4, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A boundary line passes through (0, 4) and (2, 8), drawn solid. The point (4, 1) is a solution. Which inequality is it?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "y >= 2x + 4",
+          "y < 2x + 4",
+          "y <= 2x + 4",
+          "y <= -2x + 4"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p39",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A boundary line passes through (1, 0) and (3, 4), drawn dashed. The point (0, 4) is a solution. Which inequality is it?",
+      "options": [
+        "y < 2x - 2",
+        "y > 2x - 2",
+        "y >= 2x - 2",
+        "y > -2x - 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The slope between the two points is (4 - 0) / (3 - 1) = 2, giving boundary y = 2x - 2.",
+        "Substituting the test point's x gives -2; since 4 is greater, the sign is >."
+      ],
+      "hints": [
+        "Find the boundary line's equation from the two given points first.",
+        "Then test the solution point to see which direction the inequality points."
+      ],
+      "socraticHint": "What is the boundary line's equation, and which side does the solution point sit on?",
+      "useAgain": "when the boundary line is only given as two points, not as an equation.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line through (1, 0) and (3, 4), with the solution point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -3.5,
+                -9.0
+              ],
+              [
+                5.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 4.0,
+              "label": "(0, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A boundary line passes through (1, 1) and (3, 5), drawn dashed. The point (0, 5) is a solution. Which inequality is it?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "y < 2x - 1",
+          "y >= 2x - 1",
+          "y > -2x - 1",
+          "y > 2x - 1"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p40",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Both (1, 3) and (4, 2) are solutions to exactly one of these inequalities. Which one?",
+      "options": [
+        "y > x - 3",
+        "y < 2x",
+        "y < x - 3",
+        "y > 2x"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Test both points against each candidate inequality in turn.",
+        "Only y > x - 3 is satisfied by both points at once."
+      ],
+      "hints": [
+        "Test both points in each candidate inequality.",
+        "Reject any candidate that fails either point."
+      ],
+      "socraticHint": "Which candidate inequality do both points satisfy at the same time?",
+      "useAgain": "when two known solutions must both fit the same inequality.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = x - 3 with both points marked on the solution side.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                9.0,
+                6.0
+              ],
+              [
+                -6.0,
+                -9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 1.0,
+              "y": 3.0,
+              "label": "(1, 3)"
+            },
+            {
+              "x": 4.0,
+              "y": 2.0,
+              "label": "(4, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Both (1, 4) and (2, 4) are solutions to exactly one of these inequalities. Which one?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "y < 2x - 2",
+          "y < 3x - 2",
+          "y > 2x - 2",
+          "y > 3x - 2"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p41",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Both (2, 4) and (0, 3) are solutions to exactly one of these inequalities. Which one?",
+      "options": [
+        "y > 3x + 2",
+        "y < x + 4",
+        "y < 3x + 2",
+        "y > x + 4"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Test both points against each candidate inequality in turn.",
+        "Only y < x + 4 is satisfied by both points at once."
+      ],
+      "hints": [
+        "Test both points in each candidate inequality.",
+        "Reject any candidate that fails either point."
+      ],
+      "socraticHint": "Which candidate inequality do both points satisfy at the same time?",
+      "useAgain": "when two known solutions must both fit the same inequality.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = x + 4 with both points marked on the solution side.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                -5.0
+              ],
+              [
+                5.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 2.0,
+              "y": 4.0,
+              "label": "(2, 4)"
+            },
+            {
+              "x": 0.0,
+              "y": 3.0,
+              "label": "(0, 3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Both (1, 0) and (0, 0) are solutions to exactly one of these inequalities. Which one?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "y > -x - 2",
+          "y < -x",
+          "y < -x - 2",
+          "y > -x"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p42",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Both (3, 5) and (4, 5) are solutions to exactly one of these inequalities. Which one?",
+      "options": [
+        "y > x + 2",
+        "y > 3x - 3",
+        "y < 3x - 3",
+        "y < x + 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Test both points against each candidate inequality in turn.",
+        "Only y < 3x - 3 is satisfied by both points at once."
+      ],
+      "hints": [
+        "Test both points in each candidate inequality.",
+        "Reject any candidate that fails either point."
+      ],
+      "socraticHint": "Which candidate inequality do both points satisfy at the same time?",
+      "useAgain": "when two known solutions must both fit the same inequality.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = 3x - 3 with both points marked on the solution side.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -2.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3.0,
+              "y": 5.0,
+              "label": "(3, 5)"
+            },
+            {
+              "x": 4.0,
+              "y": 5.0,
+              "label": "(4, 5)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Both (4, 1) and (4, 4) are solutions to exactly one of these inequalities. Which one?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "y > x - 1",
+          "y < -2x - 3",
+          "y < x - 1",
+          "y > -2x - 3"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p43",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Both (0, 1) and (3, 2) are solutions to exactly one of these inequalities. Which one?",
+      "options": [
+        "y > -2x + 4",
+        "y < -2x - 3",
+        "y > -2x - 3",
+        "y < -2x + 4"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Test both points against each candidate inequality in turn.",
+        "Only y > -2x - 3 is satisfied by both points at once."
+      ],
+      "hints": [
+        "Test both points in each candidate inequality.",
+        "Reject any candidate that fails either point."
+      ],
+      "socraticHint": "Which candidate inequality do both points satisfy at the same time?",
+      "useAgain": "when two known solutions must both fit the same inequality.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = -2x - 3 with both points marked on the solution side.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                3.0,
+                -9.0
+              ],
+              [
+                -6.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 0.0,
+              "y": 1.0,
+              "label": "(0, 1)"
+            },
+            {
+              "x": 3.0,
+              "y": 2.0,
+              "label": "(3, 2)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Both (3, 0) and (0, 1) are solutions to exactly one of these inequalities. Which one?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "y > -2x - 1",
+          "y > 2x - 3",
+          "y < 2x - 3",
+          "y < -2x - 1"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p44",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Both (3, 1) and (1, 1) are solutions to exactly one of these inequalities. Which one?",
+      "options": [
+        "y < 2x - 2",
+        "y > -x - 2",
+        "y < -x - 2",
+        "y > 2x - 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Test both points against each candidate inequality in turn.",
+        "Only y > -x - 2 is satisfied by both points at once."
+      ],
+      "hints": [
+        "Test both points in each candidate inequality.",
+        "Reject any candidate that fails either point."
+      ],
+      "socraticHint": "Which candidate inequality do both points satisfy at the same time?",
+      "useAgain": "when two known solutions must both fit the same inequality.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The boundary line y = -x - 2 with both points marked on the solution side.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -9.0,
+                7.0
+              ],
+              [
+                7.0,
+                -9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3.0,
+              "y": 1.0,
+              "label": "(3, 1)"
+            },
+            {
+              "x": 1.0,
+              "y": 1.0,
+              "label": "(1, 1)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Both (3, 5) and (1, 3) are solutions to exactly one of these inequalities. Which one?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "y > 2x",
+          "y < 2x",
+          "y > 3x + 1",
+          "y < 3x + 1"
+        ]
+      },
+      "id": "ladder-al-inequalities-two-variables-p45",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    }
+  ],
+  "stretch": [
+    {
+      "kind": "number",
+      "prompt": "How many points (x, y) with x and y both whole numbers from 0 to 4 satisfy x + y <= 5?",
+      "answer": {
+        "kind": "number",
+        "value": "19"
+      },
+      "explanation": [
+        "Check every whole-number pair with x and y from 0 to 4.",
+        "Counting the pairs where x + y is 5 or less gives 19."
+      ],
+      "hints": [
+        "List the pairs systematically, one value of x at a time.",
+        "Count only the pairs where the sum is 5 or less."
+      ],
+      "socraticHint": "For each value of x from 0 to 4, which values of y work?",
+      "useAgain": "when a half-plane's solutions need to be counted over a bounded grid, not just described.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many points (x, y) with x and y both whole numbers from 0 to 5 satisfy x + y <= 6?",
+        "answer": {
+          "kind": "number",
+          "value": "26"
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p46",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "How many whole-number points (x, y) with x, y from 0 to 5 satisfy x + y <= 6 and y >= x?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Check every whole-number pair with x and y from 0 to 5.",
+        "Counting the pairs where both x + y is 6 or less and y is at least x gives 15."
+      ],
+      "hints": [
+        "Keep only the pairs that pass the first inequality.",
+        "Among those, keep only the ones that also pass the second."
+      ],
+      "socraticHint": "Which pairs satisfy both conditions at once?",
+      "useAgain": "when the overlap of two half-planes needs to be counted over a bounded grid.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole-number points (x, y) with x, y from 0 to 6 satisfy x + y <= 7 and y >= x?",
+        "answer": {
+          "kind": "number",
+          "value": "19"
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p47",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "The boundary of 3x + 4y = 24 crosses the x-axis where y = 0. What is the x-coordinate there?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Set y = 0 in the boundary equation: 3x + 4(0) = 24.",
+        "That gives x = 8."
+      ],
+      "hints": [
+        "Set y to 0 in the boundary equation.",
+        "Solve the resulting one-variable equation for x."
+      ],
+      "socraticHint": "What does the boundary equation become when y is 0?",
+      "useAgain": "when you need the point where a half-plane's boundary crosses the x-axis.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The boundary of 2x + 5y <= 30 crosses the x-axis where y = 0. What is the x-coordinate there?",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p48",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "x and y are whole numbers, x from -3 to 5 and y from -3 to 7. How many points satisfy y > x and y < x + 4?",
+      "answer": {
+        "kind": "number",
+        "value": "26"
+      },
+      "explanation": [
+        "Check every whole-number pair in the given ranges.",
+        "Counting the pairs where y is strictly between x and x + 4 gives 26."
+      ],
+      "hints": [
+        "Keep only the pairs above the first boundary.",
+        "Among those, keep only the ones below the second boundary."
+      ],
+      "socraticHint": "Which pairs fall strictly inside the band between the two lines?",
+      "useAgain": "when a region is squeezed between two parallel boundaries and needs to be counted.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "x and y are whole numbers, x from -3 to 5 and y from -3 to 8. How many points satisfy y > x + 1 and y < x + 5?",
+        "answer": {
+          "kind": "number",
+          "value": "26"
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p49",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For what value of k does the point (3, 5) lie exactly on the boundary line y = 2x + k?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "On the boundary, the point's coordinates satisfy y = 2x + k exactly.",
+        "Substituting gives 5 = 2(3) + k, so k = -1."
+      ],
+      "hints": [
+        "Substitute the point's x and y into the boundary equation.",
+        "Solve the resulting equation for k."
+      ],
+      "socraticHint": "What equation do you get when the point is substituted into y = 2x + k?",
+      "useAgain": "when a point is known to sit exactly on a boundary and a missing constant must be found.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For what value of k does the point (4, 9) lie exactly on the boundary line y = 3x + k?",
+        "answer": {
+          "kind": "number",
+          "value": "-3"
+        }
+      },
+      "id": "ladder-al-inequalities-two-variables-p50",
+      "lane": "skills",
+      "ideaId": "al-inequalities-two-variables",
+      "skills": [
+        "think.skills.inequalities",
+        "think.skills.linear"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3366 @@
+{
+  "id": "al-linear-from-data",
+  "idea": {
+    "body": "Real data rarely sits perfectly on a line, but if it is roughly straight you can fit one by eye. Draw a line through the middle of the points, then use two points on that line to read its story. The slope is the rate of change, how much the value moves for each extra step. The y-intercept is the starting value, where the line crosses the count-0 mark. A drone's altitude readings are 10 meters at 2 seconds and 22 meters at 5 seconds. The slope between them is (22 - 10) / (5 - 2) = 4 meters per second. The drone climbs 4 meters every second once it is airborne.",
+    "figure": {
+      "kind": "plane",
+      "alt": "Four scattered points roughly on a line, with the fitted line drawn through them.",
+      "spec": {
+        "range": 12,
+        "points": [
+          {
+            "x": 1,
+            "y": 3
+          },
+          {
+            "x": 2,
+            "y": 6
+          },
+          {
+            "x": 3,
+            "y": 6
+          },
+          {
+            "x": 4,
+            "y": 9
+          }
+        ],
+        "polylines": [
+          [
+            [
+              0,
+              2
+            ],
+            [
+              5,
+              12
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A greenhouse plant's height in centimeters is 4 at week 1 and 10 at week 4. Assuming the trend is a straight line, write its equation and predict its height at week 5.",
+    "steps": [
+      "Find the slope between the two readings: (10 - 4) / (4 - 1) = 2 centimeters per week.",
+      "Use one point to find the starting value: 4 = 2 times 1 + b, so b = 2.",
+      "The equation is y = 2x + 2, where x is the week and y is the height.",
+      "At week 5, y = 2 times 5 + 2 = 12 centimeters."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "The line through (1, 4) and (4, 10), extended to show the point at week 5.",
+      "spec": {
+        "range": 12,
+        "points": [
+          {
+            "x": 1,
+            "y": 4
+          },
+          {
+            "x": 4,
+            "y": 10
+          }
+        ],
+        "polylines": [
+          [
+            [
+              0,
+              2
+            ],
+            [
+              5,
+              12
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "al-linear-from-data-w1",
+      "name": "Two readings, then the equation",
+      "when": "Use this whenever you have exactly two data readings to build the line from.",
+      "steps": [
+        "A rover travels 15 meters at 2 minutes and 27 meters at 5 minutes.",
+        "Find the slope: (27 - 15) / (5 - 2) = 12/3 = 4 meters per minute.",
+        "Use one reading to find b: 15 = 4 times 2 + b, so b = 7.",
+        "The equation is y = 4x + 7."
+      ],
+      "example": "15 meters at 2 minutes, 27 meters at 5 minutes",
+      "answer": "y = 4x + 7",
+      "trap": "Subtracting the x-values and y-values in opposite orders, which flips the sign of the slope."
+    },
+    {
+      "id": "al-linear-from-data-w2",
+      "name": "Plot and count on the grid",
+      "when": "Use this when the two readings are small enough to plot on a grid.",
+      "steps": [
+        "A candle's height is 10 cm at hour 1 and 4 cm at hour 4.",
+        "Plot the two readings on the grid: (1, 10) and (4, 4).",
+        "Count the rise and run between them: down 6 while moving right 3, so the slope is -2.",
+        "Extend the line back to x = 0, at (0, 12), then read the equation off the graph: y = -2x + 12."
+      ],
+      "example": "candle height 10 cm at hour 1, 4 cm at hour 4",
+      "answer": "y = -2x + 12",
+      "trap": "Counting the rise or run in the wrong direction, which flips the sign of the slope.",
+      "figure": {
+        "kind": "plane",
+        "alt": "The line through (1, 10) and (4, 4), extended back to cross the y-axis at (0, 12).",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 1,
+              "y": 10,
+              "label": "(1, 10)"
+            },
+            {
+              "x": 4,
+              "y": 4,
+              "label": "(4, 4)"
+            },
+            {
+              "x": 0,
+              "y": 12,
+              "label": "(0, 12)"
+            }
+          ],
+          "polylines": [
+            [
+              [
+                0,
+                12
+              ],
+              [
+                6,
+                0
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "al-linear-from-data-w3",
+      "name": "The change table",
+      "when": "Use this when you have three or more readings taken at equal steps.",
+      "steps": [
+        "A water tank reads 5 L at minute 1, 9 L at minute 2, 13 L at minute 3.",
+        "Each minute the level goes up by 4 L: 9 - 5 = 4, and 13 - 9 = 4, a constant difference.",
+        "The constant difference is the slope, so the rate is 4 liters per minute.",
+        "Step back one more row to minute 0: 5 - 4 = 1, so the starting level is 1 L.",
+        "So y = 4x + 1."
+      ],
+      "example": "water tank: 5 L at minute 1, 9 L at minute 2, 13 L at minute 3",
+      "answer": "y = 4x + 1",
+      "trap": "Assuming the difference is constant after checking only two rows instead of three.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A table of minute and liters readings, with a constant difference of 4 liters marked between rows, extended back to minute 0.",
+        "spec": {
+          "w": 260,
+          "h": 170,
+          "items": [
+            {
+              "t": "text",
+              "x": 70,
+              "y": 20,
+              "s": "minute",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 20,
+              "s": "liters",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 32,
+              "x2": 240,
+              "y2": 32
+            },
+            {
+              "t": "text",
+              "x": 70,
+              "y": 60,
+              "s": "0",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 60,
+              "s": "1",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 70,
+              "y": 88,
+              "s": "1",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 88,
+              "s": "5",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 70,
+              "y": 116,
+              "s": "2",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 116,
+              "s": "9",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 70,
+              "y": 144,
+              "s": "3",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 144,
+              "s": "13",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "dim",
+              "x1": 235,
+              "y1": 88,
+              "x2": 235,
+              "y2": 116,
+              "label": "+4"
+            },
+            {
+              "t": "dim",
+              "x1": 235,
+              "y1": 116,
+              "x2": 235,
+              "y2": 144,
+              "label": "+4"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Start: minute vs liters table.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Tank: 5 L, 9 L, 13 L.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1400,
+              "caption": "Level goes up 4 L each minute.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1400,
+              "caption": "Constant difference: the slope is 4.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1500,
+              "caption": "Step back: minute 0 is 1 L.",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "So y = 4x + 1.",
+              "set": {
+                "3": {
+                  "size": 16
+                },
+                "4": {
+                  "size": 16
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "kind": "number",
+      "prompt": "A rover is recorded twice. At 0 seconds, its distance from base is 1 meter. At 3 seconds, its distance from base is 7 meters. What is the rate of change, in meters per second, between these two readings?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The rate of change is the change in its distance from base divided by the change in seconds.",
+        "That is (7 - 1) / (3 - 0) = 2."
+      ],
+      "hints": [
+        "Subtract the two readings to get the change in the value, then subtract the two times.",
+        "Divide the change in the value by the change in time."
+      ],
+      "socraticHint": "What do you get when you divide the change in the value by the change in time?",
+      "useAgain": "when you need the rate of change between two rows of a data table.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points, meters against seconds, with the line through them; its slope is 2.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 1
+            },
+            {
+              "x": 3,
+              "y": 7
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A greenhouse is recorded twice. At 1 hour, the temperature is 4 degrees Celsius. At 4 hours, the temperature is 7 degrees Celsius. What is the rate of change, in degrees Celsius per hour, between these two readings?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p01",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A drone is recorded twice. At 1 second, its altitude is 3 meters. At 3 seconds, its altitude is 5 meters. What is the rate of change, in meters per second, between these two readings?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The rate of change is the change in its altitude divided by the change in seconds.",
+        "That is (5 - 3) / (3 - 1) = 1."
+      ],
+      "hints": [
+        "Subtract the two readings to get the change in the value, then subtract the two times.",
+        "Divide the change in the value by the change in time."
+      ],
+      "socraticHint": "What do you get when you divide the change in the value by the change in time?",
+      "useAgain": "when you need the rate of change between two rows of a data table.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points, meters against seconds, with the line through them; its slope is 1.",
+        "spec": {
+          "range": 7,
+          "points": [
+            {
+              "x": 1,
+              "y": 3
+            },
+            {
+              "x": 3,
+              "y": 5
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -7.0,
+                -5.0
+              ],
+              [
+                5.0,
+                7.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A robot arm is recorded twice. At 0 seconds, its rotation is 1 degree. At 2 seconds, its rotation is 5 degrees. What is the rate of change, in degrees per second, between these two readings?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p02",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A greenhouse plant is recorded twice. At 0 weeks, its height is 0 centimeters. At 2 weeks, its height is 6 centimeters. What is the rate of change, in centimeters per week, between these two readings?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The rate of change is the change in its height divided by the change in weeks.",
+        "That is (6 - 0) / (2 - 0) = 3."
+      ],
+      "hints": [
+        "Subtract the two readings to get the change in the value, then subtract the two times.",
+        "Divide the change in the value by the change in time."
+      ],
+      "socraticHint": "What do you get when you divide the change in the value by the change in time?",
+      "useAgain": "when you need the rate of change between two rows of a data table.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points, centimeters against weeks, with the line through them; its slope is 3.",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 2,
+              "y": 6
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -2.6666666666666665,
+                -8.0
+              ],
+              [
+                2.6666666666666665,
+                8.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A delivery robot is recorded twice. At 1 minute, the distance it has traveled is 4 meters. At 3 minutes, the distance it has traveled is 8 meters. What is the rate of change, in meters per minute, between these two readings?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p03",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A water tank is recorded twice. At 1 minute, the water volume is 2 liters. At 4 minutes, the water volume is 8 liters. What is the rate of change, in liters per minute, between these two readings?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The rate of change is the change in the water volume divided by the change in minutes.",
+        "That is (8 - 2) / (4 - 1) = 2."
+      ],
+      "hints": [
+        "Subtract the two readings to get the change in the value, then subtract the two times.",
+        "Divide the change in the value by the change in time."
+      ],
+      "socraticHint": "What do you get when you divide the change in the value by the change in time?",
+      "useAgain": "when you need the rate of change between two rows of a data table.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points, liters against minutes, with the line through them; its slope is 2.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 1,
+              "y": 2
+            },
+            {
+              "x": 4,
+              "y": 8
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -5.0,
+                -10.0
+              ],
+              [
+                5.0,
+                10.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A lab sample is recorded twice. At 0 hours, its mass is 0 grams. At 4 hours, its mass is 8 grams. What is the rate of change, in grams per hour, between these two readings?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p04",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A 3D printer is recorded twice. At 0 layers, the filament used is 1 gram. At 3 layers, the filament used is 10 grams. What is the rate of change, in grams per layer, between these two readings?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The rate of change is the change in the filament used divided by the change in layers.",
+        "That is (10 - 1) / (3 - 0) = 3."
+      ],
+      "hints": [
+        "Subtract the two readings to get the change in the value, then subtract the two times.",
+        "Divide the change in the value by the change in time."
+      ],
+      "socraticHint": "What do you get when you divide the change in the value by the change in time?",
+      "useAgain": "when you need the rate of change between two rows of a data table.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points, grams against layers, with the line through them; its slope is 3.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": 1
+            },
+            {
+              "x": 3,
+              "y": 10
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -4.333333333333333,
+                -12.0
+              ],
+              [
+                3.6666666666666665,
+                12.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A weather balloon is recorded twice. At 1 minute, its height is 3 meters. At 4 minutes, its height is 9 meters. What is the rate of change, in meters per minute, between these two readings?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p05",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A video game starts (level 0) at 1 point, and the score goes up by 2 points every level. What is the score after 3 levels?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "The value is the start plus the rate times the number of levels: 1 + 2 times 3.",
+        "That is 1 + 6 = 7."
+      ],
+      "hints": [
+        "Multiply the rate by the number of steps to get the total change from the start.",
+        "Add that change to the starting value."
+      ],
+      "socraticHint": "What is the start value plus the rate times the number of steps?",
+      "useAgain": "when a data table's rule is a fixed rate from a known starting value.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line starting at 1 and changing by 2 each level, reaching 7 at level 3.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3,
+              "y": 7,
+              "label": "(3, 7)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A greenhouse plant starts (week 0) at 2 centimeters, and its height goes up by 1 centimeter every week. What is its height after 4 weeks?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p06",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A greenhouse starts (hour 0) at 2 degrees Celsius, and the temperature goes up by 1 degree Celsius every hour. What is the temperature after 4 hours?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The value is the start plus the rate times the number of hours: 2 + 1 times 4.",
+        "That is 2 + 4 = 6."
+      ],
+      "hints": [
+        "Multiply the rate by the number of steps to get the total change from the start.",
+        "Add that change to the starting value."
+      ],
+      "socraticHint": "What is the start value plus the rate times the number of steps?",
+      "useAgain": "when a data table's rule is a fixed rate from a known starting value.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line starting at 2 and changing by 1 each hour, reaching 6 at hour 4.",
+        "spec": {
+          "range": 8,
+          "polylines": [
+            [
+              [
+                -8.0,
+                -6.0
+              ],
+              [
+                6.0,
+                8.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 6,
+              "label": "(4, 6)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A water tank starts (minute 0) at 1 liter, and the water volume goes up by 2 liters every minute. What is the water volume after 3 minutes?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p07",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A robot arm starts (second 0) at 0 degrees, and its rotation goes up by 2 degrees every second. What is its rotation after 4 seconds?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "The value is the start plus the rate times the number of seconds: 0 + 2 times 4.",
+        "That is 0 + 8 = 8."
+      ],
+      "hints": [
+        "Multiply the rate by the number of steps to get the total change from the start.",
+        "Add that change to the starting value."
+      ],
+      "socraticHint": "What is the start value plus the rate times the number of steps?",
+      "useAgain": "when a data table's rule is a fixed rate from a known starting value.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line starting at 0 and changing by 2 each second, reaching 8 at second 4.",
+        "spec": {
+          "range": 10,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -10.0
+              ],
+              [
+                5.0,
+                10.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 8,
+              "label": "(4, 8)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A 3D printer starts (layer 0) at 3 grams, and the filament used goes up by 1 gram every layer. What is the filament used after 4 layers?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p08",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A delivery robot starts (minute 0) at 3 meters, and the distance it has traveled goes up by 1 meter every minute. What is the distance it has traveled after 3 minutes?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The value is the start plus the rate times the number of minutes: 3 + 1 times 3.",
+        "That is 3 + 3 = 6."
+      ],
+      "hints": [
+        "Multiply the rate by the number of steps to get the total change from the start.",
+        "Add that change to the starting value."
+      ],
+      "socraticHint": "What is the start value plus the rate times the number of steps?",
+      "useAgain": "when a data table's rule is a fixed rate from a known starting value.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line starting at 3 and changing by 1 each minute, reaching 6 at minute 3.",
+        "spec": {
+          "range": 8,
+          "polylines": [
+            [
+              [
+                -8.0,
+                -5.0
+              ],
+              [
+                5.0,
+                8.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3,
+              "y": 6,
+              "label": "(3, 6)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rover starts (second 0) at 0 meters, and its distance from base goes up by 2 meters every second. What is its distance from base after 3 seconds?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p09",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A lab sample starts (hour 0) at 2 grams, and its mass goes up by 2 grams every hour. What is its mass after 3 hours?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "The value is the start plus the rate times the number of hours: 2 + 2 times 3.",
+        "That is 2 + 6 = 8."
+      ],
+      "hints": [
+        "Multiply the rate by the number of steps to get the total change from the start.",
+        "Add that change to the starting value."
+      ],
+      "socraticHint": "What is the start value plus the rate times the number of steps?",
+      "useAgain": "when a data table's rule is a fixed rate from a known starting value.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line starting at 2 and changing by 2 each hour, reaching 8 at hour 3.",
+        "spec": {
+          "range": 10,
+          "polylines": [
+            [
+              [
+                -6.0,
+                -10.0
+              ],
+              [
+                4.0,
+                10.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3,
+              "y": 8,
+              "label": "(3, 8)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A drone starts (second 0) at 3 meters, and its altitude goes up by 1 meter every second. What is its altitude after 3 seconds?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p10",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A table for a weather balloon lists its height. At minute 0 it is 3 meters. At minute 2 it is 7 meters. What is the starting value, its height at minute 0?",
+      "options": [
+        "7 meters",
+        "2 meters",
+        "5 meters",
+        "3 meters"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The starting value is its height when minute is 0, straight from the table.",
+        "That row shows 3 meters."
+      ],
+      "hints": [
+        "The starting value is the row where the count is 0, not the other row.",
+        "Read the value straight off that row of the table."
+      ],
+      "socraticHint": "Which row of the table has a count of 0?",
+      "useAgain": "when a table already lists the count-0 row and you just need to read it.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line crosses minute 0 at 3, the starting value.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 3
+            },
+            {
+              "x": 2,
+              "y": 7
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -6.0,
+                -9.0
+              ],
+              [
+                3.0,
+                9.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A table for a 3D printer lists the filament used. At layer 0 it is 1 gram. At layer 3 it is 7 grams. What is the starting value, the filament used at layer 0?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "1 gram",
+          "7 grams",
+          "2 grams",
+          "4 grams"
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p11",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A table for a savings jar lists the number of coins in it. At week 0 it is 4 coins. At week 3 it is 7 coins. What is the starting value, the number of coins in it at week 0?",
+      "options": [
+        "7 coins",
+        "4 coins",
+        "1 coin",
+        "3 coins"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The starting value is the number of coins in it when week is 0, straight from the table.",
+        "That row shows 4 coins."
+      ],
+      "hints": [
+        "The starting value is the row where the count is 0, not the other row.",
+        "Read the value straight off that row of the table."
+      ],
+      "socraticHint": "Which row of the table has a count of 0?",
+      "useAgain": "when a table already lists the count-0 row and you just need to read it.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line crosses week 0 at 4, the starting value.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 4
+            },
+            {
+              "x": 3,
+              "y": 7
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -9.0,
+                -5.0
+              ],
+              [
+                5.0,
+                9.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A table for a video game lists the score. At level 0 it is 3 points. At level 2 it is 5 points. What is the starting value, the score at level 0?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "5 points",
+          "1 point",
+          "3 points",
+          "2 points"
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p12",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A table for a rover lists its distance from base. At second 0 it is 1 meter. At second 2 it is 7 meters. What is the starting value, its distance from base at second 0?",
+      "options": [
+        "7 meters",
+        "3 meters",
+        "1 meter",
+        "0 meters"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The starting value is its distance from base when second is 0, straight from the table.",
+        "That row shows 1 meter."
+      ],
+      "hints": [
+        "The starting value is the row where the count is 0, not the other row.",
+        "Read the value straight off that row of the table."
+      ],
+      "socraticHint": "Which row of the table has a count of 0?",
+      "useAgain": "when a table already lists the count-0 row and you just need to read it.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line crosses second 0 at 1, the starting value.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 7
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -3.3333333333333335,
+                -9.0
+              ],
+              [
+                2.6666666666666665,
+                9.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A table for a greenhouse lists the temperature. At hour 0 it is 2 degrees Celsius. At hour 2 it is 6 degrees Celsius. What is the starting value, the temperature at hour 0?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "6 degrees Celsius",
+          "4 degrees Celsius",
+          "1 degree Celsius",
+          "2 degrees Celsius"
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p13",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A table for a drone lists its altitude. At second 0 it is 2 meters. At second 3 it is 8 meters. What is the starting value, its altitude at second 0?",
+      "options": [
+        "2 meters",
+        "8 meters",
+        "5 meters",
+        "1 meter"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The starting value is its altitude when second is 0, straight from the table.",
+        "That row shows 2 meters."
+      ],
+      "hints": [
+        "The starting value is the row where the count is 0, not the other row.",
+        "Read the value straight off that row of the table."
+      ],
+      "socraticHint": "Which row of the table has a count of 0?",
+      "useAgain": "when a table already lists the count-0 row and you just need to read it.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line crosses second 0 at 2, the starting value.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 2
+            },
+            {
+              "x": 3,
+              "y": 8
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -6.0,
+                -10.0
+              ],
+              [
+                4.0,
+                10.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A table for a robot arm lists its rotation. At second 0 it is 4 degrees. At second 3 it is 7 degrees. What is the starting value, its rotation at second 0?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "7 degrees",
+          "4 degrees",
+          "1 degree",
+          "3 degrees"
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p14",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A table for a greenhouse plant lists its height. At week 0 it is 3 centimeters. At week 4 it is 7 centimeters. What is the starting value, its height at week 0?",
+      "options": [
+        "3 centimeters",
+        "7 centimeters",
+        "1 centimeter",
+        "2 centimeters"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The starting value is its height when week is 0, straight from the table.",
+        "That row shows 3 centimeters."
+      ],
+      "hints": [
+        "The starting value is the row where the count is 0, not the other row.",
+        "Read the value straight off that row of the table."
+      ],
+      "socraticHint": "Which row of the table has a count of 0?",
+      "useAgain": "when a table already lists the count-0 row and you just need to read it.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line crosses week 0 at 3, the starting value.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 3
+            },
+            {
+              "x": 4,
+              "y": 7
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -9.0,
+                -6.0
+              ],
+              [
+                6.0,
+                9.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A table for a delivery robot lists the distance it has traveled. At minute 0 it is 3 meters. At minute 3 it is 9 meters. What is the starting value, the distance it has traveled at minute 0?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "9 meters",
+          "2 meters",
+          "3 meters",
+          "6 meters"
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p15",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A table for a water tank shows the water volume. It is 1 liter at minute 0, 5 liters at minute 2, and 9 liters at minute 4. Which equation matches the line through these points, with y as the water volume and x as the minute count?",
+      "options": [
+        "y = -2x + 1",
+        "y = 2x - 1",
+        "y = x + 2",
+        "y = 2x + 1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The slope is the change in y over the change in x: (5 - 1) / (2 - 0) = 2.",
+        "The starting value, at x = 0, is 1.",
+        "So the equation is y = 2x + 1."
+      ],
+      "hints": [
+        "Find the slope first, from any two rows of the table.",
+        "Then read the starting value from the row where x is 0."
+      ],
+      "socraticHint": "What is the slope between two rows, and what is the value at x equal to 0?",
+      "useAgain": "when a table's values sit exactly on a line and you need its equation.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The three table points with the line y = 2x + 1 through them.",
+        "spec": {
+          "range": 11,
+          "points": [
+            {
+              "x": 0,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 5
+            },
+            {
+              "x": 4,
+              "y": 9
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -6.0,
+                -11.0
+              ],
+              [
+                5.0,
+                11.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A table for a lab sample shows its mass. It is 2 grams at hour 0, 4 grams at hour 1, and 8 grams at hour 3. Which equation matches the line through these points, with y as its mass and x as the hour count?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "y = -2x + 2",
+          "y = 2x + 2",
+          "y = 2x - 2",
+          "y = 2x + 3"
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p16",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A table for a 3D printer shows the filament used. It is 6 grams at layer 0, 5 grams at layer 1, and 3 grams at layer 3. Which equation matches the line through these points, with y as the filament used and x as the layer count?",
+      "options": [
+        "y = -x + 6",
+        "y = x + 6",
+        "y = -x - 6",
+        "y = 6x - 1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The slope is the change in y over the change in x: (5 - 6) / (1 - 0) = -1.",
+        "The starting value, at x = 0, is 6.",
+        "So the equation is y = -x + 6."
+      ],
+      "hints": [
+        "Find the slope first, from any two rows of the table.",
+        "Then read the starting value from the row where x is 0."
+      ],
+      "socraticHint": "What is the slope between two rows, and what is the value at x equal to 0?",
+      "useAgain": "when a table's values sit exactly on a line and you need its equation.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The three table points with the line y = -x + 6 through them.",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": 0,
+              "y": 6
+            },
+            {
+              "x": 1,
+              "y": 5
+            },
+            {
+              "x": 3,
+              "y": 3
+            }
+          ],
+          "polylines": [
+            [
+              [
+                8.0,
+                -2.0
+              ],
+              [
+                -2.0,
+                8.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A table for a weather balloon shows its height. It is 7 meters at minute 0, 5 meters at minute 2, and 3 meters at minute 4. Which equation matches the line through these points, with y as its height and x as the minute count?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "y = x + 7",
+          "y = -x - 7",
+          "y = -x + 7",
+          "y = 7x - 1"
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p17",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A table for a video game shows the score. It is 2 points at level 0, 4 points at level 2, and 6 points at level 4. Which equation matches the line through these points, with y as the score and x as the level count?",
+      "options": [
+        "y = -x + 2",
+        "y = x - 2",
+        "y = 2x + 1",
+        "y = x + 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The slope is the change in y over the change in x: (4 - 2) / (2 - 0) = 1.",
+        "The starting value, at x = 0, is 2.",
+        "So the equation is y = x + 2."
+      ],
+      "hints": [
+        "Find the slope first, from any two rows of the table.",
+        "Then read the starting value from the row where x is 0."
+      ],
+      "socraticHint": "What is the slope between two rows, and what is the value at x equal to 0?",
+      "useAgain": "when a table's values sit exactly on a line and you need its equation.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The three table points with the line y = x + 2 through them.",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": 0,
+              "y": 2
+            },
+            {
+              "x": 2,
+              "y": 4
+            },
+            {
+              "x": 4,
+              "y": 6
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -8.0,
+                -6.0
+              ],
+              [
+                6.0,
+                8.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A table for a savings jar shows the number of coins in it. It is 3 coins at week 0, 4 coins at week 1, and 6 coins at week 3. Which equation matches the line through these points, with y as the number of coins in it and x as the week count?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "y = -x + 3",
+          "y = x + 3",
+          "y = x - 3",
+          "y = 3x + 1"
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p18",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A table for a greenhouse shows the temperature. It is 0 degrees Celsius at hour 0, 2 degrees Celsius at hour 1, and 8 degrees Celsius at hour 4. Which equation matches the line through these points, with y as the temperature and x as the hour count?",
+      "options": [
+        "y = -2x",
+        "y = 2x",
+        "y = 2x + 1",
+        "y = 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The slope is the change in y over the change in x: (2 - 0) / (1 - 0) = 2.",
+        "The starting value, at x = 0, is 0.",
+        "So the equation is y = 2x."
+      ],
+      "hints": [
+        "Find the slope first, from any two rows of the table.",
+        "Then read the starting value from the row where x is 0."
+      ],
+      "socraticHint": "What is the slope between two rows, and what is the value at x equal to 0?",
+      "useAgain": "when a table's values sit exactly on a line and you need its equation.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The three table points with the line y = 2x through them.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 1,
+              "y": 2
+            },
+            {
+              "x": 4,
+              "y": 8
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -5.0,
+                -10.0
+              ],
+              [
+                5.0,
+                10.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A table for a rover shows its distance from base. It is 1 meter at second 0, 3 meters at second 2, and 5 meters at second 4. Which equation matches the line through these points, with y as its distance from base and x as the second count?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "y = -x + 1",
+          "y = x - 1",
+          "y = x + 1",
+          "y = x + 2"
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p19",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A table for a robot arm shows its rotation. It is 9 degrees at second 0, 5 degrees at second 2, and 3 degrees at second 3. Which equation matches the line through these points, with y as its rotation and x as the second count?",
+      "options": [
+        "y = -2x + 9",
+        "y = 2x + 9",
+        "y = -2x - 9",
+        "y = 9x - 2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The slope is the change in y over the change in x: (5 - 9) / (2 - 0) = -2.",
+        "The starting value, at x = 0, is 9.",
+        "So the equation is y = -2x + 9."
+      ],
+      "hints": [
+        "Find the slope first, from any two rows of the table.",
+        "Then read the starting value from the row where x is 0."
+      ],
+      "socraticHint": "What is the slope between two rows, and what is the value at x equal to 0?",
+      "useAgain": "when a table's values sit exactly on a line and you need its equation.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The three table points with the line y = -2x + 9 through them.",
+        "spec": {
+          "range": 11,
+          "points": [
+            {
+              "x": 0,
+              "y": 9
+            },
+            {
+              "x": 2,
+              "y": 5
+            },
+            {
+              "x": 3,
+              "y": 3
+            }
+          ],
+          "polylines": [
+            [
+              [
+                10.0,
+                -11.0
+              ],
+              [
+                -1.0,
+                11.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A table for a drone shows its altitude. It is 8 meters at second 0, 6 meters at second 1, and 2 meters at second 3. Which equation matches the line through these points, with y as its altitude and x as the second count?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "y = 2x + 8",
+          "y = -2x - 8",
+          "y = 8x - 2",
+          "y = -2x + 8"
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p20",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a delivery robot, the distance it has traveled fits the line y = 2x + 1, where x is the minute count. If the trend fits this line, what is the distance it has traveled at minute 4?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Substitute x = 4 into y = 2x + 1.",
+        "y = 2 times 4 plus 1 = 9."
+      ],
+      "hints": [
+        "Put the given x-value into the equation in place of x.",
+        "Multiply first, then add the starting value."
+      ],
+      "socraticHint": "What do you get when you substitute the given x into the equation?",
+      "useAgain": "when you have the line's equation and need one predicted value from it.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = 2x + 1 reaching 9 at minute 4.",
+        "spec": {
+          "range": 11,
+          "polylines": [
+            [
+              [
+                -6.0,
+                -11.0
+              ],
+              [
+                5.0,
+                11.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 9,
+              "label": "(4, 9)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a greenhouse plant, its height fits the line y = x + 3, where x is the week count. If the trend fits this line, what is its height at week 4?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p21",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a lab sample, its mass fits the line y = x + 2, where x is the hour count. If the trend fits this line, what is its mass at hour 3?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Substitute x = 3 into y = x + 2.",
+        "y = 1 times 3 plus 2 = 5."
+      ],
+      "hints": [
+        "Put the given x-value into the equation in place of x.",
+        "Multiply first, then add the starting value."
+      ],
+      "socraticHint": "What do you get when you substitute the given x into the equation?",
+      "useAgain": "when you have the line's equation and need one predicted value from it.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = x + 2 reaching 5 at hour 3.",
+        "spec": {
+          "range": 7,
+          "polylines": [
+            [
+              [
+                -7.0,
+                -5.0
+              ],
+              [
+                5.0,
+                7.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3,
+              "y": 5,
+              "label": "(3, 5)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a water tank, the water volume fits the line y = 2x + 2, where x is the minute count. If the trend fits this line, what is the water volume at minute 3?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p22",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a weather balloon, its height fits the line y = -x + 8, where x is the minute count. If the trend fits this line, what is its height at minute 4?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Substitute x = 4 into y = -x + 8.",
+        "y = -1 times 4 plus 8 = 4."
+      ],
+      "hints": [
+        "Put the given x-value into the equation in place of x.",
+        "Multiply first, then add the starting value."
+      ],
+      "socraticHint": "What do you get when you substitute the given x into the equation?",
+      "useAgain": "when you have the line's equation and need one predicted value from it.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = -x + 8 reaching 4 at minute 4.",
+        "spec": {
+          "range": 10,
+          "polylines": [
+            [
+              [
+                10.0,
+                -2.0
+              ],
+              [
+                -2.0,
+                10.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 4,
+              "label": "(4, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a 3D printer, the filament used fits the line y = -x + 7, where x is the layer count. If the trend fits this line, what is the filament used at layer 3?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p23",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a savings jar, the number of coins in it fits the line y = 2x, where x is the week count. If the trend fits this line, what is the number of coins in it at week 4?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Substitute x = 4 into y = 2x.",
+        "y = 2 times 4 plus 0 = 8."
+      ],
+      "hints": [
+        "Put the given x-value into the equation in place of x.",
+        "Multiply first, then add the starting value."
+      ],
+      "socraticHint": "What do you get when you substitute the given x into the equation?",
+      "useAgain": "when you have the line's equation and need one predicted value from it.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = 2x reaching 8 at week 4.",
+        "spec": {
+          "range": 10,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -10.0
+              ],
+              [
+                5.0,
+                10.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 8,
+              "label": "(4, 8)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a video game, the score fits the line y = 2x + 1, where x is the level count. If the trend fits this line, what is the score at level 3?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p24",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a rover, its distance from base fits the line y = -x + 9, where x is the second count. If the trend fits this line, what is its distance from base at second 3?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Substitute x = 3 into y = -x + 9.",
+        "y = -1 times 3 plus 9 = 6."
+      ],
+      "hints": [
+        "Put the given x-value into the equation in place of x.",
+        "Multiply first, then add the starting value."
+      ],
+      "socraticHint": "What do you get when you substitute the given x into the equation?",
+      "useAgain": "when you have the line's equation and need one predicted value from it.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = -x + 9 reaching 6 at second 3.",
+        "spec": {
+          "range": 11,
+          "polylines": [
+            [
+              [
+                11.0,
+                -2.0
+              ],
+              [
+                -2.0,
+                11.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3,
+              "y": 6,
+              "label": "(3, 6)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a greenhouse, the temperature fits the line y = -2x + 9, where x is the hour count. If the trend fits this line, what is the temperature at hour 2?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p25",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "For a drone, its altitude fits the line y = 2x + 1. Does the point (3, 7) lie on this line?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute x = 3 into y = 2x + 1 to get the line's value there.",
+        "That gives y = 7, which matches the point's y-value of 7."
+      ],
+      "hints": [
+        "Substitute the point's x-value into the line's equation.",
+        "Compare the result to the point's y-value."
+      ],
+      "socraticHint": "What y-value does the line give at this point's x-value?",
+      "useAgain": "when you need to check whether a data point actually sits on a fitted line.",
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = 2x + 1 with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -9.0
+              ],
+              [
+                4.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3,
+              "y": 7,
+              "label": "(3, 7)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a robot arm, its rotation fits the line y = 2x + 2. Does the point (3, 8) lie on this line?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-linear-from-data-p26",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "For a greenhouse plant, its height fits the line y = x + 3. Does the point (4, 8) lie on this line?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Substitute x = 4 into y = x + 3 to get the line's value there.",
+        "That gives y = 7, which does not match the point's y-value of 8."
+      ],
+      "hints": [
+        "Substitute the point's x-value into the line's equation.",
+        "Compare the result to the point's y-value."
+      ],
+      "socraticHint": "What y-value does the line give at this point's x-value?",
+      "useAgain": "when you need to check whether a data point actually sits on a fitted line.",
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = x + 3 with the tested point marked.",
+        "spec": {
+          "range": 10,
+          "polylines": [
+            [
+              [
+                -10.0,
+                -7.0
+              ],
+              [
+                7.0,
+                10.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 8,
+              "label": "(4, 8)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a delivery robot, the distance it has traveled fits the line y = x + 2. Does the point (4, 7) lie on this line?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "id": "ladder-al-linear-from-data-p27",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "For a water tank, the water volume fits the line y = -x + 7. Does the point (4, 3) lie on this line?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute x = 4 into y = -x + 7 to get the line's value there.",
+        "That gives y = 3, which matches the point's y-value of 3."
+      ],
+      "hints": [
+        "Substitute the point's x-value into the line's equation.",
+        "Compare the result to the point's y-value."
+      ],
+      "socraticHint": "What y-value does the line give at this point's x-value?",
+      "useAgain": "when you need to check whether a data point actually sits on a fitted line.",
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = -x + 7 with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                9.0,
+                -2.0
+              ],
+              [
+                -2.0,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 3,
+              "label": "(4, 3)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a lab sample, its mass fits the line y = -x + 8. Does the point (4, 4) lie on this line?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-linear-from-data-p28",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "For a 3D printer, the filament used fits the line y = 2x. Does the point (3, 7) lie on this line?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Substitute x = 3 into y = 2x to get the line's value there.",
+        "That gives y = 6, which does not match the point's y-value of 7."
+      ],
+      "hints": [
+        "Substitute the point's x-value into the line's equation.",
+        "Compare the result to the point's y-value."
+      ],
+      "socraticHint": "What y-value does the line give at this point's x-value?",
+      "useAgain": "when you need to check whether a data point actually sits on a fitted line.",
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = 2x with the tested point marked.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                -4.5,
+                -9.0
+              ],
+              [
+                4.5,
+                9.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 3,
+              "y": 7,
+              "label": "(3, 7)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a weather balloon, its height fits the line y = 2x + 1. Does the point (3, 8) lie on this line?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "id": "ladder-al-linear-from-data-p29",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "For a video game, the score fits the line y = x + 2. Does the point (4, 6) lie on this line?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute x = 4 into y = x + 2 to get the line's value there.",
+        "That gives y = 6, which matches the point's y-value of 6."
+      ],
+      "hints": [
+        "Substitute the point's x-value into the line's equation.",
+        "Compare the result to the point's y-value."
+      ],
+      "socraticHint": "What y-value does the line give at this point's x-value?",
+      "useAgain": "when you need to check whether a data point actually sits on a fitted line.",
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = x + 2 with the tested point marked.",
+        "spec": {
+          "range": 8,
+          "polylines": [
+            [
+              [
+                -8.0,
+                -6.0
+              ],
+              [
+                6.0,
+                8.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 6,
+              "label": "(4, 6)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a savings jar, the number of coins in it fits the line y = x + 3. Does the point (4, 7) lie on this line?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-linear-from-data-p30",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a greenhouse, the temperature fits the line y = x + 2, where x is the hour count. If the trend continues at this same rate, what is the temperature at hour 8?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Substitute x = 8 into y = x + 2.",
+        "y = 1 times 8 plus 2 = 10."
+      ],
+      "hints": [
+        "Put the given x-value into the equation in place of x.",
+        "Multiply first, then add the starting value."
+      ],
+      "socraticHint": "What do you get when you substitute the given x into the equation?",
+      "useAgain": "when you have the line's equation and need one predicted value from it.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = x + 2 reaching 10 at hour 8.",
+        "spec": {
+          "range": 12,
+          "polylines": [
+            [
+              [
+                -12.0,
+                -10.0
+              ],
+              [
+                10.0,
+                12.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 8,
+              "y": 10,
+              "label": "(8, 10)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a robot arm, its rotation fits the line y = x + 3, where x is the second count. If the trend continues at this same rate, what is its rotation at second 6?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p31",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a robot arm, its rotation fits the line y = x + 1, where x is the second count. If the trend continues at this same rate, what is its rotation at second 7?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Substitute x = 7 into y = x + 1.",
+        "y = 1 times 7 plus 1 = 8."
+      ],
+      "hints": [
+        "Put the given x-value into the equation in place of x.",
+        "Multiply first, then add the starting value."
+      ],
+      "socraticHint": "What do you get when you substitute the given x into the equation?",
+      "useAgain": "when you have the line's equation and need one predicted value from it.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = x + 1 reaching 8 at second 7.",
+        "spec": {
+          "range": 10,
+          "polylines": [
+            [
+              [
+                -10.0,
+                -9.0
+              ],
+              [
+                9.0,
+                10.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 7,
+              "y": 8,
+              "label": "(7, 8)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a delivery robot, the distance it has traveled fits the line y = x + 2, where x is the minute count. If the trend continues at this same rate, what is the distance it has traveled at minute 8?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p32",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a delivery robot, the distance it has traveled fits the line y = -x + 9, where x is the minute count. If the trend continues at this same rate, what is the distance it has traveled at minute 5?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Substitute x = 5 into y = -x + 9.",
+        "y = -1 times 5 plus 9 = 4."
+      ],
+      "hints": [
+        "Put the given x-value into the equation in place of x.",
+        "Multiply first, then add the starting value."
+      ],
+      "socraticHint": "What do you get when you substitute the given x into the equation?",
+      "useAgain": "when you have the line's equation and need one predicted value from it.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = -x + 9 reaching 4 at minute 5.",
+        "spec": {
+          "range": 11,
+          "polylines": [
+            [
+              [
+                11.0,
+                -2.0
+              ],
+              [
+                -2.0,
+                11.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 5,
+              "y": 4,
+              "label": "(5, 4)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a lab sample, its mass fits the line y = -x + 8, where x is the hour count. If the trend continues at this same rate, what is its mass at hour 4?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p33",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a lab sample, its mass fits the line y = 2x, where x is the hour count. If the trend continues at this same rate, what is its mass at hour 4?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Substitute x = 4 into y = 2x.",
+        "y = 2 times 4 plus 0 = 8."
+      ],
+      "hints": [
+        "Put the given x-value into the equation in place of x.",
+        "Multiply first, then add the starting value."
+      ],
+      "socraticHint": "What do you get when you substitute the given x into the equation?",
+      "useAgain": "when you have the line's equation and need one predicted value from it.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = 2x reaching 8 at hour 4.",
+        "spec": {
+          "range": 10,
+          "polylines": [
+            [
+              [
+                -5.0,
+                -10.0
+              ],
+              [
+                5.0,
+                10.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 8,
+              "label": "(4, 8)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a weather balloon, its height fits the line y = 2x + 1, where x is the minute count. If the trend continues at this same rate, what is its height at minute 4?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p34",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a weather balloon, its height fits the line y = x + 3, where x is the minute count. If the trend continues at this same rate, what is its height at minute 6?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Substitute x = 6 into y = x + 3.",
+        "y = 1 times 6 plus 3 = 9."
+      ],
+      "hints": [
+        "Put the given x-value into the equation in place of x.",
+        "Multiply first, then add the starting value."
+      ],
+      "socraticHint": "What do you get when you substitute the given x into the equation?",
+      "useAgain": "when you have the line's equation and need one predicted value from it.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = x + 3 reaching 9 at minute 6.",
+        "spec": {
+          "range": 11,
+          "polylines": [
+            [
+              [
+                -11.0,
+                -8.0
+              ],
+              [
+                8.0,
+                11.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 6,
+              "y": 9,
+              "label": "(6, 9)"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a savings jar, the number of coins in it fits the line y = x + 4, where x is the week count. If the trend continues at this same rate, what is the number of coins in it at week 5?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p35",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a savings jar, the number of coins in it fits the line y = 3x + 1, where x is the week count. After how many weeks does the number of coins in it reach 10 coins, if the trend continues?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Set y = 3x + 1 equal to 10 and solve for x.",
+        "3x + 1 = 10, so 3x = 9.",
+        "x = 3."
+      ],
+      "hints": [
+        "Set the expression for y equal to the target value.",
+        "Undo the addition, then undo the multiplication, the same as solving any equation."
+      ],
+      "socraticHint": "What equation do you get when you set mx + b equal to the target value?",
+      "useAgain": "when a data trend's equation is known and you need the step count for a target value.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = 3x + 1.",
+        "spec": {
+          "range": 12,
+          "polylines": [
+            [
+              [
+                -4.333333333333333,
+                -12.0
+              ],
+              [
+                3.6666666666666665,
+                12.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a drone, its altitude fits the line y = 2x + 1, where x is the second count. After how many seconds does its altitude reach 9 meters, if the trend continues?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p36",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a rover, its distance from base fits the line y = 2x + 2, where x is the second count. After how many seconds does its distance from base reach 10 meters, if the trend continues?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Set y = 2x + 2 equal to 10 and solve for x.",
+        "2x + 2 = 10, so 2x = 8.",
+        "x = 4."
+      ],
+      "hints": [
+        "Set the expression for y equal to the target value.",
+        "Undo the addition, then undo the multiplication, the same as solving any equation."
+      ],
+      "socraticHint": "What equation do you get when you set mx + b equal to the target value?",
+      "useAgain": "when a data trend's equation is known and you need the step count for a target value.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = 2x + 2.",
+        "spec": {
+          "range": 12,
+          "polylines": [
+            [
+              [
+                -7.0,
+                -12.0
+              ],
+              [
+                5.0,
+                12.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a greenhouse plant, its height fits the line y = x + 2, where x is the week count. After how many weeks does its height reach 9 centimeters, if the trend continues?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p37",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a drone, its altitude fits the line y = 4x + 2, where x is the second count. After how many seconds does its altitude reach 10 meters, if the trend continues?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Set y = 4x + 2 equal to 10 and solve for x.",
+        "4x + 2 = 10, so 4x = 8.",
+        "x = 2."
+      ],
+      "hints": [
+        "Set the expression for y equal to the target value.",
+        "Undo the addition, then undo the multiplication, the same as solving any equation."
+      ],
+      "socraticHint": "What equation do you get when you set mx + b equal to the target value?",
+      "useAgain": "when a data trend's equation is known and you need the step count for a target value.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = 4x + 2.",
+        "spec": {
+          "range": 12,
+          "polylines": [
+            [
+              [
+                -3.5,
+                -12.0
+              ],
+              [
+                2.5,
+                12.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a water tank, the water volume fits the line y = 3x + 1, where x is the minute count. After how many minutes does the water volume reach 10 liters, if the trend continues?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p38",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a greenhouse plant, its height fits the line y = x + 3, where x is the week count. After how many weeks does its height reach 9 centimeters, if the trend continues?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Set y = x + 3 equal to 9 and solve for x.",
+        "x + 3 = 9, so x = 6.",
+        "x = 6."
+      ],
+      "hints": [
+        "Set the expression for y equal to the target value.",
+        "Undo the addition, then undo the multiplication, the same as solving any equation."
+      ],
+      "socraticHint": "What equation do you get when you set mx + b equal to the target value?",
+      "useAgain": "when a data trend's equation is known and you need the step count for a target value.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = x + 3.",
+        "spec": {
+          "range": 11,
+          "polylines": [
+            [
+              [
+                -11.0,
+                -8.0
+              ],
+              [
+                8.0,
+                11.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a 3D printer, the filament used fits the line y = 2x + 2, where x is the layer count. After how many layers does the filament used reach 10 grams, if the trend continues?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p39",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "For a water tank, the water volume fits the line y = 3x, where x is the minute count. After how many minutes does the water volume reach 9 liters, if the trend continues?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Set y = 3x equal to 9 and solve for x.",
+        "3x + 0 = 9, so 3x = 9.",
+        "x = 3."
+      ],
+      "hints": [
+        "Set the expression for y equal to the target value.",
+        "Undo the addition, then undo the multiplication, the same as solving any equation."
+      ],
+      "socraticHint": "What equation do you get when you set mx + b equal to the target value?",
+      "useAgain": "when a data trend's equation is known and you need the step count for a target value.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The line y = 3x.",
+        "spec": {
+          "range": 11,
+          "polylines": [
+            [
+              [
+                -3.6666666666666665,
+                -11.0
+              ],
+              [
+                3.6666666666666665,
+                11.0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "For a video game, the score fits the line y = 2x + 1, where x is the level count. After how many levels does the score reach 9 points, if the trend continues?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p40",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "For a 3D printer, the filament used fits the line y = 3x + 2. What does the slope 3 mean here?",
+      "options": [
+        "The filament used goes down by 3 grams every layer.",
+        "The filament used starts at 3 grams.",
+        "The filament used goes up by 3 grams every layer.",
+        "The filament used is 3 grams after one layer in total, not counting the start."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The slope of a line fit to data is its rate of change, not its starting value.",
+        "A slope of 3 means the value changes by 3 grams for each extra layer."
+      ],
+      "hints": [
+        "The slope is a rate, not a starting amount.",
+        "The sign of the slope tells you whether the value rises or falls."
+      ],
+      "socraticHint": "Does the slope tell you where the line starts, or how fast it changes?",
+      "useAgain": "when you need to say in words what a fitted line's slope means.",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For a video game, the score fits the line y = 4x + 3. What does the slope 4 mean here?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "The score goes up by 4 points every level.",
+          "The score goes down by 4 points every level.",
+          "The score starts at 4 points.",
+          "The score is 4 points after one level in total, not counting the start."
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p41",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "For a video game, the score fits the line y = -2x + 10. What does the slope -2 mean here?",
+      "options": [
+        "The score goes up by 2 points every level.",
+        "The score starts at 2 points.",
+        "The score stays the same every level.",
+        "The score goes down by 2 points every level."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The slope of a line fit to data is its rate of change, not its starting value.",
+        "A slope of -2 means the value changes by -2 points for each extra level."
+      ],
+      "hints": [
+        "The slope is a rate, not a starting amount.",
+        "The sign of the slope tells you whether the value rises or falls."
+      ],
+      "socraticHint": "Does the slope tell you where the line starts, or how fast it changes?",
+      "useAgain": "when you need to say in words what a fitted line's slope means.",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For a greenhouse, the temperature fits the line y = -x + 11. What does the slope -1 mean here?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "The temperature goes up by 1 degree Celsius every hour.",
+          "The temperature goes down by 1 degree Celsius every hour.",
+          "The temperature starts at 1 degree Celsius.",
+          "The temperature stays the same every hour."
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p42",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "For a greenhouse, the temperature fits the line y = 4x + 1. What does the slope 4 mean here?",
+      "options": [
+        "The temperature goes down by 4 degrees Celsius every hour.",
+        "The temperature goes up by 4 degrees Celsius every hour.",
+        "The temperature starts at 4 degrees Celsius.",
+        "The temperature is 4 degrees Celsius after one hour in total, not counting the start."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The slope of a line fit to data is its rate of change, not its starting value.",
+        "A slope of 4 means the value changes by 4 degrees Celsius for each extra hour."
+      ],
+      "hints": [
+        "The slope is a rate, not a starting amount.",
+        "The sign of the slope tells you whether the value rises or falls."
+      ],
+      "socraticHint": "Does the slope tell you where the line starts, or how fast it changes?",
+      "useAgain": "when you need to say in words what a fitted line's slope means.",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For a robot arm, its rotation fits the line y = 5x + 2. What does the slope 5 mean here?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "Its rotation goes down by 5 degrees every second.",
+          "Its rotation starts at 5 degrees.",
+          "Its rotation goes up by 5 degrees every second.",
+          "Its rotation is 5 degrees after one second in total, not counting the start."
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p43",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "For a robot arm, its rotation fits the line y = -3x + 15. What does the slope -3 mean here?",
+      "options": [
+        "Its rotation goes up by 3 degrees every second.",
+        "Its rotation starts at 3 degrees.",
+        "Its rotation stays the same every second.",
+        "Its rotation goes down by 3 degrees every second."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The slope of a line fit to data is its rate of change, not its starting value.",
+        "A slope of -3 means the value changes by -3 degrees for each extra second."
+      ],
+      "hints": [
+        "The slope is a rate, not a starting amount.",
+        "The sign of the slope tells you whether the value rises or falls."
+      ],
+      "socraticHint": "Does the slope tell you where the line starts, or how fast it changes?",
+      "useAgain": "when you need to say in words what a fitted line's slope means.",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For a delivery robot, the distance it has traveled fits the line y = -2x + 16. What does the slope -2 mean here?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "The distance it has traveled goes down by 2 meters every minute.",
+          "The distance it has traveled goes up by 2 meters every minute.",
+          "The distance it has traveled starts at 2 meters.",
+          "The distance it has traveled stays the same every minute."
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p44",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "A delivery robot follows y = 2x + 3 and a lab sample follows y = x - 1, both in meters against minutes. Which has the greater value at minute 4?",
+      "options": [
+        "A delivery robot",
+        "A lab sample",
+        "They are equal at that point.",
+        "There is not enough information to tell."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Substitute minute = 4 into each equation.",
+        "a delivery robot gives 11 meters; a lab sample gives 3 meters.",
+        "11 is the greater value, so a delivery robot is ahead."
+      ],
+      "hints": [
+        "Substitute the given number of steps into both equations.",
+        "Compare the two resulting values."
+      ],
+      "socraticHint": "What value does each line give at that number of steps?",
+      "useAgain": "when two fitted lines are compared at the same point.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two lines; at minute 4 the higher one belongs to a delivery robot.",
+        "spec": {
+          "range": 12,
+          "polylines": [
+            [
+              [
+                -7.5,
+                -12.0
+              ],
+              [
+                4.5,
+                12.0
+              ]
+            ],
+            [
+              [
+                12.0,
+                11.0
+              ],
+              [
+                -11.0,
+                -12.0
+              ]
+            ]
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 11,
+              "label": "11"
+            },
+            {
+              "x": 4,
+              "y": 3,
+              "label": "3"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A weather balloon follows y = 2x + 2 and a savings jar follows y = x, both in meters against minutes. Which has the greater value at minute 5?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "A savings jar",
+          "They are equal at that point.",
+          "There is not enough information to tell.",
+          "A weather balloon"
+        ]
+      },
+      "id": "ladder-al-linear-from-data-p45",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    }
+  ],
+  "stretch": [
+    {
+      "kind": "number",
+      "prompt": "A data table's values are exactly linear. The 3rd row reads 11 and the 7th row reads 27. What does the 100th row read?",
+      "answer": {
+        "kind": "number",
+        "value": "399"
+      },
+      "explanation": [
+        "Find the rate of change between row 3 and row 7: (27 - 11) / (7 - 3) = 4 per row.",
+        "Step back to row 0: 11 - 3 times 4 = -1, the starting value.",
+        "Row 100 reads -1 + 100 times 4 = 399."
+      ],
+      "hints": [
+        "Find the rate of change between the two given rows first.",
+        "Use that rate to build the rule, then apply it to row 100."
+      ],
+      "socraticHint": "What is the rate of change per row, and what would row 0 read?",
+      "useAgain": "when two rows of a linear table are known and a far-off row is asked for.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A data table's values are exactly linear. The 4th row reads 9 and the 9th row reads 29. What does the 50th row read?",
+        "answer": {
+          "kind": "number",
+          "value": "193"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p46",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A data table's values fit y = 3x + 2 for x = 1 through 6. What is the sum of all 6 values of y?",
+      "answer": {
+        "kind": "number",
+        "value": "75"
+      },
+      "explanation": [
+        "The values are 5, 8, 11, 14, 17, 20.",
+        "Adding them gives 5 + 8 + 11 + 14 + 17 + 20 = 75."
+      ],
+      "hints": [
+        "List the value at each x from 1 to the last one.",
+        "Add all the listed values together."
+      ],
+      "socraticHint": "What is each of the y-values, and what do they add up to?",
+      "useAgain": "when a fitted line's values over a range of x need to be added up.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A data table's values fit y = 2x + 5 for x = 1 through 7. What is the sum of all 7 values of y?",
+        "answer": {
+          "kind": "number",
+          "value": "91"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p47",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "One robot's distance in meters follows y = 2x + 3, and a faster robot's follows y = 5x - 9, both against seconds x. After how many seconds are the two robots at the same distance?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Set the two lines equal: 2x + 3 = 5x - 9.",
+        "Collect the x terms and the numbers on each side, then solve for x.",
+        "x = 4."
+      ],
+      "hints": [
+        "Set the two expressions for y equal to each other.",
+        "Collect the x-terms on one side and the numbers on the other, then divide."
+      ],
+      "socraticHint": "What equation do you get when you set the two lines equal?",
+      "useAgain": "when two linear trends are compared to find where they cross.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "One robot's distance in meters follows y = 3x + 1, and a faster robot's follows y = 6x - 4, both against seconds x. After how many seconds are the two robots at the same distance?",
+        "answer": {
+          "kind": "number",
+          "value": "5/3"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p48",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A data table should be exactly linear. Its rows for x = 1 to 5 read 7, 11, 18, 19, 23, but one was typed wrong. What should the row for x = 3 read?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Find the rate of change from two rows that agree with each other.",
+        "Rows 1, 2, 4 and 5 fit y = 4x + 3; row 3 breaks that pattern.",
+        "The correct value for x = 3 is 15."
+      ],
+      "hints": [
+        "Find the rate of change using two rows that look consistent with each other.",
+        "Use that rule to compute what the odd row should read."
+      ],
+      "socraticHint": "Which rows agree with a single steady rate of change?",
+      "useAgain": "when one entry of an otherwise-linear table looks out of place.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A data table should be exactly linear. Its rows for x = 1 to 5 read 5, 8, 11, 18, 17, but one was typed wrong. What should the row for x = 4 read?",
+        "answer": {
+          "kind": "number",
+          "value": "14"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p49",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A tank is draining. Its volume in liters follows y = -3x + 40 against minutes x. After how many minutes does the tank reach 0 liters?",
+      "answer": {
+        "kind": "number",
+        "value": "40/3"
+      },
+      "explanation": [
+        "Set -3x + 40 equal to 0 and solve for x.",
+        "-3x = -40, so x = 40/3."
+      ],
+      "hints": [
+        "Set the expression for the volume equal to 0.",
+        "Divide both sides by the rate to isolate x."
+      ],
+      "socraticHint": "What value of x makes the expression equal to 0?",
+      "useAgain": "when you need the point where a decreasing trend line reaches 0.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A tank is draining. Its volume in liters follows y = -5x + 42 against minutes x. After how many minutes does the tank reach 0 liters?",
+        "answer": {
+          "kind": "number",
+          "value": "42/5"
+        }
+      },
+      "id": "ladder-al-linear-from-data-p50",
+      "lane": "skills",
+      "ideaId": "al-linear-from-data",
+      "skills": [
+        "think.skills.linear",
+        "think.skills.statistics"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1951 @@
+{
+  "id": "a2-probability-conditional",
+  "idea": {
+    "body": "Learning one fact can change the odds of another. P(A given B) is the probability of A once you already know B happened. Restrict attention to only the B outcomes, then ask what fraction of those also have A. That gives the formula P(A given B) = P(A and B) divided by P(B). Bayes' idea runs this in reverse. An outcome could have come from one of a few sources, each with its own rate of producing it. The chance it came from one particular source is that source's own contribution divided by the total across every source. Two events A and B are independent exactly when P(A and B) equals P(A) times P(B). Checking that equation with real numbers is the only sure test, since two events can look unrelated and still not be independent.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A 2 by 2 count table with rows A and not A, columns B and not B.",
+      "spec": {
+        "w": 220,
+        "h": 130,
+        "items": [
+          {
+            "t": "text",
+            "x": 130,
+            "y": 18,
+            "s": "B",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 190,
+            "y": 18,
+            "s": "not B",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 60,
+            "y": 42,
+            "s": "A",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 130,
+            "y": 42,
+            "s": "both",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 190,
+            "y": 42,
+            "s": "A only",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 60,
+            "y": 68,
+            "s": "not A",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 130,
+            "y": 68,
+            "s": "B only",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 190,
+            "y": 68,
+            "s": "neither",
+            "size": 12,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A lab's sample test logs 40 trials: both A and B happen in 10, B only in 6, A only in 9, neither in 15. Find P(A given B).",
+    "steps": [
+      "Restrict to only the trials where B happened: 10 + 6 = 16 of them.",
+      "Of those, A also happened in 10.",
+      "P(A given B) = 10/16.",
+      "Reduce: 10/16 = 5/8."
+    ]
+  },
+  "ways": [
+    {
+      "id": "a2-probability-conditional-w1",
+      "name": "Restrict to the condition",
+      "when": "Compute P(A|B) by limiting attention to only the trials where B already happened.",
+      "steps": [
+        "Log: both A and B (12), B only (8), A only (6), neither (14); total 40.",
+        "Restrict to where B happened: 12 + 8 = 20 trials.",
+        "Of those 20, A also happened in 12.",
+        "P(A|B) = 12/20 = 3/5."
+      ],
+      "example": "From a log: both A and B (12), B only (8), A only (6), neither (14). Find P(A|B).",
+      "answer": "3/5",
+      "trap": "Using all 40 trials instead of restricting to the 20 where B happened."
+    },
+    {
+      "id": "a2-probability-conditional-w2",
+      "name": "The formula P(A|B) = P(A and B) / P(B)",
+      "when": "When raw probabilities are given rather than counts.",
+      "steps": [
+        "P(A and B) = 1/4, P(B) = 1/2.",
+        "P(A|B) = P(A and B) / P(B) = (1/4) / (1/2).",
+        "Dividing fractions: (1/4) times (2/1) = 2/4 = 1/2.",
+        "P(A|B) = 1/2."
+      ],
+      "example": "P(A and B) = 1/4, P(B) = 1/2. Find P(A|B).",
+      "answer": "1/2",
+      "trap": "Using P(A) instead of P(A and B) in the numerator; not simplifying the division."
+    },
+    {
+      "id": "a2-probability-conditional-w3",
+      "name": "Test independence: P(A and B) = P(A) times P(B)?",
+      "when": "Check whether two events are truly independent or just look unrelated.",
+      "steps": [
+        "P(A) = 2/5, P(B) = 1/2, P(A and B) = 1/5.",
+        "P(A) times P(B) = (2/5) times (1/2) = 2/10 = 1/5.",
+        "This equals P(A and B), so A and B are independent.",
+        "If not equal, they are dependent (related)."
+      ],
+      "example": "P(A) = 2/5, P(B) = 1/2, P(A and B) = 1/5. Are A and B independent?",
+      "answer": "Yes, because P(A) times P(B) = 1/5 = P(A and B).",
+      "trap": "Thinking independence means they are unrelated; not computing the product exactly."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-probability-conditional-p01",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A sensor's fault check logs 40 trials. Both A and B happen in 12, B only in 8, A only in 6, neither in 14. Find P(A given B), as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "3/5"
+      },
+      "explanation": [
+        "P(A given B) only looks at the trials where B happened: 12 + 8 = 20 of them.",
+        "Of those, A also happened in 12.",
+        "P(A given B) = 12/20 = 3/5."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you need a probability restricted to only the trials where something else already happened.",
+      "hints": [
+        "Restrict attention to only the trials where B happened; that is the new whole.",
+        "Within that restricted group, count how many also had A."
+      ],
+      "socraticHint": "How many trials in total had B happen, whether or not A did?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A lab's sample test logs 50 trials. Both A and B happen in 10, B only in 10, A only in 8, neither in 22. Find P(A given B), as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p02",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A quiz bot's card draw logs 50 trials. Both A and B happen in 15, B only in 5, A only in 10, neither in 20. Find P(A given B), as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "3/4"
+      },
+      "explanation": [
+        "P(A given B) only looks at the trials where B happened: 15 + 5 = 20 of them.",
+        "Of those, A also happened in 15.",
+        "P(A given B) = 15/20 = 3/4."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you need a probability restricted to only the trials where something else already happened.",
+      "hints": [
+        "Restrict attention to only the trials where B happened; that is the new whole.",
+        "Within that restricted group, count how many also had A."
+      ],
+      "socraticHint": "How many trials in total had B happen, whether or not A did?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "An arcade claw's two grabs logs 50 trials. Both A and B happen in 20, B only in 5, A only in 12, neither in 13. Find P(A given B), as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "4/5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A factory's part inspection logs 50 trials. Both A and B happen in 9, B only in 6, A only in 11, neither in 24. Find P(A given B), as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "3/5"
+      },
+      "explanation": [
+        "P(A given B) only looks at the trials where B happened: 9 + 6 = 15 of them.",
+        "Of those, A also happened in 9.",
+        "P(A given B) = 9/15 = 3/5."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you need a probability restricted to only the trials where something else already happened.",
+      "hints": [
+        "Restrict attention to only the trials where B happened; that is the new whole.",
+        "Within that restricted group, count how many also had A."
+      ],
+      "socraticHint": "How many trials in total had B happen, whether or not A did?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A robot's two-step scan logs 50 trials. Both A and B happen in 14, B only in 6, A only in 9, neither in 21. Find P(A given B), as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "7/10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p04",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's dice roll pair logs 50 trials. Both A and B happen in 18, B only in 12, A only in 7, neither in 13. Find P(A given B), as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "3/5"
+      },
+      "explanation": [
+        "P(A given B) only looks at the trials where B happened: 18 + 12 = 30 of them.",
+        "Of those, A also happened in 18.",
+        "P(A given B) = 18/30 = 3/5."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you need a probability restricted to only the trials where something else already happened.",
+      "hints": [
+        "Restrict attention to only the trials where B happened; that is the new whole.",
+        "Within that restricted group, count how many also had A."
+      ],
+      "socraticHint": "How many trials in total had B happen, whether or not A did?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine's two picks logs 50 trials. Both A and B happen in 16, B only in 9, A only in 10, neither in 15. Find P(A given B), as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "16/25"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p05",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A weather bot's forecast check logs 50 trials. Both A and B happen in 8, B only in 12, A only in 5, neither in 25. Find P(A given B), as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "2/5"
+      },
+      "explanation": [
+        "P(A given B) only looks at the trials where B happened: 8 + 12 = 20 of them.",
+        "Of those, A also happened in 8.",
+        "P(A given B) = 8/20 = 2/5."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you need a probability restricted to only the trials where something else already happened.",
+      "hints": [
+        "Restrict attention to only the trials where B happened; that is the new whole.",
+        "Within that restricted group, count how many also had A."
+      ],
+      "socraticHint": "How many trials in total had B happen, whether or not A did?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A drone's two-sensor check logs 50 trials. Both A and B happen in 12, B only in 8, A only in 10, neither in 20. Find P(A given B), as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "3/5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "P(A and B) = 1/4 and P(B) = 1/2. Find P(A given B), as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "P(A given B) = P(A and B) divided by P(B).",
+        "P(A given B) = 1/4 / 1/2 = 1/2."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when a conditional probability is asked for directly from two given probabilities.",
+      "hints": [
+        "Divide the probability of both happening by the probability of the condition alone.",
+        "Dividing two fractions means multiplying by the second one's reciprocal."
+      ],
+      "socraticHint": "What formula connects P(A given B) to P(A and B) and P(B)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(A and B) = 1/5 and P(B) = 2/5. Find P(A given B), as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p07",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "True or false: P(A given B) always equals P(B given A).",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "P(A given B) = P(A and B) / P(B), while P(B given A) = P(A and B) / P(A).",
+        "Those two are equal only when P(A) = P(B), not in general.",
+        "So the statement is false."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you want to check whether swapping the order in a conditional probability changes it.",
+      "hints": [
+        "Write both conditional probabilities using their own definitions.",
+        "Compare the two denominators; they use different probabilities unless P(A) = P(B)."
+      ],
+      "socraticHint": "What is the denominator of P(A given B), and of P(B given A)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: P(A and B) always equals P(B and A).",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "P(A and B) = 1/6 and P(B) = 1/3. Find P(A given B), as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "P(A given B) = P(A and B) divided by P(B).",
+        "P(A given B) = 1/6 / 1/3 = 1/2."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when a conditional probability is asked for directly from two given probabilities.",
+      "hints": [
+        "Divide the probability of both happening by the probability of the condition alone.",
+        "Dividing two fractions means multiplying by the second one's reciprocal."
+      ],
+      "socraticHint": "What formula connects P(A given B) to P(A and B) and P(B)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(A and B) = 3/8 and P(B) = 3/4. Find P(A given B), as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "P(A and B) = 2/9 and P(B) = 4/9. Find P(A given B), as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "P(A given B) = P(A and B) divided by P(B).",
+        "P(A given B) = 2/9 / 4/9 = 1/2."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when a conditional probability is asked for directly from two given probabilities.",
+      "hints": [
+        "Divide the probability of both happening by the probability of the condition alone.",
+        "Dividing two fractions means multiplying by the second one's reciprocal."
+      ],
+      "socraticHint": "What formula connects P(A given B) to P(A and B) and P(B)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(A and B) = 1/6 and P(B) = 1/2. Find P(A given B), as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p10",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "P(A and B) = 1/8 and P(B) = 1/2. Find P(A given B), as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/4"
+      },
+      "explanation": [
+        "P(A given B) = P(A and B) divided by P(B).",
+        "P(A given B) = 1/8 / 1/2 = 1/4."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when a conditional probability is asked for directly from two given probabilities.",
+      "hints": [
+        "Divide the probability of both happening by the probability of the condition alone.",
+        "Dividing two fractions means multiplying by the second one's reciprocal."
+      ],
+      "socraticHint": "What formula connects P(A given B) to P(A and B) and P(B)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(A and B) = 1/10 and P(B) = 1/4. Find P(A given B), as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "2/5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p11",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "Put these steps for finding P(A given B) from a count table in the order you would do them.",
+      "items": [
+        "Divide the both-count by the B-total to get P(A given B).",
+        "Add the both-count and the B-only count for the new total.",
+        "Read the four counts from the table: both, B only, A only, neither.",
+        "Report the quotient as the final answer."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0,
+          3
+        ]
+      },
+      "explanation": [
+        "Add the counts where B happened, with and without A, for the new total.",
+        "Divide the count where both A and B happened by that new total.",
+        "Read the four counts from the table: both, B only, A only, neither.",
+        "Report that quotient as P(A given B)."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you want to keep the steps of a table-based conditional probability straight.",
+      "hints": [
+        "The four counts have to be read off before anything can be added.",
+        "The division is always the very last arithmetic step."
+      ],
+      "socraticHint": "What are the four counts a table like this gives you?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Put these steps for finding P(B given A) from a count table in the order you would do them.",
+        "items": [
+          "Divide the both-count by the A-total to get P(B given A).",
+          "Add the both-count and the A-only count for the new total.",
+          "Read the four counts from the table: both, A only, B only, neither.",
+          "Report the quotient as the final answer."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p12",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "P(A) = 1/4, P(B) = 1/2, and P(A and B) = 1/4. Are A and B independent?",
+      "options": [
+        "yes, independent",
+        "cannot be determined",
+        "only if A and B are disjoint",
+        "no, not independent"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "A and B are independent exactly when P(A and B) = P(A) times P(B).",
+        "P(A) times P(B) = 1/4 times 1/2 = 1/8.",
+        "That does not match the given P(A and B) = 1/4, so the answer is no, not independent."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you need to test two events for independence using their probabilities.",
+      "hints": [
+        "Multiply P(A) and P(B) together first.",
+        "Compare that product to the given P(A and B) exactly; independence needs them equal."
+      ],
+      "socraticHint": "What is P(A) times P(B) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(A) = 1/3, P(B) = 1/2, and P(A and B) = 1/3. Are A and B independent?",
+        "options": [
+          "no, not independent",
+          "yes, independent",
+          "cannot be determined",
+          "only if A and B are disjoint"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p13",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "P(A) = 2/5, P(B) = 1/2, and P(A and B) = 1/5. Are A and B independent?",
+      "options": [
+        "no, not independent",
+        "yes, independent",
+        "cannot be determined",
+        "only if A and B are disjoint"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "A and B are independent exactly when P(A and B) = P(A) times P(B).",
+        "P(A) times P(B) = 2/5 times 1/2 = 1/5.",
+        "That matches the given P(A and B) = 1/5, so the answer is yes, independent."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you need to test two events for independence using their probabilities.",
+      "hints": [
+        "Multiply P(A) and P(B) together first.",
+        "Compare that product to the given P(A and B) exactly; independence needs them equal."
+      ],
+      "socraticHint": "What is P(A) times P(B) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(A) = 3/5, P(B) = 1/4, and P(A and B) = 3/20. Are A and B independent?",
+        "options": [
+          "no, not independent",
+          "cannot be determined",
+          "yes, independent",
+          "only if A and B are disjoint"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p14",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "P(A) = 1/3, P(B) = 1/3, and P(A and B) = 1/6. Are A and B independent?",
+      "options": [
+        "yes, independent",
+        "no, not independent",
+        "cannot be determined",
+        "only if A and B are disjoint"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "A and B are independent exactly when P(A and B) = P(A) times P(B).",
+        "P(A) times P(B) = 1/3 times 1/3 = 1/9.",
+        "That does not match the given P(A and B) = 1/6, so the answer is no, not independent."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you need to test two events for independence using their probabilities.",
+      "hints": [
+        "Multiply P(A) and P(B) together first.",
+        "Compare that product to the given P(A and B) exactly; independence needs them equal."
+      ],
+      "socraticHint": "What is P(A) times P(B) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(A) = 1/2, P(B) = 1/4, and P(A and B) = 1/4. Are A and B independent?",
+        "options": [
+          "no, not independent",
+          "yes, independent",
+          "cannot be determined",
+          "only if A and B are disjoint"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p15",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "P(A) = 3/4, P(B) = 1/2, and P(A and B) = 3/8. Are A and B independent?",
+      "options": [
+        "no, not independent",
+        "cannot be determined",
+        "yes, independent",
+        "only if A and B are disjoint"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "A and B are independent exactly when P(A and B) = P(A) times P(B).",
+        "P(A) times P(B) = 3/4 times 1/2 = 3/8.",
+        "That matches the given P(A and B) = 3/8, so the answer is yes, independent."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you need to test two events for independence using their probabilities.",
+      "hints": [
+        "Multiply P(A) and P(B) together first.",
+        "Compare that product to the given P(A and B) exactly; independence needs them equal."
+      ],
+      "socraticHint": "What is P(A) times P(B) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "P(A) = 2/3, P(B) = 1/2, and P(A and B) = 1/3. Are A and B independent?",
+        "options": [
+          "no, not independent",
+          "cannot be determined",
+          "only if A and B are disjoint",
+          "yes, independent"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p16",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. Given that the first die shows 3, find the probability that the sum is even, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "There are 6 equally likely outcomes (out of 36) where the first die shows 3.",
+        "Of those, 3 also have the sum is even.",
+        "P = 3/6 = 1/2."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when a probability is conditioned on information about a roll of two dice.",
+      "hints": [
+        "List only the outcomes where 'the first die shows 3' holds; that becomes the new total.",
+        "Count how many of those also satisfy the first condition."
+      ],
+      "socraticHint": "How many of the 36 outcomes have 'the first die shows 3'?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two dice are rolled. Given that the first die shows 4, find the probability that the sum is odd, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p17",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. Given that the first die shows 5, find the probability that the sum is at least 8, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "2/3"
+      },
+      "explanation": [
+        "There are 6 equally likely outcomes (out of 36) where the first die shows 5.",
+        "Of those, 4 also have the sum is at least 8.",
+        "P = 4/6 = 2/3."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when a probability is conditioned on information about a roll of two dice.",
+      "hints": [
+        "List only the outcomes where 'the first die shows 5' holds; that becomes the new total.",
+        "Count how many of those also satisfy the first condition."
+      ],
+      "socraticHint": "How many of the 36 outcomes have 'the first die shows 5'?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two dice are rolled. Given that the first die shows 6, find the probability that the sum is at least 9, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "2/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p18",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. Given that the sum is even, find the probability that both dice match, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/3"
+      },
+      "explanation": [
+        "There are 18 equally likely outcomes (out of 36) where the sum is even.",
+        "Of those, 6 also have both dice match.",
+        "P = 6/18 = 1/3."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when a probability is conditioned on information about a roll of two dice.",
+      "hints": [
+        "List only the outcomes where 'the sum is even' holds; that becomes the new total.",
+        "Count how many of those also satisfy the first condition."
+      ],
+      "socraticHint": "How many of the 36 outcomes have 'the sum is even'?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two dice are rolled. Given that the sum is odd, find the probability that both dice match, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p19",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. Given that the first die is odd, find the probability that the sum is 7, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/6"
+      },
+      "explanation": [
+        "There are 18 equally likely outcomes (out of 36) where the first die is odd.",
+        "Of those, 3 also have the sum is 7.",
+        "P = 3/18 = 1/6."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when a probability is conditioned on information about a roll of two dice.",
+      "hints": [
+        "List only the outcomes where 'the first die is odd' holds; that becomes the new total.",
+        "Count how many of those also satisfy the first condition."
+      ],
+      "socraticHint": "How many of the 36 outcomes have 'the first die is odd'?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two dice are rolled. Given that the first die is even, find the probability that the sum is 8, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1/6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p20",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. Given that the sum is 9, find the probability that the second die is at least 4, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "3/4"
+      },
+      "explanation": [
+        "There are 4 equally likely outcomes (out of 36) where the sum is 9.",
+        "Of those, 3 also have the second die is at least 4.",
+        "P = 3/4 = 3/4."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when a probability is conditioned on information about a roll of two dice.",
+      "hints": [
+        "List only the outcomes where 'the sum is 9' holds; that becomes the new total.",
+        "Count how many of those also satisfy the first condition."
+      ],
+      "socraticHint": "How many of the 36 outcomes have 'the sum is 9'?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two dice are rolled. Given that the sum is 10, find the probability that the second die is at least 5, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "2/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p21",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A factory's part inspection pulls from source A with probability 3/5, or source B with probability 2/5. A defect occurs with probability 1/50 from A, and 1/20 from B. Given a defect occurred, find the probability it came from A, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "3/8"
+      },
+      "explanation": [
+        "P(defect from A) = 3/5 times 1/50 = 3/250.",
+        "P(defect from B) = 2/5 times 1/20 = 1/50.",
+        "P(defect) = 3/250 + 1/50 = 4/125.",
+        "P(A given defect) = 3/250 / 4/125 = 3/8."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when an outcome could have come from two different sources and you need to weigh them after the fact.",
+      "hints": [
+        "Find the probability of a defect from each source separately, multiplying source chance by its own defect rate.",
+        "Divide the source-A defect probability by the total defect probability from both sources."
+      ],
+      "socraticHint": "What is P(defect and from A)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game's dice roll pair pulls from source A with probability 2/5, or source B with probability 3/5. A defect occurs with probability 1/40 from A, and 1/25 from B. Given a defect occurred, find the probability it came from A, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "5/17"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's dice roll pair pulls from source A with probability 7/10, or source B with probability 3/10. A defect occurs with probability 1/25 from A, and 1/10 from B. Given a defect occurred, find the probability it came from A, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "14/29"
+      },
+      "explanation": [
+        "P(defect from A) = 7/10 times 1/25 = 7/250.",
+        "P(defect from B) = 3/10 times 1/10 = 3/100.",
+        "P(defect) = 7/250 + 3/100 = 29/500.",
+        "P(A given defect) = 7/250 / 29/500 = 14/29."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when an outcome could have come from two different sources and you need to weigh them after the fact.",
+      "hints": [
+        "Find the probability of a defect from each source separately, multiplying source chance by its own defect rate.",
+        "Divide the source-A defect probability by the total defect probability from both sources."
+      ],
+      "socraticHint": "What is P(defect and from A)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A weather bot's forecast check pulls from source A with probability 3/5, or source B with probability 2/5. A defect occurs with probability 1/20 from A, and 1/8 from B. Given a defect occurred, find the probability it came from A, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "3/8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p23",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "True or false: if P(A) = 1/2, P(B) = 1/2, and P(A and B) = 1/4, then A and B are independent.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Independence needs P(A and B) = P(A) times P(B).",
+        "P(A) times P(B) = 1/2 times 1/2 = 1/4, which matches the given P(A and B).",
+        "So the statement is true."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you want a fast check on whether two events with given probabilities are independent.",
+      "hints": [
+        "Multiply P(A) and P(B) and compare to the given P(A and B).",
+        "A match means independent; anything else means not independent."
+      ],
+      "socraticHint": "What is 1/2 times 1/2?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "True or false: if P(A) = 1/3, P(B) = 1/3, and P(A and B) = 1/6, then A and B are independent.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p24",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A lab's sample test pulls from source A with probability 3/4, or source B with probability 1/4. A defect occurs with probability 1/100 from A, and 1/20 from B. Given a defect occurred, find the probability it came from A, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "3/8"
+      },
+      "explanation": [
+        "P(defect from A) = 3/4 times 1/100 = 3/400.",
+        "P(defect from B) = 1/4 times 1/20 = 1/80.",
+        "P(defect) = 3/400 + 1/80 = 1/50.",
+        "P(A given defect) = 3/400 / 1/50 = 3/8."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when an outcome could have come from two different sources and you need to weigh them after the fact.",
+      "hints": [
+        "Find the probability of a defect from each source separately, multiplying source chance by its own defect rate.",
+        "Divide the source-A defect probability by the total defect probability from both sources."
+      ],
+      "socraticHint": "What is P(defect and from A)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "An arcade claw's two grabs pulls from source A with probability 1/4, or source B with probability 3/4. A defect occurs with probability 1/10 from A, and 1/40 from B. Given a defect occurred, find the probability it came from A, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "4/7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p25",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "An arcade claw's two grabs pulls from source A with probability 2/3, or source B with probability 1/3. A defect occurs with probability 1/30 from A, and 1/15 from B. Given a defect occurred, find the probability it came from A, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "P(defect from A) = 2/3 times 1/30 = 1/45.",
+        "P(defect from B) = 1/3 times 1/15 = 1/45.",
+        "P(defect) = 1/45 + 1/45 = 2/45.",
+        "P(A given defect) = 1/45 / 2/45 = 1/2."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when an outcome could have come from two different sources and you need to weigh them after the fact.",
+      "hints": [
+        "Find the probability of a defect from each source separately, multiplying source chance by its own defect rate.",
+        "Divide the source-A defect probability by the total defect probability from both sources."
+      ],
+      "socraticHint": "What is P(defect and from A)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A robot's two-step scan pulls from source A with probability 1/3, or source B with probability 2/3. A defect occurs with probability 1/12 from A, and 1/20 from B. Given a defect occurred, find the probability it came from A, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "5/11"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p26",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Out of 50 items, 20 have property A, 25 have property B, and 8 have both. Find P(A and B) minus P(A) times P(B), as a fraction (0 means independent).",
+      "answer": {
+        "kind": "number",
+        "value": "-1/25"
+      },
+      "explanation": [
+        "P(A) = 20/50 = 2/5. P(B) = 25/50 = 1/2. P(A and B) = 8/50 = 4/25.",
+        "P(A) times P(B) = 1/5.",
+        "P(A and B) minus that product: 4/25 - 1/5 = -1/25."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when raw counts are given and you need to test independence numerically.",
+      "hints": [
+        "Compute all three probabilities from the counts first.",
+        "Subtract P(A) times P(B) from the actual P(A and B); a nonzero result means they are not independent."
+      ],
+      "socraticHint": "What is P(A) times P(B) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Out of 60 items, 20 have property A, 30 have property B, and 10 have both. Find P(A and B) minus P(A) times P(B), as a fraction (0 means independent).",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p27",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Out of 60 items, 24 have property A, 30 have property B, and 12 have both. Find P(A and B) minus P(A) times P(B), as a fraction (0 means independent).",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "P(A) = 24/60 = 2/5. P(B) = 30/60 = 1/2. P(A and B) = 12/60 = 1/5.",
+        "P(A) times P(B) = 1/5.",
+        "P(A and B) minus that product: 1/5 - 1/5 = 0."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when raw counts are given and you need to test independence numerically.",
+      "hints": [
+        "Compute all three probabilities from the counts first.",
+        "Subtract P(A) times P(B) from the actual P(A and B); a nonzero result means they are not independent."
+      ],
+      "socraticHint": "What is P(A) times P(B) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Out of 50 items, 25 have property A, 20 have property B, and 10 have both. Find P(A and B) minus P(A) times P(B), as a fraction (0 means independent).",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p28",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "Put these steps for applying Bayes' idea with two sources in the order you would do them.",
+      "items": [
+        "Divide source A's product by the sum of both sources' products.",
+        "Multiply each source's own probability by its own defect rate.",
+        "Identify each source's probability and its own defect rate.",
+        "Report the quotient as P(A given a defect)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0,
+          3
+        ]
+      },
+      "explanation": [
+        "Multiply each source's own probability by its own defect rate.",
+        "Divide source A's product by the sum of both products.",
+        "Identify each source's probability and its own defect rate.",
+        "Report that quotient as P(A given a defect)."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you want to keep the steps of a Bayes' idea calculation straight.",
+      "hints": [
+        "The rates have to be identified before any multiplying starts.",
+        "The final division always happens after both products are added together."
+      ],
+      "socraticHint": "What two numbers does each source contribute before any multiplying?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps for applying Bayes' idea with two sources, solving for source B, in the order you would do them.",
+        "items": [
+          "Divide source B's product by the sum of both sources' products.",
+          "Multiply each source's own probability by its own defect rate.",
+          "Identify each source's probability and its own defect rate.",
+          "Report the quotient as P(B given a defect)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p29",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Out of 40 items, 10 have property A, 20 have property B, and 6 have both. Find P(A and B) minus P(A) times P(B), as a fraction (0 means independent).",
+      "answer": {
+        "kind": "number",
+        "value": "1/40"
+      },
+      "explanation": [
+        "P(A) = 10/40 = 1/4. P(B) = 20/40 = 1/2. P(A and B) = 6/40 = 3/20.",
+        "P(A) times P(B) = 1/8.",
+        "P(A and B) minus that product: 3/20 - 1/8 = 1/40."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when raw counts are given and you need to test independence numerically.",
+      "hints": [
+        "Compute all three probabilities from the counts first.",
+        "Subtract P(A) times P(B) from the actual P(A and B); a nonzero result means they are not independent."
+      ],
+      "socraticHint": "What is P(A) times P(B) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Out of 50 items, 15 have property A, 20 have property B, and 7 have both. Find P(A and B) minus P(A) times P(B), as a fraction (0 means independent).",
+        "answer": {
+          "kind": "number",
+          "value": "1/50"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p30",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Out of 100 items, 40 have property A, 25 have property B, and 12 have both. Find P(A and B) minus P(A) times P(B), as a fraction (0 means independent).",
+      "answer": {
+        "kind": "number",
+        "value": "1/50"
+      },
+      "explanation": [
+        "P(A) = 40/100 = 2/5. P(B) = 25/100 = 1/4. P(A and B) = 12/100 = 3/25.",
+        "P(A) times P(B) = 1/10.",
+        "P(A and B) minus that product: 3/25 - 1/10 = 1/50."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when raw counts are given and you need to test independence numerically.",
+      "hints": [
+        "Compute all three probabilities from the counts first.",
+        "Subtract P(A) times P(B) from the actual P(A and B); a nonzero result means they are not independent."
+      ],
+      "socraticHint": "What is P(A) times P(B) here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Out of 120 items, 48 have property A, 30 have property B, and 12 have both. Find P(A and B) minus P(A) times P(B), as a fraction (0 means independent).",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p31",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A sensor's fault check pulls from source A (1/2), B (3/10), or C (1/5). Defect rates are 1/20, 1/10, 1/25. Given a defect, find the probability it came from B, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "10/21"
+      },
+      "explanation": [
+        "P(defect and A) = 1/2 times 1/20 = 1/40.",
+        "P(defect and B) = 3/10 times 1/10 = 3/100.",
+        "P(defect and C) = 1/5 times 1/25 = 1/125.",
+        "P(defect) = 63/1000. P(B given defect) = 3/100 / 63/1000 = 10/21."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when an outcome could have come from any of three sources and you need to weigh all of them.",
+      "hints": [
+        "Find the probability of a defect from each of the three sources separately.",
+        "Add all three for the total defect probability, then divide source B's share by that total."
+      ],
+      "socraticHint": "How many sources have to be weighed here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A quiz bot's card draw pulls from source A (2/5), B (1/4), or C (7/20). Defect rates are 1/25, 1/20, 1/10. Given a defect, find the probability it came from B, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "25/127"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p32",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A quiz bot's card draw pulls from source A (2/5), B (1/5), or C (2/5). Defect rates are 1/25, 1/20, 1/10. Given a defect, find the probability it came from B, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "5/33"
+      },
+      "explanation": [
+        "P(defect and A) = 2/5 times 1/25 = 2/125.",
+        "P(defect and B) = 1/5 times 1/20 = 1/100.",
+        "P(defect and C) = 2/5 times 1/10 = 1/25.",
+        "P(defect) = 33/500. P(B given defect) = 1/100 / 33/500 = 5/33."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when an outcome could have come from any of three sources and you need to weigh all of them.",
+      "hints": [
+        "Find the probability of a defect from each of the three sources separately.",
+        "Add all three for the total defect probability, then divide source B's share by that total."
+      ],
+      "socraticHint": "How many sources have to be weighed here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A factory's part inspection pulls from source A (1/4), B (1/2), or C (1/4). Defect rates are 1/20, 1/25, 1/10. Given a defect, find the probability it came from B, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "8/23"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A factory's part inspection pulls from source A (3/10), B (1/2), or C (1/5). Defect rates are 1/15, 1/30, 1/10. Given a defect, find the probability it came from B, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "5/17"
+      },
+      "explanation": [
+        "P(defect and A) = 3/10 times 1/15 = 1/50.",
+        "P(defect and B) = 1/2 times 1/30 = 1/60.",
+        "P(defect and C) = 1/5 times 1/10 = 1/50.",
+        "P(defect) = 17/300. P(B given defect) = 1/60 / 17/300 = 5/17."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when an outcome could have come from any of three sources and you need to weigh all of them.",
+      "hints": [
+        "Find the probability of a defect from each of the three sources separately.",
+        "Add all three for the total defect probability, then divide source B's share by that total."
+      ],
+      "socraticHint": "How many sources have to be weighed here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game's dice roll pair pulls from source A (1/5), B (3/5), or C (1/5). Defect rates are 1/10, 1/30, 1/15. Given a defect, find the probability it came from B, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "3/8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p34",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's dice roll pair pulls from source A (2/5), B (2/5), or C (1/5). Defect rates are 1/20, 1/15, 1/10. Given a defect, find the probability it came from B, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "2/5"
+      },
+      "explanation": [
+        "P(defect and A) = 2/5 times 1/20 = 1/50.",
+        "P(defect and B) = 2/5 times 1/15 = 2/75.",
+        "P(defect and C) = 1/5 times 1/10 = 1/50.",
+        "P(defect) = 1/15. P(B given defect) = 2/75 / 1/15 = 2/5."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when an outcome could have come from any of three sources and you need to weigh all of them.",
+      "hints": [
+        "Find the probability of a defect from each of the three sources separately.",
+        "Add all three for the total defect probability, then divide source B's share by that total."
+      ],
+      "socraticHint": "How many sources have to be weighed here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A weather bot's forecast check pulls from source A (3/10), B (1/2), or C (1/5). Defect rates are 1/30, 1/15, 1/10. Given a defect, find the probability it came from B, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "10/19"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A weather bot's forecast check pulls from source A (1/4), B (1/2), or C (1/4). Defect rates are 1/25, 1/20, 1/10. Given a defect, find the probability it came from B, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "5/12"
+      },
+      "explanation": [
+        "P(defect and A) = 1/4 times 1/25 = 1/100.",
+        "P(defect and B) = 1/2 times 1/20 = 1/40.",
+        "P(defect and C) = 1/4 times 1/10 = 1/40.",
+        "P(defect) = 3/50. P(B given defect) = 1/40 / 3/50 = 5/12."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when an outcome could have come from any of three sources and you need to weigh all of them.",
+      "hints": [
+        "Find the probability of a defect from each of the three sources separately.",
+        "Add all three for the total defect probability, then divide source B's share by that total."
+      ],
+      "socraticHint": "How many sources have to be weighed here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lab's sample test pulls from source A (1/5), B (3/5), or C (1/5). Defect rates are 1/20, 1/25, 1/10. Given a defect, find the probability it came from B, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "4/9"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bag has 5 marbles, 3 red and 2 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "After the first red is removed, 2 red and 2 blue remain, 4 marbles total.",
+        "P(second red given first red) = 2/4 = 1/2."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when two items are drawn one after another without putting the first back.",
+      "hints": [
+        "Removing the first marble changes both the count of red and the total left.",
+        "Use the counts remaining after the first draw, not the original counts."
+      ],
+      "socraticHint": "How many marbles remain after the first is drawn?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bag has 6 marbles, 3 red and 3 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "2/5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bag has 6 marbles, 4 red and 2 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "3/5"
+      },
+      "explanation": [
+        "After the first red is removed, 3 red and 2 blue remain, 5 marbles total.",
+        "P(second red given first red) = 3/5 = 3/5."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when two items are drawn one after another without putting the first back.",
+      "hints": [
+        "Removing the first marble changes both the count of red and the total left.",
+        "Use the counts remaining after the first draw, not the original counts."
+      ],
+      "socraticHint": "How many marbles remain after the first is drawn?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bag has 7 marbles, 3 red and 4 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p38",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bag has 7 marbles, 4 red and 3 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "After the first red is removed, 3 red and 3 blue remain, 6 marbles total.",
+        "P(second red given first red) = 3/6 = 1/2."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when two items are drawn one after another without putting the first back.",
+      "hints": [
+        "Removing the first marble changes both the count of red and the total left.",
+        "Use the counts remaining after the first draw, not the original counts."
+      ],
+      "socraticHint": "How many marbles remain after the first is drawn?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bag has 8 marbles, 3 red and 5 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "2/7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p39",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bag has 8 marbles, 5 red and 3 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "4/7"
+      },
+      "explanation": [
+        "After the first red is removed, 4 red and 3 blue remain, 7 marbles total.",
+        "P(second red given first red) = 4/7 = 4/7."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when two items are drawn one after another without putting the first back.",
+      "hints": [
+        "Removing the first marble changes both the count of red and the total left.",
+        "Use the counts remaining after the first draw, not the original counts."
+      ],
+      "socraticHint": "How many marbles remain after the first is drawn?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bag has 9 marbles, 4 red and 5 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "3/8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p40",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bag has 9 marbles, 5 red and 4 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "After the first red is removed, 4 red and 4 blue remain, 8 marbles total.",
+        "P(second red given first red) = 4/8 = 1/2."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when two items are drawn one after another without putting the first back.",
+      "hints": [
+        "Removing the first marble changes both the count of red and the total left.",
+        "Use the counts remaining after the first draw, not the original counts."
+      ],
+      "socraticHint": "How many marbles remain after the first is drawn?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bag has 10 marbles, 4 red and 6 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p41",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Which expression correctly gives P(A given B)?",
+      "options": [
+        "P(A and B) / P(A)",
+        "P(A and B) / P(B)",
+        "P(A) times P(B)",
+        "P(B) / P(A and B)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Conditional probability restricts the sample space to the condition, then asks what fraction of it also satisfies the event.",
+        "Bayes' idea builds the total probability of the outcome by adding each source's own contribution."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you need to recall the exact formula for a conditional or Bayes' probability.",
+      "hints": [
+        "Match the expression to the definition of a conditional probability, or to the law of total probability.",
+        "The correct expression always divides by, or adds up, exactly the right pieces."
+      ],
+      "socraticHint": "Which piece is the 'whole' being divided into, here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Which expression correctly gives P(B given A)?",
+        "options": [
+          "P(A and B) / P(A)",
+          "P(A and B) / P(B)",
+          "P(A) times P(B)",
+          "P(A) / P(A and B)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p42",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "For Bayes' idea with two sources A and B leading to outcome D, which expression gives P(D)?",
+      "options": [
+        "P(A)P(B)",
+        "P(D given A) + P(D given B)",
+        "P(A)P(D given A) times P(B)P(D given B)",
+        "P(A)P(D given A) + P(B)P(D given B)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Conditional probability restricts the sample space to the condition, then asks what fraction of it also satisfies the event.",
+        "Bayes' idea builds the total probability of the outcome by adding each source's own contribution."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you need to recall the exact formula for a conditional or Bayes' probability.",
+      "hints": [
+        "Match the expression to the definition of a conditional probability, or to the law of total probability.",
+        "The correct expression always divides by, or adds up, exactly the right pieces."
+      ],
+      "socraticHint": "Which piece is the 'whole' being divided into, here?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For Bayes' idea with three sources A, B, C leading to outcome D, which expression gives P(D)?",
+        "options": [
+          "P(A)P(B)P(C)",
+          "P(D given A) + P(D given B) + P(D given C)",
+          "P(A)P(D given A) + P(B)P(D given B) + P(C)P(D given C)",
+          "P(A)P(D given A) times P(B)P(D given B)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p43",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bag has 10 marbles, 6 red and 4 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "5/9"
+      },
+      "explanation": [
+        "After the first red is removed, 5 red and 4 blue remain, 9 marbles total.",
+        "P(second red given first red) = 5/9 = 5/9."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when two items are drawn one after another without putting the first back.",
+      "hints": [
+        "Removing the first marble changes both the count of red and the total left.",
+        "Use the counts remaining after the first draw, not the original counts."
+      ],
+      "socraticHint": "How many marbles remain after the first is drawn?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bag has 14 marbles, 8 red and 6 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "7/13"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p44",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bag has 11 marbles, 6 red and 5 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "After the first red is removed, 5 red and 5 blue remain, 10 marbles total.",
+        "P(second red given first red) = 5/10 = 1/2."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when two items are drawn one after another without putting the first back.",
+      "hints": [
+        "Removing the first marble changes both the count of red and the total left.",
+        "Use the counts remaining after the first draw, not the original counts."
+      ],
+      "socraticHint": "How many marbles remain after the first is drawn?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bag has 15 marbles, 9 red and 6 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "4/7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p45",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bag has 12 marbles, 7 red and 5 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "6/11"
+      },
+      "explanation": [
+        "After the first red is removed, 6 red and 5 blue remain, 11 marbles total.",
+        "P(second red given first red) = 6/11 = 6/11."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when two items are drawn one after another without putting the first back.",
+      "hints": [
+        "Removing the first marble changes both the count of red and the total left.",
+        "Use the counts remaining after the first draw, not the original counts."
+      ],
+      "socraticHint": "How many marbles remain after the first is drawn?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bag has 16 marbles, 9 red and 7 blue. Two are drawn without replacement. Given the first is red, find the probability the second is also red, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "8/15"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-probability-conditional-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. Given that the sum is 8, find the probability that at least one die shows a 5, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "2/5"
+      },
+      "explanation": [
+        "The outcomes summing to 8 are (2,6), (3,5), (4,4), (5,3), (6,2), five outcomes.",
+        "Of those, (3,5) and (5,3) show a 5.",
+        "P = 2/5 = 2/5."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when a dice probability is conditioned on the sum and asks about one specific face.",
+      "hints": [
+        "List every outcome that sums to 8 first; that becomes the new total.",
+        "Count how many of those outcomes include a 5 on either die."
+      ],
+      "socraticHint": "How many outcomes out of 36 sum to 8?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Two dice are rolled. Given that the sum is 9, find the probability that at least one die shows a 5, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Three machines make parts: A makes 1/2 with defect rate 1/100. B makes 3/10 with rate 1/50. C makes 1/5 with rate 1/20. Given a part is defective, find the probability it came from C, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "10/21"
+      },
+      "explanation": [
+        "Find each machine's defect contribution: A gives 1/2 times 1/100, B gives 3/10 times 1/50, C gives 1/5 times 1/20.",
+        "Adding all three gives the total defect probability, 21/1000.",
+        "P(C given defective) = C's contribution divided by that total = 10/21."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when three sources feed into one outcome and you need to weigh one source after the fact.",
+      "hints": [
+        "Find each machine's own share of the defects before comparing.",
+        "Divide machine C's contribution by the sum of all three contributions."
+      ],
+      "socraticHint": "What is machine C's own contribution to the total defect probability?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Three machines make parts: A makes 2/5 with defect rate 1/80. B makes 2/5 with rate 1/40. C makes 1/5 with rate 1/16. Given a part is defective, find the probability it came from C, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "5/11"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p48",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bag has 8 marbles, 5 red and 3 blue. Three are drawn without replacement. Find the probability all three are red, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "5/28"
+      },
+      "explanation": [
+        "P(first red) = 5/8.",
+        "P(second red given first red) = 4/7, since one red and one marble total are gone.",
+        "P(third red given first two red) = 3/6, since two red and two total are gone.",
+        "Multiply all three: 5/8 times 4/7 times 3/6 = 5/28."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when several dependent draws happen in a row and you need the chance all of them succeed.",
+      "hints": [
+        "Multiply a chain of conditional probabilities, one draw at a time.",
+        "Each new fraction's counts must reflect what was already removed."
+      ],
+      "socraticHint": "What is P(second red given the first was red)?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bag has 9 marbles, 6 red and 3 blue. Three are drawn without replacement. Find the probability all three are red, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "5/21"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p49",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A die is rolled once. Let A be the event the roll is even, and B the event the roll is a multiple of 3. Find P(A and B) minus P(A) times P(B), as a fraction (0 means independent).",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "A (even) happens on 2, 4, 6: P(A) = 3/6 = 1/2. B (multiple of 3) happens on 3, 6: P(B) = 2/6 = 1/3.",
+        "A and B both happen only on 6: P(A and B) = 1/6.",
+        "P(A) times P(B) = 1/2 times 1/3 = 1/6, matching P(A and B), so the difference is 0."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when you want to test two events defined on the same die roll for independence.",
+      "hints": [
+        "List which faces satisfy each event before computing any probability.",
+        "Compare P(A and B) to P(A) times P(B) exactly; a difference of 0 means independent."
+      ],
+      "socraticHint": "Which face or faces satisfy both events at once?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A die is rolled once. Let A be the event the roll is odd, and B the event the roll is a multiple of 3. Find P(A and B) minus P(A) times P(B), as a fraction (0 means independent).",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-probability-conditional-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bag has 4 white and 6 black balls. Two are drawn without replacement. Given at least one is white, find the probability both are white, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "1/5"
+      },
+      "explanation": [
+        "P(both white) = C(4,2)/C(10,2) = 6/45.",
+        "P(no white) = C(6,2)/C(10,2) = 15/45, so P(at least one white) = 1 - 15/45 = 30/45.",
+        "P(both given at least one) = (6/45) / (30/45) = 1/5."
+      ],
+      "ideaId": "a2-probability-conditional",
+      "useAgain": "when a conditional probability is given by 'at least one' rather than a specific order.",
+      "hints": [
+        "Find P(both white) and P(no white) as separate counts over the same total.",
+        "P(at least one white) is 1 minus P(no white); divide P(both) by that."
+      ],
+      "socraticHint": "What is P(no white) here, using combinations?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bag has 5 white and 5 black balls. Two are drawn without replacement. Given at least one is white, find the probability both are white, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "2/7"
+        }
+      }
+    }
+  ]
+}

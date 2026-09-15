@@ -1,0 +1,2358 @@
+{
+  "id": "a2-vectors",
+  "idea": {
+    "body": "A vector is a push with a size and a direction, written as <3, 4>: 3 across, 4 up. Add two vectors by adding matching components, and scale one by multiplying every component by the same number. A vector's magnitude is how long its push is, found with the Pythagorean theorem: sqrt(a^2 + b^2). The dot product of two vectors multiplies matching components and adds the results, turning two vectors into one number. That number tells you the angle between them. A dot product of zero means the vectors are perpendicular. The full formula, cos(angle) = (u dot v)/(magnitude of u times magnitude of v), finds any angle that comes out exact.",
+    "figure": {
+      "kind": "plane",
+      "alt": "A vector drawn from the origin to (3, 4), with a segment showing its push.",
+      "spec": {
+        "range": 5,
+        "points": [
+          {
+            "x": 3,
+            "y": 4,
+            "label": "u"
+          }
+        ],
+        "segments": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              3,
+              4
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "u = <3, 4>.\nv = <4, -3>.\nWhat is the angle between u and v, in degrees?",
+    "steps": [
+      "Find the dot product: u dot v = 3(4) + 4(-3) = 0.",
+      "A dot product of zero means the two vectors are perpendicular.",
+      "Perpendicular vectors meet at a 90 degree angle."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "Vectors u and v drawn from the origin, meeting at a right angle.",
+      "spec": {
+        "range": 5,
+        "points": [
+          {
+            "x": 3,
+            "y": 4,
+            "label": "u"
+          },
+          {
+            "x": 4,
+            "y": -3,
+            "label": "v"
+          }
+        ],
+        "segments": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              -3
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "a2-vectors-w1",
+      "name": "Add vectors by adding components",
+      "when": "Use this whenever you add, subtract, or scale vectors.",
+      "steps": [
+        "u = <3, 4> and v = <1, 2>.",
+        "u + v adds matching components: <3 + 1, 4 + 2>.",
+        "u + v = <4, 6>."
+      ],
+      "example": "u = <3, 4>. v = <1, 2>. What is the first component of u + v?",
+      "answer": "4",
+      "trap": "Mixing components with each other, like adding the first component to the second."
+    },
+    {
+      "id": "a2-vectors-w2",
+      "name": "The parallelogram picture",
+      "when": "Use this to see where the sum of two vectors ends up on a coordinate plane.",
+      "steps": [
+        "Draw u = <2, 1> from the origin to (2, 1).",
+        "Draw v = <1, 2> from the origin to (1, 2).",
+        "Draw u again from the tip of v, and v again from the tip of u.",
+        "The diagonal of the parallelogram is u + v = <3, 3>."
+      ],
+      "example": "u = <2, 1>. v = <1, 2>. Draw the parallelogram for u + v.",
+      "answer": "<3, 3>",
+      "trap": "Placing the vectors end-to-end in a line instead of building a parallelogram.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two vectors u and v drawn from the origin, their translated copies completing a parallelogram, and its diagonal showing the sum u + v.",
+        "spec": {
+          "w": 260,
+          "h": 200,
+          "items": [
+            {
+              "t": "dot",
+              "cx": 20,
+              "cy": 120
+            },
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 120,
+              "x2": 120,
+              "y2": 60,
+              "arrow": true,
+              "label": "u"
+            },
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 120,
+              "x2": 80,
+              "y2": 40,
+              "arrow": true,
+              "label": "v"
+            },
+            {
+              "t": "line",
+              "x1": 120,
+              "y1": 60,
+              "x2": 180,
+              "y2": 20,
+              "dashed": true,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 80,
+              "y1": 40,
+              "x2": 180,
+              "y2": 20,
+              "dashed": true
+            },
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 120,
+              "x2": 180,
+              "y2": 20,
+              "arrow": true,
+              "label": "u+v"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Add u = <2, 1> and v = <1, 2>.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Draw u = <2, 1> from the origin.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Draw v = <1, 2> from the origin.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Draw u from v's tip, and v from u's tip.",
+              "set": {
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "The diagonal is u + v = <3, 3>.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a2-vectors-w3",
+      "name": "The dot product for angle and perpendicularity",
+      "when": "Use this to find the angle between two vectors or check if they are perpendicular.",
+      "steps": [
+        "u = <3, 4> and v = <4, -3>.",
+        "u dot v = 3 times 4 plus 4 times -3 = 0.",
+        "A dot product of zero means the vectors are perpendicular.",
+        "They meet at a 90 degree angle."
+      ],
+      "example": "u = <3, 4>. v = <4, -3>. Are u and v perpendicular?",
+      "answer": "Yes",
+      "trap": "Adding or subtracting the components instead of multiplying matching components and summing."
+    },
+    {
+      "id": "a2-vectors-w4",
+      "name": "Magnitude using the Pythagorean theorem",
+      "when": "Use this to find how long a vector is.",
+      "steps": [
+        "u = <3, 4> has magnitude sqrt(3^2 + 4^2).",
+        "3^2 + 4^2 = 9 + 16 = 25.",
+        "sqrt(25) = 5.",
+        "The magnitude of <3, 4> is 5."
+      ],
+      "example": "u = <3, 4>. What is the magnitude of u?",
+      "answer": "5",
+      "trap": "Adding the components instead of squaring each, summing, and taking the square root."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-vectors-p01",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <2, 3>.\nv = <1, -2>.\nWhat is the first component of u + v?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Add or subtract matching components: u + v = <3, 1>.",
+        "The first component is 3."
+      ],
+      "useAgain": "when adding two vectors given by their components.",
+      "hints": [
+        "Add each component of u and v separately.",
+        "The components do not mix with each other."
+      ],
+      "socraticHint": "What happens to each component when you add two vectors?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Vectors u and v drawn from the origin, u to (2, 3) and v to (1, -2).",
+        "spec": {
+          "range": 4,
+          "points": [
+            {
+              "x": 2,
+              "y": 3,
+              "label": "u"
+            },
+            {
+              "x": 1,
+              "y": -2,
+              "label": "v"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                -2
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "u = <3, 5>.\nv = <1, 2>.\nWhat is the first component of u - v?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p02",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <4, 1>.\nv = <-2, 3>.\nWhat is the second component of u + v?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Add or subtract matching components: u + v = <2, 4>.",
+        "The second component is 4."
+      ],
+      "useAgain": "when adding two vectors given by their components.",
+      "hints": [
+        "Add each component of u and v separately.",
+        "The components do not mix with each other."
+      ],
+      "socraticHint": "What happens to each component when you add two vectors?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "u = <4, 2>.\nv = <1, 5>.\nWhat is the second component of u - v?",
+        "answer": {
+          "kind": "number",
+          "value": "-3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p03",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <3, -1>.\nv = <2, 4>.\nWhat is the first component of u + v?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Add or subtract matching components: u + v = <5, 3>.",
+        "The first component is 5."
+      ],
+      "useAgain": "when adding two vectors given by their components.",
+      "hints": [
+        "Add each component of u and v separately.",
+        "The components do not mix with each other."
+      ],
+      "socraticHint": "What happens to each component when you add two vectors?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "u = <6, 1>.\nv = <2, 3>.\nWhat is the first component of u - v?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p04",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <5, 2>.\nv = <-3, 1>.\nWhat is the second component of u + v?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Add or subtract matching components: u + v = <2, 3>.",
+        "The second component is 3."
+      ],
+      "useAgain": "when adding two vectors given by their components.",
+      "hints": [
+        "Add each component of u and v separately.",
+        "The components do not mix with each other."
+      ],
+      "socraticHint": "What happens to each component when you add two vectors?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Vectors u and v drawn from the origin, u to (5, 2) and v to (-3, 1).",
+        "spec": {
+          "range": 6,
+          "points": [
+            {
+              "x": 5,
+              "y": 2,
+              "label": "u"
+            },
+            {
+              "x": -3,
+              "y": 1,
+              "label": "v"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                0
+              ],
+              [
+                -3,
+                1
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "u = <2, 6>.\nv = <3, 1>.\nWhat is the second component of u - v?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p05",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <1, 4>.\nv = <3, -2>.\nWhat is the first component of u + v?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Add or subtract matching components: u + v = <4, 2>.",
+        "The first component is 4."
+      ],
+      "useAgain": "when adding two vectors given by their components.",
+      "hints": [
+        "Add each component of u and v separately.",
+        "The components do not mix with each other."
+      ],
+      "socraticHint": "What happens to each component when you add two vectors?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "u = <5, 4>.\nv = <2, 1>.\nWhat is the first component of u - v?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p06",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <6, -1>.\nv = <2, 3>.\nWhat is the second component of u + v?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Add or subtract matching components: u + v = <8, 2>.",
+        "The second component is 2."
+      ],
+      "useAgain": "when adding two vectors given by their components.",
+      "hints": [
+        "Add each component of u and v separately.",
+        "The components do not mix with each other."
+      ],
+      "socraticHint": "What happens to each component when you add two vectors?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "u = <7, 3>.\nv = <4, 2>.\nWhat is the second component of u - v?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p07",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <2, 1>.\nWhat is the first component of 3 times u?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Scaling a vector by 3 multiplies every component by 3.",
+        "3 times u = <6, 3>, so the first component is 6."
+      ],
+      "useAgain": "when scaling a vector by a number.",
+      "hints": [
+        "Multiply every component of u by the scalar.",
+        "Only the first component matters here."
+      ],
+      "socraticHint": "What is 3 times the first component of u?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Vector u drawn from the origin to (2, 1).",
+        "spec": {
+          "range": 3,
+          "points": [
+            {
+              "x": 2,
+              "y": 1,
+              "label": "u"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                1
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "u = <1, 1>.\nWhat is the first component of 5 times u?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p08",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <3, -1>.\nWhat is the second component of 2 times u?",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Scaling a vector by 2 multiplies every component by 2.",
+        "2 times u = <6, -2>, so the second component is -2."
+      ],
+      "useAgain": "when scaling a vector by a number.",
+      "hints": [
+        "Multiply every component of u by the scalar.",
+        "Only the second component matters here."
+      ],
+      "socraticHint": "What is 2 times the second component of u?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "u = <-3, 4>.\nWhat is the second component of 2 times u?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p09",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <1, 2>.\nWhat is the first component of 4 times u?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Scaling a vector by 4 multiplies every component by 4.",
+        "4 times u = <4, 8>, so the first component is 4."
+      ],
+      "useAgain": "when scaling a vector by a number.",
+      "hints": [
+        "Multiply every component of u by the scalar.",
+        "Only the first component matters here."
+      ],
+      "socraticHint": "What is 4 times the first component of u?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "u = <2, -2>.\nWhat is the first component of 3 times u?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p10",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <3, 2>.\nWhat is the second component of -2 times u?",
+      "answer": {
+        "kind": "number",
+        "value": "-4"
+      },
+      "explanation": [
+        "Scaling a vector by -2 multiplies every component by -2.",
+        "-2 times u = <-6, -4>, so the second component is -4."
+      ],
+      "useAgain": "when scaling a vector by a number.",
+      "hints": [
+        "Multiply every component of u by the scalar.",
+        "Only the second component matters here."
+      ],
+      "socraticHint": "What is -2 times the second component of u?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Vector u drawn from the origin to (3, 2).",
+        "spec": {
+          "range": 4,
+          "points": [
+            {
+              "x": 3,
+              "y": 2,
+              "label": "u"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                2
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "u = <-1, 3>.\nWhat is the second component of 4 times u?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p11",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <-1, 4>.\nWhat is the first component of 3 times u?",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "Scaling a vector by 3 multiplies every component by 3.",
+        "3 times u = <-3, 12>, so the first component is -3."
+      ],
+      "useAgain": "when scaling a vector by a number.",
+      "hints": [
+        "Multiply every component of u by the scalar.",
+        "Only the first component matters here."
+      ],
+      "socraticHint": "What is 3 times the first component of u?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "u = <4, 1>.\nWhat is the first component of 2 times u?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p12",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <5, -2>.\nWhat is the second component of 2 times u?",
+      "answer": {
+        "kind": "number",
+        "value": "-4"
+      },
+      "explanation": [
+        "Scaling a vector by 2 multiplies every component by 2.",
+        "2 times u = <10, -4>, so the second component is -4."
+      ],
+      "useAgain": "when scaling a vector by a number.",
+      "hints": [
+        "Multiply every component of u by the scalar.",
+        "Only the second component matters here."
+      ],
+      "socraticHint": "What is 2 times the second component of u?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "u = <1, -3>.\nWhat is the second component of 3 times u?",
+        "answer": {
+          "kind": "number",
+          "value": "-9"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p13",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <3, 4>.\nWhat is the magnitude of u?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The magnitude of u is sqrt(3^2 + 4^2) = sqrt(25).",
+        "25 is a perfect square, 5^2, so the magnitude is 5."
+      ],
+      "useAgain": "when the components of a vector form a Pythagorean triple.",
+      "hints": [
+        "The magnitude of <a, b> is sqrt(a^2 + b^2).",
+        "Check whether 3^2 + 4^2 is a perfect square."
+      ],
+      "socraticHint": "What is a squared plus b squared, and is it a perfect square?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Vector u drawn from the origin to (3, 4).",
+        "spec": {
+          "range": 5,
+          "points": [
+            {
+              "x": 3,
+              "y": 4,
+              "label": "u"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                4
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "u = <8, 6>.\nWhat is the magnitude of u?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p14",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <4, 3>.\nWhat is the magnitude of u?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The magnitude of u is sqrt(4^2 + 3^2) = sqrt(25).",
+        "25 is a perfect square, 5^2, so the magnitude is 5."
+      ],
+      "useAgain": "when the components of a vector form a Pythagorean triple.",
+      "hints": [
+        "The magnitude of <a, b> is sqrt(a^2 + b^2).",
+        "Check whether 4^2 + 3^2 is a perfect square."
+      ],
+      "socraticHint": "What is a squared plus b squared, and is it a perfect square?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "u = <5, 12>.\nWhat is the magnitude of u?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p15",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <6, 8>.\nWhat is the magnitude of u?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The magnitude of u is sqrt(6^2 + 8^2) = sqrt(100).",
+        "100 is a perfect square, 10^2, so the magnitude is 10."
+      ],
+      "useAgain": "when the components of a vector form a Pythagorean triple.",
+      "hints": [
+        "The magnitude of <a, b> is sqrt(a^2 + b^2).",
+        "Check whether 6^2 + 8^2 is a perfect square."
+      ],
+      "socraticHint": "What is a squared plus b squared, and is it a perfect square?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Vector u drawn from the origin to (6, 8).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 6,
+              "y": 8,
+              "label": "u"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                8
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "u = <12, 5>.\nWhat is the magnitude of u?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p16",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <2, 3>.\nv = <1, 4>.\nWhat is u dot v?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "The dot product multiplies matching components, then adds the results.",
+        "u dot v = 2(1) + 3(4) = 14."
+      ],
+      "useAgain": "when combining two vectors into a single number instead of another vector.",
+      "hints": [
+        "Multiply the first components together and the second components together.",
+        "Add those two products."
+      ],
+      "socraticHint": "What do you get multiplying the matching components of u and v?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <3, 4>.\nv = <1, -1>.\nWhat is u dot v?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p17",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <3, -1>.\nv = <2, 5>.\nWhat is u dot v?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The dot product multiplies matching components, then adds the results.",
+        "u dot v = 3(2) - 1(5) = 1."
+      ],
+      "useAgain": "when combining two vectors into a single number instead of another vector.",
+      "hints": [
+        "Multiply the first components together and the second components together.",
+        "Add those two products."
+      ],
+      "socraticHint": "What do you get multiplying the matching components of u and v?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <-2, 3>.\nv = <4, 2>.\nWhat is u dot v?",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p18",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <4, 2>.\nv = <-1, 3>.\nWhat is u dot v?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The dot product multiplies matching components, then adds the results.",
+        "u dot v = 4(-1) + 2(3) = 2."
+      ],
+      "useAgain": "when combining two vectors into a single number instead of another vector.",
+      "hints": [
+        "Multiply the first components together and the second components together.",
+        "Add those two products."
+      ],
+      "socraticHint": "What do you get multiplying the matching components of u and v?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <1, -4>.\nv = <3, 2>.\nWhat is u dot v?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p19",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <1, 5>.\nv = <3, -2>.\nWhat is u dot v?",
+      "answer": {
+        "kind": "number",
+        "value": "-7"
+      },
+      "explanation": [
+        "The dot product multiplies matching components, then adds the results.",
+        "u dot v = 1(3) + 5(-2) = -7."
+      ],
+      "useAgain": "when combining two vectors into a single number instead of another vector.",
+      "hints": [
+        "Multiply the first components together and the second components together.",
+        "Add those two products."
+      ],
+      "socraticHint": "What do you get multiplying the matching components of u and v?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <6, 1>.\nv = <2, 3>.\nWhat is u dot v?",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p20",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <2, -3>.\nv = <4, 1>.\nWhat is u dot v?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The dot product multiplies matching components, then adds the results.",
+        "u dot v = 2(4) - 3(1) = 5."
+      ],
+      "useAgain": "when combining two vectors into a single number instead of another vector.",
+      "hints": [
+        "Multiply the first components together and the second components together.",
+        "Add those two products."
+      ],
+      "socraticHint": "What do you get multiplying the matching components of u and v?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <2, 2>.\nv = <3, -3>.\nWhat is u dot v?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p21",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <5, 1>.\nv = <2, -2>.\nWhat is u dot v?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "The dot product multiplies matching components, then adds the results.",
+        "u dot v = 5(2) + 1(-2) = 8."
+      ],
+      "useAgain": "when combining two vectors into a single number instead of another vector.",
+      "hints": [
+        "Multiply the first components together and the second components together.",
+        "Add those two products."
+      ],
+      "socraticHint": "What do you get multiplying the matching components of u and v?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <4, -1>.\nv = <2, 5>.\nWhat is u dot v?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p22",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "choice",
+      "prompt": "u = <1, 2>.\nWhat is the magnitude of u?",
+      "options": [
+        "sqrt(5)",
+        "sqrt(3)",
+        "5",
+        "sqrt(1) + sqrt(2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The magnitude of u is sqrt(1^2 + 2^2) = sqrt(5).",
+        "5 is not a perfect square, so the magnitude stays as sqrt(5)."
+      ],
+      "useAgain": "when a vector's magnitude is not a whole number.",
+      "hints": [
+        "The magnitude of <a, b> is sqrt(a^2 + b^2).",
+        "Check whether 5 is a perfect square before simplifying."
+      ],
+      "socraticHint": "Is a squared plus b squared a perfect square here?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <1, 4>.\nWhat is the magnitude of u?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "sqrt(5)",
+          "sqrt(17)",
+          "17",
+          "sqrt(1) + sqrt(4)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p23",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "choice",
+      "prompt": "u = <2, 3>.\nWhat is the magnitude of u?",
+      "options": [
+        "sqrt(5)",
+        "sqrt(13)",
+        "13",
+        "sqrt(2) + sqrt(3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The magnitude of u is sqrt(2^2 + 3^2) = sqrt(13).",
+        "13 is not a perfect square, so the magnitude stays as sqrt(13)."
+      ],
+      "useAgain": "when a vector's magnitude is not a whole number.",
+      "hints": [
+        "The magnitude of <a, b> is sqrt(a^2 + b^2).",
+        "Check whether 13 is a perfect square before simplifying."
+      ],
+      "socraticHint": "Is a squared plus b squared a perfect square here?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <3, 7>.\nWhat is the magnitude of u?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "sqrt(10)",
+          "58",
+          "sqrt(58)",
+          "sqrt(3) + sqrt(7)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p24",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "choice",
+      "prompt": "u = <1, 3>.\nWhat is the magnitude of u?",
+      "options": [
+        "sqrt(4)",
+        "10",
+        "sqrt(10)",
+        "sqrt(1) + sqrt(3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The magnitude of u is sqrt(1^2 + 3^2) = sqrt(10).",
+        "10 is not a perfect square, so the magnitude stays as sqrt(10)."
+      ],
+      "useAgain": "when a vector's magnitude is not a whole number.",
+      "hints": [
+        "The magnitude of <a, b> is sqrt(a^2 + b^2).",
+        "Check whether 10 is a perfect square before simplifying."
+      ],
+      "socraticHint": "Is a squared plus b squared a perfect square here?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <4, 5>.\nWhat is the magnitude of u?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "sqrt(9)",
+          "41",
+          "sqrt(4) + sqrt(5)",
+          "sqrt(41)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p25",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "choice",
+      "prompt": "u = <3, 5>.\nWhat is the magnitude of u?",
+      "options": [
+        "sqrt(8)",
+        "34",
+        "sqrt(3) + sqrt(5)",
+        "sqrt(34)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The magnitude of u is sqrt(3^2 + 5^2) = sqrt(34).",
+        "34 is not a perfect square, so the magnitude stays as sqrt(34)."
+      ],
+      "useAgain": "when a vector's magnitude is not a whole number.",
+      "hints": [
+        "The magnitude of <a, b> is sqrt(a^2 + b^2).",
+        "Check whether 34 is a perfect square before simplifying."
+      ],
+      "socraticHint": "Is a squared plus b squared a perfect square here?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <2, 7>.\nWhat is the magnitude of u?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "sqrt(53)",
+          "sqrt(9)",
+          "53",
+          "sqrt(2) + sqrt(7)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p26",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "choice",
+      "prompt": "u = <2, 5>.\nWhat is the magnitude of u?",
+      "options": [
+        "sqrt(29)",
+        "sqrt(7)",
+        "29",
+        "sqrt(2) + sqrt(5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The magnitude of u is sqrt(2^2 + 5^2) = sqrt(29).",
+        "29 is not a perfect square, so the magnitude stays as sqrt(29)."
+      ],
+      "useAgain": "when a vector's magnitude is not a whole number.",
+      "hints": [
+        "The magnitude of <a, b> is sqrt(a^2 + b^2).",
+        "Check whether 29 is a perfect square before simplifying."
+      ],
+      "socraticHint": "Is a squared plus b squared a perfect square here?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <5, 6>.\nWhat is the magnitude of u?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "sqrt(11)",
+          "sqrt(61)",
+          "61",
+          "sqrt(5) + sqrt(6)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p27",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "truefalse",
+      "prompt": "u = <2, 3>.\nv = <4, 6>.\nTrue or false: u and v are parallel.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "v is 2 times u in the first component and 2 times u in the second.",
+        "Both components scale by the same amount, so u and v are parallel."
+      ],
+      "useAgain": "when checking whether two vectors point along the same line.",
+      "hints": [
+        "Two vectors are parallel when one is a scalar multiple of the other.",
+        "Check whether both components scale by the same number."
+      ],
+      "socraticHint": "Does v equal the same number times u in both components?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <1, 3>.\nv = <3, 9>.\nTrue or false: u and v are parallel.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p28",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "truefalse",
+      "prompt": "u = <1, 2>.\nv = <2, 5>.\nTrue or false: u and v are parallel.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "v would need to be the same multiple of u in both components to be parallel.",
+        "The two components scale by different amounts here, so u and v are not parallel."
+      ],
+      "useAgain": "when checking whether two vectors point along the same line.",
+      "hints": [
+        "Two vectors are parallel when one is a scalar multiple of the other.",
+        "Check whether both components scale by the same number."
+      ],
+      "socraticHint": "Does v equal the same number times u in both components?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <4, 2>.\nv = <2, 1>.\nTrue or false: u and v are parallel.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p29",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "truefalse",
+      "prompt": "u = <3, -1>.\nv = <-6, 2>.\nTrue or false: u and v are parallel.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "v is -2 times u in the first component and -2 times u in the second.",
+        "Both components scale by the same amount, so u and v are parallel."
+      ],
+      "useAgain": "when checking whether two vectors point along the same line.",
+      "hints": [
+        "Two vectors are parallel when one is a scalar multiple of the other.",
+        "Check whether both components scale by the same number."
+      ],
+      "socraticHint": "Does v equal the same number times u in both components?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <5, 2>.\nv = <10, 3>.\nTrue or false: u and v are parallel.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p30",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "truefalse",
+      "prompt": "u = <2, 4>.\nv = <3, 5>.\nTrue or false: u and v are parallel.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "v would need to be the same multiple of u in both components to be parallel.",
+        "The two components scale by different amounts here, so u and v are not parallel."
+      ],
+      "useAgain": "when checking whether two vectors point along the same line.",
+      "hints": [
+        "Two vectors are parallel when one is a scalar multiple of the other.",
+        "Check whether both components scale by the same number."
+      ],
+      "socraticHint": "Does v equal the same number times u in both components?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "u = <2, -3>.\nv = <-4, 6>.\nTrue or false: u and v are parallel.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p31",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <3, 4>.\nv = <4, -3>.\nWhat is the angle between u and v, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "90"
+      },
+      "explanation": [
+        "u dot v = 3(4) + 4(-3) = 0.",
+        "A dot product of zero means the vectors are perpendicular, so the angle is 90 degrees."
+      ],
+      "useAgain": "when the angle between two vectors works out to a special angle.",
+      "hints": [
+        "Find the dot product of u and v first.",
+        "cos(angle) = (u dot v)/(magnitude of u times magnitude of v); compare it to the special angles."
+      ],
+      "socraticHint": "Is the dot product zero, or does it match a special cosine value?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <6, 8>.\nv = <8, -6>.\nWhat is the angle between u and v, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "90"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p32",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <1, 0>.\nv = <0, -1>.\nWhat is the angle between u and v, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "90"
+      },
+      "explanation": [
+        "u dot v = 1(0) + 0(-1) = 0.",
+        "A dot product of zero means the vectors are perpendicular, so the angle is 90 degrees."
+      ],
+      "useAgain": "when the angle between two vectors works out to a special angle.",
+      "hints": [
+        "Find the dot product of u and v first.",
+        "cos(angle) = (u dot v)/(magnitude of u times magnitude of v); compare it to the special angles."
+      ],
+      "socraticHint": "Is the dot product zero, or does it match a special cosine value?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <1, 0>.\nv = <1, 1>.\nWhat is the angle between u and v, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "45"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p33",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <2, 0>.\nv = <1, 1>.\nWhat is the angle between u and v, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "u dot v = 2, the magnitude of u is sqrt(4), and the magnitude of v is sqrt(2).",
+        "cos(angle) = 2/sqrt(8) = sqrt(2)/2, so the angle is 45 degrees."
+      ],
+      "useAgain": "when the angle between two vectors works out to a special angle.",
+      "hints": [
+        "Find the dot product of u and v first.",
+        "cos(angle) = (u dot v)/(magnitude of u times magnitude of v); compare it to the special angles."
+      ],
+      "socraticHint": "Is the dot product zero, or does it match a special cosine value?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <2, 2>.\nv = <2, -2>.\nWhat is the angle between u and v, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "90"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p34",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <1, 1>.\nv = <1, -1>.\nWhat is the angle between u and v, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "90"
+      },
+      "explanation": [
+        "u dot v = 1(1) + 1(-1) = 0.",
+        "A dot product of zero means the vectors are perpendicular, so the angle is 90 degrees."
+      ],
+      "useAgain": "when the angle between two vectors works out to a special angle.",
+      "hints": [
+        "Find the dot product of u and v first.",
+        "cos(angle) = (u dot v)/(magnitude of u times magnitude of v); compare it to the special angles."
+      ],
+      "socraticHint": "Is the dot product zero, or does it match a special cosine value?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <4, 0>.\nv = <0, 4>.\nWhat is the angle between u and v, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "90"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p35",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <0, 3>.\nv = <3, 3>.\nWhat is the angle between u and v, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "u dot v = 9, the magnitude of u is sqrt(9), and the magnitude of v is sqrt(18).",
+        "cos(angle) = 9/sqrt(162) = sqrt(2)/2, so the angle is 45 degrees."
+      ],
+      "useAgain": "when the angle between two vectors works out to a special angle.",
+      "hints": [
+        "Find the dot product of u and v first.",
+        "cos(angle) = (u dot v)/(magnitude of u times magnitude of v); compare it to the special angles."
+      ],
+      "socraticHint": "Is the dot product zero, or does it match a special cosine value?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <0, 2>.\nv = <2, 2>.\nWhat is the angle between u and v, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "45"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p36",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <5, 0>.\nv = <5, 5>.\nWhat is the angle between u and v, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "u dot v = 25, the magnitude of u is sqrt(25), and the magnitude of v is sqrt(50).",
+        "cos(angle) = 25/sqrt(1250) = sqrt(2)/2, so the angle is 45 degrees."
+      ],
+      "useAgain": "when the angle between two vectors works out to a special angle.",
+      "hints": [
+        "Find the dot product of u and v first.",
+        "cos(angle) = (u dot v)/(magnitude of u times magnitude of v); compare it to the special angles."
+      ],
+      "socraticHint": "Is the dot product zero, or does it match a special cosine value?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <7, 0>.\nv = <7, 7>.\nWhat is the angle between u and v, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "45"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p37",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "A rover's two pushes are the vectors <6, 0> east and <0, 8> north, in meters.\nWhat is the magnitude of the total displacement?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The total displacement is <6, 0> + <0, 8> = <6, 8>.",
+        "Its magnitude is sqrt(6^2 + 8^2) = sqrt(100) = 10."
+      ],
+      "useAgain": "when two separate pushes combine into one total displacement.",
+      "hints": [
+        "Add the two push vectors together first.",
+        "Then find the magnitude of that sum."
+      ],
+      "socraticHint": "What single vector do the two pushes add up to?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The total displacement vector, drawn from the origin to (6, 8).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 6,
+              "y": 8,
+              "label": "u"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                8
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A kitchen robot's two pushes are the vectors <15, 0> forward and <0, 8> left, in meters.\nWhat is the magnitude of the total displacement?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p38",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "A drone's two pushes are the vectors <8, 0> east and <0, 6> up, in meters.\nWhat is the magnitude of the total displacement?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The total displacement is <8, 0> + <0, 6> = <8, 6>.",
+        "Its magnitude is sqrt(8^2 + 6^2) = sqrt(100) = 10."
+      ],
+      "useAgain": "when two separate pushes combine into one total displacement.",
+      "hints": [
+        "Add the two push vectors together first.",
+        "Then find the magnitude of that sum."
+      ],
+      "socraticHint": "What single vector do the two pushes add up to?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The total displacement vector, drawn from the origin to (8, 6).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 8,
+              "y": 6,
+              "label": "u"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                8,
+                6
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A survey drone's two pushes are the vectors <8, 0> north and <0, 15> east, in meters.\nWhat is the magnitude of the total displacement?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p39",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "A robot arm's two pushes are the vectors <5, 0> forward and <0, 12> sideways, in meters.\nWhat is the magnitude of the total displacement?",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "The total displacement is <5, 0> + <0, 12> = <5, 12>.",
+        "Its magnitude is sqrt(5^2 + 12^2) = sqrt(169) = 13."
+      ],
+      "useAgain": "when two separate pushes combine into one total displacement.",
+      "hints": [
+        "Add the two push vectors together first.",
+        "Then find the magnitude of that sum."
+      ],
+      "socraticHint": "What single vector do the two pushes add up to?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The total displacement vector, drawn from the origin to (5, 12).",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 5,
+              "y": 12,
+              "label": "u"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                12
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A delivery robot's two pushes are the vectors <20, 0> east and <0, 21> north, in meters.\nWhat is the magnitude of the total displacement?",
+        "answer": {
+          "kind": "number",
+          "value": "29"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p40",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "A submarine probe's two pushes are the vectors <12, 0> east and <0, 5> down, in meters.\nWhat is the magnitude of the total displacement?",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "The total displacement is <12, 0> + <0, 5> = <12, 5>.",
+        "Its magnitude is sqrt(12^2 + 5^2) = sqrt(169) = 13."
+      ],
+      "useAgain": "when two separate pushes combine into one total displacement.",
+      "hints": [
+        "Add the two push vectors together first.",
+        "Then find the magnitude of that sum."
+      ],
+      "socraticHint": "What single vector do the two pushes add up to?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The total displacement vector, drawn from the origin to (12, 5).",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 12,
+              "y": 5,
+              "label": "u"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                12,
+                5
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A mars rover's two pushes are the vectors <12, 0> forward and <0, 9> sideways, in meters.\nWhat is the magnitude of the total displacement?",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p41",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "A rocket sled's two pushes are the vectors <9, 0> forward and <0, 12> up, in meters.\nWhat is the magnitude of the total displacement?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "The total displacement is <9, 0> + <0, 12> = <9, 12>.",
+        "Its magnitude is sqrt(9^2 + 12^2) = sqrt(225) = 15."
+      ],
+      "useAgain": "when two separate pushes combine into one total displacement.",
+      "hints": [
+        "Add the two push vectors together first.",
+        "Then find the magnitude of that sum."
+      ],
+      "socraticHint": "What single vector do the two pushes add up to?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The total displacement vector, drawn from the origin to (9, 12).",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 9,
+              "y": 12,
+              "label": "u"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                9,
+                12
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A weather balloon's two pushes are the vectors <3, 0> east and <0, 4> up, in meters.\nWhat is the magnitude of the total displacement?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p42",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "A game piece's two pushes are the vectors <7, 0> right and <0, 24> up, in meters.\nWhat is the magnitude of the total displacement?",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "The total displacement is <7, 0> + <0, 24> = <7, 24>.",
+        "Its magnitude is sqrt(7^2 + 24^2) = sqrt(625) = 25."
+      ],
+      "useAgain": "when two separate pushes combine into one total displacement.",
+      "hints": [
+        "Add the two push vectors together first.",
+        "Then find the magnitude of that sum."
+      ],
+      "socraticHint": "What single vector do the two pushes add up to?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A garden robot's two pushes are the vectors <4, 0> north and <0, 3> east, in meters.\nWhat is the magnitude of the total displacement?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p43",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "truefalse",
+      "prompt": "u = <3, 4>.\nv = <4, -3>.\nTrue or false: u and v are perpendicular.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "u dot v = 3(4) + 4(-3) = 0.",
+        "Two vectors are perpendicular exactly when their dot product is zero, so this is a perpendicular pair."
+      ],
+      "useAgain": "when checking whether two vectors meet at a right angle.",
+      "hints": [
+        "Find the dot product of u and v.",
+        "The vectors are perpendicular exactly when that dot product is zero."
+      ],
+      "socraticHint": "What is u dot v?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <3, 2>.\nv = <2, 3>.\nTrue or false: u and v are perpendicular.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p44",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "order",
+      "prompt": "u = <3, 4>.\nv = <4, -3>.\nPut the steps in order to find the angle between u and v.",
+      "items": [
+        "Notice that dot product equals zero.",
+        "Find the dot product of u and v: 3(4) + 4(-3).",
+        "Conclude the vectors are perpendicular, so the angle is 90 degrees."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0,
+          2
+        ]
+      },
+      "explanation": [
+        "Find the dot product first, then compare it to the magnitudes.",
+        "That comparison tells you the angle."
+      ],
+      "useAgain": "when finding the angle between two vectors step by step.",
+      "hints": [
+        "The dot product has to be found before anything can be compared to it.",
+        "A dot product of zero has a shortcut; otherwise use the full cosine formula."
+      ],
+      "socraticHint": "What has to be found before you can tell the angle?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <6, 8>.\nv = <8, -6>.\nPut the steps in order to find the angle between u and v.",
+        "items": [
+          "Notice that dot product equals zero.",
+          "Find the dot product of u and v: 6(8) + 8(-6).",
+          "Conclude the vectors are perpendicular, so the angle is 90 degrees."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p45",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "order",
+      "prompt": "u = <2, 0>.\nv = <1, 1>.\nPut the steps in order to find the angle between u and v.",
+      "items": [
+        "Divide the dot product by the product of the two magnitudes to get cos(angle).",
+        "Recognize that cosine value as a special angle.",
+        "Find the dot product of u and v, and the magnitude of each: 2(1) + 0(1), sqrt(2^2 + 0^2), sqrt(1^2 + 1^2)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Find the dot product and both magnitudes first.",
+        "Divide the dot product by the product of the magnitudes, then read off the angle."
+      ],
+      "useAgain": "when finding the angle between two vectors step by step.",
+      "hints": [
+        "Find the dot product and both magnitudes before doing anything else.",
+        "A dot product of zero has a shortcut; otherwise use the full cosine formula."
+      ],
+      "socraticHint": "What two things do you need before you can compute the cosine of the angle?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <1, 0>.\nv = <1, 1>.\nPut the steps in order to find the angle between u and v.",
+        "items": [
+          "Divide the dot product by the product of the two magnitudes to get cos(angle).",
+          "Recognize that cosine value as a special angle.",
+          "Find the dot product of u and v, and the magnitude of each: 1(1) + 0(1), sqrt(1^2 + 0^2), sqrt(1^2 + 1^2)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            0,
+            1
+          ]
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-vectors-p46",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "choice",
+      "prompt": "Three forces act on a stationary rover: <5, 2>, <-3, 4>, and w.\nFor the rover to stay still, the three vectors must sum to <0, 0>.\nWhat is w?",
+      "options": [
+        "<2, 6>",
+        "<2, -6>",
+        "<-2, -6>",
+        "<-2, 6>"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The three vectors must sum to <0, 0>, so w is the negative of u plus v.",
+        "u + v = <2, 6>, so w = <-2, -6>."
+      ],
+      "useAgain": "when three vectors balance and one of them is unknown.",
+      "hints": [
+        "Add the two known forces together first.",
+        "The third force is the negative of that sum."
+      ],
+      "socraticHint": "What vector, added to u and v, gives <0, 0>?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Three forces act on a stationary rover: <4, 3>, <2, -5>, and w.\nFor the rover to stay still, the three vectors must sum to <0, 0>.\nWhat is w?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "<6, -2>",
+          "<6, 2>",
+          "<-6, -2>",
+          "<-6, 2>"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p47",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <k, 6>.\nv = <4, 8>.\nFor what value of k are u and v parallel?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Two vectors are parallel when their components scale by the same amount.",
+        "6/8 is 3/4, so k must be 4 times 3/4, which is 3."
+      ],
+      "useAgain": "when a missing component has to make two vectors parallel.",
+      "hints": [
+        "Parallel vectors have proportional components.",
+        "Set up the same ratio in both components and solve for k."
+      ],
+      "socraticHint": "What ratio do the two known components form?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <k, 9>.\nv = <6, 3>.\nFor what value of k are u and v parallel?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p48",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <k, 5>.\nv = <10, -2>.\nFor what value of k are u and v perpendicular?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "u dot v = 10k + 5(-2), or 10k - 10.",
+        "Setting that to zero gives k = 1."
+      ],
+      "useAgain": "when a missing component has to make two vectors perpendicular.",
+      "hints": [
+        "Write the dot product in terms of k.",
+        "Set that expression equal to zero and solve for k."
+      ],
+      "socraticHint": "What is u dot v in terms of k?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <k, 3>.\nv = <9, -6>.\nFor what value of k are u and v perpendicular?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p49",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "choice",
+      "prompt": "u = <1, 2>.\nWhat is the first component of the unit vector in the direction of u?",
+      "options": [
+        "sqrt(5)/5",
+        "1/5",
+        "2 sqrt(5)/5",
+        "sqrt(5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The magnitude of u is sqrt(5).",
+        "Dividing the first component by that magnitude and rationalizing gives sqrt(5)/5."
+      ],
+      "useAgain": "when scaling a vector down to length 1 without losing its direction.",
+      "hints": [
+        "A unit vector in the direction of u is u divided by its magnitude.",
+        "Rationalize the denominator once you divide by the square root."
+      ],
+      "socraticHint": "What is the magnitude of u?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <1, 3>.\nWhat is the first component of the unit vector in the direction of u?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "1/10",
+          "sqrt(10)/10",
+          "3 sqrt(10)/10",
+          "sqrt(10)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-vectors-p50",
+      "lane": "skills",
+      "ideaId": "a2-vectors",
+      "kind": "number",
+      "prompt": "u = <k, 9>.\nv = <k, -9>.\nFor how many integers k with -10 <= k <= 10 are u and v perpendicular?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "u dot v = k times k + 9 times (-9), or k^2 - 81.",
+        "That is zero when k = 9 or k = -9.",
+        "Both are in the range, so there are 2 values."
+      ],
+      "useAgain": "when counting how many parameter values make two vectors perpendicular.",
+      "hints": [
+        "Write u dot v as an expression in k.",
+        "Solve that expression equals zero, then check which solutions are in range."
+      ],
+      "socraticHint": "What equation in k makes the dot product zero?",
+      "skills": [
+        "think.skills.vectors"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "u = <k, 6>.\nv = <k, -6>.\nFor how many integers k with -10 <= k <= 10 are u and v perpendicular?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "id": "s4-w02-build",
+  "season": 4,
+  "week": 2,
+  "track": "build",
+  "title": "Boxes with walls, and the dice game in a second tongue",
+  "summary": "Give every box in C++ a promise about what it will hold, march an int off the two billion cliff and record what your own compiler did, then rebuild the season 1 dice game in the stricter language.",
+  "minutes": 60,
+  "materials": [
+    "the laptop with g++ and the editor a parent installed and tested before the season",
+    "the bug diary, open at the Error Bestiary chapter started in week 1",
+    "the season 1 dice game: the MakeCode share link, or its rules written on paper",
+    "paper and pencil for the plan that gets translated",
+    "the min-max thermometer outside, for the 30 second dawn reading"
+  ],
+  "skills": [
+    "build.cpp",
+    "build.variables",
+    "build.debugging"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w02-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop first: ask, imagine, plan, build, test, fix.\n\nAsk: last week the compiler read your whole program before it would run a single line of it. Today the question is what it was reading for. A large part of the answer is types.\n\nImagine: in Python you write n = 5 and Python works out what n is. In C++ you write int n = 5, and that is a promise. This box holds a whole number, nothing else, ever. The language holds you to your word, and it checks the promise before the program runs at all.\n\nA promise like that buys speed, because the machine knows exactly how much room to set aside and never has to ask again. It also costs something, and the cost is the whole of today: a box with a fixed size has walls. Python numbers grow as big as they like. A C++ int does not.\n\nPlan, part one: four boxes and their promises. int for whole numbers, long long for whole numbers far too big for an int, double for numbers with a decimal point, string for text. Print what each one can hold, then march an int off the edge on purpose and write down exactly what your own machine did.\n\nPlan, part two: Rosetta. Your oldest program is the shake-to-roll dice game from season 1: roll two numbers from 1 to 6, the higher number wins, a tie is worth something. That plan does not change today. Only the costume changes. Nothing about the game gets better in C++, and saying that out loud is part of the exercise. The algorithm is the thing. The language is what it is wearing.\n\nOne rule that started last week and holds for the rest of the season: your hands, your keyboard. A grown-up may watch, and may be asked a question, and does not type."
+    },
+    {
+      "kind": "typing",
+      "id": "s4-w02-build-02",
+      "minutes": 5,
+      "body": "Five minutes, hands on the home row, eyes on the screen. Today's words are the ones this week's code needs: include, int, long, double, string, cout, main, return, seed, roll. Type each word five times.\n\nThen type this line three times without looking down, landing the semicolon every single time:\n\nstd::cout << n << \"\\n\";\n\nThe two colons are one key pressed twice, and they are how C++ says which cupboard a name came from. cout lives in the cupboard called std."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w02-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Three C++ boxes of fixed size, side by side. An int is 4 bytes, 32 switches, holding up to 2,147,483,647. A long long is 8 bytes, 64 switches, holding a far bigger number. A double is 8 bytes and holds numbers with a decimal point. Every size is fixed once and for all when the program compiles, unlike a Python number, which grows itself a bigger box as needed.",
+        "spec": {
+          "w": 400,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 60,
+              "w": 90,
+              "h": 80,
+              "label": "int",
+              "sub": "4 B, 32 bits"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 150,
+              "s": "max 2,147,483,647",
+              "size": 10
+            },
+            {
+              "t": "box",
+              "x": 140,
+              "y": 40,
+              "w": 110,
+              "h": 100,
+              "label": "long long",
+              "sub": "8 B, 64 bits"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 150,
+              "s": "far bigger max",
+              "size": 10
+            },
+            {
+              "t": "box",
+              "x": 280,
+              "y": 40,
+              "w": 100,
+              "h": 100,
+              "label": "double",
+              "sub": "8 B, decimal"
+            }
+          ]
+        }
+      },
+      "title": "Memory is a street of fixed-size boxes",
+      "body": "Ask the machine how big its boxes are. Put this line inside a program and run it:\n\nstd::cout << sizeof(int) << ' ' << sizeof(long long) << ' ' << sizeof(double) << '\\n';\n\nOn a laptop like yours those print 4, 8 and 8. Those are bytes, and on your machine a byte is eight switches, each one either off or on. So an int is a house with 32 switches in it and a long long is a house with 64.\n\nHere is why the number of switches matters. With 32 switches there are exactly 2 to the 32nd different patterns, which is 4294967296 of them. An int has to hold negative numbers too, so it spends about half its patterns on those. What is left is 2147483647 as the biggest number it can hold, and 2147483648 below zero as the smallest.\n\nNow the part worth remembering. C++ does not promise those sizes. It promises that an int is at least 16 switches wide and a long long at least 64. Your compiler chose 32 for int, and sizeof is how you ask it instead of assuming. A different machine can give a different answer to the same question, which is why you ask.\n\nPython never made you choose, because a Python whole number is not a fixed house at all. It grows itself a bigger one whenever the number outgrows the old one. That is a real convenience, and it has a real price, and today you meet the price."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w02-build-09",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A screw in cross-section: a steel core inside a thin zinc coating. Zinc reacts with oxygen before the steel underneath does, sacrificing itself first, which is why a galvanized screw resists rust. A magnet held nearby still pulls the screw whether the zinc coating is shiny or the surface has rusted, because the iron underneath is magnetic either way.",
+        "spec": {
+          "w": 400,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 50,
+              "y": 50,
+              "w": 90,
+              "h": 120,
+              "label": "zinc coating",
+              "sub": "reacts first",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 50,
+              "w": 140,
+              "h": 120,
+              "label": "steel",
+              "sub": "core (iron)"
+            },
+            {
+              "t": "circle",
+              "cx": 360,
+              "cy": 110,
+              "r": 25,
+              "label": "magnet"
+            },
+            {
+              "t": "line",
+              "x1": 335,
+              "y1": 110,
+              "x2": 290,
+              "y2": 110,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 360,
+              "y": 70,
+              "s": "still pulls",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 90,
+              "y": 205,
+              "s": "coating scratched: steel underneath can rust",
+              "size": 10
+            }
+          ]
+        }
+      },
+      "title": "Rust is a slow fire, and why some screws avoid it",
+      "body": "Rust is iron reacting with oxygen and water to form iron oxide, and it is a close chemical cousin of burning. Both are a metal or fuel combining with oxygen and releasing energy, just at wildly different speeds. Burning is that reaction in seconds. Rusting is the same idea stretched over months or years.\n\nBare steel screws left outside will rust visibly within weeks in damp air. That is why so many hardware screws, including the ones in your kit, come galvanized: coated in a thin layer of zinc. Zinc reacts with oxygen before the steel underneath gets the chance, sacrificing itself first. It keeps protecting a scratch in the coating for a while even after bare steel is exposed.\n\nCheck it with the kit's magnet, kept well away from phones, credit cards and laptops, which a strong magnet can damage. Both a shiny zinc-coated screw and a rusted one should still pull to it, since the iron underneath either coating is still iron. Rust changes the surface, not the metal's magnetism.",
+      "ideaId": "rust-is-a-slow-fire"
+    },
+    {
+      "kind": "task",
+      "id": "s4-w02-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A number line showing an int marching toward its ceiling: 2147483645, then 2147483646, then 2147483647, the biggest number an int can hold. One more step walks off the cliff into undefined behaviour, printing whatever large negative number this machine happened to choose, since C++ makes no promise about what happens past the edge.",
+        "spec": {
+          "w": 380,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 150,
+              "x2": 350,
+              "y2": 150
+            },
+            {
+              "t": "dot",
+              "cx": 100,
+              "cy": 150,
+              "label": "2147483645",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 170,
+              "cy": 150,
+              "label": "2147483646",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 240,
+              "cy": 150,
+              "label": "2147483647 (max)",
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 240,
+              "y1": 150,
+              "x2": 300,
+              "y2": 90,
+              "arrow": true,
+              "dashed": true,
+              "color": "rust",
+              "label": "overflow"
+            },
+            {
+              "t": "dot",
+              "cx": 300,
+              "cy": 90,
+              "label": "wraps negative",
+              "side": "above"
+            }
+          ]
+        }
+      },
+      "title": "Types are contracts, and the cliff at two billion",
+      "body": "Make a folder for season 4 and a file called types.cpp inside it.\n\nPart one, ask the boxes what they can hold.\n\n#include <iostream>\n#include <limits>\n\nint main() {\n    std::cout << std::numeric_limits<int>::max() << \"\\n\";\n    std::cout << std::numeric_limits<long long>::max() << \"\\n\";\n    return 0;\n}\n\nCompile it and run it. The compile command is g++ -std=c++17 -Wall -o types types.cpp, and then you run the program the folder now contains. Write both numbers into the bug diary before you go on. The first one is the edge of the cliff.\n\nPart two, walk off it. Replace main with this:\n\nint main() {\n    int n = 2147483645;\n    for (int step = 0; step < 5; step = step + 1) {\n        std::cout << n << \"\\n\";\n        n = n + 1;\n    }\n    return 0;\n}\n\nSay out loud what the five lines will be before you run it. Then run it. On most machines the count climbs to the number you wrote down, and the next line is a large negative one. Python has never once done that to you.\n\nNow the honest part, and it is the most important sentence of the hour. C++ does not promise you that wrap. Running an int past its top is what the standard calls undefined behaviour, which means the compiler is allowed to do anything at all, and it can do something different once optimisations are switched on. So do not write down what C++ does. Write down what your compiler did today, and write beside it that this is a thing nobody is ever allowed to rely on.\n\nPart three, fix it the right way. Change int n to long long n and run it again. The count sails past the old edge because the house is bigger. Then ask the obvious question out loud: does long long have an edge of its own, and where is it? You printed that number in part one.\n\nPart four, two more promises.\n\ndouble. Print 0.1 + 0.2 and you will see 0.3, because cout shows six digits unless you ask for more. Now add #include <iomanip> and print std::setprecision(17) before the sum, and look at what is really in the box. Run print(0.1 + 0.2) in Python beside it and compare. Same bits in both, different habits about what to show you.\n\nstring. Try to glue a number onto a string with a plus sign: std::string s = \"5\"; s = s + 3;. That one does not compile, and the message is a Bestiary entry. Then try s += 3; instead, which does compile, and print s.size() afterwards to find out what it quietly did to your string.\n\nThose last two lines are the season in miniature. One of them was refused before it could ever run. The other looked fine, compiled fine, ran fine, and lied to you.",
+      "checklist": [
+        "types.cpp printed the biggest int and the biggest long long, and both numbers are in the bug diary",
+        "I said the five lines of the march out loud before I ran it, then ran it",
+        "What my compiler did at the edge is written down as what mine did, not as what C++ promises",
+        "long long carried the count past the old edge, and I can say where its own edge is",
+        "Both string lines are in the Bestiary: the one that was refused, and the one that compiled and lied"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s4-w02-build-05",
+      "title": "Rosetta one: the dice game in C++",
+      "body": "Open the season 1 dice game first, or its rules on paper if the share link is long gone. Read the plan out loud before you write anything: shake, roll two numbers from 1 to 6, the higher number wins, a tie is special.\n\nWrite that plan on paper in five lines of plain English, with no language in mind at all. The paper is the thing being translated. The C++ file is only one of its costumes.\n\nOne thing genuinely changes, and it goes on the paper: a laptop has no shake sensor, so pressing Enter is the shake.\n\nNew file, dice.cpp:\n\n#include <iostream>\n#include <string>\n#include <random>\n\nint main() {\n    std::mt19937 gen(2027);\n    std::uniform_int_distribution<int> die(1, 6);\n\n    std::string one = \"Alex\";\n    std::string two = \"Sam\";\n\n    std::cout << \"Press Enter to roll.\\n\";\n    std::cin.get();\n\n    int rollOne = die(gen);\n    int rollTwo = die(gen);\n\n    std::cout << one << \" rolled \" << rollOne << \"\\n\";\n    std::cout << two << \" rolled \" << rollTwo << \"\\n\";\n\n    if (rollOne > rollTwo) {\n        std::cout << one << \" wins\\n\";\n    } else if (rollTwo > rollOne) {\n        std::cout << two << \" wins\\n\";\n    } else {\n        std::cout << \"A tie. Roll again.\\n\";\n    }\n    return 0;\n}\n\nCompile it, run it, then run it again. And again.\n\nThe same two rolls come out every single time, and that is not a bug. mt19937 is a machine that makes numbers which look random, starting from a number you hand it called a seed, and 2027 is the seed you handed it. Same seed, same numbers, forever. That is a promise rather than a fault, and it is the only reason testing a game with dice in it is possible at all.\n\nTo make it roll differently, hand it a seed that changes. Add #include <chrono> and swap the first line of main for these two:\n\n    unsigned seed = (unsigned)std::chrono::steady_clock::now().time_since_epoch().count();\n    std::mt19937 gen(seed);\n\nRun it four or five more times. Then say out loud which parts of the season 1 program survived the translation and which did not, and be honest about the last part: this version is not better. It is the same plan in a stricter tongue, and knowing that is the whole point of a Rosetta.",
+      "checklist": [
+        "The plan is on paper in plain English before any C++ was typed, with the Enter change written on it",
+        "dice.cpp compiles with no errors and plays a full round",
+        "I ran it three times with the seed 2027 and can say why the rolls did not change",
+        "With the clock seed the rolls change between runs",
+        "I said out loud what did not get better by moving this program to C++"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w02-build-06",
+      "title": "Bug diary, and three more for the Bestiary",
+      "body": "One line for each thing that did not work the first time, and what you tried. The Bestiary chapter takes the ones the compiler caught, written in your words rather than its own.\n\nThree worth breaking on purpose today.\n\nLeave the semicolon off the end of a line. The compiler complains about a semicolon, but it often blames the line after the one you broke, because that is where it noticed. Write down which line it blamed.\n\nWrite cout instead of std::cout. The compiler tells you the name was not declared here, and some versions then suggest what you probably meant.\n\nTry std::string s = \"5\"; s = s + 3;. This one is refused because there is no version of plus that takes a string on the left and a whole number on the right.\n\nThe exact wording of all three differs between compilers, and even between versions of the same compiler. That is exactly why the Bestiary is in your words: your entry has to say what the message meant, so it still works on a machine that words it differently. Paste the message in as well if you like, but the sentence that earns its place is yours.\n\nOne more line, at the front of the Bestiary, because today's cliff belongs in a different chapter. The int that wrapped was caught by nobody. It compiled, it ran, it printed a number, and the number was wrong. Write that down where you will see it again."
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w02-build-07",
+      "title": "Show it",
+      "prompt": "The two numbers you printed for int and long long, the five lines of the march exactly as your machine printed them, both C++ files pasted or shared, and a photo of the paper plan for the dice game with the Enter change written on it.",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w02-build-08",
+      "variant": "maker"
+    }
+  ]
+}

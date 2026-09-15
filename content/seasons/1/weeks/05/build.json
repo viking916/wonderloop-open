@@ -1,0 +1,304 @@
+{
+  "id": "s1-w05-build",
+  "season": 1,
+  "week": 5,
+  "track": "build",
+  "title": "Drive a square",
+  "summary": "Connect mBot to mBlock and drive a real robot for the first time: a square, then the first letter of your name.",
+  "minutes": 60,
+  "materials": [
+    "mBot v1.2",
+    "USB cable",
+    "mBot's battery, charged, or 4 AA batteries",
+    "laptop with Chrome",
+    "mBlock"
+  ],
+  "skills": [
+    "build.loops",
+    "build.sensors"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s1-w05-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop again: ask, imagine, plan, build, test, fix. This week you drive a real robot on the floor for the first time.\n\nAsk: what should the robot actually do the first time it drives on its own? Trace a square on the floor using both wheels together. Then trace the first letter of your name, using the same kind of moves in a different order.\n\nImagine before you build. Sketch two things on paper. A square, drawn as forward, turn, forward, turn, four times back to where it started. The first letter of your name, drawn the same way, as straight lines and turns.\n\nPlan the pieces before you open mBlock:\n\n1. A block that drives mBot forward for a measured amount of time.\n2. A block that turns mBot instead of driving straight.\n3. A wait between every move, so mBot never drives and turns at once.\n4. A prediction: how long, in seconds, do you think a quarter turn will take?"
+    },
+    {
+      "kind": "typing",
+      "id": "s1-w05-build-02",
+      "minutes": 5,
+      "body": "Pick a typing site you like, whichever one feels right to you, and use it for five minutes. Start on the home row, the row your fingers rest on: a s d f and j k l semicolon. Once your fingers know the home row without looking down, spend the rest of the five minutes on four symbols: ( ) : =. Python needs all four of them constantly, parentheses to call something, a colon to start a block of code, and an equals sign to store a value, so your fingers need to find them without hunting."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w05-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two meshed gears: a small motor gear with 10 teeth spinning fast, and a big wheel gear with 40 teeth turning slower but harder. Arrows show the motor gear spinning quickly and the wheel gear turning slowly and strongly. A caption gives the 4 to 1 ratio: speed trades for push.",
+        "spec": {
+          "w": 360,
+          "h": 250,
+          "wide": false,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 90,
+              "cy": 130,
+              "r": 40,
+              "label": "motor gear"
+            },
+            {
+              "t": "circle",
+              "cx": 200,
+              "cy": 130,
+              "r": 70,
+              "label": "wheel gear"
+            },
+            {
+              "t": "text",
+              "x": 90,
+              "y": 180,
+              "s": "10 teeth",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 200,
+              "y": 210,
+              "s": "40 teeth",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 70,
+              "y1": 82,
+              "x2": 110,
+              "y2": 82,
+              "arrow": true,
+              "color": "accent",
+              "label": "fast spin"
+            },
+            {
+              "t": "line",
+              "x1": 170,
+              "y1": 45,
+              "x2": 230,
+              "y2": 45,
+              "arrow": true,
+              "color": "green",
+              "label": "slow, strong turn"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 232,
+              "s": "4:1 ratio: speed trades for push",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 20,
+              "s": "motor spins fast; gears trade speed for push",
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 700,
+              "caption": "motor gear spins fast",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 900,
+              "caption": "wheel gear turns, slower",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                },
+                "1": {
+                  "fill": "green"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "speed trades for push",
+              "set": {
+                "1": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "ideaId": "current-into-a-push",
+      "title": "Motors and gears",
+      "body": "The motor inside mBot spins fast, hundreds of times every minute, much faster than the wheels actually turn. Between the motor and the wheel sits a small stack of gears, and by the time the spin reaches the wheel it has already been slowed down a lot.\n\nA gear ratio is just how many times the small gear has to spin to turn the big gear once. If the small gear has 10 teeth and the big gear has 40 teeth, the small gear has to spin four times for every one turn the big gear makes, a four to one ratio.\n\nSlowing the spin down does not waste the motor's effort, it trades speed for push. The same turning force, spread thin over four fast turns of the small gear, gets packed into one slow turn of the big gear. That is why the wheel turns slower than the motor but pushes much harder, which is exactly what a robot needs to get its own weight rolling instead of just spinning in place."
+    },
+    {
+      "kind": "task",
+      "id": "s1-w05-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A top-down path of mBot's square: four forward legs at speed 150 with a one second wait, each followed by a tested turn left at speed 150 with a wait near 0.3 seconds, closing back to the start and finish point. A footer notes the same forward, turn and wait moves trace the letter.",
+        "spec": {
+          "w": 320,
+          "h": 250,
+          "wide": false,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  80,
+                  60
+                ],
+                [
+                  220,
+                  60
+                ],
+                [
+                  220,
+                  200
+                ],
+                [
+                  80,
+                  200
+                ]
+              ],
+              "color": "ink"
+            },
+            {
+              "t": "dot",
+              "cx": 80,
+              "cy": 60,
+              "label": "start/finish",
+              "side": "left"
+            },
+            {
+              "t": "dot",
+              "cx": 220,
+              "cy": 60
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 45,
+              "s": "forward: speed 150, wait 1s",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 78,
+              "s": "turn left",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 93,
+              "s": "speed 150, ~0.3s",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 20,
+              "s": "square: forward, turn, x4, back to start",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 225,
+              "s": "same forward/turn/wait moves trace your letter",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Build the square and your letter in mBlock",
+      "body": "Getting ready:\n\n1. mBlock is the free app at https://mblock.cc/pages/downloads; ask a grown-up to install it once.\n2. `Live` mode sends each block the instant it runs, but mBot must stay wired to the laptop.\n3. `Upload` mode sends the whole program once, so mBot can drive on battery power alone.\n\nConnect mBot:\n\n1. Open mBlock and start a new project.\n2. Click `Devices` in the bottom left, then the plus button.\n3. Choose `mBot` from the list of robots, not `mBot2`, `mBot Ranger`, or `mBot Neo`.\n4. Plug in the USB cable.\n5. Click `Connect` and pick `mBot` from the list that appears.\n\nBuild the square:\n\n1. From `Events`, drag `when mBot (mCore) starts up` onto the canvas.\n2. From `Control`, drag a `repeat 4 times` block under it.\n3. Inside `repeat 4 times`, drag in `run forward at speed 150`.\n4. Under that, drag in `wait 1 seconds`.\n5. Under that, drag in `run forward at speed 0`, so mBot stops before the turn.\n6. Under that, drag in `turn left at speed 150`.\n7. Predict first: how many seconds do you think a quarter turn should take?\n8. Under the turn, drag in `wait` and type your guess, or `0.3 seconds` if unsure.\n9. Under that, drag in `run forward at speed 0` again, so mBot fully stops before the next leg.\n10. Test on the floor and adjust the turn's wait time until four repeats trace a square.\n\nBuild your letter:\n\n1. Under the `repeat 4 times` block, still inside `when mBot (mCore) starts up`, add a second sequence.\n2. Use forward, stop, turn, stop blocks to trace the first letter of your name, using only straight lines, like L, T or I.\n\nRun it on the floor:\n\n1. Click `Upload` and wait for mBlock to say the upload finished.\n2. Unplug the USB cable.\n3. Switch mBot's power on only after you set it down on the floor.",
+      "checklist": [
+        "I picked my own turn time by testing on the floor, and wrote down the number I chose and why",
+        "Before each turn, mBot comes to a full stop, then turns with turn left or turn right, then stops again",
+        "Four forward-and-turn moves trace a square back to where mBot started",
+        "A second sequence drives the first letter of my name",
+        "I clicked Upload and unplugged the USB cable before mBot drove"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w05-build-05",
+      "title": "Bug diary",
+      "body": "Print what it sees still applies, it just works differently, since mBot has no screen the way the micro:bit does.\n\n1. From `Variables`, make a variable called `turnTime`.\n2. Right after `when mBot (mCore) starts up`, set `turnTime` to 0.3.\n3. Use the `turnTime` variable inside both wait blocks for the turns, instead of typing 0.3 directly.\n4. Check the box next to `turnTime` in the `Variables` palette, so a readout appears on the stage.\n5. Switch to `Live` mode for a minute, with mBot still wired to the laptop.\n6. Watch the number on the stage while you change it, so you test the real value.\n7. Once the square closes cleanly, switch back to `Upload` mode and upload the finished program.\n\nWrite down the `turnTime` you settled on, and why that number made the square close cleanly.\n\nWrite one line for each thing that did not work the first time and what you tried. A slanted rhombus instead of a square usually means mBot's wheels slipped a little on the turn instead of gripping and pivoting cleanly. That makes the turn cover less angle than the wait time suggests. A longer `turnTime`, or a floor with more grip, fixes it."
+    },
+    {
+      "kind": "artifact",
+      "id": "s1-w05-build-06",
+      "title": "Show it",
+      "prompt": "Photo of mBot driving on the floor, and either the saved .mblock project file or a screenshot of your finished blocks",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s1-w05-build-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s1-w05-build-x01",
+      "kind": "bonus",
+      "title": "Drive a triangle",
+      "minutes": 15,
+      "body": "Use the same forward-turn pattern to trace a triangle instead of a square. A triangle's three turns add up to 360 degrees, more per turn than a square's quarter turn.\n\n1. Open your square project in mBlock.\n2. Add a new sequence below your square, still inside `when mBot (mCore) starts up`.\n3. Use `repeat 3 times` instead of `repeat 4 times`.\n4. Keep `run forward at speed 150` and `wait 1 seconds` the same as your square.\n5. Change the turn's `wait` value to about one third longer than your square's turn.\n6. Test on the floor and adjust the wait time until three repeats close into a triangle.\n\nWhat to notice: a bigger turn angle takes noticeably longer than a quarter turn did."
+    },
+    {
+      "id": "s1-w05-build-x02",
+      "kind": "bonus",
+      "title": "Spell two letters",
+      "minutes": 20,
+      "body": "Extend your letter drawing to two letters instead of one, like your initials.\n\n1. Keep the square and single-letter sequences you already built.\n2. Add a `wait 1 seconds` block after your first letter finishes.\n3. Add a `run forward at speed 0` block right after that wait.\n4. Add a second sequence of forward, stop, turn, stop blocks for your second letter.\n5. Click `Upload`, set mBot down, and switch it on.\n\nWhat to notice: the pause between letters matters as much as the moves inside each letter."
+    },
+    {
+      "id": "s1-w05-build-x03",
+      "kind": "invent",
+      "title": "Design your own shape",
+      "minutes": 25,
+      "body": "What shape or letter have you always wanted a robot to draw on the floor?\n\nDesign your own shape or letter using this week's driving blocks.\n\nIt must use the forward, turn and wait blocks from this week's build.\nIt must have one number you choose by testing, like a turn time or a speed.\nIt must be shown driving on the real floor to someone in your house.\n\nSketch your shape on paper first.\n\nHow to know it works: the shape closes back to where mBot started, or matches your sketch closely."
+    },
+    {
+      "id": "s1-w05-build-x04",
+      "kind": "bonus",
+      "title": "Weigh what mBot can push",
+      "minutes": 25,
+      "ideaId": "trade-speed-for-strength",
+      "body": "Find out how heavy a load mBot's motor can push before it stalls.\n\n1. Predict first: guess the heaviest load, in the number of identical books, mBot can push forward without stalling. Write your number in the Maker's Log.\n2. Line up identical books on a smooth floor in mBot's path.\n3. Program mBot to drive forward and let it push into the stack of books.\n4. Add one book at a time and try again, until mBot cannot push the stack any further.\n5. Count and write down the number of books in the stack it could still push.\n\nCompare: was your prediction close to the number mBot actually pushed, higher, or lower?\n\nTeach it: tell a grown-up in two sentences why a motor that spins fast can still run out of push against a heavy enough load."
+    },
+    {
+      "id": "s1-w05-build-x05",
+      "kind": "bonus",
+      "title": "Drive by compass headings",
+      "minutes": 15,
+      "ideaId": "a-square-turn-is-90-degrees",
+      "body": "Find out how mBot's own turns match the four main compass directions.\n\n1. Set mBot facing one direction and mark it with a piece of tape as north.\n2. Turn mBot 90 degrees to the right and call this direction east.\n3. Turn another 90 degrees right for south, then once more for west.\n4. Turn 90 degrees right one final time and check that mBot faces north again.\n5. Count how many 90 degree turns you made in total to complete the full circle.\n\nWhat to notice: a compass has four main directions, each exactly 90 degrees apart. A full turn all the way around is 360 degrees, the same number mBot's own turn block uses."
+    }
+  ]
+}

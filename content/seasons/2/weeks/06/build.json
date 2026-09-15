@@ -1,0 +1,518 @@
+{
+  "id": "s2-w06-build",
+  "season": 2,
+  "week": 6,
+  "track": "build",
+  "title": "Teach the machine with data",
+  "summary": "Collect the robot's own light and distance readings, type them into files, write the Python that finds the border between two worlds, and feed that one number back into the robot.",
+  "minutes": 60,
+  "materials": [
+    "mBot v1.2 with mBlock installed on the laptop",
+    "USB cable",
+    "4 AA batteries, fresh, for the mBot",
+    "desk lamp you can switch on and off",
+    "ruler or tape measure",
+    "graph paper and pencil",
+    "laptop Python, the same setup as Season 1's Python weeks"
+  ],
+  "skills": ["build.data", "build.python", "build.sensors"],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "typing",
+      "id": "s2-w06-build-01",
+      "minutes": 5,
+      "body": "Pick your typing site and give it five minutes. Warm up on the home row, then live where this week's Python lives: the round brackets, the square brackets, the quote marks and the dot. Type these words ten times each without looking down: open, float, append, return, sum, len. Then type the four filenames your data will live in, quotes and all: \"lamp_on.txt\", \"lamp_off.txt\", \"hand_near.txt\", \"hand_far.txt\". By the end of today your fingers will have typed a whole dataset."
+    },
+    {
+      "kind": "instruction",
+      "id": "s2-w06-build-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A number line with a loose crowd of dots low down labelled lamp off, a loose crowd of dots higher up labelled lamp on, and a dashed line in the empty gap between them labelled threshold, the one number that tells the two worlds apart.",
+        "spec": {
+          "w": 380,
+          "h": 200,
+          "items": [
+            {
+              "t": "text",
+              "x": 190,
+              "y": 16,
+              "s": "Threshold sits in the gap between two crowds",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 120,
+              "x2": 350,
+              "y2": 120
+            },
+            {
+              "t": "dot",
+              "cx": 60,
+              "cy": 110
+            },
+            {
+              "t": "dot",
+              "cx": 70,
+              "cy": 105
+            },
+            {
+              "t": "dot",
+              "cx": 80,
+              "cy": 112
+            },
+            {
+              "t": "text",
+              "x": 70,
+              "y": 90,
+              "s": "lamp off (low)",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "dot",
+              "cx": 280,
+              "cy": 60
+            },
+            {
+              "t": "dot",
+              "cx": 290,
+              "cy": 55
+            },
+            {
+              "t": "dot",
+              "cx": 300,
+              "cy": 62
+            },
+            {
+              "t": "text",
+              "x": 290,
+              "y": 40,
+              "s": "lamp on (high)",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 185,
+              "y1": 45,
+              "x2": 185,
+              "y2": 120,
+              "dashed": true,
+              "color": "accent",
+              "label": "threshold"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 160,
+              "s": "One number, in the empty gap, tells the two worlds apart",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Ask, imagine, plan",
+      "body": "The design loop, same as every week: ask, imagine, plan, build, test, fix.\n\nAsk: last sprint you told circuits exactly what to do. This week the question flips: can the robot learn a number from the world instead of taking your guess? Where exactly does near begin? Where does bright end? You will not decide. The data will.\n\nImagine: every reading is one dot on a number line. Lamp on makes a crowd of dots up high, lamp off makes a crowd down low, with empty space between them. Somewhere in that empty space lives one number, the threshold, the border between two worlds. The robot only needs that one number to tell the worlds apart.\n\nPlan: four experiments, ten readings each: lamp on, lamp off, hand near, hand far. You read the sensors live in mBlock, write every number down by hand, type them into four small files, and a Python program you write computes the border. Then the number rides back into the robot, and you watch it obey a rule nobody guessed. One job, done fully: collect, compute, feed it back."
+    },
+    {
+      "kind": "science",
+      "id": "s2-w06-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A row of seven dots scattered just above and below a dashed line representing the true value, showing ten still readings of 88, 91, 85, 90 and others wobbling around a rough centre. A note explains one reading is a rumor, ten readings are a report, which is why the threshold sits in the middle of the gap rather than beside a crowd.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 16,
+              "s": "Ten readings, held still, still wobble",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 40,
+              "y1": 118,
+              "x2": 320,
+              "y2": 118,
+              "dashed": true,
+              "color": "muted",
+              "label": "true value (rough centre)"
+            },
+            {
+              "t": "dot",
+              "cx": 60,
+              "cy": 112
+            },
+            {
+              "t": "dot",
+              "cx": 90,
+              "cy": 124
+            },
+            {
+              "t": "dot",
+              "cx": 120,
+              "cy": 114
+            },
+            {
+              "t": "dot",
+              "cx": 150,
+              "cy": 108
+            },
+            {
+              "t": "dot",
+              "cx": 180,
+              "cy": 122
+            },
+            {
+              "t": "dot",
+              "cx": 210,
+              "cy": 116
+            },
+            {
+              "t": "dot",
+              "cx": 240,
+              "cy": 120
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 160,
+              "s": "One reading is a rumor; ten readings are a report",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 185,
+              "s": "That is why the threshold sits mid-gap, not beside a crowd",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Why readings wobble",
+      "body": "Hold the robot perfectly still under a steady lamp and log the light sensor anyway: 88, 91, 85, 90. Nothing moved, so why do the numbers dance?\n\nBecause every measurement carries noise. The electricity feeding the lamp flickers faster than your eye can see. Tiny currents inside the sensor jostle like static. The ultrasonic sensor times an echo, and an echo that clips your knuckle instead of your palm comes home a little early or a little late. None of that is a fault; it is what measuring the real world is like.\n\nNoise is why one reading is a rumor and ten readings are a report. The wobble mostly cancels: a few high, a few low, and the crowd of ten tells you where the truth lives. Noise is also why the threshold must sit in the middle of the empty gap: put the border right beside one crowd and an ordinary wobble crosses it by accident. Engineers call that a false alarm, and your data is about to prevent it."
+    },
+    {
+      "kind": "science",
+      "id": "s2-w06-build-11",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A ray of sunlight, labelled red and blue, arrows into a leaf box labelled chlorophyll, with a second arrow labelled green reflected leaving toward the viewer. Text below gives the reaction water plus carbon dioxide plus light makes sugar plus oxygen, and notes only about one to two percent of the sunlight ends up stored as sugar.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 16,
+              "s": "A leaf reads light too, and builds sugar",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 60,
+              "y1": 40,
+              "x2": 150,
+              "y2": 90,
+              "arrow": true,
+              "color": "accent",
+              "label": "sunlight (red+blue)"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 90,
+              "w": 100,
+              "h": 40,
+              "label": "Leaf",
+              "sub": "chlorophyll",
+              "fill": "green"
+            },
+            {
+              "t": "line",
+              "x1": 250,
+              "y1": 100,
+              "x2": 320,
+              "y2": 70,
+              "arrow": true,
+              "color": "green",
+              "label": "green reflected"
+            },
+            {
+              "t": "text",
+              "x": 200,
+              "y": 160,
+              "s": "water + CO2 + light -> sugar + oxygen",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 200,
+              "y": 190,
+              "s": "Only about 1-2% of sunlight ends up stored as sugar",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 800,
+              "caption": "sunlight strikes the leaf",
+              "set": {
+                "1": {
+                  "color": "accent"
+                },
+                "2": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "chlorophyll absorbs red and blue",
+              "set": {
+                "2": {
+                  "fill": "green"
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "green light reflects back to you",
+              "set": {
+                "3": {
+                  "color": "green"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "What a plant does with the light your sensor reads",
+      "body": "Your light sensor turns brightness into a number. A leaf reads that same light and does something far more useful with it: it builds sugar.\n\nChlorophyll, the pigment that makes a leaf green, absorbs red and blue light almost completely. It reflects most of the green back at your eye, the reason leaves look green rather than black. The absorbed light powers photosynthesis, splitting water and combining the pieces with carbon dioxide into sugar, releasing oxygen as the leftover.\n\nThe plant is not efficient by machine standards. Only about one to two percent of the sunlight landing on a leaf ends up stored as sugar. The rest turns to heat or reflects away.\n\nPlant two cups of bean seeds, one on a bright sill and one in a dim closet. Let your kit's own light sensor tell you which cup is getting real photosynthesis fuel before either leaf shows it.",
+      "ideaId": "leaves-catch-photons"
+    },
+    {
+      "kind": "task",
+      "id": "s2-w06-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The mBot on the desk with a desk lamp about 30 centimetres away aimed at its onboard light sensor, and a hand held about 10 centimetres from the ultrasonic sensor on port 3. A note lists the four columns of ten readings each: lamp on, lamp off, hand near, hand far, with the light and distance variable readouts breathing on the mBlock stage.",
+        "spec": {
+          "w": 420,
+          "h": 220,
+          "wide": true,
+          "items": [
+            {
+              "t": "box",
+              "x": 160,
+              "y": 100,
+              "w": 100,
+              "h": 50,
+              "label": "mBot",
+              "sub": "light sensor on board"
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 60,
+              "w": 70,
+              "h": 30,
+              "label": "Desk lamp"
+            },
+            {
+              "t": "dim",
+              "x1": 90,
+              "y1": 80,
+              "x2": 160,
+              "y2": 100,
+              "label": "~30 cm"
+            },
+            {
+              "t": "box",
+              "x": 330,
+              "y": 100,
+              "w": 50,
+              "h": 30,
+              "label": "Hand"
+            },
+            {
+              "t": "dim",
+              "x1": 290,
+              "y1": 115,
+              "x2": 330,
+              "y2": 115,
+              "label": "~10 cm"
+            },
+            {
+              "t": "text",
+              "x": 330,
+              "y": 70,
+              "s": "ultrasonic sensor, port 3",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 210,
+              "y": 170,
+              "s": "Variables light, distance: checkboxes ticked, readouts breathe on stage",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 210,
+              "y": 195,
+              "s": "4 columns x 10 readings: lamp on, lamp off, hand near, hand far",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Interview the sensors, ten readings at a time",
+      "body": "Connect mBot the way Season 1 taught you: open mBlock, Devices, mBot, the plain one, not mBot2, not Ranger, not Neo, then plug in the USB cable and click Connect. Stay in Live mode today: the robot sits still on the desk while its senses stream to the laptop.\n\nFrom Variables, make two variables, light and distance. Build this small script: when the green flag is clicked, forever: set light to the block light sensor (light sensor on board) value, set distance to the block ultrasonic sensor (port3) distance, wait 0.5 seconds. The ultrasonic cable plugs into port 3 at the factory; if yours sits in another socket, match the dropdown to the real port. Tick the checkboxes beside both variables so their readouts sit on the stage, the same trick that tuned turnTime last season. Click the green flag and both numbers begin to breathe.\n\nNow run four experiments, ten readings each, written by hand on graph paper in four labeled columns.\n\nLight, lamp on: desk lamp about 30 cm away, pointed at the top of the robot's board, where the light sensor lives. Every few seconds, copy the light number down, ten times.\n\nLight, lamp off: lamp off, ordinary room light, ten more readings in the second column. Change nothing else about the room: fair test, one change only.\n\nDistance, hand near: hold your palm flat about 10 cm in front of the ultrasonic sensor's two round eyes. Ten distance readings.\n\nDistance, hand far: take your hand away and aim the robot at open floor with nothing in arm's reach. Ten readings.\n\nRead each pair of columns like a scientist before moving on. The numbers wobble, that is the noise from the science moment, but the lamp-on crowd should sit clearly apart from the lamp-off crowd, and near clearly apart from far. If two crowds touch, the worlds are too alike: move the lamp closer or the hand nearer, and log those ten again.",
+      "checklist": [
+        "Both variable readouts breathe on the stage while the script runs",
+        "Four columns of ten readings each, handwritten and labeled",
+        "In each pair of columns the two crowds sit clearly apart, with empty space between",
+        "I changed only one thing between the paired experiments"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s2-w06-build-05",
+      "title": "Type the log and let Python find the border",
+      "body": "Make a new folder called robot-data. In a plain text editor, type each column into its own file, one number per line, nothing else: lamp_on.txt, lamp_off.txt, hand_near.txt, hand_far.txt. No blank line at the bottom; a blank line is not a number, and Python will say so rudely.\n\nNow write threshold.py yourself. Write a function called mean that returns a list's total divided by its count, week 1's fair share again, then call it twice, once for light and once for distance, to get each midpoint. Read the four files into four lists, then print the two thresholds.\n\nGive it a real, focused 15 minutes; if it still is not running by then, move to the version below rather than losing the whole hour to one line of code:\n\n```python\ndef read_numbers(filename):\n    numbers = []\n    for line in open(filename):\n        numbers.append(float(line))\n    return numbers\n\ndef mean(numbers):\n    return sum(numbers) / len(numbers)\n\nlamp_on = read_numbers(\"lamp_on.txt\")\nlamp_off = read_numbers(\"lamp_off.txt\")\nhand_near = read_numbers(\"hand_near.txt\")\nhand_far = read_numbers(\"hand_far.txt\")\n\nlight_border = (mean(lamp_on) + mean(lamp_off)) / 2\ndistance_border = (mean(hand_near) + mean(hand_far)) / 2\n\nprint(\"light threshold:\", light_border)\nprint(\"distance threshold:\", distance_border)\n```\n\nRead it like a story. read_numbers opens a file and walks it line by line; float turns the text \"88\" into the number 88; append tucks each number into the list; return hands the list back. Each border is the midpoint of two means.\n\nRun it and two numbers appear, yours and nobody else's, grown from readings you collected and typed yourself. Write them big on the graph paper page. Then make the borders defend themselves: each one should be bigger than every reading in its low column and smaller than every reading in its high column. If a border sits inside a crowd instead of the empty gap, something in that column needs a second look.",
+      "checklist": [
+        "Four files, one number per line, no blank last line",
+        "I wrote my own mean function and used it twice to find each midpoint before I checked the given code",
+        "threshold.py runs and prints two borders",
+        "Each border lands in the empty gap between its two crowds, checked against the columns"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s2-w06-build-10",
+      "title": "Light sensor: lamp on versus lamp off",
+      "ideaId": "threshold",
+      "body": "The lamp's distance and the room's other lights stay the same for every trial. Only whether the lamp is on or off changes, and the two readings in each row come from the same moment, one right after the other.\n\nUse ten trials, matching the ten readings already collected by hand. For each trial, write the trial number, the light reading with the lamp on, and the light reading with the lamp off.",
+      "columns": [
+        "Trial",
+        "Light, lamp on",
+        "Light, lamp off"
+      ],
+      "minRows": 10,
+      "question": "About how many units higher was the average lamp-on reading than the average lamp-off reading?"
+    },
+    {
+      "kind": "task",
+      "id": "s2-w06-build-06",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The mBot with its ultrasonic sensor on port 3, a dashed flip line marking the distance equal to the computed threshold, LEDs shown green beyond that line and red inside it, with a ruler measuring the flip distance against the threshold. A rule reads: if distance is less than threshold, LEDs show red, else green.",
+        "spec": {
+          "w": 380,
+          "h": 240,
+          "items": [
+            {
+              "t": "text",
+              "x": 190,
+              "y": 20,
+              "s": "if distance < threshold: red, else: green",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 60,
+              "w": 80,
+              "h": 40,
+              "label": "mBot",
+              "sub": "ultrasonic port 3"
+            },
+            {
+              "t": "line",
+              "x1": 70,
+              "y1": 60,
+              "x2": 70,
+              "y2": 160,
+              "dashed": true,
+              "color": "accent",
+              "label": "flip line = threshold"
+            },
+            {
+              "t": "text",
+              "x": 280,
+              "y": 75,
+              "s": "LED green (far)",
+              "size": 10,
+              "anchor": "middle",
+              "color": "green"
+            },
+            {
+              "t": "text",
+              "x": 280,
+              "y": 130,
+              "s": "LED red (near, below threshold)",
+              "size": 10,
+              "anchor": "middle",
+              "color": "rust"
+            },
+            {
+              "t": "dim",
+              "x1": 70,
+              "y1": 185,
+              "x2": 150,
+              "y2": 185,
+              "label": "ruler: flip distance = threshold"
+            }
+          ]
+        }
+      },
+      "title": "Feed the number back to the robot",
+      "body": "The border goes home. In mBlock, switch to Upload mode and build the robot's new reflex: when mBot (mCore) starts up, forever: if ultrasonic sensor (port3) distance is less than your distance threshold, then led (all) shows color red, else led (all) shows color green. Drag the less-than block from Operators, drop the distance reporter into its left side, and type your threshold, the exact number Python printed, into the right side. Upload, unplug the cable, and switch the robot on.\n\nNow find the invisible line. Start with your palm far away and walk it slowly toward the sensor until the lights flip from green to red. Freeze there. Lay the ruler from the sensor's eyes to your palm and read the distance. It should sit close to your threshold, off by a little noise, never by a lot. Mark the flip line on the desk with a scrap of paper and show someone.\n\nSay what just happened out loud, because it is the whole week in one sentence: nobody guessed that number. You collected the examples, the examples made the means, the means made the border, and the robot now honors it. Change the world and the number would follow: log ten readings of a fluffy slipper instead of a flat palm and the echoes come home softer, the crowd moves, and the border moves with it. The smart part was never in the if block. It was in the data.\n\nIf you want a second reflex, swap the sensing: light sensor (light sensor on board) value less than your light threshold flips the LEDs when a hand shades the robot's board. Re-upload and watch the other border work.",
+      "checklist": [
+        "The LEDs flip from green to red as my palm crosses one distance",
+        "I measured the flip distance and compared it with Python's threshold",
+        "I can say where the number in the if block came from, step by step, without the word guess",
+        "The robot ran on its own battery, cable unplugged"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s2-w06-build-07",
+      "title": "Bug diary",
+      "body": "One line per surprise, as always. This week's classics: the program and the four files sitting in different folders, so Python cannot find lamp_on.txt; a blank last line in a file, so float complains about an empty string; a file secretly saved as lamp_on.txt.txt by a helpful editor; a threshold typed into mBlock with a digit missing, so the flip line sits somewhere strange; and sunlight from a window drifting between your two light experiments, which moves a whole crowd after you measured it. If the flip distance disagrees with the threshold by a lot, write down which suspect it turned out to be."
+    },
+    {
+      "kind": "artifact",
+      "id": "s2-w06-build-08",
+      "title": "Show it",
+      "prompt": "Photo of the four handwritten columns next to the two printed thresholds, a photo or short clip of the LEDs flipping right at the flip line, and threshold.py as text",
+      "accepts": ["photo", "code"]
+    },
+    {
+      "kind": "log",
+      "id": "s2-w06-build-09",
+      "variant": "maker"
+    }
+  ]
+}

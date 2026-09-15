@@ -1,0 +1,3957 @@
+{
+  "id": "ge-coordinate-proofs",
+  "idea": {
+    "body": "A proof about a shape works no matter where you draw it. On the coordinate plane, pick whatever placement makes the arithmetic easiest. Put a vertex at the origin and a side along an axis. Use even numbers where you can, so midpoints come out whole. Three tools do the work: the midpoint formula, the distance formula left squared, and slope. Equal slopes mean parallel sides. Slopes that multiply to -1 mean perpendicular sides. For example, place a rectangle at (0, 0), (6, 0), (6, 4) and (0, 4) to show its diagonals are equal. One diagonal runs from (0, 0) to (6, 4), the other from (6, 0) to (0, 4). Both have squared length 36 + 16 = 52, so the diagonals match, for any rectangle of this shape.",
+    "figure": {
+      "kind": "plane",
+      "alt": "A rectangle with vertices (0, 0), (6, 0), (6, 4) and (0, 4), with both diagonals drawn.",
+      "spec": {
+        "range": 8,
+        "points": [
+          {
+            "x": 0,
+            "y": 0,
+            "label": "(0, 0)"
+          },
+          {
+            "x": 6,
+            "y": 0,
+            "label": "(6, 0)"
+          },
+          {
+            "x": 6,
+            "y": 4,
+            "label": "(6, 4)"
+          },
+          {
+            "x": 0,
+            "y": 4,
+            "label": "(0, 4)"
+          }
+        ],
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            6,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              4
+            ]
+          ],
+          [
+            [
+              6,
+              0
+            ],
+            [
+              0,
+              4
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A quadrilateral has vertices A(0, 0), B(6, 0), C(8, 4) and D(2, 4). Prove its diagonals bisect each other.",
+    "steps": [
+      "Diagonal AC runs from (0, 0) to (8, 4). Its midpoint is ((0 + 8)/2, (0 + 4)/2) = (4, 2).",
+      "Diagonal BD runs from (6, 0) to (2, 4). Its midpoint is ((6 + 2)/2, (0 + 4)/2) = (4, 2).",
+      "Both diagonals have the same midpoint, (4, 2).",
+      "Two segments that share a midpoint bisect each other, so the diagonals of ABCD bisect each other."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "Quadrilateral ABCD with A(0,0), B(6,0), C(8,4), D(2,4) and both diagonals drawn, crossing at (4, 2).",
+      "spec": {
+        "range": 9,
+        "points": [
+          {
+            "x": 0,
+            "y": 0,
+            "label": "A"
+          },
+          {
+            "x": 6,
+            "y": 0,
+            "label": "B"
+          },
+          {
+            "x": 8,
+            "y": 4,
+            "label": "C"
+          },
+          {
+            "x": 2,
+            "y": 4,
+            "label": "D"
+          },
+          {
+            "x": 4,
+            "y": 2,
+            "label": "(4, 2)"
+          }
+        ],
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              8,
+              4
+            ]
+          ],
+          [
+            [
+              6,
+              0
+            ],
+            [
+              2,
+              4
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "ge-coordinate-proofs-w1",
+      "name": "Place it at the origin",
+      "when": "Use this at the start of a coordinate proof, before picking any formula.",
+      "steps": [
+        "A rectangle needs a vertex at the origin and a side along an axis.",
+        "Place it at (0, 0), (6, 0), (6, 4) and (0, 4), using even numbers.",
+        "Even coordinates keep every later midpoint and slope a whole number.",
+        "Now any formula, like distance or slope, works with simple arithmetic."
+      ],
+      "example": "Place a rectangle with sides 6 and 4 units on the coordinate plane.",
+      "answer": "(0, 0), (6, 0), (6, 4), (0, 4)",
+      "trap": "Placing a vertex off the axes, which makes every later coordinate a fraction.",
+      "figure": {
+        "kind": "plane",
+        "alt": "A rectangle placed with one vertex at the origin: (0, 0), (6, 0), (6, 4), (0, 4).",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 6,
+              "y": 0,
+              "label": "(6, 0)"
+            },
+            {
+              "x": 6,
+              "y": 4,
+              "label": "(6, 4)"
+            },
+            {
+              "x": 0,
+              "y": 4,
+              "label": "(0, 4)"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-coordinate-proofs-w2",
+      "name": "The squared distance",
+      "when": "Use this to compare two lengths without dealing with square roots.",
+      "steps": [
+        "Triangle has vertices A(0, 0), B(6, 0), C(3, 4).",
+        "Squared length of AC is (3 - 0)^2 + (4 - 0)^2, which is 9 + 16 = 25.",
+        "Squared length of BC is (6 - 3)^2 + (0 - 4)^2, also 9 + 16 = 25.",
+        "Equal squared lengths, 25 and 25, prove AC equals BC without a square root."
+      ],
+      "example": "Compare AC and BC for the triangle A(0, 0), B(6, 0), C(3, 4).",
+      "answer": "25 = 25, so AC equals BC",
+      "trap": "Subtracting the coordinates but forgetting to square them before adding.",
+      "figure": {
+        "kind": "plane",
+        "alt": "Triangle A(0, 0), B(6, 0), C(3, 4), with sides AC and BC drawn.",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 6,
+              "y": 0,
+              "label": "B"
+            },
+            {
+              "x": 3,
+              "y": 4,
+              "label": "C"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              3,
+              4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-coordinate-proofs-w3",
+      "name": "The midpoint as the average",
+      "when": "Use this to prove a segment bisects another, or to find its center.",
+      "steps": [
+        "Diagonal AC runs from A(0, 0) to C(8, 4).",
+        "Average the x-coordinates: (0 + 8)/2 = 4.",
+        "Average the y-coordinates: (0 + 4)/2 = 2.",
+        "The midpoint of AC is (4, 2)."
+      ],
+      "example": "Find the midpoint of the segment from (0, 0) to (8, 4).",
+      "answer": "(4, 2)",
+      "trap": "Averaging an x-coordinate together with a y-coordinate instead of keeping them separate.",
+      "figure": {
+        "kind": "plane",
+        "alt": "A segment from A(0, 0) to C(8, 4), with its midpoint marked.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 8,
+              "y": 4,
+              "label": "C"
+            },
+            {
+              "x": 4,
+              "y": 2,
+              "label": "midpoint"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                8,
+                4
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-coordinate-proofs-w4",
+      "name": "Slopes for parallel and perpendicular",
+      "when": "Use this to prove two sides are parallel, or meet at a right angle.",
+      "steps": [
+        "Side one runs from (0, 0) to (4, 2), so its slope is 2/4, which is 1/2.",
+        "Side two runs from (4, 2) to (2, 6), so its slope is 4/(-2), which is -2.",
+        "Multiply the two slopes: (1/2) times (-2) is -1.",
+        "A slope product of -1 means the two sides are perpendicular."
+      ],
+      "example": "Are the segments from (0, 0) to (4, 2) and (4, 2) to (2, 6) perpendicular?",
+      "answer": "yes",
+      "trap": "Checking whether the slopes are equal, which tests parallel, not perpendicular.",
+      "figure": {
+        "kind": "plane",
+        "alt": "Two segments meeting at (4, 2): one from (0, 0), one to (2, 6).",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 4,
+              "y": 2,
+              "label": "(4, 2)"
+            },
+            {
+              "x": 2,
+              "y": 6,
+              "label": "(2, 6)"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                2
+              ]
+            ],
+            [
+              [
+                4,
+                2
+              ],
+              [
+                2,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-ge-coordinate-proofs-p01",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "A segment runs from (1, 2) to (5, 8). What is the x-coordinate of its midpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The midpoint's x-coordinate is the average of the two x-coordinates.",
+        "That is (1 + 5)/2 = 3."
+      ],
+      "useAgain": "when you need the point exactly between two given points.",
+      "hints": [
+        "The midpoint formula averages each coordinate separately.",
+        "Add the two x-coordinates and divide by 2."
+      ],
+      "socraticHint": "What do you get when you average the two x-coordinates?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A segment runs from (3, -2) to (-1, 6). What is the x-coordinate of its midpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points at (1, 2) and (5, 8), with the midpoint between them.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 1,
+              "y": 2
+            },
+            {
+              "x": 5,
+              "y": 8
+            },
+            {
+              "x": 3,
+              "y": 5,
+              "label": "midpoint"
+            }
+          ],
+          "segments": [
+            [
+              [
+                1,
+                2
+              ],
+              [
+                5,
+                8
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p02",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "A segment runs from (-2, 3) to (4, -1). What is the x-coordinate of its midpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The midpoint's x-coordinate is the average of the two x-coordinates.",
+        "That is (-2 + 4)/2 = 1."
+      ],
+      "useAgain": "when you need the point exactly between two given points.",
+      "hints": [
+        "The midpoint formula averages each coordinate separately.",
+        "Add the two x-coordinates and divide by 2."
+      ],
+      "socraticHint": "What do you get when you average the two x-coordinates?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A segment runs from (-5, 1) to (3, 7). What is the x-coordinate of its midpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points at (-2, 3) and (4, -1), with the midpoint between them.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -2,
+              "y": 3
+            },
+            {
+              "x": 4,
+              "y": -1
+            },
+            {
+              "x": 1,
+              "y": 1,
+              "label": "midpoint"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -2,
+                3
+              ],
+              [
+                4,
+                -1
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p03",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "A segment runs from (0, 6) to (8, 2). What is the x-coordinate of its midpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The midpoint's x-coordinate is the average of the two x-coordinates.",
+        "That is (0 + 8)/2 = 4."
+      ],
+      "useAgain": "when you need the point exactly between two given points.",
+      "hints": [
+        "The midpoint formula averages each coordinate separately.",
+        "Add the two x-coordinates and divide by 2."
+      ],
+      "socraticHint": "What do you get when you average the two x-coordinates?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A segment runs from (2, -4) to (6, 2). What is the x-coordinate of its midpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points at (0, 6) and (8, 2), with the midpoint between them.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 6
+            },
+            {
+              "x": 8,
+              "y": 2
+            },
+            {
+              "x": 4,
+              "y": 4,
+              "label": "midpoint"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                6
+              ],
+              [
+                8,
+                2
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p04",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "A segment runs from (-4, -3) to (2, 5). What is the x-coordinate of its midpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "The midpoint's x-coordinate is the average of the two x-coordinates.",
+        "That is (-4 + 2)/2 = -1."
+      ],
+      "useAgain": "when you need the point exactly between two given points.",
+      "hints": [
+        "The midpoint formula averages each coordinate separately.",
+        "Add the two x-coordinates and divide by 2."
+      ],
+      "socraticHint": "What do you get when you average the two x-coordinates?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A segment runs from (-3, 5) to (9, -1). What is the x-coordinate of its midpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points at (-4, -3) and (2, 5), with the midpoint between them.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -4,
+              "y": -3
+            },
+            {
+              "x": 2,
+              "y": 5
+            },
+            {
+              "x": -1,
+              "y": 1,
+              "label": "midpoint"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -4,
+                -3
+              ],
+              [
+                2,
+                5
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p05",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "A segment runs from (2, 1) to (8, 9). What is the y-coordinate of its midpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The midpoint's y-coordinate is the average of the two y-coordinates.",
+        "That is (1 + 9)/2 = 5."
+      ],
+      "useAgain": "when you need the point exactly between two given points.",
+      "hints": [
+        "The midpoint formula averages each coordinate separately.",
+        "Add the two y-coordinates and divide by 2."
+      ],
+      "socraticHint": "What do you get when you average the two y-coordinates?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A segment runs from (0, 5) to (6, -3). What is the y-coordinate of its midpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points at (2, 1) and (8, 9), with the midpoint between them.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 2,
+              "y": 1
+            },
+            {
+              "x": 8,
+              "y": 9
+            },
+            {
+              "x": 5,
+              "y": 5,
+              "label": "midpoint"
+            }
+          ],
+          "segments": [
+            [
+              [
+                2,
+                1
+              ],
+              [
+                8,
+                9
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p06",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "A segment runs from (-1, -4) to (7, 2). What is the y-coordinate of its midpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "The midpoint's y-coordinate is the average of the two y-coordinates.",
+        "That is (-4 + 2)/2 = -1."
+      ],
+      "useAgain": "when you need the point exactly between two given points.",
+      "hints": [
+        "The midpoint formula averages each coordinate separately.",
+        "Add the two y-coordinates and divide by 2."
+      ],
+      "socraticHint": "What do you get when you average the two y-coordinates?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A segment runs from (4, -1) to (-2, 9). What is the y-coordinate of its midpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points at (-1, -4) and (7, 2), with the midpoint between them.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -1,
+              "y": -4
+            },
+            {
+              "x": 7,
+              "y": 2
+            },
+            {
+              "x": 3,
+              "y": -1,
+              "label": "midpoint"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -1,
+                -4
+              ],
+              [
+                7,
+                2
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p07",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "A segment runs from (3, 0) to (-5, 6). What is the y-coordinate of its midpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The midpoint's y-coordinate is the average of the two y-coordinates.",
+        "That is (0 + 6)/2 = 3."
+      ],
+      "useAgain": "when you need the point exactly between two given points.",
+      "hints": [
+        "The midpoint formula averages each coordinate separately.",
+        "Add the two y-coordinates and divide by 2."
+      ],
+      "socraticHint": "What do you get when you average the two y-coordinates?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A segment runs from (1, 3) to (7, -5). What is the y-coordinate of its midpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points at (3, 0) and (-5, 6), with the midpoint between them.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 3,
+              "y": 0
+            },
+            {
+              "x": -5,
+              "y": 6
+            },
+            {
+              "x": -1,
+              "y": 3,
+              "label": "midpoint"
+            }
+          ],
+          "segments": [
+            [
+              [
+                3,
+                0
+              ],
+              [
+                -5,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p08",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "A segment runs from (-6, 3) to (2, -7). What is the y-coordinate of its midpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "The midpoint's y-coordinate is the average of the two y-coordinates.",
+        "That is (3 - 7)/2 = -2."
+      ],
+      "useAgain": "when you need the point exactly between two given points.",
+      "hints": [
+        "The midpoint formula averages each coordinate separately.",
+        "Add the two y-coordinates and divide by 2."
+      ],
+      "socraticHint": "What do you get when you average the two y-coordinates?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A segment runs from (-3, -2) to (5, 8). What is the y-coordinate of its midpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points at (-6, 3) and (2, -7), with the midpoint between them.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -6,
+              "y": 3
+            },
+            {
+              "x": 2,
+              "y": -7
+            },
+            {
+              "x": -2,
+              "y": -2,
+              "label": "midpoint"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -6,
+                3
+              ],
+              [
+                2,
+                -7
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p09",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "What is the squared length of the segment from (0, 0) to (5, 4)?",
+      "answer": {
+        "kind": "number",
+        "value": "41"
+      },
+      "explanation": [
+        "The squared distance formula skips the root: (x2 - x1)^2 + (y2 - y1)^2.",
+        "That is (5)^2 + (4)^2 = 25 + 16 = 41."
+      ],
+      "useAgain": "when you need to compare two lengths without an irrational number.",
+      "hints": [
+        "The distance formula squared needs no root: (x2 - x1)^2 + (y2 - y1)^2.",
+        "Find the horizontal and vertical gaps first, then square each."
+      ],
+      "socraticHint": "What are the horizontal and vertical gaps between the two points?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the squared length of the segment from (0, 1) to (6, 9)?",
+        "answer": {
+          "kind": "number",
+          "value": "100"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points at (0, 0) and (5, 4) with the segment between them.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 5,
+              "y": 4
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                4
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p10",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "What is the squared length of the segment from (-2, 1) to (3, -3)?",
+      "answer": {
+        "kind": "number",
+        "value": "41"
+      },
+      "explanation": [
+        "The squared distance formula skips the root: (x2 - x1)^2 + (y2 - y1)^2.",
+        "That is (5)^2 + (-4)^2 = 25 + 16 = 41."
+      ],
+      "useAgain": "when you need to compare two lengths without an irrational number.",
+      "hints": [
+        "The distance formula squared needs no root: (x2 - x1)^2 + (y2 - y1)^2.",
+        "Find the horizontal and vertical gaps first, then square each."
+      ],
+      "socraticHint": "What are the horizontal and vertical gaps between the two points?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the squared length of the segment from (-3, 2) to (5, -4)?",
+        "answer": {
+          "kind": "number",
+          "value": "100"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points at (-2, 1) and (3, -3) with the segment between them.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -2,
+              "y": 1
+            },
+            {
+              "x": 3,
+              "y": -3
+            }
+          ],
+          "segments": [
+            [
+              [
+                -2,
+                1
+              ],
+              [
+                3,
+                -3
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p11",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "What is the squared length of the segment from (1, 6) to (7, -2)?",
+      "answer": {
+        "kind": "number",
+        "value": "100"
+      },
+      "explanation": [
+        "The squared distance formula skips the root: (x2 - x1)^2 + (y2 - y1)^2.",
+        "That is (6)^2 + (-8)^2 = 36 + 64 = 100."
+      ],
+      "useAgain": "when you need to compare two lengths without an irrational number.",
+      "hints": [
+        "The distance formula squared needs no root: (x2 - x1)^2 + (y2 - y1)^2.",
+        "Find the horizontal and vertical gaps first, then square each."
+      ],
+      "socraticHint": "What are the horizontal and vertical gaps between the two points?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the squared length of the segment from (2, -5) to (8, 3)?",
+        "answer": {
+          "kind": "number",
+          "value": "100"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points at (1, 6) and (7, -2) with the segment between them.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 1,
+              "y": 6
+            },
+            {
+              "x": 7,
+              "y": -2
+            }
+          ],
+          "segments": [
+            [
+              [
+                1,
+                6
+              ],
+              [
+                7,
+                -2
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p12",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "What is the squared length of the segment from (-4, -2) to (2, 6)?",
+      "answer": {
+        "kind": "number",
+        "value": "100"
+      },
+      "explanation": [
+        "The squared distance formula skips the root: (x2 - x1)^2 + (y2 - y1)^2.",
+        "That is (6)^2 + (8)^2 = 36 + 64 = 100."
+      ],
+      "useAgain": "when you need to compare two lengths without an irrational number.",
+      "hints": [
+        "The distance formula squared needs no root: (x2 - x1)^2 + (y2 - y1)^2.",
+        "Find the horizontal and vertical gaps first, then square each."
+      ],
+      "socraticHint": "What are the horizontal and vertical gaps between the two points?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the squared length of the segment from (-1, -3) to (5, 5)?",
+        "answer": {
+          "kind": "number",
+          "value": "100"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "Two points at (-4, -2) and (2, 6) with the segment between them.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -4,
+              "y": -2
+            },
+            {
+              "x": 2,
+              "y": 6
+            }
+          ],
+          "segments": [
+            [
+              [
+                -4,
+                -2
+              ],
+              [
+                2,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p13",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "What is the slope of the segment from (1, 1) to (4, 7)?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Slope is the change in y divided by the change in x.",
+        "That is (7 - 1)/(4 - 1) = 2."
+      ],
+      "useAgain": "when you need to know if two segments could be parallel or perpendicular.",
+      "hints": [
+        "Slope is rise over run: the change in y divided by the change in x.",
+        "Subtract the y-coordinates and the x-coordinates, then divide."
+      ],
+      "socraticHint": "What is the change in y divided by the change in x?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the slope of the segment from (2, 2) to (5, 11)?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "A segment from (1, 1) to (4, 7).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 1,
+              "y": 1
+            },
+            {
+              "x": 4,
+              "y": 7
+            }
+          ],
+          "segments": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                4,
+                7
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p14",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "What is the slope of the segment from (-2, 5) to (2, -3)?",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Slope is the change in y divided by the change in x.",
+        "That is (-3 - 5)/(2 + 2) = -2."
+      ],
+      "useAgain": "when you need to know if two segments could be parallel or perpendicular.",
+      "hints": [
+        "Slope is rise over run: the change in y divided by the change in x.",
+        "Subtract the y-coordinates and the x-coordinates, then divide."
+      ],
+      "socraticHint": "What is the change in y divided by the change in x?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the slope of the segment from (-1, 4) to (3, -4)?",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "A segment from (-2, 5) to (2, -3).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": -2,
+              "y": 5
+            },
+            {
+              "x": 2,
+              "y": -3
+            }
+          ],
+          "segments": [
+            [
+              [
+                -2,
+                5
+              ],
+              [
+                2,
+                -3
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p15",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "What is the slope of the segment from (0, -3) to (6, 3)?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Slope is the change in y divided by the change in x.",
+        "That is (3 + 3)/(6 - 0) = 1."
+      ],
+      "useAgain": "when you need to know if two segments could be parallel or perpendicular.",
+      "hints": [
+        "Slope is rise over run: the change in y divided by the change in x.",
+        "Subtract the y-coordinates and the x-coordinates, then divide."
+      ],
+      "socraticHint": "What is the change in y divided by the change in x?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the slope of the segment from (1, -2) to (7, 4)?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "A segment from (0, -3) to (6, 3).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": -3
+            },
+            {
+              "x": 6,
+              "y": 3
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                -3
+              ],
+              [
+                6,
+                3
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p16",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "Segment AB runs from A(0, 0) to B(4, 2). Segment CD runs from C(1, 5) to D(5, 7). What is the relationship between AB and CD?",
+      "options": [
+        "perpendicular",
+        "neither parallel nor perpendicular",
+        "parallel",
+        "cannot be determined from the slopes alone"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The slope of AB is (2 - 0)/(4 - 0) = 1/2.",
+        "The slope of CD is (7 - 5)/(5 - 1) = 1/2.",
+        "Equal slopes mean parallel; slopes that multiply to -1 mean perpendicular."
+      ],
+      "useAgain": "when you need to classify two segments without measuring an angle.",
+      "hints": [
+        "Find each segment's slope: the change in y over the change in x.",
+        "Equal slopes mean parallel; slopes whose product is -1 mean perpendicular."
+      ],
+      "socraticHint": "Are the two slopes equal, do they multiply to -1, or neither?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Segment AB runs from A(0, 0) to B(6, 3). Segment CD runs from C(2, 1) to D(8, 4). What is the relationship between AB and CD?",
+        "options": [
+          "parallel",
+          "perpendicular",
+          "neither parallel nor perpendicular",
+          "cannot be determined from the slopes alone"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Two segments, AB and CD, drawn on the plane.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 4,
+              "y": 2,
+              "label": "B"
+            },
+            {
+              "x": 1,
+              "y": 5,
+              "label": "C"
+            },
+            {
+              "x": 5,
+              "y": 7,
+              "label": "D"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                2
+              ]
+            ],
+            [
+              [
+                1,
+                5
+              ],
+              [
+                5,
+                7
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p17",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "Segment AB runs from A(0, 0) to B(4, 2). Segment CD runs from C(1, 5) to D(3, 1). What is the relationship between AB and CD?",
+      "options": [
+        "parallel",
+        "neither parallel nor perpendicular",
+        "cannot be determined from the slopes alone",
+        "perpendicular"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The slope of AB is (2 - 0)/(4 - 0) = 1/2.",
+        "The slope of CD is (1 - 5)/(3 - 1) = -2.",
+        "Equal slopes mean parallel; slopes that multiply to -1 mean perpendicular."
+      ],
+      "useAgain": "when you need to classify two segments without measuring an angle.",
+      "hints": [
+        "Find each segment's slope: the change in y over the change in x.",
+        "Equal slopes mean parallel; slopes whose product is -1 mean perpendicular."
+      ],
+      "socraticHint": "Are the two slopes equal, do they multiply to -1, or neither?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Segment AB runs from A(0, 0) to B(2, 6). Segment CD runs from C(1, 4) to D(7, 6). What is the relationship between AB and CD?",
+        "options": [
+          "parallel",
+          "neither parallel nor perpendicular",
+          "perpendicular",
+          "cannot be determined from the slopes alone"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Two segments, AB and CD, drawn on the plane.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 4,
+              "y": 2,
+              "label": "B"
+            },
+            {
+              "x": 1,
+              "y": 5,
+              "label": "C"
+            },
+            {
+              "x": 3,
+              "y": 1,
+              "label": "D"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                2
+              ]
+            ],
+            [
+              [
+                1,
+                5
+              ],
+              [
+                3,
+                1
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p18",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "Segment AB runs from A(0, 0) to B(4, 2). Segment CD runs from C(1, 5) to D(4, 8). What is the relationship between AB and CD?",
+      "options": [
+        "neither parallel nor perpendicular",
+        "parallel",
+        "perpendicular",
+        "cannot be determined from the slopes alone"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The slope of AB is (2 - 0)/(4 - 0) = 1/2.",
+        "The slope of CD is (8 - 5)/(4 - 1) = 1.",
+        "The slopes are neither equal nor multiply to -1, so the segments are neither parallel nor perpendicular."
+      ],
+      "useAgain": "when you need to classify two segments without measuring an angle.",
+      "hints": [
+        "Find each segment's slope: the change in y over the change in x.",
+        "Equal slopes mean parallel; slopes whose product is -1 mean perpendicular."
+      ],
+      "socraticHint": "Are the two slopes equal, do they multiply to -1, or neither?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Segment AB runs from A(0, 0) to B(5, 1). Segment CD runs from C(0, 5) to D(5, 4). What is the relationship between AB and CD?",
+        "options": [
+          "parallel",
+          "perpendicular",
+          "cannot be determined from the slopes alone",
+          "neither parallel nor perpendicular"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Two segments, AB and CD, drawn on the plane.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 4,
+              "y": 2,
+              "label": "B"
+            },
+            {
+              "x": 1,
+              "y": 5,
+              "label": "C"
+            },
+            {
+              "x": 4,
+              "y": 8,
+              "label": "D"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                2
+              ]
+            ],
+            [
+              [
+                1,
+                5
+              ],
+              [
+                4,
+                8
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p19",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "Segment AB runs from A(0, 0) to B(3, 6). Segment CD runs from C(2, 0) to D(8, -3). What is the relationship between AB and CD?",
+      "options": [
+        "parallel",
+        "neither parallel nor perpendicular",
+        "perpendicular",
+        "cannot be determined from the slopes alone"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The slope of AB is (6 - 0)/(3 - 0) = 2.",
+        "The slope of CD is (-3 - 0)/(8 - 2) = -1/2.",
+        "Equal slopes mean parallel; slopes that multiply to -1 mean perpendicular."
+      ],
+      "useAgain": "when you need to classify two segments without measuring an angle.",
+      "hints": [
+        "Find each segment's slope: the change in y over the change in x.",
+        "Equal slopes mean parallel; slopes whose product is -1 mean perpendicular."
+      ],
+      "socraticHint": "Are the two slopes equal, do they multiply to -1, or neither?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Segment AB runs from A(0, 0) to B(2, 4). Segment CD runs from C(3, 0) to D(7, -8). What is the relationship between AB and CD?",
+        "options": [
+          "parallel",
+          "neither parallel nor perpendicular",
+          "perpendicular",
+          "cannot be determined from the slopes alone"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Two segments, AB and CD, drawn on the plane.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 3,
+              "y": 6,
+              "label": "B"
+            },
+            {
+              "x": 2,
+              "y": 0,
+              "label": "C"
+            },
+            {
+              "x": 8,
+              "y": -3,
+              "label": "D"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                6
+              ]
+            ],
+            [
+              [
+                2,
+                0
+              ],
+              [
+                8,
+                -3
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p20",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "ABCD is a parallelogram with A(1, 1), B(6, 1) and C(8, 5). What is the x-coordinate of D?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "In a parallelogram, the diagonals AC and BD share a midpoint.",
+        "Setting the midpoint of AC equal to the midpoint of BD gives D = A - B + C, coordinate by coordinate.",
+        "The x-coordinate of D is 1 - 6 + 8 = 3."
+      ],
+      "useAgain": "when a parallelogram's fourth vertex is missing and the other three are known.",
+      "hints": [
+        "The midpoint of diagonal AC must equal the midpoint of diagonal BD.",
+        "Set the midpoints equal and solve for the missing coordinate of D."
+      ],
+      "socraticHint": "What must the midpoint of AC equal for ABCD to be a parallelogram?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "ABCD is a parallelogram with A(2, 2), B(7, 2) and C(9, 6). What is the x-coordinate of D?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A, B and C, the first three vertices of a parallelogram.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 1,
+              "y": 1,
+              "label": "A"
+            },
+            {
+              "x": 6,
+              "y": 1,
+              "label": "B"
+            },
+            {
+              "x": 8,
+              "y": 5,
+              "label": "C"
+            }
+          ],
+          "segments": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                8,
+                5
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p21",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "ABCD is a parallelogram with A(0, 2), B(5, 0) and C(9, 6). What is the y-coordinate of D?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "In a parallelogram, the diagonals AC and BD share a midpoint.",
+        "Setting the midpoint of AC equal to the midpoint of BD gives D = A - B + C, coordinate by coordinate.",
+        "The y-coordinate of D is 2 - 0 + 6 = 8."
+      ],
+      "useAgain": "when a parallelogram's fourth vertex is missing and the other three are known.",
+      "hints": [
+        "The midpoint of diagonal AC must equal the midpoint of diagonal BD.",
+        "Set the midpoints equal and solve for the missing coordinate of D."
+      ],
+      "socraticHint": "What must the midpoint of AC equal for ABCD to be a parallelogram?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "ABCD is a parallelogram with A(1, 3), B(6, 1) and C(10, 7). What is the y-coordinate of D?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A, B and C, the first three vertices of a parallelogram.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 2,
+              "label": "A"
+            },
+            {
+              "x": 5,
+              "y": 0,
+              "label": "B"
+            },
+            {
+              "x": 9,
+              "y": 6,
+              "label": "C"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                2
+              ],
+              [
+                9,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p22",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "ABCD is a parallelogram with A(-2, 1), B(3, -1) and C(5, 4). What is the x-coordinate of D?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "In a parallelogram, the diagonals AC and BD share a midpoint.",
+        "Setting the midpoint of AC equal to the midpoint of BD gives D = A - B + C, coordinate by coordinate.",
+        "The x-coordinate of D is -2 - 3 + 5 = 0."
+      ],
+      "useAgain": "when a parallelogram's fourth vertex is missing and the other three are known.",
+      "hints": [
+        "The midpoint of diagonal AC must equal the midpoint of diagonal BD.",
+        "Set the midpoints equal and solve for the missing coordinate of D."
+      ],
+      "socraticHint": "What must the midpoint of AC equal for ABCD to be a parallelogram?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "ABCD is a parallelogram with A(-1, 2), B(4, 0) and C(6, 5). What is the x-coordinate of D?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A, B and C, the first three vertices of a parallelogram.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": -2,
+              "y": 1,
+              "label": "A"
+            },
+            {
+              "x": 3,
+              "y": -1,
+              "label": "B"
+            },
+            {
+              "x": 5,
+              "y": 4,
+              "label": "C"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -2,
+                1
+              ],
+              [
+                5,
+                4
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p23",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "You want to prove a property of an isosceles triangle using coordinates. Which placement of its vertices makes the arithmetic simplest?",
+      "options": [
+        "A(1, 1), B(5, 7), C(-3, 4)",
+        "A(a, b), B(c, d), C(e, f)",
+        "A(-a, 0), B(a, 0), C(0, h)",
+        "A(0, 0), B(a, b), C(c, 0)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "A coordinate proof works for every placement of the shape, so pick the one with the least arithmetic.",
+        "A vertex at the origin and a side along an axis makes distances and slopes simplest."
+      ],
+      "useAgain": "when you must prove a property of an isosceles triangle in general.",
+      "hints": [
+        "Look for a placement with a vertex at the origin.",
+        "A side along an axis turns one coordinate of two vertices into 0."
+      ],
+      "socraticHint": "Which placement puts the most coordinates at 0?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "You want to prove a property of a kite using coordinates. Which placement of its vertices makes the arithmetic simplest?",
+        "options": [
+          "A(2, 3), B(-4, 1), C(5, -2), D(0, 6)",
+          "A(0, -a), B(-b, 0), C(0, c), D(b, 0)",
+          "A(p, q), B(r, s), C(t, u), D(v, w)",
+          "A(0, 0), B(p, q), C(r, 0), D(s, t)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p24",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "You want to prove a property of a rectangle using coordinates. Which placement of its vertices makes the arithmetic simplest?",
+      "options": [
+        "A(1, 2), B(6, 3), C(5, 9), D(0, 8)",
+        "A(a, b), B(c, d), C(e, f), D(g, h)",
+        "A(0, 0), B(p, q), C(r, s), D(0, t)",
+        "A(0, 0), B(p, 0), C(p, q), D(0, q)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "A coordinate proof works for every placement of the shape, so pick the one with the least arithmetic.",
+        "A vertex at the origin and a side along an axis makes distances and slopes simplest."
+      ],
+      "useAgain": "when you must prove a property of a rectangle in general.",
+      "hints": [
+        "Look for a placement with a vertex at the origin.",
+        "A side along an axis turns one coordinate of two vertices into 0."
+      ],
+      "socraticHint": "Which placement puts the most coordinates at 0?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "You want to prove a property of a right triangle using coordinates. Which placement of its vertices makes the arithmetic simplest?",
+        "options": [
+          "A(0, 0), B(p, 0), C(0, q)",
+          "A(1, 1), B(6, 4), C(3, 8)",
+          "A(a, b), B(c, d), C(e, f)",
+          "A(0, 0), B(p, q), C(r, s)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p25",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "You want to prove a property of a general parallelogram using coordinates. Which placement of its vertices makes the arithmetic simplest?",
+      "options": [
+        "A(0, 0), B(p, 0), C(p + q, r), D(q, r)",
+        "A(2, 1), B(6, 3), C(9, 8), D(5, 6)",
+        "A(a, b), B(c, d), C(e, f), D(g, h)",
+        "A(0, 0), B(p, q), C(r, s), D(t, u)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "A coordinate proof works for every placement of the shape, so pick the one with the least arithmetic.",
+        "A vertex at the origin and a side along an axis makes distances and slopes simplest."
+      ],
+      "useAgain": "when you must prove a property of a parallelogram in general.",
+      "hints": [
+        "Look for a placement with a vertex at the origin.",
+        "A side along an axis turns one coordinate of two vertices into 0."
+      ],
+      "socraticHint": "Which placement puts the most coordinates at 0?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "You want to prove a property of a trapezoid with a pair of parallel sides on the x-axis. Which placement of its vertices makes the arithmetic simplest?",
+        "options": [
+          "A(1, 0), B(8, 0), C(5, 4), D(2, 6)",
+          "A(0, 0), B(p, 0), C(q, r), D(s, r)",
+          "A(a, b), B(c, d), C(e, f), D(g, h)",
+          "A(0, 0), B(p, q), C(r, s), D(t, u)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p26",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "order",
+      "prompt": "Put these steps for proving AB is parallel to CD in order. A(1, 1), B(5, 3), C(2, 6), D(6, 8).",
+      "items": [
+        "Compare the two slopes: they are equal.",
+        "Equal slopes mean AB is parallel to CD.",
+        "Find the slope of CD: (8 - 6)/(6 - 2) = 1/2.",
+        "Find the slope of AB: (3 - 1)/(5 - 1) = 1/2."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Find each slope first, then compare them, then state the conclusion.",
+        "Equal slopes is what makes two segments parallel."
+      ],
+      "useAgain": "when you must show two segments are parallel with a short written proof.",
+      "hints": [
+        "Slope must be found before it can be compared.",
+        "The conclusion always comes last, after the comparison."
+      ],
+      "socraticHint": "Which step has to come before you can compare anything?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps for proving AB is parallel to CD in order. A(0, 0), B(4, 2), C(1, 5), D(5, 7).",
+        "items": [
+          "Equal slopes mean AB is parallel to CD.",
+          "Compare the two slopes: they are equal.",
+          "Find the slope of AB: (2 - 0)/(4 - 0) = 1/2.",
+          "Find the slope of CD: (7 - 5)/(5 - 1) = 1/2."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            3,
+            1,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A, B, C and D with segments AB and CD drawn.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 1,
+              "y": 1,
+              "label": "A"
+            },
+            {
+              "x": 5,
+              "y": 3,
+              "label": "B"
+            },
+            {
+              "x": 2,
+              "y": 6,
+              "label": "C"
+            },
+            {
+              "x": 6,
+              "y": 8,
+              "label": "D"
+            }
+          ],
+          "segments": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                5,
+                3
+              ]
+            ],
+            [
+              [
+                2,
+                6
+              ],
+              [
+                6,
+                8
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p27",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "order",
+      "prompt": "Put these steps for proving triangle ABC is isosceles in order. A(0, 0), B(6, 2), C(2, 6).",
+      "items": [
+        "Compare the two squared lengths: they are equal.",
+        "Equal squared lengths mean AB and AC are equal, so triangle ABC is isosceles.",
+        "Find AC squared: (2 - 0)^2 + (6 - 0)^2 = 40.",
+        "Find AB squared: (6 - 0)^2 + (2 - 0)^2 = 40."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Compute both squared side lengths before comparing them.",
+        "Two equal sides is what makes a triangle isosceles."
+      ],
+      "useAgain": "when you must show a triangle is isosceles with a short written proof.",
+      "hints": [
+        "Which two sides does the prompt let you compare, AB and AC?",
+        "The comparison must come after both lengths are known."
+      ],
+      "socraticHint": "Which two steps have to happen before you can compare anything?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps for proving triangle ABC is isosceles in order. A(1, 1), B(7, 3), C(3, 7).",
+        "items": [
+          "Equal squared lengths mean AB and AC are equal, so triangle ABC is isosceles.",
+          "Compare the two squared lengths: they are equal.",
+          "Find AB squared: (7 - 1)^2 + (3 - 1)^2 = 40.",
+          "Find AC squared: (3 - 1)^2 + (7 - 1)^2 = 40."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            3,
+            1,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Triangle ABC.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 6,
+              "y": 2,
+              "label": "B"
+            },
+            {
+              "x": 2,
+              "y": 6,
+              "label": "C"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              2,
+              6
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p28",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "order",
+      "prompt": "Put these steps for proving quadrilateral ABCD is a parallelogram in order. A(0, 0), B(6, 0), C(8, 5), D(2, 5).",
+      "items": [
+        "Compare the two midpoints: they are the same point.",
+        "Since the diagonals share a midpoint, they bisect each other, so ABCD is a parallelogram.",
+        "Find the midpoint of BD: ((6 + 2)/2, (0 + 5)/2) = (4, 5/2).",
+        "Find the midpoint of AC: ((0 + 8)/2, (0 + 5)/2) = (4, 5/2)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Find both diagonals' midpoints before comparing them.",
+        "A shared midpoint is what makes two diagonals bisect each other."
+      ],
+      "useAgain": "when you must show a quadrilateral's diagonals bisect each other.",
+      "hints": [
+        "Which formula finds the middle of a diagonal?",
+        "The comparison must come after both midpoints are known."
+      ],
+      "socraticHint": "Which step must happen before you can compare the midpoints?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps for proving quadrilateral ABCD is a parallelogram in order. A(0, 0), B(8, 0), C(10, 6), D(2, 6).",
+        "items": [
+          "Since the diagonals share a midpoint, they bisect each other, so ABCD is a parallelogram.",
+          "Compare the two midpoints: they are the same point.",
+          "Find the midpoint of AC: ((0 + 10)/2, (0 + 6)/2) = (5, 3).",
+          "Find the midpoint of BD: ((8 + 2)/2, (0 + 6)/2) = (5, 3)."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            3,
+            1,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Quadrilateral ABCD with both diagonals drawn.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 6,
+              "y": 0,
+              "label": "B"
+            },
+            {
+              "x": 8,
+              "y": 5,
+              "label": "C"
+            },
+            {
+              "x": 2,
+              "y": 5,
+              "label": "D"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                8,
+                5
+              ]
+            ],
+            [
+              [
+                6,
+                0
+              ],
+              [
+                2,
+                5
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p29",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "A proof step finds the midpoint of AC as ((x1 + x3)/2, (y1 + y3)/2). Which reason justifies it?",
+      "options": [
+        "The distance formula",
+        "The slope formula for parallel lines (equal slopes)",
+        "The slope formula for perpendicular lines (product -1)",
+        "The midpoint formula"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Read what the step actually computes: an average, a squared gap, or a ratio of rises and runs.",
+        "Match that computation to the one formula that produces it."
+      ],
+      "useAgain": "when you need to name the exact tool a proof step is using.",
+      "hints": [
+        "What does the step compute: an average, a length, or a ratio?",
+        "Only one of the four formulas produces that kind of value."
+      ],
+      "socraticHint": "What kind of value does this step compute?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A proof step finds AB squared as (x2 - x1)^2 + (y2 - y1)^2. Which reason justifies it?",
+        "options": [
+          "The midpoint formula",
+          "The slope formula for parallel lines (equal slopes)",
+          "The distance formula",
+          "The slope formula for perpendicular lines (product -1)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p30",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "A proof step multiplies the slopes of AB and CD, gets -1, and concludes they are perpendicular. Which reason justifies it?",
+      "options": [
+        "The midpoint formula",
+        "The slope formula for perpendicular lines (product -1)",
+        "The distance formula",
+        "The slope formula for parallel lines (equal slopes)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Read what the step actually computes: an average, a squared gap, or a ratio of rises and runs.",
+        "Match that computation to the one formula that produces it."
+      ],
+      "useAgain": "when you need to name the exact tool a proof step is using.",
+      "hints": [
+        "What does the step compute: an average, a length, or a ratio?",
+        "Only one of the four formulas produces that kind of value."
+      ],
+      "socraticHint": "What kind of value does this step compute?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A proof step compares the slopes of AB and CD, finds them equal, and concludes they are parallel. Which reason justifies it?",
+        "options": [
+          "The midpoint formula",
+          "The distance formula",
+          "The slope formula for perpendicular lines (product -1)",
+          "The slope formula for parallel lines (equal slopes)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p31",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "order",
+      "prompt": "ABCD is a rectangle with A(0, 0), B(6, 0), C(6, 4), D(0, 4). Put these steps for proving its diagonals are congruent in order.",
+      "items": [
+        "Both diagonals have the same squared length.",
+        "Equal squared lengths mean the diagonals are congruent.",
+        "Diagonal BD runs from B(6, 0) to D(0, 4). Its squared length is (-6)^2 + 4^2 = 52.",
+        "Diagonal AC runs from A(0, 0) to C(6, 4). Its squared length is 6^2 + 4^2 = 52."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Find both diagonals' squared lengths before comparing them.",
+        "Equal squared lengths is what makes two diagonals congruent."
+      ],
+      "useAgain": "when you must show a rectangle's diagonals are congruent with a full written proof.",
+      "hints": [
+        "Which formula gives a diagonal's squared length?",
+        "The conclusion always comes after the comparison."
+      ],
+      "socraticHint": "Which two steps have to happen before you can compare anything?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "ABCD is a rectangle with A(0, 0), B(8, 0), C(8, 5), D(0, 5). Put these steps for proving its diagonals are congruent in order.",
+        "items": [
+          "Equal squared lengths mean the diagonals are congruent.",
+          "Both diagonals have the same squared length.",
+          "Diagonal AC runs from A(0, 0) to C(8, 5). Its squared length is 8^2 + 5^2 = 89.",
+          "Diagonal BD runs from B(8, 0) to D(0, 5). Its squared length is (-8)^2 + 5^2 = 89."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            3,
+            1,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Rectangle ABCD with both diagonals drawn.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 6,
+              "y": 0,
+              "label": "B"
+            },
+            {
+              "x": 6,
+              "y": 4,
+              "label": "C"
+            },
+            {
+              "x": 0,
+              "y": 4,
+              "label": "D"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                4
+              ]
+            ],
+            [
+              [
+                6,
+                0
+              ],
+              [
+                0,
+                4
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p32",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "order",
+      "prompt": "Quadrilateral ABCD has A(0, 0), B(5, 1), C(8, 5), D(3, 4). Put these steps for proving it is a parallelogram in order.",
+      "items": [
+        "Both pairs of opposite sides are parallel, so ABCD is a parallelogram.",
+        "Slope of BC: (5 - 1)/(8 - 5) = 4/3. Equal to AD's slope, so AD is parallel to BC.",
+        "Slope of DC: (5 - 4)/(8 - 3) = 1/5. Equal to AB's slope, so AB is parallel to DC.",
+        "Slope of AD: (4 - 0)/(3 - 0) = 4/3.",
+        "Slope of AB: (1 - 0)/(5 - 0) = 1/5."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          4,
+          2,
+          3,
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "Find one pair of opposite sides' slopes, then the other pair.",
+        "A parallelogram needs both pairs of opposite sides parallel."
+      ],
+      "useAgain": "when you must show a quadrilateral is a parallelogram using both pairs of sides.",
+      "hints": [
+        "Which sides are opposite each other in ABCD?",
+        "AB pairs with DC, and AD pairs with BC."
+      ],
+      "socraticHint": "Which two sides should you compare first?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Quadrilateral ABCD has A(0, 0), B(4, 2), C(7, 7), D(3, 5). Put these steps for proving it is a parallelogram in order.",
+        "items": [
+          "Both pairs of opposite sides are parallel, so ABCD is a parallelogram.",
+          "Slope of BC: (7 - 2)/(7 - 4) = 5/3. Equal to AD's slope, so AD is parallel to BC.",
+          "Slope of DC: (7 - 5)/(7 - 3) = 1/2. Equal to AB's slope, so AB is parallel to DC.",
+          "Slope of AB: (2 - 0)/(4 - 0) = 1/2.",
+          "Slope of AD: (5 - 0)/(3 - 0) = 5/3."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            2,
+            4,
+            1,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Quadrilateral ABCD.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 5,
+              "y": 1,
+              "label": "B"
+            },
+            {
+              "x": 8,
+              "y": 5,
+              "label": "C"
+            },
+            {
+              "x": 3,
+              "y": 4,
+              "label": "D"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              3,
+              4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p33",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "order",
+      "prompt": "Triangle ABC has A(1, 1), B(4, 5), C(8, 2). Put these steps for proving angle B is a right angle in order.",
+      "items": [
+        "Multiply the slopes: 4/3 times -3/4 = -1.",
+        "A product of -1 means AB is perpendicular to BC, so the angle at B is a right angle.",
+        "Slope of BC: (2 - 5)/(8 - 4) = -3/4.",
+        "Slope of AB: (5 - 1)/(4 - 1) = 4/3."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Find both slopes that meet at B before multiplying them.",
+        "A product of -1 is what a right angle needs."
+      ],
+      "useAgain": "when you must show a triangle has a right angle using slopes.",
+      "hints": [
+        "Which two sides meet at vertex B?",
+        "The product of the two slopes must come before the conclusion."
+      ],
+      "socraticHint": "Which two sides meet at the vertex in question?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Triangle ABC has A(2, 2), B(6, 6), C(10, 2). Put these steps for proving angle B is a right angle in order.",
+        "items": [
+          "A product of -1 means AB is perpendicular to BC, so the angle at B is a right angle.",
+          "Multiply the slopes: 1 times -1 = -1.",
+          "Slope of AB: (6 - 2)/(6 - 2) = 1.",
+          "Slope of BC: (2 - 6)/(10 - 6) = -1."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            3,
+            1,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Triangle ABC.",
+        "spec": {
+          "range": 11,
+          "points": [
+            {
+              "x": 1,
+              "y": 1,
+              "label": "A"
+            },
+            {
+              "x": 4,
+              "y": 5,
+              "label": "B"
+            },
+            {
+              "x": 8,
+              "y": 2,
+              "label": "C"
+            }
+          ],
+          "polygon": [
+            [
+              1,
+              1
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              8,
+              2
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p34",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "order",
+      "prompt": "Triangle ABC has A(0, 0), B(6, 2), C(2, 6). Put these steps for proving it is isosceles in order.",
+      "items": [
+        "The two squared lengths are equal.",
+        "AB equals AC, so triangle ABC is isosceles.",
+        "AC squared: (2 - 0)^2 + (6 - 0)^2 = 40.",
+        "AB squared: (6 - 0)^2 + (2 - 0)^2 = 40."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          3,
+          2,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Compute both squared lengths from vertex A before comparing them.",
+        "Equal squared lengths is what makes two sides equal."
+      ],
+      "useAgain": "when you must show a triangle is isosceles with a full written proof.",
+      "hints": [
+        "Which two sides share vertex A?",
+        "The comparison must come after both squared lengths are known."
+      ],
+      "socraticHint": "Which vertex do both of the compared sides share?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Triangle ABC has A(1, 1), B(9, 3), C(3, 9). Put these steps for proving it is isosceles in order.",
+        "items": [
+          "AB equals AC, so triangle ABC is isosceles.",
+          "The two squared lengths are equal.",
+          "AB squared: (9 - 1)^2 + (3 - 1)^2 = 68.",
+          "AC squared: (3 - 1)^2 + (9 - 1)^2 = 68."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            3,
+            1,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Triangle ABC.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 6,
+              "y": 2,
+              "label": "B"
+            },
+            {
+              "x": 2,
+              "y": 6,
+              "label": "C"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              2,
+              6
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p35",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "order",
+      "prompt": "Quadrilateral ABCD has A(0, 0), B(3, 4), C(6, 0), D(3, -4). Put these steps for proving it is a rhombus in order.",
+      "items": [
+        "All four squared side lengths are equal, so ABCD is a rhombus.",
+        "DA squared: 25.",
+        "BC squared: 25.",
+        "CD squared: 25.",
+        "AB squared: 25."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          4,
+          2,
+          3,
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "Compute all four side lengths, in order around the shape, before comparing them.",
+        "A quadrilateral with all four sides equal is a rhombus by definition."
+      ],
+      "useAgain": "when you must show a quadrilateral is a rhombus using all four sides.",
+      "hints": [
+        "Work around the shape: AB, then BC, then CD, then DA.",
+        "The conclusion comes only after all four squared lengths are known."
+      ],
+      "socraticHint": "In what order do the four sides run around the shape?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Quadrilateral ABCD has A(0, 0), B(4, 3), C(8, 0), D(4, -3). Put these steps for proving it is a rhombus in order.",
+        "items": [
+          "All four squared side lengths are equal, so ABCD is a rhombus.",
+          "DA squared: 25.",
+          "BC squared: 25.",
+          "AB squared: 25.",
+          "CD squared: 25."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            2,
+            4,
+            1,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Quadrilateral ABCD.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 3,
+              "y": 4,
+              "label": "B"
+            },
+            {
+              "x": 6,
+              "y": 0,
+              "label": "C"
+            },
+            {
+              "x": 3,
+              "y": -4,
+              "label": "D"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              3,
+              -4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p36",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "A proof step reads: 'The midpoint of AC equals the midpoint of BD, so the diagonals bisect each other.' Which reason justifies this step?",
+      "options": [
+        "Two segments are equal in length exactly when they share a midpoint.",
+        "Two segments are perpendicular exactly when they share a midpoint.",
+        "Two segments bisect each other exactly when they share a midpoint.",
+        "Two segments are parallel exactly when they share a midpoint."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Read exactly what the step claims, not what you expect it to claim.",
+        "Match it to the one option that states the same relationship, in the same direction."
+      ],
+      "useAgain": "when a proof concludes that two diagonals bisect each other.",
+      "hints": [
+        "Check whether the statement is going forward or has been reversed.",
+        "A converse swaps the if-part and the then-part; an inverse negates both parts."
+      ],
+      "socraticHint": "Has the if-part and the then-part been swapped, negated, or left alone?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A proof step reads: 'AB squared plus BC squared equals AC squared, so angle B is a right angle.' Which reason justifies this step?",
+        "options": [
+          "The converse of the Pythagorean theorem.",
+          "The distance formula.",
+          "The midpoint formula.",
+          "The slope formula for perpendicular lines."
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p37",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "What is the converse of the statement 'If a quadrilateral is a rectangle, then its diagonals are equal in length'?",
+      "options": [
+        "If a quadrilateral is a rectangle, then its diagonals are not equal in length.",
+        "If a quadrilateral's diagonals are equal in length, then it is not a rectangle.",
+        "If a quadrilateral's diagonals are equal in length, then it is a rectangle.",
+        "If a quadrilateral is not a rectangle, then its diagonals are not equal in length."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Read exactly what the step claims, not what you expect it to claim.",
+        "Match it to the one option that states the same relationship, in the same direction."
+      ],
+      "useAgain": "when a proof needs the reverse direction of a known fact.",
+      "hints": [
+        "Check whether the statement is going forward or has been reversed.",
+        "A converse swaps the if-part and the then-part; an inverse negates both parts."
+      ],
+      "socraticHint": "Has the if-part and the then-part been swapped, negated, or left alone?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the converse of the statement 'If a quadrilateral is a parallelogram, then its diagonals bisect each other'?",
+        "options": [
+          "If a quadrilateral's diagonals bisect each other, then it is a parallelogram.",
+          "If a quadrilateral is a parallelogram, then its diagonals do not bisect each other.",
+          "If a quadrilateral's diagonals bisect each other, then it is not a parallelogram.",
+          "If a quadrilateral is not a parallelogram, then its diagonals do not bisect each other."
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p38",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "A proof step reads: 'Slope of AB times slope of CD equals -1, so AB is perpendicular to CD.' Which reason justifies this step?",
+      "options": [
+        "The slope formula for parallel lines: two equal slopes belong to parallel segments.",
+        "The midpoint formula.",
+        "The distance formula.",
+        "The slope formula for perpendicular lines: two slopes that multiply to -1 belong to perpendicular segments."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Read exactly what the step claims, not what you expect it to claim.",
+        "Match it to the one option that states the same relationship, in the same direction."
+      ],
+      "useAgain": "when a proof concludes that two segments are perpendicular from their slopes.",
+      "hints": [
+        "Check whether the statement is going forward or has been reversed.",
+        "A converse swaps the if-part and the then-part; an inverse negates both parts."
+      ],
+      "socraticHint": "Has the if-part and the then-part been swapped, negated, or left alone?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A proof step reads: 'Slope of AB equals slope of CD, so AB is parallel to CD.' Which reason justifies this step?",
+        "options": [
+          "The slope formula for perpendicular lines: two slopes that multiply to -1 belong to perpendicular segments.",
+          "The slope formula for parallel lines: two equal slopes belong to parallel segments.",
+          "The midpoint formula.",
+          "The distance formula."
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p39",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "A proof shows all four sides of quadrilateral ABCD have equal squared length. Which conclusion follows?",
+      "options": [
+        "ABCD is a rectangle.",
+        "ABCD is a right triangle.",
+        "ABCD is a rhombus.",
+        "ABCD has perpendicular diagonals, but its side lengths are unknown."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Read exactly what the step claims, not what you expect it to claim.",
+        "Match it to the one option that states the same relationship, in the same direction."
+      ],
+      "useAgain": "when every side of a quadrilateral comes out the same length.",
+      "hints": [
+        "Check whether the statement is going forward or has been reversed.",
+        "A converse swaps the if-part and the then-part; an inverse negates both parts."
+      ],
+      "socraticHint": "Has the if-part and the then-part been swapped, negated, or left alone?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A proof shows both pairs of opposite sides of quadrilateral ABCD have equal slopes. Which conclusion follows?",
+        "options": [
+          "ABCD is a rhombus.",
+          "ABCD is a right triangle.",
+          "ABCD has equal diagonals, but its side lengths are unknown.",
+          "ABCD is a parallelogram."
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p40",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "What is the converse of the statement 'If a triangle is isosceles, then two of its sides have equal squared length'?",
+      "options": [
+        "If a triangle is isosceles, then two of its sides have different squared length.",
+        "If two of a triangle's sides have equal squared length, then the triangle is isosceles.",
+        "If two of a triangle's sides have equal squared length, then the triangle is not isosceles.",
+        "If a triangle is not isosceles, then two of its sides have different squared length."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Read exactly what the step claims, not what you expect it to claim.",
+        "Match it to the one option that states the same relationship, in the same direction."
+      ],
+      "useAgain": "when a proof needs the reverse direction of a known fact about a triangle.",
+      "hints": [
+        "Check whether the statement is going forward or has been reversed.",
+        "A converse swaps the if-part and the then-part; an inverse negates both parts."
+      ],
+      "socraticHint": "Has the if-part and the then-part been swapped, negated, or left alone?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the converse of the statement 'If two segments are perpendicular, then their slopes multiply to -1'?",
+        "options": [
+          "If two segments' slopes multiply to -1, then the segments are perpendicular.",
+          "If two segments are perpendicular, then their slopes do not multiply to -1.",
+          "If two segments' slopes multiply to -1, then the segments are not perpendicular.",
+          "If two segments are not perpendicular, then their slopes do not multiply to -1."
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p41",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "Triangle ABC has A(0, 0), B(6, 0), C(2, 5). Using the shoelace formula, area = half the absolute value of x_A(y_B - y_C) + x_B(y_C - y_A) + x_C(y_A - y_B). What is the triangle's area?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "x_A(y_B - y_C) + x_B(y_C - y_A) + x_C(y_A - y_B) = 0(0-5) + 6(5-0) + 2(0-0) = 30.",
+        "Half the absolute value of 30 is 15."
+      ],
+      "useAgain": "when you need a polygon's area straight from its vertices' coordinates.",
+      "hints": [
+        "The shoelace formula finds a polygon's area straight from its vertices' coordinates.",
+        "Multiply each x by the next y minus the previous y, add them, then take half the absolute value."
+      ],
+      "socraticHint": "What do you get from x_A(y_B - y_C) + x_B(y_C - y_A) + x_C(y_A - y_B)?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Triangle ABC has A(0, 0), B(8, 0), C(3, 6). Using the shoelace formula, area = half the absolute value of x_A(y_B - y_C) + x_B(y_C - y_A) + x_C(y_A - y_B). What is the triangle's area?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Triangle ABC.",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 6,
+              "y": 0,
+              "label": "B"
+            },
+            {
+              "x": 2,
+              "y": 5,
+              "label": "C"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              2,
+              5
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p42",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "Quadrilateral ABCD has A(1, 1), B(7, 2), C(6, 6), D(2, 5). Find its area with the shoelace formula.",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "Walk around A, B, C, D and back to A, pairing each x with the next y.",
+        "That shoelace sum is 40, so half its absolute value is 20."
+      ],
+      "useAgain": "when you need a quadrilateral's area straight from its vertices' coordinates.",
+      "hints": [
+        "Go around the four vertices in order and back to the start.",
+        "Multiply each x by the next y, subtract the next x times the current y, and add all four results."
+      ],
+      "socraticHint": "What do you get from going around the shape once with the shoelace sum?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Quadrilateral ABCD has A(1, 1), B(6, 1), C(8, 5), D(2, 6). Find its area with the shoelace formula.",
+        "answer": {
+          "kind": "number",
+          "value": "51/2"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Quadrilateral ABCD.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 1,
+              "y": 1,
+              "label": "A"
+            },
+            {
+              "x": 7,
+              "y": 2,
+              "label": "B"
+            },
+            {
+              "x": 6,
+              "y": 6,
+              "label": "C"
+            },
+            {
+              "x": 2,
+              "y": 5,
+              "label": "D"
+            }
+          ],
+          "polygon": [
+            [
+              1,
+              1
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              2,
+              5
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p43",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "Segment AB runs from A(0, 0) to B(4, 2). Segment CD runs from C(1, 5) to D(3, 1). What is the product of the slope of AB and the slope of CD?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "Slope of AB is (2-0)/(4-0) = 1/2. Slope of CD is (1-5)/(3-1) = -2.",
+        "1/2 times -2 = -1."
+      ],
+      "useAgain": "when a proof step needs the product of two slopes to test perpendicularity.",
+      "hints": [
+        "Find each segment's slope before multiplying.",
+        "A product of -1 would mean the segments are perpendicular."
+      ],
+      "socraticHint": "What is each segment's slope on its own?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Segment AB runs from A(0, 0) to B(6, 3). Segment CD runs from C(0, 4) to D(4, 0). What is the product of the slope of AB and the slope of CD?",
+        "answer": {
+          "kind": "number",
+          "value": "-1/2"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Segments AB and CD.",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 4,
+              "y": 2,
+              "label": "B"
+            },
+            {
+              "x": 1,
+              "y": 5,
+              "label": "C"
+            },
+            {
+              "x": 3,
+              "y": 1,
+              "label": "D"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                2
+              ]
+            ],
+            [
+              [
+                1,
+                5
+              ],
+              [
+                3,
+                1
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p44",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "You want to prove a property of an isosceles trapezoid using coordinates, with its parallel sides horizontal. Which placement of its vertices makes the arithmetic simplest?",
+      "options": [
+        "A(1, 0), B(9, 0), C(7, 5), D(2, 6)",
+        "A(a, b), B(c, d), C(e, f), D(g, h)",
+        "A(0, 0), B(a, 0), C(b, h), D(c, k)",
+        "A(-a, 0), B(a, 0), C(b, h), D(-b, h)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "A coordinate proof works for every placement of the shape, so pick the one with the least arithmetic.",
+        "A vertex at the origin and a side along an axis makes distances and slopes simplest."
+      ],
+      "useAgain": "when you must prove a property of an isosceles trapezoid in general.",
+      "hints": [
+        "Look for a placement with a vertex at the origin.",
+        "A side along an axis turns one coordinate of two vertices into 0."
+      ],
+      "socraticHint": "Which placement puts the most coordinates at 0?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "You want to prove a property of a kite with its long diagonal on the y-axis. Which placement of its vertices makes the arithmetic simplest?",
+        "options": [
+          "A(0, 4), B(-3, 1), C(0, -6), D(3, 1)",
+          "A(0, a), B(-b, 0), C(0, -c), D(b, 0)",
+          "A(p, q), B(r, s), C(t, u), D(v, w)",
+          "A(0, 0), B(p, q), C(r, s), D(t, u)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p45",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "You want to prove a property of a general triangle using coordinates, with one side on the x-axis. Which placement of its vertices makes the arithmetic simplest?",
+      "options": [
+        "A(0, 0), B(p, 0), C(q, r)",
+        "A(1, 2), B(6, 5), C(3, 9)",
+        "A(a, b), B(c, d), C(e, f)",
+        "A(0, 0), B(p, q), C(r, s)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "A coordinate proof works for every placement of the shape, so pick the one with the least arithmetic.",
+        "A vertex at the origin and a side along an axis makes distances and slopes simplest."
+      ],
+      "useAgain": "when you must prove a property that holds for every triangle.",
+      "hints": [
+        "Look for a placement with a vertex at the origin.",
+        "A side along an axis turns one coordinate of two vertices into 0."
+      ],
+      "socraticHint": "Which placement puts the most coordinates at 0?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "You want to prove a property of a general quadrilateral using coordinates, with one vertex at the origin. Which placement of its vertices makes the arithmetic simplest?",
+        "options": [
+          "A(2, 1), B(7, 3), C(9, 8), D(4, 6)",
+          "A(a, b), B(c, d), C(e, f), D(g, h)",
+          "A(0, 0), B(p, 0), C(q, r), D(s, t)",
+          "A(0, 0), B(p, q), C(r, s), D(t, u)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-ge-coordinate-proofs-p46",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "Triangle ABC has A(1, 2), B(7, 3), C(x, 9). The shoelace expression x_A(y_B - y_C) + x_B(y_C - y_A) + x_C(y_A - y_B) equals 50. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "-7"
+      },
+      "explanation": [
+        "Substituting the known coordinates, the expression becomes 1(3 - 9) + 7(9 - 2) + x(2 - 3) = 43 - x.",
+        "Setting 43 - x = 50 and solving gives x = -7."
+      ],
+      "useAgain": "when a coordinate proof problem gives you the shoelace value and asks for a missing vertex.",
+      "hints": [
+        "Substitute the two known vertices into the shoelace expression, leaving x as the only unknown.",
+        "The expression collapses to a linear equation in x."
+      ],
+      "socraticHint": "What single linear equation in x does the expression collapse to?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Triangle ABC has A(2, 5), B(9, 6), C(x, 10). The shoelace expression x_A(y_B - y_C) + x_B(y_C - y_A) + x_C(y_A - y_B) equals 45. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "-8"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p47",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "Triangle ABC has A(1, 4), B(7, -2), C(4, 7). Its three medians meet at the centroid, whose coordinates are the average of the three vertices'. What is the x-coordinate of the centroid?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The centroid's x-coordinate is the average of the three vertices' x-coordinates: (1 + 7 + 4)/3.",
+        "That is 12/3 = 4."
+      ],
+      "useAgain": "when a triangle's medians all meet at one point and you need that point.",
+      "hints": [
+        "The centroid averages all three x-coordinates and all three y-coordinates separately.",
+        "Add the three x-coordinates and divide by 3."
+      ],
+      "socraticHint": "What do you get from averaging the three x-coordinates?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Triangle ABC has A(2, 5), B(8, -4), C(5, 8). Its three medians meet at the centroid, whose coordinates are the average of the three vertices'. What is the x-coordinate of the centroid?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Triangle ABC.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 1,
+              "y": 4,
+              "label": "A"
+            },
+            {
+              "x": 7,
+              "y": -2,
+              "label": "B"
+            },
+            {
+              "x": 4,
+              "y": 7,
+              "label": "C"
+            }
+          ],
+          "polygon": [
+            [
+              1,
+              4
+            ],
+            [
+              7,
+              -2
+            ],
+            [
+              4,
+              7
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p48",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "order",
+      "prompt": "Triangle ABC has A(0, 0), B(8, 0), C(4, 6). M is the midpoint of AC and N is the midpoint of BC. Put these steps for proving MN is parallel to AB and half its length in order.",
+      "items": [
+        "The segment joining the midpoints of two sides is parallel to the third side and half its length.",
+        "The length of MN is 4, and the length of AB is 8, so MN is half of AB.",
+        "N, the midpoint of BC, is ((8+4)/2, (0+6)/2) = (6, 3).",
+        "The slope of MN is 0, the same as the slope of AB, so MN is parallel to AB.",
+        "M, the midpoint of AC, is ((0+4)/2, (0+6)/2) = (2, 3)."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          4,
+          2,
+          3,
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "Find both midpoints first, then compare slope, then compare length.",
+        "The midsegment of a triangle is always parallel to the third side and half its length."
+      ],
+      "useAgain": "when you must prove a triangle's midsegment is parallel to the third side and half its length.",
+      "hints": [
+        "Which two points do you need before you can find any slope?",
+        "Slope tells you about direction, length tells you about size; find both."
+      ],
+      "socraticHint": "What are the coordinates of M and N?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Triangle ABC has A(0, 0), B(10, 0), C(4, 8). M is the midpoint of AC and N is the midpoint of BC. Put these steps for proving MN is parallel to AB and half its length in order.",
+        "items": [
+          "The segment joining the midpoints of two sides is parallel to the third side and half its length.",
+          "The length of MN is 5, and the length of AB is 10, so MN is half of AB.",
+          "N, the midpoint of BC, is ((10+4)/2, (0+8)/2) = (7, 4).",
+          "M, the midpoint of AC, is ((0+4)/2, (0+8)/2) = (2, 4).",
+          "The slope of MN is 0, the same as the slope of AB, so MN is parallel to AB."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            2,
+            4,
+            1,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Triangle ABC with M the midpoint of AC and N the midpoint of BC.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 8,
+              "y": 0,
+              "label": "B"
+            },
+            {
+              "x": 4,
+              "y": 6,
+              "label": "C"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              4,
+              6
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p49",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "choice",
+      "prompt": "What is the converse of the statement 'If ABCD is a rectangle, then its diagonals are congruent'?",
+      "options": [
+        "If ABCD is a rectangle, then its diagonals are not congruent.",
+        "If a quadrilateral's diagonals are congruent, then it is a rectangle.",
+        "If a quadrilateral's diagonals are congruent, then it is not a rectangle.",
+        "If a quadrilateral is not a rectangle, then its diagonals are not congruent."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "A converse swaps the if-part and the then-part of the original statement.",
+        "The original says rectangle implies congruent diagonals; the converse says congruent diagonals implies rectangle."
+      ],
+      "useAgain": "when a proof needs the reverse direction of a known geometric fact.",
+      "hints": [
+        "Find the if-part and the then-part of the original statement.",
+        "Swap them, but do not negate either one."
+      ],
+      "socraticHint": "What happens to the if-part and the then-part in a converse?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the converse of the statement 'If a quadrilateral is a rhombus, then its diagonals are perpendicular'?",
+        "options": [
+          "If a quadrilateral is a rhombus, then its diagonals are not perpendicular.",
+          "If a quadrilateral's diagonals are perpendicular, then it is not a rhombus.",
+          "If a quadrilateral is not a rhombus, then its diagonals are not perpendicular.",
+          "If a quadrilateral's diagonals are perpendicular, then it is a rhombus."
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-coordinate-proofs-p50",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-proofs",
+      "kind": "number",
+      "prompt": "Rectangle A(0, 0), B(8, 0), C(8, 5), D(0, 5). P is the point (3, 7). What is PA squared plus PC squared?",
+      "answer": {
+        "kind": "number",
+        "value": "87"
+      },
+      "explanation": [
+        "PA squared is (3-0)^2 + (7-0)^2 = 58.",
+        "PC squared is (3-8)^2 + (7-5)^2 = 29.",
+        "PA squared plus PC squared is 58 + 29 = 87."
+      ],
+      "useAgain": "when a proof step needs the sum of squared distances to two opposite corners of a rectangle.",
+      "hints": [
+        "Use the squared distance formula from P to each of the two opposite corners.",
+        "Add the two squared distances once both are found."
+      ],
+      "socraticHint": "What is PA squared, and what is PC squared, on their own?",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.proof"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Rectangle A(0, 0), B(6, 0), C(6, 4), D(0, 4). P is the point (2, 6). What is PA squared plus PC squared?",
+        "answer": {
+          "kind": "number",
+          "value": "60"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "Rectangle ABCD with an outside point P.",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 8,
+              "y": 0,
+              "label": "B"
+            },
+            {
+              "x": 8,
+              "y": 5,
+              "label": "C"
+            },
+            {
+              "x": 0,
+              "y": 5,
+              "label": "D"
+            },
+            {
+              "x": 3,
+              "y": 7,
+              "label": "P"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              0,
+              5
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}
