@@ -1,0 +1,2006 @@
+{
+  "id": "pa-expected-value-intro",
+  "idea": {
+    "body": "The expected value of a game or a bet is the average result you would get if you played it many, many times. Find it by weighting each outcome by how likely it is: multiply each possible result by its chance of happening, then add those products together. A spinner has 4 equal sections labeled 2, 4, 6, and 8. Each section has a 1 in 4 chance. The expected value is a quarter of 2 plus a quarter of 4 plus a quarter of 6 plus a quarter of 8. That comes to 5. That 5 is not a result you can actually spin, but it is the long-run average if you spun forever."
+  },
+  "workedExample": {
+    "prompt": "A game die has 6 faces, numbered 1 through 6, each equally likely. What is the expected value of one roll?",
+    "steps": [
+      "Each of the 6 faces has an equal 1 in 6 chance of coming up.",
+      "Multiply each face value by 1/6, then add all six products together.",
+      "That is the same as adding 1 through 6 and dividing by 6.",
+      "1 plus 2 plus 3 plus 4 plus 5 plus 6 is 21, and 21 divided by 6 is 3.5."
+    ]
+  },
+  "ways": [
+    {
+      "id": "pa-expected-value-intro-w1",
+      "name": "The weighted average",
+      "when": "Use this for any set of equally likely outcomes.",
+      "steps": [
+        "A spinner has 6 equal sections showing 1, 3, 5, 7, 9, and 11.",
+        "Each section has an equal 1 in 6 chance.",
+        "Add every value and divide by 6: 1 plus 3 plus 5 plus 7 plus 9 plus 11 is 36.",
+        "36 divided by 6 is 6, the expected value of one spin."
+      ],
+      "example": "A spinner has 6 equal sections showing 1, 3, 5, 7, 9, and 11. What is the expected value?",
+      "answer": "6",
+      "trap": "Picking the middle listed value instead of actually adding and dividing."
+    },
+    {
+      "id": "pa-expected-value-intro-w2",
+      "name": "The long-run table",
+      "when": "Use this when the sections are not split evenly between two different values.",
+      "steps": [
+        "Imagine 10 spins, one for each section.",
+        "3 sections give 4 points: 3 times 4 is 12.",
+        "7 sections give 11 points: 7 times 11 is 77.",
+        "Add the two totals: 12 plus 77 is 89.",
+        "Divide by all 10 spins: 89 divided by 10 is 8.9, the expected value."
+      ],
+      "example": "A spinner has 10 equal sections. 3 sections score 4 points and 7 sections score 11 points. What is the expected score?",
+      "answer": "8.9",
+      "trap": "Dividing by 2, the number of different values, instead of by 10, the number of sections.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Four stacked lines: two section-by-value products, their sum, and the sum divided by 10.",
+        "spec": {
+          "w": 260,
+          "h": 128,
+          "items": [
+            {
+              "t": "text",
+              "x": 16,
+              "y": 22,
+              "s": "3 sections x 4 points = 12",
+              "size": 13,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 50,
+              "s": "7 sections x 11 points = 77",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 78,
+              "s": "12 + 77 = 89",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 16,
+              "y": 106,
+              "s": "89 / 10 = 8.9",
+              "size": 13,
+              "anchor": "start",
+              "hidden": true
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "A spinner has 10 sections.",
+              "set": {
+                "0": {
+                  "s": "10 spins total"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Imagine 10 spins, one per section.",
+              "set": {
+                "0": {
+                  "s": "Imagine 10 spins."
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "3 sections score 4: total 12.",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "7 sections score 11: total 77.",
+              "set": {
+                "1": {
+                  "hidden": false
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Add the totals: 12 plus 77.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "89 divided by 10 is 8.9.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "hidden": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pa-expected-value-intro-w3",
+      "name": "The fair price after cost",
+      "when": "Use this when a game charges a cost to play and you need the net result.",
+      "steps": [
+        "A ring toss costs 2 tokens to play.",
+        "The ring lands on 1 of 8 equally likely pegs, and 2 pegs win 12 tokens each.",
+        "Expected payout, ignoring cost: 2 times 12 is 24, divided by 8 is 3.",
+        "Subtract the cost to play: 3 minus 2 is 1, the expected net result."
+      ],
+      "example": "A ring toss costs 2 tokens. 2 of 8 equally likely pegs win 12 tokens; the rest win nothing. What is the expected net result?",
+      "answer": "1",
+      "trap": "Forgetting to subtract the cost to play after finding the expected payout."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-pa-expected-value-intro-p01",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A board game uses a die with 4 faces, numbered 1 to 4, each equally likely. What is the expected value of one roll?",
+      "answer": {
+        "kind": "number",
+        "value": "2.5"
+      },
+      "explanation": [
+        "Each of the 4 faces has a 1 in 4 chance of coming up.",
+        "Multiply each face by 1/4 and add: that is the same as adding 1, 2, 3 and 4, then dividing by 4.",
+        "1 plus 2 plus 3 plus 4 is 10, and 10 divided by 4 is 2.5.",
+        "So the expected value, the long-run average roll, is 2.5, even though no face shows 2.5."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when every outcome of a game is equally likely and you need the long-run average result.",
+      "hints": [
+        "Add up every possible face value first.",
+        "Divide that sum by 4, the number of equally likely faces."
+      ],
+      "socraticHint": "When every outcome is equally likely, is the expected value just the plain average of the values?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A board game uses a die with 6 faces, numbered 1 to 6, each equally likely. What is the expected value of one roll?",
+        "answer": {
+          "kind": "number",
+          "value": "3.5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p02",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In a robot board game, the robot moves the number of squares shown on a die numbered 1 to 6. What is the expected number of squares it moves?",
+      "answer": {
+        "kind": "number",
+        "value": "3.5"
+      },
+      "explanation": [
+        "Each of the 6 faces has a 1 in 6 chance, so every face gets the same weight.",
+        "Weighting equal chances is the same as adding all six faces and dividing by 6.",
+        "1 plus 2 plus 3 plus 4 plus 5 plus 6 is 21, and 21 divided by 6 is 3.5.",
+        "The expected value is 3.5 squares: the average move over many, many turns."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when every outcome of a game is equally likely and you need the long-run average result.",
+      "hints": [
+        "Add up every face on the die first.",
+        "Divide that sum by 6, the number of equally likely faces."
+      ],
+      "socraticHint": "When every outcome is equally likely, is the expected value just the plain average of the values?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In a robot board game, the robot moves the number of squares shown on a die numbered 1 to 8. What is the expected number of squares it moves?",
+        "answer": {
+          "kind": "number",
+          "value": "4.5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover game uses an 8-sided die, numbered 1 to 8, to say how many meters the rover drives. What is the expected distance in meters?",
+      "answer": {
+        "kind": "number",
+        "value": "4.5"
+      },
+      "explanation": [
+        "Each of the 8 faces has a 1 in 8 chance of coming up.",
+        "With equal chances, the expected value is the plain average: add all 8 faces and divide by 8.",
+        "1 through 8 adds to 36, and 36 divided by 8 is 4.5.",
+        "So the expected distance is 4.5 meters per roll, on average."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when every outcome of a game is equally likely and you need the long-run average result.",
+      "hints": [
+        "Add up every face on the die first.",
+        "Divide that sum by 8, the number of equally likely faces."
+      ],
+      "socraticHint": "When every outcome is equally likely, is the expected value just the plain average of the values?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover game uses a 10-sided die, numbered 1 to 10, to say how many meters the rover drives. What is the expected distance in meters?",
+        "answer": {
+          "kind": "number",
+          "value": "5.5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p04",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone race uses a 10-sided die, numbered 1 to 10, to set how many laps to fly. Every face is equally likely. What is the expected number of laps?",
+      "answer": {
+        "kind": "number",
+        "value": "5.5"
+      },
+      "explanation": [
+        "Each of the 10 faces has a 1 in 10 chance of coming up.",
+        "With equal chances, the expected value is the plain average: add all 10 faces and divide by 10.",
+        "1 through 10 adds to 55, and 55 divided by 10 is 5.5.",
+        "So the expected number of laps is 5.5, the average over many races."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when every outcome of a game is equally likely and you need the long-run average result.",
+      "hints": [
+        "Add up every face on the die first.",
+        "Divide that sum by 10, the number of equally likely faces."
+      ],
+      "socraticHint": "When every outcome is equally likely, is the expected value just the plain average of the values?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A drone race uses a 12-sided die, numbered 1 to 12, to set how many laps to fly. Every face is equally likely. What is the expected number of laps?",
+        "answer": {
+          "kind": "number",
+          "value": "6.5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p05",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A fantasy game uses a 12-sided die, numbered 1 to 12, for damage points. Every face is equally likely. What is the expected damage in points?",
+      "answer": {
+        "kind": "number",
+        "value": "6.5"
+      },
+      "explanation": [
+        "Each of the 12 faces has a 1 in 12 chance of coming up.",
+        "With equal chances, the expected value is the plain average: add all 12 faces and divide by 12.",
+        "1 through 12 adds to 78, and 78 divided by 12 is 6.5.",
+        "So the expected damage is 6.5 points per roll, on average."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when every outcome of a game is equally likely and you need the long-run average result.",
+      "hints": [
+        "Add up every face on the die first.",
+        "Divide that sum by 12, the number of equally likely faces."
+      ],
+      "socraticHint": "When every outcome is equally likely, is the expected value just the plain average of the values?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A fantasy game uses a 10-sided die, numbered 1 to 10, for damage points. Every face is equally likely. What is the expected damage in points?",
+        "answer": {
+          "kind": "number",
+          "value": "5.5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A spinner has 4 equal sections showing 2, 4, 6 and 8 stickers. What is the expected number of stickers from one spin?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Each of the 4 sections has a 1 in 4 chance, so each value gets the same weight.",
+        "Weighting equal chances is the same as adding 2, 4, 6 and 8, then dividing by 4.",
+        "2 plus 4 plus 6 plus 8 is 20, and 20 divided by 4 is 5.",
+        "The expected value is 5 stickers, the average over many spins."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a spinner's sections are all equally likely and you need the average result.",
+      "hints": [
+        "Add up all four sticker numbers first.",
+        "Divide that sum by 4, the number of equal sections."
+      ],
+      "socraticHint": "With equal sections, does the order the values are listed in change the expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A spinner has 4 equal sections showing 5, 7, 9 and 11 stickers. What is the expected number of stickers from one spin?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p07",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In a rocket game, a spinner with 5 equal sections gives 1, 3, 5, 7 or 9 units of fuel. What is the expected fuel from one spin, in units?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Each of the 5 sections has a 1 in 5 chance, so each value gets the same weight.",
+        "Weighting equal chances is the same as adding 1, 3, 5, 7 and 9, then dividing by 5.",
+        "1 plus 3 plus 5 plus 7 plus 9 is 25, and 25 divided by 5 is 5.",
+        "The expected value is 5 units of fuel per spin, on average."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a spinner's sections are all equally likely and you need the average result.",
+      "hints": [
+        "Add up all five fuel amounts first.",
+        "Divide that sum by 5, the number of equal sections."
+      ],
+      "socraticHint": "With equal sections, does the order the values are listed in change the expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In a rocket game, a spinner with 5 equal sections gives 4, 6, 8, 10 or 12 units of fuel. What is the expected fuel from one spin, in units?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D printing club spinner has 3 equal sections: 5, 10 and 15 grams of free filament. What is the expected amount of free filament from one spin, in grams?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Each of the 3 sections has a 1 in 3 chance, so each amount gets the same weight.",
+        "Weighting equal chances is the same as adding 5, 10 and 15, then dividing by 3.",
+        "5 plus 10 plus 15 is 30, and 30 divided by 3 is 10.",
+        "The expected value is 10 grams of filament per spin, on average."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a spinner's sections are all equally likely and you need the average result.",
+      "hints": [
+        "Add up all three filament amounts first.",
+        "Divide that sum by 3, the number of equal sections."
+      ],
+      "socraticHint": "With equal sections, does the order the values are listed in change the expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A 3D printing club spinner has 3 equal sections: 8, 13 and 18 grams of free filament. What is the expected amount of free filament from one spin, in grams?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A claw machine has a bonus spinner with 4 equal sections worth 10, 20, 30 and 40 bonus points. What is the expected bonus from one spin, in points?",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "Each of the 4 sections has a 1 in 4 chance, so each value gets the same weight.",
+        "Weighting equal chances is the same as adding 10, 20, 30 and 40, then dividing by 4.",
+        "10 plus 20 plus 30 plus 40 is 100, and 100 divided by 4 is 25.",
+        "The expected value is 25 bonus points per spin, on average."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a spinner's sections are all equally likely and you need the average result.",
+      "hints": [
+        "Add up all four bonus values first.",
+        "Divide that sum by 4, the number of equal sections."
+      ],
+      "socraticHint": "With equal sections, does the order the values are listed in change the expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A claw machine has a bonus spinner with 4 equal sections worth 13, 23, 33 and 43 bonus points. What is the expected bonus from one spin, in points?",
+        "answer": {
+          "kind": "number",
+          "value": "28"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p10",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A piano practice spinner has 5 equal sections: 3, 6, 9, 12 and 15 minutes of scales. What is the expected number of minutes from one spin?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Each of the 5 sections has a 1 in 5 chance, so each time gets the same weight.",
+        "Weighting equal chances is the same as adding 3, 6, 9, 12 and 15, then dividing by 5.",
+        "3 plus 6 plus 9 plus 12 plus 15 is 45, and 45 divided by 5 is 9.",
+        "The expected value is 9 minutes of scales per spin, on average."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a spinner's sections are all equally likely and you need the average result.",
+      "hints": [
+        "Add up all five practice times first.",
+        "Divide that sum by 5, the number of equal sections."
+      ],
+      "socraticHint": "With equal sections, does the order the values are listed in change the expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A piano practice spinner has 5 equal sections: 6, 9, 12, 15 and 18 minutes of scales. What is the expected number of minutes from one spin?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p11",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A hat holds 3 tickets marked 4, 8 and 12 points. One ticket is drawn at random. What is the expected number of points on the ticket?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Each of the 3 tickets has a 1 in 3 chance of being drawn.",
+        "Weighting each value by 1/3 is the same as adding 4, 8 and 12, then dividing by 3.",
+        "4 plus 8 plus 12 is 24, and 24 divided by 3 is 8.",
+        "The expected value is 8 points: the average ticket over many draws."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when one item is drawn at random from a small equally likely set of values.",
+      "hints": [
+        "Add up every ticket value.",
+        "Divide that total by 3, the number of tickets."
+      ],
+      "socraticHint": "Since every ticket is equally likely, what single operation finds the expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A hat holds 3 tickets marked 8, 12 and 16 points. One ticket is drawn at random. What is the expected number of points on the ticket?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p12",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bag holds 5 marbles numbered 1, 2, 3, 4 and 5. One marble is drawn at random. What is the expected value of the number drawn?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Each of the 5 marbles has a 1 in 5 chance of being drawn.",
+        "Weighting each number by 1/5 is the same as adding 1 through 5, then dividing by 5.",
+        "1 plus 2 plus 3 plus 4 plus 5 is 15, and 15 divided by 5 is 3.",
+        "The expected value is 3: the average number over many draws."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when one item is drawn at random from a small equally likely set of values.",
+      "hints": [
+        "Add up every marble's number.",
+        "Divide that total by 5, the number of marbles."
+      ],
+      "socraticHint": "Since every marble is equally likely, what single operation finds the expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A bag holds 5 marbles numbered 5, 6, 7, 8 and 9. One marble is drawn at random. What is the expected value of the number drawn?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p13",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot picks one of 4 task cards at random. The cards say 6, 9, 12 and 15 minutes. What is the expected number of minutes on the card?",
+      "answer": {
+        "kind": "number",
+        "value": "10.5"
+      },
+      "explanation": [
+        "Each of the 4 cards has a 1 in 4 chance of being picked.",
+        "Weighting each time by 1/4 is the same as adding 6, 9, 12 and 15, then dividing by 4.",
+        "6 plus 9 plus 12 plus 15 is 42, and 42 divided by 4 is 10.5.",
+        "The expected value is 10.5 minutes, even though no card says 10.5."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when one item is drawn at random from a small equally likely set of values.",
+      "hints": [
+        "Add up every card's minutes.",
+        "Divide that total by 4, the number of cards."
+      ],
+      "socraticHint": "Since every card is equally likely, what single operation finds the expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A robot picks one of 4 task cards at random. The cards say 10, 13, 16 and 19 minutes. What is the expected number of minutes on the card?",
+        "answer": {
+          "kind": "number",
+          "value": "14.5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p14",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A box holds 3 sticker packs with 2, 2 and 8 stickers inside. One pack is picked at random. What is the expected number of stickers?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Each of the 3 packs has a 1 in 3 chance, including both packs with 2 stickers.",
+        "Weighting each pack by 1/3 is the same as adding 2, 2 and 8, then dividing by 3.",
+        "2 plus 2 plus 8 is 12, and 12 divided by 3 is 4.",
+        "The expected value is 4 stickers. The repeated 2 counts twice, not once."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when one item is drawn at random from a small equally likely set of values.",
+      "hints": [
+        "Add up the stickers in every pack, counting the repeated number twice.",
+        "Divide that total by 3, the number of packs."
+      ],
+      "socraticHint": "Two packs hold the same number. Does that pack count once or twice in the average?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A box holds 3 sticker packs with 6, 6 and 12 stickers inside. One pack is picked at random. What is the expected number of stickers?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p15",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Three envelopes hold 10, 20 and 30 game tokens. One envelope is picked at random. What is the expected number of tokens?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "Each of the 3 envelopes has a 1 in 3 chance of being picked.",
+        "Weighting each amount by 1/3 is the same as adding 10, 20 and 30, then dividing by 3.",
+        "10 plus 20 plus 30 is 60, and 60 divided by 3 is 20.",
+        "The expected value is 20 tokens: the average envelope over many picks."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when one item is drawn at random from a small equally likely set of values.",
+      "hints": [
+        "Add up the tokens in every envelope.",
+        "Divide that total by 3, the number of envelopes."
+      ],
+      "socraticHint": "Since every envelope is equally likely, what single operation finds the expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Three envelopes hold 14, 24 and 34 game tokens. One envelope is picked at random. What is the expected number of tokens?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p16",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A prize bag holds 10 tokens. 2 of them are gold and score 5 points; the rest score 0. What is the expected score of one draw, in points?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "2 of the 10 tokens score 5 points, and the other 8 score 0.",
+        "Weight each score by its chance: 2/10 of 5, plus 8/10 of 0.",
+        "2 times 5 is 10, and 10 divided by all 10 tokens gives 1.",
+        "The expected value is 1 point per draw: the 8 losing tokens still count in the total."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when only some outcomes are worth anything and the rest are worth zero.",
+      "hints": [
+        "Multiply the winning score by how many tokens actually win.",
+        "Divide that by all 10 tokens, not just the winning ones."
+      ],
+      "socraticHint": "Does every one of the 10 tokens count in the bottom of the division, or only the winning ones?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A prize bag holds 13 tokens. 3 of them are gold and score 6 points; the rest score 0. What is the expected score of one draw, in points?",
+        "answer": {
+          "kind": "number",
+          "value": "18/13"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p17",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover game has 12 rock cards. 4 of them hold a crystal worth 3 points; the rest are worth 0. One card is drawn at random. What is the expected score in points?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "4 of the 12 cards score 3 points, and the other 8 score 0.",
+        "Weight each score by its chance: 4/12 of 3, plus 8/12 of 0.",
+        "4 times 3 is 12, and 12 divided by all 12 cards gives 1.",
+        "The expected value is 1 point per draw: the 8 losing cards still count in the total."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when only some outcomes are worth anything and the rest are worth zero.",
+      "hints": [
+        "Multiply the winning score by how many cards actually win.",
+        "Divide that by all 12 cards, not just the winning ones."
+      ],
+      "socraticHint": "Does every one of the 12 cards count in the bottom of the division, or only the winning ones?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rover game has 15 rock cards. 5 of them hold a crystal worth 4 points; the rest are worth 0. One card is drawn at random. What is the expected score in points?",
+        "answer": {
+          "kind": "number",
+          "value": "4/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p18",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone game drops 8 crates. 1 crate holds 10 bonus points, and the others hold nothing. You open one crate at random. What is the expected bonus in points?",
+      "answer": {
+        "kind": "number",
+        "value": "1.25"
+      },
+      "explanation": [
+        "1 of the 8 crates scores 10 points, and the other 7 score 0.",
+        "Weight each score by its chance: 1/8 of 10, plus 7/8 of 0.",
+        "1 times 10 is 10, and 10 divided by all 8 crates gives 1.25.",
+        "The expected value is 1.25 points per draw: the 7 losing crates still count in the total."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when only some outcomes are worth anything and the rest are worth zero.",
+      "hints": [
+        "Multiply the winning score by how many crates actually win.",
+        "Divide that by all 8 crates, not just the winning ones."
+      ],
+      "socraticHint": "Does every one of the 8 crates count in the bottom of the division, or only the winning ones?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone game drops 11 crates. 2 crates hold 11 bonus points each, and the others hold nothing. You open one crate at random. What is the expected bonus in points?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p19",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A classroom raffle has 10 tickets. 6 of them win 4 stickers; the rest win nothing. One ticket is drawn at random. What is the expected number of stickers?",
+      "answer": {
+        "kind": "number",
+        "value": "2.4"
+      },
+      "explanation": [
+        "6 of the 10 tickets score 4 stickers, and the other 4 score 0.",
+        "Weight each score by its chance: 6/10 of 4, plus 4/10 of 0.",
+        "6 times 4 is 24, and 24 divided by all 10 tickets gives 2.4.",
+        "The expected value is 2.4 stickers per draw: the 4 losing tickets still count in the total."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when only some outcomes are worth anything and the rest are worth zero.",
+      "hints": [
+        "Multiply the winning score by how many tickets actually win.",
+        "Divide that by all 10 tickets, not just the winning ones."
+      ],
+      "socraticHint": "Does every one of the 10 tickets count in the bottom of the division, or only the winning ones?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A classroom raffle has 13 tickets. 7 of them win 5 stickers; the rest win nothing. One ticket is drawn at random. What is the expected number of stickers?",
+        "answer": {
+          "kind": "number",
+          "value": "35/13"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p20",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A spinner has 10 equal sections. 2 sections score 6 points and 8 sections score 1 point. What is the expected score of one spin, in points?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "2 of the 10 sections give 6 points, and 8 give 1 point.",
+        "Weight each value by its own chance: 2/10 of 6, plus 8/10 of 1.",
+        "2 times 6 is 12, and 8 times 1 is 8; together that is 20.",
+        "20 divided by all 10 sections gives 2 points, the expected value of one spin."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a spinner's sections are not split evenly between two different scores.",
+      "hints": [
+        "Multiply each value by how many sections give that value.",
+        "Add those products, then divide by all 10 sections."
+      ],
+      "socraticHint": "Do the two values count equally, or does the number of sections for each one matter?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A spinner has 10 equal sections. 2 sections score 7 points and 8 sections score 2 points. What is the expected score of one spin, in points?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p21",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In a rocket landing game, a spinner with 10 equal sections decides the score. 3 sections score 9 points and 7 sections score 2 points. What is the expected score in points?",
+      "answer": {
+        "kind": "number",
+        "value": "4.1"
+      },
+      "explanation": [
+        "3 of the 10 sections give 9 points, and 7 give 2 points.",
+        "Weight each value by its own chance: 3/10 of 9, plus 7/10 of 2.",
+        "3 times 9 is 27, and 7 times 2 is 14; together that is 41.",
+        "41 divided by all 10 sections gives 4.1 points, the expected value of one spin."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a spinner's sections are not split evenly between two different scores.",
+      "hints": [
+        "Multiply each value by how many sections give that value.",
+        "Add those products, then divide by all 10 sections."
+      ],
+      "socraticHint": "Do the two values count equally, or does the number of sections for each one matter?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In a rocket landing game, a spinner with 10 equal sections decides the score. 3 sections score 10 points and 7 sections score 3 points. What is the expected score in points?",
+        "answer": {
+          "kind": "number",
+          "value": "5.1"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A piano app spins a wheel with 5 equal sections after each song. 4 sections give 5 stars and 1 section gives 15 stars. What is the expected number of stars?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "4 of the 5 sections give 5 stars, and 1 gives 15 stars.",
+        "Weight each value by its own chance: 4/5 of 5, plus 1/5 of 15.",
+        "4 times 5 is 20, and 1 times 15 is 15; together that is 35.",
+        "35 divided by all 5 sections gives 7 stars, the expected value of one spin."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a spinner's sections are not split evenly between two different scores.",
+      "hints": [
+        "Multiply each value by how many sections give that value.",
+        "Add those products, then divide by all 5 sections."
+      ],
+      "socraticHint": "Do the two values count equally, or does the number of sections for each one matter?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A piano app spins a wheel with 5 equal sections after each song. 4 sections give 6 stars and 1 section gives 16 stars. What is the expected number of stars?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p23",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "An arcade spinner has 10 equal sections. 3 sections score 4 points and 7 sections score 1 point. What is the expected score of one spin, in points?",
+      "options": [
+        "1.9",
+        "2.5",
+        "3.1",
+        "19"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Weight each value by its own count: 3 times 4 plus 7 times 1 is 19.",
+        "19 divided by all 10 sections is 1.9 points, the expected value.",
+        "Averaging the two values as if they had equal sections gives 2.5, which ignores the real weights.",
+        "Swapping which value gets which count gives 3.1; forgetting to divide by 10 leaves 19."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a weighted average gets confused with a plain average of the values.",
+      "hints": [
+        "Multiply each value by its own section count, not by 1 each.",
+        "Divide the sum of those products by all 10 sections."
+      ],
+      "socraticHint": "What goes wrong if you average the two values as though each had the same number of sections?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "An arcade spinner has 10 equal sections. 3 sections score 4 points and 7 sections score 2 points. What is the expected score of one spin, in points?",
+        "options": [
+          "3",
+          "2.6",
+          "3.4",
+          "26"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p24",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A carnival wheel has 10 equal sections. 2 sections win 8 tokens and 8 sections win 2 tokens. What is the expected number of tokens from one spin?",
+      "options": [
+        "5",
+        "6.8",
+        "32",
+        "3.2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Weight each value by its own count: 2 times 8 plus 8 times 2 is 32.",
+        "32 divided by all 10 sections is 3.2 tokens, the expected value.",
+        "Averaging the two values as if they had equal sections gives 5, which ignores the real weights.",
+        "Swapping which value gets which count gives 6.8; forgetting to divide by 10 leaves 32."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a weighted average gets confused with a plain average of the values.",
+      "hints": [
+        "Multiply each value by its own section count, not by 1 each.",
+        "Divide the sum of those products by all 10 sections."
+      ],
+      "socraticHint": "What goes wrong if you average the two values as though each had the same number of sections?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A carnival wheel has 10 equal sections. 2 sections win 8 tokens and 8 sections win 3 tokens. What is the expected number of tokens from one spin?",
+        "options": [
+          "7",
+          "40",
+          "4",
+          "5.5"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p25",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A loot chest in a game holds 20 gems. 5 gems are worth 6 points; the rest are worth 0. One gem is taken at random. What is the expected score in points?",
+      "answer": {
+        "kind": "number",
+        "value": "1.5"
+      },
+      "explanation": [
+        "5 of the 20 gems score 6 points, and the other 15 score 0.",
+        "Weight each score by its chance: 5/20 of 6, plus 15/20 of 0.",
+        "5 times 6 is 30, and 30 divided by all 20 gems gives 1.5.",
+        "The expected value is 1.5 points per draw: the 15 losing gems still count in the total."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when only some outcomes are worth anything and the rest are worth zero.",
+      "hints": [
+        "Multiply the winning score by how many gems actually win.",
+        "Divide that by all 20 gems, not just the winning ones."
+      ],
+      "socraticHint": "Does every one of the 20 gems count in the bottom of the division, or only the winning ones?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A loot chest in a game holds 23 gems. 6 gems are worth 7 points; the rest are worth 0. One gem is taken at random. What is the expected score in points?",
+        "answer": {
+          "kind": "number",
+          "value": "42/23"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p26",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover scoops 1 of 12 pebbles at random. 9 pebbles are worth 2 points, and the other 3 are worth 0. What is the expected score in points?",
+      "answer": {
+        "kind": "number",
+        "value": "1.5"
+      },
+      "explanation": [
+        "9 of the 12 pebbles score 2 points, and the other 3 score 0.",
+        "Weight each score by its chance: 9/12 of 2, plus 3/12 of 0.",
+        "9 times 2 is 18, and 18 divided by all 12 pebbles gives 1.5.",
+        "The expected value is 1.5 points per draw: the 3 losing pebbles still count in the total."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when only some outcomes are worth anything and the rest are worth zero.",
+      "hints": [
+        "Multiply the winning score by how many pebbles actually win.",
+        "Divide that by all 12 pebbles, not just the winning ones."
+      ],
+      "socraticHint": "Most pebbles win here. Does that change the method, or only the numbers you put in?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rover scoops 1 of 15 pebbles at random. 10 pebbles are worth 3 points, and the other 5 are worth 0. What is the expected score in points?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p27",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone race has a bonus spinner with 10 equal sections. 1 section gives 12 bonus seconds and 9 sections give 4 bonus seconds. What is the expected bonus in seconds?",
+      "answer": {
+        "kind": "number",
+        "value": "4.8"
+      },
+      "explanation": [
+        "1 of the 10 sections gives 12 seconds, and 9 give 4 seconds.",
+        "Weight each value by its own chance: 1/10 of 12, plus 9/10 of 4.",
+        "1 times 12 is 12, and 9 times 4 is 36; together that is 48.",
+        "48 divided by all 10 sections gives 4.8 seconds, the expected value of one spin."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a spinner's sections are not split evenly between two different scores.",
+      "hints": [
+        "Multiply each value by how many sections give that value.",
+        "Add those products, then divide by all 10 sections."
+      ],
+      "socraticHint": "The big prize is on only 1 of 10 sections. Should it pull the average up a lot, or only a little?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone race has a bonus spinner with 10 equal sections. 1 section gives 13 bonus seconds and 9 sections give 5 bonus seconds. What is the expected bonus in seconds?",
+        "answer": {
+          "kind": "number",
+          "value": "5.8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p28",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D printing club spins a wheel with 10 equal sections for free filament. 6 sections give 3 meters and 4 sections give 9 meters. What is the expected length in meters?",
+      "answer": {
+        "kind": "number",
+        "value": "5.4"
+      },
+      "explanation": [
+        "6 of the 10 sections give 3 meters, and 4 give 9 meters.",
+        "Weight each value by its own chance: 6/10 of 3, plus 4/10 of 9.",
+        "6 times 3 is 18, and 4 times 9 is 36; together that is 54.",
+        "54 divided by all 10 sections gives 5.4 meters, the expected value of one spin."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a spinner's sections are not split evenly between two different scores.",
+      "hints": [
+        "Multiply each value by how many sections give that value.",
+        "Add those products, then divide by all 10 sections."
+      ],
+      "socraticHint": "Do the two values count equally, or does the number of sections for each one matter?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printing club spins a wheel with 10 equal sections for free filament. 6 sections give 4 meters and 4 sections give 10 meters. What is the expected length in meters?",
+        "answer": {
+          "kind": "number",
+          "value": "6.4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p29",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A bonus wheel in a game has 10 equal sections. 1 section scores 10 points and 9 sections score 3 points. What is the expected score in points?",
+      "options": [
+        "3.7",
+        "9.3",
+        "37",
+        "6.5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Weight each value by its own count: 1 times 10 plus 9 times 3 is 37.",
+        "37 divided by all 10 sections is 3.7 points, the expected value.",
+        "Averaging the two values as if they had equal sections gives 6.5, which ignores the real weights.",
+        "Swapping which value gets which count gives 9.3; forgetting to divide by 10 leaves 37."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a weighted average gets confused with a plain average of the values.",
+      "hints": [
+        "Multiply each value by its own section count, not by 1 each.",
+        "Divide the sum of those products by all 10 sections."
+      ],
+      "socraticHint": "What goes wrong if you average the two values as though each had the same number of sections?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A bonus wheel in a game has 10 equal sections. 1 section scores 10 points and 9 sections score 4 points. What is the expected score in points?",
+        "options": [
+          "46",
+          "7",
+          "9.4",
+          "4.6"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p30",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket kit box holds 15 parts. 3 parts are gold and worth 7 points; the others are worth 0. One part is pulled at random. What is the expected score in points?",
+      "answer": {
+        "kind": "number",
+        "value": "1.4"
+      },
+      "explanation": [
+        "3 of the 15 parts score 7 points, and the other 12 score 0.",
+        "Weight each score by its chance: 3/15 of 7, plus 12/15 of 0.",
+        "3 times 7 is 21, and 21 divided by all 15 parts gives 1.4.",
+        "The expected value is 1.4 points per draw: the 12 losing parts still count in the total."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when only some outcomes are worth anything and the rest are worth zero.",
+      "hints": [
+        "Multiply the winning score by how many parts actually win.",
+        "Divide that by all 15 parts, not just the winning ones."
+      ],
+      "socraticHint": "Does every one of the 15 parts count in the bottom of the division, or only the winning ones?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rocket kit box holds 18 parts. 4 parts are gold and worth 8 points; the others are worth 0. One part is pulled at random. What is the expected score in points?",
+        "answer": {
+          "kind": "number",
+          "value": "16/9"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p31",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "An arcade game costs 1 token to play. It has 10 equally likely outcomes. 2 of them pay 10 tokens and the rest pay nothing. What is the expected net result of one play, in tokens?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "First find the expected payout, ignoring the cost: 2 of the 10 outcomes pay 10 tokens, the rest pay 0.",
+        "2 times 10 is 20, and 20 divided by 10 is 2 tokens expected payout.",
+        "The question asks for the net result, so subtract the 1 token it costs to play.",
+        "2 minus 1 is 1: the expected net result is 1 token per play."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a game costs something to play and you need the expected result after subtracting that cost.",
+      "hints": [
+        "Find the expected payout first, ignoring the cost to play.",
+        "Subtract the cost to play from that expected payout."
+      ],
+      "socraticHint": "Does the cost to play change how likely each outcome is, or does it just shift the final result?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An arcade game costs 2 tokens to play. It has 12 equally likely outcomes. 2 of them pay 12 tokens and the rest pay nothing. What is the expected net result of one play, in tokens?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p32",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone club raffle costs 2 tokens to enter. 8 tickets go in the hat, and 1 ticket wins 20 tokens. The others win nothing. What is the expected net result of entering, in tokens?",
+      "answer": {
+        "kind": "number",
+        "value": "0.5"
+      },
+      "explanation": [
+        "First find the expected payout, ignoring the cost: 1 of the 8 outcomes pays 20 tokens, the rest pay 0.",
+        "1 times 20 is 20, and 20 divided by 8 is 2.5 tokens expected payout.",
+        "The question asks for the net result, so subtract the 2 tokens it costs to enter.",
+        "2.5 minus 2 is 0.5: the expected net result is 0.5 tokens per entry."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a game costs something to play and you need the expected result after subtracting that cost.",
+      "hints": [
+        "Find the expected payout first, ignoring the cost to play.",
+        "Subtract the cost to play from that expected payout."
+      ],
+      "socraticHint": "Does the cost to play change how likely each outcome is, or does it just shift the final result?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A drone club raffle costs 3 tokens to enter. 10 tickets go in the hat, and 1 ticket wins 22 tokens. The others win nothing. What is the expected net result of entering, in tokens?",
+        "answer": {
+          "kind": "number",
+          "value": "-0.8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover dig game costs 3 points to play. The rover digs 1 of 12 equally likely spots. 3 spots hold a gem worth 15 points; the rest hold nothing. What is the expected net result in points?",
+      "answer": {
+        "kind": "number",
+        "value": "0.75"
+      },
+      "explanation": [
+        "First find the expected payout, ignoring the cost: 3 of the 12 outcomes pay 15 points, the rest pay 0.",
+        "3 times 15 is 45, and 45 divided by 12 is 3.75 points expected payout.",
+        "The question asks for the net result, so subtract the 3 points it costs to play.",
+        "3.75 minus 3 is 0.75: the expected net result is 0.75 points per play."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a game costs something to play and you need the expected result after subtracting that cost.",
+      "hints": [
+        "Find the expected payout first, ignoring the cost to play.",
+        "Subtract the cost to play from that expected payout."
+      ],
+      "socraticHint": "Does the cost to play change how likely each outcome is, or does it just shift the final result?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover dig game costs 4 points to play. The rover digs 1 of 14 equally likely spots. 3 spots hold a gem worth 17 points; the rest hold nothing. What is the expected net result in points?",
+        "answer": {
+          "kind": "number",
+          "value": "-5/14"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p34",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket game charges 3 points per launch. Out of 10 equally likely landings, 4 hit the target and win 8 points. The rest win nothing. What is the expected net result per launch, in points?",
+      "answer": {
+        "kind": "number",
+        "value": "0.2"
+      },
+      "explanation": [
+        "First find the expected payout, ignoring the cost: 4 of the 10 outcomes pay 8 points, the rest pay 0.",
+        "4 times 8 is 32, and 32 divided by 10 is 3.2 points expected payout.",
+        "The question asks for the net result, so subtract the 3 points it costs to launch.",
+        "3.2 minus 3 is 0.2: the expected net result is 0.2 points per launch."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a game costs something to play and you need the expected result after subtracting that cost.",
+      "hints": [
+        "Find the expected payout first, ignoring the cost to play.",
+        "Subtract the cost to play from that expected payout."
+      ],
+      "socraticHint": "Does the cost to play change how likely each outcome is, or does it just shift the final result?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rocket game charges 4 points per launch. Out of 12 equally likely landings, 4 hit the target and win 10 points. The rest win nothing. What is the expected net result per launch, in points?",
+        "answer": {
+          "kind": "number",
+          "value": "-2/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D printing club raffle costs 2 tokens a ticket. 10 tickets are sold and 1 is drawn for a 25-token prize. What is the expected net result of buying one ticket, in tokens?",
+      "answer": {
+        "kind": "number",
+        "value": "0.5"
+      },
+      "explanation": [
+        "First find the expected payout, ignoring the cost: 1 of the 10 outcomes pays 25 tokens, the rest pay 0.",
+        "1 times 25 is 25, and 25 divided by 10 is 2.5 tokens expected payout.",
+        "The question asks for the net result, so subtract the 2 tokens it costs per ticket.",
+        "2.5 minus 2 is 0.5: the expected net result is 0.5 tokens per ticket."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a game costs something to play and you need the expected result after subtracting that cost.",
+      "hints": [
+        "Find the expected payout first, ignoring the cost to play.",
+        "Subtract the cost to play from that expected payout."
+      ],
+      "socraticHint": "Does the cost to play change how likely each outcome is, or does it just shift the final result?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printing club raffle costs 3 tokens a ticket. 12 tickets are sold and 1 is drawn for a 27-token prize. What is the expected net result of buying one ticket, in tokens?",
+        "answer": {
+          "kind": "number",
+          "value": "-0.75"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A ring toss at the school fair costs 3 tokens. The ring lands on 1 of 9 equally likely pegs. 3 pegs win 12 tokens; the rest win nothing. What is the expected net result of one toss, in tokens?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "First find the expected payout, ignoring the cost: 3 of the 9 outcomes pay 12 tokens, the rest pay 0.",
+        "3 times 12 is 36, and 36 divided by 9 is 4 tokens expected payout.",
+        "The question asks for the net result, so subtract the 3 tokens it costs to toss.",
+        "4 minus 3 is 1: the expected net result is 1 token per toss."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a game costs something to play and you need the expected result after subtracting that cost.",
+      "hints": [
+        "Find the expected payout first, ignoring the cost to play.",
+        "Subtract the cost to play from that expected payout."
+      ],
+      "socraticHint": "Does the cost to play change how likely each outcome is, or does it just shift the final result?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A ring toss at the school fair costs 4 tokens. The ring lands on 1 of 11 equally likely pegs. 3 pegs win 14 tokens; the rest win nothing. What is the expected net result of one toss, in tokens?",
+        "answer": {
+          "kind": "number",
+          "value": "-2/11"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p37",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Game A wins 10 points with a 1 in 10 chance. Game B wins 3 points with a 1 in 2 chance. Which game has the higher expected value?",
+      "options": [
+        "Game A",
+        "Game B",
+        "They are equal",
+        "You cannot tell without playing them"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Game A: 1/10 of 10 points is 1 point, so its expected value is 1 point.",
+        "Game B: 1/2 of 3 points is 1.5 points, so its expected value is 1.5 points.",
+        "1.5 is more than 1, so Game B has the higher expected value.",
+        "The bigger prize does not win here: the weight, the chance, matters as much as the prize."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when two games or bets need comparing by their expected value, not by their biggest possible prize.",
+      "hints": [
+        "Work out the expected value of Game A on its own: each prize times its chance.",
+        "Work out the expected value of Game B the same way, then compare the two numbers."
+      ],
+      "socraticHint": "Does the game with the bigger prize always have the higher expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Game A wins 6 points with a 1 in 3 chance. Game B wins 5 points with a 1 in 2 chance. Which game has the higher expected value?",
+        "options": [
+          "They are equal",
+          "You cannot tell without playing them",
+          "Game B",
+          "Game A"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p38",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Game A wins 20 points with a 1 in 5 chance. Game B always wins 5 points. Which game has the higher expected value?",
+      "options": [
+        "They are equal",
+        "Game B",
+        "You cannot tell without playing them",
+        "Game A"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Game A: 1/5 of 20 points is 4 points, so its expected value is 4 points.",
+        "Game B: a sure 5 points has a chance of 1, so its expected value is 5 points.",
+        "5 is more than 4, so Game B has the higher expected value.",
+        "A sure thing is an expected value too: the value times a chance of 1."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when two games or bets need comparing by their expected value, not by their biggest possible prize.",
+      "hints": [
+        "Work out the expected value of Game A on its own: each prize times its chance.",
+        "Work out the expected value of Game B the same way, then compare the two numbers."
+      ],
+      "socraticHint": "Does the game with the bigger prize always have the higher expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Game A wins 12 points with a 1 in 3 chance. Game B always wins 6 points. Which game has the higher expected value?",
+        "options": [
+          "Game B",
+          "They are equal",
+          "You cannot tell without playing them",
+          "Game A"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p39",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Game A wins 6 points or 2 points, each equally likely. Game B wins 9 points with a 1 in 3 chance. Which game has the higher expected value?",
+      "options": [
+        "They are equal",
+        "You cannot tell without playing them",
+        "Game A",
+        "Game B"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Game A: 1/2 of 6 plus 1/2 of 2 is 3 plus 1, so its expected value is 4 points.",
+        "Game B: 1/3 of 9 points is 3 points, so its expected value is 3 points.",
+        "4 is more than 3, so Game A has the higher expected value.",
+        "Game B's 9-point prize is the biggest number on the page, but its chance is small."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when two games or bets need comparing by their expected value, not by their biggest possible prize.",
+      "hints": [
+        "Work out the expected value of Game A on its own: each prize times its chance.",
+        "Work out the expected value of Game B the same way, then compare the two numbers."
+      ],
+      "socraticHint": "Does the game with the bigger prize always have the higher expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Game A wins 10 points or 4 points, each equally likely. Game B wins 15 points with a 1 in 5 chance. Which game has the higher expected value?",
+        "options": [
+          "You cannot tell without playing them",
+          "Game B",
+          "They are equal",
+          "Game A"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p40",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Game A wins 4 points with a 3 in 4 chance. Game B always wins 3 points. Which game has the higher expected value?",
+      "options": [
+        "You cannot tell without playing them",
+        "Game A",
+        "They are equal",
+        "Game B"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Game A: 3/4 of 4 points is 3 points, so its expected value is 3 points.",
+        "Game B: a sure 3 points has a chance of 1, so its expected value is 3 points.",
+        "The two expected values are equal, so neither game is better in the long run.",
+        "Equal expected values can still feel different: one is steady, the other swings."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when two games or bets need comparing by their expected value, not by their biggest possible prize.",
+      "hints": [
+        "Work out the expected value of Game A on its own: each prize times its chance.",
+        "Work out the expected value of Game B the same way, then compare the two numbers."
+      ],
+      "socraticHint": "Does the game with the bigger prize always have the higher expected value?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Game A wins 8 points with a 1 in 4 chance. Game B always wins 2 points. Which game has the higher expected value?",
+        "options": [
+          "Game A",
+          "Game B",
+          "They are equal",
+          "You cannot tell without playing them"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p41",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A prize wheel has 4 equal sections. 1 section scores 2 points, 2 sections score 5 points, and 1 section scores 10 points. What is the expected score in points?",
+      "answer": {
+        "kind": "number",
+        "value": "5.5"
+      },
+      "explanation": [
+        "Weight each value by its own chance: 1/4 of 2, 2/4 of 5, and 1/4 of 10.",
+        "1 times 2 is 2, 2 times 5 is 10, and 1 times 10 is 10.",
+        "2 plus 10 plus 10 is 22, and 22 divided by all 4 sections is 5.5.",
+        "The expected value is 5.5 points: three outcomes weight the same way as two."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when three or more different outcomes each need their own weight in the average.",
+      "hints": [
+        "Multiply each value by how many sections give it.",
+        "Add those three products, then divide by all 4 sections."
+      ],
+      "socraticHint": "With three different values instead of two, does the weighting method change at all?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A prize wheel has 4 equal sections. 1 section scores 4 points, 2 sections score 7 points, and 1 section scores 12 points. What is the expected score in points?",
+        "answer": {
+          "kind": "number",
+          "value": "7.5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p42",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover scans 1 of 6 equally likely rocks. 3 rocks score 1 point, 2 rocks score 4 points, and 1 rock scores 9 points. What is the expected score in points?",
+      "answer": {
+        "kind": "number",
+        "value": "10/3"
+      },
+      "explanation": [
+        "Weight each value by its own chance: 3/6 of 1, 2/6 of 4, and 1/6 of 9.",
+        "3 times 1 is 3, 2 times 4 is 8, and 1 times 9 is 9.",
+        "3 plus 8 plus 9 is 20, and 20 divided by all 6 rocks is 10/3.",
+        "The expected value is 10/3 points: three outcomes weight the same way as two."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when three or more different outcomes each need their own weight in the average.",
+      "hints": [
+        "Multiply each value by how many rocks give it.",
+        "Add those three products, then divide by all 6 rocks."
+      ],
+      "socraticHint": "With three different values instead of two, does the weighting method change at all?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover scans 1 of 6 equally likely rocks. 3 rocks score 3 points, 2 rocks score 6 points, and 1 rock scores 11 points. What is the expected score in points?",
+        "answer": {
+          "kind": "number",
+          "value": "16/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p43",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone drops a parcel on 1 of 6 equally likely squares. 2 squares score 0 points, 3 squares score 6 points, and 1 square scores 12 points. What is the expected score in points?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Weight each value by its own chance: 2/6 of 0, 3/6 of 6, and 1/6 of 12.",
+        "2 times 0 is 0, 3 times 6 is 18, and 1 times 12 is 12.",
+        "0 plus 18 plus 12 is 30, and 30 divided by all 6 squares is 5.",
+        "The expected value is 5 points: three outcomes weight the same way as two."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when three or more different outcomes each need their own weight in the average.",
+      "hints": [
+        "Multiply each value by how many squares give it.",
+        "Add those three products, then divide by all 6 squares."
+      ],
+      "socraticHint": "Two squares score 0. Do they still belong in the count you divide by?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A drone drops a parcel on 1 of 6 equally likely squares. 2 squares score 2 points, 3 squares score 8 points, and 1 square scores 14 points. What is the expected score in points?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p44",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A die is rolled in a 3D printing club game. Rolling 1 to 4 wins 3 stickers, a 5 wins 7 stickers, and a 6 wins 15 stickers. What is the expected number of stickers?",
+      "answer": {
+        "kind": "number",
+        "value": "17/3"
+      },
+      "explanation": [
+        "Weight each value by its own chance: 4/6 of 3, 1/6 of 7, and 1/6 of 15.",
+        "4 times 3 is 12, 1 times 7 is 7, and 1 times 15 is 15.",
+        "12 plus 7 plus 15 is 34, and 34 divided by all 6 faces is 17/3.",
+        "The expected value is 17/3 stickers: three outcomes weight the same way as two."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when three or more different outcomes each need their own weight in the average.",
+      "hints": [
+        "Count how many of the 6 faces give each prize, then multiply each prize by its count.",
+        "Add those three products, then divide by all 6 faces."
+      ],
+      "socraticHint": "Four faces share one prize. How many times should that prize count in the total?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A die is rolled in a 3D printing club game. Rolling 1 to 4 wins 5 stickers, a 5 wins 9 stickers, and a 6 wins 17 stickers. What is the expected number of stickers?",
+        "answer": {
+          "kind": "number",
+          "value": "23/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p45",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket landing game has 5 equal zones. 2 zones score 5 points, 2 zones score 8 points, and 1 zone scores 20 points. What is the expected score in points?",
+      "answer": {
+        "kind": "number",
+        "value": "9.2"
+      },
+      "explanation": [
+        "Weight each value by its own chance: 2/5 of 5, 2/5 of 8, and 1/5 of 20.",
+        "2 times 5 is 10, 2 times 8 is 16, and 1 times 20 is 20.",
+        "10 plus 16 plus 20 is 46, and 46 divided by all 5 zones is 9.2.",
+        "The expected value is 9.2 points: three outcomes weight the same way as two."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when three or more different outcomes each need their own weight in the average.",
+      "hints": [
+        "Multiply each value by how many zones give it.",
+        "Add those three products, then divide by all 5 zones."
+      ],
+      "socraticHint": "With three different values instead of two, does the weighting method change at all?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rocket landing game has 5 equal zones. 2 zones score 7 points, 2 zones score 10 points, and 1 zone scores 22 points. What is the expected score in points?",
+        "answer": {
+          "kind": "number",
+          "value": "11.2"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-pa-expected-value-intro-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two ordinary dice are rolled. What is the expected value of the product of the two numbers shown?",
+      "answer": {
+        "kind": "number",
+        "value": "12.25"
+      },
+      "explanation": [
+        "There are 36 equally likely outcomes, each with a 1 in 36 chance.",
+        "One die's roll does not change the other's, so the expected product is 3.5 times 3.5.",
+        "3.5 times 3.5 is 12.25.",
+        "Checking the long way: the 36 products add to 441, and 441 divided by 36 is 12.25 too."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when two independent results combine by multiplying, and their separate expected values combine the same way.",
+      "hints": [
+        "List the product for every one of the 36 outcomes, or notice the two dice do not affect each other.",
+        "When two results are independent, their expected values combine the same way the results do."
+      ],
+      "socraticHint": "Each die has expected value 3.5 on its own. How could that connect to the expected value of their product?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "8.75"
+        },
+        "prompt": "A 4-sided die numbered 1 to 4 and a 6-sided die numbered 1 to 6 are rolled. What is the expected value of the product of the two numbers shown?"
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. What is the expected value of the larger of the two numbers shown? If they match, take that number.",
+      "answer": {
+        "kind": "number",
+        "value": "161/36"
+      },
+      "explanation": [
+        "There are 36 equally likely outcomes, so each one has a 1 in 36 chance.",
+        "The larger number is 1 in 1 outcome, 2 in 3, 3 in 5, 4 in 7, 5 in 9, and 6 in 11 outcomes.",
+        "Weight each value by its count: 1 plus 6 plus 15 plus 28 plus 45 plus 66 is 161.",
+        "161 divided by 36 is the expected value, 161/36, a bit under 4.5.",
+        "That is higher than one die's 3.5, because taking the larger favors big numbers."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when an expected value needs a full count of outcomes rather than a shortcut formula.",
+      "hints": [
+        "List the larger number for every one of the 36 outcomes, or count how many outcomes give each value.",
+        "Multiply each value by its count, add those six products, then divide by 36."
+      ],
+      "socraticHint": "Is the expected value of the larger number the same as just rolling one die, or does it shift higher?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "91/36"
+        },
+        "prompt": "Two dice are rolled. What is the expected value of the smaller of the two numbers shown? If they match, take that number."
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p48",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coin is flipped. Heads wins 8 points. Tails means a die is rolled instead, winning points equal to the roll. What is the expected value of this game, in points?",
+      "answer": {
+        "kind": "number",
+        "value": "5.75"
+      },
+      "explanation": [
+        "Heads has a 1 in 2 chance and always wins 8 points.",
+        "Tails has a 1 in 2 chance, and then the die's own expected value, 3.5 points, applies.",
+        "Weight each branch by its chance: 1/2 of 8 is 4, and 1/2 of 3.5 is 1.75.",
+        "4 plus 1.75 is 5.75, the expected value of the whole game."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a game has two different stages, each with its own chance and its own expected value.",
+      "hints": [
+        "Find the expected value for the heads half and the tails half separately.",
+        "Combine the two halves by weighting each one by its own 1/2 chance."
+      ],
+      "socraticHint": "Does the die's own expected value change just because it only gets rolled half the time?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "7.75"
+        },
+        "prompt": "A coin is flipped. Heads wins 12 points. Tails means a die is rolled instead, winning points equal to the roll. What is the expected value of this game, in points?"
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p49",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A spinner is split into three regions by angle: 90 degrees pays 5 points, 120 degrees pays 10 points, and 150 degrees pays 20 points. What is the expected value of one spin, in points?",
+      "answer": {
+        "kind": "number",
+        "value": "155/12"
+      },
+      "explanation": [
+        "The full spinner is 360 degrees, so each region's chance is its angle out of 360.",
+        "The chances are 90/360, 120/360 and 150/360, which is 1/4, 1/3 and 5/12.",
+        "Weight each payout by its chance: 1/4 of 5 is 5/4, 1/3 of 10 is 10/3, and 5/12 of 20 is 25/3.",
+        "5/4 plus 10/3 plus 25/3 is 15/12 plus 140/12, which is 155/12 points, the expected value."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a spinner's regions are sized by angle instead of by equal sections.",
+      "hints": [
+        "Use each region's angle out of 360 degrees as its chance.",
+        "Multiply each payout by its angle, add the products, then divide by 360."
+      ],
+      "socraticHint": "When regions are unequal sizes, what stands in for the section count from an equal-section spinner?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "50/3"
+        },
+        "prompt": "A spinner is split into three regions by angle: 60 degrees pays 4 points, 120 degrees pays 12 points, and 180 degrees pays 24 points. What is the expected value of one spin, in points?"
+      }
+    },
+    {
+      "id": "ladder-pa-expected-value-intro-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A dice game at the school fair costs 3 tokens to play. You roll two dice. A sum of 7 wins 12 tokens, and doubles win 6 tokens. What is the expected net result of one play, in tokens?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "There are 36 equally likely rolls. A sum of 7 happens in 6 of them, and doubles are another 6.",
+        "No roll is both: 7 is odd and doubles always add to an even number, so the two chances just add.",
+        "Expected payout: 6/36 of 12 plus 6/36 of 6, which is 72/36 plus 36/36, or 3 tokens.",
+        "The question asks for the net result, so subtract the 3 tokens it costs to play: 3 minus 3 is 0.",
+        "An expected net result of 0 means the game is fair: nobody comes out ahead in the long run."
+      ],
+      "ideaId": "pa-expected-value-intro",
+      "useAgain": "when a game with a cost needs a full count of two-dice outcomes before the cost is subtracted.",
+      "hints": [
+        "Count how many of the 36 rolls give a sum of 7, and how many are doubles. Check whether any roll is both.",
+        "Find the expected payout from those counts, then subtract the cost to play."
+      ],
+      "socraticHint": "Can one roll be both a sum of 7 and doubles? What does that tell you about adding their chances?",
+      "skills": [
+        "think.skills.probability"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        },
+        "prompt": "A dice game at the school fair costs 2 tokens to play. You roll two dice. A sum of 5 wins 9 tokens, and doubles win 12 tokens. What is the expected net result of one play, in tokens?"
+      }
+    }
+  ]
+}

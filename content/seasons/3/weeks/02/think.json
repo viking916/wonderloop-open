@@ -1,0 +1,1257 @@
+{
+  "id": "s3-w02-think",
+  "season": 3,
+  "week": 2,
+  "track": "think",
+  "title": "Rules pulled out of the long way, and drawers you build yourself",
+  "summary": "Derive the exponent rules by counting factors instead of being told them, then push pigeonhole from socks to birth months to remainders, and count two clever counts.",
+  "minutes": 90,
+  "materials": [
+    "graph paper",
+    "pencil",
+    "counters or coins for the sock puzzle"
+  ],
+  "skills": [
+    "think.skills.exponents",
+    "think.skills.modular",
+    "think.logic",
+    "think.proof"
+  ],
+  "completion": "all-steps",
+  "steps": [
+    {
+      "kind": "warmup",
+      "id": "s3-w02-think-01",
+      "variant": "rhythm",
+      "problems": [
+        {
+          "id": "s3-w02-think-01-p01",
+          "kind": "number",
+          "lane": "warmup",
+          "prompt": "A drum track is written as a row of seven bars, and each bar holds this many beats: 4, 6, 3, 12, 8, 9, 16. You play the row once from the left, keeping only the biggest beat count you have heard so far. Which number are you holding when the sixth bar ends?",
+          "answer": {
+            "kind": "number",
+            "value": "12"
+          },
+          "explanation": [
+            "Loop over the herd: play the bars left to right, keeping one answer in hand.",
+            "Start holding 4, then compare it against each new bar.",
+            "The 6 beats it so you swap; the 3 loses so you keep the 6.",
+            "The 12 beats the 6, so swap again; the 8 and 9 both lose, since both are under 12.",
+            "When bar six ends you hold 12 beats; bar seven's 16 has not played yet."
+          ],
+          "ideaId": "loop-over-the-herd",
+          "introducesIdea": true,
+          "useAgain": "when a long row has to be walked once from the start, carrying one answer in your hand the whole way.",
+          "hints": [
+            "Put the first bar's count in your hand, then step along the row one bar at a time.",
+            "At each new bar you only swap what you are holding when the new count wins."
+          ],
+          "socraticHint": "How many of the seven bars do you ever have to listen to twice?",
+          "skills": [
+            "think.algorithms",
+            "think.number-sense"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "A drum track has six bars holding these beats: 5, 2, 10, 6, 20, 8. Playing the row once from the left and keeping only the biggest beat count so far, which number are you holding when the fourth bar ends?",
+            "answer": {
+              "kind": "number",
+              "value": "10"
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-01-p02",
+          "kind": "number",
+          "lane": "warmup",
+          "prompt": "A drum pattern claps 42 times out of every 56 beats. What fraction of the beats are claps, in lowest terms?",
+          "answer": {
+            "kind": "number",
+            "value": "3/4"
+          },
+          "explanation": [
+            "Find the biggest number that divides both 42 and 56 evenly: that number is 14.",
+            "42 divided by 14 is 3, and 56 divided by 14 is 4.",
+            "So 42 out of 56 beats is 3/4 in lowest terms."
+          ],
+          "ideaId": "same-slice",
+          "useAgain": "when a beat count has to be shrunk to its simplest fraction fast, and the common factor is bigger than 2.",
+          "hints": [
+            "Both 42 and 56 share a common factor bigger than 2. Find the biggest one.",
+            "Divide the top and the bottom by that same factor in one move."
+          ],
+          "socraticHint": "Would dividing by 2 first, then looking again, get you to the same lowest-terms fraction as dividing by 14 all at once?",
+          "skills": [
+            "think.number-sense"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A drum pattern claps 30 times out of every 45 beats. What fraction of the beats are claps, in lowest terms?",
+            "answer": {
+              "kind": "number",
+              "value": "2/3"
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-01-p03",
+          "kind": "number",
+          "lane": "warmup",
+          "prompt": "A drum machine plays bar after bar. The first bar holds 3 beats. Each new bar holds double the bar before it, except that a bar which would need more than 20 beats holds 3 beats instead, and the doubling starts over from there. How many beats are in the fifth bar?",
+          "answer": {
+            "kind": "number",
+            "value": "6"
+          },
+          "explanation": [
+            "Simulate it: act the machine out one bar at a time instead of guessing what four doublings do.",
+            "Bar 1 holds 3. Bar 2 doubles it to 6. Bar 3 doubles again to 12.",
+            "Bar 4 would need 24 beats, which is more than 20, so the machine drops it back to 3.",
+            "Bar 5 doubles that 3, so the fifth bar holds 6 beats."
+          ],
+          "ideaId": "simulate-it",
+          "introducesIdea": true,
+          "useAgain": "when a rule changes what it does partway through, so running the story out beats any shortcut.",
+          "hints": [
+            "Draw the bars as a row of boxes and fill them in one at a time, in order.",
+            "Before you write each bar, work out what the doubling would give and then check whether the machine is allowed to use it."
+          ],
+          "socraticHint": "What is the largest number of beats this machine can ever put in one bar, no matter how long it plays?",
+          "skills": [
+            "think.algorithms",
+            "think.patterns"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "The same machine starts with 2 beats in the first bar, doubles every bar after it, and drops back to 2 whenever a bar would need more than 30 beats. How many beats are in the sixth bar?",
+            "answer": {
+              "kind": "number",
+              "value": "4"
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-01-p04",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "A drummer starts a fill with 1 beat in the first bar and doubles the beats in every bar after it. Which bar is the first to hold more than 500 beats?",
+          "options": [
+            "Bar 8",
+            "Bar 9",
+            "Bar 10",
+            "Bar 11"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 2
+          },
+          "explanation": [
+            "An exponent is multiplication's fast forward button, so count the doublings rather than the beats.",
+            "Bar 1 holds 1 beat and every bar after it adds one more doubling: 1, 2, 4, 8, 16, 32, 64, 128, 256, 512.",
+            "Bar 9 holds 256, still under 500; bar 10 holds 512, which is over it.",
+            "Bar 10 is the first past 500 beats: bar 8 holds only 128, and bar 11 is one doubling too late."
+          ],
+          "ideaId": "exponents-fast-forward",
+          "useAgain": "when a count doubles every step and you need the first step past a line.",
+          "hints": [
+            "Start at 1 and double, saying the bar number out loud with every doubling.",
+            "Check bar 9 against 500 before you pick: is it over the line or under it?"
+          ],
+          "socraticHint": "Bar 1 holds 1 beat, not 2. What does that do to the count of doublings hiding inside every bar number?",
+          "skills": [
+            "think.skills.exponents",
+            "think.number-sense"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "The same fill starts with 3 beats in the first bar and doubles every bar after it. Which bar is the first to hold more than 100 beats?",
+            "options": [
+              "Bar 7",
+              "Bar 6",
+              "Bar 8",
+              "Bar 9"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-01-p05",
+          "kind": "number",
+          "lane": "warmup",
+          "prompt": "A metronome rings a bell every 6 beats, starting on beat 6. A lamp flashes every 8 beats, starting on beat 8. Which is the first beat where the bell and the flash land together?",
+          "answer": {
+            "kind": "number",
+            "value": "24"
+          },
+          "explanation": [
+            "Gcd and lcm: the first shared meeting of two counts is what this asks for.",
+            "Count in sixes for the bell: 6, 12, 18, 24. Count in eights for the lamp: 8, 16, 24.",
+            "24 is the first beat that turns up in both counts, so the bell and the flash land together on beat 24.",
+            "Nothing smaller works, because every earlier bell beat, 6 and 12 and 18, is missing from the lamp's count."
+          ],
+          "ideaId": "gcd-and-lcm",
+          "useAgain": "when two things repeat on different beats and you need the first beat they share.",
+          "hints": [
+            "Write out the bell beats and the lamp beats as two separate counts, in order.",
+            "Run both counts along until the same number turns up in each one."
+          ],
+          "socraticHint": "The bell and the lamp keep meeting after this one. What would you do to the first meeting beat to find the second?",
+          "skills": [
+            "think.skills.gcd-lcm",
+            "think.patterns"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "The bell now rings every 9 beats, starting on beat 9, and the lamp flashes every 12 beats, starting on beat 12. Which is the first beat where they land together?",
+            "answer": {
+              "kind": "number",
+              "value": "36"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "puzzle-of-week",
+      "id": "s3-w02-think-02",
+      "problem": {
+        "id": "s3-w02-think-02-p01",
+        "kind": "number",
+        "lane": "puzzle-of-week",
+        "prompt": "A stone cairn is built as a 3 by 3 by 3 block of 27 identical small cubes. Every one of the six outside faces of the big cube is painted red, then the cairn is taken apart. How many of the 27 small cubes ended up with paint on exactly two of their faces?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        },
+        "explanation": [
+          "Sort the 27 small cubes by where each one sat in the big cube: at a corner, in the middle of an edge, in the middle of a face, or buried out of sight.",
+          "A corner cube shows three of its faces to the world, so it takes three coats of paint, and a big cube has 8 corners.",
+          "The cube in the middle of an edge shows exactly two faces. A cube has 12 edges, and in a 3 by 3 by 3 block each edge has exactly one middle cube, so that is 12 cubes with two painted faces.",
+          "The 6 face middles take one coat each and the single buried cube takes none. 8 plus 12 plus 6 plus 1 is 27, so every cube is accounted for and nothing was counted twice."
+        ],
+        "ideaId": "count-what-you-cannot-see",
+        "useAgain": "when a solid has to be counted by where its pieces sit rather than one piece at a time.",
+        "hints": [
+          "What paint a small cube gets depends only on where it sat: a corner, the middle of an edge, the middle of a face, or buried inside.",
+          "Pick up one small cube from the middle of an edge in your head and count how many of its faces were on the outside."
+        ],
+        "socraticHint": "Which part of the big cube's shape does a small cube have to sit on to show the world exactly two faces?",
+        "skills": [
+          "think.spatial",
+          "think.logic"
+        ],
+        "thinkMinutes": 5,
+        "difficulty": 3,
+        "figure": {
+          "kind": "stack",
+          "alt": "A big cube built from 27 small cubes stacked 3 across, 3 deep and 3 high, sitting on the ground with all six outside faces painted.",
+          "spec": {
+            "rows": 3,
+            "cols": 3,
+            "layers": 3,
+            "painted": "all six outside faces"
+          }
+        },
+        "variant": {
+          "prompt": "Same 27 cube cairn, painted on all six outside faces and then taken apart. This time no picture: sketch the three layers on graph paper, one 3 by 3 square for the bottom layer, one for the middle and one for the top, and shade what the paint touches. How many of the 27 small cubes ended up with paint on exactly one face?",
+          "answer": {
+            "kind": "number",
+            "value": "6"
+          }
+        }
+      }
+    },
+    {
+      "kind": "problem-set",
+      "id": "s3-w02-think-03",
+      "title": "Exponent rules, pulled out of the long way",
+      "lane": "skills",
+      "problems": [
+        {
+          "id": "s3-w02-think-03-p01",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Write it the long way before you decide anything. 2 to the 3rd times 2 to the 4th means (2 times 2 times 2) times (2 times 2 times 2 times 2). Written as a single power of 2, what is that?",
+          "options": [
+            "2 to the 7th",
+            "2 to the 12th",
+            "4 to the 7th",
+            "2 to the 1st"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Nobody has to decree a rule here. Just count the 2s standing in the line.",
+            "Three 2s, then four more 2s, all multiplied together, is seven 2s in one long line.",
+            "Seven 2s multiplied together is 2 to the 7th.",
+            "That is the whole product rule: multiplying powers of the same number lines the factors up end to end, so the counts add. Multiplying the exponents instead would give 2 to the 12th, a completely different number."
+          ],
+          "ideaId": "fast-forward-rules",
+          "introducesIdea": true,
+          "useAgain": "when two powers of the same number are multiplied and you want one power instead of two.",
+          "hints": [
+            "Do not work out any values. Just count how many 2s are standing in the line altogether.",
+            "Lining up more copies of the same factor cannot change what the factor is, only how many there are."
+          ],
+          "socraticHint": "If you wrote both powers the long way and pushed the two lines together, what is the only thing about the line that changed?",
+          "skills": [
+            "think.skills.exponents"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "Written the long way, 3 to the 2nd times 3 to the 5th is (3 times 3) times (3 times 3 times 3 times 3 times 3). Written as a single power of 3, what is that?",
+            "options": [
+              "3 to the 10th",
+              "9 to the 7th",
+              "3 to the 7th",
+              "3 to the 3rd"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 2
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-03-p02",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Marcus simplified 5 to the 2nd times 5 to the 4th like this:\nLine 1: 5 to the 2nd times 5 to the 4th is a single power of 5, because the bases match.\nLine 2: Add the exponents: 2 + 4 is 6, so it is 5 to the 6th.\nLine 3: 5 to the 6th means 5 multiplied by itself 6 times.\nLine 4: 5 multiplied by itself 6 times is 30,000, so 5 to the 2nd times 5 to the 4th equals 30,000.\nWhich line is wrong?",
+          "options": [
+            "Line 1",
+            "Line 2",
+            "Line 3",
+            "Line 4",
+            "No line is wrong"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 3
+          },
+          "explanation": [
+            "Line 4 is wrong: 5 multiplied by itself 6 times is 15,625, not 30,000.",
+            "Lines 1 to 3 are correct: the bases match, the exponents add to 6, and that means 5 multiplied by itself 6 times.",
+            "The slip borrows the add-a-zero shortcut that works for powers of 10 and wrongly uses it here.",
+            "Multiplying it out, 5, 25, 125, 625, 3125, 15,625, shows the real value."
+          ],
+          "ideaId": "fast-forward-rules",
+          "useAgain": "when a rule about powers looks familiar and you want to check whether it was actually computed or just guessed from a different base.",
+          "hints": [
+            "Powers can go wrong in two places: whether the rule for combining them even applies, and the arithmetic of working one out. Check both.",
+            "Multiply the power out the long way, one factor at a time, and compare each line's claim with what you actually get."
+          ],
+          "socraticHint": "Which rule lets you add exponents, and when you write the power out in full, what number do you actually reach?",
+          "skills": [
+            "think.skills.exponents"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Marcus simplified 3 to the 2nd times 2 to the 3rd like this:\nLine 1: 3 to the 2nd times 2 to the 3rd has two different bases, 3 and 2.\nLine 2: Add the exponents anyway: 2 + 3 is 5, so it is 6 to the 5th.\nLine 3: 6 to the 5th means 6 multiplied by itself 5 times.\nLine 4: 6 multiplied by itself 5 times is 7,776.\nWhich line is wrong?",
+            "options": [
+              "Line 1",
+              "Line 2",
+              "Line 3",
+              "Line 4",
+              "No line is wrong"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 1
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-03-p03",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Ride the powers of 3 down the ladder: 3 to the 4th is 81, 3 to the 3rd is 27, 3 to the 2nd is 9, 3 to the 1st is 3. Every step down does the same thing to the number. What must 3 to the 0 be?",
+          "answer": {
+            "kind": "number",
+            "value": "1"
+          },
+          "explanation": [
+            "Look at what happens between neighbours on the ladder: 81 to 27 to 9 to 3 divides by 3 every step down.",
+            "The next step down applies that same move to 3, and 3 divided by 3 is 1.",
+            "So 3 to the 0 is 1, and the same ride works for any base you like.",
+            "The product rule agrees: 3 to the 0 times 3 to the 4th has to be 3 to the 4th, and the only number that leaves 81 unchanged when you multiply by it is 1. Nothing was decreed here. A pattern that already worked simply refused to break."
+          ],
+          "ideaId": "fast-forward-rules",
+          "useAgain": "when a rule for a strange case is missing and an existing pattern can be ridden down into it.",
+          "hints": [
+            "Write the four values in a column and mark what happens between each pair of neighbours.",
+            "Apply that same step one more time, to the value that sits below 3 on the ladder."
+          ],
+          "socraticHint": "Is 3 to the 0 being settled by a rule somebody invented, or by the ladder refusing to break?",
+          "skills": [
+            "think.skills.exponents",
+            "think.patterns"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Ride the powers of 10 down the ladder: 10 to the 3rd is 1000, 10 to the 2nd is 100, 10 to the 1st is 10. Every step down does the same thing to the number. What must 10 to the 0 be?",
+            "answer": {
+              "kind": "number",
+              "value": "1"
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-03-p04",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "One of these four looks like a rule but is a fake. Every number here is small enough to check by hand. Which one is false?",
+          "options": [
+            "2 to the 3rd times 2 to the 2nd equals 2 to the 5th",
+            "(2 to the 3rd) to the 2nd equals 2 to the 6th",
+            "2 to the 3rd times 2 to the 3rd equals 2 to the 6th",
+            "2 to the 3rd plus 2 to the 3rd equals 2 to the 6th"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 3
+          },
+          "explanation": [
+            "Test it, do not trust it. Turn every power into an ordinary number and check with your own hands.",
+            "2 to the 3rd is 8, so 8 plus 8 is 16. But 2 to the 6th is 64, so that one is false.",
+            "Adding two equal things doubles them, and one doubling moves you exactly one step along the ladder: 8 plus 8 is 2 to the 4th, not 2 to the 6th.",
+            "The other three survive the hand check: 8 times 4 is 32, 8 squared is 64, and 8 times 8 is 64."
+          ],
+          "ideaId": "test-it-or-trust-it",
+          "useAgain": "when a rule looks familiar and you want to know if it is real before trusting it on hard numbers.",
+          "hints": [
+            "Every base here is 2 and every exponent is small. Turn each power into a plain number first.",
+            "Do both sides of every line as plain numbers, then set the two values beside each other. Three of the lines will balance, and the one that does not is your fake."
+          ],
+          "socraticHint": "Doubling a power of 2 moves it how far along the doubling ladder?",
+          "skills": [
+            "think.skills.exponents",
+            "think.number-sense"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "One of these four is a fake. Check them by hand. Which one is false?",
+            "options": [
+              "3 to the 2nd times 3 to the 4th equals 3 to the 6th",
+              "3 to the 2nd plus 3 to the 2nd equals 3 to the 4th",
+              "(3 to the 2nd) to the 2nd equals 3 to the 4th",
+              "3 to the 2nd times 3 to the 2nd equals 3 to the 4th"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 1
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-03-p05",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Season 2's binary display spelled numbers with places worth 1, 2, 4, 8 and so on. A settings file needs 2 to the 5th times 2 to the 3rd different patterns. Written as a plain number, how many patterns is that?",
+          "answer": {
+            "kind": "number",
+            "value": "256"
+          },
+          "explanation": [
+            "Use the product rule first: five 2s next to three 2s is eight 2s in one line, which is 2 to the 8th.",
+            "Now turn that single power into a plain number by doubling from 1 eight times: 1, 2, 4, 8, 16, 32, 64, 128, 256.",
+            "So there are 256 patterns.",
+            "That is also exactly how many patterns 8 on-or-off switches can spell, which is the same fact wearing a different costume."
+          ],
+          "ideaId": "fast-forward-rules",
+          "useAgain": "when powers of the same base are multiplied and you need the plain number at the end.",
+          "hints": [
+            "Combine the two powers into one power before you work out any value at all.",
+            "Then double from 1, keeping count, until you have doubled as many times as the exponent says."
+          ],
+          "socraticHint": "Why is counting on-or-off switch patterns the same question as a power of 2?",
+          "skills": [
+            "think.skills.exponents"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A smaller settings file needs 2 to the 4th times 2 to the 2nd different patterns. Written as a plain number, how many patterns is that?",
+            "answer": {
+              "kind": "number",
+              "value": "64"
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-03-p06",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Both rules are needed here, and the order matters. Written as a single power of 5, what is (5 to the 2nd times 5 to the 3rd) to the 2nd?",
+          "options": [
+            "5 to the 7th",
+            "5 to the 10th",
+            "5 to the 12th",
+            "5 to the 25th"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 1
+          },
+          "explanation": [
+            "Do the inside first. Inside the brackets, two 5s next to three 5s is five 5s, which is 5 to the 5th.",
+            "Now the whole block is used twice, so the line holds two blocks of five 5s.",
+            "Two blocks of five 5s is ten 5s, which is 5 to the 10th.",
+            "The trap is mixing the rules up: adding where the outside exponent asks you to multiply lands on 5 to the 7th."
+          ],
+          "ideaId": "do-the-inside-first",
+          "useAgain": "when brackets hold one exponent job and another one waits outside them.",
+          "hints": [
+            "There are brackets. Turn everything inside them into a single power before touching the outside.",
+            "Once the inside is one power, decide which of the two rules the outside exponent is asking for."
+          ],
+          "socraticHint": "Which of the two rules belongs inside the brackets, and which one belongs outside?",
+          "skills": [
+            "think.skills.exponents"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Written as a single power of 2, what is (2 to the 3rd times 2 to the 1st) to the 3rd?",
+            "options": [
+              "2 to the 7th",
+              "2 to the 9th",
+              "2 to the 12th",
+              "2 to the 18th"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 2
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-03-p07",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Which is bigger, 2 to the 10th or 10 to the 3rd? Write the bigger one out as a plain number and answer with that number.",
+          "answer": {
+            "kind": "number",
+            "value": "1024"
+          },
+          "explanation": [
+            "The bases are different, so the exponents cannot be compared against each other. Both have to become plain numbers.",
+            "Doubling from 1 ten times gives 1024.",
+            "10 to the 3rd is 10 times 10 times 10, which is 1000.",
+            "1024 beats 1000, but only just. That near miss is why people who work with computers say a thousand and quietly mean 1024."
+          ],
+          "ideaId": "exponents-fast-forward",
+          "useAgain": "when two powers with different bases have to be compared and no rule joins them.",
+          "hints": [
+            "The exponent rules only work when the base is the same, so they are no help here.",
+            "Double from 1, counting as you go, and write the other value out beside it before deciding."
+          ],
+          "socraticHint": "Why does the bigger exponent not automatically win when the two bases are different?",
+          "skills": [
+            "think.skills.exponents",
+            "think.number-sense"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Which is bigger, 3 to the 5th or 5 to the 3rd? Write the bigger one out as a plain number and answer with that number.",
+            "answer": {
+              "kind": "number",
+              "value": "243"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "problem-set",
+      "id": "s3-w02-think-07",
+      "title": "Scale that is not whole, and two picks in a row",
+      "lane": "shape",
+      "problems": [
+        {
+          "id": "s3-w02-think-07-p01",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "A real car is 432 cm long. Model A is built at scale 1 to 18. Model B is built at scale 1 to 24. How many centimeters longer is Model A than Model B?",
+          "answer": {
+            "kind": "number",
+            "value": "6"
+          },
+          "explanation": [
+            "A scale of 1 to 18 means the real car is divided by 18 to get the model's length.",
+            "Model A is 432 divided by 18, which is 24 cm. Model B is 432 divided by 24, which is 18 cm.",
+            "24 minus 18 is 6, so Model A is 6 cm longer."
+          ],
+          "ideaId": "scale-keeps-the-shape",
+          "useAgain": "when two scaled copies of the same real object use different scale numbers, and you compare the two smaller sizes.",
+          "hints": [
+            "Find each model's length on its own first, before comparing them.",
+            "Divide the real length by 18 for one model and by 24 for the other."
+          ],
+          "socraticHint": "A bigger scale number, like 24 instead of 18, shrinks the real length by more or by less?",
+          "skills": [
+            "think.skills.ratios",
+            "think.spatial"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A real car is 360 cm long. Model A is built at scale 1 to 20. Model B is built at scale 1 to 24. How many centimeters longer is Model A than Model B?",
+            "answer": {
+              "kind": "number",
+              "value": "3"
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-07-p02",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "A garden plan uses a scale of 1 to 2.5. A path on the plan is 8 cm long. How many centimeters long is the real path?",
+          "answer": {
+            "kind": "number",
+            "value": "20"
+          },
+          "explanation": [
+            "A scale of 1 to 2.5 works the same as a whole-number scale: multiply the drawn length by 2.5 to get the real length.",
+            "8 times 2.5 is 20, so the real path is 20 cm long."
+          ],
+          "ideaId": "scale-keeps-the-shape",
+          "useAgain": "when a scale number has a decimal in it, and the same multiply-up rule still applies.",
+          "hints": [
+            "A decimal scale number still means multiply the drawn length by it.",
+            "8 times 2.5 is the same as 8 times 2, plus 8 times 0.5."
+          ],
+          "socraticHint": "Does a scale number with a decimal in it change which operation turns a drawn length into a real one?",
+          "skills": [
+            "think.skills.ratios"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A garden plan uses a scale of 1 to 3.5. A path on the plan is 6 cm long. How many centimeters long is the real path?",
+            "answer": {
+              "kind": "number",
+              "value": "21"
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-07-p03",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "You flip a fair coin twice. What is the probability, as a fraction, that both flips land heads?",
+          "answer": {
+            "kind": "number",
+            "value": "1/4"
+          },
+          "explanation": [
+            "Each flip has 2 equally likely results, so the tree for two flips has 4 equally likely endings.",
+            "Only 1 of those 4 endings is heads then heads.",
+            "The probability is 1 out of 4, or 1/4."
+          ],
+          "ideaId": "choices-multiply",
+          "useAgain": "when you need the chance of one exact path through a tree of two or more independent steps.",
+          "hints": [
+            "How many total equally likely outcomes are there for two flips?",
+            "Multiply the chance of heads on the first flip by the chance of heads on the second."
+          ],
+          "socraticHint": "If each flip is independent, does the result of the first flip change the chances on the second?",
+          "skills": [
+            "think.skills.probability",
+            "think.skills.counting"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "You flip a fair coin three times. What is the probability, as a fraction, that all three flips land heads?",
+            "answer": {
+              "kind": "number",
+              "value": "1/8"
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-07-p04",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "A bag always has 3 mystery-flavor lollipops and 2 fruit-flavor ones, 5 total. You pick one, note it, put it back, then pick again. What is the probability both picks are mystery flavor, as a fraction?",
+          "answer": {
+            "kind": "number",
+            "value": "9/25"
+          },
+          "explanation": [
+            "Putting the lollipop back means the bag is exactly the same for the second pick as the first.",
+            "Each pick has a 3 out of 5 chance of being mystery flavor.",
+            "Multiply the two picks: 3/5 times 3/5 is 9/25."
+          ],
+          "ideaId": "choices-multiply",
+          "useAgain": "when the same random pick happens twice with replacement, so the chances do not change between picks.",
+          "hints": [
+            "Does putting the lollipop back change the bag for the second pick?",
+            "Multiply the chance of mystery flavor by itself, once for each pick."
+          ],
+          "socraticHint": "Since the lollipop goes back in the bag, is the second pick's chance the same as the first pick's, or different?",
+          "skills": [
+            "think.skills.probability"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A bag always has 2 mystery-flavor lollipops and 4 fruit-flavor ones, 6 total. You pick one, put it back, then pick again. What is the probability both picks are mystery flavor, as a fraction?",
+            "answer": {
+              "kind": "number",
+              "value": "1/9"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "warmup",
+      "id": "s3-w02-think-08",
+      "variant": "chess",
+      "problems": [
+        {
+          "id": "s3-w02-think-08-p01",
+          "kind": "choice",
+          "lane": "warmup",
+          "figure": {
+            "kind": "board",
+            "alt": "White to move. A white rook on a1 faces a black knight on c4, with the black king on e4 on the same row.",
+            "spec": {
+              "fen": "8/8/8/8/2n1k3/8/8/R6K w - - 0 1"
+            }
+          },
+          "prompt": "White to move. Which move pins the black knight to its king?",
+          "options": [
+            "Ra4",
+            "Rb1",
+            "Ra7",
+            "Rc1"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Black's king on e4 and knight on c4 share the same open row.",
+            "Ra4 lines the rook up on that row, right behind the knight.",
+            "The knight cannot step off that row without leaving its king in check."
+          ],
+          "ideaId": "pin",
+          "useAgain": "when an enemy piece and its king share an open row your rook can reach.",
+          "hints": [
+            "Which row already holds both the black king and the black knight?",
+            "Move your rook onto that same row, behind the knight."
+          ],
+          "socraticHint": "If the knight jumped away right now, what would happen to the king?",
+          "skills": [
+            "think.chess"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "White to move. Which move pins the black knight to its king?",
+            "options": [
+              "Ra5",
+              "Rb1",
+              "Ra8",
+              "Rd1"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "figure": {
+              "kind": "board",
+              "alt": "White to move. A white rook on a1 faces a black knight on c5, with the black king on e5 on the same row.",
+              "spec": {
+                "fen": "7K/8/8/2n1k3/8/8/8/R7 w - - 0 1"
+              }
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-08-p02",
+          "kind": "choice",
+          "lane": "warmup",
+          "figure": {
+            "kind": "board",
+            "alt": "White to move. A white knight on e5 faces an undefended black rook on c6 and a black knight on g6 that a pawn defends.",
+            "spec": {
+              "fen": "4k3/7p/2r3n1/4N3/8/8/8/4K3 w - - 0 1"
+            }
+          },
+          "prompt": "White to move. One black piece is undefended and one is defended. Which move wins material safely?",
+          "options": [
+            "Nxg6",
+            "Nxc6",
+            "Nd3",
+            "Nc4"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 1
+          },
+          "explanation": [
+            "The knight on g6 is guarded by black's own pawn on h7.",
+            "The rook on c6 has no defender at all.",
+            "Nxc6 wins the rook and keeps your own knight safe."
+          ],
+          "ideaId": "hanging-piece",
+          "useAgain": "when more than one enemy piece looks capturable, so check who defends what before you choose.",
+          "hints": [
+            "For each piece your knight could capture, ask who else is watching that square.",
+            "Pick the capture where nothing can take your knight back."
+          ],
+          "socraticHint": "Which capture would leave your own piece standing afterward?",
+          "skills": [
+            "think.chess"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "White to move. Which move captures the undefended black rook?",
+            "options": [
+              "Bxh7",
+              "Be4",
+              "Bc4",
+              "Bf5"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "figure": {
+              "kind": "board",
+              "alt": "White to move. A white bishop on d3 faces an undefended black rook on h7.",
+              "spec": {
+                "fen": "4k3/7r/8/8/8/3B4/8/7K w - - 0 1"
+              }
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-08-p03",
+          "kind": "choice",
+          "lane": "warmup",
+          "figure": {
+            "kind": "board",
+            "alt": "White to move. A white knight on c3 faces two undefended black bishops on b6 and f6.",
+            "spec": {
+              "fen": "4k3/8/1b3b2/8/8/2N5/8/4K3 w - - 0 1"
+            }
+          },
+          "prompt": "White to move. Which move attacks two black bishops at once?",
+          "options": [
+            "Nd5",
+            "Nb1",
+            "Na4",
+            "Ne4"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "A knight jumping to d5 attacks both b6 and f6 at the same time.",
+            "Black's two bishops sit on exactly those squares with no defender.",
+            "Black can only save one bishop."
+          ],
+          "ideaId": "fork",
+          "useAgain": "when one knight jump can land on a square that touches two undefended pieces.",
+          "hints": [
+            "Find a knight square that touches two black pieces at once.",
+            "Check both b6 and f6 from that square."
+          ],
+          "socraticHint": "If black saves one bishop, what happens to the other?",
+          "skills": [
+            "think.chess"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "White to move. Which move attacks two black bishops at once?",
+            "options": [
+              "Ne5",
+              "Nd6",
+              "Nb6",
+              "Na5"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "figure": {
+              "kind": "board",
+              "alt": "White to move. A white knight on c4 faces two undefended black bishops on d7 and f7.",
+              "spec": {
+                "fen": "k7/3b1b2/8/8/2N5/8/8/7K w - - 0 1"
+              }
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-08-p04",
+          "kind": "choice",
+          "lane": "warmup",
+          "figure": {
+            "kind": "board",
+            "alt": "White to move. Black's lone king sits on h8, white's king on g6 and rook on a1.",
+            "spec": {
+              "fen": "7k/8/6K1/8/8/8/8/R7 w - - 0 1"
+            }
+          },
+          "prompt": "White to move. Which move gives checkmate?",
+          "options": [
+            "Kf6",
+            "Ra7",
+            "Ra8#"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 2
+          },
+          "explanation": [
+            "The white king on g6 already guards the squares g7 and h7 next to the black king.",
+            "Ra8 checks the king along the back rank, and it has nowhere left to run.",
+            "The rook is too far away for the king to capture, so it is mate."
+          ],
+          "ideaId": "king-assisted-mate",
+          "useAgain": "when your own king already guards the squares your rook's check would leave open.",
+          "hints": [
+            "Which squares next to the black king does your own king already cover?",
+            "Find the rook move that checks the king along the row left open."
+          ],
+          "socraticHint": "Could the black king step toward your own king to escape?",
+          "skills": [
+            "think.chess"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "White to move. Which move gives checkmate?",
+            "options": [
+              "Rh8#",
+              "Rh7",
+              "Kc6"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "figure": {
+              "kind": "board",
+              "alt": "White to move. Black's lone king sits on a8, white's king on b6 and rook on h1.",
+              "spec": {
+                "fen": "k7/8/1K6/8/8/8/8/7R w - - 0 1"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "problem-set",
+      "id": "s3-w02-think-04",
+      "title": "Pigeonhole, harder: socks, birth months and remainders",
+      "lane": "puzzle",
+      "problems": [
+        {
+          "id": "s3-w02-think-04-p01",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "A drawer holds only black socks and white socks, all jumbled up, and the room is dark. What is the smallest number of socks you must pull out to be sure you are holding two of the same colour?",
+          "answer": {
+            "kind": "number",
+            "value": "3"
+          },
+          "explanation": [
+            "More socks than drawers: the colours are the drawers and the socks you pull are the socks.",
+            "Two socks might come out one black and one white, so two is not enough to be sure.",
+            "Pull a third and there are only two colours it can be, so it must match one you are already holding.",
+            "Sure means sure on your unluckiest day, not lucky on a good one."
+          ],
+          "ideaId": "pigeonhole",
+          "useAgain": "when you must guarantee a repeat and you know how many kinds there are.",
+          "hints": [
+            "Imagine the unluckiest possible draw, the one where nothing matches for as long as possible, and keep going from there.",
+            "Count the kinds first: how many different colours could a single sock be?"
+          ],
+          "socraticHint": "Does being sure mean it usually works, or that it cannot fail even on your unluckiest day?",
+          "skills": [
+            "think.logic",
+            "think.proof"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "A drawer holds socks in three colours, all jumbled up, and the room is dark. What is the smallest number of socks you must pull out to be sure you are holding two of the same colour?",
+            "answer": {
+              "kind": "number",
+              "value": "4"
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-04-p02",
+          "kind": "truefalse",
+          "lane": "puzzle",
+          "prompt": "A hiking club has 25 members. True or false: at least three of them must share a birth month.",
+          "answer": {
+            "kind": "boolean",
+            "value": true
+          },
+          "explanation": [
+            "The twelve months are the drawers and the members are the socks, but this time you want a crowd of three, not a pair.",
+            "Suppose no month ever held three members. Then every month holds at most two, so the club could hold at most 2 times 12, which is 24 members.",
+            "The club has 25, one more than that ceiling, so the supposing was impossible and some month must hold three.",
+            "Notice what this does not tell you: which month it is. Pigeonhole hands you existence, never identity."
+          ],
+          "ideaId": "pigeonhole",
+          "useAgain": "when more than one repeat is wanted and you can work out the biggest crowd-free total.",
+          "hints": [
+            "Ask how many members the club could possibly have if no month were ever allowed three.",
+            "Compare that crowd-free ceiling against the 25 the club actually has."
+          ],
+          "socraticHint": "Pigeonhole says two must share once there are 13 members. What has to change in the counting when you ask for three instead of two?",
+          "skills": [
+            "think.logic",
+            "think.proof"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A different hiking club has 24 members. True or false: at least three of them must share a birth month.",
+            "answer": {
+              "kind": "boolean",
+              "value": false
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-04-p03",
+          "kind": "truefalse",
+          "lane": "puzzle",
+          "prompt": "Pick any 13 whole numbers you like, as wild as you like. Divide each one by 12 and keep only the remainder. True or false: two of your 13 numbers must leave the same remainder.",
+          "answer": {
+            "kind": "boolean",
+            "value": true
+          },
+          "explanation": [
+            "Clock math turns an endless supply of numbers into a small set of boxes.",
+            "Dividing by 12 can only ever leave one of twelve remainders: 0, 1, 2 and so on up to 11.",
+            "Those twelve remainders are the drawers and your thirteen numbers are the socks. Thirteen things cannot each get a drawer of their own when there are only twelve drawers.",
+            "So some remainder is left by two of your numbers, and that is true no matter which 13 numbers you picked."
+          ],
+          "ideaId": "clock-math",
+          "useAgain": "when a huge or unknown set of numbers can be sorted into a small number of remainder boxes.",
+          "hints": [
+            "List every remainder a division by 12 could possibly leave, and count how many there are.",
+            "Compare that count of possible remainders against how many numbers you are holding."
+          ],
+          "socraticHint": "Why can a remainder after dividing by 12 never be 12 itself?",
+          "skills": [
+            "think.skills.modular",
+            "think.logic"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Pick any 8 whole numbers you like. Divide each one by 9 and keep only the remainder. True or false: two of your 8 numbers must leave the same remainder.",
+            "answer": {
+              "kind": "boolean",
+              "value": false
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-04-p04",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "Two of those 13 numbers leave the same remainder when divided by 12. What must be true about the difference between those two numbers?",
+          "options": [
+            "It is smaller than 12",
+            "It divides evenly by 12",
+            "It is a multiple of 13",
+            "It leaves remainder 1 when divided by 12"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 1
+          },
+          "explanation": [
+            "Write each number as a pile of whole 12s with its remainder sitting on top.",
+            "The two numbers have the same remainder, so when you subtract one from the other the two remainders cancel each other exactly.",
+            "What survives the subtraction is a whole number of 12s and nothing else, so the difference divides evenly by 12.",
+            "Try it: 29 and 53 both leave remainder 5, and 53 take away 29 is 24, which is two whole 12s. The difference can be huge, so it certainly need not be smaller than 12."
+          ],
+          "ideaId": "clock-math",
+          "useAgain": "when two numbers share a remainder and you want to say something certain about their difference.",
+          "hints": [
+            "Write one number as some 12s plus a remainder, and write the other one the same way.",
+            "Subtract the two written-out forms and watch what happens to the two equal remainders."
+          ],
+          "socraticHint": "If both numbers sit on the very same mark of a 12 hour clock face, what does that force about the distance between them around the dial?",
+          "skills": [
+            "think.skills.modular",
+            "think.proof"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Two numbers leave the same remainder when divided by 7. What must be true about the difference between them?",
+            "options": [
+              "It is a multiple of 7",
+              "It is smaller than 7",
+              "It is an odd number",
+              "It leaves remainder 1 when divided by 7"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-04-p05",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "How many whole numbers from 1 to 60 leave a remainder of 3 when they are divided by 7?",
+          "answer": {
+            "kind": "number",
+            "value": "9"
+          },
+          "explanation": [
+            "Find the smallest one first. 3 divided by 7 is 0 with remainder 3, so 3 itself is on the list.",
+            "After that, adding 7 keeps the remainder the same, so the whole list climbs in steps of 7: 3, 10, 17, 24, 31, 38, 45, 52, 59.",
+            "The next one would be 66, which has walked off the end of 60, so the list stops at 59.",
+            "Counting the list gives 9 numbers. The clever part is not the counting, it is realising the answers march in a straight line with a fixed step."
+          ],
+          "ideaId": "clock-math",
+          "useAgain": "when you need how many numbers in a range share one remainder, and listing them all would take too long.",
+          "hints": [
+            "Find the smallest whole number in the range that leaves remainder 3, and start your list there.",
+            "Adding the divisor to a number never changes its remainder, so decide what the step between list members must be."
+          ],
+          "socraticHint": "If you kept walking past 60 in the same steps, would the pattern ever change, and what does that tell you about where to stop?",
+          "skills": [
+            "think.skills.modular",
+            "think.number-sense"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "How many whole numbers from 1 to 60 leave a remainder of 2 when they are divided by 9?",
+            "answer": {
+              "kind": "number",
+              "value": "7"
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-04-p06",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "An AMC 8 style peak, untimed, and you explain it back when it is done. A trail has four forks in a row. At each fork you can turn left or right, and the two branches always join up again before the next fork. Two walks count as different routes if they turn differently at any fork. How many different routes are there?",
+          "answer": {
+            "kind": "number",
+            "value": "16"
+          },
+          "explanation": [
+            "Two symbols are enough: write a route as four letters, one per fork, each of them L or R.",
+            "The first fork can be settled in 2 ways, and for each of those the second fork can still be settled in 2 ways, giving 4 routes through two forks.",
+            "Every extra fork doubles the count, so four forks give 2 times 2 times 2 times 2.",
+            "That is 2 to the 4th, which is 16 routes. Every route is one four-letter string, and every four-letter string is one route, so nothing is missed and nothing is counted twice."
+          ],
+          "ideaId": "two-symbols-are-enough",
+          "useAgain": "when a choice is made again and again and you want to count all the ways the choices can combine.",
+          "hints": [
+            "Write a whole route down as a short string of letters, one letter per fork.",
+            "Work out how many routes there are through one fork, then through two, and watch what each new fork does to the count."
+          ],
+          "socraticHint": "Does adding one more fork add to the number of routes, or do something else to it?",
+          "skills": [
+            "think.logic",
+            "think.skills.exponents"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A longer trail has five forks in a row, each one a left or right choice, and the branches always join up again before the next fork. How many different routes are there?",
+            "answer": {
+              "kind": "number",
+              "value": "32"
+            }
+          }
+        },
+        {
+          "id": "s3-w02-think-04-p07",
+          "kind": "truefalse",
+          "lane": "puzzle",
+          "prompt": "A second peak. Pick any 5 different numbers from 1, 2, 3, 4, 5, 6, 7, 8. True or false: two of the numbers you picked must add up to 9.",
+          "answer": {
+            "kind": "boolean",
+            "value": true
+          },
+          "explanation": [
+            "Nobody hands you the drawers this time. You have to build them yourself, and you build them out of what the question is asking about.",
+            "Pair the eight numbers so that each pair adds to 9: 1 with 8, 2 with 7, 3 with 6, 4 with 5. That is four pairs, and between them they cover all eight numbers.",
+            "The four pairs are the drawers and your five picks are the socks, so two of your picks must come out of the same pair.",
+            "Two numbers from the same pair add to 9 by the way the pairs were built, so it cannot be dodged no matter how carefully you choose."
+          ],
+          "ideaId": "pigeonhole",
+          "useAgain": "when the drawers are not handed to you and you must invent the right way to group things.",
+          "hints": [
+            "The drawers do not have to be colours or months. They can be groups you build yourself out of the numbers.",
+            "Build your groups around the thing the question cares about, which here is what two numbers add up to."
+          ],
+          "socraticHint": "What is it about 1 and 8 that makes them belong together in this particular question?",
+          "skills": [
+            "think.proof",
+            "think.logic"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Pick any 4 different numbers from 1, 2, 3, 4, 5, 6, 7, 8. True or false: two of the numbers you picked must add up to 9.",
+            "answer": {
+              "kind": "boolean",
+              "value": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "s3-w02-think-05",
+      "title": "Explain it in writing",
+      "mode": "written",
+      "prompt": "Write, in your own words, why any 13 whole numbers must include two that leave the same remainder when divided by 12, and then what that forces to be true about the difference between those two numbers. Name your drawers and name your socks."
+    },
+    {
+      "kind": "explain",
+      "id": "s3-w02-think-06",
+      "title": "Explain it out loud",
+      "mode": "voice",
+      "prompt": "Record yourself explaining why picking any 5 numbers from 1 to 8 forces two of them to add up to 9. Say out loud what your four groups are, why you built them that way and not some other way, and what would change if you were allowed to pick only 4 numbers.",
+      "problemId": "s3-w02-think-04-p07"
+    }
+  ]
+}

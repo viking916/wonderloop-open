@@ -1,0 +1,3217 @@
+{
+  "id": "ar-multi-digit-multiplication",
+  "idea": {
+    "body": "Multiplying a multi-digit number works by splitting it into place-value parts, multiplying each part, then adding the results. 34 times 6 splits into 30 plus 4: 6 times 30 is 180, 6 times 4 is 24, and 180 plus 24 is 204. This is what the standard algorithm's carrying does in shorthand. It is also the area model: a rectangle split into smaller pieces, each piece's area found separately, then every piece added for the whole rectangle."
+  },
+  "workedExample": {
+    "prompt": "A print shop runs 46 posters in each of 7 batches. How many posters is that?",
+    "steps": [
+      "Split 46 into 40 plus 6.",
+      "7 times 40 is 280.",
+      "7 times 6 is 42.",
+      "280 plus 42 is 322.",
+      "The shop prints 322 posters."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "An area model splitting 46 by 7 into two labelled boxes: 40 by 7 worth 280, and 6 by 7 worth 42.",
+      "spec": {
+        "w": 280,
+        "h": 130,
+        "items": [
+          {
+            "t": "box",
+            "x": 60,
+            "y": 30,
+            "w": 140,
+            "h": 70,
+            "label": "280",
+            "sub": "40 x 7",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 210,
+            "y": 30,
+            "w": 60,
+            "h": 70,
+            "label": "42",
+            "sub": "6 x 7",
+            "fill": "paper"
+          },
+          {
+            "t": "text",
+            "x": 130,
+            "y": 20,
+            "s": "40",
+            "size": 14,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 240,
+            "y": 20,
+            "s": "6",
+            "size": 14,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 30,
+            "y": 65,
+            "s": "7",
+            "size": 14,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "ar-multi-digit-multiplication-w1",
+      "name": "Split one number",
+      "when": "Use this for any multi-digit times single-digit multiplication.",
+      "steps": [
+        "Split 46 into 40 plus 6.",
+        "Multiply each part by 7: 7 times 40 is 280.",
+        "7 times 6 is 42.",
+        "Add the parts: 280 plus 42 is 322."
+      ],
+      "example": "46 x 7",
+      "answer": "322",
+      "trap": "Adding the parts before finishing both multiplications.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 46 by 7 into two labelled boxes: 40 by 7 worth 280, and 6 by 7 worth 42, totalling 322.",
+        "spec": {
+          "w": 280,
+          "h": 130,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 140,
+              "h": 70,
+              "fill": "paper",
+              "label": "280",
+              "sub": "40 x 7"
+            },
+            {
+              "t": "box",
+              "x": 210,
+              "y": 30,
+              "w": 60,
+              "h": 70,
+              "fill": "paper",
+              "label": "42",
+              "sub": "6 x 7"
+            },
+            {
+              "t": "text",
+              "x": 130,
+              "y": 20,
+              "s": "40",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 240,
+              "y": 20,
+              "s": "6",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65,
+              "s": "7",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 162,
+              "y": 115,
+              "s": "Total: 322",
+              "size": 13,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Split 46 into 40 plus 6.",
+              "set": {
+                "0": {
+                  "label": ""
+                },
+                "1": {
+                  "label": ""
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Multiply: 7 times 40 is 280.",
+              "set": {
+                "1": {
+                  "label": ""
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "7 times 6 is 42.",
+              "set": {
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Add the parts: 280 plus 42.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ar-multi-digit-multiplication-w2",
+      "name": "Column method",
+      "when": "Use this when you want one written line per number, with carrying.",
+      "steps": [
+        "Write 34 above 6, lined up on the right.",
+        "Multiply the ones digit: 6 times 4 is 24, write 4, carry 2.",
+        "Multiply the tens digit: 6 times 3 is 18, plus the carried 2 is 20.",
+        "Write the 20 next to the 4: the product is 204."
+      ],
+      "example": "34 x 6",
+      "answer": "204",
+      "trap": "Forgetting to add the carried digit before writing the final digits."
+    },
+    {
+      "id": "ar-multi-digit-multiplication-w3",
+      "name": "Doubling and halving",
+      "when": "Use this when one factor halves evenly and the other doubles into a round number.",
+      "steps": [
+        "Halve the first number and double the second: 16 becomes 8, 25 becomes 50.",
+        "The product stays the same: 8 times 50.",
+        "Halve again and double again: 8 becomes 4, 50 becomes 100.",
+        "4 times 100 is 400."
+      ],
+      "example": "16 x 25",
+      "answer": "400",
+      "trap": "Halving one number without doubling the other, which changes the product."
+    },
+    {
+      "id": "ar-multi-digit-multiplication-w4",
+      "name": "Round and adjust",
+      "when": "Use this when one factor sits one away from a round number.",
+      "steps": [
+        "Round 19 up to 20, an easier number.",
+        "Multiply the rounded number: 20 times 7 is 140.",
+        "19 is 1 less than 20, so one extra group of 7 got counted.",
+        "Subtract that extra group: 140 minus 7 is 133."
+      ],
+      "example": "19 x 7",
+      "answer": "133",
+      "trap": "Forgetting to subtract the extra group after rounding up."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p01",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a rover's solar-panel array, one run needs 34 sets of 6 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "204"
+      },
+      "explanation": [
+        "Split 34 by place value: 30 + 4.",
+        "Multiply each part by 6: 6 times 30 is 180; 6 times 4 is 24.",
+        "Add the parts to get 204."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 34 by 6 into labelled partial-product boxes.",
+        "spec": {
+          "w": 276,
+          "h": 118,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "180",
+              "sub": "30 x 6",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "24",
+              "sub": "4 x 6",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "30",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "4",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "6",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On a game's level map, one run needs 45 sets of 6 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "270"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p02",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a workshop's shelving grid, one run needs 52 sets of 7 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "364"
+      },
+      "explanation": [
+        "Split 52 by place value: 50 + 2.",
+        "Multiply each part by 7: 7 times 50 is 350; 7 times 2 is 14.",
+        "Add the parts to get 364."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 52 by 7 into labelled partial-product boxes.",
+        "spec": {
+          "w": 276,
+          "h": 118,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "350",
+              "sub": "50 x 7",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "14",
+              "sub": "2 x 7",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "50",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "2",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "7",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On a robotics club's LED wall, one run needs 63 sets of 7 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "441"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a print shop's poster run, one run needs 28 sets of 4 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "112"
+      },
+      "explanation": [
+        "Split 28 by place value: 20 + 8.",
+        "Multiply each part by 4: 4 times 20 is 80; 4 times 8 is 32.",
+        "Add the parts to get 112."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 28 by 4 into labelled partial-product boxes.",
+        "spec": {
+          "w": 276,
+          "h": 118,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "80",
+              "sub": "20 x 4",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "32",
+              "sub": "8 x 4",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "20",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "8",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "4",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On a bakery's tray of trays, one run needs 39 sets of 4 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "156"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p04",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a garden's tile path, one run needs 46 sets of 3 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "138"
+      },
+      "explanation": [
+        "Split 46 by place value: 40 + 6.",
+        "Multiply each part by 3: 3 times 40 is 120; 3 times 6 is 18.",
+        "Add the parts to get 138."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 46 by 3 into labelled partial-product boxes.",
+        "spec": {
+          "w": 276,
+          "h": 118,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "120",
+              "sub": "40 x 3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "18",
+              "sub": "6 x 3",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "40",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "6",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "3",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On an aquarium's tank wall, one run needs 57 sets of 3 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "171"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p05",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a robotics club's LED wall, 34 sets are multiplied by 10. What is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "340"
+      },
+      "explanation": [
+        "Multiplying by 10 shifts every digit left by the same number of places.",
+        "34 times 10 is 340."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a number is multiplied by 10, 100 or 1,000.",
+      "hints": [
+        "Multiplying by 10 means appending the same number of zeros that 10 has.",
+        "Do not just add zeros to the wrong end of the number."
+      ],
+      "socraticHint": "Why does multiplying by a ten move every digit one place to the left?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a bakery's tray of trays, 39 sets are multiplied by 10. What is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "390"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a bakery's tray of trays, 52 sets are multiplied by 100. What is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "5200"
+      },
+      "explanation": [
+        "Multiplying by 100 shifts every digit left by the same number of places.",
+        "52 times 100 is 5,200."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a number is multiplied by 10, 100 or 1,000.",
+      "hints": [
+        "Multiplying by 100 means appending the same number of zeros that 100 has.",
+        "Do not just add zeros to the wrong end of the number."
+      ],
+      "socraticHint": "Why does multiplying by a hundred move every digit one place to the left?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On an aquarium's tank wall, 57 sets are multiplied by 100. What is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "5700"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p07",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On an aquarium's tank wall, 7 sets are multiplied by 1,000. What is the total?",
+      "answer": {
+        "kind": "number",
+        "value": "7000"
+      },
+      "explanation": [
+        "Multiplying by 1,000 shifts every digit left by the same number of places.",
+        "7 times 1,000 is 7,000."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a number is multiplied by 10, 100 or 1,000.",
+      "hints": [
+        "Multiplying by 1,000 means appending the same number of zeros that 1,000 has.",
+        "Do not just add zeros to the wrong end of the number."
+      ],
+      "socraticHint": "Why does multiplying by a thousand move every digit one place to the left?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a comic shop's box of sets, 12 sets are multiplied by 1,000. What is the total?",
+        "answer": {
+          "kind": "number",
+          "value": "12000"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A comic shop's box of sets has 12 rows with 15 seeds in each row. How many seeds in total?",
+      "answer": {
+        "kind": "number",
+        "value": "180"
+      },
+      "explanation": [
+        "Split 12 into 10 + 2.",
+        "Split 15 into 10 + 5.",
+        "Multiply every part of one number by every part of the other.",
+        "Adding all those partial products gives 180."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when items are arranged in equal rows and at least one number has more than one digit.",
+      "hints": [
+        "Split the bigger factor by place value before multiplying.",
+        "Add the partial products for the final total."
+      ],
+      "socraticHint": "Which factor is easier to split by place value here?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A coding club's badge order has 14 rows with 15 seeds in each row. How many seeds in total?",
+        "answer": {
+          "kind": "number",
+          "value": "210"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coding club's badge order has 16 rows with 12 bolts in each row. How many bolts in total?",
+      "answer": {
+        "kind": "number",
+        "value": "192"
+      },
+      "explanation": [
+        "Split 16 into 10 + 6.",
+        "Split 12 into 10 + 2.",
+        "Multiply every part of one number by every part of the other.",
+        "Adding all those partial products gives 192."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when items are arranged in equal rows and at least one number has more than one digit.",
+      "hints": [
+        "Split the bigger factor by place value before multiplying.",
+        "Add the partial products for the final total."
+      ],
+      "socraticHint": "Which factor is easier to split by place value here?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A vending machine's restock order has 18 rows with 12 bolts in each row. How many bolts in total?",
+        "answer": {
+          "kind": "number",
+          "value": "216"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p10",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a vending machine's restock order, what is 43 times 6?",
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Split the bigger factor by place value, multiply each part, then add.",
+        "That gives 258.",
+        "Multiplying digit by digit without carrying, or dropping a place-value part, gives a wrong total."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a listed answer looks close but skipped a part of the multiplication.",
+      "hints": [
+        "Split the multi-digit factor by place value before multiplying.",
+        "Add every partial product; do not drop any of them."
+      ],
+      "socraticHint": "If you only multiplied part of the bigger number, would your total be too big or too small?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "options": [
+        "48",
+        "240",
+        "258",
+        "264"
+      ],
+      "variant": {
+        "prompt": "On a model train set's rail order, what is 53 times 6?",
+        "options": [
+          "318",
+          "8",
+          "300",
+          "324"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p11",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a model train set's rail order, what is 57 times 4?",
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Split the bigger factor by place value, multiply each part, then add.",
+        "That gives 228.",
+        "Multiplying digit by digit without carrying, or dropping a place-value part, gives a wrong total."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a listed answer looks close but skipped a part of the multiplication.",
+      "hints": [
+        "Split the multi-digit factor by place value before multiplying.",
+        "Add every partial product; do not drop any of them."
+      ],
+      "socraticHint": "If you only multiplied part of the bigger number, would your total be too big or too small?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "options": [
+        "8",
+        "200",
+        "232",
+        "228"
+      ],
+      "variant": {
+        "prompt": "On a rover's solar-panel array, what is 67 times 4?",
+        "options": [
+          "48",
+          "268",
+          "240",
+          "272"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p12",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a rover's solar-panel array, what is 68 times 5?",
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Split the bigger factor by place value, multiply each part, then add.",
+        "That gives 340.",
+        "Multiplying digit by digit without carrying, or dropping a place-value part, gives a wrong total."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a listed answer looks close but skipped a part of the multiplication.",
+      "hints": [
+        "Split the multi-digit factor by place value before multiplying.",
+        "Add every partial product; do not drop any of them."
+      ],
+      "socraticHint": "If you only multiplied part of the bigger number, would your total be too big or too small?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "options": [
+        "340",
+        "0",
+        "300",
+        "345"
+      ],
+      "variant": {
+        "prompt": "On a workshop's shelving grid, what is 78 times 5?",
+        "options": [
+          "50",
+          "390",
+          "350",
+          "395"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p13",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a workshop's shelving grid, what is 39 times 7?",
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Split the bigger factor by place value, multiply each part, then add.",
+        "That gives 273.",
+        "Multiplying digit by digit without carrying, or dropping a place-value part, gives a wrong total."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a listed answer looks close but skipped a part of the multiplication.",
+      "hints": [
+        "Split the multi-digit factor by place value before multiplying.",
+        "Add every partial product; do not drop any of them."
+      ],
+      "socraticHint": "If you only multiplied part of the bigger number, would your total be too big or too small?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "options": [
+        "13",
+        "210",
+        "273",
+        "280"
+      ],
+      "variant": {
+        "prompt": "On a print shop's poster run, what is 49 times 7?",
+        "options": [
+          "83",
+          "280",
+          "350",
+          "343"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p14",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "On a print shop's poster run: 34 times 6 equals 204. True or false?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The real product of 34 and 6 is 204.",
+        "The statement is true."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when you are checking someone else's multi-digit multiplication.",
+      "hints": [
+        "Compute the real product yourself before checking the claim.",
+        "Split the bigger number by place value to multiply carefully."
+      ],
+      "socraticHint": "Would rounding both numbers first give you a quick way to sanity-check this claim?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a garden's tile path: 27 times 8 equals 210. True or false?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p15",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "On a game's level map: 23 x 4, 18 x 5, 14 x 6, 31 x 3. Order these products from least to greatest.",
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0,
+          3
+        ]
+      },
+      "explanation": [
+        "Work out each product first.",
+        "From least to greatest: 84, 90, 92, 93."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when several multi-digit products need to be lined up by size.",
+      "hints": [
+        "Compute every product before comparing.",
+        "Compare the actual products, not the size of the numbers written."
+      ],
+      "socraticHint": "Could the expression with the biggest-looking numbers ever have the smallest product?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "items": [
+        "23 x 4",
+        "18 x 5",
+        "14 x 6",
+        "31 x 3"
+      ],
+      "variant": {
+        "prompt": "On a robotics club's LED wall: 24 x 5, 19 x 6, 15 x 7, 32 x 4. Order these products from least to greatest.",
+        "items": [
+          "24 x 5",
+          "19 x 6",
+          "15 x 7",
+          "32 x 4"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p16",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a robotics club's LED wall, one run needs 234 sets of 6 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "1404"
+      },
+      "explanation": [
+        "Split 234 by place value: 200 + 30 + 4.",
+        "Multiply each part by 6: 6 times 200 is 1,200; 6 times 30 is 180; 6 times 4 is 24.",
+        "Add the parts to get 1,404."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 234 by 6 into labelled partial-product boxes.",
+        "spec": {
+          "w": 384,
+          "h": 118,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "1,200",
+              "sub": "200 x 6",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "180",
+              "sub": "30 x 6",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 276,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "24",
+              "sub": "4 x 6",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "200",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "30",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 326.0,
+              "y": 20,
+              "s": "4",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "6",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On a bakery's tray of trays, one run needs 345 sets of 6 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "2070"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p17",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a bakery's tray of trays, one run needs 418 sets of 3 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "1254"
+      },
+      "explanation": [
+        "Split 418 by place value: 400 + 10 + 8.",
+        "Multiply each part by 3: 3 times 400 is 1,200; 3 times 10 is 30; 3 times 8 is 24.",
+        "Add the parts to get 1,254."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 418 by 3 into labelled partial-product boxes.",
+        "spec": {
+          "w": 384,
+          "h": 118,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "1,200",
+              "sub": "400 x 3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "30",
+              "sub": "10 x 3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 276,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "24",
+              "sub": "8 x 3",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "400",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "10",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 326.0,
+              "y": 20,
+              "s": "8",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "3",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On an aquarium's tank wall, one run needs 529 sets of 3 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "1587"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p18",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On an aquarium's tank wall, one run needs 527 sets of 4 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "2108"
+      },
+      "explanation": [
+        "Split 527 by place value: 500 + 20 + 7.",
+        "Multiply each part by 4: 4 times 500 is 2,000; 4 times 20 is 80; 4 times 7 is 28.",
+        "Add the parts to get 2,108."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 527 by 4 into labelled partial-product boxes.",
+        "spec": {
+          "w": 384,
+          "h": 118,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "2,000",
+              "sub": "500 x 4",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "80",
+              "sub": "20 x 4",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 276,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "28",
+              "sub": "7 x 4",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "500",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "20",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 326.0,
+              "y": 20,
+              "s": "7",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "4",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On a comic shop's box of sets, one run needs 638 sets of 4 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "2552"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p19",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a comic shop's box of sets, one run needs 34 sets of 27 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "918"
+      },
+      "explanation": [
+        "Split 34 into 30 + 4.",
+        "Split 27 into 20 + 7.",
+        "Multiply every part of one number by every part of the other.",
+        "Adding all those partial products gives 918."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 34 by 27 into labelled partial-product boxes.",
+        "spec": {
+          "w": 276,
+          "h": 196,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "600",
+              "sub": "30 x 20",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "80",
+              "sub": "4 x 20",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "210",
+              "sub": "30 x 7",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "28",
+              "sub": "4 x 7",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "30",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "4",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "20",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 143.0,
+              "s": "7",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On a coding club's badge order, one run needs 44 sets of 32 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "1408"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p20",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a coding club's badge order, one run needs 46 sets of 53 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "2438"
+      },
+      "explanation": [
+        "Split 46 into 40 + 6.",
+        "Split 53 into 50 + 3.",
+        "Multiply every part of one number by every part of the other.",
+        "Adding all those partial products gives 2,438."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 46 by 53 into labelled partial-product boxes.",
+        "spec": {
+          "w": 276,
+          "h": 196,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "2,000",
+              "sub": "40 x 50",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "300",
+              "sub": "6 x 50",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "120",
+              "sub": "40 x 3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "18",
+              "sub": "6 x 3",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "40",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "6",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "50",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 143.0,
+              "s": "3",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On a vending machine's restock order, one run needs 56 sets of 58 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "3248"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p21",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a vending machine's restock order, one run needs 62 sets of 38 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "2356"
+      },
+      "explanation": [
+        "Split 62 into 60 + 2.",
+        "Split 38 into 30 + 8.",
+        "Multiply every part of one number by every part of the other.",
+        "Adding all those partial products gives 2,356."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 62 by 38 into labelled partial-product boxes.",
+        "spec": {
+          "w": 276,
+          "h": 196,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "1,800",
+              "sub": "60 x 30",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "60",
+              "sub": "2 x 30",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "480",
+              "sub": "60 x 8",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "16",
+              "sub": "2 x 8",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "60",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "2",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "30",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 143.0,
+              "s": "8",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On a model train set's rail order, one run needs 72 sets of 43 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "3096"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a model train set's rail order, what is 23 times 20?",
+      "answer": {
+        "kind": "number",
+        "value": "460"
+      },
+      "explanation": [
+        "20 is 2 groups of ten.",
+        "23 times 2 is 46.",
+        "46 times ten is 460."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when one factor is a whole multiple of ten, like 20, 30 or 40.",
+      "hints": [
+        "Multiply by the ones digit of the tens number first, then multiply by ten.",
+        "Multiplying by ten just shifts every digit one place left."
+      ],
+      "socraticHint": "Is it easier to multiply by a two-digit multiple of ten directly, or as a fact times ten?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a rover's solar-panel array, what is 28 times 20?",
+        "answer": {
+          "kind": "number",
+          "value": "560"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p23",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a rover's solar-panel array, what is 34 times 30?",
+      "answer": {
+        "kind": "number",
+        "value": "1020"
+      },
+      "explanation": [
+        "30 is 3 groups of ten.",
+        "34 times 3 is 102.",
+        "102 times ten is 1,020."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when one factor is a whole multiple of ten, like 20, 30 or 40.",
+      "hints": [
+        "Multiply by the ones digit of the tens number first, then multiply by ten.",
+        "Multiplying by ten just shifts every digit one place left."
+      ],
+      "socraticHint": "Is it easier to multiply by a two-digit multiple of ten directly, or as a fact times ten?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a workshop's shelving grid, what is 39 times 30?",
+        "answer": {
+          "kind": "number",
+          "value": "1170"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p24",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a workshop's shelving grid, round 48 and 32 to easy numbers, multiply for an estimate, then find the real product. How far off is the estimate?",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "Rounding gives 50 and 30, so the estimate is 1,500.",
+        "The real product is 48 times 32, which is 1,536.",
+        "The estimate is off by 36."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when you need to judge how good a rounded estimate of a product really was.",
+      "hints": [
+        "Round each factor to a nearby easy number before estimating.",
+        "Then compute the exact product and compare the two."
+      ],
+      "socraticHint": "Does rounding both factors up always push the estimate too high?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On a print shop's poster run, round 57 and 24 to easy numbers, multiply for an estimate, then find the real product. How far off is the estimate?",
+        "answer": {
+          "kind": "number",
+          "value": "168"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p25",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a print shop's poster run, what is 63 times 24?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Split the bigger factor by place value, multiply each part, then add.",
+        "That gives 1,512.",
+        "Multiplying digit by digit without carrying, or dropping a place-value part, gives a wrong total."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a listed answer looks close but skipped a part of the multiplication.",
+      "hints": [
+        "Split the multi-digit factor by place value before multiplying.",
+        "Add every partial product; do not drop any of them."
+      ],
+      "socraticHint": "If you only multiplied part of the bigger number, would your total be too big or too small?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "options": [
+        "42",
+        "1,512",
+        "1,440",
+        "1,536"
+      ],
+      "variant": {
+        "prompt": "On a garden's tile path, what is 68 times 27?",
+        "options": [
+          "1,836",
+          "26",
+          "1,620",
+          "1,863"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p26",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a garden's tile path, what is 48 times 36?",
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Split the bigger factor by place value, multiply each part, then add.",
+        "That gives 1,728.",
+        "Multiplying digit by digit without carrying, or dropping a place-value part, gives a wrong total."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a listed answer looks close but skipped a part of the multiplication.",
+      "hints": [
+        "Split the multi-digit factor by place value before multiplying.",
+        "Add every partial product; do not drop any of them."
+      ],
+      "socraticHint": "If you only multiplied part of the bigger number, would your total be too big or too small?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "options": [
+        "48",
+        "1,440",
+        "1,728",
+        "1,764"
+      ],
+      "variant": {
+        "prompt": "On a game's level map, what is 53 times 39?",
+        "options": [
+          "57",
+          "1,950",
+          "2,106",
+          "2,067"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p27",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a game's level map, what is 57 times 19?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Split the bigger factor by place value, multiply each part, then add.",
+        "That gives 1,083.",
+        "Multiplying digit by digit without carrying, or dropping a place-value part, gives a wrong total."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a listed answer looks close but skipped a part of the multiplication.",
+      "hints": [
+        "Split the multi-digit factor by place value before multiplying.",
+        "Add every partial product; do not drop any of them."
+      ],
+      "socraticHint": "If you only multiplied part of the bigger number, would your total be too big or too small?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "options": [
+        "53",
+        "1,083",
+        "950",
+        "1,102"
+      ],
+      "variant": {
+        "prompt": "On a robotics club's LED wall, what is 62 times 22?",
+        "options": [
+          "24",
+          "1,320",
+          "1,364",
+          "1,386"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p28",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a robotics club's LED wall, what is 72 times 28?",
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Split the bigger factor by place value, multiply each part, then add.",
+        "That gives 2,016.",
+        "Multiplying digit by digit without carrying, or dropping a place-value part, gives a wrong total."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a listed answer looks close but skipped a part of the multiplication.",
+      "hints": [
+        "Split the multi-digit factor by place value before multiplying.",
+        "Add every partial product; do not drop any of them."
+      ],
+      "socraticHint": "If you only multiplied part of the bigger number, would your total be too big or too small?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "options": [
+        "66",
+        "1,960",
+        "2,044",
+        "2,016"
+      ],
+      "variant": {
+        "prompt": "On a bakery's tray of trays, what is 77 times 31?",
+        "options": [
+          "2,387",
+          "77",
+          "2,170",
+          "2,418"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p29",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "On a bakery's tray of trays: 346 times 5 equals 1,730. True or false?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The real product of 346 and 5 is 1,730.",
+        "The statement is true."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when you are checking someone else's multi-digit multiplication.",
+      "hints": [
+        "Compute the real product yourself before checking the claim.",
+        "Split the bigger number by place value to multiply carefully."
+      ],
+      "socraticHint": "Would rounding both numbers first give you a quick way to sanity-check this claim?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "On an aquarium's tank wall: 219 times 7 equals 1,533. True or false?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p30",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "On a comic shop's box of sets: 34 x 27, 46 x 19, 52 x 15, 28 x 33. Order these products from least to greatest.",
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0,
+          3
+        ]
+      },
+      "explanation": [
+        "Work out each product first.",
+        "From least to greatest: 780, 874, 918, 924."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when several multi-digit products need to be lined up by size.",
+      "hints": [
+        "Compute every product before comparing.",
+        "Compare the actual products, not the size of the numbers written."
+      ],
+      "socraticHint": "Could the expression with the biggest-looking numbers ever have the smallest product?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "items": [
+        "34 x 27",
+        "46 x 19",
+        "52 x 15",
+        "28 x 33"
+      ],
+      "variant": {
+        "prompt": "On a coding club's badge order: 35 x 28, 47 x 20, 53 x 16, 29 x 34. Order these products from least to greatest.",
+        "items": [
+          "35 x 28",
+          "47 x 20",
+          "53 x 16",
+          "29 x 34"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p31",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a vending machine's restock order, one run needs 234 sets of 16 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "3744"
+      },
+      "explanation": [
+        "Split 234 into 200 + 30 + 4.",
+        "Split 16 into 10 + 6.",
+        "Multiply every part of one number by every part of the other.",
+        "Adding all those partial products gives 3,744."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 234 by 16 into labelled partial-product boxes.",
+        "spec": {
+          "w": 384,
+          "h": 196,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "2,000",
+              "sub": "200 x 10",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "300",
+              "sub": "30 x 10",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 276,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "40",
+              "sub": "4 x 10",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "1,200",
+              "sub": "200 x 6",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "180",
+              "sub": "30 x 6",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 276,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "24",
+              "sub": "4 x 6",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "200",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "30",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 326.0,
+              "y": 20,
+              "s": "4",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "10",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 143.0,
+              "s": "6",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On a model train set's rail order, one run needs 334 sets of 20 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "6680"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p32",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a model train set's rail order, one run needs 327 sets of 24 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "7848"
+      },
+      "explanation": [
+        "Split 327 into 300 + 20 + 7.",
+        "Split 24 into 20 + 4.",
+        "Multiply every part of one number by every part of the other.",
+        "Adding all those partial products gives 7,848."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 327 by 24 into labelled partial-product boxes.",
+        "spec": {
+          "w": 384,
+          "h": 196,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "6,000",
+              "sub": "300 x 20",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "400",
+              "sub": "20 x 20",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 276,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "140",
+              "sub": "7 x 20",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "1,200",
+              "sub": "300 x 4",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "80",
+              "sub": "20 x 4",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 276,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "28",
+              "sub": "7 x 4",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "300",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "20",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 326.0,
+              "y": 20,
+              "s": "7",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "20",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 143.0,
+              "s": "4",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On a rover's solar-panel array, one run needs 427 sets of 28 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "11956"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On a rover's solar-panel array, one run needs 418 sets of 32 each. How many in total?",
+      "answer": {
+        "kind": "number",
+        "value": "13376"
+      },
+      "explanation": [
+        "Split 418 into 400 + 10 + 8.",
+        "Split 32 into 30 + 2.",
+        "Multiply every part of one number by every part of the other.",
+        "Adding all those partial products gives 13,376."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a multiplication has at least one multi-digit factor.",
+      "hints": [
+        "Split the bigger number by place value before multiplying.",
+        "Multiply each part separately, then add the partial products together."
+      ],
+      "socraticHint": "Does splitting the number change the final product, or just how you get there?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An area model splitting 418 by 32 into labelled partial-product boxes.",
+        "spec": {
+          "w": 384,
+          "h": 196,
+          "items": [
+            {
+              "t": "box",
+              "x": 60,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "12,000",
+              "sub": "400 x 30",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "300",
+              "sub": "10 x 30",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 276,
+              "y": 30,
+              "w": 100,
+              "h": 70,
+              "label": "240",
+              "sub": "8 x 30",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 60,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "800",
+              "sub": "400 x 2",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 168,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "20",
+              "sub": "10 x 2",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 276,
+              "y": 108,
+              "w": 100,
+              "h": 70,
+              "label": "16",
+              "sub": "8 x 2",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 110.0,
+              "y": 20,
+              "s": "400",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 218.0,
+              "y": 20,
+              "s": "10",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 326.0,
+              "y": 20,
+              "s": "8",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 65.0,
+              "s": "30",
+              "size": 14,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 143.0,
+              "s": "2",
+              "size": 14,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "On a workshop's shelving grid, one run needs 518 sets of 36 each. How many in total?",
+        "answer": {
+          "kind": "number",
+          "value": "18648"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p34",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rectangle on a workshop's shelving grid is 24 tiles by 18 tiles. How many tiles cover it in total?",
+      "answer": {
+        "kind": "number",
+        "value": "432"
+      },
+      "explanation": [
+        "Split 24 into 20 + 4.",
+        "Split 18 into 10 + 8.",
+        "Multiply every part of one number by every part of the other.",
+        "Adding all those partial products gives 432."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a rectangle's covering count is the product of its two side lengths.",
+      "hints": [
+        "Split the bigger side by place value before multiplying.",
+        "The total count is the two side lengths multiplied together."
+      ],
+      "socraticHint": "Does it matter which side you call rows and which you call columns?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangle on a print shop's poster run is 27 tiles by 20 tiles. How many tiles cover it in total?",
+        "answer": {
+          "kind": "number",
+          "value": "540"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rectangle on a print shop's poster run is 32 panels by 27 panels. How many panels cover it in total?",
+      "answer": {
+        "kind": "number",
+        "value": "864"
+      },
+      "explanation": [
+        "Split 32 into 30 + 2.",
+        "Split 27 into 20 + 7.",
+        "Multiply every part of one number by every part of the other.",
+        "Adding all those partial products gives 864."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a rectangle's covering count is the product of its two side lengths.",
+      "hints": [
+        "Split the bigger side by place value before multiplying.",
+        "The total count is the two side lengths multiplied together."
+      ],
+      "socraticHint": "Does it matter which side you call rows and which you call columns?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangle on a garden's tile path is 35 panels by 29 panels. How many panels cover it in total?",
+        "answer": {
+          "kind": "number",
+          "value": "1015"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rectangle on a garden's tile path is 19 bricks by 23 bricks. How many bricks cover it in total?",
+      "answer": {
+        "kind": "number",
+        "value": "437"
+      },
+      "explanation": [
+        "Split 19 into 10 + 9.",
+        "Split 23 into 20 + 3.",
+        "Multiply every part of one number by every part of the other.",
+        "Adding all those partial products gives 437."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a rectangle's covering count is the product of its two side lengths.",
+      "hints": [
+        "Split the bigger side by place value before multiplying.",
+        "The total count is the two side lengths multiplied together."
+      ],
+      "socraticHint": "Does it matter which side you call rows and which you call columns?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangle on a game's level map is 22 bricks by 25 bricks. How many bricks cover it in total?",
+        "answer": {
+          "kind": "number",
+          "value": "550"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's level map makes 14 batches of 26 parts each, then 45 more parts are added. How many parts are there now?",
+      "answer": {
+        "kind": "number",
+        "value": "409"
+      },
+      "explanation": [
+        "14 batches of 26 is 14 times 26, which is 364.",
+        "Adding 45 more gives 409."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a story multiplies first and then adds or removes some more.",
+      "hints": [
+        "Work out the multiplication part first, before the extra step.",
+        "Then apply the final add or subtract to that product."
+      ],
+      "socraticHint": "Which operation comes first here: the multiplying, or the extra step?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robotics club's led wall makes 16 batches of 29 parts each, then 55 more parts are added. How many parts are there now?",
+        "answer": {
+          "kind": "number",
+          "value": "519"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p38",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robotics club's led wall makes 18 batches of 32 badges each, then 60 badges are removed. How many badges are there now?",
+      "answer": {
+        "kind": "number",
+        "value": "516"
+      },
+      "explanation": [
+        "18 batches of 32 is 18 times 32, which is 576.",
+        "Removing 60 gives 516."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a story multiplies first and then adds or removes some more.",
+      "hints": [
+        "Work out the multiplication part first, before the extra step.",
+        "Then apply the final add or subtract to that product."
+      ],
+      "socraticHint": "Which operation comes first here: the multiplying, or the extra step?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A bakery's tray of trays makes 20 batches of 35 badges each, then 70 badges are removed. How many badges are there now?",
+        "answer": {
+          "kind": "number",
+          "value": "630"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p39",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A bakery's tray of trays makes 22 batches of 19 snacks each, then 38 more snacks are added. How many snacks are there now?",
+      "answer": {
+        "kind": "number",
+        "value": "456"
+      },
+      "explanation": [
+        "22 batches of 19 is 22 times 19, which is 418.",
+        "Adding 38 more gives 456."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a story multiplies first and then adds or removes some more.",
+      "hints": [
+        "Work out the multiplication part first, before the extra step.",
+        "Then apply the final add or subtract to that product."
+      ],
+      "socraticHint": "Which operation comes first here: the multiplying, or the extra step?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An aquarium's tank wall makes 24 batches of 22 snacks each, then 48 more snacks are added. How many snacks are there now?",
+        "answer": {
+          "kind": "number",
+          "value": "576"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p40",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On an aquarium's tank wall, what is 84 times 37?",
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Split the bigger factor by place value, multiply each part, then add.",
+        "That gives 3,108.",
+        "Multiplying digit by digit without carrying, or dropping a place-value part, gives a wrong total."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a listed answer looks close but skipped a part of the multiplication.",
+      "hints": [
+        "Split the multi-digit factor by place value before multiplying.",
+        "Add every partial product; do not drop any of them."
+      ],
+      "socraticHint": "If you only multiplied part of the bigger number, would your total be too big or too small?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "options": [
+        "68",
+        "2,960",
+        "3,145",
+        "3,108"
+      ],
+      "variant": {
+        "prompt": "On a comic shop's box of sets, what is 88 times 39?",
+        "options": [
+          "3,432",
+          "22",
+          "3,120",
+          "3,471"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p41",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a comic shop's box of sets, what is 96 times 42?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Split the bigger factor by place value, multiply each part, then add.",
+        "That gives 4,032.",
+        "Multiplying digit by digit without carrying, or dropping a place-value part, gives a wrong total."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a listed answer looks close but skipped a part of the multiplication.",
+      "hints": [
+        "Split the multi-digit factor by place value before multiplying.",
+        "Add every partial product; do not drop any of them."
+      ],
+      "socraticHint": "If you only multiplied part of the bigger number, would your total be too big or too small?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "options": [
+        "82",
+        "4,032",
+        "3,780",
+        "4,074"
+      ],
+      "variant": {
+        "prompt": "On a coding club's badge order, what is 100 times 44?",
+        "options": [
+          "400",
+          "4,444",
+          "4,400",
+          "440"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p42",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a coding club's badge order, what is 73 times 58?",
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Split the bigger factor by place value, multiply each part, then add.",
+        "That gives 4,234.",
+        "Multiplying digit by digit without carrying, or dropping a place-value part, gives a wrong total."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a listed answer looks close but skipped a part of the multiplication.",
+      "hints": [
+        "Split the multi-digit factor by place value before multiplying.",
+        "Add every partial product; do not drop any of them."
+      ],
+      "socraticHint": "If you only multiplied part of the bigger number, would your total be too big or too small?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "options": [
+        "64",
+        "4,234",
+        "4,060",
+        "4,292"
+      ],
+      "variant": {
+        "prompt": "On a vending machine's restock order, what is 77 times 60?",
+        "options": [
+          "0",
+          "4,200",
+          "4,620",
+          "4,680"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p43",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "On a vending machine's restock order, what is 65 times 49?",
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Split the bigger factor by place value, multiply each part, then add.",
+        "That gives 3,185.",
+        "Multiplying digit by digit without carrying, or dropping a place-value part, gives a wrong total."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a listed answer looks close but skipped a part of the multiplication.",
+      "hints": [
+        "Split the multi-digit factor by place value before multiplying.",
+        "Add every partial product; do not drop any of them."
+      ],
+      "socraticHint": "If you only multiplied part of the bigger number, would your total be too big or too small?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "options": [
+        "45",
+        "2,940",
+        "3,234",
+        "3,185"
+      ],
+      "variant": {
+        "prompt": "On a model train set's rail order, what is 69 times 51?",
+        "options": [
+          "3,519",
+          "69",
+          "3,060",
+          "3,570"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p44",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "On a model train set's rail order: 482 times 23 equals 11,086. True or false?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The real product of 482 and 23 is 11,086.",
+        "The statement is true."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when you are checking someone else's multi-digit multiplication.",
+      "hints": [
+        "Compute the real product yourself before checking the claim.",
+        "Split the bigger number by place value to multiply carefully."
+      ],
+      "socraticHint": "Would rounding both numbers first give you a quick way to sanity-check this claim?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a rover's solar-panel array: 376 times 19 equals 7,144. True or false?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p45",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "On a workshop's shelving grid: 84 x 37, 96 x 29, 73 x 44, 65 x 51, 58 x 62. Order these products from least to greatest.",
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0,
+          2,
+          3,
+          4
+        ]
+      },
+      "explanation": [
+        "Work out each product first.",
+        "From least to greatest: 2,784, 3,108, 3,212, 3,315, 3,596."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when several multi-digit products need to be lined up by size.",
+      "hints": [
+        "Compute every product before comparing.",
+        "Compare the actual products, not the size of the numbers written."
+      ],
+      "socraticHint": "Could the expression with the biggest-looking numbers ever have the smallest product?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "items": [
+        "84 x 37",
+        "96 x 29",
+        "73 x 44",
+        "65 x 51",
+        "58 x 62"
+      ],
+      "variant": {
+        "prompt": "On a print shop's poster run: 85 x 38, 97 x 30, 74 x 45, 66 x 52, 59 x 63. Order these products from least to greatest.",
+        "items": [
+          "85 x 38",
+          "97 x 30",
+          "74 x 45",
+          "66 x 52",
+          "59 x 63"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Use the shortcut 99 times a number equals 100 times that number minus the number itself. What is 48 times 99?",
+      "answer": {
+        "kind": "number",
+        "value": "4752"
+      },
+      "explanation": [
+        "48 times 100 is 4,800.",
+        "Subtract 48 once: 4,800 minus 48 is 4,752."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a factor is just one less than an easy round number, like 99 or 999.",
+      "hints": [
+        "Multiply by 100 first, since that is easy.",
+        "Then subtract the original number once to undo the extra one you added."
+      ],
+      "socraticHint": "Why does multiplying by 100 and then subtracting the number once give the same result as multiplying by 99?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Use the shortcut 99 times a number equals 100 times that number minus the number itself. What is 56 times 99?",
+        "answer": {
+          "kind": "number",
+          "value": "5544"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Which whole number from 10 to 30, multiplied by itself, gives a product closest to 500?",
+      "answer": {
+        "kind": "number",
+        "value": "22"
+      },
+      "explanation": [
+        "Try numbers near the middle of the range and square them.",
+        "22 times 22 is 484, which is closest to 500."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when you need to find a whole number whose square lands closest to a target.",
+      "hints": [
+        "Try a number in the middle of the range first, then adjust up or down.",
+        "Compare how close each square lands to the target."
+      ],
+      "socraticHint": "If your square is too small, should your next guess be bigger or smaller?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Which whole number from 10 to 30, multiplied by itself, gives a product closest to 700?",
+        "answer": {
+          "kind": "number",
+          "value": "26"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p48",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "On an aquarium's tank wall, 4 trays each hold 6 rows of 8 seeds. How many seeds in total?",
+      "answer": {
+        "kind": "number",
+        "value": "192"
+      },
+      "explanation": [
+        "Each tray holds 6 times 8, which is 48 seeds.",
+        "With 4 trays, multiply again: 4 times 48 is 192."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when a total is built from three multiplying layers instead of two.",
+      "hints": [
+        "Find how many are in one tray first.",
+        "Then multiply that by the number of trays."
+      ],
+      "socraticHint": "Does it matter which two numbers you multiply together first?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "On a comic shop's box of sets, 3 trays each hold 7 rows of 9 bolts. How many bolts in total?",
+        "answer": {
+          "kind": "number",
+          "value": "189"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p49",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Which expression is equal to 24 times 15?",
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "24 splits into 20 plus 4 by place value.",
+        "Multiplying that whole split by 15 matches (20 + 4) x 15.",
+        "The other choices multiply only part of the split, or group the numbers incorrectly."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when you need to recognise the correct place-value split behind a multiplication.",
+      "hints": [
+        "Split the multi-digit number by place value first.",
+        "Multiply the whole split by the other factor, not just one part of it."
+      ],
+      "socraticHint": "Does multiplying only one part of a split number by the other factor still give the full product?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "options": [
+        "(20 x 15) + 4",
+        "20 x (4 x 15)",
+        "(20 + 4) x 15",
+        "(20 + 15) x 4"
+      ],
+      "variant": {
+        "prompt": "Which expression is equal to 36 times 12?",
+        "options": [
+          "(30 x 12) + 6",
+          "(30 + 6) x 12",
+          "30 x (6 x 12)",
+          "(30 + 12) x 6"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-multi-digit-multiplication-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A model train set's rail order runs two batches: 28 times 34 parts, and 41 times 25 parts. How many more parts does the bigger batch make?",
+      "answer": {
+        "kind": "number",
+        "value": "73"
+      },
+      "explanation": [
+        "The first batch makes 952 parts.",
+        "The second batch makes 1,025 parts.",
+        "The difference is 73."
+      ],
+      "ideaId": "ar-multi-digit-multiplication",
+      "useAgain": "when two multiplications need to be compared by how much bigger one result is.",
+      "hints": [
+        "Work out both products before comparing them.",
+        "Subtract the smaller product from the bigger one."
+      ],
+      "socraticHint": "Can you tell which batch is bigger just from the numbers of rows, without multiplying?",
+      "skills": [
+        "think.skills.multiplication",
+        "think.skills.place-value"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover's solar-panel array runs two batches: 32 times 29 badges, and 38 times 27 badges. How many more badges does the bigger batch make?",
+        "answer": {
+          "kind": "number",
+          "value": "98"
+        }
+      }
+    }
+  ]
+}

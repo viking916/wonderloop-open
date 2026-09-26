@@ -1,0 +1,2539 @@
+{
+  "id": "a2-matrices",
+  "idea": {
+    "body": "A matrix is a grid of numbers, and it comes with its own arithmetic. Add or subtract two matrices the same size by combining matching entries. Multiply a matrix by a number by scaling every entry. Multiplying two matrices together works differently. Each entry of the product is a row of the first matrix times a column of the second, added up. A 2 by 2 matrix [a b; c d] has a determinant, a times d minus b times c. That number says whether the matrix has an inverse. When the determinant is not zero, the inverse undoes the matrix. Multiplying both sides of a system by that inverse then solves for every variable at once.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A 2 by 2 matrix drawn as four boxes in a grid: 2, 1 on top, 4, 3 below.",
+      "spec": {
+        "w": 112,
+        "h": 80,
+        "items": [
+          {
+            "t": "box",
+            "x": 0,
+            "y": 0,
+            "w": 56,
+            "h": 40,
+            "label": "2",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 56,
+            "y": 0,
+            "w": 56,
+            "h": 40,
+            "label": "1",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 40,
+            "w": 56,
+            "h": 40,
+            "label": "4",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 56,
+            "y": 40,
+            "w": 56,
+            "h": 40,
+            "label": "3",
+            "fill": "paper"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A = [3 1; 2 1].\nSolve 3x + y = 7 and 2x + y = 5 using the inverse of A. What is x?",
+    "steps": [
+      "The determinant of A is 3(1) - 1(2) = 1.",
+      "The inverse of A is [1 -1; -2 3].",
+      "Multiply the inverse by (7, 5): x = 1(7) + (-1)(5) = 2.",
+      "So x = 2 (and y = 1, from the second row of the same multiplication)."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "The matrix A, 3 and 1 on top, 2 and 1 below.",
+      "spec": {
+        "w": 112,
+        "h": 80,
+        "items": [
+          {
+            "t": "box",
+            "x": 0,
+            "y": 0,
+            "w": 56,
+            "h": 40,
+            "label": "3",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 56,
+            "y": 0,
+            "w": 56,
+            "h": 40,
+            "label": "1",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 0,
+            "y": 40,
+            "w": 56,
+            "h": 40,
+            "label": "2",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 56,
+            "y": 40,
+            "w": 56,
+            "h": 40,
+            "label": "1",
+            "fill": "paper"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "a2-matrices-w1",
+      "name": "Add or subtract matrices entry by entry",
+      "when": "Use this when combining two matrices of the same size.",
+      "steps": [
+        "A = [2 1; 4 3] and B = [1 3; 2 -1].",
+        "A + B adds each entry of B to the matching entry of A.",
+        "Entry (1,1): 2 + 1 = 3.",
+        "The matrix [3 4; 6 2] is the result."
+      ],
+      "example": "A = [2 1; 4 3]. B = [1 3; 2 -1]. Find entry (2,1) of A + B.",
+      "answer": "6",
+      "trap": "Adding all entries together instead of adding entries in the same position.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Matrix A and matrix B added entry by entry to give the result matrix [3 4; 6 2].",
+        "spec": {
+          "w": 430,
+          "h": 145,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 20,
+              "w": 56,
+              "h": 40,
+              "label": "2",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 76,
+              "y": 20,
+              "w": 56,
+              "h": 40,
+              "label": "1",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 60,
+              "w": 56,
+              "h": 40,
+              "label": "4",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 76,
+              "y": 60,
+              "w": 56,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 142,
+              "y": 52,
+              "s": "+",
+              "size": 18,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 160,
+              "y": 20,
+              "w": 56,
+              "h": 40,
+              "label": "1",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 216,
+              "y": 20,
+              "w": 56,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 160,
+              "y": 60,
+              "w": 56,
+              "h": 40,
+              "label": "2",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 216,
+              "y": 60,
+              "w": 56,
+              "h": 40,
+              "label": "-1",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 282,
+              "y": 52,
+              "s": "=",
+              "size": 18,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 300,
+              "y": 20,
+              "w": 56,
+              "h": 40,
+              "label": "3",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 356,
+              "y": 20,
+              "w": 56,
+              "h": 40,
+              "label": "4",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 300,
+              "y": 60,
+              "w": 56,
+              "h": 40,
+              "label": "6",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 356,
+              "y": 60,
+              "w": 56,
+              "h": 40,
+              "label": "2",
+              "fill": "accent"
+            },
+            {
+              "t": "text",
+              "x": 216,
+              "y": 125,
+              "s": "Entry (1,1): 2 + 1 = 3",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "A = [2 1; 4 3]. Add matrix B.",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                },
+                "13": {
+                  "hidden": true
+                },
+                "14": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "A = [2 1; 4 3] and B = [1 3; 2 -1].",
+              "set": {
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                },
+                "13": {
+                  "hidden": true
+                },
+                "14": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "A + B adds matching entries together.",
+              "set": {
+                "10": {
+                  "label": ""
+                },
+                "11": {
+                  "label": ""
+                },
+                "12": {
+                  "label": ""
+                },
+                "13": {
+                  "label": ""
+                },
+                "14": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Entry (1,1): 2 + 1 = 3.",
+              "set": {
+                "11": {
+                  "label": ""
+                },
+                "12": {
+                  "label": ""
+                },
+                "13": {
+                  "label": ""
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Result: [3 4; 6 2].",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a2-matrices-w2",
+      "name": "Multiply a matrix by a number",
+      "when": "Use this to scale every entry of a matrix by the same factor.",
+      "steps": [
+        "A = [2 1; 4 3] multiplied by 3 scales every entry.",
+        "Entry (1,1): 3 times 2 = 6.",
+        "Entry (1,2): 3 times 1 = 3.",
+        "The result is [6 3; 12 9]."
+      ],
+      "example": "A = [2 1; 4 3]. What is entry (2,2) of 2 times A?",
+      "answer": "6",
+      "trap": "Only multiplying one entry instead of all of them."
+    },
+    {
+      "id": "a2-matrices-w3",
+      "name": "Multiply two matrices using rows and columns",
+      "when": "Use this when multiplying a matrix by a vector or two matrices together.",
+      "steps": [
+        "A row times a column means multiply matching entries and add.",
+        "A = [1 2; 3 4] times v = [5; 6].",
+        "Row 1 of A is [1 2]. Column 1 of v is [5; 6].",
+        "1 times 5 plus 2 times 6 equals 17 for entry (1,1)."
+      ],
+      "example": "A = [1 2; 3 4]. v = [5; 6]. What is entry (2,1) of A times v?",
+      "answer": "39",
+      "trap": "Adding the row and column instead of multiplying matching entries and summing."
+    },
+    {
+      "id": "a2-matrices-w4",
+      "name": "Find the determinant and check for an inverse",
+      "when": "Use this to decide if a 2 by 2 matrix has an inverse.",
+      "steps": [
+        "For matrix [a b; c d], the determinant is a times d minus b times c.",
+        "[2 1; 4 3] has determinant 2 times 3 minus 1 times 4 = 2.",
+        "If the determinant is not zero, the matrix has an inverse.",
+        "If the determinant is zero, the matrix has no inverse."
+      ],
+      "example": "A = [2 1; 4 3]. What is the determinant?",
+      "answer": "2",
+      "trap": "Computing the determinant as a times b plus c times d, which is the trace instead."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-matrices-p01",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [2 1; 4 3].\nB = [1 3; 2 -1].\nWhat is entry (1, 1) of A + B?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Adding two matrices adds each entry to the matching entry in the same position.",
+        "Entry (1, 1) of A + B is 2 + 1 = 3."
+      ],
+      "useAgain": "when adding two matrices of the same size.",
+      "hints": [
+        "Add each entry of A to the matching entry of B.",
+        "Only the (1, 1) entries of A and B matter here."
+      ],
+      "socraticHint": "Which entries of A and B add together to make entry (1, 1)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "The matrix A + B, [3 4; 6 2].",
+        "spec": {
+          "w": 112,
+          "h": 80,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "4",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 0,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "6",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "2",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A = [1 -1; 5 2].\nB = [3 4; -2 0].\nWhat is entry (1, 2) of A + B?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p02",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [3 -2; 0 5].\nB = [1 4; -3 2].\nWhat is entry (1, 2) of A + B?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Adding two matrices adds each entry to the matching entry in the same position.",
+        "Entry (1, 2) of A + B is -2 + 4 = 2."
+      ],
+      "useAgain": "when adding two matrices of the same size.",
+      "hints": [
+        "Add each entry of A to the matching entry of B.",
+        "Only the (1, 2) entries of A and B matter here."
+      ],
+      "socraticHint": "Which entries of A and B add together to make entry (1, 2)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A = [4 2; 1 -3].\nB = [-1 3; 2 5].\nWhat is entry (2, 1) of A + B?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p03",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [5 1; -1 3].\nB = [2 2; 4 -2].\nWhat is entry (2, 1) of A + B?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Adding two matrices adds each entry to the matching entry in the same position.",
+        "Entry (2, 1) of A + B is -1 + 4 = 3."
+      ],
+      "useAgain": "when adding two matrices of the same size.",
+      "hints": [
+        "Add each entry of A to the matching entry of B.",
+        "Only the (2, 1) entries of A and B matter here."
+      ],
+      "socraticHint": "Which entries of A and B add together to make entry (2, 1)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "The matrix A + B, [7 3; 3 1].",
+        "spec": {
+          "w": 112,
+          "h": 80,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "7",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 0,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "1",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A = [0 5; 3 -2].\nB = [2 1; 4 4].\nWhat is entry (2, 2) of A + B?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p04",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [-1 4; 3 2].\nB = [3 -3; 1 5].\nWhat is entry (2, 2) of A + B?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Adding two matrices adds each entry to the matching entry in the same position.",
+        "Entry (2, 2) of A + B is 2 + 5 = 7."
+      ],
+      "useAgain": "when adding two matrices of the same size.",
+      "hints": [
+        "Add each entry of A to the matching entry of B.",
+        "Only the (2, 2) entries of A and B matter here."
+      ],
+      "socraticHint": "Which entries of A and B add together to make entry (2, 2)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A = [6 -1; 2 3].\nB = [1 2; -3 4].\nWhat is entry (1, 1) of A + B?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p05",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [2 6; -3 1].\nB = [4 -1; 2 3].\nWhat is entry (1, 1) of A + B?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Adding two matrices adds each entry to the matching entry in the same position.",
+        "Entry (1, 1) of A + B is 2 + 4 = 6."
+      ],
+      "useAgain": "when adding two matrices of the same size.",
+      "hints": [
+        "Add each entry of A to the matching entry of B.",
+        "Only the (1, 1) entries of A and B matter here."
+      ],
+      "socraticHint": "Which entries of A and B add together to make entry (1, 1)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "The matrix A + B, [6 5; -1 4].",
+        "spec": {
+          "w": 112,
+          "h": 80,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "6",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "5",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 0,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "-1",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "4",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A = [-2 3; 4 1].\nB = [5 -4; 0 2].\nWhat is entry (1, 2) of A + B?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p06",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [1 2; -1 4].\nWhat is entry (1, 1) of 3 times A?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Scaling a matrix by 3 multiplies every entry by 3.",
+        "Entry (1, 1) of 3 times A is 3 times 1 = 3."
+      ],
+      "useAgain": "when scaling every entry of a matrix by the same number.",
+      "hints": [
+        "Multiply every entry of A by the scalar.",
+        "Only the (1, 1) entry of A matters here."
+      ],
+      "socraticHint": "What is 3 times the (1, 1) entry of A?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "The matrix 3 times A, [3 6; -3 12].",
+        "spec": {
+          "w": 112,
+          "h": 80,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "6",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 0,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "-3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "12",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A = [0 4; -2 1].\nWhat is entry (1, 2) of 3 times A?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p07",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [3 -2; 5 0].\nWhat is entry (1, 2) of 2 times A?",
+      "answer": {
+        "kind": "number",
+        "value": "-4"
+      },
+      "explanation": [
+        "Scaling a matrix by 2 multiplies every entry by 2.",
+        "Entry (1, 2) of 2 times A is 2 times -2 = -4."
+      ],
+      "useAgain": "when scaling every entry of a matrix by the same number.",
+      "hints": [
+        "Multiply every entry of A by the scalar.",
+        "Only the (1, 2) entry of A matters here."
+      ],
+      "socraticHint": "What is 2 times the (1, 2) entry of A?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A = [1 -1; 2 3].\nWhat is entry (2, 1) of 5 times A?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p08",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [2 1; 4 -3].\nWhat is entry (2, 1) of -1 times A?",
+      "answer": {
+        "kind": "number",
+        "value": "-4"
+      },
+      "explanation": [
+        "Scaling a matrix by -1 multiplies every entry by -1.",
+        "Entry (2, 1) of -1 times A is -1 times 4 = -4."
+      ],
+      "useAgain": "when scaling every entry of a matrix by the same number.",
+      "hints": [
+        "Multiply every entry of A by the scalar.",
+        "Only the (2, 1) entry of A matters here."
+      ],
+      "socraticHint": "What is -1 times the (2, 1) entry of A?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "The matrix -1 times A, [-2 -1; -4 3].",
+        "spec": {
+          "w": 112,
+          "h": 80,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "-2",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "-1",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 0,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "-4",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A = [-3 4; 1 -2].\nWhat is entry (2, 2) of 2 times A?",
+        "answer": {
+          "kind": "number",
+          "value": "-4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p09",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [-1 2; 3 1].\nWhat is entry (2, 2) of 4 times A?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Scaling a matrix by 4 multiplies every entry by 4.",
+        "Entry (2, 2) of 4 times A is 4 times 1 = 4."
+      ],
+      "useAgain": "when scaling every entry of a matrix by the same number.",
+      "hints": [
+        "Multiply every entry of A by the scalar.",
+        "Only the (2, 2) entry of A matters here."
+      ],
+      "socraticHint": "What is 4 times the (2, 2) entry of A?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A = [2 0; -1 5].\nWhat is entry (1, 1) of 3 times A?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p10",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [5 -3; 1 2].\nWhat is entry (1, 1) of 2 times A?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Scaling a matrix by 2 multiplies every entry by 2.",
+        "Entry (1, 1) of 2 times A is 2 times 5 = 10."
+      ],
+      "useAgain": "when scaling every entry of a matrix by the same number.",
+      "hints": [
+        "Multiply every entry of A by the scalar.",
+        "Only the (1, 1) entry of A matters here."
+      ],
+      "socraticHint": "What is 2 times the (1, 1) entry of A?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "The matrix 2 times A, [10 -6; 2 4].",
+        "spec": {
+          "w": 112,
+          "h": 80,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "10",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "-6",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 0,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "2",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "4",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A = [1 1; -2 3].\nWhat is entry (1, 2) of 4 times A?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p11",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [4 1; 2 5].\nB = [1 3; 4 -1].\nWhat is entry (1, 1) of A - B?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Subtracting two matrices subtracts each entry of B from the matching entry of A.",
+        "Entry (1, 1) of A - B is 4 - (1) = 3."
+      ],
+      "useAgain": "when subtracting two matrices of the same size.",
+      "hints": [
+        "Subtract each entry of B from the matching entry of A.",
+        "Only the (1, 1) entries of A and B matter here."
+      ],
+      "socraticHint": "Which entries of A and B subtract to make entry (1, 1)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "The matrix A - B, [3 -2; -2 6].",
+        "spec": {
+          "w": 112,
+          "h": 80,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "-2",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 0,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "-2",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "6",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A = [1 5; 3 -2].\nB = [4 1; -1 3].\nWhat is entry (2, 2) of A - B?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p12",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [3 -2; 5 1].\nB = [2 4; 1 3].\nWhat is entry (1, 2) of A - B?",
+      "answer": {
+        "kind": "number",
+        "value": "-6"
+      },
+      "explanation": [
+        "Subtracting two matrices subtracts each entry of B from the matching entry of A.",
+        "Entry (1, 2) of A - B is -2 - (4) = -6."
+      ],
+      "useAgain": "when subtracting two matrices of the same size.",
+      "hints": [
+        "Subtract each entry of B from the matching entry of A.",
+        "Only the (1, 2) entries of A and B matter here."
+      ],
+      "socraticHint": "Which entries of A and B subtract to make entry (1, 2)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A = [2 -3; 4 6].\nB = [1 2; 3 -1].\nWhat is entry (1, 1) of A - B?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p13",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [6 2; -1 4].\nB = [3 -1; 2 2].\nWhat is entry (2, 1) of A - B?",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "Subtracting two matrices subtracts each entry of B from the matching entry of A.",
+        "Entry (2, 1) of A - B is -1 - (2) = -3."
+      ],
+      "useAgain": "when subtracting two matrices of the same size.",
+      "hints": [
+        "Subtract each entry of B from the matching entry of A.",
+        "Only the (2, 1) entries of A and B matter here."
+      ],
+      "socraticHint": "Which entries of A and B subtract to make entry (2, 1)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "The matrix A - B, [3 3; -3 2].",
+        "spec": {
+          "w": 112,
+          "h": 80,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 0,
+              "w": 56,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 0,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "-3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 56,
+              "y": 40,
+              "w": 56,
+              "h": 40,
+              "label": "2",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A = [5 4; 1 -2].\nB = [2 1; -3 4].\nWhat is entry (1, 2) of A - B?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p14",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "truefalse",
+      "prompt": "A = [3 3; -2 5].\nB = [1 -1; 2 3].\nTrue or false: entry (1, 1) of A - B is 2.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Entry (1, 1) of A - B is 3 - (1) = 2.",
+        "That matches the claimed value 2."
+      ],
+      "useAgain": "when checking a claimed entry of a matrix difference.",
+      "hints": [
+        "Subtract the matching entries of A and B at that position.",
+        "Compare that result to 2."
+      ],
+      "socraticHint": "What is entry (1, 1) of A - B really?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A = [4 -1; 3 2].\nB = [1 3; -2 5].\nTrue or false: entry (2, 1) of A - B is 5.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p15",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "truefalse",
+      "prompt": "A = [7 1; 2 -3].\nB = [2 4; 1 -1].\nTrue or false: entry (1, 2) of A - B is -2.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Entry (1, 2) of A - B is 1 - (4) = -3.",
+        "That does not match the claimed value -2."
+      ],
+      "useAgain": "when checking a claimed entry of a matrix difference.",
+      "hints": [
+        "Subtract the matching entries of A and B at that position.",
+        "Compare that result to -2."
+      ],
+      "socraticHint": "What is entry (1, 2) of A - B really?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A = [2 6; 5 -1].\nB = [3 2; 1 4].\nTrue or false: entry (2, 2) of A - B is -4.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p16",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [1 2; 3 4].\nB = [2 0; 1 3].\nWhat is entry (1, 1) of AB?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Entry (1, 1) of AB is row 1 of A times column 1 of B.",
+        "That is 1(2) + 2(1) = 4."
+      ],
+      "useAgain": "when multiplying two matrices together.",
+      "hints": [
+        "Multiply row of A by column of B, entry by entry, then add.",
+        "Use row 1 of A and column 1 of B."
+      ],
+      "socraticHint": "Which row of A and which column of B combine to make entry (1, 1)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [1 -2; 3 1].\nB = [2 3; 1 1].\nWhat is entry (2, 1) of AB?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p17",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [2 1; 0 3].\nB = [1 4; 2 -1].\nWhat is entry (1, 2) of AB?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Entry (1, 2) of AB is row 1 of A times column 2 of B.",
+        "That is 2(4) + 1(-1) = 7."
+      ],
+      "useAgain": "when multiplying two matrices together.",
+      "hints": [
+        "Multiply row of A by column of B, entry by entry, then add.",
+        "Use row 1 of A and column 2 of B."
+      ],
+      "socraticHint": "Which row of A and which column of B combine to make entry (1, 2)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [2 1; 1 2].\nB = [1 -1; 2 3].\nWhat is entry (2, 2) of AB?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p18",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [3 -1; 2 2].\nB = [1 2; 3 1].\nWhat is entry (2, 1) of AB?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Entry (2, 1) of AB is row 2 of A times column 1 of B.",
+        "That is 2(1) + 2(3) = 8."
+      ],
+      "useAgain": "when multiplying two matrices together.",
+      "hints": [
+        "Multiply row of A by column of B, entry by entry, then add.",
+        "Use row 2 of A and column 1 of B."
+      ],
+      "socraticHint": "Which row of A and which column of B combine to make entry (2, 1)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [3 2; 0 1].\nB = [1 2; -1 4].\nWhat is entry (1, 1) of AB?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p19",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [1 3; -2 1].\nB = [2 1; 1 4].\nWhat is entry (2, 2) of AB?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Entry (2, 2) of AB is row 2 of A times column 2 of B.",
+        "That is -2(1) + 1(4) = 2."
+      ],
+      "useAgain": "when multiplying two matrices together.",
+      "hints": [
+        "Multiply row of A by column of B, entry by entry, then add.",
+        "Use row 2 of A and column 2 of B."
+      ],
+      "socraticHint": "Which row of A and which column of B combine to make entry (2, 2)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [1 1; 2 -3].\nB = [2 1; 1 1].\nWhat is entry (1, 2) of AB?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p20",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [2 2; 1 -1].\nB = [3 0; 1 2].\nWhat is entry (1, 1) of AB?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Entry (1, 1) of AB is row 1 of A times column 1 of B.",
+        "That is 2(3) + 2(1) = 8."
+      ],
+      "useAgain": "when multiplying two matrices together.",
+      "hints": [
+        "Multiply row of A by column of B, entry by entry, then add.",
+        "Use row 1 of A and column 1 of B."
+      ],
+      "socraticHint": "Which row of A and which column of B combine to make entry (1, 1)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [2 -1; 3 2].\nB = [1 2; 0 1].\nWhat is entry (2, 1) of AB?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p21",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [4 1; -1 3].\nB = [1 1; 2 2].\nWhat is entry (1, 2) of AB?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Entry (1, 2) of AB is row 1 of A times column 2 of B.",
+        "That is 4(1) + 1(2) = 6."
+      ],
+      "useAgain": "when multiplying two matrices together.",
+      "hints": [
+        "Multiply row of A by column of B, entry by entry, then add.",
+        "Use row 1 of A and column 2 of B."
+      ],
+      "socraticHint": "Which row of A and which column of B combine to make entry (1, 2)?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [1 4; 2 1].\nB = [2 -1; 1 3].\nWhat is entry (2, 2) of AB?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p22",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [2 1; 4 3].\nWhat is the determinant of A?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The determinant of a 2 by 2 matrix [a b; c d] is ad - bc.",
+        "That is 2(3) - 1(4) = 2."
+      ],
+      "useAgain": "when checking whether a matrix has an inverse.",
+      "hints": [
+        "The determinant of [a b; c d] is a times d minus b times c.",
+        "Compute 2 times 3 minus 1 times 4."
+      ],
+      "socraticHint": "What is a times d minus b times c for this matrix?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [4 -3; 1 2].\nWhat is the determinant of A?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p23",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [3 -2; 1 5].\nWhat is the determinant of A?",
+      "answer": {
+        "kind": "number",
+        "value": "17"
+      },
+      "explanation": [
+        "The determinant of a 2 by 2 matrix [a b; c d] is ad - bc.",
+        "That is 3(5) - (-2)(1) = 17."
+      ],
+      "useAgain": "when checking whether a matrix has an inverse.",
+      "hints": [
+        "The determinant of [a b; c d] is a times d minus b times c.",
+        "Compute 3 times 5 minus -2 times 1."
+      ],
+      "socraticHint": "What is a times d minus b times c for this matrix?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [2 5; 1 3].\nWhat is the determinant of A?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p24",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [1 4; 2 -1].\nWhat is the determinant of A?",
+      "answer": {
+        "kind": "number",
+        "value": "-9"
+      },
+      "explanation": [
+        "The determinant of a 2 by 2 matrix [a b; c d] is ad - bc.",
+        "That is 1(-1) - 4(2) = -9."
+      ],
+      "useAgain": "when checking whether a matrix has an inverse.",
+      "hints": [
+        "The determinant of [a b; c d] is a times d minus b times c.",
+        "Compute 1 times -1 minus 4 times 2."
+      ],
+      "socraticHint": "What is a times d minus b times c for this matrix?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [6 1; 2 3].\nWhat is the determinant of A?",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p25",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [5 2; 3 1].\nWhat is the determinant of A?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "The determinant of a 2 by 2 matrix [a b; c d] is ad - bc.",
+        "That is 5(1) - 2(3) = -1."
+      ],
+      "useAgain": "when checking whether a matrix has an inverse.",
+      "hints": [
+        "The determinant of [a b; c d] is a times d minus b times c.",
+        "Compute 5 times 1 minus 2 times 3."
+      ],
+      "socraticHint": "What is a times d minus b times c for this matrix?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [3 4; -1 2].\nWhat is the determinant of A?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p26",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [-1 3; 2 4].\nWhat is the determinant of A?",
+      "answer": {
+        "kind": "number",
+        "value": "-10"
+      },
+      "explanation": [
+        "The determinant of a 2 by 2 matrix [a b; c d] is ad - bc.",
+        "That is -1(4) - 3(2) = -10."
+      ],
+      "useAgain": "when checking whether a matrix has an inverse.",
+      "hints": [
+        "The determinant of [a b; c d] is a times d minus b times c.",
+        "Compute -1 times 4 minus 3 times 2."
+      ],
+      "socraticHint": "What is a times d minus b times c for this matrix?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [1 -1; 3 2].\nWhat is the determinant of A?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p27",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "choice",
+      "prompt": "A = [1 2; 0 1].\nB = [2 1; 1 3].\nWhat is AB?",
+      "options": [
+        "[4 7; 1 3]",
+        "[2 5; 1 5]",
+        "[3 3; 1 4]",
+        "[4 1; 7 3]"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Multiply row by column: each entry of AB is a row of A times a column of B.",
+        "AB = [4 7; 1 3]."
+      ],
+      "useAgain": "when multiplying two matrices and matrix order matters.",
+      "hints": [
+        "Multiply each row of A by each column of B, entry by entry.",
+        "Order matters for matrix multiplication: AB is not the same as BA."
+      ],
+      "socraticHint": "What do you get multiplying row 1 of A by column 1 of B?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [1 3; 2 1].\nB = [2 1; 0 2].\nWhat is AB?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "[2 7; 4 4]",
+          "[4 7; 4 2]",
+          "[3 4; 2 3]",
+          "[2 4; 7 4]"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p28",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "choice",
+      "prompt": "A = [2 0; 1 1].\nB = [1 3; 2 1].\nWhat is AB?",
+      "options": [
+        "[5 3; 5 1]",
+        "[2 6; 3 4]",
+        "[3 3; 3 2]",
+        "[2 3; 6 4]"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Multiply row by column: each entry of AB is a row of A times a column of B.",
+        "AB = [2 6; 3 4]."
+      ],
+      "useAgain": "when multiplying two matrices and matrix order matters.",
+      "hints": [
+        "Multiply each row of A by each column of B, entry by entry.",
+        "Order matters for matrix multiplication: AB is not the same as BA."
+      ],
+      "socraticHint": "What do you get multiplying row 1 of A by column 1 of B?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [3 0; 1 2].\nB = [1 2; 2 1].\nWhat is AB?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "[5 4; 7 2]",
+          "[3 6; 5 4]",
+          "[4 2; 3 3]",
+          "[3 5; 6 4]"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p29",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "choice",
+      "prompt": "A = [1 1; 2 3].\nB = [2 0; 1 2].\nWhat is AB?",
+      "options": [
+        "[2 2; 5 7]",
+        "[3 1; 3 5]",
+        "[3 2; 7 6]",
+        "[3 7; 2 6]"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Multiply row by column: each entry of AB is a row of A times a column of B.",
+        "AB = [3 2; 7 6]."
+      ],
+      "useAgain": "when multiplying two matrices and matrix order matters.",
+      "hints": [
+        "Multiply each row of A by each column of B, entry by entry.",
+        "Order matters for matrix multiplication: AB is not the same as BA."
+      ],
+      "socraticHint": "What do you get multiplying row 1 of A by column 1 of B?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [2 1; 3 1].\nB = [1 0; 2 3].\nWhat is AB?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "[2 1; 13 5]",
+          "[3 1; 5 4]",
+          "[4 3; 5 3]",
+          "[4 5; 3 3]"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p30",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "choice",
+      "prompt": "A = [3 1; 1 2].\nB = [1 1; 0 2].\nWhat is AB?",
+      "options": [
+        "[4 3; 2 4]",
+        "[4 2; 1 4]",
+        "[3 1; 5 5]",
+        "[3 5; 1 5]"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Multiply row by column: each entry of AB is a row of A times a column of B.",
+        "AB = [3 5; 1 5]."
+      ],
+      "useAgain": "when multiplying two matrices and matrix order matters.",
+      "hints": [
+        "Multiply each row of A by each column of B, entry by entry.",
+        "Order matters for matrix multiplication: AB is not the same as BA."
+      ],
+      "socraticHint": "What do you get multiplying row 1 of A by column 1 of B?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A = [1 2; 3 1].\nB = [2 1; 1 2].\nWhat is AB?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "[5 5; 7 4]",
+          "[3 3; 4 3]",
+          "[4 7; 5 5]",
+          "[4 5; 7 5]"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p31",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [2 1; 1 1].\nWhat is entry (1, 1) of the inverse of A?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The determinant of A is 2(1) - 1(1) = 1.",
+        "The inverse of [a b; c d] is 1/det times [d -b; -c a].",
+        "So entry (1, 1) of the inverse is 1."
+      ],
+      "useAgain": "when finding the inverse of a 2 by 2 matrix.",
+      "hints": [
+        "Find the determinant first.",
+        "The inverse swaps the diagonal entries and negates the other two, then divides by the determinant."
+      ],
+      "socraticHint": "What is the determinant of A, and is it 1 or -1 here?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [2 1; 3 2].\nWhat is entry (2, 1) of the inverse of A?",
+        "answer": {
+          "kind": "number",
+          "value": "-3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p32",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [3 2; 1 1].\nWhat is entry (1, 2) of the inverse of A?",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "The determinant of A is 3(1) - 2(1) = 1.",
+        "The inverse of [a b; c d] is 1/det times [d -b; -c a].",
+        "So entry (1, 2) of the inverse is -2."
+      ],
+      "useAgain": "when finding the inverse of a 2 by 2 matrix.",
+      "hints": [
+        "Find the determinant first.",
+        "The inverse swaps the diagonal entries and negates the other two, then divides by the determinant."
+      ],
+      "socraticHint": "What is the determinant of A, and is it 1 or -1 here?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [3 2; 4 3].\nWhat is entry (2, 2) of the inverse of A?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p33",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [2 3; 1 2].\nWhat is entry (2, 1) of the inverse of A?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "The determinant of A is 2(2) - 3(1) = 1.",
+        "The inverse of [a b; c d] is 1/det times [d -b; -c a].",
+        "So entry (2, 1) of the inverse is -1."
+      ],
+      "useAgain": "when finding the inverse of a 2 by 2 matrix.",
+      "hints": [
+        "Find the determinant first.",
+        "The inverse swaps the diagonal entries and negates the other two, then divides by the determinant."
+      ],
+      "socraticHint": "What is the determinant of A, and is it 1 or -1 here?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [4 1; 3 1].\nWhat is entry (1, 1) of the inverse of A?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p34",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [4 3; 1 1].\nWhat is entry (2, 2) of the inverse of A?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The determinant of A is 4(1) - 3(1) = 1.",
+        "The inverse of [a b; c d] is 1/det times [d -b; -c a].",
+        "So entry (2, 2) of the inverse is 4."
+      ],
+      "useAgain": "when finding the inverse of a 2 by 2 matrix.",
+      "hints": [
+        "Find the determinant first.",
+        "The inverse swaps the diagonal entries and negates the other two, then divides by the determinant."
+      ],
+      "socraticHint": "What is the determinant of A, and is it 1 or -1 here?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [5 2; 3 1].\nWhat is entry (1, 2) of the inverse of A?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p35",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [3 1; 2 1].\nWhat is entry (1, 1) of the inverse of A?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The determinant of A is 3(1) - 1(2) = 1.",
+        "The inverse of [a b; c d] is 1/det times [d -b; -c a].",
+        "So entry (1, 1) of the inverse is 1."
+      ],
+      "useAgain": "when finding the inverse of a 2 by 2 matrix.",
+      "hints": [
+        "Find the determinant first.",
+        "The inverse swaps the diagonal entries and negates the other two, then divides by the determinant."
+      ],
+      "socraticHint": "What is the determinant of A, and is it 1 or -1 here?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [2 5; 1 3].\nWhat is entry (2, 1) of the inverse of A?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p36",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [5 3; 2 1].\nWhat is entry (1, 2) of the inverse of A?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The determinant of A is 5(1) - 3(2) = -1.",
+        "The inverse of [a b; c d] is 1/det times [d -b; -c a].",
+        "So entry (1, 2) of the inverse is 3."
+      ],
+      "useAgain": "when finding the inverse of a 2 by 2 matrix.",
+      "hints": [
+        "Find the determinant first.",
+        "The inverse swaps the diagonal entries and negates the other two, then divides by the determinant."
+      ],
+      "socraticHint": "What is the determinant of A, and is it 1 or -1 here?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [3 4; 2 3].\nWhat is entry (2, 2) of the inverse of A?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p37",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "2x + y = 7.\nx + y = 4.\nWrite this system as Ax = b and use the inverse of A to solve. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "A = [2 1; 1 1], so the system is Ax = b with b = (7, 4).",
+        "Multiply both sides by the inverse of A to get x = (inverse of A) b.",
+        "That gives (x, y) = (3, 1), so x = 3."
+      ],
+      "useAgain": "when a 2 by 2 system is solved with a matrix inverse instead of elimination.",
+      "hints": [
+        "Write the coefficients as a matrix A and the constants as b.",
+        "Multiply the inverse of A by b to solve for x and y at once."
+      ],
+      "socraticHint": "What matrix A and column b does this system turn into?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "2x + y = 5.\n3x + 2y = 8.\nWrite this system as Ax = b and use the inverse of A to solve. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p38",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "3x + 2y = 14.\nx + y = 6.\nWrite this system as Ax = b and use the inverse of A to solve. What is y?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "A = [3 2; 1 1], so the system is Ax = b with b = (14, 6).",
+        "Multiply both sides by the inverse of A to get x = (inverse of A) b.",
+        "That gives (x, y) = (2, 4), so y = 4."
+      ],
+      "useAgain": "when a 2 by 2 system is solved with a matrix inverse instead of elimination.",
+      "hints": [
+        "Write the coefficients as a matrix A and the constants as b.",
+        "Multiply the inverse of A by b to solve for x and y at once."
+      ],
+      "socraticHint": "What matrix A and column b does this system turn into?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "3x + 2y = 11.\n4x + 3y = 16.\nWrite this system as Ax = b and use the inverse of A to solve. What is y?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p39",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "2x + 3y = 13.\nx + 2y = 7.\nWrite this system as Ax = b and use the inverse of A to solve. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "A = [2 3; 1 2], so the system is Ax = b with b = (13, 7).",
+        "Multiply both sides by the inverse of A to get x = (inverse of A) b.",
+        "That gives (x, y) = (5, 1), so x = 5."
+      ],
+      "useAgain": "when a 2 by 2 system is solved with a matrix inverse instead of elimination.",
+      "hints": [
+        "Write the coefficients as a matrix A and the constants as b.",
+        "Multiply the inverse of A by b to solve for x and y at once."
+      ],
+      "socraticHint": "What matrix A and column b does this system turn into?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "4x + y = 11.\n3x + y = 9.\nWrite this system as Ax = b and use the inverse of A to solve. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p40",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "4x + 3y = 13.\nx + y = 4.\nWrite this system as Ax = b and use the inverse of A to solve. What is y?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "A = [4 3; 1 1], so the system is Ax = b with b = (13, 4).",
+        "Multiply both sides by the inverse of A to get x = (inverse of A) b.",
+        "That gives (x, y) = (1, 3), so y = 3."
+      ],
+      "useAgain": "when a 2 by 2 system is solved with a matrix inverse instead of elimination.",
+      "hints": [
+        "Write the coefficients as a matrix A and the constants as b.",
+        "Multiply the inverse of A by b to solve for x and y at once."
+      ],
+      "socraticHint": "What matrix A and column b does this system turn into?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "5x + 2y = 19.\n3x + y = 11.\nWrite this system as Ax = b and use the inverse of A to solve. What is y?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p41",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "3x + y = 14.\n2x + y = 10.\nWrite this system as Ax = b and use the inverse of A to solve. What is x?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "A = [3 1; 2 1], so the system is Ax = b with b = (14, 10).",
+        "Multiply both sides by the inverse of A to get x = (inverse of A) b.",
+        "That gives (x, y) = (4, 2), so x = 4."
+      ],
+      "useAgain": "when a 2 by 2 system is solved with a matrix inverse instead of elimination.",
+      "hints": [
+        "Write the coefficients as a matrix A and the constants as b.",
+        "Multiply the inverse of A by b to solve for x and y at once."
+      ],
+      "socraticHint": "What matrix A and column b does this system turn into?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "2x + 5y = 13.\nx + 3y = 7.\nWrite this system as Ax = b and use the inverse of A to solve. What is x?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p42",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "5x + 3y = 20.\n2x + y = 7.\nWrite this system as Ax = b and use the inverse of A to solve. What is y?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "A = [5 3; 2 1], so the system is Ax = b with b = (20, 7).",
+        "Multiply both sides by the inverse of A to get x = (inverse of A) b.",
+        "That gives (x, y) = (1, 5), so y = 5."
+      ],
+      "useAgain": "when a 2 by 2 system is solved with a matrix inverse instead of elimination.",
+      "hints": [
+        "Write the coefficients as a matrix A and the constants as b.",
+        "Multiply the inverse of A by b to solve for x and y at once."
+      ],
+      "socraticHint": "What matrix A and column b does this system turn into?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "3x + 4y = 23.\n2x + 3y = 16.\nWrite this system as Ax = b and use the inverse of A to solve. What is y?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p43",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "order",
+      "prompt": "A = [2 1; 1 1].\nPut the steps in order to find the inverse of A.",
+      "items": [
+        "Divide every entry by the determinant, 1.",
+        "Find the determinant of A, swap the two diagonal entries, and change the sign of the other two entries: 2(1) - 1(1) = 1."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "Find the determinant and rearrange the entries into the adjugate first.",
+        "Only then divide every entry by the determinant."
+      ],
+      "useAgain": "when finding the inverse of a 2 by 2 matrix step by step.",
+      "hints": [
+        "Everything else has to be ready before you divide by the determinant.",
+        "Divide every entry of the rearranged matrix, not just one."
+      ],
+      "socraticHint": "What has to be ready before you can divide by the determinant?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [4 3; 1 1].\nPut the steps in order to find the inverse of A.",
+        "items": [
+          "Divide every entry by the determinant, 1.",
+          "Find the determinant of A, swap the two diagonal entries, and change the sign of the other two entries: 4(1) - 3(1) = 1."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p44",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "order",
+      "prompt": "A = [3 2; 1 1].\nPut the steps in order to find the inverse of A.",
+      "items": [
+        "Divide every entry by the determinant, 1.",
+        "Find the determinant of A, swap the two diagonal entries, and change the sign of the other two entries: 3(1) - 2(1) = 1."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "Find the determinant and rearrange the entries into the adjugate first.",
+        "Only then divide every entry by the determinant."
+      ],
+      "useAgain": "when finding the inverse of a 2 by 2 matrix step by step.",
+      "hints": [
+        "Everything else has to be ready before you divide by the determinant.",
+        "Divide every entry of the rearranged matrix, not just one."
+      ],
+      "socraticHint": "What has to be ready before you can divide by the determinant?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [5 3; 2 1].\nPut the steps in order to find the inverse of A.",
+        "items": [
+          "Divide every entry by the determinant, -1.",
+          "Find the determinant of A, swap the two diagonal entries, and change the sign of the other two entries: 5(1) - 3(2) = -1."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p45",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "order",
+      "prompt": "A = [3 1; 2 1].\nPut the steps in order to find the inverse of A.",
+      "items": [
+        "Divide every entry by the determinant, 1.",
+        "Find the determinant of A, swap the two diagonal entries, and change the sign of the other two entries: 3(1) - 1(2) = 1."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0
+        ]
+      },
+      "explanation": [
+        "Find the determinant and rearrange the entries into the adjugate first.",
+        "Only then divide every entry by the determinant."
+      ],
+      "useAgain": "when finding the inverse of a 2 by 2 matrix step by step.",
+      "hints": [
+        "Everything else has to be ready before you divide by the determinant.",
+        "Divide every entry of the rearranged matrix, not just one."
+      ],
+      "socraticHint": "What has to be ready before you can divide by the determinant?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [4 1; 3 1].\nPut the steps in order to find the inverse of A.",
+        "items": [
+          "Divide every entry by the determinant, 1.",
+          "Find the determinant of A, swap the two diagonal entries, and change the sign of the other two entries: 4(1) - 1(3) = 1."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0
+          ]
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-matrices-p46",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [1 2 3; 0 1 4; 5 6 0].\nWhat is the determinant of A?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Expand along the first row. Each entry is multiplied by the 2 by 2 determinant left when its row and column are crossed out.",
+        "Alternate the sign of each of those three terms, then add them.",
+        "That works out to 1."
+      ],
+      "useAgain": "when finding the determinant of a 3 by 3 matrix.",
+      "hints": [
+        "Expand along the first row, crossing out that entry's row and column each time.",
+        "Alternate the sign of each term as you expand."
+      ],
+      "socraticHint": "What 2 by 2 determinant is left when you cross out the first row and first column?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [2 0 1; 3 1 2; 1 4 0].\nWhat is the determinant of A?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p47",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [1 2 3; 0 1 2].\nB = [1 0; 2 1; 1 3].\nA is 2 by 3 and B is 3 by 2. What is entry (2, 1) of AB?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "AB is 2 by 2: row 2 of A times column 1 of B.",
+        "That is 0(1) + 1(2) + 2(1) = 4."
+      ],
+      "useAgain": "when multiplying matrices that are not square.",
+      "hints": [
+        "A row of A and a column of B need the same length to multiply; here both have 3 entries.",
+        "Multiply row 2 of A by column 1 of B, entry by entry, then add."
+      ],
+      "socraticHint": "How many entries does row 2 of A have, and does column 1 of B match?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [2 1 0; 1 3 1].\nB = [1 2; 0 1; 2 1].\nA is 2 by 3 and B is 3 by 2. What is entry (2, 1) of AB?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p48",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [2 3; 4 k].\nFor what value of k is A singular (determinant zero)?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The determinant of A is 2(k) - 3(4) = 2k - 12.",
+        "Setting that to zero gives k = 6."
+      ],
+      "useAgain": "when finding the value that makes a matrix have no inverse.",
+      "hints": [
+        "Write the determinant in terms of k.",
+        "Set that expression equal to zero and solve for k."
+      ],
+      "socraticHint": "What is the determinant of A in terms of k?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [3 2; 6 k].\nFor what value of k is A singular (determinant zero)?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p49",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [1 2; 3 4].\nB = [2 0; 1 3].\nWhat is the determinant of AB?",
+      "answer": {
+        "kind": "number",
+        "value": "-12"
+      },
+      "explanation": [
+        "The determinant of A is -2 and the determinant of B is 6.",
+        "The determinant of a product is the product of the determinants: -2 times 6 = -12."
+      ],
+      "useAgain": "when the determinant of a product matters more than the product matrix itself.",
+      "hints": [
+        "The determinant of a product AB is the determinant of A times the determinant of B.",
+        "Find each determinant separately, then multiply."
+      ],
+      "socraticHint": "What is the determinant of A, and what is the determinant of B?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [2 1; 1 3].\nB = [1 2; 0 2].\nWhat is the determinant of AB?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-matrices-p50",
+      "lane": "skills",
+      "ideaId": "a2-matrices",
+      "kind": "number",
+      "prompt": "A = [k 6; 6 k].\nFor how many integers k with -10 <= k <= 10 is A singular?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The determinant of A is k times k minus 6 times 6, or k^2 - 36.",
+        "That is zero when k = 6 or k = -6.",
+        "Both are in the range, so there are 2 values."
+      ],
+      "useAgain": "when counting how many parameter values make a matrix singular.",
+      "hints": [
+        "Write the determinant as an expression in k.",
+        "Solve that expression equals zero, then check which solutions are in range."
+      ],
+      "socraticHint": "What equation in k makes the determinant zero?",
+      "skills": [
+        "think.skills.matrices"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A = [k 8; 8 k].\nFor how many integers k with -10 <= k <= 10 is A singular?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    }
+  ]
+}

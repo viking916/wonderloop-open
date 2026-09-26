@@ -1,0 +1,3085 @@
+{
+  "id": "pa-area-perimeter",
+  "idea": {
+    "body": "Perimeter is the distance all the way around a shape's edge. Area is the amount of flat space a shape covers on the inside. A robot's rectangular charging pad is 8 centimeters wide and 5 centimeters tall. Its perimeter is 2 times (8 plus 5), which is 26 centimeters. Its area is 8 times 5, which is 40 square centimeters. A triangle's area is half its base times its height. A composite shape is built from two or more rectangles or triangles pushed together. Split it into simple pieces, find each piece's area, then add them up.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A robot's rectangular charging pad, 8 centimeters by 5 centimeters.",
+      "spec": {
+        "w": 200,
+        "h": 150,
+        "items": [
+          {
+            "t": "box",
+            "x": 50,
+            "y": 40,
+            "w": 80,
+            "h": 50,
+            "fill": "accent"
+          },
+          {
+            "t": "dim",
+            "x1": 50,
+            "y1": 106,
+            "x2": 130,
+            "y2": 106,
+            "label": "8 cm"
+          },
+          {
+            "t": "dim",
+            "x1": 34,
+            "y1": 40,
+            "x2": 34,
+            "y2": 90,
+            "label": "5 cm"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A 3D-printed mounting plate is a rectangle 12 centimeters by 7 centimeters. A corner is cut out to clear a bolt: a 4 centimeter by 3 centimeter rectangle removed from one corner. Find the remaining area.",
+    "steps": [
+      "Find the full rectangle's area first: 12 x 7 = 84 square centimeters.",
+      "Find the cut-out corner's area: 4 x 3 = 12 square centimeters.",
+      "Subtract the cut-out from the whole: 84 - 12 = 72 square centimeters.",
+      "The remaining area is 72 square centimeters."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "A 3D-printed mounting plate, a 12 by 7 rectangle with a 4 by 3 corner cut out to clear a bolt.",
+      "spec": {
+        "w": 240,
+        "h": 170,
+        "items": [
+          {
+            "t": "poly",
+            "points": [
+              [
+                50,
+                44
+              ],
+              [
+                130,
+                44
+              ],
+              [
+                130,
+                74
+              ],
+              [
+                170,
+                74
+              ],
+              [
+                170,
+                114
+              ],
+              [
+                50,
+                114
+              ]
+            ],
+            "fill": "accent"
+          },
+          {
+            "t": "dim",
+            "x1": 50,
+            "y1": 130,
+            "x2": 170,
+            "y2": 130,
+            "label": "12 cm"
+          },
+          {
+            "t": "dim",
+            "x1": 34,
+            "y1": 44,
+            "x2": 34,
+            "y2": 114,
+            "label": "7 cm"
+          },
+          {
+            "t": "dim",
+            "x1": 130,
+            "y1": 32,
+            "x2": 50,
+            "y2": 32,
+            "label": "8 cm"
+          },
+          {
+            "t": "dim",
+            "x1": 186,
+            "y1": 44,
+            "x2": 186,
+            "y2": 74,
+            "label": "3 cm"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "pa-area-perimeter-w1",
+      "name": "Cut into rectangles",
+      "when": "Use this for a composite shape built from a rectangle with a piece added or removed.",
+      "steps": [
+        "A mounting plate is a 12 by 7 rectangle with a 4 by 3 corner cut out.",
+        "Find the full rectangle's area first: 12 times 7 is 84 square centimeters.",
+        "Find the cut-out corner's area: 4 times 3 is 12 square centimeters.",
+        "Subtract the cut-out from the whole: 84 minus 12 is 72."
+      ],
+      "example": "A 12 by 7 centimeter plate has a 4 by 3 corner cut out. Find the remaining area.",
+      "answer": "72",
+      "trap": "Adding the cut-out area instead of subtracting it.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A mounting plate, a 12 by 7 rectangle with a 4 by 3 corner cut out to clear a bolt.",
+        "spec": {
+          "w": 250,
+          "h": 214,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  50,
+                  44
+                ],
+                [
+                  170,
+                  44
+                ],
+                [
+                  170,
+                  74
+                ],
+                [
+                  130,
+                  74
+                ],
+                [
+                  130,
+                  114
+                ],
+                [
+                  50,
+                  114
+                ]
+              ],
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 130,
+              "x2": 170,
+              "y2": 130,
+              "label": "12 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 44,
+              "x2": 34,
+              "y2": 114,
+              "label": "7 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 130,
+              "y1": 32,
+              "x2": 50,
+              "y2": 32,
+              "label": "8 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 198,
+              "y1": 44,
+              "x2": 198,
+              "y2": 74,
+              "label": "3 cm"
+            },
+            {
+              "t": "text",
+              "x": 125,
+              "y": 170,
+              "s": "12 x 7 = 84 cm²",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 125,
+              "y": 188,
+              "s": "4 x 3 = 12 cm²",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 125,
+              "y": 206,
+              "s": "84 - 12 = 72 cm²",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "12 by 7 plate, 4 by 3 corner cut.",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "A plate with a corner cut out.",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Whole rectangle: 12 times 7 is 84.",
+              "set": {
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Cut-out corner: 4 times 3 is 12.",
+              "set": {
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "84 minus 12 is 72 square cm.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pa-area-perimeter-w2",
+      "name": "Count squares on a grid",
+      "when": "Use this for a small rectangle when you would rather see the space than multiply.",
+      "steps": [
+        "A tray floor is 6 centimeters long and 4 centimeters wide, drawn as a grid of unit squares.",
+        "Draw the grid with 4 rows and 6 columns, one square per centimeter each way.",
+        "Count every square in the grid instead of multiplying.",
+        "There are 24 squares in total, so the area is 24 square centimeters."
+      ],
+      "example": "A tray floor is 6 centimeters long and 4 centimeters wide. Find its area by counting squares.",
+      "answer": "24",
+      "trap": "Miscounting a row or column and losing a square along one edge of the grid.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Four rows of six boxes each, one row of unit squares per centimeter, showing the area of a 6 by 4 tray floor as 24 squares in total.",
+        "spec": {
+          "w": 220,
+          "h": 140,
+          "items": [
+            {
+              "t": "box",
+              "x": 40,
+              "y": 20,
+              "w": 140,
+              "h": 20,
+              "fill": "accent",
+              "label": "6"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 44,
+              "w": 140,
+              "h": 20,
+              "fill": "accent",
+              "label": "6"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 68,
+              "w": 140,
+              "h": 20,
+              "fill": "accent",
+              "label": "6"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 92,
+              "w": 140,
+              "h": 20,
+              "fill": "accent",
+              "label": "6"
+            },
+            {
+              "t": "text",
+              "x": 110,
+              "y": 125,
+              "s": "24 squares total",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Tray floor: 6 cm by 4 cm.",
+              "set": {
+                "0": {
+                  "hidden": true
+                },
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Tray is 6 long, 4 wide.",
+              "set": {
+                "0": {
+                  "hidden": true
+                },
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Draw a 4 by 6 grid of squares.",
+              "set": {
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Count every square in the grid.",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "24 squares means 24 sq cm.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pa-area-perimeter-w3",
+      "name": "Walk the edges",
+      "when": "Use this for the perimeter of an L-shaped figure, where two side lengths are not given directly.",
+      "steps": [
+        "An L-shaped mat is 10 by 8 centimeters overall, with a 4 by 3 notch cut from one corner.",
+        "Find the missing vertical side: 8 minus 3 is 5 centimeters.",
+        "Find the missing horizontal side: 10 minus 4 is 6 centimeters.",
+        "Add all six sides: 10 plus 8 plus 3 plus 4 plus 5 plus 6.",
+        "That total is 36 centimeters."
+      ],
+      "example": "An L-shaped mat is 10 by 8 centimeters with a 4 by 3 notch cut from one corner. Find the perimeter.",
+      "answer": "36",
+      "trap": "Forgetting to include the two missing sides found by subtraction when adding the perimeter.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "An L-shaped mat, overall 10 by 8 centimeters with a 4 by 3 notch cut from one corner, two side lengths marked as unknown.",
+        "spec": {
+          "w": 300,
+          "h": 220,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  50,
+                  40
+                ],
+                [
+                  210,
+                  40
+                ],
+                [
+                  210,
+                  88
+                ],
+                [
+                  146,
+                  88
+                ],
+                [
+                  146,
+                  168
+                ],
+                [
+                  50,
+                  168
+                ]
+              ],
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 24,
+              "x2": 210,
+              "y2": 24,
+              "label": "10 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 40,
+              "x2": 34,
+              "y2": 168,
+              "label": "8 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 228,
+              "y1": 40,
+              "x2": 228,
+              "y2": 88,
+              "label": "3 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 210,
+              "y1": 106,
+              "x2": 146,
+              "y2": 106,
+              "label": "4 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 164,
+              "y1": 92,
+              "x2": 164,
+              "y2": 168,
+              "label": "?"
+            },
+            {
+              "t": "dim",
+              "x1": 146,
+              "y1": 186,
+              "x2": 50,
+              "y2": 186,
+              "label": "?"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 210,
+              "s": "10+8+3+4+5+6 = 36",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "L-mat, two side lengths unknown.",
+              "set": {
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Mat 10 by 8, 4 by 3 notch cut.",
+              "set": {
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Missing vertical: 8 minus 3 is 5.",
+              "set": {
+                "5": {
+                  "label": "5 cm"
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Missing horizontal: 10 minus 4 is 6.",
+              "set": {
+                "5": {
+                  "label": "5 cm"
+                },
+                "6": {
+                  "label": "6 cm"
+                },
+                "7": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Add all six sides together.",
+              "set": {
+                "5": {
+                  "label": "5 cm"
+                },
+                "6": {
+                  "label": "6 cm"
+                },
+                "7": {
+                  "s": "10+8+3+4+5+6"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "The total perimeter is 36 cm.",
+              "set": {
+                "5": {
+                  "label": "5 cm"
+                },
+                "6": {
+                  "label": "6 cm"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pa-area-perimeter-w4",
+      "name": "The triangle formula",
+      "when": "Use this whenever the shape is a plain triangle with its base and height both known.",
+      "steps": [
+        "A triangle has a base of 10 centimeters and a height of 6 centimeters.",
+        "A triangle's area is half its base times its height.",
+        "Half of 10 is 5, and 5 times 6 is 30.",
+        "The area is 30 square centimeters."
+      ],
+      "example": "A triangle has a base of 10 centimeters and a height of 6 centimeters. Find its area.",
+      "answer": "30",
+      "trap": "Forgetting to take half after multiplying the base by the height.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A triangle with a base of 10 centimeters and a dashed height line of 6 centimeters from the top vertex to the base.",
+        "spec": {
+          "w": 240,
+          "h": 245,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  40,
+                  150
+                ],
+                [
+                  200,
+                  150
+                ],
+                [
+                  110,
+                  60
+                ]
+              ],
+              "fill": "accent"
+            },
+            {
+              "t": "line",
+              "x1": 110,
+              "y1": 60,
+              "x2": 110,
+              "y2": 150,
+              "dashed": true
+            },
+            {
+              "t": "dim",
+              "x1": 40,
+              "y1": 166,
+              "x2": 200,
+              "y2": 166,
+              "label": "10 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 94,
+              "y1": 60,
+              "x2": 94,
+              "y2": 150,
+              "label": "6 cm"
+            },
+            {
+              "t": "text",
+              "x": 120,
+              "y": 205,
+              "s": "Area = 1/2 x base x height",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 120,
+              "y": 225,
+              "s": "Half of 10, times 6, is 30",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Triangle: base 10, height 6 cm.",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Base 10 cm, height 6 cm.",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Area is half base times height.",
+              "set": {
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Half of 10, times 6, is 30.",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "The area is 30 square cm.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-pa-area-perimeter-p01",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle measures 8 centimeters by 5 centimeters. Find its area, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "40"
+      },
+      "explanation": [
+        "A rectangle's area is length times width.",
+        "Multiply the two sides: 8 x 5 = 40.",
+        "The area is 40 square centimeters."
+      ],
+      "hints": [
+        "Area is length times width.",
+        "Multiply the two given side lengths together."
+      ],
+      "socraticHint": "What operation turns a rectangle's two side lengths into the space it covers?",
+      "useAgain": "when a rectangle's two side lengths are known and the area is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A rectangle 8 centimeters by 5 centimeters, shaded to show its area.",
+        "spec": {
+          "w": 248,
+          "h": 180,
+          "items": [
+            {
+              "t": "box",
+              "x": 50,
+              "y": 40,
+              "w": 128,
+              "h": 80,
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 136,
+              "x2": 178,
+              "y2": 136,
+              "label": "8 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 40,
+              "x2": 34,
+              "y2": 120,
+              "label": "5 cm"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rectangle measures 9 centimeters by 6 centimeters. Find its area, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "54"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p02",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle measures 12 centimeters by 4 centimeters. Find its area, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "48"
+      },
+      "explanation": [
+        "A rectangle's area is length times width.",
+        "Multiply the two sides: 12 x 4 = 48.",
+        "The area is 48 square centimeters."
+      ],
+      "hints": [
+        "Area is length times width.",
+        "Multiply the two given side lengths together."
+      ],
+      "socraticHint": "What operation turns a rectangle's two side lengths into the space it covers?",
+      "useAgain": "when a rectangle's two side lengths are known and the area is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A rectangle 12 centimeters by 4 centimeters, shaded to show its area.",
+        "spec": {
+          "w": 276,
+          "h": 152,
+          "items": [
+            {
+              "t": "box",
+              "x": 50,
+              "y": 40,
+              "w": 156,
+              "h": 52,
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 108,
+              "x2": 206,
+              "y2": 108,
+              "label": "12 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 40,
+              "x2": 34,
+              "y2": 92,
+              "label": "4 cm"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rectangle measures 15 centimeters by 3 centimeters. Find its area, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "45"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p03",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle measures 9 centimeters by 6 centimeters. Find its perimeter, in centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "A rectangle's perimeter is the distance all the way around it.",
+        "Add the four sides, or double the sum of one length and one width: 2 x (9 + 6) = 30.",
+        "The perimeter is 30 centimeters."
+      ],
+      "hints": [
+        "Perimeter is the total distance around the shape.",
+        "Add length and width, then double that sum."
+      ],
+      "socraticHint": "If you walked all the way around this rectangle's edge, how far would you go?",
+      "useAgain": "when a rectangle's two side lengths are known and the perimeter is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A rectangle 9 centimeters by 6 centimeters, with its perimeter marked.",
+        "spec": {
+          "w": 264,
+          "h": 196,
+          "items": [
+            {
+              "t": "box",
+              "x": 50,
+              "y": 40,
+              "w": 144,
+              "h": 96,
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 152,
+              "x2": 194,
+              "y2": 152,
+              "label": "9 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 40,
+              "x2": 34,
+              "y2": 136,
+              "label": "6 cm"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rectangle measures 12 centimeters by 4 centimeters. Find its perimeter, in centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p04",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle measures 8 centimeters by 5 centimeters. Find its perimeter, in centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "26"
+      },
+      "explanation": [
+        "A rectangle's perimeter is the distance all the way around it.",
+        "Add length and width, then double: 2 x (8 + 5) = 26.",
+        "The perimeter is 26 centimeters."
+      ],
+      "hints": [
+        "Perimeter is the total distance around the shape.",
+        "Add length and width, then double that sum."
+      ],
+      "socraticHint": "If you walked all the way around this rectangle's edge, how far would you go?",
+      "useAgain": "when a rectangle's two side lengths are known and the perimeter is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A rectangle 8 centimeters by 5 centimeters, with its perimeter marked.",
+        "spec": {
+          "w": 248,
+          "h": 180,
+          "items": [
+            {
+              "t": "box",
+              "x": 50,
+              "y": 40,
+              "w": 128,
+              "h": 80,
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 136,
+              "x2": 178,
+              "y2": 136,
+              "label": "8 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 40,
+              "x2": 34,
+              "y2": 120,
+              "label": "5 cm"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rectangle measures 15 centimeters by 3 centimeters. Find its perimeter, in centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p05",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A square has a side length of 7 centimeters. Find its area, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "49"
+      },
+      "explanation": [
+        "A square is a rectangle with all four sides equal.",
+        "Its area is side times side: 7 x 7 = 49.",
+        "The area is 49 square centimeters."
+      ],
+      "hints": [
+        "A square's area is its side length multiplied by itself.",
+        "Multiply 7 by 7."
+      ],
+      "socraticHint": "Since every side of a square is the same length, what do you multiply that length by to get the area?",
+      "useAgain": "when a square's side length is known and the area is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A square has a side length of 9 centimeters. Find its area, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "81"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p06",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A square has a side length of 7 centimeters. Find its perimeter, in centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "28"
+      },
+      "explanation": [
+        "A square has four equal sides.",
+        "Multiply the side length by 4: 7 x 4 = 28.",
+        "The perimeter is 28 centimeters."
+      ],
+      "hints": [
+        "A square's perimeter is four times its side length.",
+        "Multiply 7 by 4."
+      ],
+      "socraticHint": "If all four sides of a square are the same length, what operation finds the total distance around it?",
+      "useAgain": "when a square's side length is known and the perimeter is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A square has a side length of 9 centimeters. Find its perimeter, in centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p07",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle measures 17 centimeters by 4 centimeters. Find its area, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "68"
+      },
+      "explanation": [
+        "A rectangle's area is length times width.",
+        "Multiply the two sides: 17 x 4 = 68.",
+        "The area is 68 square centimeters."
+      ],
+      "hints": [
+        "Area is length times width.",
+        "Multiply the two given side lengths together."
+      ],
+      "socraticHint": "What operation turns a rectangle's two side lengths into the space it covers?",
+      "useAgain": "when a rectangle's two side lengths are known and the area is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A rectangle 17 centimeters by 4 centimeters, shaded to show its area.",
+        "spec": {
+          "w": 273,
+          "h": 136,
+          "items": [
+            {
+              "t": "box",
+              "x": 50,
+              "y": 40,
+              "w": 153,
+              "h": 36,
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 92,
+              "x2": 203,
+              "y2": 92,
+              "label": "17 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 40,
+              "x2": 34,
+              "y2": 76,
+              "label": "4 cm"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rectangle measures 20 centimeters by 2 centimeters. Find its area, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "40"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p08",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle measures 19 centimeters by 4 centimeters. Find its perimeter, in centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "46"
+      },
+      "explanation": [
+        "A rectangle's perimeter is the distance all the way around it.",
+        "Add the two sides and double the sum: 2 x (19 + 4) = 46.",
+        "The perimeter is 46 centimeters."
+      ],
+      "hints": [
+        "Perimeter is the total distance around the shape.",
+        "Add length and width, then double that sum."
+      ],
+      "socraticHint": "If you walked all the way around this rectangle's edge, how far would you go?",
+      "useAgain": "when a rectangle's two side lengths are known and the perimeter is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rectangle measures 20 centimeters by 2 centimeters. Find its perimeter, in centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "44"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p09",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "truefalse",
+      "prompt": "Perimeter is measured in the same kind of units as area.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Perimeter measures a distance, so it is measured in plain units like centimeters.",
+        "Area measures a flat space, so it is measured in square units like square centimeters.",
+        "The two are different kinds of units, so this is false."
+      ],
+      "hints": [
+        "Think about what perimeter actually measures compared to area.",
+        "One measures a distance, the other measures a covered space."
+      ],
+      "socraticHint": "Does walking around the edge of a shape measure the same kind of thing as covering its inside with tiles?",
+      "useAgain": "when checking whether an answer's units match perimeter or area.",
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "The area of a rectangle is its length times its width.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p10",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "truefalse",
+      "prompt": "A square is a rectangle whose length and width are equal.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "A square has four equal sides.",
+        "That means its length and width measure the same amount.",
+        "So a square counts as a rectangle with equal length and width."
+      ],
+      "hints": [
+        "Think about what makes a square different from other rectangles.",
+        "Compare a square's length and its width."
+      ],
+      "socraticHint": "Are a square's length and width the same measure or different measures?",
+      "useAgain": "when checking whether a square counts as a special kind of rectangle.",
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "The perimeter of a rectangle is its length times its width.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p11",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "choice",
+      "prompt": "A rectangle is 10 centimeters by 4 centimeters. What is its area?",
+      "options": [
+        "40 square centimeters",
+        "28 square centimeters",
+        "14 square centimeters",
+        "20 square centimeters"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Area is length times width: 10 x 4 = 40.",
+        "28 is the perimeter instead, from 2 x (10 + 4).",
+        "14 comes from just adding the sides, and 20 is half the correct area."
+      ],
+      "hints": [
+        "Area needs multiplying the two sides, not adding them.",
+        "Do not mix up the area formula with the perimeter formula."
+      ],
+      "socraticHint": "Which of these numbers comes from multiplying 10 and 4, rather than adding or doubling them?",
+      "useAgain": "when a multiple choice question offers the perimeter or a miscalculation as a tempting wrong answer for area.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rectangle is 12 centimeters by 5 centimeters. What is its area?",
+        "options": [
+          "34 square centimeters",
+          "60 square centimeters",
+          "17 square centimeters",
+          "30 square centimeters"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p12",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "choice",
+      "prompt": "A rectangle is 10 centimeters by 4 centimeters. What is its perimeter?",
+      "options": [
+        "40 centimeters",
+        "14 centimeters",
+        "24 centimeters",
+        "28 centimeters"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Perimeter is 2 x (length + width): 2 x (10 + 4) = 28.",
+        "40 is the area instead, from 10 x 4.",
+        "14 comes from adding the sides without doubling, and 24 comes from a wrong addition."
+      ],
+      "hints": [
+        "Perimeter needs adding the two sides, then doubling, not multiplying.",
+        "Do not mix up the perimeter formula with the area formula."
+      ],
+      "socraticHint": "Which of these numbers comes from adding 10 and 4, then doubling the result?",
+      "useAgain": "when a multiple choice question offers the area or a miscalculation as a tempting wrong answer for perimeter.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rectangle is 12 centimeters by 5 centimeters. What is its perimeter?",
+        "options": [
+          "60 centimeters",
+          "17 centimeters",
+          "34 centimeters",
+          "38 centimeters"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p13",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle measures 22 centimeters by 2 centimeters. Find its area, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "44"
+      },
+      "explanation": [
+        "A rectangle's area is length times width.",
+        "Multiply the two sides: 22 x 2 = 44.",
+        "The area is 44 square centimeters."
+      ],
+      "hints": [
+        "Area is length times width.",
+        "Multiply the two given side lengths together."
+      ],
+      "socraticHint": "What operation turns a rectangle's two side lengths into the space it covers?",
+      "useAgain": "when a rectangle's two side lengths are known and the area is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A long, thin rectangle 22 centimeters by 2 centimeters, shaded to show its area.",
+        "spec": {
+          "w": 274,
+          "h": 114,
+          "items": [
+            {
+              "t": "box",
+              "x": 50,
+              "y": 40,
+              "w": 154,
+              "h": 14,
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 70,
+              "x2": 204,
+              "y2": 70,
+              "label": "22 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 40,
+              "x2": 34,
+              "y2": 54,
+              "label": "2 cm"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rectangle measures 18 centimeters by 2 centimeters. Find its area, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p14",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle measures 23 centimeters by 3 centimeters. Find its perimeter, in centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "52"
+      },
+      "explanation": [
+        "A rectangle's perimeter is the distance all the way around it.",
+        "Add the two sides and double the sum: 2 x (23 + 3) = 52.",
+        "The perimeter is 52 centimeters."
+      ],
+      "hints": [
+        "Perimeter is the total distance around the shape.",
+        "Add length and width, then double that sum."
+      ],
+      "socraticHint": "If you walked all the way around this rectangle's edge, how far would you go?",
+      "useAgain": "when a rectangle's two side lengths are known and the perimeter is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rectangle measures 18 centimeters by 2 centimeters. Find its perimeter, in centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "40"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p15",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle measures 11 centimeters by 5 centimeters. Find its area, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "55"
+      },
+      "explanation": [
+        "A rectangle's area is length times width.",
+        "Multiply the two sides: 11 x 5 = 55.",
+        "The area is 55 square centimeters."
+      ],
+      "hints": [
+        "Area is length times width.",
+        "Multiply the two given side lengths together."
+      ],
+      "socraticHint": "What operation turns a rectangle's two side lengths into the space it covers?",
+      "useAgain": "when a rectangle's two side lengths are known and the area is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A rectangle 11 centimeters by 5 centimeters, shaded to show its area.",
+        "spec": {
+          "w": 285,
+          "h": 175,
+          "items": [
+            {
+              "t": "box",
+              "x": 50,
+              "y": 40,
+              "w": 165,
+              "h": 75,
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 131,
+              "x2": 215,
+              "y2": 131,
+              "label": "11 cm"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 40,
+              "x2": 34,
+              "y2": 115,
+              "label": "5 cm"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rectangle measures 13 centimeters by 4 centimeters. Find its area, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "52"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p16",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "Find the area of a triangle with a base of 10 centimeters and a height of 6 centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "30"
+      },
+      "explanation": [
+        "A triangle's area is half its base times its height.",
+        "Multiply base and height: 10 x 6 = 60.",
+        "Take half: 60 / 2 = 30 square centimeters."
+      ],
+      "hints": [
+        "A triangle's area is half of base times height, not the full product.",
+        "Multiply base and height first, then take half."
+      ],
+      "socraticHint": "A triangle is exactly half of the rectangle that shares its base and height. What does that tell you about its area formula?",
+      "useAgain": "when a triangle's base and height are known and the area is missing.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the area of a triangle with a base of 8 centimeters and a height of 5 centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p17",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "Find the area of a triangle with a base of 12 centimeters and a height of 7 centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "42"
+      },
+      "explanation": [
+        "A triangle's area is half its base times its height.",
+        "Multiply base and height: 12 x 7 = 84.",
+        "Take half: 84 / 2 = 42 square centimeters."
+      ],
+      "hints": [
+        "A triangle's area is half of base times height, not the full product.",
+        "Multiply base and height first, then take half."
+      ],
+      "socraticHint": "A triangle is exactly half of the rectangle that shares its base and height. What does that tell you about its area formula?",
+      "useAgain": "when a triangle's base and height are known and the area is missing.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the area of a triangle with a base of 16 centimeters and a height of 5 centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "40"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p18",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle has an area of 48 square centimeters and a width of 6 centimeters. Find its length.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Area equals length times width, so length equals area divided by width.",
+        "Divide: 48 / 6 = 8.",
+        "The length is 8 centimeters."
+      ],
+      "hints": [
+        "Rearrange the area formula: length equals area divided by width.",
+        "Divide the given area by the given width."
+      ],
+      "socraticHint": "If area is length times width, what operation undoes that multiplication to find the missing length?",
+      "useAgain": "when a rectangle's area and one side are known and the other side is missing.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rectangle has an area of 60 square centimeters and a length of 12 centimeters. Find its width.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p19",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle has a perimeter of 34 centimeters and a length of 10 centimeters. Find its width.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Half the perimeter equals length plus width: 34 / 2 = 17.",
+        "Subtract the known length: 17 - 10 = 7.",
+        "The width is 7 centimeters."
+      ],
+      "hints": [
+        "Divide the perimeter by 2 to get length plus width.",
+        "Subtract the known length from that half-perimeter."
+      ],
+      "socraticHint": "If half the perimeter equals length plus width, what is left once the known length is taken away?",
+      "useAgain": "when a rectangle's perimeter and one side are known and the other side is missing.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rectangle has a perimeter of 28 centimeters and a width of 5 centimeters. Find its length.",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p20",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "An L-shaped room is a 10 meter by 8 meter rectangle with a 4 meter by 3 meter rectangle cut from one corner. Find its area, in square meters.",
+      "answer": {
+        "kind": "number",
+        "value": "68"
+      },
+      "explanation": [
+        "Find the full rectangle's area first: 10 x 8 = 80.",
+        "Find the cut-out corner's area: 4 x 3 = 12.",
+        "Subtract the cut-out from the whole: 80 - 12 = 68 square meters."
+      ],
+      "hints": [
+        "Find the area of the full rectangle before the corner was cut, first.",
+        "Subtract the area of the cut-out corner rectangle from that full area."
+      ],
+      "socraticHint": "If a rectangular corner is missing, how does its area relate to the full rectangle's area?",
+      "useAgain": "when an L-shaped or notched shape's area needs finding by subtracting a missing corner.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An L-shaped room, a 10 by 8 rectangle with a 4 by 3 corner cut away.",
+        "spec": {
+          "w": 280,
+          "h": 228,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  50,
+                  44
+                ],
+                [
+                  146,
+                  44
+                ],
+                [
+                  146,
+                  92
+                ],
+                [
+                  210,
+                  92
+                ],
+                [
+                  210,
+                  172
+                ],
+                [
+                  50,
+                  172
+                ]
+              ],
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 188,
+              "x2": 210,
+              "y2": 188,
+              "label": "10 m"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 44,
+              "x2": 34,
+              "y2": 172,
+              "label": "8 m"
+            },
+            {
+              "t": "dim",
+              "x1": 146,
+              "y1": 32,
+              "x2": 50,
+              "y2": 32,
+              "label": "6 m"
+            },
+            {
+              "t": "dim",
+              "x1": 226,
+              "y1": 44,
+              "x2": 226,
+              "y2": 92,
+              "label": "3 m"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "An L-shaped room is a 12 meter by 9 meter rectangle with a 5 meter by 4 meter rectangle cut from one corner. Find its area, in square meters.",
+        "answer": {
+          "kind": "number",
+          "value": "88"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p21",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "An L-shaped patio is a 10 meter by 8 meter rectangle with a 4 meter by 3 meter rectangle cut from one corner. Find its perimeter, in meters.",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "List every outer edge: 10, 8, then 10 - 4 = 6 across the notch's top.",
+        "Then 3 down the notch, 4 across the notch's bottom, and 8 - 3 = 5 up the last side.",
+        "Add them all: 10 + 8 + 6 + 3 + 4 + 5 = 36 meters."
+      ],
+      "hints": [
+        "List the length of every outer edge of the L-shape, including the two new edges the notch creates.",
+        "Add all six edge lengths together."
+      ],
+      "socraticHint": "Cutting a rectangular corner out replaces one edge with two shorter ones. Does the total distance around actually change?",
+      "useAgain": "when an L-shaped or notched shape's perimeter needs finding by adding every outer edge.",
+      "thinkMinutes": 6,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An L-shaped patio, a 10 by 8 rectangle with a 4 by 3 corner cut away, with its outer edges marked.",
+        "spec": {
+          "w": 280,
+          "h": 228,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  50,
+                  44
+                ],
+                [
+                  146,
+                  44
+                ],
+                [
+                  146,
+                  92
+                ],
+                [
+                  210,
+                  92
+                ],
+                [
+                  210,
+                  172
+                ],
+                [
+                  50,
+                  172
+                ]
+              ],
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 188,
+              "x2": 210,
+              "y2": 188,
+              "label": "10 m"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 44,
+              "x2": 34,
+              "y2": 172,
+              "label": "8 m"
+            },
+            {
+              "t": "dim",
+              "x1": 146,
+              "y1": 32,
+              "x2": 50,
+              "y2": 32,
+              "label": "6 m"
+            },
+            {
+              "t": "dim",
+              "x1": 226,
+              "y1": 44,
+              "x2": 226,
+              "y2": 92,
+              "label": "3 m"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "An L-shaped patio is a 12 meter by 9 meter rectangle with a 5 meter by 4 meter rectangle cut from one corner. Find its perimeter, in meters.",
+        "answer": {
+          "kind": "number",
+          "value": "42"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p22",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle measures 14 centimeters by 3 centimeters. Find its area, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "42"
+      },
+      "explanation": [
+        "A rectangle's area is length times width.",
+        "Multiply the two sides: 14 x 3 = 42.",
+        "The area is 42 square centimeters."
+      ],
+      "hints": [
+        "Area is length times width.",
+        "Multiply the two given side lengths together."
+      ],
+      "socraticHint": "What operation turns a rectangle's two side lengths into the space it covers?",
+      "useAgain": "when a rectangle's two side lengths are known and the area is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rectangle measures 16 centimeters by 3 centimeters. Find its area, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "48"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p23",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle measures 14 centimeters by 3 centimeters. Find its perimeter, in centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "34"
+      },
+      "explanation": [
+        "A rectangle's perimeter is the distance all the way around it.",
+        "Add length and width, then double: 2 x (14 + 3) = 34.",
+        "The perimeter is 34 centimeters."
+      ],
+      "hints": [
+        "Perimeter is the total distance around the shape.",
+        "Add length and width, then double that sum."
+      ],
+      "socraticHint": "If you walked all the way around this rectangle's edge, how far would you go?",
+      "useAgain": "when a rectangle's two side lengths are known and the perimeter is missing.",
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rectangle measures 16 centimeters by 3 centimeters. Find its perimeter, in centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "38"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p24",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "Find the area of a triangle with a base of 18 centimeters and a height of 3 centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "27"
+      },
+      "explanation": [
+        "A triangle's area is half of its base times its height.",
+        "Multiply the base and height: 18 x 3 = 54.",
+        "Take half of that: 54 / 2 = 27.",
+        "The area is 27 square centimeters."
+      ],
+      "hints": [
+        "A triangle's area is half of base times height, not the full product.",
+        "Multiply base and height first, then take half."
+      ],
+      "socraticHint": "A triangle is exactly half of the rectangle that shares its base and height. What does that tell you about its area formula?",
+      "useAgain": "when a triangle's base and height are known and the area is missing.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the area of a triangle with a base of 14 centimeters and a height of 6 centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "42"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p25",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "choice",
+      "prompt": "A triangle has a base of 10 centimeters and a height of 8 centimeters. What is its area?",
+      "options": [
+        "80 square centimeters",
+        "18 square centimeters",
+        "20 square centimeters",
+        "40 square centimeters"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Area is half of base times height: (10 x 8) / 2 = 40.",
+        "80 forgets to take half, using the full rectangle's area instead.",
+        "18 adds the sides instead of multiplying, and 20 halves the correct answer again by mistake."
+      ],
+      "hints": [
+        "Multiply base and height first, then remember to take half.",
+        "Do not stop after multiplying; a triangle is only half of that rectangle."
+      ],
+      "socraticHint": "After multiplying the base and height together, is there one more step left before you have the triangle's area?",
+      "useAgain": "when a multiple choice question offers the full base times height product as a tempting wrong answer.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A triangle has a base of 12 centimeters and a height of 6 centimeters. What is its area?",
+        "options": [
+          "72 square centimeters",
+          "18 square centimeters",
+          "36 square centimeters",
+          "24 square centimeters"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p26",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "truefalse",
+      "prompt": "The area of a triangle is half of its base times its height.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "A triangle is exactly half of the rectangle sharing its base and height.",
+        "So its area is half of base times height.",
+        "This matches the standard triangle area formula."
+      ],
+      "hints": [
+        "Picture a triangle sitting inside a rectangle with the same base and height.",
+        "What fraction of that rectangle does the triangle actually cover?"
+      ],
+      "socraticHint": "If a triangle fits exactly inside a rectangle with the same base and height, what fraction of the rectangle does it cover?",
+      "useAgain": "when checking the basic formula for a triangle's area.",
+      "thinkMinutes": 2,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "The area of a triangle is the same as the area of a rectangle with the same base and height.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p27",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle has a perimeter of 24 centimeters and a length that is 4 centimeters more than its width. Find its area, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "32"
+      },
+      "explanation": [
+        "Half the perimeter equals length plus width: 24 / 2 = 12.",
+        "Length is width plus 4, so width + width + 4 = 12, and 2 x width = 8, width = 4.",
+        "The length is 4 + 4 = 8, so the area is 8 x 4 = 32 square centimeters."
+      ],
+      "hints": [
+        "Divide the perimeter by 2 to get length plus width.",
+        "Use the fact that length is 4 more than width to split that sum between the two."
+      ],
+      "socraticHint": "Once you know length plus width, and that length is 4 more than width, how do you split that total between the two?",
+      "useAgain": "when a rectangle's perimeter and the difference between its sides are known, and the area is missing.",
+      "thinkMinutes": 6,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rectangle has a perimeter of 26 centimeters and a length that is 3 centimeters more than its width. Find its area, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "40"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p28",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "Two rectangles are joined edge to edge to make a workbench top. One is 60 centimeters by 40 centimeters, the other is 30 centimeters by 40 centimeters, joined along a 40 centimeter side. Find the combined area, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "3600"
+      },
+      "explanation": [
+        "Find each rectangle's area separately: 60 x 40 = 2400, and 30 x 40 = 1200.",
+        "Add the two areas together: 2400 + 1200 = 3600.",
+        "The combined area is 3600 square centimeters."
+      ],
+      "hints": [
+        "Find the area of each rectangle piece on its own first.",
+        "Add the two separate areas together."
+      ],
+      "socraticHint": "When a shape is made of two rectangles joined together, how do their two separate areas combine into one?",
+      "useAgain": "when a composite shape is made of two or more simple rectangles joined together.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two rectangles are joined edge to edge to make a shelf. One is 80 centimeters by 50 centimeters, the other is 20 centimeters by 50 centimeters, joined along a 50 centimeter side. Find the combined area, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "5000"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p29",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle has a perimeter of 30 centimeters and a length of 9 centimeters. Find its width.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Half the perimeter equals length plus width: 30 / 2 = 15.",
+        "Subtract the known length: 15 - 9 = 6.",
+        "The width is 6 centimeters."
+      ],
+      "hints": [
+        "Divide the perimeter by 2 to get length plus width.",
+        "Subtract the known length from that half-perimeter."
+      ],
+      "socraticHint": "If half the perimeter equals length plus width, what is left once the known length is taken away?",
+      "useAgain": "when a rectangle's perimeter and one side are known and the other side is missing.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rectangle has a perimeter of 32 centimeters and a length of 11 centimeters. Find its width.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p30",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "Find the area of a triangle with a base of 9 centimeters and a height of 4 centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "A triangle's area is half its base times its height.",
+        "Multiply base and height: 9 x 4 = 36.",
+        "Take half: 36 / 2 = 18 square centimeters."
+      ],
+      "hints": [
+        "A triangle's area is half of base times height, not the full product.",
+        "Multiply base and height first, then take half."
+      ],
+      "socraticHint": "A triangle is exactly half of the rectangle that shares its base and height. What does that tell you about its area formula?",
+      "useAgain": "when a triangle's base and height are known and the area is missing.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the area of a triangle with a base of 11 centimeters and a height of 6 centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "33"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p31",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A garden is shaped like an L. It is a 15 meter by 10 meter rectangle with a 6 meter by 4 meter rectangle cut from one corner. Find its area, in square meters.",
+      "answer": {
+        "kind": "number",
+        "value": "126"
+      },
+      "explanation": [
+        "Find the full rectangle's area first: 15 x 10 = 150.",
+        "Find the cut-out corner's area: 6 x 4 = 24.",
+        "Subtract: 150 - 24 = 126 square meters."
+      ],
+      "hints": [
+        "Find the area of the full rectangle before the corner was cut, first.",
+        "Subtract the area of the cut-out corner rectangle from that full area."
+      ],
+      "socraticHint": "If a rectangular corner is missing, how does its area relate to the full rectangle's area?",
+      "useAgain": "when an L-shaped or notched shape's area needs finding by subtracting a missing corner.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A garden shaped like an L, a 15 by 10 rectangle with a 6 by 4 corner cut away.",
+        "spec": {
+          "w": 285,
+          "h": 210,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  50,
+                  44
+                ],
+                [
+                  149,
+                  44
+                ],
+                [
+                  149,
+                  88
+                ],
+                [
+                  215,
+                  88
+                ],
+                [
+                  215,
+                  154
+                ],
+                [
+                  50,
+                  154
+                ]
+              ],
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 170,
+              "x2": 215,
+              "y2": 170,
+              "label": "15 m"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 44,
+              "x2": 34,
+              "y2": 154,
+              "label": "10 m"
+            },
+            {
+              "t": "dim",
+              "x1": 149,
+              "y1": 32,
+              "x2": 50,
+              "y2": 32,
+              "label": "9 m"
+            },
+            {
+              "t": "dim",
+              "x1": 231,
+              "y1": 44,
+              "x2": 231,
+              "y2": 88,
+              "label": "4 m"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A garden is shaped like an L. It is a 12 meter by 9 meter rectangle with a 5 meter by 4 meter rectangle cut from one corner. Find its area, in square meters.",
+        "answer": {
+          "kind": "number",
+          "value": "88"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p32",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A doghouse's front wall is a rectangle 60 centimeters wide and 50 centimeters tall. It is topped by a triangular roof with the same 60 centimeter base and a height of 20 centimeters. Find the total area of the front wall, roof included.",
+      "answer": {
+        "kind": "number",
+        "value": "3600"
+      },
+      "explanation": [
+        "Find the rectangle's area: 60 x 50 = 3000.",
+        "Find the triangular roof's area: (60 x 20) / 2 = 600.",
+        "Add the two pieces: 3000 + 600 = 3600 square centimeters."
+      ],
+      "hints": [
+        "Find the rectangle's area and the triangle's area separately.",
+        "Add the two areas together for the total."
+      ],
+      "socraticHint": "A wall topped by a roof shape is made of two simpler pieces. How do their two areas combine?",
+      "useAgain": "when a composite shape is made of a rectangle and a triangle joined together.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A doghouse's front wall is a rectangle 50 centimeters wide and 45 centimeters tall. It is topped by a triangular roof with the same 50 centimeter base and a height of 15 centimeters. Find the total area of the front wall, roof included.",
+        "answer": {
+          "kind": "number",
+          "value": "2625"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p33",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A metal plate is a rectangle 12 centimeters by 8 centimeters, with a right-triangle corner cut off. The triangle's two legs measure 4 centimeters and 3 centimeters. Find the remaining area, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "90"
+      },
+      "explanation": [
+        "Find the rectangle's full area: 12 x 8 = 96.",
+        "Find the cut-off triangle's area: (4 x 3) / 2 = 6.",
+        "Subtract: 96 - 6 = 90 square centimeters."
+      ],
+      "hints": [
+        "Find the full rectangle's area before the corner was cut, first.",
+        "Subtract the cut-off triangle's area from that full area."
+      ],
+      "socraticHint": "If a triangular corner is missing instead of a rectangular one, does the same subtract-the-piece idea still work?",
+      "useAgain": "when a shape's area needs finding by subtracting a triangular corner rather than a rectangular one.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A metal plate is a rectangle 10 centimeters by 9 centimeters, with a right-triangle corner cut off. The triangle's two legs measure 6 centimeters and 4 centimeters. Find the remaining area, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "78"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p34",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle's length is 3 times its width, and its area is 75 square centimeters. Find its width, in centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Let the width be w; the length is 3w, so the area is w x 3w = 3w x w.",
+        "3 times width squared equals 75, so width squared equals 75 / 3 = 25.",
+        "The width is the square root of 25, which is 5 centimeters."
+      ],
+      "hints": [
+        "Write the area as width times 3 times width, which is 3 times width squared.",
+        "Divide the area by 3, then find the square root."
+      ],
+      "socraticHint": "If length is always 3 times width, what does the area formula become in terms of width alone?",
+      "useAgain": "when a rectangle's length is a multiple of its width and its area is known.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangle's length is 3 times its width, and its area is 48 square centimeters. Find its width, in centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p35",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle's perimeter is 40 centimeters, and its length is 4 centimeters more than its width. Find its area, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "96"
+      },
+      "explanation": [
+        "Half the perimeter equals length plus width: 40 / 2 = 20.",
+        "Length is width plus 4, so width + width + 4 = 20, and 2 x width = 16, width = 8.",
+        "The length is 8 + 4 = 12, so the area is 12 x 8 = 96 square centimeters."
+      ],
+      "hints": [
+        "Divide the perimeter by 2 to get length plus width.",
+        "Use the fact that length is 4 more than width to split that sum between the two."
+      ],
+      "socraticHint": "Once you know length plus width, and that length is 4 more than width, how do you split that total between the two?",
+      "useAgain": "when a rectangle's perimeter and the difference between its sides are known, and the area is missing.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangle's perimeter is 36 centimeters, and its length is 6 centimeters more than its width. Find its area, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "72"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p36",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A triangle has an area of 36 square centimeters and a base of 9 centimeters. Find its height, in centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Area is half of base times height, so height is 2 times area divided by base.",
+        "Multiply the area by 2: 36 x 2 = 72.",
+        "Divide by the base: 72 / 9 = 8 centimeters."
+      ],
+      "hints": [
+        "Rearrange the triangle area formula to solve for height instead of area.",
+        "Double the area first, then divide by the base."
+      ],
+      "socraticHint": "If area is half of base times height, what two steps undo that to find the height instead?",
+      "useAgain": "when a triangle's area and base are known and its height is missing.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A triangle has an area of 54 square centimeters and a base of 12 centimeters. Find its height, in centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p37",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "choice",
+      "prompt": "A square patio has an area of 81 square meters. What is its perimeter?",
+      "options": [
+        "81 meters",
+        "36 meters",
+        "18 meters",
+        "324 meters"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The side length is the square root of 81, which is 9 meters.",
+        "The perimeter is 4 times the side length: 4 x 9 = 36 meters.",
+        "81 repeats the area instead of finding the perimeter, and 324 multiplies the area by 4 by mistake."
+      ],
+      "hints": [
+        "Find the side length first, by taking the square root of the area.",
+        "Multiply that side length by 4 to get the perimeter."
+      ],
+      "socraticHint": "Before finding the perimeter, what single side length do you need from this square's area?",
+      "useAgain": "when a square's area is known and the perimeter is missing, requiring a square root step first.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A square patio has an area of 64 square meters. What is its perimeter?",
+        "options": [
+          "32 meters",
+          "64 meters",
+          "16 meters",
+          "256 meters"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p38",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "An L-shaped deck is a 20 meter by 14 meter rectangle with a 7 meter by 5 meter rectangle cut from one corner. Find its perimeter, in meters.",
+      "answer": {
+        "kind": "number",
+        "value": "68"
+      },
+      "explanation": [
+        "List every outer edge: 20, 14, then 20 - 7 = 13 across the notch's top.",
+        "Then 5 down the notch, 7 across the notch's bottom, and 14 - 5 = 9 up the last side.",
+        "Add them all: 20 + 14 + 13 + 5 + 7 + 9 = 68 meters."
+      ],
+      "hints": [
+        "List the length of every outer edge of the L-shape, including the two new edges the notch creates.",
+        "Add all six edge lengths together."
+      ],
+      "socraticHint": "Cutting a rectangular corner out replaces one edge with two shorter ones. Does the total distance around actually change?",
+      "useAgain": "when an L-shaped or notched shape's perimeter needs finding by adding every outer edge.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "An L-shaped deck, a 20 by 14 rectangle with a 7 by 5 corner cut away, with its outer edges marked.",
+        "spec": {
+          "w": 280,
+          "h": 212,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  50,
+                  44
+                ],
+                [
+                  154,
+                  44
+                ],
+                [
+                  154,
+                  84
+                ],
+                [
+                  210,
+                  84
+                ],
+                [
+                  210,
+                  156
+                ],
+                [
+                  50,
+                  156
+                ]
+              ],
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 172,
+              "x2": 210,
+              "y2": 172,
+              "label": "20 m"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 44,
+              "x2": 34,
+              "y2": 156,
+              "label": "14 m"
+            },
+            {
+              "t": "dim",
+              "x1": 154,
+              "y1": 32,
+              "x2": 50,
+              "y2": 32,
+              "label": "13 m"
+            },
+            {
+              "t": "dim",
+              "x1": 226,
+              "y1": 44,
+              "x2": 226,
+              "y2": 84,
+              "label": "5 m"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "An L-shaped deck is a 18 meter by 12 meter rectangle with a 6 meter by 4 meter rectangle cut from one corner. Find its perimeter, in meters.",
+        "answer": {
+          "kind": "number",
+          "value": "60"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p39",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangular pool deck is 8 meters by 5 meters. A square hot tub with a side of 2 meters sits in one corner, taking up part of the deck. Find the remaining deck area, in square meters.",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "Find the full deck's area: 8 x 5 = 40.",
+        "Find the hot tub's area: 2 x 2 = 4.",
+        "Subtract: 40 - 4 = 36 square meters."
+      ],
+      "hints": [
+        "Find the full deck's area first, before the hot tub takes up any space.",
+        "Subtract the hot tub's square area from that full area."
+      ],
+      "socraticHint": "How does a square taking up one corner of the deck relate to the deck's full area?",
+      "useAgain": "when a smaller square or rectangle sits inside a larger one and the remaining area is missing.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A rectangular pool deck with a small square hot tub cut into one corner.",
+        "spec": {
+          "w": 248,
+          "h": 180,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  50,
+                  44
+                ],
+                [
+                  146,
+                  44
+                ],
+                [
+                  146,
+                  76
+                ],
+                [
+                  178,
+                  76
+                ],
+                [
+                  178,
+                  124
+                ],
+                [
+                  50,
+                  124
+                ]
+              ],
+              "fill": "accent"
+            },
+            {
+              "t": "dim",
+              "x1": 50,
+              "y1": 140,
+              "x2": 178,
+              "y2": 140,
+              "label": "8 m"
+            },
+            {
+              "t": "dim",
+              "x1": 34,
+              "y1": 44,
+              "x2": 34,
+              "y2": 124,
+              "label": "5 m"
+            },
+            {
+              "t": "dim",
+              "x1": 146,
+              "y1": 32,
+              "x2": 50,
+              "y2": 32,
+              "label": "6 m"
+            },
+            {
+              "t": "dim",
+              "x1": 194,
+              "y1": 44,
+              "x2": 194,
+              "y2": 76,
+              "label": "2 m"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rectangular pool deck is 10 meters by 6 meters. A square hot tub with a side of 3 meters sits in one corner, taking up part of the deck. Find the remaining deck area, in square meters.",
+        "answer": {
+          "kind": "number",
+          "value": "51"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p40",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangular garden bed measures 6 meters by 4 meters. Turf costs 5 dollars per square meter. Find the total cost to turf the whole bed.",
+      "answer": {
+        "kind": "number",
+        "value": "120.00"
+      },
+      "explanation": [
+        "Find the bed's area first: 6 x 4 = 24 square meters.",
+        "Multiply the area by the cost per square meter: 24 x 5 = 120.",
+        "Turfing the whole bed costs 120 dollars."
+      ],
+      "hints": [
+        "Find the area of the bed before working out the cost.",
+        "Multiply that area by the cost for one square meter."
+      ],
+      "socraticHint": "Once you know how many square meters the bed covers, how do you turn that into a total cost?",
+      "useAgain": "when a real cost depends on an area multiplied by a price per square meter.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangular garden bed measures 7 meters by 3 meters. Turf costs 6 dollars per square meter. Find the total cost to turf the whole bed.",
+        "answer": {
+          "kind": "number",
+          "value": "126.00"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p41",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle's length is twice its width, and its perimeter is 54 centimeters. Find its area, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "162"
+      },
+      "explanation": [
+        "Half the perimeter equals length plus width: 54 / 2 = 27.",
+        "Length is twice the width, so width + 2 x width = 27, and 3 x width = 27, width = 9.",
+        "The length is 2 x 9 = 18, so the area is 18 x 9 = 162 square centimeters."
+      ],
+      "hints": [
+        "Divide the perimeter by 2 to get length plus width.",
+        "Use the fact that length is twice the width to split that sum in the right ratio."
+      ],
+      "socraticHint": "If length is always twice the width, how many widths does length plus width actually add up to?",
+      "useAgain": "when a rectangle's perimeter and a length-to-width multiple are known, and the area is missing.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangle's length is twice its width, and its perimeter is 42 centimeters. Find its area, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "98"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p42",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A triangular flag has a base of 20 centimeters and an area of 150 square centimeters. Find its height, in centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Area is half of base times height, so height is 2 times area divided by base.",
+        "Multiply the area by 2: 150 x 2 = 300.",
+        "Divide by the base: 300 / 20 = 15 centimeters."
+      ],
+      "hints": [
+        "Rearrange the triangle area formula to solve for height instead of area.",
+        "Double the area first, then divide by the base."
+      ],
+      "socraticHint": "If area is half of base times height, what two steps undo that to find the height instead?",
+      "useAgain": "when a triangle's area and base are known and its height is missing.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A triangular flag has a base of 16 centimeters and an area of 96 square centimeters. Find its height, in centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p43",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangular banner is 3 meters long and 2 meters wide. Its area needs doubling by increasing only its length, keeping the width the same. Find the new length, in meters.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The original area is 3 x 2 = 6 square meters.",
+        "Doubling the area means reaching 6 x 2 = 12 square meters.",
+        "With the width still 2, the new length is 12 / 2 = 6 meters."
+      ],
+      "hints": [
+        "Find the original area, then double it to find the target area.",
+        "Divide the target area by the unchanged width to find the new length."
+      ],
+      "socraticHint": "If the width stays the same, what does the new length have to be for the area to double?",
+      "useAgain": "when only one side of a rectangle changes and the resulting area is a known multiple of the original.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangular banner is 4 meters long and 3 meters wide. Its area needs doubling by increasing only its length, keeping the width the same. Find the new length, in meters.",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p44",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle's width is one third of its length. Its area is 108 square centimeters. Find its perimeter, in centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "48"
+      },
+      "explanation": [
+        "Let the length be l; the width is l / 3, so the area is l x (l / 3) = l squared / 3.",
+        "l squared / 3 = 108, so l squared = 324, and l is the square root of 324, which is 18.",
+        "The width is 18 / 3 = 6, so the perimeter is 2 x (18 + 6) = 48 centimeters."
+      ],
+      "hints": [
+        "Write the area in terms of the length alone, using width equals length divided by 3.",
+        "Solve for the length first, then find the width and the perimeter."
+      ],
+      "socraticHint": "If width is always a third of length, what single-variable equation does the area formula turn into?",
+      "useAgain": "when a rectangle's width is a fraction of its length and its area is known.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangle's width is one third of its length. Its area is 48 square centimeters. Find its perimeter, in centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p45",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle's area is 100 square centimeters, and its length is 4 times its width. Find its width, in centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Let the width be w; the length is 4w, so the area is w x 4w, which is 4 times width squared.",
+        "4 times width squared equals 100, so width squared equals 100 / 4 = 25.",
+        "The width is the square root of 25, which is 5 centimeters."
+      ],
+      "hints": [
+        "Write the area as width times 4 times width, which is 4 times width squared.",
+        "Divide the area by 4, then find the square root."
+      ],
+      "socraticHint": "If length is always 4 times width, what does the area formula become in terms of width alone?",
+      "useAgain": "when a rectangle's length is a multiple of its width and its area is known.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangle's area is 64 square centimeters, and its length is 4 times its width. Find its width, in centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-pa-area-perimeter-p46",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle's area is 96 square centimeters and its perimeter is 40 centimeters. Both side lengths are whole numbers. Find the length, the longer of the two sides.",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Half the perimeter is 20, so length plus width is 20.",
+        "Testing whole-number factor pairs of 96 that also add to 20, 12 and 8 work.",
+        "Since 12 x 8 = 96 and 12 + 8 = 20, the longer side, the length, is 12 centimeters."
+      ],
+      "hints": [
+        "List whole-number factor pairs of 96 first.",
+        "Find the pair whose two numbers also add up to half the perimeter."
+      ],
+      "socraticHint": "Among all the whole-number ways to multiply to 96, which pair also adds up to 20?",
+      "useAgain": "when a rectangle's area and perimeter are both known and the exact side lengths need finding by testing factor pairs.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangle's area is 84 square centimeters and its perimeter is 38 centimeters. Both side lengths are whole numbers. Find the length, the longer of the two sides.",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p47",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A large rectangle is tiled edge to edge with identical square tiles, 6 tiles across and 4 tiles down. Each tile is 3 centimeters by 3 centimeters. Find the area of the large rectangle, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "216"
+      },
+      "explanation": [
+        "Each tile has an area of 3 x 3 = 9 square centimeters.",
+        "The whole rectangle holds 6 x 4 = 24 tiles.",
+        "Total area: 24 x 9 = 216 square centimeters."
+      ],
+      "hints": [
+        "Find the area of a single tile first.",
+        "Multiply by the total number of tiles, found by multiplying the rows and columns of tiles."
+      ],
+      "socraticHint": "How many tiles does the whole rectangle hold, and what does each single tile contribute to the total area?",
+      "useAgain": "when a large shape is tiled by identical smaller shapes and the total area is missing.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A large rectangle is tiled edge to edge with identical square tiles, 5 tiles across and 3 tiles down. Each tile is 4 centimeters by 4 centimeters. Find the area of the large rectangle, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "240"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p48",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangular picture frame has outer dimensions 20 centimeters by 15 centimeters. A uniform 2 centimeter wide border runs all the way around a rectangular photo opening in the middle. Find the area of the photo opening, in square centimeters.",
+      "answer": {
+        "kind": "number",
+        "value": "176"
+      },
+      "explanation": [
+        "The border removes 2 centimeters from each side of both dimensions, so 4 centimeters total from each.",
+        "The opening's width is 20 - 4 = 16, and its height is 15 - 4 = 11.",
+        "The opening's area is 16 x 11 = 176 square centimeters."
+      ],
+      "hints": [
+        "The border takes away twice its width from each dimension, once on each side.",
+        "Subtract 4 centimeters from both the outer width and the outer height before multiplying."
+      ],
+      "socraticHint": "A border of width 2 on both sides of a dimension removes how much from that dimension in total?",
+      "useAgain": "when a uniform border or frame surrounds an inner rectangle and the inner area is missing.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangular picture frame has outer dimensions 25 centimeters by 18 centimeters. A uniform 3 centimeter wide border runs all the way around a rectangular photo opening in the middle. Find the area of the photo opening, in square centimeters.",
+        "answer": {
+          "kind": "number",
+          "value": "228"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p49",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A rectangle's length and width are both whole numbers of centimeters, and its area is 60 square centimeters. Find the smallest possible perimeter for that area.",
+      "answer": {
+        "kind": "number",
+        "value": "32"
+      },
+      "explanation": [
+        "List the whole-number factor pairs of 60: 1x60, 2x30, 3x20, 4x15, 5x12, 6x10.",
+        "The perimeter for each pair is smallest when the two numbers are closest together, which happens at 6 and 10.",
+        "That perimeter is 2 x (6 + 10) = 32 centimeters."
+      ],
+      "hints": [
+        "List every whole-number factor pair that multiplies to 60.",
+        "The pair with the smallest perimeter is the one whose two numbers are closest to each other."
+      ],
+      "socraticHint": "Among all the whole-number ways to multiply to 60, which pair has the two numbers closest together?",
+      "useAgain": "when several whole-number rectangles share the same area and the smallest possible perimeter is wanted.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rectangle's length and width are both whole numbers of centimeters, and its area is 36 square centimeters. Find the smallest possible perimeter for that area.",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-area-perimeter-p50",
+      "lane": "skills",
+      "ideaId": "pa-area-perimeter",
+      "skills": [
+        "think.skills.area"
+      ],
+      "kind": "number",
+      "prompt": "A square garden's area is 81 square meters. A path 1 meter wide is built just inside the garden's edge, all the way around. Find the area of the ground still left uncovered by the path, in square meters.",
+      "answer": {
+        "kind": "number",
+        "value": "49"
+      },
+      "explanation": [
+        "The garden's side length is the square root of 81, which is 9 meters.",
+        "The path takes 1 meter off each side, so the uncovered inner square has a side of 9 - 2 = 7 meters.",
+        "The uncovered area is 7 x 7 = 49 square meters."
+      ],
+      "hints": [
+        "Find the garden's side length first, by taking the square root of its area.",
+        "The path removes its width from both sides of that side length before you square it again."
+      ],
+      "socraticHint": "A path 1 meter wide, built inside the edge all the way around, takes how much off each side of the square?",
+      "useAgain": "when a border or path runs just inside a square's edge and the remaining inner area is missing.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A square garden's area is 100 square meters. A path 1 meter wide is built just inside the garden's edge, all the way around. Find the area of the ground still left uncovered by the path, in square meters.",
+        "answer": {
+          "kind": "number",
+          "value": "64"
+        }
+      }
+    }
+  ]
+}

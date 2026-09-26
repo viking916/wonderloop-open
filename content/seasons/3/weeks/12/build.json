@@ -1,0 +1,285 @@
+{
+  "id": "s3-w12-build",
+  "season": 3,
+  "week": 12,
+  "track": "build",
+  "title": "The Summit: the expedition report",
+  "summary": "The tour of everything that is public with their name on the commits, the shareholder report read off their own ledger, and the Ascent Plan handed to the family as a dated map instead of a poster.",
+  "minutes": 60,
+  "materials": [
+    "the laptop, with a parent signed in to the account that holds the repos",
+    "every public repo open in its own browser tab",
+    "the ledger you closed at week 9, on paper, with every cost and the loan payment on it",
+    "the Maker's Log and the bug diary, all twelve weeks of them",
+    "the expedition wall map, with the far peaks and their dates still on it",
+    "a blank sheet ruled into months, for the Ascent Plan",
+    "card and coloured pens for the season 3 patch",
+    "phone or laptop to record"
+  ],
+  "skills": [
+    "build.version-control",
+    "build.documentation",
+    "build.python"
+  ],
+  "showcase": true,
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s3-w12-build-01",
+      "title": "Summit day, in order",
+      "body": "The Build hour today does not build anything. It reports.\n\nFour things happen, in this order. The tour: every repo that is public gets opened, read from and explained, out loud, to people who did not write it. The shareholder report: the ledger comes out and the family hears the four numbers in the order they actually happened. The Ascent Plan: the far peaks on the wall map stop being a poster and become a route with dates on it. Then the patch.\n\nOne rule runs the whole hour, and it is the rule the stranger test taught you at week 4. Say what is there, not what you meant. If a repo is thinner than you wanted, tour the thin one. If a README still has a gap in it, read the gap out loud. If a number on the ledger came out smaller than the number in your head at week 4, say both numbers. A report that only contains good news is not a report, it is an advertisement, and the family can tell the difference from across the room.\n\nThe design loop has one step left over from twelve weeks of turning it: tell. You have asked, imagined, planned, made and tested all season. Telling honestly is the part that lets somebody else use what you learned."
+    },
+    {
+      "kind": "typing",
+      "id": "s3-w12-build-02",
+      "minutes": 5,
+      "body": "Five minutes on your typing site before anybody sits down. Warm up on the home row, then type the season's own words, ten times each, without looking down: push, remote, origin, readme, ledger, profit, margin, root, ascent.\n\nThen type the sentence the shareholder report opens with, twice: here is what came in, here is what went out, and here is what is left."
+    },
+    {
+      "kind": "science",
+      "id": "s3-w12-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Each commit's long name is a fingerprint made from its files, its message, its author, its time, and the fingerprint of the commit before it. Change one byte anywhere and every fingerprint after it changes too, which is why nobody can quietly edit history.",
+        "spec": {
+          "w": 420,
+          "h": 160,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 80,
+              "w": 100,
+              "h": 40,
+              "label": "commit 1",
+              "sub": "hash a1b2c3"
+            },
+            {
+              "t": "box",
+              "x": 160,
+              "y": 80,
+              "w": 100,
+              "h": 40,
+              "label": "commit 2",
+              "sub": "hash d4e5f6"
+            },
+            {
+              "t": "box",
+              "x": 300,
+              "y": 80,
+              "w": 100,
+              "h": 40,
+              "label": "commit 3",
+              "sub": "hash g7h8i9"
+            },
+            {
+              "t": "line",
+              "x1": 120,
+              "y1": 100,
+              "x2": 160,
+              "y2": 100,
+              "arrow": true,
+              "label": "feeds"
+            },
+            {
+              "t": "line",
+              "x1": 260,
+              "y1": 100,
+              "x2": 300,
+              "y2": 100,
+              "arrow": true,
+              "label": "feeds"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 40,
+              "s": "change one byte and every hash after it changes",
+              "size": 11
+            }
+          ],
+          "wide": true
+        }
+      },
+      "title": "Why a commit has such a long, strange name",
+      "body": "Run git log in any of your repos and every commit is wearing a name nobody chose: a long string of letters and digits, forty characters of it, and git will happily let you use just the first seven.\n\nThat name is not a serial number counting upwards. It is a fingerprint, and what git feeds into the fingerprinting machine is more than the files. It is the snapshot of every file and every byte in it, plus the name of the commit before this one, plus who made it, plus the exact second it was made, plus the message you typed. All of that goes into the mixture, and the machine hands back that string.\n\nThe machine has two habits worth knowing. Feed it exactly the same mixture twice and it gives back exactly the same fingerprint, every time, on any computer in the world. Change one single thing anywhere in that mixture, even a space at the end of a line, and the fingerprint that comes back looks completely unrelated to the old one. There is no small change.\n\nTest the second habit yourself, because it is easy to get wrong. Commit something, then put the file back exactly the way it was and commit again a minute later. The files are now byte for byte identical to the earlier commit, and the two names are nothing alike, because the time and the commit before it went into the mixture too.\n\nThat is why nobody can quietly edit history. The fingerprint of the commit before is inside the mixture, so the whole trail is chained together. Alter something back at week 2 and every name after it changes, loudly, and anybody who already has a copy can see that the trail no longer matches theirs.\n\nAnd nobody can run the machine backwards. Handed a fingerprint alone, you cannot work out what went into it. All you can do is take a mixture, run the machine, and see whether the fingerprint comes out the same. That one-way habit is what a lot of the internet's trust is built on, and it is sitting in your own repo, in a name you have been ignoring since week 1."
+    },
+    {
+      "kind": "task",
+      "id": "s3-w12-build-04",
+      "title": "The profile tour",
+      "body": "A parent opens the account and puts the public repositories on the screen, then gives you the keyboard. Tour them oldest first.\n\nFor each one, three moves and no more. Say in one sentence what it does, in words a person who has never programmed would repeat correctly. Open the README and read its first line out loud exactly as written, without explaining round it, because if it needs explaining round it needs rewriting instead. Then open the commit list and find the message you are proudest of, and say why it says why rather than what.\n\nThere should be about three repos by now. Tour whatever is actually on the page. If something you meant to push is not there, say so out loud and write it onto the Ascent Plan later, because a missing repo is a plan, not a failure.\n\nThen give the family one address they can type in themselves, on their own phone, without you. Watch somebody do it. That is the moment the word public stops being a setting and starts being a fact.",
+      "checklist": [
+        "A parent opened the account, and every public repo on the page got its one plain sentence",
+        "For each repo I read the first line of the README out loud exactly as written",
+        "I found one commit message I am proud of and said why it says why and not what",
+        "Somebody in the family typed one address in on their own device while I watched",
+        "Anything I meant to push and did not is written down for the Ascent Plan, not skipped over"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s3-w12-build-05",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The shareholder report layout: the ledger lies open on the table, you stand to present it, and the family sits as shareholders while the four numbers, money in, money out, profit, and profit per hour, are read off the page in order.",
+        "spec": {
+          "w": 420,
+          "h": 220,
+          "items": [
+            {
+              "t": "box",
+              "x": 100,
+              "y": 140,
+              "w": 200,
+              "h": 20,
+              "label": "table",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 95,
+              "w": 140,
+              "h": 40,
+              "label": "ledger",
+              "sub": "open, in pen"
+            },
+            {
+              "t": "circle",
+              "cx": 200,
+              "cy": 190,
+              "r": 16,
+              "label": "you"
+            },
+            {
+              "t": "circle",
+              "cx": 60,
+              "cy": 170,
+              "r": 20,
+              "label": "family"
+            },
+            {
+              "t": "circle",
+              "cx": 340,
+              "cy": 170,
+              "r": 20,
+              "label": "family"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 25,
+              "s": "1. money in    2. money out",
+              "size": 12
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 45,
+              "s": "3. profit    4. profit per hour",
+              "size": 12
+            }
+          ],
+          "wide": true
+        }
+      },
+      "title": "The shareholder report",
+      "body": "Ledger on the table, family sitting as shareholders, and you standing up. This is the part of the season with real money in it, so it gets read off the paper and not out of memory.\n\nFour numbers, in the order they happened. Money in. Money out, with every cost named out loud one at a time, including the small ones that are easy to leave off. Profit, which is what was left after all of that. And profit for one hour of your own time, which is the number that tells you what the season actually paid you.\n\nThen the loan. Point at the line on the ledger where it was paid back and let somebody read it. Borrowed money comes back before any profit is counted, and the reason you can say that today is that the cash physically left your hand at week 9.\n\nLast, the decision: reinvest, save or spend. Announce it, then defend it with numbers off the sheet rather than with wanting. Then take the hardest question in the room without arguing with the person asking. If the honest answer is that you do not know yet, that is a legal answer, once.",
+      "checklist": [
+        "Money in, money out, profit and profit per hour were all read off the ledger, not remembered",
+        "Every cost got named out loud, one at a time, including at least one that was easy to forget",
+        "I pointed at the ledger line where the loan was paid back and let somebody else read it",
+        "The reinvest, save or spend decision was announced and then defended with numbers from the sheet",
+        "I answered the hardest question I was asked without arguing with the person who asked it"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s3-w12-build-06",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The Ascent Plan is a timeline from today to the two far peaks already dated on the wall map: USACO Bronze starting December 2027, then AMC 8 in January 2028, with one line for every month between now and December saying what gets trained.",
+        "spec": {
+          "w": 420,
+          "h": 180,
+          "items": [
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 100,
+              "x2": 400,
+              "y2": 100,
+              "color": "muted"
+            },
+            {
+              "t": "dot",
+              "cx": 40,
+              "cy": 100,
+              "label": "today",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 300,
+              "cy": 100,
+              "label": "USACO Bronze: Dec 2027",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 370,
+              "cy": 100,
+              "label": "AMC 8: Jan 2028",
+              "side": "below"
+            },
+            {
+              "t": "dim",
+              "x1": 40,
+              "y1": 125,
+              "x2": 300,
+              "y2": 125,
+              "label": "one line per month: what gets trained"
+            }
+          ],
+          "wide": true
+        }
+      },
+      "title": "The Ascent Plan, and the patch",
+      "body": "All season two peaks have sat at the top of the wall map with real dates on them and nothing joining them to today. Now you draw the route.\n\nCopy the two peaks and their dates onto the plan sheet, straight off the map, in your own handwriting: USACO Bronze, which runs its contests through the winter starting in December 2027, and AMC 8 in January 2028. Leave a line under each one that a grown-up fills in later, because two things are genuinely not yours to decide: which school year you will be in when those dates arrive, and who signs you up and by when. Write the question down rather than guessing at the answer. A plan with an honest blank on it beats a plan with a wrong number on it.\n\nThen the route itself, month by month between now and December, one line each, in your own words. What gets trained in that month, and how you would know it worked. Keep it small enough to actually happen. Two Bronze problems a month is a plan; a Bronze problem a day is a wish.\n\nHand the sheet to the family and read it to them. Then the patch: draw the season 3 patch on card together, the family decides what belongs on it, everybody signs the back, and it goes on the wall next to season 2's. Say the last sentence out loud and write it in the back of the Maker's Log: the thing you want to build next season.",
+      "checklist": [
+        "Both far peaks are on the plan sheet with their dates copied off the wall map",
+        "The two things nobody knows yet are written down as blanks with the question beside them",
+        "Every month between now and December has one line saying what gets trained and how I would know it worked",
+        "The patch is drawn, signed on the back and hanging next to season 2's",
+        "The next season sentence is said out loud and written in the back of the Maker's Log"
+      ]
+    },
+    {
+      "kind": "artifact",
+      "id": "s3-w12-build-07",
+      "title": "Show it",
+      "prompt": "Record the tour and the report: the repos on screen with you talking over them, then the four numbers read off the ledger, then the decision and its defence. Finish with a photo of the Ascent Plan hanging beside the wall map, close enough that the dates are readable.\n\nIf a camera is awkward, photos of the ledger page and the plan sheet plus a typed copy of the four numbers tell the same story. Add one line at the end: the thing on the tour you would most like to have written better.",
+      "accepts": [
+        "recording",
+        "photo",
+        "text"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s3-w12-build-08",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s3-w12-build-x01",
+      "kind": "bonus",
+      "title": "Rewrite your best log",
+      "minutes": 15,
+      "body": "Your logs are the writing you do here, and writing gets better by rewriting, not by more of it. Pick your best log from this sprint and rewrite it once.\n\n1. Read the log out loud. Mark every sentence that tries to say two things.\n2. Rewrite so each sentence carries one idea. Split, do not shorten.\n3. Find every adjective (hard, cool, weird) and replace it with a number or a fact: how many tries, how long, what broke.\n4. Put the reason before the claim: \"the loop ran twice, so the heart flashed twice\" rather than \"the heart flashed twice, because the loop ran twice\".\n5. Read both versions to someone and ask which one they could follow without you in the room.\n\nWhat to notice: the rewrite is usually shorter and says more. That is the whole trick."
+    }
+  ]
+}

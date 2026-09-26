@@ -1,0 +1,788 @@
+{
+  "id": "s2-w03-think",
+  "season": 2,
+  "week": 3,
+  "track": "think",
+  "title": "The whole map, and the domino proof",
+  "summary": "Stretch the coordinate plane into all four quadrants with negative numbers, then write your first real strategy proof for the 21 game.",
+  "minutes": 90,
+  "materials": ["graph paper", "pencil", "counters from the Nim games"],
+  "skills": ["think.skills.coordinates", "think.skills.negatives", "think.proof"],
+  "completion": "all-steps",
+  "steps": [
+    {
+      "kind": "warmup",
+      "id": "s2-w03-think-01",
+      "variant": "fermi",
+      "problems": [
+        {
+          "id": "s2-w03-think-01-p01",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "About how many breaths do you take in one day?",
+          "options": ["about 20,000", "about 2,000", "about 2 million"],
+          "answer": { "kind": "choice", "index": 0 },
+          "explanation": [
+            "Guess and round: you breathe about 20 times a minute when you are sitting still, so round that to 20.",
+            "A day has about 1,440 minutes. Round that down to 1,000, a friendlier number to multiply.",
+            "20 x 1,000 is 20,000, so about 20,000 breaths is the closest guess."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a body rhythm ticks along all day and you want its daily total from one minute of counting.",
+          "hints": ["Count how many breaths you take in one minute first.", "Multiply the breaths in one minute by roughly how many minutes a day has, using round numbers."],
+          "socraticHint": "You can count your own breaths for one minute right now. What else do you need to know to stretch that into a whole day?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "About how many breaths do you take during one hour?",
+            "options": ["about 100", "about 1,000", "about 100,000"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s2-w03-think-01-p02",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "About how many grains of sand fit in one teaspoon?",
+          "options": ["about 500", "about 30,000", "about 30 million"],
+          "answer": { "kind": "choice", "index": 1 },
+          "explanation": [
+            "Guess and round: a sand grain is about half a millimeter wide, so about 20 grains fit along one centimeter.",
+            "A teaspoon holds roughly a cube 1.5 centimeters on each side, so about 30 grains fit along each edge.",
+            "30 x 30 x 30 is 27,000, so about 30,000 grains is the closest guess."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when tiny things pack a space and you can count along one edge, then multiply the three directions.",
+          "hints": ["Work out how many grains would sit in a line one centimeter long.", "A teaspoon is close to a small cube. Multiply the grains along one edge by itself three times."],
+          "socraticHint": "Nobody could ever count those grains one by one. Which single small count could you actually do, and how would it grow into the answer?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "About how many grains of sand fit in a soup spoon that holds three teaspoons?",
+            "options": ["about 1,000", "about 100,000", "about 10 million"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s2-w03-think-01-p03",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "About how many little squares are on one sheet of your graph paper?",
+          "options": ["about 200,000", "about 200", "about 2,000"],
+          "answer": { "kind": "choice", "index": 2 },
+          "explanation": [
+            "Guess and round: each square is half a centimeter wide, so 2 squares fit in every centimeter.",
+            "A sheet is about 25 centimeters tall and 20 wide, so about 50 rows of about 40 squares.",
+            "50 x 40 is 2,000, so about 2,000 squares is the closest guess."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a flat surface is covered in equal rows and columns, so one row count times one column count gives the total.",
+          "hints": ["Count how many squares fit along one edge of the sheet first.", "Multiply the squares along the top edge by the squares down the side."],
+          "socraticHint": "A sheet of graph paper is really rows of identical squares stacked up. If you knew one row's count, what would be left to find?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "About how many graph paper squares would it take to cover your bedroom door?",
+            "options": ["about 700", "about 70,000", "about 7 million"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "puzzle-of-week",
+      "id": "s2-w03-think-02",
+      "problem": {
+        "id": "s2-w03-think-02-p01",
+        "kind": "choice",
+        "lane": "puzzle-of-week",
+        "prompt": "Three corners of a rectangle are plotted at (2, 1), (2, 4) and (6, 4). The x number comes first, then the y number. Which point is the fourth corner?",
+        "options": ["(1, 6)", "(4, 1)", "(6, 1)", "(6, 2)"],
+        "answer": { "kind": "choice", "index": 2 },
+        "explanation": [
+          "What stays the same: along any upright side of a rectangle the x number never changes. Along any flat side the y number never changes.",
+          "(2, 1) and (2, 4) share x = 2, so they make the left side.",
+          "(2, 4) and (6, 4) share y = 4, so they make the top.",
+          "The missing corner closes both sides at once. It needs x = 6 to sit straight below (6, 4), and y = 1 to sit level with (2, 1). That is (6, 1)."
+        ],
+        "ideaId": "what-stays-the-same",
+        "useAgain": "when a shape's corners follow a rule and one corner is missing.",
+        "hints": ["Corners on the same upright side share their x number.", "Corners on the same flat side share their y number."],
+        "socraticHint": "Which of the three given corners must be directly above the missing one, and which must be exactly level with it?",
+        "skills": ["think.spatial", "think.skills.coordinates"],
+        "thinkMinutes": 5,
+        "difficulty": 2,
+        "figure": {
+          "kind": "grid",
+          "alt": "A coordinate grid from 0 to 7 on both axes, with three plotted points at (2, 1), (2, 4) and (6, 4). The fourth corner of the rectangle is not shown.",
+          "spec": { "type": "points", "xMax": 7, "yMax": 7, "points": [[2, 1], [2, 4], [6, 4]] }
+        },
+        "variant": {
+          "prompt": "Three corners of a rectangle sit at (1, 2), (5, 2) and (5, 7). No picture this time: sketch the grid on graph paper, plot the three corners, and find the missing one. Which point is the fourth corner?",
+          "options": ["(7, 1)", "(1, 7)", "(1, 5)", "(7, 5)"],
+          "answer": { "kind": "choice", "index": 1 }
+        }
+      }
+    },
+    {
+      "kind": "problem-set",
+      "id": "s2-w03-think-03",
+      "title": "The whole map: four quadrants and negatives",
+      "lane": "skills",
+      "problems": [
+        {
+          "id": "s2-w03-think-03-p01",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "A point sits at (-4, 2) on the four-quadrant plane. Reflect it across the y-axis (flip left-right), then reflect that new point across the x-axis (flip up-down). Where does it end up?",
+          "options": [
+            "(4, -2)",
+            "(-4, -2)",
+            "(4, 2)",
+            "(-4, 2)"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Number line: reflecting across the y-axis flips left-right, so it just changes the sign of the x number.",
+            "Starting at (-4, 2), flipping across the y-axis gives (4, 2).",
+            "Reflecting that across the x-axis flips up-down, changing the sign of the y number: (4, 2) becomes (4, -2).",
+            "Two flips in a row can land you somewhere neither single flip would, so track them one at a time."
+          ],
+          "ideaId": "number-line",
+          "useAgain": "when a point is reflected more than once and you need to track each flip separately.",
+          "hints": [
+            "Do only the first reflection and find the in-between point before touching the second one.",
+            "Each reflection changes the sign of exactly one of the two numbers, never both at once."
+          ],
+          "socraticHint": "Which one number changes sign on a flip across the y-axis, and which one changes on a flip across the x-axis?",
+          "skills": [
+            "think.skills.coordinates",
+            "think.spatial"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A point sits at (3, -5) on the four-quadrant plane. Reflect it across the y-axis, then reflect that new point across the x-axis. Where does it end up?",
+            "options": [
+              "(-3, 5)",
+              "(3, 5)",
+              "(-3, -5)",
+              "(3, -5)"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            }
+          }
+        },
+        {
+          "id": "s2-w03-think-03-p02",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Points A(-3, 5) and B(2, -4) are plotted on the four-quadrant plane, but the segment between them is not drawn. Without drawing it, does the straight segment from A to B have to cross the x-axis, the y-axis, both, or neither?",
+          "options": [
+            "the x-axis only",
+            "the y-axis only",
+            "both axes",
+            "neither axis"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 2
+          },
+          "explanation": [
+            "Number line: point A's x is negative and y is positive, so A sits in the upper left quarter.",
+            "Point B's x is positive and y is negative, so B sits in the lower right quarter, diagonally opposite A.",
+            "Walking from A to B, the x number must pass through zero to change sign, crossing the y-axis.",
+            "The y number must also pass through zero along the way, crossing the x-axis too.",
+            "Diagonally opposite quarters always force a segment to cross both axes on the way between them."
+          ],
+          "ideaId": "number-line",
+          "useAgain": "when two points sit in diagonally opposite quarters and you need to know which axes a segment between them must cross.",
+          "hints": [
+            "Work out which quarter each point sits in first, using only the signs.",
+            "A segment can only change from a negative x to a positive x by passing through x equals zero somewhere in between."
+          ],
+          "socraticHint": "What has to happen to the x number, and separately to the y number, as you travel from A to B?",
+          "skills": [
+            "think.skills.coordinates",
+            "think.skills.negatives"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Points A(-2, 3) and B(5, -1) are plotted on the four-quadrant plane, but the segment between them is not drawn. Without drawing it, does the straight segment from A to B have to cross the x-axis, the y-axis, both, or neither?",
+            "options": [
+              "the x-axis only",
+              "the y-axis only",
+              "both axes",
+              "neither axis"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 2
+            }
+          }
+        },
+        {
+          "id": "s2-w03-think-03-p03",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Kioni found the temperature after the tide pool thermometer read -8 degrees at dawn and dropped another 5 degrees by mid-morning.\nLine 1: Dropping means moving further down the number line, further from zero in the negative direction.\nLine 2: Starting at -8 and moving 5 more steps in that same direction lands on -13.\nLine 3: Check by counting up from -13 back to -8: that is 5 steps, which matches the drop.\nLine 4: So the thermometer reads -3 degrees at mid-morning.\nWhich line is wrong?",
+          "options": [
+            "Line 1",
+            "Line 2",
+            "Line 3",
+            "Line 4",
+            "No line is wrong"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 3
+          },
+          "explanation": [
+            "Lines 1 through 3 correctly reason that dropping from -8 moves 5 steps further negative, landing on -13.",
+            "The check by counting back up from -13 to -8 confirms it.",
+            "Line 4 is wrong: it reports -3, which mixes up 8 minus 5 with the actual position on the number line.",
+            "Number line: once you know the direction, the new position is -8 minus 5, not the digits 8 and 5 combined some other way.",
+            "The thermometer actually reads -13 degrees."
+          ],
+          "ideaId": "number-line",
+          "useAgain": "when a temperature drops further from an already negative number and the final sign needs a careful check.",
+          "hints": [
+            "Do not assume any line is correct just because the ones before it look fine. Recompute each line's arithmetic yourself.",
+            "Number line: moving further in the same direction the number already sits makes it more extreme in that direction, never less."
+          ],
+          "socraticHint": "Should the final reading end up closer to zero or farther from it than the starting temperature?",
+          "skills": [
+            "think.skills.negatives",
+            "think.logic"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Marco found the temperature after the thermometer read -6 degrees at dawn and climbed 10 degrees by noon.\nLine 1: Climbing means moving up the number line, toward the positive direction.\nLine 2: Starting at -6, the first 6 degrees of climb only reach zero.\nLine 3: That leaves 10 plus 6, which is 16, degrees of climb still to use above zero.\nLine 4: So the thermometer reads 16 degrees at noon.\nWhich line is wrong?",
+            "options": [
+              "Line 1",
+              "Line 2",
+              "Line 3",
+              "Line 4",
+              "No line is wrong"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 2
+            }
+          }
+        },
+        {
+          "id": "s2-w03-think-03-p05",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "A gull stands at 5 on the beach number line and a crab at -3. Subtracting finds the gap between them: 5 minus -3. How many steps apart are they?",
+          "answer": { "kind": "number", "value": "8" },
+          "explanation": [
+            "Number line: subtraction measures the gap between two positions.",
+            "From -3 up to zero is 3 steps, and from zero up to 5 is 5 more, so the gap is 8.",
+            "That is why 5 minus -3 is 8: subtracting a negative adds in the below-zero part of the walk instead of taking anything away.",
+            "Quick sense check: 5 minus 3 is only 2, and the gull and crab are clearly much farther apart than 2."
+          ],
+          "ideaId": "number-line",
+          "useAgain": "when subtracting a negative number and you want to see why the answer grows instead of shrinks.",
+          "hints": ["Walk the gap in two parts: from -3 to zero, then from zero to 5.", "Add the two parts of the walk together."],
+          "socraticHint": "If the crab stood at 3 instead of -3, the gap would be 2. What does moving the crab below zero do to the gap?",
+          "skills": ["think.skills.negatives"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A gull stands at 2 and a crab at -7 on the beach number line. What is 2 minus -7, the gap between them?",
+            "answer": { "kind": "number", "value": "9" }
+          }
+        },
+        {
+          "id": "s2-w03-think-03-p06",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "One hop to the left is written -4. Starting from zero, a sandpiper makes 3 of those hops. Multiply to find where it lands: what is 3 x -4?",
+          "answer": { "kind": "number", "value": "-12" },
+          "explanation": [
+            "Number line: multiplying by 3 means making the same jump 3 times, starting from zero.",
+            "One jump of -4 is 4 steps to the left.",
+            "Three of those jumps is 12 steps left in all.",
+            "So 3 x -4 is -12: the size multiplies, and the minus sign keeps the direction."
+          ],
+          "ideaId": "number-line",
+          "useAgain": "when multiplying with a negative number and picturing repeated jumps settles the sign.",
+          "hints": ["First find the size: 3 jumps of 4 steps each.", "Then ask which direction all three jumps went."],
+          "socraticHint": "Could three hops to the left ever land the sandpiper to the right of zero?",
+          "skills": ["think.skills.negatives"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "One hop to the left is written -6. Starting from zero, a gull makes 4 of those hops. Multiply to find where it lands: what is 4 x -6?",
+            "answer": { "kind": "number", "value": "-24" }
+          }
+        },
+        {
+          "id": "s2-w03-think-03-p04",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "A 20-step walk to the left, written -20, is split into 5 equal hops. Divide to find one hop: what is -20 divided by 5?",
+          "answer": { "kind": "number", "value": "-4" },
+          "explanation": [
+            "Number line: dividing splits the whole walk into equal hops.",
+            "The walk covers 20 steps, so 5 equal hops are 4 steps each.",
+            "The whole walk went left, so every one of its hops pointed left.",
+            "That is why -20 divided by 5 is -4: the size divides, and the minus sign keeps the direction."
+          ],
+          "ideaId": "number-line",
+          "useAgain": "when dividing a negative number and picturing the walk split into equal hops settles the sign.",
+          "hints": ["Split the size first: 20 steps shared among 5 equal hops.", "Then ask which direction every one of those hops pointed."],
+          "socraticHint": "The whole walk ended left of zero. Could hops pointing right ever have taken it there?",
+          "skills": ["think.skills.negatives"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "An 18-step walk to the left, written -18, is split into 6 equal hops. What is -18 divided by 6?",
+            "answer": { "kind": "number", "value": "-3" }
+          }
+        },
+        {
+          "id": "s2-w03-think-03-p07",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Absolute value means distance from zero, with direction ignored. A gull stands at -6 on the beach line and a crab at 9. Who is closer to the zero flag?",
+          "options": ["the crab at 9", "the gull at -6", "both the same distance"],
+          "answer": { "kind": "choice", "index": 1 },
+          "explanation": [
+            "Number line: absolute value is distance from zero, and distance has no direction.",
+            "The gull at -6 is 6 steps from the flag; the minus sign only says which way, not how far.",
+            "The crab at 9 is 9 steps from the flag.",
+            "6 is less than 9, so the gull is closer, even though -6 looks like the smaller number."
+          ],
+          "ideaId": "number-line",
+          "useAgain": "when comparing how far numbers sit from zero rather than which is bigger.",
+          "hints": ["Drop each minus sign and ask only how many steps from zero.", "Then compare the two step counts."],
+          "socraticHint": "Which question is this problem really asking: which number is bigger, or which number is nearer to zero? Are those the same question?",
+          "skills": ["think.skills.negatives"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A fish floats at -8 on the tide line and a shell sits at 5. Absolute value is distance from zero. Who is closer to the zero flag?",
+            "options": ["the fish at -8", "both the same distance", "the shell at 5"],
+            "answer": { "kind": "choice", "index": 2 }
+          }
+        },
+        {
+          "id": "s2-w03-think-03-p08",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "A polygon on the map has one side running from (-2, 3) to (4, 3). Both ends sit at the same height, so the side is flat. How many units long is it?",
+          "answer": { "kind": "number", "value": "6" },
+          "explanation": [
+            "Number line: the side runs flat, so only the x numbers decide its length.",
+            "From -2 to zero is 2 units, and from zero to 4 is 4 more.",
+            "2 + 4 is 6, so the side is 6 units long.",
+            "Crossing zero is the whole trick: add the distance on each side of it."
+          ],
+          "ideaId": "number-line",
+          "useAgain": "when a side or gap crosses zero and its length is the two distances added.",
+          "hints": ["The y numbers match, so ignore them: only the x numbers matter.", "Split the side at zero and measure each piece."],
+          "socraticHint": "If both ends sat on the same side of zero, you would subtract. What changes when zero sits between them?",
+          "skills": ["think.skills.coordinates", "think.skills.negatives"],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A polygon has a flat side running from (-5, 1) to (3, 1). How many units long is it?",
+            "answer": { "kind": "number", "value": "8" }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "problem-set",
+      "id": "s2-w03-think-07",
+      "title": "The line that never measures, and the ways to make a sum",
+      "lane": "shape",
+      "problems": [
+        {
+          "id": "s2-w03-think-07-p01",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "Construct the perpendicular bisector of segment AB:\n1. Open your compass wider than half of AB.\n2. Draw an arc centered at A, above and below the segment.\n3. Keep the same compass width and draw an arc centered at B, crossing both arcs from step 2.\n4. Draw a line through the two crossing points.\nEvery point on that line is the same distance from A as from B. A point on the line is 9 cm from A. How many cm is it from B?",
+          "answer": {
+            "kind": "number",
+            "value": "9"
+          },
+          "explanation": [
+            "The compass width never changed between the arc from A and the arc from B.",
+            "So wherever the two arcs cross, that point is exactly that same compass width from both A and B.",
+            "The point is 9 cm from A, so it must also be 9 cm from B.",
+            "The construction never measures the distance directly; the equal compass width proves it."
+          ],
+          "ideaId": "equal-radius-equal-distance",
+          "useAgain": "when a point sits on a perpendicular bisector, since it must be the exact same distance from both ends of the segment.",
+          "hints": [
+            "What stayed exactly the same between drawing the arc from A and the arc from B?",
+            "A point on the bisector is always the same distance from both ends of the segment."
+          ],
+          "socraticHint": "If the compass never changed its width while drawing both arcs, what must be true about a point where they cross?",
+          "skills": [
+            "think.spatial",
+            "think.logic"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Using the same construction on a different segment, a point on the perpendicular bisector is 6.5 cm from one end. How many cm is it from the other end?",
+            "answer": {
+              "kind": "number",
+              "value": "6.5"
+            }
+          }
+        },
+        {
+          "id": "s2-w03-think-07-p02",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "Points P and Q both lie on the perpendicular bisector of segment CD. P is 7 cm from C. Q is 10 cm from C. How far is Q from D, in cm?",
+          "answer": {
+            "kind": "number",
+            "value": "10"
+          },
+          "explanation": [
+            "Every point on the bisector is the same distance from C as from D, including Q.",
+            "Q is 10 cm from C, so Q must also be 10 cm from D.",
+            "P's distance does not matter here; it only describes a different point on the same line."
+          ],
+          "ideaId": "equal-radius-equal-distance",
+          "useAgain": "when more than one point lies on a perpendicular bisector, and each one's own distances match up on its own.",
+          "hints": [
+            "Does P's distance from C affect anything about Q's distance from D?",
+            "Q sits on the bisector too, so its distance from C and from D must match each other."
+          ],
+          "socraticHint": "Since P and Q are two different points on the same bisector, does one of them being closer to C tell you anything about the other?",
+          "skills": [
+            "think.spatial",
+            "think.logic"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Points P and Q both lie on the perpendicular bisector of segment CD. P is 5 cm from D. Q is 13 cm from D. How far is Q from C, in cm?",
+            "answer": {
+              "kind": "number",
+              "value": "13"
+            }
+          }
+        },
+        {
+          "id": "s2-w03-think-07-p03",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "You build the addition table for two dice, all 36 equally likely rolls, sums 2 through 12. How many of the 36 rolls give a sum of 8?",
+          "answer": {
+            "kind": "number",
+            "value": "5"
+          },
+          "explanation": [
+            "List every pair of dice that adds to 8: 2 and 6, 3 and 5, 4 and 4, 5 and 3, 6 and 2.",
+            "That is 5 different pairs out of the 36 equally likely rolls.",
+            "Some sums, like 8, have more pairs than others, like 2, which only has one."
+          ],
+          "ideaId": "some-sums-have-more-ways",
+          "introducesIdea": true,
+          "useAgain": "when a two-dice sum needs counting, since some sums can be made in more ways than others.",
+          "hints": [
+            "List every pair of numbers on the two dice that add up to 8.",
+            "Remember that 2 and 6 is a different roll from 6 and 2."
+          ],
+          "socraticHint": "Why might rolling a sum of 7 happen more often over time than rolling a sum of 2?",
+          "skills": [
+            "think.skills.probability",
+            "think.skills.counting"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Using the same two-dice table, how many of the 36 rolls give a sum of 5?",
+            "answer": {
+              "kind": "number",
+              "value": "4"
+            }
+          }
+        },
+        {
+          "id": "s2-w03-think-07-p04",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "Using the same two-dice table, what is the probability, as a fraction in lowest terms, that the sum is at least 10?",
+          "answer": {
+            "kind": "number",
+            "value": "1/6"
+          },
+          "explanation": [
+            "Sums of 10, 11 and 12 come from 3, 2 and 1 pairs, which is 6 pairs in total.",
+            "6 out of 36 simplifies to 1/6."
+          ],
+          "ideaId": "some-sums-have-more-ways",
+          "useAgain": "when a probability question asks for several possible sums at once, so you add up the ways for each sum first.",
+          "hints": [
+            "Which sums count as at least 10, and how many pairs make each one?",
+            "Add up the pairs for all of those sums, then divide by 36 and simplify."
+          ],
+          "socraticHint": "Does at least 10 mean only the sum of exactly 10, or does it include bigger sums too?",
+          "skills": [
+            "think.skills.probability",
+            "think.skills.counting"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Using the same two-dice table, what is the probability, as a fraction in lowest terms, that the sum is at most 3?",
+            "answer": {
+              "kind": "number",
+              "value": "1/12"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "problem-set",
+      "id": "s2-w03-think-04",
+      "title": "The domino proof",
+      "lane": "puzzle",
+      "problems": [
+        {
+          "id": "s2-w03-think-04-p01",
+          "kind": "text",
+          "lane": "puzzle",
+          "prompt": "Invent your own take-away game, like the 21 game: choose your own maximum number of counters a player may take each turn (any number except 3), and choose your own starting pile size. State your rule and starting pile, then use the domino idea to find every safe pile size: give the first domino, the repeating step, and say whether the starting pile you chose is safe or not for whoever moves first.",
+          "answer": {
+            "kind": "rubric",
+            "mustMention": [
+              "your own maximum",
+              "the safe piles",
+              "the repeating step"
+            ]
+          },
+          "explanation": [
+            "Pick your own maximum first, for example 5, meaning each turn you may take 1 to 5 counters.",
+            "Find the first domino: the safe piles are every multiple of one more than your maximum.",
+            "With a maximum of 5, the safe piles are the multiples of 6.",
+            "Check the repeating step: whatever your opponent takes from a safe pile, you take enough more to land on the next safe pile down.",
+            "The two takes always add up to your maximum plus 1.",
+            "Finally, look at your own starting pile: if it is one of your safe piles, moving first loses; otherwise moving first wins."
+          ],
+          "ideaId": "winning-position",
+          "useAgain": "when you want to invent your own take-away game and prove which piles are safe before anyone plays.",
+          "hints": [
+            "Decide your maximum takeaway number first, before anything else.",
+            "The safe piles are always multiples of one more than your maximum; test that rule on a small pile by hand."
+          ],
+          "socraticHint": "If your maximum is M, what number of counters would let you always mirror your opponent back to a safe pile?",
+          "skills": [
+            "think.logic",
+            "think.proof"
+          ],
+          "thinkMinutes": 5,
+          "difficulty": 3
+        },
+        {
+          "id": "s2-w03-think-04-p02",
+          "kind": "truefalse",
+          "lane": "puzzle",
+          "prompt": "You face a pile that is not a multiple of 4. Taking 1, 2 or 3, can you always hand back a pile that is a multiple of 4?",
+          "answer": { "kind": "boolean", "value": true },
+          "explanation": [
+            "Winning position: the safe piles, the multiples of 4, sit exactly 4 apart.",
+            "A pile that is not a multiple of 4 sits exactly 1, 2 or 3 counters above the nearest safe pile below it.",
+            "Taking exactly that overhang is always legal, because the rules allow taking 1, 2 or 3.",
+            "So from any unsafe pile, one legal move always hands back a safe one: that is the move you just made at 13."
+          ],
+          "ideaId": "winning-position",
+          "useAgain": "when you need to check whether a safe position is always reachable in a single legal move.",
+          "hints": ["How many counters above the nearest multiple of 4 can an unsafe pile sit?", "Compare that overhang with the takes the rules allow."],
+          "socraticHint": "At most how far above the nearest safe pile can an unsafe pile sit, and what take does that leave you?",
+          "skills": ["think.proof", "think.logic"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "You hand your opponent a pile that is a multiple of 4. On that one turn, taking 1, 2 or 3, can they hand you back a pile that is also a multiple of 4?",
+            "answer": { "kind": "boolean", "value": false }
+          }
+        },
+        {
+          "id": "s2-w03-think-04-p03",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "A domino proof has exactly two jobs. Which pair is the right pair?",
+          "options": [
+            "check that three different examples all work",
+            "ask someone who already knows the answer",
+            "show the first domino falls, and show each falling domino knocks over the next",
+            "win the game five times in a row"
+          ],
+          "answer": { "kind": "choice", "index": 2 },
+          "explanation": [
+            "Domino proof: a proof that works like a line of falling dominoes.",
+            "Job one: show the first domino falls, a starting case small enough to check completely.",
+            "Job two: show that each falling domino knocks over the next, so falling passes down the whole line.",
+            "Do both jobs and every domino in the line must fall, even ones too far away to see."
+          ],
+          "ideaId": "domino-proof",
+          "introducesIdea": true,
+          "useAgain": "when a claim covers endlessly many cases and checking them one at a time could never finish.",
+          "hints": ["Think about what makes a real line of dominoes all fall when nobody touches any but the first.", "One job is about the start, the other is about every link in the chain."],
+          "socraticHint": "If each domino would knock over the next but nobody tips the first one, what happens to the line?",
+          "skills": ["think.proof"],
+          "thinkMinutes": 5,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "Your friend has already shown that the first domino falls. What is the one job left before the whole line must fall?",
+            "options": [
+              "count how many dominoes there are",
+              "show that each falling domino knocks over the next",
+              "check the last domino separately",
+              "push the middle of the line to be sure"
+            ],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s2-w03-think-04-p04",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "In our proof the dominoes are the safe piles: 4, 8, 12, 16, 20. Start with the smallest. You hand your opponent exactly 4 counters. Why have you already won?",
+          "options": [
+            "whatever they take, 1, 2 or 3, some counters are left and you may take them all",
+            "4 is an even number, and even piles always lose",
+            "they are forced to take exactly 2",
+            "you are allowed to take all 4 before they move"
+          ],
+          "answer": { "kind": "choice", "index": 0 },
+          "explanation": [
+            "Domino proof: the first domino is the smallest safe pile, 4, and you can check it completely by hand.",
+            "If they take 1, the pile is 3 and you take all 3, grabbing the last counter. If they take 2, you take the 2 left. If they take 3, you take the 1 left.",
+            "Every legal move they have leaves 3 or fewer counters behind. The rules let you take up to 3, so you can always finish in one turn.",
+            "A pile of 4 handed over is a won game with no cleverness needed. The first domino falls."
+          ],
+          "ideaId": "domino-proof",
+          "useAgain": "when a proof needs its smallest case checked completely by hand before the pattern takes over.",
+          "hints": ["List every take your opponent is allowed and what each one leaves behind.", "Remember the biggest take the rules allow you on your own next turn."],
+          "socraticHint": "Is there any move from a pile of 4 that leaves you more counters than you are allowed to take at once?",
+          "skills": ["think.proof"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A new game: each turn you may take only 1 or 2, and the last counter still wins. You hand your opponent exactly 3 counters. Why have you already won?",
+            "options": [
+              "3 is an odd number, and odd piles always lose",
+              "they are forced to take 1",
+              "you are allowed to grab all 3 before they move",
+              "whatever they take, 1 or 2, what is left is 2 or 1 and you may take it all"
+            ],
+            "answer": { "kind": "choice", "index": 3 }
+          }
+        },
+        {
+          "id": "s2-w03-think-04-p05",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "The repeating step: you hand over a safe pile, they break it, you rebuild the next safe pile down. You hand over 12 and your opponent takes 2. How many do you take so that you hand over the next safe pile?",
+          "answer": { "kind": "number", "value": "2" },
+          "explanation": [
+            "Domino proof: the repeating step is a pairing trick: whatever they take, you take enough for the two takes to make 4 together.",
+            "They took 2 from 12, leaving 10.",
+            "The next safe pile down is 8, so you take 2. Their 2 plus your 2 makes 4.",
+            "Every full round burns exactly 4 counters, so safe pile falls to safe pile until the pile of 4 arrives. You already know how that ends."
+          ],
+          "ideaId": "domino-proof",
+          "useAgain": "when you can answer an opponent's move with a partner move that keeps a fixed total.",
+          "hints": ["Find the next multiple of 4 below 12 first.", "Their take and yours should add up to the same number every round."],
+          "socraticHint": "What must their take and your take add up to, if the pile is to drop from one safe number exactly to the next?",
+          "skills": ["think.proof", "think.logic"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "You hand over 16 and your opponent takes 3. How many do you take so that you hand over the next safe pile?",
+            "answer": { "kind": "number", "value": "1" }
+          }
+        },
+        {
+          "id": "s2-w03-think-04-p06",
+          "kind": "truefalse",
+          "lane": "puzzle",
+          "prompt": "Your friend checked the take 1, 2 or 3 trick for starting piles of 21, 22 and 23, and it worked every time. Those three checks prove the trick works for every possible starting pile.",
+          "answer": { "kind": "boolean", "value": false },
+          "explanation": [
+            "Domino proof: checking examples only protects the piles you actually checked.",
+            "Piles of 21, 22 and 23 are three dominoes out of endlessly many possible starting piles.",
+            "The domino proof does what no list of checks can: the first step plus the repeating step covers every pile at once.",
+            "A test says these ones worked. A proof says all of them must."
+          ],
+          "ideaId": "domino-proof",
+          "useAgain": "when someone offers a few passed tests as if they proved every case.",
+          "hints": ["Count how many different starting piles are possible.", "Ask what the three checks say about a pile of 1,000. Anything at all?"],
+          "socraticHint": "If the trick secretly failed for a pile of 97, would checking 21, 22 and 23 ever notice?",
+          "skills": ["think.proof"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "The domino proof covers even a starting pile of 4,000,004 counters, far too big to ever play, without checking it by hand.",
+            "answer": { "kind": "boolean", "value": true }
+          }
+        },
+        {
+          "id": "s2-w03-think-04-p07",
+          "kind": "text",
+          "lane": "puzzle",
+          "prompt": "Write the whole domino proof in your own words: handing your opponent a multiple of 4 wins the take 1, 2 or 3 game. Give the first domino, then the repeating step, then say how the real game, which starts at 21, hands you the win when you move first.",
+          "answer": {
+            "kind": "rubric",
+            "mustMention": [
+              "a pile of 4 wins no matter what they take",
+              "their take and yours can always make 4 together",
+              "21 is one more than 20, so take 1 first"
+            ]
+          },
+          "explanation": [
+            "Domino proof: the full argument has three beats.",
+            "First domino: a pile of 4 handed over is a won game. Any take of 1, 2 or 3 leaves counters you can finish in one turn.",
+            "Repeating step: from any bigger safe pile handed over, answer their take with its partner so the two takes make 4 together. That hands over the next safe pile down.",
+            "The real game starts at 21, one more than the safe pile 20 itself. Take 1 on the very first move, hand over 20, and the dominoes do the rest."
+          ],
+          "ideaId": "domino-proof",
+          "useAgain": "when you want to write a full strategy proof for a new take-away game.",
+          "hints": ["Start with the smallest safe pile and show it wins all by itself.", "Then show how each safe pile hands the game down to the next safe pile below it."],
+          "socraticHint": "Where exactly does the number 21 enter your proof, and what does your very first move have to be?",
+          "skills": ["think.proof"],
+          "thinkMinutes": 5,
+          "difficulty": 3
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "s2-w03-think-05",
+      "title": "Explain it in writing",
+      "mode": "written",
+      "prompt": "Write why (-3, 2) and (2, -3) are two different places on the map, and how you can tell which quarter each one lives in without plotting a single point."
+    },
+    {
+      "kind": "explain",
+      "id": "s2-w03-think-06",
+      "title": "Explain it out loud",
+      "mode": "voice",
+      "prompt": "Record yourself giving the domino proof out loud, like a magician finally revealing the trick. Say the first domino, the repeating step, and why taking 1 from the starting pile of 21 hands you the whole game.",
+      "problemId": "s2-w03-think-04-p07"
+    }
+  ]
+}

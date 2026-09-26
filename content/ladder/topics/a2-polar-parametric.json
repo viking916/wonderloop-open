@@ -1,0 +1,2662 @@
+{
+  "id": "a2-polar-parametric",
+  "idea": {
+    "body": "A point can be found the way you already know: right x, then up y. Or a new way: a distance from the origin, plus a direction. Polar coordinates write a point as (r, theta), where r is the distance and theta is the angle from the positive x-axis. To switch to rectangular, use x = r cos(theta) and y = r sin(theta). To switch back, r = sqrt(x^2 + y^2). A rover sits at r = 4, theta = pi/2, so its spot is (0, 4), straight up the y-axis. A parametric equation gives x and y both in terms of a third variable t. Solve one equation for t, then substitute into the other. For x = t + 1, y = t^2: t = x - 1, so y = (x - 1)^2, with t gone.",
+    "figure": {
+      "kind": "plane",
+      "alt": "A segment from the origin to the point (3, 4), with its horizontal and vertical legs drawn.",
+      "spec": {
+        "range": 5,
+        "points": [
+          {
+            "x": 3,
+            "y": 4,
+            "label": "(3, 4)"
+          }
+        ],
+        "segments": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              4
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A robot arm's sensor reports its target at polar coordinates r = 6, theta = pi/6. Find the target's rectangular coordinates.",
+    "steps": [
+      "cos(pi/6) = sqrt(3)/2 and sin(pi/6) = 1/2.",
+      "x = r cos(theta) = 6 times sqrt(3)/2 = 3 sqrt(3).",
+      "y = r sin(theta) = 6 times 1/2 = 3.",
+      "The target sits at (3 sqrt(3), 3)."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "A segment from the origin toward a point in the first quadrant near (5.2, 3), with its horizontal and vertical legs drawn.",
+      "spec": {
+        "range": 6,
+        "points": [
+          {
+            "x": 5.2,
+            "y": 3,
+            "label": "target"
+          }
+        ],
+        "segments": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              5.2,
+              3
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              5.2,
+              0
+            ]
+          ],
+          [
+            [
+              5.2,
+              0
+            ],
+            [
+              5.2,
+              3
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "a2-polar-parametric-w1",
+      "name": "Convert with the triangle",
+      "when": "Use a right triangle to switch between polar and rectangular coordinates.",
+      "steps": [
+        "Draw a right triangle from the origin to the point, with r as the hypotenuse.",
+        "The horizontal leg is x = r cos(theta) and the vertical leg is y = r sin(theta).",
+        "At r = 2 and theta = pi/3: cos(pi/3) = 1/2 and sin(pi/3) = sqrt(3)/2.",
+        "So x = 2 times 1/2 = 1 and y = 2 times sqrt(3)/2 = sqrt(3).",
+        "The point is (1, sqrt(3))."
+      ],
+      "example": "Find the rectangular coordinates of r = 2, theta = pi/3.",
+      "answer": "(1, sqrt(3))",
+      "trap": "Forgetting to evaluate cos and sin at the exact angle; substituting r without reducing trig values first.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A right triangle from the origin to the point: the horizontal leg is x = 1, the vertical leg is y = sqrt(3), the hypotenuse is r = 2, and the angle theta sits at the origin.",
+        "spec": {
+          "w": 300,
+          "h": 215,
+          "items": [
+            {
+              "t": "line",
+              "x1": 40,
+              "y1": 170,
+              "x2": 280,
+              "y2": 170
+            },
+            {
+              "t": "line",
+              "x1": 40,
+              "y1": 170,
+              "x2": 40,
+              "y2": 20
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  40,
+                  170
+                ],
+                [
+                  140,
+                  170
+                ],
+                [
+                  140,
+                  20
+                ]
+              ]
+            },
+            {
+              "t": "dot",
+              "cx": 140,
+              "cy": 20,
+              "side": "right",
+              "label": "(1, sqrt(3))"
+            },
+            {
+              "t": "text",
+              "x": 90,
+              "y": 190,
+              "s": "x = 1",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 100,
+              "s": "y = sqrt(3)",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 66,
+              "y": 84,
+              "s": "r = 2",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 58,
+              "y": 158,
+              "s": "theta",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 202,
+              "s": "cos(pi/3) = 1/2, sin(pi/3) = sqrt(3)/2",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Find rectangular coords for r = 2, theta = pi/3.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Draw a right triangle; the hypotenuse is r.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Legs: x = r cos(theta), y = r sin(theta).",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "8": {
+                  "s": "x = r cos(theta), y = r sin(theta)"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "cos(pi/3) = 1/2, sin(pi/3) = sqrt(3)/2.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "x = 2(1/2) = 1, y = 2(sqrt(3)/2) = sqrt(3).",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1500,
+              "caption": "The point is (1, sqrt(3)).",
+              "set": {
+                "8": {
+                  "hidden": true
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a2-polar-parametric-w2",
+      "name": "Table of values",
+      "when": "Build a table to track several (r, theta) pairs and their rectangular equivalents.",
+      "steps": [
+        "List polar pairs in one column: (r, theta) pairs.",
+        "Compute x = r cos(theta) for each in a second column.",
+        "Compute y = r sin(theta) for each in a third column.",
+        "For r = 2, theta = 0: x = 2(1) = 2, y = 2(0) = 0.",
+        "Read off (2, 0) as the rectangular equivalent."
+      ],
+      "example": "Make a table with r = 2, 2, 2 at theta = 0, pi/2, pi.",
+      "answer": "(2, 0), (0, 2), (-2, 0)",
+      "trap": "Computing x and y in the wrong order or not reducing the trig ratio before multiplying by r."
+    },
+    {
+      "id": "a2-polar-parametric-w3",
+      "name": "Eliminate the parameter",
+      "when": "Remove t from parametric equations x = f(t), y = g(t) to get a rectangular equation.",
+      "steps": [
+        "Solve the simpler equation for the parameter t.",
+        "For x = t + 1, y = t^2 - 1: solve x = t + 1 to get t = x - 1.",
+        "Substitute t = x - 1 into y = t^2 - 1.",
+        "y = (x - 1)^2 - 1 = x^2 - 2x + 1 - 1 = x^2 - 2x.",
+        "The curve is y = x^2 - 2x, with t gone."
+      ],
+      "example": "Eliminate t from x = t + 1, y = t^2 - 1.",
+      "answer": "y = x^2 - 2x",
+      "trap": "Forgetting to substitute the expression for t; not simplifying the result after substitution."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-polar-parametric-p01",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover's position is given in polar coordinates as r = 2, theta = 0. Find its rectangular x-coordinate.",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "At theta = 0, cos and sin take the value 0, 1, or -1.",
+        "x = r cos(theta) and y = r sin(theta), so here x = 2."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a polar point sits exactly on an axis and you need its rectangular coordinates.",
+      "hints": [
+        "Write x = r cos(theta) and y = r sin(theta) before substituting.",
+        "Evaluate cos(0) and sin(0) first, then multiply by r = 2."
+      ],
+      "socraticHint": "What are cos(0) and sin(0)?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "A segment from the origin out to the point (2, 0) on an axis.",
+        "spec": {
+          "range": 4,
+          "points": [
+            {
+              "x": 2,
+              "y": 0,
+              "label": "(2, 0)"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rover's position is given in polar coordinates as r = 4, theta = 0. Find its rectangular x-coordinate.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p02",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone's position is given in polar coordinates as r = 5, theta = pi/2. Find its rectangular y-coordinate.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "At theta = pi/2, cos and sin take the value 0, 1, or -1.",
+        "x = r cos(theta) and y = r sin(theta), so here y = 5."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a polar point sits exactly on an axis and you need its rectangular coordinates.",
+      "hints": [
+        "Write x = r cos(theta) and y = r sin(theta) before substituting.",
+        "Evaluate cos(pi/2) and sin(pi/2) first, then multiply by r = 5."
+      ],
+      "socraticHint": "What are cos(pi/2) and sin(pi/2)?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A drone's position is given in polar coordinates as r = 7, theta = pi/2. Find its rectangular y-coordinate.",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p03",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "True or false: the point with polar coordinates r = 5, theta = pi has rectangular coordinates (-5, 0).",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "At theta = pi, cos(pi) = -1 and sin(pi) = 0.",
+        "x = 5 times -1 = -5 and y = 5 times 0 = 0.",
+        "So the rectangular point really is (-5, 0): true."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when you need to check a claimed polar-to-rectangular conversion quickly.",
+      "hints": [
+        "Evaluate cos(pi) and sin(pi) first.",
+        "Multiply each by r = 5 to get x and y."
+      ],
+      "socraticHint": "What are cos(pi) and sin(pi)?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: the point with polar coordinates r = 4, theta = pi/2 has rectangular coordinates (4, 0).",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p04",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A printer nozzle's position is given in polar coordinates as r = 4, theta = 3 pi/2. Find its rectangular y-coordinate.",
+      "answer": {
+        "kind": "number",
+        "value": "-4"
+      },
+      "explanation": [
+        "At theta = 3 pi/2, cos and sin take the value 0, 1, or -1.",
+        "x = r cos(theta) and y = r sin(theta), so here y = -4."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a polar point sits exactly on an axis and you need its rectangular coordinates.",
+      "hints": [
+        "Write x = r cos(theta) and y = r sin(theta) before substituting.",
+        "Evaluate cos(3 pi/2) and sin(3 pi/2) first, then multiply by r = 4."
+      ],
+      "socraticHint": "What are cos(3 pi/2) and sin(3 pi/2)?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A printer nozzle's position is given in polar coordinates as r = 6, theta = 3 pi/2. Find its rectangular y-coordinate.",
+        "answer": {
+          "kind": "number",
+          "value": "-6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p05",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A radar sweep's position is given in polar coordinates as r = 6, theta = 0. Find its rectangular x-coordinate.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "At theta = 0, cos and sin take the value 0, 1, or -1.",
+        "x = r cos(theta) and y = r sin(theta), so here x = 6."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a polar point sits exactly on an axis and you need its rectangular coordinates.",
+      "hints": [
+        "Write x = r cos(theta) and y = r sin(theta) before substituting.",
+        "Evaluate cos(0) and sin(0) first, then multiply by r = 6."
+      ],
+      "socraticHint": "What are cos(0) and sin(0)?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A radar sweep's position is given in polar coordinates as r = 8, theta = 0. Find its rectangular x-coordinate.",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover sits at the rectangular point (3, 4). Find its distance r from the origin.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "r is the distance from the origin: r = sqrt(x^2 + y^2).",
+        "r = sqrt(3^2 + 4^2) = sqrt(9 + 16) = sqrt(25).",
+        "r = 5."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when you know a point's rectangular coordinates and need its polar distance r.",
+      "hints": [
+        "The distance formula from the origin is r = sqrt(x^2 + y^2).",
+        "Square both coordinates, add them, then take the square root."
+      ],
+      "socraticHint": "What do x and y become once you square and add them?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "A segment from the origin out to the point (3, 4), with its horizontal and vertical legs drawn.",
+        "spec": {
+          "range": 4,
+          "points": [
+            {
+              "x": 3,
+              "y": 4,
+              "label": "r = 5"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                4
+              ]
+            ],
+            [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                0
+              ]
+            ],
+            [
+              [
+                3,
+                0
+              ],
+              [
+                3,
+                4
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A telescope mount sits at the rectangular point (-9, 12). Find its distance r from the origin.",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p07",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone sits at the rectangular point (-6, 8). Find its distance r from the origin.",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "r is the distance from the origin: r = sqrt(x^2 + y^2).",
+        "r = sqrt(-6^2 + 8^2) = sqrt(36 + 64) = sqrt(100).",
+        "r = 10."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when you know a point's rectangular coordinates and need its polar distance r.",
+      "hints": [
+        "The distance formula from the origin is r = sqrt(x^2 + y^2).",
+        "Square both coordinates, add them, then take the square root."
+      ],
+      "socraticHint": "What do x and y become once you square and add them?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "A segment from the origin out to the point (-6, 8), with its horizontal and vertical legs drawn.",
+        "spec": {
+          "range": 8,
+          "points": [
+            {
+              "x": -6,
+              "y": 8,
+              "label": "r = 10"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                -6,
+                8
+              ]
+            ],
+            [
+              [
+                0,
+                0
+              ],
+              [
+                -6,
+                0
+              ]
+            ],
+            [
+              [
+                -6,
+                0
+              ],
+              [
+                -6,
+                8
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A game token sits at the rectangular point (-5, -12). Find its distance r from the origin.",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot arm sits at the rectangular point (-5, -12). Find its distance r from the origin.",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "r is the distance from the origin: r = sqrt(x^2 + y^2).",
+        "r = sqrt(-5^2 + (-12)^2) = sqrt(25 + 144) = sqrt(169).",
+        "r = 13."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when you know a point's rectangular coordinates and need its polar distance r.",
+      "hints": [
+        "The distance formula from the origin is r = sqrt(x^2 + y^2).",
+        "Square both coordinates, add them, then take the square root."
+      ],
+      "socraticHint": "What do x and y become once you square and add them?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A sonar ping sits at the rectangular point (8, -15). Find its distance r from the origin.",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A printer nozzle sits at the rectangular point (8, -15). Find its distance r from the origin.",
+      "answer": {
+        "kind": "number",
+        "value": "17"
+      },
+      "explanation": [
+        "r is the distance from the origin: r = sqrt(x^2 + y^2).",
+        "r = sqrt(8^2 + (-15)^2) = sqrt(64 + 225) = sqrt(289).",
+        "r = 17."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when you know a point's rectangular coordinates and need its polar distance r.",
+      "hints": [
+        "The distance formula from the origin is r = sqrt(x^2 + y^2).",
+        "Square both coordinates, add them, then take the square root."
+      ],
+      "socraticHint": "What do x and y become once you square and add them?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A crane hook sits at the rectangular point (-7, 24). Find its distance r from the origin.",
+        "answer": {
+          "kind": "number",
+          "value": "25"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p10",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A radar sweep sits at the rectangular point (-9, 12). Find its distance r from the origin.",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "r is the distance from the origin: r = sqrt(x^2 + y^2).",
+        "r = sqrt(-9^2 + 12^2) = sqrt(81 + 144) = sqrt(225).",
+        "r = 15."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when you know a point's rectangular coordinates and need its polar distance r.",
+      "hints": [
+        "The distance formula from the origin is r = sqrt(x^2 + y^2).",
+        "Square both coordinates, add them, then take the square root."
+      ],
+      "socraticHint": "What do x and y become once you square and add them?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A satellite dish sits at the rectangular point (6, 8). Find its distance r from the origin.",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p11",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "Put these steps for eliminating t from x = t + 4, y = t^2 - 1 in the order you would do them.",
+      "items": [
+        "Substitute t = x - 4 into y = t^2 - 1.",
+        "Expand (x - 4)^2 - 1 to get y = x^2 - 8x + 15.",
+        "Solve x = t + 4 for t: t = x - 4.",
+        "Write the rectangular equation y = x^2 - 8x + 15, with no t remaining."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          0,
+          1,
+          3
+        ]
+      },
+      "explanation": [
+        "Solve the x-equation for t first, since it is the simpler one.",
+        "Substitute that expression into the y-equation.",
+        "Expand and simplify to get y purely in terms of x.",
+        "That final equation has no t left in it."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when you need to eliminate a parameter and want to keep the steps straight.",
+      "hints": [
+        "The equation solved for t alone should come before any substitution.",
+        "Simplifying comes only after the substitution is made."
+      ],
+      "socraticHint": "Which equation can you solve for t by itself?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Put these steps for eliminating t from x = t + 2, y = t^2 + 3 in the order you would do them.",
+        "items": [
+          "Substitute t = x - 2 into y = t^2 + 3.",
+          "Expand (x - 2)^2 + 3 to get y = x^2 - 4x + 7.",
+          "Solve x = t + 2 for t: t = x - 2.",
+          "Write the rectangular equation y = x^2 - 4x + 7, with no t remaining."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            0,
+            1,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p12",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A lighthouse beam sits at the rectangular point (-3, 3). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+      "answer": {
+        "kind": "number",
+        "value": "3/4"
+      },
+      "explanation": [
+        "Plot (-3, 3) and see which axis or diagonal it lies on.",
+        "Since x and y have the same size, the point lies on a pi/4-family diagonal.",
+        "theta = 3/4 pi."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a rectangular point lies on an axis or an equal-leg diagonal and you need its angle.",
+      "hints": [
+        "Find the quadrant or axis the point lies on before naming an exact angle.",
+        "A point with equal-size x and y (or one coordinate zero) lands on a multiple of pi/4."
+      ],
+      "socraticHint": "Which quadrant, or which axis, holds this point?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A lighthouse beam sits at the rectangular point (-6, 6). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+        "answer": {
+          "kind": "number",
+          "value": "3/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p13",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A camera gimbal sits at the rectangular point (0, 5). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "Plot (0, 5) and see which axis or diagonal it lies on.",
+        "Since x and y have the same size, the point lies on a pi/4-family diagonal.",
+        "theta = 1/2 pi."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a rectangular point lies on an axis or an equal-leg diagonal and you need its angle.",
+      "hints": [
+        "Find the quadrant or axis the point lies on before naming an exact angle.",
+        "A point with equal-size x and y (or one coordinate zero) lands on a multiple of pi/4."
+      ],
+      "socraticHint": "Which quadrant, or which axis, holds this point?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A camera gimbal sits at the rectangular point (0, 7). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+        "answer": {
+          "kind": "number",
+          "value": "1/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p14",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A wind turbine blade tip sits at the rectangular point (-4, 0). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Plot (-4, 0) and see which axis or diagonal it lies on.",
+        "Since x and y have the same size, the point lies on a pi/4-family diagonal.",
+        "theta = 1 pi."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a rectangular point lies on an axis or an equal-leg diagonal and you need its angle.",
+      "hints": [
+        "Find the quadrant or axis the point lies on before naming an exact angle.",
+        "A point with equal-size x and y (or one coordinate zero) lands on a multiple of pi/4."
+      ],
+      "socraticHint": "Which quadrant, or which axis, holds this point?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A wind turbine blade tip sits at the rectangular point (-8, 0). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p15",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A grappling hook sits at the rectangular point (4, -4). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+      "answer": {
+        "kind": "number",
+        "value": "7/4"
+      },
+      "explanation": [
+        "Plot (4, -4) and see which axis or diagonal it lies on.",
+        "Since x and y have the same size, the point lies on a pi/4-family diagonal.",
+        "theta = 7/4 pi."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a rectangular point lies on an axis or an equal-leg diagonal and you need its angle.",
+      "hints": [
+        "Find the quadrant or axis the point lies on before naming an exact angle.",
+        "A point with equal-size x and y (or one coordinate zero) lands on a multiple of pi/4."
+      ],
+      "socraticHint": "Which quadrant, or which axis, holds this point?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A grappling hook sits at the rectangular point (6, -6). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+        "answer": {
+          "kind": "number",
+          "value": "7/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p16",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A rover is at polar coordinates r = 4, theta = pi/6. Find its rectangular coordinates.",
+      "options": [
+        "(2, 2 sqrt(3))",
+        "(2 sqrt(3), 2)",
+        "(-2 sqrt(3), 2)",
+        "(2 sqrt(3), -2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "cos(pi/6) = sqrt(3)/2 and sin(pi/6) = 1/2.",
+        "x = r cos(theta) = 4 times sqrt(3)/2 = 2 sqrt(3).",
+        "y = r sin(theta) = 4 times 1/2 = 2.",
+        "The point is (2 sqrt(3), 2)."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a polar point sits at a special angle and you need its exact rectangular coordinates.",
+      "hints": [
+        "Look up cos(theta) and sin(theta) at this special angle before multiplying by r.",
+        "Multiply each ratio by r separately: do not mix up which ratio goes with x and which with y."
+      ],
+      "socraticHint": "Which ratio, cosine or sine, gives the x-coordinate?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "A segment from the origin out to the point at polar r = 4, theta = pi/6.",
+        "spec": {
+          "range": 4,
+          "points": [
+            {
+              "x": 3.46,
+              "y": 2,
+              "label": "r = 4"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                3.46,
+                2
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A drone is at polar coordinates r = 6, theta = pi/6. Find its rectangular coordinates.",
+        "options": [
+          "(3, 3 sqrt(3))",
+          "(-3 sqrt(3), 3)",
+          "(3 sqrt(3), -3)",
+          "(3 sqrt(3), 3)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p17",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A drone is at polar coordinates r = 6, theta = pi/3. Find its rectangular coordinates.",
+      "options": [
+        "(3, 3 sqrt(3))",
+        "(3 sqrt(3), 3)",
+        "(-3, 3 sqrt(3))",
+        "(3, -3 sqrt(3))"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "cos(pi/3) = 1/2 and sin(pi/3) = sqrt(3)/2.",
+        "x = r cos(theta) = 6 times 1/2 = 3.",
+        "y = r sin(theta) = 6 times sqrt(3)/2 = 3 sqrt(3).",
+        "The point is (3, 3 sqrt(3))."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a polar point sits at a special angle and you need its exact rectangular coordinates.",
+      "hints": [
+        "Look up cos(theta) and sin(theta) at this special angle before multiplying by r.",
+        "Multiply each ratio by r separately: do not mix up which ratio goes with x and which with y."
+      ],
+      "socraticHint": "Which ratio, cosine or sine, gives the x-coordinate?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A robot arm is at polar coordinates r = 4, theta = pi/3. Find its rectangular coordinates.",
+        "options": [
+          "(2 sqrt(3), 2)",
+          "(-2, 2 sqrt(3))",
+          "(2, 2 sqrt(3))",
+          "(2, -2 sqrt(3))"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p18",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A robot arm is at polar coordinates r = 4, theta = 2 pi/3. Find its rectangular coordinates.",
+      "options": [
+        "(-2, 2 sqrt(3))",
+        "(2 sqrt(3), -2)",
+        "(2, 2 sqrt(3))",
+        "(-2, -2 sqrt(3))"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "cos(2 pi/3) = -1/2 and sin(2 pi/3) = sqrt(3)/2.",
+        "x = r cos(theta) = 4 times -1/2 = -2.",
+        "y = r sin(theta) = 4 times sqrt(3)/2 = 2 sqrt(3).",
+        "The point is (-2, 2 sqrt(3))."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a polar point sits at a special angle and you need its exact rectangular coordinates.",
+      "hints": [
+        "Look up cos(theta) and sin(theta) at this special angle before multiplying by r.",
+        "Multiply each ratio by r separately: do not mix up which ratio goes with x and which with y."
+      ],
+      "socraticHint": "Which ratio, cosine or sine, gives the x-coordinate?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A printer nozzle is at polar coordinates r = 8, theta = 2 pi/3. Find its rectangular coordinates.",
+        "options": [
+          "(4 sqrt(3), -4)",
+          "(-4, 4 sqrt(3))",
+          "(4, 4 sqrt(3))",
+          "(-4, -4 sqrt(3))"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p19",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A printer nozzle is at polar coordinates r = 6, theta = 5 pi/6. Find its rectangular coordinates.",
+      "options": [
+        "(3, -3 sqrt(3))",
+        "(3 sqrt(3), 3)",
+        "(-3 sqrt(3), 3)",
+        "(-3 sqrt(3), -3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "cos(5 pi/6) = -sqrt(3)/2 and sin(5 pi/6) = 1/2.",
+        "x = r cos(theta) = 6 times -sqrt(3)/2 = -3 sqrt(3).",
+        "y = r sin(theta) = 6 times 1/2 = 3.",
+        "The point is (-3 sqrt(3), 3)."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a polar point sits at a special angle and you need its exact rectangular coordinates.",
+      "hints": [
+        "Look up cos(theta) and sin(theta) at this special angle before multiplying by r.",
+        "Multiply each ratio by r separately: do not mix up which ratio goes with x and which with y."
+      ],
+      "socraticHint": "Which ratio, cosine or sine, gives the x-coordinate?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "A segment from the origin out to the point at polar r = 6, theta = 5 pi/6.",
+        "spec": {
+          "range": 6,
+          "points": [
+            {
+              "x": -5.2,
+              "y": 3,
+              "label": "r = 6"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                -5.2,
+                3
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A radar sweep is at polar coordinates r = 4, theta = 5 pi/6. Find its rectangular coordinates.",
+        "options": [
+          "(2, -2 sqrt(3))",
+          "(2 sqrt(3), 2)",
+          "(-2 sqrt(3), -2)",
+          "(-2 sqrt(3), 2)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p20",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A radar sweep is at polar coordinates r = 8, theta = 7 pi/6. Find its rectangular coordinates.",
+      "options": [
+        "(-4, -4 sqrt(3))",
+        "(4 sqrt(3), -4)",
+        "(-4 sqrt(3), 4)",
+        "(-4 sqrt(3), -4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "cos(7 pi/6) = -sqrt(3)/2 and sin(7 pi/6) = -1/2.",
+        "x = r cos(theta) = 8 times -sqrt(3)/2 = -4 sqrt(3).",
+        "y = r sin(theta) = 8 times -1/2 = -4.",
+        "The point is (-4 sqrt(3), -4)."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a polar point sits at a special angle and you need its exact rectangular coordinates.",
+      "hints": [
+        "Look up cos(theta) and sin(theta) at this special angle before multiplying by r.",
+        "Multiply each ratio by r separately: do not mix up which ratio goes with x and which with y."
+      ],
+      "socraticHint": "Which ratio, cosine or sine, gives the x-coordinate?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A telescope mount is at polar coordinates r = 6, theta = 7 pi/6. Find its rectangular coordinates.",
+        "options": [
+          "(-3 sqrt(3), -3)",
+          "(-3, -3 sqrt(3))",
+          "(3 sqrt(3), -3)",
+          "(-3 sqrt(3), 3)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p21",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "True or false: for x = 3 cos(t), y = 3 sin(t), every point traced satisfies x^2 + y^2 = 9.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "x^2 + y^2 = 9 cos^2(t) + 9 sin^2(t) = 9(cos^2(t) + sin^2(t)).",
+        "Since cos^2(t) + sin^2(t) = 1, x^2 + y^2 = 9 for every t.",
+        "So the statement is true."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when you want to check what curve a cosine-sine parametric pair traces.",
+      "hints": [
+        "Square both parametric equations and add them.",
+        "Use the identity cos^2(t) + sin^2(t) = 1."
+      ],
+      "socraticHint": "What does the Pythagorean identity say about cos^2(t) + sin^2(t)?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "True or false: for x = 2 cos(t), y = 2 sin(t), every point traced satisfies x^2 + y^2 = 8.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A printer nozzle moves so that x = t + 1 and y = 2t + 3. Eliminate t and find the slope of the resulting line.",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Solve the x-equation for t: t = x - 1.",
+        "Substitute into y = 2t + 3: y = 2(x - 1) + 3.",
+        "Simplify: y = 2x + 1.",
+        "The slope is 2."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric pair is linear in t and you need the line it traces.",
+      "hints": [
+        "Solve the x-equation for t first, since t appears alone there.",
+        "Substitute that expression for t into the y-equation and simplify to slope-intercept form."
+      ],
+      "socraticHint": "What is t in terms of x?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A radar sweep moves so that x = t + 1 and y = 3t + 2. Eliminate t and find the slope of the resulting line.",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p23",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A radar sweep moves so that x = t + 2 and y = -t + 4. Eliminate t and find the y-intercept of the resulting line.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Solve the x-equation for t: t = x - 2.",
+        "Substitute into y = -t + 4: y = -(x - 2) + 4.",
+        "Simplify: y = -x + 6.",
+        "The y-intercept is 6."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric pair is linear in t and you need the line it traces.",
+      "hints": [
+        "Solve the x-equation for t first, since t appears alone there.",
+        "Substitute that expression for t into the y-equation and simplify to slope-intercept form."
+      ],
+      "socraticHint": "What is t in terms of x?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A telescope mount moves so that x = t + 2 and y = t + 3. Eliminate t and find the y-intercept of the resulting line.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p24",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A telescope mount moves so that x = t + 1 and y = 3t + 2. Eliminate t and find the slope of the resulting line.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Solve the x-equation for t: t = x - 1.",
+        "Substitute into y = 3t + 2: y = 3(x - 1) + 2.",
+        "Simplify: y = 3x - 1.",
+        "The slope is 3."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric pair is linear in t and you need the line it traces.",
+      "hints": [
+        "Solve the x-equation for t first, since t appears alone there.",
+        "Substitute that expression for t into the y-equation and simplify to slope-intercept form."
+      ],
+      "socraticHint": "What is t in terms of x?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game token moves so that x = t + 1 and y = 2t + 5. Eliminate t and find the slope of the resulting line.",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p25",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game token moves so that x = t + 3 and y = t + 1. Eliminate t and find the y-intercept of the resulting line.",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Solve the x-equation for t: t = x - 3.",
+        "Substitute into y = t + 1: y = (x - 3) + 1.",
+        "Simplify: y = x - 2.",
+        "The y-intercept is -2."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric pair is linear in t and you need the line it traces.",
+      "hints": [
+        "Solve the x-equation for t first, since t appears alone there.",
+        "Substitute that expression for t into the y-equation and simplify to slope-intercept form."
+      ],
+      "socraticHint": "What is t in terms of x?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A sonar ping moves so that x = t + 3 and y = 2t + 1. Eliminate t and find the y-intercept of the resulting line.",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p26",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "Put these steps for converting the rectangular point (0, -6) to polar coordinates in the order you would do them.",
+      "items": [
+        "Decide which axis or quadrant the point lies in.",
+        "Name theta from that axis or quadrant: theta = 3 pi/2.",
+        "Compute r = sqrt(0^2 + (-6)^2) = 6.",
+        "Report the polar coordinates as r = 6, theta = 3 pi/2."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          0,
+          1,
+          3
+        ]
+      },
+      "explanation": [
+        "Find r with the distance formula from the origin.",
+        "Decide which axis or quadrant the point lies in.",
+        "Compute r = sqrt(0^2 + (-6)^2) = 6.",
+        "Since the point lies on the negative y-axis, theta = 3 pi/2."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when you convert a rectangular point to polar coordinates and want to keep the steps straight.",
+      "hints": [
+        "Getting r is a plain calculation; naming theta needs you to know where the point sits.",
+        "The quadrant or axis decision comes right before you name the angle, not before finding r."
+      ],
+      "socraticHint": "Which value, r or theta, can you compute from a formula alone?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps for converting the rectangular point (-8, 0) to polar coordinates in the order you would do them.",
+        "items": [
+          "Decide which axis or quadrant the point lies in.",
+          "Name theta from that axis or quadrant: theta = pi.",
+          "Compute r = sqrt((-8)^2 + 0^2) = 8.",
+          "Report the polar coordinates as r = 8, theta = pi."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            0,
+            1,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p27",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game token sits at the rectangular point (-3, -3). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+      "answer": {
+        "kind": "number",
+        "value": "5/4"
+      },
+      "explanation": [
+        "Plot (-3, -3) to see which quadrant or axis it lies in.",
+        "The point lies on a pi/4-family line, so theta is a multiple of pi/4.",
+        "theta = 5/4 pi."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a rectangular point lies on a pi/4-family diagonal and you need its angle.",
+      "hints": [
+        "Decide the quadrant first: that narrows theta to one quarter-turn of the circle.",
+        "Equal-size coordinates (or a zero coordinate) land exactly on a multiple of pi/4."
+      ],
+      "socraticHint": "Which quadrant holds this point?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A sonar ping sits at the rectangular point (-5, -5). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+        "answer": {
+          "kind": "number",
+          "value": "5/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p28",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A sonar ping sits at the rectangular point (6, -6). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+      "answer": {
+        "kind": "number",
+        "value": "7/4"
+      },
+      "explanation": [
+        "Plot (6, -6) to see which quadrant or axis it lies in.",
+        "The point lies on a pi/4-family line, so theta is a multiple of pi/4.",
+        "theta = 7/4 pi."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a rectangular point lies on a pi/4-family diagonal and you need its angle.",
+      "hints": [
+        "Decide the quadrant first: that narrows theta to one quarter-turn of the circle.",
+        "Equal-size coordinates (or a zero coordinate) land exactly on a multiple of pi/4."
+      ],
+      "socraticHint": "Which quadrant holds this point?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A crane hook sits at the rectangular point (9, -9). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+        "answer": {
+          "kind": "number",
+          "value": "7/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p29",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A crane hook sits at the rectangular point (-8, 0). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Plot (-8, 0) to see which quadrant or axis it lies in.",
+        "The point lies on a pi/4-family line, so theta is a multiple of pi/4.",
+        "theta = 1 pi."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a rectangular point lies on a pi/4-family diagonal and you need its angle.",
+      "hints": [
+        "Decide the quadrant first: that narrows theta to one quarter-turn of the circle.",
+        "Equal-size coordinates (or a zero coordinate) land exactly on a multiple of pi/4."
+      ],
+      "socraticHint": "Which quadrant holds this point?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A satellite dish sits at the rectangular point (-10, 0). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p30",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A satellite dish sits at the rectangular point (0, -6). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+      "answer": {
+        "kind": "number",
+        "value": "3/2"
+      },
+      "explanation": [
+        "Plot (0, -6) to see which quadrant or axis it lies in.",
+        "The point lies on a pi/4-family line, so theta is a multiple of pi/4.",
+        "theta = 3/2 pi."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a rectangular point lies on a pi/4-family diagonal and you need its angle.",
+      "hints": [
+        "Decide the quadrant first: that narrows theta to one quarter-turn of the circle.",
+        "Equal-size coordinates (or a zero coordinate) land exactly on a multiple of pi/4."
+      ],
+      "socraticHint": "Which quadrant holds this point?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A kite sits at the rectangular point (0, -9). Give theta as a multiple of pi, between 0 and 2 pi. What is the coefficient of pi?",
+        "answer": {
+          "kind": "number",
+          "value": "3/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p31",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover traces x = t + 2, y = t^2 - 3t + 1. Eliminate t, then find y when x = 5.",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Solve the x-equation for t: t = x - 2.",
+        "Substitute into y = t^2 - 3t + 1 to write y in terms of x.",
+        "At x = 5, t = 3.",
+        "y = (3)^2 - 3(3) + 1 = 1."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric curve is quadratic in t and you need a point on the resulting curve.",
+      "hints": [
+        "Eliminate t completely first: substitute t = x minus a into the y-equation.",
+        "Only after you have y purely in terms of x should you plug in the given x-value."
+      ],
+      "socraticHint": "What is t when x equals the given value?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot arm traces x = t - 1, y = t^2 + 2t + 2. Eliminate t, then find y when x = 4.",
+        "answer": {
+          "kind": "number",
+          "value": "37"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p32",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone traces x = t - 1, y = t^2 + 2t + 4. Eliminate t, then find y when x = 3.",
+      "answer": {
+        "kind": "number",
+        "value": "28"
+      },
+      "explanation": [
+        "Solve the x-equation for t: t = x + 1.",
+        "Substitute into y = t^2 + 2t + 4 to write y in terms of x.",
+        "At x = 3, t = 4.",
+        "y = (4)^2 + 2(4) + 4 = 28."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric curve is quadratic in t and you need a point on the resulting curve.",
+      "hints": [
+        "Eliminate t completely first: substitute t = x minus a into the y-equation.",
+        "Only after you have y purely in terms of x should you plug in the given x-value."
+      ],
+      "socraticHint": "What is t when x equals the given value?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A printer nozzle traces x = t + 2, y = t^2 - 3t + 1. Eliminate t, then find y when x = 6.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot arm traces x = t + 3, y = t^2 - t - 2. Eliminate t, then find y when x = 7.",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Solve the x-equation for t: t = x - 3.",
+        "Substitute into y = t^2 - t - 2 to write y in terms of x.",
+        "At x = 7, t = 4.",
+        "y = (4)^2 - (4) - 2 = 10."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric curve is quadratic in t and you need a point on the resulting curve.",
+      "hints": [
+        "Eliminate t completely first: substitute t = x minus a into the y-equation.",
+        "Only after you have y purely in terms of x should you plug in the given x-value."
+      ],
+      "socraticHint": "What is t when x equals the given value?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A radar sweep traces x = t - 2, y = t^2 + t + 4. Eliminate t, then find y when x = 1.",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p34",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A printer nozzle traces x = t - 2, y = t^2 + t + 3. Eliminate t, then find y when x = 2.",
+      "answer": {
+        "kind": "number",
+        "value": "23"
+      },
+      "explanation": [
+        "Solve the x-equation for t: t = x + 2.",
+        "Substitute into y = t^2 + t + 3 to write y in terms of x.",
+        "At x = 2, t = 4.",
+        "y = (4)^2 + (4) + 3 = 23."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric curve is quadratic in t and you need a point on the resulting curve.",
+      "hints": [
+        "Eliminate t completely first: substitute t = x minus a into the y-equation.",
+        "Only after you have y purely in terms of x should you plug in the given x-value."
+      ],
+      "socraticHint": "What is t when x equals the given value?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A telescope mount traces x = t + 3, y = t^2 - t - 3. Eliminate t, then find y when x = 8.",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A radar sweep traces x = t + 1, y = t^2 + 4t - 1. Eliminate t, then find y when x = 6.",
+      "answer": {
+        "kind": "number",
+        "value": "44"
+      },
+      "explanation": [
+        "Solve the x-equation for t: t = x - 1.",
+        "Substitute into y = t^2 + 4t - 1 to write y in terms of x.",
+        "At x = 6, t = 5.",
+        "y = (5)^2 + 4(5) - 1 = 44."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric curve is quadratic in t and you need a point on the resulting curve.",
+      "hints": [
+        "Eliminate t completely first: substitute t = x minus a into the y-equation.",
+        "Only after you have y purely in terms of x should you plug in the given x-value."
+      ],
+      "socraticHint": "What is t when x equals the given value?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game token traces x = t - 3, y = t^2 + 2t + 2. Eliminate t, then find y when x = 5.",
+        "answer": {
+          "kind": "number",
+          "value": "82"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A printer nozzle traces x = 5 cos(t), y = 5 sin(t). Eliminate t to write x^2 + y^2 as a constant. What is that constant?",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "x^2 = 5^2 cos^2(t) and y^2 = 5^2 sin^2(t).",
+        "x^2 + y^2 = 5^2 (cos^2(t) + sin^2(t)).",
+        "Since cos^2(t) + sin^2(t) = 1, x^2 + y^2 = 25."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when x and y are a times cosine and sine of the same parameter and you need the traced curve.",
+      "hints": [
+        "Square both equations and add them.",
+        "The identity cos^2(t) + sin^2(t) = 1 removes t completely."
+      ],
+      "socraticHint": "What does cos^2(t) + sin^2(t) always equal?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "A circle of radius 5 centered at the origin, traced by the parametric curve.",
+        "spec": {
+          "range": 5,
+          "polylines": [
+            [
+              [
+                5,
+                0
+              ],
+              [
+                4.33,
+                2.5
+              ],
+              [
+                2.5,
+                4.33
+              ],
+              [
+                0,
+                5
+              ],
+              [
+                -2.5,
+                4.33
+              ],
+              [
+                -4.33,
+                2.5
+              ],
+              [
+                -5,
+                0
+              ],
+              [
+                -4.33,
+                -2.5
+              ],
+              [
+                -2.5,
+                -4.33
+              ],
+              [
+                0,
+                -5
+              ],
+              [
+                2.5,
+                -4.33
+              ],
+              [
+                4.33,
+                -2.5
+              ],
+              [
+                5,
+                0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A radar sweep traces x = 8 cos(t), y = 8 sin(t). Eliminate t to write x^2 + y^2 as a constant. What is that constant?",
+        "answer": {
+          "kind": "number",
+          "value": "64"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A radar sweep traces x = 7 cos(t), y = 7 sin(t). Eliminate t to write x^2 + y^2 as a constant. What is that constant?",
+      "answer": {
+        "kind": "number",
+        "value": "49"
+      },
+      "explanation": [
+        "x^2 = 7^2 cos^2(t) and y^2 = 7^2 sin^2(t).",
+        "x^2 + y^2 = 7^2 (cos^2(t) + sin^2(t)).",
+        "Since cos^2(t) + sin^2(t) = 1, x^2 + y^2 = 49."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when x and y are a times cosine and sine of the same parameter and you need the traced curve.",
+      "hints": [
+        "Square both equations and add them.",
+        "The identity cos^2(t) + sin^2(t) = 1 removes t completely."
+      ],
+      "socraticHint": "What does cos^2(t) + sin^2(t) always equal?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A telescope mount traces x = 6 cos(t), y = 6 sin(t). Eliminate t to write x^2 + y^2 as a constant. What is that constant?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p38",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A telescope mount traces x = 9 cos(t), y = 9 sin(t). Eliminate t to write x^2 + y^2 as a constant. What is that constant?",
+      "answer": {
+        "kind": "number",
+        "value": "81"
+      },
+      "explanation": [
+        "x^2 = 9^2 cos^2(t) and y^2 = 9^2 sin^2(t).",
+        "x^2 + y^2 = 9^2 (cos^2(t) + sin^2(t)).",
+        "Since cos^2(t) + sin^2(t) = 1, x^2 + y^2 = 81."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when x and y are a times cosine and sine of the same parameter and you need the traced curve.",
+      "hints": [
+        "Square both equations and add them.",
+        "The identity cos^2(t) + sin^2(t) = 1 removes t completely."
+      ],
+      "socraticHint": "What does cos^2(t) + sin^2(t) always equal?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "A circle of radius 9 centered at the origin, traced by the parametric curve.",
+        "spec": {
+          "range": 9,
+          "polylines": [
+            [
+              [
+                9,
+                0
+              ],
+              [
+                7.79,
+                4.5
+              ],
+              [
+                4.5,
+                7.79
+              ],
+              [
+                0,
+                9
+              ],
+              [
+                -4.5,
+                7.79
+              ],
+              [
+                -7.79,
+                4.5
+              ],
+              [
+                -9,
+                0
+              ],
+              [
+                -7.79,
+                -4.5
+              ],
+              [
+                -4.5,
+                -7.79
+              ],
+              [
+                0,
+                -9
+              ],
+              [
+                4.5,
+                -7.79
+              ],
+              [
+                7.79,
+                -4.5
+              ],
+              [
+                9,
+                0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A game token traces x = 10 cos(t), y = 10 sin(t). Eliminate t to write x^2 + y^2 as a constant. What is that constant?",
+        "answer": {
+          "kind": "number",
+          "value": "100"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p39",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game token traces x = 12 cos(t), y = 12 sin(t). Eliminate t to write x^2 + y^2 as a constant. What is that constant?",
+      "answer": {
+        "kind": "number",
+        "value": "144"
+      },
+      "explanation": [
+        "x^2 = 12^2 cos^2(t) and y^2 = 12^2 sin^2(t).",
+        "x^2 + y^2 = 12^2 (cos^2(t) + sin^2(t)).",
+        "Since cos^2(t) + sin^2(t) = 1, x^2 + y^2 = 144."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when x and y are a times cosine and sine of the same parameter and you need the traced curve.",
+      "hints": [
+        "Square both equations and add them.",
+        "The identity cos^2(t) + sin^2(t) = 1 removes t completely."
+      ],
+      "socraticHint": "What does cos^2(t) + sin^2(t) always equal?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A sonar ping traces x = 9 cos(t), y = 9 sin(t). Eliminate t to write x^2 + y^2 as a constant. What is that constant?",
+        "answer": {
+          "kind": "number",
+          "value": "81"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p40",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A sonar ping traces x = 6 cos(t), y = 6 sin(t). Eliminate t to write x^2 + y^2 as a constant. What is that constant?",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "x^2 = 6^2 cos^2(t) and y^2 = 6^2 sin^2(t).",
+        "x^2 + y^2 = 6^2 (cos^2(t) + sin^2(t)).",
+        "Since cos^2(t) + sin^2(t) = 1, x^2 + y^2 = 36."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when x and y are a times cosine and sine of the same parameter and you need the traced curve.",
+      "hints": [
+        "Square both equations and add them.",
+        "The identity cos^2(t) + sin^2(t) = 1 removes t completely."
+      ],
+      "socraticHint": "What does cos^2(t) + sin^2(t) always equal?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A crane hook traces x = 12 cos(t), y = 12 sin(t). Eliminate t to write x^2 + y^2 as a constant. What is that constant?",
+        "answer": {
+          "kind": "number",
+          "value": "144"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p41",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A game token traces x = 2 + 3 cos(t), y = -1 + 3 sin(t). Eliminate t and find the center of the resulting circle.",
+      "options": [
+        "(-2, 1)",
+        "(2, -1)",
+        "(-1, 2)",
+        "(2, 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Write x - (2) = 3 cos(t) and y - (-1) = 3 sin(t).",
+        "Square and add: (x - 2)^2 + (y + 1)^2 = 3^2.",
+        "That is a circle centered at (2, -1) with radius 3."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric pair is a shifted cosine and sine and you need the circle it traces.",
+      "hints": [
+        "Isolate the cosine and sine terms by moving the constants to the x and y side.",
+        "Square both isolated equations and add them; the identity leaves a circle equation."
+      ],
+      "socraticHint": "What do you subtract from x and from y before squaring?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "A circle of radius 3 centered at (2, -1), traced by the parametric curve.",
+        "spec": {
+          "range": 6,
+          "points": [
+            {
+              "x": 2,
+              "y": -1,
+              "label": "center"
+            }
+          ],
+          "polylines": [
+            [
+              [
+                5,
+                -1
+              ],
+              [
+                4.6,
+                0.5
+              ],
+              [
+                3.5,
+                1.6
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0.5,
+                1.6
+              ],
+              [
+                -0.6,
+                0.5
+              ],
+              [
+                -1,
+                -1
+              ],
+              [
+                -0.6,
+                -2.5
+              ],
+              [
+                0.5,
+                -3.6
+              ],
+              [
+                2,
+                -4
+              ],
+              [
+                3.5,
+                -3.6
+              ],
+              [
+                4.6,
+                -2.5
+              ],
+              [
+                5,
+                -1
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A sonar ping traces x = -1 + 2 cos(t), y = 3 + 2 sin(t). Eliminate t and find the center of the resulting circle.",
+        "options": [
+          "(1, -3)",
+          "(3, -1)",
+          "(-1, 3)",
+          "(-1, -3)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p42",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A sonar ping traces x = -3 + 2 cos(t), y = 4 + 2 sin(t). Eliminate t to write the resulting circle's equation. What is its radius?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Write x + 3 on one side and y - 4 on the other, matched to cos(t) and sin(t).",
+        "Square both and add: (x + 3)^2 + (y - 4)^2 = 2^2.",
+        "The radius is 2."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric pair is a shifted cosine and sine and you need the circle it traces.",
+      "hints": [
+        "Isolate the cosine and sine terms before squaring.",
+        "The right side of the squared-and-added equation is the radius squared."
+      ],
+      "socraticHint": "After squaring and adding, what is on the right side of the equation?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "A circle of radius 2 centered at (-3, 4), traced by the parametric curve.",
+        "spec": {
+          "range": 7,
+          "points": [
+            {
+              "x": -3,
+              "y": 4,
+              "label": "center"
+            }
+          ],
+          "polylines": [
+            [
+              [
+                -1,
+                4
+              ],
+              [
+                -1.27,
+                5
+              ],
+              [
+                -2,
+                5.73
+              ],
+              [
+                -3,
+                6
+              ],
+              [
+                -4,
+                5.73
+              ],
+              [
+                -4.73,
+                5
+              ],
+              [
+                -5,
+                4
+              ],
+              [
+                -4.73,
+                3
+              ],
+              [
+                -4,
+                2.27
+              ],
+              [
+                -3,
+                2
+              ],
+              [
+                -2,
+                2.27
+              ],
+              [
+                -1.27,
+                3
+              ],
+              [
+                -1,
+                4
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A satellite dish traces x = 2 + 3 cos(t), y = -4 + 3 sin(t). Eliminate t to write the resulting circle's equation. What is its radius?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p43",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A crane hook traces x = 1 + 4 cos(t), y = 5 + 4 sin(t). Eliminate t and find the center of the resulting circle.",
+      "options": [
+        "(-1, -5)",
+        "(1, 5)",
+        "(5, 1)",
+        "(1, -5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Write x - (1) = 4 cos(t) and y - (5) = 4 sin(t).",
+        "Square and add: (x - 1)^2 + (y - 5)^2 = 4^2.",
+        "That is a circle centered at (1, 5) with radius 4."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric pair is a shifted cosine and sine and you need the circle it traces.",
+      "hints": [
+        "Isolate the cosine and sine terms by moving the constants to the x and y side.",
+        "Square both isolated equations and add them; the identity leaves a circle equation."
+      ],
+      "socraticHint": "What do you subtract from x and from y before squaring?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A satellite dish traces x = -3 + 5 cos(t), y = 1 + 5 sin(t). Eliminate t and find the center of the resulting circle.",
+        "options": [
+          "(-3, 1)",
+          "(3, -1)",
+          "(1, -3)",
+          "(-3, -1)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p44",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A satellite dish traces x = -2 + 5 cos(t), y = -3 + 5 sin(t). Eliminate t to write the resulting circle's equation. What is its radius?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Write x + 2 on one side and y + 3 on the other, matched to cos(t) and sin(t).",
+        "Square both and add: (x + 2)^2 + (y + 3)^2 = 5^2.",
+        "The radius is 5."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric pair is a shifted cosine and sine and you need the circle it traces.",
+      "hints": [
+        "Isolate the cosine and sine terms before squaring.",
+        "The right side of the squared-and-added equation is the radius squared."
+      ],
+      "socraticHint": "After squaring and adding, what is on the right side of the equation?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lighthouse beam traces x = 0 + 4 cos(t), y = 4 + 4 sin(t). Eliminate t to write the resulting circle's equation. What is its radius?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p45",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A kite traces x = 4 + 3 cos(t), y = -2 + 3 sin(t). Eliminate t and find the center of the resulting circle.",
+      "options": [
+        "(-4, 2)",
+        "(-2, 4)",
+        "(4, 2)",
+        "(4, -2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Write x - (4) = 3 cos(t) and y - (-2) = 3 sin(t).",
+        "Square and add: (x - 4)^2 + (y + 2)^2 = 3^2.",
+        "That is a circle centered at (4, -2) with radius 3."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric pair is a shifted cosine and sine and you need the circle it traces.",
+      "hints": [
+        "Isolate the cosine and sine terms by moving the constants to the x and y side.",
+        "Square both isolated equations and add them; the identity leaves a circle equation."
+      ],
+      "socraticHint": "What do you subtract from x and from y before squaring?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lighthouse beam traces x = 2 + 4 cos(t), y = -6 + 4 sin(t). Eliminate t and find the center of the resulting circle.",
+        "options": [
+          "(-2, 6)",
+          "(-6, 2)",
+          "(2, -6)",
+          "(2, 6)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-polar-parametric-p46",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A curve is given by x = sec(t), y = tan(t). Eliminate t using the identity sec^2(t) - tan^2(t) = 1. Which equation results?",
+      "options": [
+        "x^2 + y^2 = 1",
+        "y^2 - x^2 = 1",
+        "x^2 - y^2 = 1",
+        "x^2 - y^2 = 0"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Square both equations: x^2 = sec^2(t) and y^2 = tan^2(t).",
+        "Subtract: x^2 - y^2 = sec^2(t) - tan^2(t).",
+        "The identity sec^2(t) - tan^2(t) = 1 gives x^2 - y^2 = 1."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric pair is built from sec and tan of the same parameter.",
+      "hints": [
+        "Square both parametric equations before combining them.",
+        "Recall the identity relating sec^2(t) and tan^2(t)."
+      ],
+      "socraticHint": "What does sec^2(t) minus tan^2(t) always equal?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A curve is given by x = csc(t), y = cot(t). Eliminate t using the identity csc^2(t) - cot^2(t) = 1. Which equation results?",
+        "options": [
+          "x^2 + y^2 = 1",
+          "y^2 - x^2 = 1",
+          "x^2 - y^2 = 0",
+          "x^2 - y^2 = 1"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A polar curve is r = 4 cos(theta). Multiply both sides by r, then use x = r cos(theta) and x^2 + y^2 = r^2. The result is a circle (x - h)^2 + y^2 = k. What is k, the square of the radius?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Multiply by r: r^2 = 4 r cos(theta).",
+        "Replace r^2 with x^2 + y^2 and r cos(theta) with x: x^2 + y^2 = 4x.",
+        "Move the x-term and complete the square: (x - 2)^2 + y^2 = 4.",
+        "So k = 4."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a polar equation is a plain multiple of cos(theta) or sin(theta) and traces a circle.",
+      "hints": [
+        "Multiply the whole polar equation by r before substituting.",
+        "After substituting, complete the square on the x-terms."
+      ],
+      "socraticHint": "What do r^2 and r cos(theta) become in rectangular form?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A polar curve is r = 6 sin(theta). Multiply both sides by r, then use y = r sin(theta) and x^2 + y^2 = r^2. The result is a circle x^2 + (y - h)^2 = k. What is k, the square of the radius?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p48",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A curve traces x = t^2 - 4, y = t^3 - 4t. At how many values of t does the curve pass through the origin (0, 0)?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Set x = 0: t^2 - 4 = 0, so t = 2 or t = -2.",
+        "Set y = 0: t^3 - 4t = t(t^2 - 4) = 0, so t = 0, t = 2, or t = -2.",
+        "Both coordinates are 0 together only where the two solution sets overlap.",
+        "t = 0 solves y = 0 but gives x = -4, not the origin, so it is ruled out.",
+        "Only t = 2 and t = -2 make both x and y zero: 2 values."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric curve crosses itself or the origin and you need to count how many parameters land there.",
+      "hints": [
+        "A point is at the origin only when both x = 0 and y = 0 at the same t.",
+        "Factor the y-equation before comparing its roots to the x-equation's roots."
+      ],
+      "socraticHint": "Which values of t make x zero, and which make y zero?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A curve traces x = t^2 - 9, y = t^3 - 9t. At how many values of t does the curve pass through the origin (0, 0)?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p49",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "A point has polar coordinates r = -3, theta = pi/6 (a negative r points the opposite direction). Find its rectangular coordinates.",
+      "options": [
+        "(3 sqrt(3)/2, 3/2)",
+        "(-3 sqrt(3)/2, -3/2)",
+        "(-3/2, -3 sqrt(3)/2)",
+        "(-3 sqrt(3)/2, 3/2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "With negative r, x = r cos(theta) and y = r sin(theta) still apply directly.",
+        "cos(pi/6) = sqrt(3)/2 and sin(pi/6) = 1/2.",
+        "x = -3 times sqrt(3)/2 = -3 sqrt(3)/2, and y = -3 times 1/2 = -3/2."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a polar point is given with a negative r and you still need its rectangular coordinates.",
+      "hints": [
+        "The formulas x = r cos(theta), y = r sin(theta) hold even when r is negative.",
+        "A negative r just flips the sign of both products."
+      ],
+      "socraticHint": "Does a negative r change the formula, or only the sign of the result?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A point has polar coordinates r = -4, theta = pi/3 (a negative r points the opposite direction). Find its rectangular coordinates.",
+        "options": [
+          "(-2, -2 sqrt(3))",
+          "(2, 2 sqrt(3))",
+          "(-2 sqrt(3), -2)",
+          "(-2, 2 sqrt(3))"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-polar-parametric-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A curve traces x = t + 1/t, y = t - 1/t for t not 0. Eliminate t to write x^2 - y^2 as a constant. What is that constant?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "x^2 = t^2 + 2 + 1/t^2 and y^2 = t^2 - 2 + 1/t^2.",
+        "Subtracting, the t^2 and 1/t^2 terms cancel: x^2 - y^2 = 2 - (-2).",
+        "x^2 - y^2 = 4 for every t not 0."
+      ],
+      "ideaId": "a2-polar-parametric",
+      "useAgain": "when a parametric pair is built from t and its reciprocal and you need the curve it traces.",
+      "hints": [
+        "Square both equations fully before subtracting them.",
+        "Watch for the terms that cancel once you subtract; they should remove every trace of t."
+      ],
+      "socraticHint": "What happens to the t^2 and 1/t^2 terms when you subtract the squares?",
+      "skills": [
+        "think.skills.polar"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A curve traces x = t + 2/t, y = t - 2/t for t not 0. Eliminate t to write x^2 - y^2 as a constant. What is that constant?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,370 @@
+{
+  "id": "s3-w05-build",
+  "season": 3,
+  "week": 5,
+  "track": "build",
+  "title": "Unit number one, and the money in two pockets",
+  "summary": "Finish one unit good enough to hand a stranger who paid for it, load it once the way a customer will and find where it complains first, then point week two's loop at your own materials file so Python splits your money into costs that happen once and costs that happen every time.",
+  "minutes": 60,
+  "materials": [
+    "laptop with Python 3 and the editor from week 1",
+    "the dated v0.1 sketch from week 3, with its materials list",
+    "the seed loan in cash, and somewhere to keep every receipt",
+    "the materials for one unit, bought inside the loan",
+    "any left over parts and off cuts, so anything the stress test tires out can be made again",
+    "the season folder that git has been watching since week 1",
+    "phone or camera",
+    "the soldering bench from last season, only if the product turns out to be electronic"
+  ],
+  "skills": ["build.design", "build.python", "build.data", "build.debugging"],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s3-w05-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop, same six moves as always: ask, imagine, plan, build, test, fix.\n\nAsk: what is the difference between a plan and a thing? Last week you pitched. The family cross examined the plan and left the choice alone, and you still hold the choice. But everything you showed them was paper. A sketch cannot be dropped, cannot be handed over, and cannot disappoint anybody. This week it stops being paper.\n\nImagine: one finished unit sitting on the table. Not the best one you will ever make. The first one that is honestly finished, the one you would hand to somebody who is not related to you and who has just given you their own money for it. That is the bar all season, and it is a low bar and a hard one at the same time.\n\nPlan, three jobs. One, build unit number one from the sketch, and mark on the sketch every single place where the real thing walked away from the drawing. It always walks away somewhere. Two, find out where it is weakest, by loading the finished unit once the way a customer will and stopping the instant anything gives. Three, write the cost sheet program.\n\nAbout job three, and this is the whole reason it happens in a Build hour and not a maths one. Your money comes in two kinds. Some costs happen once, however many units you make: a tool, a sign board, a template you cut, a thing you bought one of and will keep using. Some costs happen every single time, once per unit: whatever gets used up inside one thing you sell. Those two kinds of money behave completely differently the moment the run gets bigger, and mixing them in one pile is how a stand loses money without ever seeing where. Keep them in different pockets. Costs that happen once are fixed. Costs that happen every time are per unit.\n\nAnd the shape of the program is not new. It is week two's loop over data wearing an apron: visit each line of a file once, keep a running answer in your hand. The only change is that this time your hand holds two running answers instead of one, because there are two pockets.\n\nOne last thing, about the money itself. The materials money is a loan from your family, not a gift. It gets paid back out of what the shop actually takes in, and week 9 is the day you count and pay. So every dollar it buys gets written down this week, while you still remember what it was for. A receipt you did not keep is a number you will guess later, and next week you will be arguing about your prices in front of people. A guessed number is not evidence."
+    },
+    {
+      "kind": "typing",
+      "id": "s3-w05-build-02",
+      "minutes": 5,
+      "body": "Five minutes, hands on the home row, eyes on the screen. Today's words are the ones this week's code needs: open, line, strip, split, float, round, input, int, fixed, unit. Type each one five times.\n\nThen the punctuation, because every one of these stops the program dead when it is wrong. Type this line ten times, slowly:\n\nname, kind, amount = line.split(',')\n\nLand three things every time: the two commas that separate the three names on the left, the single quotes hugging the comma inside the brackets, and the dot before split. Then type per_unit five times on its own. An underscore typed as a hyphen is not a spelling mistake to Python. It reads per-unit as per minus unit: two names it has never heard of with a subtraction between them. On the left of an equals sign that is a SyntaxError, and anywhere else it is a NameError saying it does not know what per is."
+    },
+    {
+      "kind": "science",
+      "id": "s3-w05-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Force piling up at a sharp corner or a hole starts a crack there: the arrows show force lines squeezing together at the hole's edge and staying spread out everywhere else, which is why the weakest point belongs to the design, not to a plain off-cut.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 150,
+              "cy": 100,
+              "r": 25,
+              "label": "hole",
+              "fill": "paper"
+            },
+            {
+              "t": "line",
+              "x1": 150,
+              "y1": 30,
+              "x2": 150,
+              "y2": 73,
+              "arrow": true,
+              "color": "rust",
+              "label": "force"
+            },
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 100,
+              "x2": 123,
+              "y2": 100,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "line",
+              "x1": 270,
+              "y1": 100,
+              "x2": 177,
+              "y2": 100,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "dot",
+              "cx": 195,
+              "cy": 118,
+              "label": "crack starts here",
+              "side": "right"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 175,
+              "s": "force piles up at a corner, a hole, or a joint",
+              "size": 12
+            }
+          ]
+        }
+      },
+      "title": "Why things break",
+      "body": "Nothing breaks everywhere at once. Things break in one place, and that place is almost never a surprise once you know what to look for.\n\nWhen you push or bend or pull something, the force does not spread itself evenly. It piles up. It piles up hardest at a sharp inside corner, at a hole, at a scratch, and at any spot where a stiff part is joined to a floppy one. Engineers call that a stress concentration, and it is why aircraft windows are rounded and not square: a square corner gathers the load into a point and starts a crack there.\n\nThree more things worth knowing before you test yours. Metal that gets bent back and forth gets harder and more brittle each time, which is why a paperclip bent twenty times snaps and one bent once does not: the damage builds up, and that build up is called fatigue. Wood, paper, card and fabric are made of long fibres, so they are strong along the fibres and weak across them, and a part cut the wrong way round is weak before you touch it. And glue is much stronger at being sheared, slid sideways, than at being peeled: a joint that would hold a heavy pull comes apart under a fingernail lifting one edge.\n\nNow the test, and read this part twice. The weakest point you are hunting belongs to your design, not to a plain piece of material: it lives at a corner, a hole, a fold, or a joint, and a leftover off cut has none of those. So the test runs on the finished unit. Hold it and load it once, firmly, in exactly the way a customer's hand will load it: the way it gets picked up, the way it gets carried, the way a small child will grab it. Go as far as a real hand goes and no further, and stop the instant anything bends, creaks, lifts or gives. That first complaint is the weakest point of your design, and hearing it does not cost you the unit. If one spot worries you so much that you would rather not load it at all, that worry is already your answer: write it down, then build that one part again out of off cuts and load the copy until it fails, so you know how much it takes.\n\nWrite down where it was. You now know your product's weakest point before a customer does, and that turns it from a surprise into a decision: strengthen it, redesign it, or leave it and say so honestly. All three are real answers. Not knowing is the only bad one."
+    },
+    {
+      "kind": "task",
+      "id": "s3-w05-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Load the finished unit once, the way a customer's hand will use it, and stop at the very first place it bends, creaks, lifts or gives; that spot is the weakest point of the design, and it gets written down, not guessed at.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "items": [
+            {
+              "t": "box",
+              "x": 120,
+              "y": 60,
+              "w": 120,
+              "h": 60,
+              "label": "your unit"
+            },
+            {
+              "t": "line",
+              "x1": 60,
+              "y1": 90,
+              "x2": 120,
+              "y2": 90,
+              "arrow": true,
+              "color": "rust",
+              "label": "load"
+            },
+            {
+              "t": "dot",
+              "cx": 200,
+              "cy": 60,
+              "label": "first complaint",
+              "side": "above"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 155,
+              "s": "stop the instant it bends, creaks, lifts or gives",
+              "size": 12
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 175,
+              "s": "write down where it complained first",
+              "size": 12
+            }
+          ]
+        }
+      },
+      "title": "Finish unit number one",
+      "body": "Sketch out on the table first, v0.1 from week 3 with its measurements and its materials list down the side. Build from the sketch, not from memory, and keep a pencil next to it the whole time.\n\nEvery time the real thing walks away from the drawing, mark it on the drawing while it is happening. A measurement that turned out wrong, a part you added because the first way did not hold, a step you did in a different order, a material you swapped because the first one was not in the shop. Cross the old thing out, write the new thing beside it, and do not tidy it up. A sketch full of crossings out is a record of what you learned. A clean sketch redrawn at the end is a story about a build that never happened.\n\nWhen the unit is finished, relabel the sketch v0.2 and write today's date on it. Version numbers are honest bookkeeping: v0.1 was the guess, v0.2 is what the guess turned into once material got involved.\n\nThen the prices. In week 3 you starred the prices you had actually looked up and left the guesses unstarred. Go down the list and write the real price beside every line, from the receipts, and cross out the guess next to it. Some guesses will have been close and some will be embarrassing, and the embarrassing ones are the useful ones, because they are the reason next week's price is going to be built out of numbers instead of hope. Keep the receipts together in one place; week 9 wants them.\n\nLast, the stress test from the science moment, on the finished unit. Load it once the way a customer will and stop at the first thing that bends, creaks, lifts or gives. Write down where it complained first, in one line, on the sketch.\n\nIf your product has an electronic part in it, this is the solder run, and last season's bench is already set up for it: hot end, damp sponge, one hand only, iron back in the stand between every joint. The battery lives in a holder that is fixed to the product, and no loose coin cell goes anywhere in this house, because there is a young child in it and coin cells are the one battery that seriously hurts a small child who swallows one.",
+      "checklist": [
+        "One unit is finished to the point where I would hand it to a stranger who has just paid me for it",
+        "Every place the real thing left the sketch is crossed out and rewritten on the sketch itself, and the sketch is relabelled v0.2 with today's date",
+        "Every line of the materials list carries a real price from a receipt, and every guess beside it is crossed out",
+        "The stress test ran on the finished unit, I stopped at the first thing that gave, and where it complained first is written on the sketch",
+        "If my product has a battery it sits in a fixed holder, and there is no loose coin cell anywhere in the house"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s3-w05-build-05",
+      "figure": {
+        "kind": "diagram",
+        "alt": "cost_sheet.py reads costs.txt line by line; the middle word, fixed or unit, decides which hand the amount goes into. An if branch adds it to the fixed hand, otherwise it adds to the per-unit hand, and both totals print only after the loop ends.",
+        "spec": {
+          "w": 360,
+          "h": 210,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 20,
+              "w": 110,
+              "h": 30,
+              "label": "costs.txt",
+              "sub": "name,kind,amount",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 130,
+              "y1": 35,
+              "x2": 112,
+              "y2": 58,
+              "arrow": true
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  165,
+                  40
+                ],
+                [
+                  220,
+                  60
+                ],
+                [
+                  165,
+                  80
+                ],
+                [
+                  110,
+                  60
+                ]
+              ],
+              "label": "kind is fixed?"
+            },
+            {
+              "t": "line",
+              "x1": 165,
+              "y1": 80,
+              "x2": 165,
+              "y2": 110,
+              "arrow": true,
+              "label": "yes"
+            },
+            {
+              "t": "box",
+              "x": 95,
+              "y": 110,
+              "w": 140,
+              "h": 30,
+              "label": "fixed += amt",
+              "fill": "accent"
+            },
+            {
+              "t": "line",
+              "x1": 220,
+              "y1": 60,
+              "x2": 295,
+              "y2": 60,
+              "arrow": true,
+              "label": "no"
+            },
+            {
+              "t": "line",
+              "x1": 295,
+              "y1": 60,
+              "x2": 295,
+              "y2": 110,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 225,
+              "y": 110,
+              "w": 125,
+              "h": 30,
+              "label": "per_unit += amt",
+              "fill": "accent"
+            },
+            {
+              "t": "line",
+              "x1": 165,
+              "y1": 140,
+              "x2": 195,
+              "y2": 165,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 295,
+              "y1": 140,
+              "x2": 235,
+              "y2": 165,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 110,
+              "y": 165,
+              "w": 180,
+              "h": 30,
+              "label": "print both totals",
+              "sub": "after loop ends",
+              "fill": "green"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 700,
+              "caption": "read a line from costs.txt",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "is the kind fixed?",
+              "set": {
+                "2": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "yes: add to the fixed pocket",
+              "set": {
+                "3": {
+                  "color": "accent"
+                },
+                "4": {
+                  "fill": "green"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "no: add to the per-unit pocket",
+              "set": {
+                "5": {
+                  "color": "accent"
+                },
+                "6": {
+                  "color": "accent"
+                },
+                "7": {
+                  "fill": "green"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "after every line, print both totals",
+              "set": {
+                "10": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "title": "Two pockets, then the program that does the splitting",
+      "body": "Paper before code, and this part is the part that matters.\n\nGo down the corrected materials list and put one word beside every single line: fixed or unit. Fixed means the cost happens once however many you make. Unit means the cost happens once for every single thing you sell. Beside each word write half a sentence saying why. If a line is genuinely both, split it into two lines, because the program cannot split it for you and neither can anybody else later.\n\nThe test that settles almost every argument: imagine making one more unit tomorrow. Does that cost happen again? If yes it is a unit cost. If no it is fixed.\n\nNow the file. In the season folder git has been watching since week 1, make a new file called costs.txt. One line per line of your list, three things separated by commas: the name, then the word fixed or the word unit, then the amount in dollars written with a dot and two digits, with no dollar sign in front of it. No spaces around the commas. Here is the shape, with made up names so you can see the punctuation:\n\nsign board,fixed,12.00\none unit of the main stuff,unit,3.00\n\nNow write cost_sheet.py yourself, before you look at anyone else's version. Spec: it reads costs.txt one line at a time, the same loop-over-data shape as readings.py in week 2, visit each line once and keep a running answer, except this time you keep two running answers, fixed so far and per-unit so far, and add each line's amount into whichever one its middle word names. Once every line is read, it prints the two totals, then asks how many units, then prints fixed plus per-unit times that many.\n\nTry it for real before you read on. Give it a real, focused 15 minutes; if it still is not running by then, move to the version below rather than losing the whole hour to one line of code. If you are stuck after a genuine attempt, here is one way to write it:\n\nfixed = 0.0\nper_unit = 0.0\nfor line in open('costs.txt'):\n    line = line.strip()\n    if line == '':\n        continue\n    name, kind, amount = line.split(',')\n    if kind == 'fixed':\n        fixed = fixed + float(amount)\n    else:\n        per_unit = per_unit + float(amount)\n\nprint('fixed costs', round(fixed, 2))\nprint('cost per unit', round(per_unit, 2))\n\nn = int(input('how many units? '))\nprint('total for', n, 'units', round(fixed + per_unit * n, 2))\n\nRead it out loud, whether it matches your own attempt or replaces it, saying what each hand is holding. Two hands this time, one per pocket, both starting empty at 0.0. Each line gets its ends trimmed, gets skipped if it is blank, and then gets cut at the commas into three pieces. The word in the middle piece decides which hand the money goes into. The two prints sit outside the loop, because a total announced before the last line has been read is not a total.\n\nRun it. With the two made up lines above, and 10 typed at the question, Python answers exactly this:\n\nfixed costs 12.0\ncost per unit 3.0\nhow many units? 10\ntotal for 10 units 42.0\n\nThat 12.0 with a nothing after the dot is not your program being sloppy. A Python number with a dot in it always prints with at least one digit after the dot, even when the digit is zero.\n\nNow the part nobody can do for you. Take the two printed totals and check them against your paper, by hand. Add your fixed lines up yourself and see if the first number matches. Add your unit lines up yourself and see if the second one matches. If the paper and the program disagree, one of you is wrong, and finding out which is the whole job. Watch out for the honest trap in the code: the program only treats a cost as fixed when the middle word is exactly fixed. Anything else, including Fixed with a capital F or a typo, quietly falls into the per unit pocket and the program never complains. That is why you check.\n\nThen run it three times: for 1 unit, for 10 units, and for the run size you actually plan to make. Look at the three answers next to each other and say out loud what happens to the fixed part as the run gets bigger, and what happens to the per unit part. Write that sentence in your journal. It is the whole of next week.\n\nFinish with a commit. git add both files, then git commit with a message that says why the file exists, not what you typed.",
+      "checklist": [
+        "Every line of my materials list has fixed or unit beside it on paper, with half a sentence saying why, written before any code",
+        "costs.txt has one line per material: name, then fixed or unit, then the amount with a dot and two digits, no dollar sign and no spaces around the commas",
+        "I wrote my own cost_sheet.py, starting from week two's loop-over-data shape, before I looked at the given code",
+        "I added up the fixed lines and the unit lines by hand and both totals matched what my program printed",
+        "costs.txt and cost_sheet.py are committed with a message that says why"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s3-w05-build-06",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. This week's usual suspects, all of them ordinary.\n\nPython says FileNotFoundError and names costs.txt. The file is not where the program is looking, which is the folder the program was run from. Same folder, same spelling, and capital letters count.\n\nPython says ValueError, not enough values to unpack, expected 3, got 2. A line in costs.txt has only one comma on it, so cutting it gives two pieces and the program wanted three. Find the short line. The opposite message, too many values to unpack, means a line has an extra comma, usually inside a name.\n\nPython says ValueError, could not convert string to float, and shows the thing it choked on in quotes. A dollar sign is still sitting in front of an amount, or the amount column is empty. Take the dollar sign out; the program adds no signs and needs none.\n\nYour fixed costs land in the per unit pocket. There is a space after the comma, so the middle piece is a space followed by fixed, which is not equal to fixed, and the else branch catches it. Write the lines with no spaces around the commas, or add the line kind = kind.strip() just after the split.\n\nPython says ValueError, invalid literal for int with base 10. You typed a word at the how many units question and int wants digits.\n\nPython says IndentationError and points at a line. Every line inside the for loop is indented by four spaces. Three lines go four spaces deeper than that, because each one sits inside something of its own: continue inside the first if, the fixed line inside the second if, and the per unit line inside the else.\n\nTake the round out of one of the prints and some totals suddenly grow a long tail, like 8.700000000000001, which is what 0.80 plus 7.90 really adds up to in there. That is not your bug and it is not a mistake. Computers store numbers with dots in them in a way that cannot hold some of them exactly, in the same way writing a third as 0.333 can never be finished. The round is what keeps that tail off your screen, which is exactly why it is there, so put it back. Week 9 will care about this properly, when the money is real and counted.\n\nAnd the one that is not a bug at all: the program prints 12.0 rather than 12. See the run above."
+    },
+    {
+      "kind": "artifact",
+      "id": "s3-w05-build-07",
+      "title": "Show it",
+      "prompt": "A photo of unit number one on a plain background, a photo of the v0.2 sketch with its crossings out and its real prices, your costs.txt and cost_sheet.py, and a photo of the three lines the program printed for the run size you actually plan.",
+      "accepts": ["photo", "code", "text"]
+    },
+    {
+      "kind": "log",
+      "id": "s3-w05-build-08",
+      "variant": "maker"
+    }
+  ]
+}

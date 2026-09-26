@@ -1,0 +1,2150 @@
+{
+  "id": "a2-polynomial-equations",
+  "idea": {
+    "body": "A polynomial's roots and its coefficients are linked two ways. The rational root theorem narrows the search. For a monic cubic, a rational root must divide the constant term, so you only test a short list instead of guessing forever. Once one root is found, dividing it out leaves a quadratic, which factors the ordinary way. Vieta's formulas go the other direction, reading facts about the roots straight from the coefficients with no solving at all. For x^3 + bx^2 + cx + d = 0, the sum of the roots is -b and the product is -d. Take x^3 - 6x^2 + 11x - 6 = 0, whose roots are 1, 2 and 3. They sum to 6, which matches -(-6), and multiply to 6, which matches -(-6)."
+  },
+  "workedExample": {
+    "prompt": "x^3 - 2x^2 - 5x + 6 = 0. Find all three roots.",
+    "steps": [
+      "Possible rational roots are factors of 6 over factors of 1: plus or minus 1, plus or minus 2, plus or minus 3, plus or minus 6.",
+      "Testing x = 1: 1 - 2 - 5 + 6 = 0, so x = 1 is a root.",
+      "Dividing the cubic by (x - 1) gives the quadratic x^2 - x - 6.",
+      "Factoring x^2 - x - 6 as (x - 3)(x + 2) gives roots 3 and -2.",
+      "The three roots are 1, 3 and -2."
+    ]
+  },
+  "ways": [
+    {
+      "id": "a2-polynomial-equations-w1",
+      "name": "The rational root list",
+      "when": "Use this to find which small integers might be roots before testing them.",
+      "steps": [
+        "x^3 - 6x^2 + 11x - 6 = 0. For a monic polynomial, possible rational roots divide the constant term.",
+        "The constant term is -6. Its factors are 1, 2, 3, 6.",
+        "Include negative factors too: the candidates are plus or minus 1, 2, 3, 6.",
+        "Test each one by substituting into the polynomial."
+      ],
+      "example": "x^3 - 6x^2 + 11x - 6 = 0. List possible rational roots.",
+      "answer": "plus or minus 1, plus or minus 2, plus or minus 3, plus or minus 6",
+      "trap": "Forgetting negative factors, or guessing blindly instead of testing from the list.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Factors of -6 over factors of leading coefficient 1.",
+        "spec": {
+          "w": 320,
+          "h": 168,
+          "items": [
+            {
+              "t": "text",
+              "x": 20,
+              "y": 28,
+              "s": "Factors of -6",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 28,
+              "s": "Factors of 1",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 54,
+              "s": "plus or minus 1",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 54,
+              "s": "1",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 80,
+              "s": "plus or minus 2",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 80,
+              "s": "1",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 106,
+              "s": "plus or minus 3",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 106,
+              "s": "1",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 132,
+              "s": "plus or minus 6",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 220,
+              "y": 132,
+              "s": "1",
+              "size": 11,
+              "anchor": "start"
+            },
+            {
+              "t": "line",
+              "x1": 16,
+              "y1": 36,
+              "x2": 300,
+              "y2": 36
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "List possible rational roots.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Possible rational roots divide the constant term.",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "The constant term is -6; factor 1.",
+              "set": {
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Include negative factors too.",
+              "set": {
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Test each candidate in the polynomial.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a2-polynomial-equations-w2",
+      "name": "Vieta's formulas",
+      "when": "Use this to read facts about roots straight from the coefficients without solving.",
+      "steps": [
+        "For x^3 - 6x^2 + 11x - 6 = 0, we have b = -6 and d = -6.",
+        "Vieta says the sum of the roots is -b: -(-6) = 6.",
+        "Vieta says the product of the roots is -d: -(-6) = 6.",
+        "The three roots add to 6 and multiply to 6, without solving."
+      ],
+      "example": "x^3 - 6x^2 + 11x - 6 = 0. What is the sum of the three roots?",
+      "answer": "6",
+      "trap": "Forgetting the negatives: sum is -b not b, and product is -d not d."
+    },
+    {
+      "id": "a2-polynomial-equations-w3",
+      "name": "Test and divide",
+      "when": "Use this when you find one root and want to factor out its corresponding linear factor.",
+      "steps": [
+        "Test x = 1 in x^3 - 6x^2 + 11x - 6: we get 0, so x = 1 is a root.",
+        "Divide the cubic by (x - 1) to get x^2 - 5x + 6.",
+        "Factor x^2 - 5x + 6 as (x - 2)(x - 3).",
+        "The three roots are 1, 2, 3."
+      ],
+      "example": "x^3 - 6x^2 + 11x - 6 = 0. Find all roots.",
+      "answer": "1, 2, 3",
+      "trap": "Making an arithmetic error when dividing, or forgetting to factor the resulting quadratic."
+    }
+  ],
+  "bank": [
+    {
+      "kind": "number",
+      "difficulty": 1,
+      "thinkMinutes": 3,
+      "prompt": "x^3 - 4x^2 - x + 4 = 0 has three roots. What is the sum of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "For a monic cubic x^3 + bx^2 + cx + d = 0, Vieta's formula gives the sum of the roots as -b.",
+        "Here b = -4, so the sum of the roots is 4."
+      ],
+      "hints": [
+        "Vieta's formula reads the sum of the roots straight from a coefficient, with no solving.",
+        "For x^3 + bx^2 + cx + d, the sum of the roots is -b."
+      ],
+      "socraticHint": "What is -b when b is the coefficient of x^2?",
+      "useAgain": "when you need a fact about a cubic's roots without solving for them.",
+      "variant": {
+        "prompt": "x^3 + 8x^2 + 9x - 18 = 0 has three roots. What is the sum of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "-8"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p01",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 1,
+      "thinkMinutes": 3,
+      "prompt": "x^3 + 6x^2 + 11x + 6 = 0 has three roots. What is the sum of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-6"
+      },
+      "explanation": [
+        "For a monic cubic x^3 + bx^2 + cx + d = 0, Vieta's formula gives the sum of the roots as -b.",
+        "Here b = 6, so the sum of the roots is -6."
+      ],
+      "hints": [
+        "Vieta's formula reads the sum of the roots straight from a coefficient, with no solving.",
+        "For x^3 + bx^2 + cx + d, the sum of the roots is -b."
+      ],
+      "socraticHint": "What is -b when b is the coefficient of x^2?",
+      "useAgain": "when you need a fact about a cubic's roots without solving for them.",
+      "variant": {
+        "prompt": "x^3 - 14x^2 + 63x - 90 = 0 has three roots. What is the sum of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "14"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p02",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 1,
+      "thinkMinutes": 3,
+      "prompt": "x^3 + x^2 - 26x + 24 = 0 has three roots. What is the sum of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "For a monic cubic x^3 + bx^2 + cx + d = 0, Vieta's formula gives the sum of the roots as -b.",
+        "Here b = 1, so the sum of the roots is -1."
+      ],
+      "hints": [
+        "Vieta's formula reads the sum of the roots straight from a coefficient, with no solving.",
+        "For x^3 + bx^2 + cx + d, the sum of the roots is -b."
+      ],
+      "socraticHint": "What is -b when b is the coefficient of x^2?",
+      "useAgain": "when you need a fact about a cubic's roots without solving for them.",
+      "variant": {
+        "prompt": "x^3 - 8x^2 + 9x + 18 = 0 has three roots. What is the sum of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p03",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 1,
+      "thinkMinutes": 3,
+      "prompt": "x^3 - 5x^2 - 4x + 20 = 0 has three roots. What is the sum of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "For a monic cubic x^3 + bx^2 + cx + d = 0, Vieta's formula gives the sum of the roots as -b.",
+        "Here b = -5, so the sum of the roots is 5."
+      ],
+      "hints": [
+        "Vieta's formula reads the sum of the roots straight from a coefficient, with no solving.",
+        "For x^3 + bx^2 + cx + d, the sum of the roots is -b."
+      ],
+      "socraticHint": "What is -b when b is the coefficient of x^2?",
+      "useAgain": "when you need a fact about a cubic's roots without solving for them.",
+      "variant": {
+        "prompt": "x^3 + 6x^2 - 9x - 54 = 0 has three roots. What is the sum of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "-6"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p04",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 1,
+      "thinkMinutes": 3,
+      "prompt": "x^3 - 9x^2 + 20x - 12 = 0 has three roots. What is the sum of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "For a monic cubic x^3 + bx^2 + cx + d = 0, Vieta's formula gives the sum of the roots as -b.",
+        "Here b = -9, so the sum of the roots is 9."
+      ],
+      "hints": [
+        "Vieta's formula reads the sum of the roots straight from a coefficient, with no solving.",
+        "For x^3 + bx^2 + cx + d, the sum of the roots is -b."
+      ],
+      "socraticHint": "What is -b when b is the coefficient of x^2?",
+      "useAgain": "when you need a fact about a cubic's roots without solving for them.",
+      "variant": {
+        "prompt": "x^3 - 3x^2 - 18x + 40 = 0 has three roots. What is the sum of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p05",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 1,
+      "thinkMinutes": 3,
+      "prompt": "x^3 - 3x^2 - 18x + 40 = 0 has three roots. What is the product of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-40"
+      },
+      "explanation": [
+        "For a monic cubic x^3 + bx^2 + cx + d = 0, Vieta's formula gives the product of the roots as -d.",
+        "Here d = 40, so the product of the roots is -40."
+      ],
+      "hints": [
+        "Vieta's formula also reads the product of the roots from a coefficient.",
+        "For x^3 + bx^2 + cx + d, the product of the roots is -d."
+      ],
+      "socraticHint": "What is -d when d is the constant term?",
+      "useAgain": "when you need the product of a cubic's roots without solving for them.",
+      "variant": {
+        "prompt": "x^3 + 4x^2 - 4x - 16 = 0 has three roots. What is the product of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p06",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 1,
+      "thinkMinutes": 3,
+      "prompt": "x^3 - 9x^2 + 23x - 15 = 0 has three roots. What is the product of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "For a monic cubic x^3 + bx^2 + cx + d = 0, Vieta's formula gives the product of the roots as -d.",
+        "Here d = -15, so the product of the roots is 15."
+      ],
+      "hints": [
+        "Vieta's formula also reads the product of the roots from a coefficient.",
+        "For x^3 + bx^2 + cx + d, the product of the roots is -d."
+      ],
+      "socraticHint": "What is -d when d is the constant term?",
+      "useAgain": "when you need the product of a cubic's roots without solving for them.",
+      "variant": {
+        "prompt": "x^3 + 4x^2 + x - 6 = 0 has three roots. What is the product of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p07",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 1,
+      "thinkMinutes": 3,
+      "prompt": "x^3 - 3x^2 - 13x + 15 = 0 has three roots. What is the product of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-15"
+      },
+      "explanation": [
+        "For a monic cubic x^3 + bx^2 + cx + d = 0, Vieta's formula gives the product of the roots as -d.",
+        "Here d = 15, so the product of the roots is -15."
+      ],
+      "hints": [
+        "Vieta's formula also reads the product of the roots from a coefficient.",
+        "For x^3 + bx^2 + cx + d, the product of the roots is -d."
+      ],
+      "socraticHint": "What is -d when d is the constant term?",
+      "useAgain": "when you need the product of a cubic's roots without solving for them.",
+      "variant": {
+        "prompt": "x^3 - 6x^2 + 5x + 12 = 0 has three roots. What is the product of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "-12"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p08",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 1,
+      "thinkMinutes": 3,
+      "prompt": "x^3 - 5x^2 + 2x + 8 = 0 has three roots. What is the product of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-8"
+      },
+      "explanation": [
+        "For a monic cubic x^3 + bx^2 + cx + d = 0, Vieta's formula gives the product of the roots as -d.",
+        "Here d = 8, so the product of the roots is -8."
+      ],
+      "hints": [
+        "Vieta's formula also reads the product of the roots from a coefficient.",
+        "For x^3 + bx^2 + cx + d, the product of the roots is -d."
+      ],
+      "socraticHint": "What is -d when d is the constant term?",
+      "useAgain": "when you need the product of a cubic's roots without solving for them.",
+      "variant": {
+        "prompt": "x^3 - 7x - 6 = 0 has three roots. What is the product of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p09",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "choice",
+      "difficulty": 1,
+      "thinkMinutes": 4,
+      "prompt": "x^3 - x^2 - 3x + 24 = 0. Which of these is NOT a possible rational root, by the rational root theorem?",
+      "options": [
+        "-5",
+        "2",
+        "6",
+        "-4"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The polynomial is monic, so a rational root's numerator and denominator must both divide into the constant term.",
+        "The constant term is 24, so a possible root must be one of its divisors, positive or negative.",
+        "-5 does not divide 24, so it cannot be a root by the theorem."
+      ],
+      "hints": [
+        "The rational root theorem restricts the candidates to divisors of the constant term when the leading coefficient is 1.",
+        "List the divisors of 24 and check which option is not among them."
+      ],
+      "socraticHint": "Does -5 divide evenly into 24?",
+      "useAgain": "when you need to list the only candidates worth testing as roots.",
+      "variant": {
+        "prompt": "x^3 - x^2 - x + 36 = 0. Which of these is NOT a possible rational root, by the rational root theorem?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "2",
+          "-6",
+          "5",
+          "9"
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p10",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "choice",
+      "difficulty": 1,
+      "thinkMinutes": 4,
+      "prompt": "x^3 + 2x^2 + 3x + 25 = 0. Which of these is NOT a possible rational root, by the rational root theorem?",
+      "options": [
+        "25",
+        "2",
+        "-1",
+        "-5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The polynomial is monic, so a rational root's numerator and denominator must both divide into the constant term.",
+        "The constant term is 25, so a possible root must be one of its divisors, positive or negative.",
+        "2 does not divide 25, so it cannot be a root by the theorem."
+      ],
+      "hints": [
+        "The rational root theorem restricts the candidates to divisors of the constant term when the leading coefficient is 1.",
+        "List the divisors of 25 and check which option is not among them."
+      ],
+      "socraticHint": "Does 2 divide evenly into 25?",
+      "useAgain": "when you need to list the only candidates worth testing as roots.",
+      "variant": {
+        "prompt": "x^3 + 3x^2 - 4x + 18 = 0. Which of these is NOT a possible rational root, by the rational root theorem?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "6",
+          "-9",
+          "18",
+          "-4"
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p11",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "truefalse",
+      "difficulty": 1,
+      "thinkMinutes": 3,
+      "prompt": "x^3 + 4x^2 - 25x - 100. Is x = -5 a root?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Substitute x = -5 into the polynomial and simplify.",
+        "The result is 0, so x = -5 is a root."
+      ],
+      "hints": [
+        "A value is a root exactly when substituting it makes the polynomial equal to 0.",
+        "Work out -5^3 first, then the -5^2 term, then the -5 term, then add the constant."
+      ],
+      "socraticHint": "Does the polynomial equal 0 at x = -5?",
+      "useAgain": "when you need to check a single candidate quickly instead of solving from scratch.",
+      "variant": {
+        "prompt": "x^3 - 3x^2 - 25x + 75. Is x = 4 a root?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p12",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "truefalse",
+      "difficulty": 1,
+      "thinkMinutes": 3,
+      "prompt": "x^3 - 3x^2 - 6x + 8. Is x = 5 a root?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Substitute x = 5 into the polynomial and simplify.",
+        "The result is 28, so x = 5 is not a root."
+      ],
+      "hints": [
+        "A value is a root exactly when substituting it makes the polynomial equal to 0.",
+        "Work out 5^3 first, then the 5^2 term, then the 5 term, then add the constant."
+      ],
+      "socraticHint": "Does the polynomial equal 0 at x = 5?",
+      "useAgain": "when you need to check a single candidate quickly instead of solving from scratch.",
+      "variant": {
+        "prompt": "x^3 + x^2 - 4x - 4. Is x = -2 a root?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p13",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "order",
+      "difficulty": 1,
+      "thinkMinutes": 4,
+      "prompt": "Put these steps for solving x^3 - 3x^2 - 6x + 8 = 0 in the correct order.",
+      "items": [
+        "Factor the quadratic to find the remaining two roots.",
+        "List the divisors of 8 as candidate roots.",
+        "Test a candidate: x = -2 makes the polynomial equal 0.",
+        "Divide the polynomial by (x + 2) to get a quadratic."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ]
+      },
+      "explanation": [
+        "List the candidates first, then test one, then reduce the polynomial by one degree, then finish the quadratic that is left.",
+        "For this cubic the roots are -2, 1 and 4."
+      ],
+      "hints": [
+        "The rational root theorem gives the candidate list before any testing starts.",
+        "Once one root is confirmed, dividing it out leaves a quadratic to factor."
+      ],
+      "socraticHint": "What has to happen before you can test a candidate?",
+      "useAgain": "when you need a plan for solving a cubic that does not factor by inspection.",
+      "variant": {
+        "prompt": "Put these steps for solving x^3 + 3x^2 - 10x - 24 = 0 in the correct order.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            2,
+            0,
+            1
+          ]
+        },
+        "items": [
+          "Divide the polynomial by (x + 4) to get a quadratic.",
+          "Factor the quadratic to find the remaining two roots.",
+          "Test a candidate: x = -4 makes the polynomial equal 0.",
+          "List the divisors of -24 as candidate roots."
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p14",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "order",
+      "difficulty": 1,
+      "thinkMinutes": 4,
+      "prompt": "Put these steps for solving x^3 - 13x - 12 = 0 in the correct order.",
+      "items": [
+        "Factor the quadratic to find the remaining two roots.",
+        "List the divisors of -12 as candidate roots.",
+        "Test a candidate: x = -3 makes the polynomial equal 0.",
+        "Divide the polynomial by (x + 3) to get a quadratic."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ]
+      },
+      "explanation": [
+        "List the candidates first, then test one, then reduce the polynomial by one degree, then finish the quadratic that is left.",
+        "For this cubic the roots are -3, -1 and 4."
+      ],
+      "hints": [
+        "The rational root theorem gives the candidate list before any testing starts.",
+        "Once one root is confirmed, dividing it out leaves a quadratic to factor."
+      ],
+      "socraticHint": "What has to happen before you can test a candidate?",
+      "useAgain": "when you need a plan for solving a cubic that does not factor by inspection.",
+      "variant": {
+        "prompt": "Put these steps for solving x^3 - 5x^2 + 2x + 8 = 0 in the correct order.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            3,
+            0
+          ]
+        },
+        "items": [
+          "Factor the quadratic to find the remaining two roots.",
+          "List the divisors of 8 as candidate roots.",
+          "Test a candidate: x = -1 makes the polynomial equal 0.",
+          "Divide the polynomial by (x + 1) to get a quadratic."
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p15",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 2,
+      "thinkMinutes": 4,
+      "prompt": "3x^3 - 3x^2 + x - 8 = 0 has three roots. What is the sum of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "For ax^3 + bx^2 + cx + d = 0, Vieta's formula gives the sum of the roots as -b/a.",
+        "Here a = 3 and b = -3, so the sum is 1."
+      ],
+      "hints": [
+        "When the leading coefficient is not 1, divide by it: the sum of the roots is -b/a.",
+        "Compute -(-3) / 3 and reduce."
+      ],
+      "socraticHint": "What is -b/a when a = 3 and b = -3?",
+      "useAgain": "when a cubic's leading coefficient is not 1 and you still need the sum of the roots.",
+      "variant": {
+        "prompt": "3x^3 - 8x^2 + 3x + 5 = 0 has three roots. What is the sum of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "8/3"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p16",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 2,
+      "thinkMinutes": 4,
+      "prompt": "3x^3 + 9x^2 + 2x - 7 = 0 has three roots. What is the sum of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-3"
+      },
+      "explanation": [
+        "For ax^3 + bx^2 + cx + d = 0, Vieta's formula gives the sum of the roots as -b/a.",
+        "Here a = 3 and b = 9, so the sum is -3."
+      ],
+      "hints": [
+        "When the leading coefficient is not 1, divide by it: the sum of the roots is -b/a.",
+        "Compute -(9) / 3 and reduce."
+      ],
+      "socraticHint": "What is -b/a when a = 3 and b = 9?",
+      "useAgain": "when a cubic's leading coefficient is not 1 and you still need the sum of the roots.",
+      "variant": {
+        "prompt": "2x^3 + 6x^2 + 4x - 7 = 0 has three roots. What is the sum of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "-3"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p17",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 2,
+      "thinkMinutes": 4,
+      "prompt": "3x^3 + 7x^2 + 9x + 1 = 0 has three roots. What is the sum of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-7/3"
+      },
+      "explanation": [
+        "For ax^3 + bx^2 + cx + d = 0, Vieta's formula gives the sum of the roots as -b/a.",
+        "Here a = 3 and b = 7, so the sum is -7/3."
+      ],
+      "hints": [
+        "When the leading coefficient is not 1, divide by it: the sum of the roots is -b/a.",
+        "Compute -(7) / 3 and reduce."
+      ],
+      "socraticHint": "What is -b/a when a = 3 and b = 7?",
+      "useAgain": "when a cubic's leading coefficient is not 1 and you still need the sum of the roots.",
+      "variant": {
+        "prompt": "2x^3 + 8x^2 + 5x + 6 = 0 has three roots. What is the sum of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "-4"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p18",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 2,
+      "thinkMinutes": 4,
+      "prompt": "4x^3 + 9x^2 - 5x - 2 = 0 has three roots. What is the product of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "1/2"
+      },
+      "explanation": [
+        "For ax^3 + bx^2 + cx + d = 0, Vieta's formula gives the product of the roots as -d/a.",
+        "Here a = 4 and d = -2, so the product is 1/2."
+      ],
+      "hints": [
+        "When the leading coefficient is not 1, divide by it: the product of the roots is -d/a.",
+        "Compute -(-2) / 4 and reduce."
+      ],
+      "socraticHint": "What is -d/a when a = 4 and d = -2?",
+      "useAgain": "when a cubic's leading coefficient is not 1 and you still need the product of the roots.",
+      "variant": {
+        "prompt": "4x^3 - 7x^2 + 6x + 3 = 0 has three roots. What is the product of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "-3/4"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p19",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 2,
+      "thinkMinutes": 4,
+      "prompt": "3x^3 - 2x^2 - 2x - 8 = 0 has three roots. What is the product of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "8/3"
+      },
+      "explanation": [
+        "For ax^3 + bx^2 + cx + d = 0, Vieta's formula gives the product of the roots as -d/a.",
+        "Here a = 3 and d = -8, so the product is 8/3."
+      ],
+      "hints": [
+        "When the leading coefficient is not 1, divide by it: the product of the roots is -d/a.",
+        "Compute -(-8) / 3 and reduce."
+      ],
+      "socraticHint": "What is -d/a when a = 3 and d = -8?",
+      "useAgain": "when a cubic's leading coefficient is not 1 and you still need the product of the roots.",
+      "variant": {
+        "prompt": "2x^3 - 2x^2 - 6x + 3 = 0 has three roots. What is the product of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "-3/2"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p20",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 2,
+      "thinkMinutes": 4,
+      "prompt": "4x^3 - 8x^2 + 4x + 4 = 0 has three roots. What is the product of the roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-1"
+      },
+      "explanation": [
+        "For ax^3 + bx^2 + cx + d = 0, Vieta's formula gives the product of the roots as -d/a.",
+        "Here a = 4 and d = 4, so the product is -1."
+      ],
+      "hints": [
+        "When the leading coefficient is not 1, divide by it: the product of the roots is -d/a.",
+        "Compute -(4) / 4 and reduce."
+      ],
+      "socraticHint": "What is -d/a when a = 4 and d = 4?",
+      "useAgain": "when a cubic's leading coefficient is not 1 and you still need the product of the roots.",
+      "variant": {
+        "prompt": "3x^3 + 2x^2 + 2x + 3 = 0 has three roots. What is the product of the roots?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p21",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "choice",
+      "difficulty": 2,
+      "thinkMinutes": 4,
+      "prompt": "What is the complete factorization of x^3 + 5x^2 - 29x - 105?",
+      "options": [
+        "(x - 7) (x + 3) (x - 5)",
+        "(x + 6) (x + 3) (x - 5)",
+        "(x + 7) (x + 3) (x + 5)",
+        "(x + 7) (x + 3) (x - 5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Testing small divisors of -105 finds the roots [-7, -3, 5].",
+        "Each root r gives a factor (x - r), and the three factors multiply back to the original cubic."
+      ],
+      "hints": [
+        "Use the rational root theorem to find one root, then divide it out and factor what remains.",
+        "The constant term is -105; its divisors are the only candidates worth testing."
+      ],
+      "socraticHint": "Does each factor's root, substituted in, make the polynomial 0?",
+      "useAgain": "when you need every factor of a cubic, not just one root.",
+      "variant": {
+        "prompt": "What is the complete factorization of x^3 + 8x^2 - 13x - 140?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "(x + 7) (x + 5) (x - 4)",
+          "(x - 7) (x + 5) (x - 4)",
+          "(x + 6) (x + 5) (x - 4)",
+          "(x + 7) (x + 5) (x + 4)"
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p22",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "choice",
+      "difficulty": 2,
+      "thinkMinutes": 4,
+      "prompt": "What is the complete factorization of x^3 + 8x^2 + 9x - 18?",
+      "options": [
+        "(x - 6) (x + 3) (x - 1)",
+        "(x + 5) (x + 3) (x - 1)",
+        "(x + 6) (x + 3) (x - 1)",
+        "(x + 6) (x + 3) (x + 1)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Testing small divisors of -18 finds the roots [-6, -3, 1].",
+        "Each root r gives a factor (x - r), and the three factors multiply back to the original cubic."
+      ],
+      "hints": [
+        "Use the rational root theorem to find one root, then divide it out and factor what remains.",
+        "The constant term is -18; its divisors are the only candidates worth testing."
+      ],
+      "socraticHint": "Does each factor's root, substituted in, make the polynomial 0?",
+      "useAgain": "when you need every factor of a cubic, not just one root.",
+      "variant": {
+        "prompt": "What is the complete factorization of x^3 + x^2 - 25x - 25?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "(x - 5) (x + 1) (x - 5)",
+          "(x + 5) (x + 1) (x - 5)",
+          "(x + 4) (x + 1) (x - 5)",
+          "(x + 5) (x + 1) (x + 5)"
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p23",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "choice",
+      "difficulty": 2,
+      "thinkMinutes": 4,
+      "prompt": "What is the complete factorization of x^3 + 7x^2 - 36?",
+      "options": [
+        "(x - 6) (x + 3) (x - 2)",
+        "(x + 5) (x + 3) (x - 2)",
+        "(x + 6) (x + 3) (x + 2)",
+        "(x + 6) (x + 3) (x - 2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Testing small divisors of -36 finds the roots [-6, -3, 2].",
+        "Each root r gives a factor (x - r), and the three factors multiply back to the original cubic."
+      ],
+      "hints": [
+        "Use the rational root theorem to find one root, then divide it out and factor what remains.",
+        "The constant term is -36; its divisors are the only candidates worth testing."
+      ],
+      "socraticHint": "Does each factor's root, substituted in, make the polynomial 0?",
+      "useAgain": "when you need every factor of a cubic, not just one root.",
+      "variant": {
+        "prompt": "What is the complete factorization of x^3 - 28x + 48?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "(x - 6) (x - 2) (x - 4)",
+          "(x + 6) (x - 2) (x - 4)",
+          "(x + 5) (x - 2) (x - 4)",
+          "(x + 6) (x - 2) (x + 4)"
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p24",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "choice",
+      "difficulty": 2,
+      "thinkMinutes": 4,
+      "prompt": "2x^3 - x^2 + 2x + 16 = 0. Which of these IS a possible rational root, by the rational root theorem?",
+      "options": [
+        "3",
+        "-20",
+        "2",
+        "-13"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "A rational root p/q must have p dividing the constant term 16 and q dividing the leading coefficient 2.",
+        "2 fits that pattern; the others do not."
+      ],
+      "hints": [
+        "Write the candidate as p over q: p divides the constant term, q divides the leading coefficient.",
+        "The constant term is 16 and the leading coefficient is 2."
+      ],
+      "socraticHint": "Can you write 2 as a divisor of 16 over a divisor of 2?",
+      "useAgain": "when the leading coefficient is not 1 and the candidate list needs both p and q.",
+      "variant": {
+        "prompt": "2x^3 - 3x^2 + 4x + 16 = 0. Which of these IS a possible rational root, by the rational root theorem?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "4",
+          "19",
+          "6",
+          "-5"
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p25",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "choice",
+      "difficulty": 2,
+      "thinkMinutes": 4,
+      "prompt": "2x^3 - x^2 - x + 6 = 0. Which of these IS a possible rational root, by the rational root theorem?",
+      "options": [
+        "-4",
+        "6",
+        "9",
+        "-9"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "A rational root p/q must have p dividing the constant term 6 and q dividing the leading coefficient 2.",
+        "6 fits that pattern; the others do not."
+      ],
+      "hints": [
+        "Write the candidate as p over q: p divides the constant term, q divides the leading coefficient.",
+        "The constant term is 6 and the leading coefficient is 2."
+      ],
+      "socraticHint": "Can you write 6 as a divisor of 6 over a divisor of 2?",
+      "useAgain": "when the leading coefficient is not 1 and the candidate list needs both p and q.",
+      "variant": {
+        "prompt": "2x^3 + 3x^2 - 4x + 25 = 0. Which of these IS a possible rational root, by the rational root theorem?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "28",
+          "11",
+          "27",
+          "1/2"
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p26",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 2,
+      "thinkMinutes": 5,
+      "prompt": "x^4 - 5x^2 + 4 = 0. How many real solutions does this equation have?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Let u = x^2. The equation becomes u^2 - 5u + 4 = 0.",
+        "That factors as (u - 1)(u - 4) = 0, and both u = 1 and u = 4 are positive.",
+        "Each positive u gives two real x values, so x = plus or minus sqrt(1) and x = plus or minus sqrt(4) give four real solutions in all."
+      ],
+      "hints": [
+        "Substitute u = x^2 to turn the quartic into a quadratic in u.",
+        "Each positive value of u gives two real values of x; a negative value of u gives none."
+      ],
+      "socraticHint": "After solving for u, which values of u are positive?",
+      "useAgain": "when a quartic has only even powers of x and substitution turns it into a quadratic.",
+      "variant": {
+        "prompt": "x^4 - 6x^2 + 8 = 0. How many real solutions does this equation have?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p27",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 2,
+      "thinkMinutes": 5,
+      "prompt": "x^4 + 4x^2 - 5 = 0. How many real solutions does this equation have?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Let u = x^2. The equation becomes u^2 + 4u - 5 = 0.",
+        "That factors as (u - 1)(u + 5) = 0, so u = 1 or u = -5.",
+        "Only u = 1 is positive; u = -5 gives no real x, so there are two real solutions."
+      ],
+      "hints": [
+        "Substitute u = x^2 to turn the quartic into a quadratic in u.",
+        "Each positive value of u gives two real values of x; a negative value of u gives none."
+      ],
+      "socraticHint": "After solving for u, which values of u are positive?",
+      "useAgain": "when a quartic has only even powers of x and substitution turns it into a quadratic.",
+      "variant": {
+        "prompt": "x^4 + 2x^2 - 24 = 0. How many real solutions does this equation have?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p28",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "choice",
+      "difficulty": 2,
+      "thinkMinutes": 5,
+      "prompt": "x^3 - 2x^2 - 5x + 6 = 0 has a root at x = -2. What are the other two roots?",
+      "options": [
+        "x = 1 or x = 3",
+        "x = -1 or x = 3",
+        "x = 1 or x = -3",
+        "x = 2 or x = 3"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Dividing the cubic by (x + 2) leaves a quadratic.",
+        "That quadratic factors to give the roots [1, 3]."
+      ],
+      "hints": [
+        "Divide the known root out first; what is left is a quadratic, which is easier to factor.",
+        "Divide x^3 - 2x^2 - 5x + 6 by (x + 2)."
+      ],
+      "socraticHint": "What quadratic remains once (x + 2) is divided out?",
+      "useAgain": "when one root is already known and the rest is a quadratic away.",
+      "variant": {
+        "prompt": "x^3 + 6x^2 - 7x - 60 = 0 has a root at x = -5. What are the other two roots?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "x = 4 or x = 3",
+          "x = -4 or x = -3",
+          "x = -4 or x = 3",
+          "x = -3 or x = 3"
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p29",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "truefalse",
+      "difficulty": 2,
+      "thinkMinutes": 4,
+      "prompt": "2x^3 - 6x^2 + 6x - 3. Is x = 1 a root?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Substitute x = 1: the polynomial evaluates to -1.",
+        "So x = 1 is not a root."
+      ],
+      "hints": [
+        "Substitute the value in for x and simplify completely, including the leading coefficient.",
+        "Work out 2(1)^3 first, then add the rest term by term."
+      ],
+      "socraticHint": "Does the polynomial equal 0 at x = 1?",
+      "useAgain": "when you need to check a single candidate root quickly.",
+      "variant": {
+        "prompt": "2x^3 + 3x^2 + 3x - 5. Is x = 2 a root?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p30",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^3 - 31x - 30 = 0 has roots r, s and t. What is r^2 + s^2 + t^2?",
+      "answer": {
+        "kind": "number",
+        "value": "62"
+      },
+      "explanation": [
+        "r^2 + s^2 + t^2 equals (r + s + t)^2 minus twice the sum of the products taken two at a time.",
+        "The sum of the roots is 0 and the sum of pairwise products is -31.",
+        "So the answer is 0^2 - 2(-31) = 62.",
+        "This trap catches anyone who forgets the minus twice the pairwise sum."
+      ],
+      "hints": [
+        "Square the sum of the roots, then subtract twice the sum of the pairwise products, both from Vieta's formulas.",
+        "The sum of the roots is -b = 0 and the sum of pairwise products is c = -31."
+      ],
+      "socraticHint": "What identity connects the sum of squares to the sum and the pairwise sum?",
+      "useAgain": "when you need a power sum of the roots without solving the cubic.",
+      "variant": {
+        "prompt": "x^3 - 4x^2 - 11x + 30 = 0 has roots r, s and t. What is r^2 + s^2 + t^2?",
+        "answer": {
+          "kind": "number",
+          "value": "38"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p31",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^3 + 8x^2 + 9x - 18 = 0 has roots r, s and t. What is r^2 + s^2 + t^2?",
+      "answer": {
+        "kind": "number",
+        "value": "46"
+      },
+      "explanation": [
+        "r^2 + s^2 + t^2 equals (r + s + t)^2 minus twice the sum of the products taken two at a time.",
+        "The sum of the roots is -8 and the sum of pairwise products is 9.",
+        "So the answer is -8^2 - 2(9) = 46.",
+        "This trap catches anyone who forgets the minus twice the pairwise sum."
+      ],
+      "hints": [
+        "Square the sum of the roots, then subtract twice the sum of the pairwise products, both from Vieta's formulas.",
+        "The sum of the roots is -b = -8 and the sum of pairwise products is c = 9."
+      ],
+      "socraticHint": "What identity connects the sum of squares to the sum and the pairwise sum?",
+      "useAgain": "when you need a power sum of the roots without solving the cubic.",
+      "variant": {
+        "prompt": "x^3 + 6x^2 - 25x - 150 = 0 has roots r, s and t. What is r^2 + s^2 + t^2?",
+        "answer": {
+          "kind": "number",
+          "value": "86"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p32",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^3 + x^2 - 4x - 4 = 0 has roots r, s and t. What is r^2 + s^2 + t^2?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "r^2 + s^2 + t^2 equals (r + s + t)^2 minus twice the sum of the products taken two at a time.",
+        "The sum of the roots is -1 and the sum of pairwise products is -4.",
+        "So the answer is -1^2 - 2(-4) = 9.",
+        "This trap catches anyone who forgets the minus twice the pairwise sum."
+      ],
+      "hints": [
+        "Square the sum of the roots, then subtract twice the sum of the pairwise products, both from Vieta's formulas.",
+        "The sum of the roots is -b = -1 and the sum of pairwise products is c = -4."
+      ],
+      "socraticHint": "What identity connects the sum of squares to the sum and the pairwise sum?",
+      "useAgain": "when you need a power sum of the roots without solving the cubic.",
+      "variant": {
+        "prompt": "x^3 + 5x^2 - 8x - 12 = 0 has roots r, s and t. What is r^2 + s^2 + t^2?",
+        "answer": {
+          "kind": "number",
+          "value": "41"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p33",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^3 - 6x^2 - 25x + 150 = 0 has roots r, s and t. What is r^2 + s^2 + t^2?",
+      "answer": {
+        "kind": "number",
+        "value": "86"
+      },
+      "explanation": [
+        "r^2 + s^2 + t^2 equals (r + s + t)^2 minus twice the sum of the products taken two at a time.",
+        "The sum of the roots is 6 and the sum of pairwise products is -25.",
+        "So the answer is 6^2 - 2(-25) = 86.",
+        "This trap catches anyone who forgets the minus twice the pairwise sum."
+      ],
+      "hints": [
+        "Square the sum of the roots, then subtract twice the sum of the pairwise products, both from Vieta's formulas.",
+        "The sum of the roots is -b = 6 and the sum of pairwise products is c = -25."
+      ],
+      "socraticHint": "What identity connects the sum of squares to the sum and the pairwise sum?",
+      "useAgain": "when you need a power sum of the roots without solving the cubic.",
+      "variant": {
+        "prompt": "x^3 + 3x^2 - 25x - 75 = 0 has roots r, s and t. What is r^2 + s^2 + t^2?",
+        "answer": {
+          "kind": "number",
+          "value": "59"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p34",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^4 - 2x^3 + x^2 - 4x + 4 = 0 has four roots, two of them real and two not real. What is the sum of all four roots?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Vieta's formula for the sum of all the roots of a quartic still uses only the coefficients, real roots or not.",
+        "For x^4 + bx^3 + cx^2 + dx + e, the sum of all four roots is -b, here 2."
+      ],
+      "hints": [
+        "Vieta's formulas hold for every root of the polynomial, including ones that are not real.",
+        "You never have to find the non-real roots to answer this: read the coefficient directly."
+      ],
+      "socraticHint": "Does Vieta's formula care whether a root is real?",
+      "useAgain": "when a quartic has roots that are not all real and you still need their sum.",
+      "variant": {
+        "prompt": "x^4 - 6x^3 + 5x^2 - 4x + 20 = 0 has four roots, two of them real and two not real. What is the sum of all four roots?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p35",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^4 + 5x^3 - 5x^2 - 37x - 60 = 0 has four roots, two of them real and two not real. What is the product of all four roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-60"
+      },
+      "explanation": [
+        "Vieta's formula for the product of all the roots of a quartic is the constant term, since (-1)^4 = 1.",
+        "For x^4 + bx^3 + cx^2 + dx + e, the product of all four roots is e, here -60."
+      ],
+      "hints": [
+        "Vieta's formulas hold for every root of the polynomial, including ones that are not real.",
+        "You never have to find the non-real roots to answer this: read the coefficient directly."
+      ],
+      "socraticHint": "Does Vieta's formula care whether a root is real?",
+      "useAgain": "when a quartic has roots that are not all real and you still need their product.",
+      "variant": {
+        "prompt": "x^4 + 2x^3 - 4x^2 - 5x - 6 = 0 has four roots, two of them real and two not real. What is the product of all four roots?",
+        "answer": {
+          "kind": "number",
+          "value": "-6"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p36",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^4 - 10x^2 - 15x - 36 = 0 has four roots, two of them real and two not real. What is the sum of all four roots?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "Vieta's formula for the sum of all the roots of a quartic still uses only the coefficients, real roots or not.",
+        "For x^4 + bx^3 + cx^2 + dx + e, the sum of all four roots is -b, here 0."
+      ],
+      "hints": [
+        "Vieta's formulas hold for every root of the polynomial, including ones that are not real.",
+        "You never have to find the non-real roots to answer this: read the coefficient directly."
+      ],
+      "socraticHint": "Does Vieta's formula care whether a root is real?",
+      "useAgain": "when a quartic has roots that are not all real and you still need their sum.",
+      "variant": {
+        "prompt": "x^4 + 6x^3 + 8x^2 - 3x - 12 = 0 has four roots, two of them real and two not real. What is the sum of all four roots?",
+        "answer": {
+          "kind": "number",
+          "value": "-6"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p37",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^4 + 2x^3 - 7x^2 - 18x - 18 = 0 has four roots, two of them real and two not real. What is the product of all four roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-18"
+      },
+      "explanation": [
+        "Vieta's formula for the product of all the roots of a quartic is the constant term, since (-1)^4 = 1.",
+        "For x^4 + bx^3 + cx^2 + dx + e, the product of all four roots is e, here -18."
+      ],
+      "hints": [
+        "Vieta's formulas hold for every root of the polynomial, including ones that are not real.",
+        "You never have to find the non-real roots to answer this: read the coefficient directly."
+      ],
+      "socraticHint": "Does Vieta's formula care whether a root is real?",
+      "useAgain": "when a quartic has roots that are not all real and you still need their product.",
+      "variant": {
+        "prompt": "x^4 + 7x^3 + 17x^2 + 23x + 12 = 0 has four roots, two of them real and two not real. What is the product of all four roots?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p38",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "choice",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "What is the complete factorization of x^4 - 41x^2 + 400 over the integers?",
+      "options": [
+        "(x - 4)(x + 4)(x - 6)(x + 6)",
+        "(x - 4)(x + 4)(x - 5)(x + 5)",
+        "(x - 16)(x - 25)",
+        "(x^2 - 4)(x - 5)(x + 5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Substituting u = x^2 turns this into u^2 - 41u + 400, which factors as (u - 16)(u - 25).",
+        "Each factor (x^2 - 16) and (x^2 - 25) is itself a difference of squares, since 16 and 25 are perfect squares.",
+        "A quartic that is a quadratic in disguise still needs both layers of factoring finished."
+      ],
+      "hints": [
+        "Substitute u = x^2 first; factor the resulting quadratic in u.",
+        "Each factor of the form x^2 - k, with k a perfect square, is a difference of squares."
+      ],
+      "socraticHint": "Are 16 and 25 perfect squares?",
+      "useAgain": "when a quartic has only even powers and factors like a quadratic twice over.",
+      "variant": {
+        "prompt": "What is the complete factorization of x^4 - 17x^2 + 16 over the integers?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "(x - 1)(x + 1)(x - 4)(x + 4)",
+          "(x - 1)(x + 1)(x - 5)(x + 5)",
+          "(x - 1)(x - 16)",
+          "(x^2 - 1)(x - 4)(x + 4)"
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p39",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "choice",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "What is the complete factorization of x^4 - 25x^2 + 144 over the integers?",
+      "options": [
+        "(x - 3)(x + 3)(x - 5)(x + 5)",
+        "(x - 9)(x - 16)",
+        "(x - 3)(x + 3)(x - 4)(x + 4)",
+        "(x^2 - 3)(x - 4)(x + 4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Substituting u = x^2 turns this into u^2 - 25u + 144, which factors as (u - 9)(u - 16).",
+        "Each factor (x^2 - 9) and (x^2 - 16) is itself a difference of squares, since 9 and 16 are perfect squares.",
+        "A quartic that is a quadratic in disguise still needs both layers of factoring finished."
+      ],
+      "hints": [
+        "Substitute u = x^2 first; factor the resulting quadratic in u.",
+        "Each factor of the form x^2 - k, with k a perfect square, is a difference of squares."
+      ],
+      "socraticHint": "Are 9 and 16 perfect squares?",
+      "useAgain": "when a quartic has only even powers and factors like a quadratic twice over.",
+      "variant": {
+        "prompt": "What is the complete factorization of x^4 - 40x^2 + 144 over the integers?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "(x - 2)(x + 2)(x - 7)(x + 7)",
+          "(x - 4)(x - 36)",
+          "(x^2 - 2)(x - 6)(x + 6)",
+          "(x - 2)(x + 2)(x - 6)(x + 6)"
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p40",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "choice",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "What is the complete factorization of x^4 - 26x^2 + 25 over the integers?",
+      "options": [
+        "(x - 1)(x + 1)(x - 6)(x + 6)",
+        "(x - 1)(x - 25)",
+        "(x^2 - 1)(x - 5)(x + 5)",
+        "(x - 1)(x + 1)(x - 5)(x + 5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Substituting u = x^2 turns this into u^2 - 26u + 25, which factors as (u - 1)(u - 25).",
+        "Each factor (x^2 - 1) and (x^2 - 25) is itself a difference of squares, since 1 and 25 are perfect squares.",
+        "A quartic that is a quadratic in disguise still needs both layers of factoring finished."
+      ],
+      "hints": [
+        "Substitute u = x^2 first; factor the resulting quadratic in u.",
+        "Each factor of the form x^2 - k, with k a perfect square, is a difference of squares."
+      ],
+      "socraticHint": "Are 1 and 25 perfect squares?",
+      "useAgain": "when a quartic has only even powers and factors like a quadratic twice over.",
+      "variant": {
+        "prompt": "What is the complete factorization of x^4 - 61x^2 + 900 over the integers?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "(x - 5)(x + 5)(x - 7)(x + 7)",
+          "(x - 25)(x - 36)",
+          "(x - 5)(x + 5)(x - 6)(x + 6)",
+          "(x^2 - 5)(x - 6)(x + 6)"
+        ]
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p41",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^3 + 9x^2 + 14x - 24 = 0 has roots r, s and t, all nonzero. What is 1/r + 1/s + 1/t?",
+      "answer": {
+        "kind": "number",
+        "value": "7/12"
+      },
+      "explanation": [
+        "Writing the reciprocals over a common denominator gives (st + rt + rs) / (rst).",
+        "The numerator is the sum of the pairwise products and the denominator is the product of all three roots, both from Vieta's formulas.",
+        "That is 14 / 24 = 7/12."
+      ],
+      "hints": [
+        "Combine the reciprocals over the common denominator rst first.",
+        "The resulting numerator and denominator are both Vieta sums you already know how to read off."
+      ],
+      "socraticHint": "What do the sum of pairwise products and the product of the roots have to do with a sum of reciprocals?",
+      "useAgain": "when you need a sum built from the roots that is not itself the sum or the product.",
+      "variant": {
+        "prompt": "x^3 + 5x^2 - 18x - 72 = 0 has roots r, s and t, all nonzero. What is 1/r + 1/s + 1/t?",
+        "answer": {
+          "kind": "number",
+          "value": "-1/4"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p42",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^3 + 2x^2 - 33x - 90 = 0 has roots r, s and t, all nonzero. What is 1/r + 1/s + 1/t?",
+      "answer": {
+        "kind": "number",
+        "value": "-11/30"
+      },
+      "explanation": [
+        "Writing the reciprocals over a common denominator gives (st + rt + rs) / (rst).",
+        "The numerator is the sum of the pairwise products and the denominator is the product of all three roots, both from Vieta's formulas.",
+        "That is -33 / 90 = -11/30."
+      ],
+      "hints": [
+        "Combine the reciprocals over the common denominator rst first.",
+        "The resulting numerator and denominator are both Vieta sums you already know how to read off."
+      ],
+      "socraticHint": "What do the sum of pairwise products and the product of the roots have to do with a sum of reciprocals?",
+      "useAgain": "when you need a sum built from the roots that is not itself the sum or the product.",
+      "variant": {
+        "prompt": "x^3 - x^2 - 17x - 15 = 0 has roots r, s and t, all nonzero. What is 1/r + 1/s + 1/t?",
+        "answer": {
+          "kind": "number",
+          "value": "-17/15"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p43",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^3 + 2x^2 - 36x - 72 = 0 has roots r, s and t, all nonzero. What is 1/r + 1/s + 1/t?",
+      "answer": {
+        "kind": "number",
+        "value": "-1/2"
+      },
+      "explanation": [
+        "Writing the reciprocals over a common denominator gives (st + rt + rs) / (rst).",
+        "The numerator is the sum of the pairwise products and the denominator is the product of all three roots, both from Vieta's formulas.",
+        "That is -36 / 72 = -1/2."
+      ],
+      "hints": [
+        "Combine the reciprocals over the common denominator rst first.",
+        "The resulting numerator and denominator are both Vieta sums you already know how to read off."
+      ],
+      "socraticHint": "What do the sum of pairwise products and the product of the roots have to do with a sum of reciprocals?",
+      "useAgain": "when you need a sum built from the roots that is not itself the sum or the product.",
+      "variant": {
+        "prompt": "x^3 + x^2 - 16x - 16 = 0 has roots r, s and t, all nonzero. What is 1/r + 1/s + 1/t?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p44",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "truefalse",
+      "difficulty": 3,
+      "thinkMinutes": 5,
+      "prompt": "x^4 - 2x^3 - 7x^2 + 20x - 12 = 0. Does this equation have at least one root that is not a real number?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "The quartic factors as (x^2 - 3x + 2)(x + 3)(x - 2).",
+        "The quadratic factor x^2 - 3x + 2 has a nonnegative discriminant, so all four roots are real."
+      ],
+      "hints": [
+        "Every quadratic factor's own discriminant decides whether its two roots are real.",
+        "The discriminant of x^2 - 3x + 2 is 9 - 8."
+      ],
+      "socraticHint": "Is the discriminant of that quadratic factor negative?",
+      "useAgain": "when you need to know if a factor hides non-real roots before solving it.",
+      "variant": {
+        "prompt": "x^4 + 4x^3 + 2x^2 - 4x - 3 = 0. Does this equation have at least one root that is not a real number?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p45",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    }
+  ],
+  "stretch": [
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^3 - 9x^2 + 26x - k = 0 has three positive integer roots. What is k?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "The roots sum to 9 and their pairwise products sum to 26, from the x^2 and x coefficients.",
+        "Checking small positive integer triples with that sum and pairwise-product total, only 2, 3, 4 works.",
+        "k is the product of the roots, 2 times 3 times 4, which is 24."
+      ],
+      "hints": [
+        "The x^2 coefficient gives the sum of the roots and the x coefficient gives the sum of their pairwise products.",
+        "Look for three positive integers that sum to 9 with pairwise products summing to 26."
+      ],
+      "socraticHint": "Which three positive integers sum to 9?",
+      "useAgain": "when a cubic's roots are known to be a special kind of number, like positive integers.",
+      "variant": {
+        "prompt": "x^3 - 12x^2 + 44x - k = 0 has three positive integer roots. What is k?",
+        "answer": {
+          "kind": "number",
+          "value": "48"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p46",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "A monic cubic has three roots that are consecutive integers, summing to 12. What is its x^2 coefficient?",
+      "answer": {
+        "kind": "number",
+        "value": "-12"
+      },
+      "explanation": [
+        "Three consecutive integers summing to 12 must be 3, 4 and 5, since the middle one is a third of the sum.",
+        "The x^2 coefficient of a monic cubic is the negative of the sum of the roots.",
+        "That is -12."
+      ],
+      "hints": [
+        "Consecutive integers n - 1, n, n + 1 sum to 3n, so the middle root is the sum divided by 3.",
+        "Divide 12 by 3 to find the middle root, then use -b = sum of roots."
+      ],
+      "socraticHint": "If the three consecutive integers are n - 1, n and n + 1, what is their sum in terms of n?",
+      "useAgain": "when the roots are described by a pattern instead of given directly.",
+      "variant": {
+        "prompt": "A monic cubic has three roots that are consecutive integers, summing to 21. What is its x^2 coefficient?",
+        "answer": {
+          "kind": "number",
+          "value": "-21"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p47",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "3x^3 - 18x^2 + 33x - 18 = 0 has roots r, s and t. What is r^2 + s^2 + t^2?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "For a non-monic cubic, the sum of the roots is -b/a and the sum of pairwise products is c/a.",
+        "Here that sum is 6 and that pairwise sum is 11.",
+        "r^2 + s^2 + t^2 = (6)^2 - 2(11) = 14."
+      ],
+      "hints": [
+        "Divide by the leading coefficient first to get -b/a and c/a, then use the same squared-minus-twice identity.",
+        "a = 3, b = -18, c = 33."
+      ],
+      "socraticHint": "Does the sum-of-squares identity change when the cubic is not monic?",
+      "useAgain": "when the cubic is not monic and you still need a power sum of the roots.",
+      "variant": {
+        "prompt": "2x^3 - 16x^2 + 34x - 20 = 0 has roots r, s and t. What is r^2 + s^2 + t^2?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p48",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^4 + 3x^3 - x^2 + 7x - 12 = 0. How many integers are possible rational roots, by the rational root theorem?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "The polynomial is monic, so a possible rational root is an integer divisor of 12.",
+        "12 has 6 positive divisors, so counting negatives too gives 12 candidates."
+      ],
+      "hints": [
+        "For a monic polynomial, the candidates are exactly the divisors of the constant term, positive and negative.",
+        "List the positive divisors of 12 first, then double the count for the negatives."
+      ],
+      "socraticHint": "How many positive divisors does 12 have?",
+      "useAgain": "when you need to count candidates rather than find one.",
+      "variant": {
+        "prompt": "x^4 - 5x^3 + 2x^2 - x + 18 = 0. How many integers are possible rational roots, by the rational root theorem?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p49",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    },
+    {
+      "kind": "number",
+      "difficulty": 3,
+      "thinkMinutes": 6,
+      "prompt": "x^3 + kx - 10 = 0 has a root at x = 2. What is the sum of the other two roots?",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Substituting x = 2 finds k: 8 + 2k - 10 = 0, so k = 1.",
+        "Dividing x^3 + x - 10 by (x - 2) leaves the quadratic x^2 + 2x + 5.",
+        "The sum of that quadratic's two roots is -2, its own x^2-to-x coefficient ratio, even though neither root is real."
+      ],
+      "hints": [
+        "Use the known root to pin down k first.",
+        "Divide the known root out; the sum of what is left follows from the quadratic's own coefficients."
+      ],
+      "socraticHint": "Once k is known and the known root is divided out, what quadratic remains?",
+      "useAgain": "when one root and an unknown coefficient are both given, and the answer is about the roots you have not found.",
+      "variant": {
+        "prompt": "x^3 + kx - 6 = 0 has a root at x = 1. What is the sum of the other two roots?",
+        "answer": {
+          "kind": "number",
+          "value": "-1"
+        }
+      },
+      "skills": [
+        "think.skills.polynomials",
+        "think.skills.factoring"
+      ],
+      "id": "ladder-a2-polynomial-equations-p50",
+      "lane": "skills",
+      "ideaId": "a2-polynomial-equations"
+    }
+  ]
+}

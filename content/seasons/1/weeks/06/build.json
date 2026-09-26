@@ -1,0 +1,416 @@
+{
+  "id": "s1-w06-build",
+  "season": 1,
+  "week": 6,
+  "track": "build",
+  "title": "Follow the line",
+  "summary": "Tape a track on the floor and teach mBot to follow it using its line follower sensor.",
+  "minutes": 60,
+  "sittings": 2,
+  "materials": [
+    "mBot v1.2",
+    "USB cable",
+    "mBot's battery, charged, or 4 AA batteries",
+    "laptop with Chrome",
+    "mBlock",
+    "black electrical tape",
+    "2 sheets of white poster board, or a bare, plain-colored floor",
+    "tape measure",
+    "pencil"
+  ],
+  "skills": [
+    "build.conditionals",
+    "build.sensors"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s1-w06-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop again: ask, imagine, plan, build, test, fix. This week the robot has to make its own decisions instead of just replaying a fixed set of moves.\n\nAsk: what should the robot do if it drifts off the path it is supposed to follow? A square you drove last week never changes its mind. It just repeats the same forward and turn commands no matter what happens on the floor. A line follower is different: it has to look at the world and react.\n\nImagine before you build. Stick a strip of black electrical tape on white poster board, or onto a bare, plain-coloured floor. Curve it into a loose loop with a couple of gentle turns. Picture mBot sitting on the line with a sensor on each side. As long as both sensors see white paper, mBot drives forward. The moment one side drifts onto the black tape, that side needs to correct.\n\nPlan the pieces before you open mBlock:\n\n1. A way to read what each side of the line follower sensor currently sees.\n2. A check that runs over and over, forever, comparing the left side to the right side.\n3. Three things mBot can do depending on the result: turn left, turn right, or keep driving straight.\n4. A prediction: how short a wait between checks lets mBot correct itself before it drifts too far?"
+    },
+    {
+      "kind": "typing",
+      "id": "s1-w06-build-02",
+      "minutes": 5,
+      "body": "Five more minutes on the same site you used last week. Warm up on the home row again, a s d f and j k l semicolon, then spend the rest of the time on four more symbols Python code leans on: [ ] { } , the square brackets and curly braces you will meet once you start writing lists and blocks of your own, and the comma that separates one thing from the next inside them. Try to find each one without looking down at the keyboard."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w06-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two sensors, one shining its beam down over white paper and one over black tape. Over the white paper the light bounces back up to the sensor, reading white. Over the black tape the beam has no return arrow, because the tape absorbs it, reading black.",
+        "spec": {
+          "w": 360,
+          "h": 225,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 40,
+              "y": 20,
+              "w": 80,
+              "h": 30,
+              "label": "sensor",
+              "sub": "emitter + receiver"
+            },
+            {
+              "t": "box",
+              "x": 240,
+              "y": 20,
+              "w": 80,
+              "h": 30,
+              "label": "sensor",
+              "sub": "emitter + receiver"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 150,
+              "w": 120,
+              "h": 40,
+              "label": "white paper",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 220,
+              "y": 150,
+              "w": 120,
+              "h": 40,
+              "label": "black tape",
+              "fill": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 70,
+              "y1": 60,
+              "x2": 70,
+              "y2": 150,
+              "arrow": true,
+              "color": "accent"
+            },
+            {
+              "t": "line",
+              "x1": 100,
+              "y1": 150,
+              "x2": 100,
+              "y2": 50,
+              "arrow": true,
+              "dashed": true,
+              "color": "green"
+            },
+            {
+              "t": "line",
+              "x1": 280,
+              "y1": 60,
+              "x2": 280,
+              "y2": 150,
+              "arrow": true,
+              "color": "accent"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 205,
+              "s": "paper: bounces back, white",
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 200,
+              "y": 205,
+              "s": "tape: absorbed, black",
+              "anchor": "start"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 800,
+              "caption": "light travels down to paper",
+              "set": {
+                "5": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 800,
+              "caption": "and bounces back up, white",
+              "set": {}
+            },
+            {
+              "ms": 800,
+              "caption": "toward tape, light is absorbed",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      "ideaId": "bright-bounces-dark-soaks",
+      "title": "Light reflection and sensors",
+      "body": "Black electrical tape looks black because it does not bounce light back at you. Almost all of the light that hits it gets absorbed, soaked up by the dark material and turned into a tiny bit of heat, so hardly any of it reaches your eyes, or a sensor, at all.\n\nWhite paper does the opposite. It is covered in countless tiny fibers that scatter light in every direction instead of soaking it up, so a lot of the light that hits it bounces straight back out. That is the whole reason it looks bright and white to begin with: your eyes are catching the light it reflects.\n\nThe line follower sensor screwed to the bottom of mBot works the same way your eyes do, except it brings its own light. It shines a small beam straight down at the floor and then measures how much of that light bounces back up into a tiny receiver next to it.\n\nOver white paper, a lot of light comes back, so the sensor reads it as white. Over black tape, almost none comes back, so the sensor reads it as black. mBot never actually sees a line, it only ever sees that reading flip between black and white as the floor underneath it changes."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w06-build-08",
+      "ideaId": "analog-and-digital",
+      "title": "Two kinds of reading",
+      "body": "Sensors answer in one of two ways, and this week you meet both.\n\nThe line follower gives a digital reading. Each side answers only one of two things: black or white, like a light switch that is either on or off. There is nothing in between, so a gray patch of floor still has to come out as one or the other.\n\nThe light sensor on top of mBot's board gives an analog reading. It answers with a number that can land anywhere from 0 up to about 1,000: more light, bigger number. A dim room might give a few hundred, a flashlight shining straight at it much more. It is like a dimmer switch, or a thermometer, where every value along the way is allowed.\n\nDigital is easy to decide with, since the answer is already a yes or a no. Analog tells you more, and your code has to choose the number where dark ends and bright begins."
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w06-build-10",
+      "title": "Lay out the track",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A square corner of the track drawn to scale with the 3, 4, 5 check: one side measured 40 cm up from the corner to mark 1, the other side 30 cm across to mark 2, and the dashed straight line between the two marks measuring exactly 50 cm, which makes the corner square.",
+        "spec": {
+          "w": 340,
+          "h": 280,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 170,
+              "y": 22,
+              "s": "the 3, 4, 5 check squares a corner",
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 70,
+              "y1": 220,
+              "x2": 70,
+              "y2": 60,
+              "color": "ink",
+              "label": "40 cm"
+            },
+            {
+              "t": "line",
+              "x1": 70,
+              "y1": 220,
+              "x2": 190,
+              "y2": 220,
+              "color": "ink",
+              "label": "30 cm"
+            },
+            {
+              "t": "line",
+              "x1": 70,
+              "y1": 60,
+              "x2": 190,
+              "y2": 220,
+              "dashed": true,
+              "color": "accent",
+              "label": "check: 50 cm"
+            },
+            {
+              "t": "dot",
+              "cx": 70,
+              "cy": 220,
+              "label": "corner",
+              "side": "left"
+            },
+            {
+              "t": "dot",
+              "cx": 70,
+              "cy": 60,
+              "label": "mark 1",
+              "side": "right"
+            },
+            {
+              "t": "dot",
+              "cx": 190,
+              "cy": 220,
+              "label": "mark 2",
+              "side": "right"
+            },
+            {
+              "t": "text",
+              "x": 170,
+              "y": 262,
+              "s": "slide mark 1 until the check reads 50 cm",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "body": "Before mBot can follow anything, the track has to exist: straight sides and square corners, laid out with the tape measure, not guessed by eye.\n\nThe 3, 4, 5 check is how builders square a corner with nothing but a tape measure. 3 times 3 plus 4 times 4 is 9 plus 16, which is 25, and 5 times 5 is also 25. Three sides that fit that rule always meet at a square corner, so 30, 40 and 50 cm work the same way.\n\n1. Lay two sheets of white poster board side by side on the floor, long edges touching, and tape the join on the back. That gives you a sheet about 112 cm by 71 cm. On a bare floor, measure from the skirting board instead of the sheet's edge.\n2. Pick one corner of the sheet. Measure 10 cm in from each edge that meets there and make a small pencil dot: that dot is the first corner of your track.\n3. At the far end of the long edge, measure 10 cm in again and make a second dot. Join the two dots with a light pencil line along the tape measure.\n4. From the corner dot, measure 30 cm along your pencil line and make mark 2. Then measure 40 cm from the corner dot in roughly the square direction and make mark 1.\n5. Measure straight from mark 1 to mark 2. Slide mark 1 sideways, always keeping it 40 cm from the corner dot, until that distance reads exactly 50 cm. Draw the second side from the corner dot through mark 1.\n6. Do the same at the other corners, until you have a rectangle of pencil lines about 10 cm in from every edge.\n7. Lay black tape along the pencil lines, pulled straight, not stretched. About 10 cm before each corner, bend the tape round in a gentle curve of short overlapping pieces, so mBot can follow it round.\n8. Press the tape down flat, especially on the curves, so no edge lifts and confuses the sensor.\n\nWhat you should see: a taped loop with straight sides that run parallel to the edges of the sheet, and four gentle curves.\n\nIf it does not work:\n1. A side runs crooked against the edge: the corner dot moved while you measured; measure both marks again from the same dot.\n2. The tape lifts or wrinkles on a curve: use shorter pieces and press each one down before laying the next.\n3. The tape measure's numbers are hard to read at an angle: keep it flat on the sheet and read the mark straight down.\n\nSafety: switch mBot on only once it is down on the track, and keep fingers clear of the wheels whenever it is on."
+    },
+    {
+      "kind": "task",
+      "id": "s1-w06-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A top-down view of mBot with its line follower module on port 2, with left (L) and right (R) sensors, straddling a black tape line on white paper. Text lists the three cases: both white moves forward at power 50%, the left sensor seeing black turns left, and the right sensor seeing black turns right, each at power 50% for 0.15 seconds.",
+        "spec": {
+          "w": 360,
+          "h": 280,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 110,
+              "y": 30,
+              "w": 140,
+              "h": 70,
+              "label": "mBot",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 100,
+              "w": 100,
+              "h": 34,
+              "label": "line follower",
+              "sub": "port 2"
+            },
+            {
+              "t": "dot",
+              "cx": 150,
+              "cy": 146,
+              "label": "L",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 210,
+              "cy": 146,
+              "label": "R",
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 190,
+              "x2": 330,
+              "y2": 165,
+              "color": "ink"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 215,
+              "s": "tape (black) on white paper",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 232,
+              "s": "both white: forward, power 50%",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 249,
+              "s": "L black: turn left, power 50%, 0.15s",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 266,
+              "s": "R black: turn right, power 50%, 0.15s",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Build the line follower in mBlock",
+      "body": "Getting ready:\n\n1. Switch mBot on on the floor, plug in the USB cable, open a new project, add `mBot` the same way as last week, click `Connect`, and set the mode switch to `Upload`.\n2. Check the line follower, the small board under the front of mBot facing the floor, is screwed on firmly and its cable runs to port 2, the port with the blue tag on mCore. It was fitted when you built mBot; if it is loose or unplugged, ask a grown-up to fix it before you go on.\n3. Hold mBot, switched on, a finger's width above white paper: the two small lights on the line follower come on. Move one side over the black tape and that side's light goes out.\n\nThe line follower answers with one number: 3 when both sides see white, 1 when only the left side sees black, 2 when only the right side sees black, and 0 when both see black.\n\nBuild the line follower:\n\n1. From `Events`, drag `when mBot(mcore) starts up` onto the canvas.\n2. From `Control`, drag a `forever` block under it.\n3. From `Control`, drag an `if then else` block inside `forever`.\n4. Build the outer condition with an `=` block from `Operators`: `line follower sensor (port2) value` `=` 1.\n5. Inside the outer `if`, drag in `turn left at power 50 % for 0.15 secs`.\n6. Inside the outer `else`, drag a second `if then else` block.\n7. Build its condition the same way: `line follower sensor (port2) value` `=` 2.\n8. Inside the inner `if`, drag in `turn right at power 50 % for 0.15 secs`.\n9. Inside the inner `else`, drag in `move forward at power 50 % for 0.15 secs`.\n10. Predict first: will shorter or longer seconds make the correction feel smoother? Keep it well under half a second, since `forever` must check often enough to correct in time.\n11. Test a few second values on the taped loop, using the same new number in all three timed blocks each time.\n\nRun it on the floor:\n\n1. Sit mBot on a roll of tape, wheels in the air, and click `Upload`.\n2. When mBlock says the upload is complete, switch mBot off and unplug the USB cable.\n3. Set mBot down with both sides of the line follower over white paper, close to the tape.\n4. Switch mBot on.\n\nOne thing to know before adding a crossing to your track: where the line crosses itself, both sides see black, the value is 0, and mBot drives straight on through the inner `else`. Keep your first loop simple anyway, with no crossings.\n\nWhat you should see: mBot drives forward over white paper, corrects toward the tape the moment one side sees black, and completes a full lap of your taped loop without driving off the line.\n\nIf it does not work:\n1. mBot turns away from the tape instead of toward it: on your mBot, 1 and 2 are the other way round; swap the two turn blocks.\n2. mBot zigzags wildly instead of following smoothly: the seconds are too long; shorten all three timed blocks by the same amount and test again.\n3. mBot ignores the tape completely, or drives straight off it: a shiny floor or a patterned rug can fool the sensor, so switch to plain paper or a plain, bare floor, and check the module is screwed on facing down, close to the floor, not tilted up.\n\nYou are done when: mBot completes your taped loop start to finish, correcting itself on both sides, with no cable attached.",
+      "checklist": [
+        "mBot drives straight forward when both sides of the line follower see white",
+        "mBot turns left when the left side sees black tape",
+        "mBot turns right when the right side sees black tape",
+        "The inner if-then-else sits inside the outer else branch, not next to it",
+        "mBot follows the taped loop all the way around without driving off the line, using turn seconds I chose and tested myself"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w06-build-11",
+      "title": "Good place to stop",
+      "body": "mBot just followed the track you laid out and taped yourself, so this is a good end to week one of this quest; the rest is next week.\n\nBefore you stop:\n\n1. In mBlock's `File` menu, choose `Save to your computer`, and save the project with a name like line follower.\n2. Switch mBot off and set it beside the track, off to the side, where the wheels will not get bumped.\n3. Leave the taped track exactly where it is.\n4. Write in the Maker's Log the turn seconds you settled on and why.\n\nWeek two starts at the next step, How to find a bug, where you use bisecting to corner a real mistake, then the bug diary tunes the turn seconds further.\n\nWhen you come back, open your project with `File`, then `Load from your computer`. Switch mBot on on the floor, plug the USB cable back in and click `Connect`. If mBlock asks to update the firmware when you switch to `Live`, let it, then click `Connect` again."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w06-build-09",
+      "ideaId": "halve-the-search",
+      "title": "How to find a bug",
+      "body": "First rule of any bug hunt: change one thing at a time, then test, or you cannot tell which change did it.\n\nThe big move is to halve the program. Take away half of it on purpose, and see whether the bug stays.\n\nTry it on your line follower. Say mBot turns the wrong way when it drifts right. Drag the whole inner `if then else` out of the outer `else` and park it to the side, not deleted. Put a single `move forward at power 50 % for 1 secs` in its place. Now drift mBot right by hand. If it still turns the wrong way, the bug is in the part that is left, the outer check. If it does not, the bug was in the part you parked. Put it back, and look closer at that half.\n\nEvery halving throws away half the places the bug could hide. A program of 16 blocks needs only 4 halvings to corner one block: 16, 8, 4, 2, 1. Programmers call this bisecting, the same trick as guessing a secret number by always asking about the middle."
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w06-build-05",
+      "title": "Bug diary",
+      "body": "Print what it sees still works here, just through the stage instead of a screen.\n\n1. From `Variables`, make a variable called `lineValue`.\n2. From `Events`, drag `when green flag clicked` onto an empty part of the canvas, and a `forever` block under it.\n3. Inside that `forever`, set `lineValue` to `line follower sensor (port2) value`.\n4. Check the box next to `lineValue` in the `Variables` palette.\n5. Switch to `Live` mode with mBot still wired to the laptop. If mBlock asks to update the firmware, let it, keep the cable in until it is done, then click `Connect` again.\n6. Click the green flag above the stage. Slide mBot slowly by hand across the tape and watch the number: 3 over white, 1 or 2 as one side crosses the tape, 0 with both sides on black.\n7. Check that 1 really is the left side. If it is the right side, swap the two turn blocks in your program.\n8. Click the red stop button, drag the `when green flag clicked` stack onto the block drawers to delete it, switch back to `Upload` mode, and upload the finished program the safe way, wheels up.\n\nWrite down the turn seconds you settled on, and why, if you changed them from 0.15.\n\nWrite one line for each thing that did not work the first time and what you tried. A shiny floor can fool the sensor even where there is no tape, since it bounces light back the same way white paper does. Tape onto matte paper instead. A patterned rug can fool it too, so use a plain sheet of paper or a plain-coloured bare floor. If mBot overshoots and swings off the far side of the tape, the seconds after each turn are usually too long."
+    },
+    {
+      "kind": "artifact",
+      "id": "s1-w06-build-06",
+      "title": "Show it",
+      "prompt": "Photo of the taped track with mBot on it, and either the saved .mblock project file or a screenshot of your finished blocks",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s1-w06-build-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s1-w06-build-x01",
+      "kind": "bonus",
+      "title": "Play a tone when it corrects itself",
+      "minutes": 15,
+      "body": "Give mBot a sound cue every time it corrects itself, using its built-in buzzer.\n\n1. Open your line follower project in mBlock.\n2. Inside the outer `if`, where mBot turns left, add a `play note (C4) for (0.1) beats` block from `Show`.\n3. Inside the inner `if`, where mBot turns right, add a `play note (E4) for (0.1) beats` block.\n4. Upload with mBot's wheels off the ground, then switch it off, unplug the cable, and set it on the taped loop before switching it on.\n\nWhat to notice: the sound tells you which side is correcting, even when you are not watching closely."
+    },
+    {
+      "id": "s1-w06-build-x02",
+      "kind": "bonus",
+      "title": "Light up while driving straight",
+      "minutes": 20,
+      "body": "Add a light cue that shows when mBot is driving straight versus correcting.\n\n1. Open your line follower project in mBlock.\n2. In the outer `else` branch, where mBot drives straight, add a `turn on (all) light with color red (0) green (255) blue (0)` block from `Show`.\n3. In each `if` branch where mBot turns, add the same block set to red (255) green (0) blue (0) instead.\n4. Upload with mBot's wheels off the ground, then switch it off, unplug the cable, and set it on the taped loop before switching it on.\n\nWhat to notice: the light flickers between colours far more often than you might expect."
+    },
+    {
+      "id": "s1-w06-build-x03",
+      "kind": "invent",
+      "title": "Design your own track challenge",
+      "minutes": 25,
+      "body": "What is the hardest shape you think you could tape onto the floor?\n\nDesign a track shape you believe mBot can still follow.\n\nIt must use the line follower code from this week's build, unchanged or lightly adjusted.\nIt must have one number you choose by testing, like a wait time or a track length.\nIt must be run on a real taped track and shown to someone in your house.\n\nSketch the track shape on paper first.\n\nHow to know it works: mBot completes your track shape twice in a row without driving off the tape."
+    },
+    {
+      "id": "s1-w06-build-x04",
+      "kind": "bonus",
+      "title": "Read the light sensor's number",
+      "minutes": 15,
+      "ideaId": "bright-bounces-dark-soaks",
+      "body": "Find out what number mBot's light sensor gives over white paper compared to black tape.\n\n1. Predict first: guess whether the number will be higher over white paper or over black tape. Write your best guess at both numbers in the Maker's Log.\n2. mBot has no screen, so use the stage: make a variable called `light`, set it to the light sensor block from mBot's `Sensing` drawer inside a `forever` loop, and check its box so the number shows. In `Live` mode, click the loop to start it.\n3. Turn mBot over and hold the light sensor on top of its board about 3 cm above a sheet of white paper, in a well-lit room, and read the number.\n4. Hold it the same distance above a strip of black tape and read that number too.\n5. Write down both numbers in the Maker's Log.\n\nThis number is an analog reading, from the step Two kinds of reading.\n\nCompare: did the higher number match your prediction, white or black, and how far off were your guessed numbers?\n\nTeach it: tell a grown-up in two sentences why a bright surface and a dark surface give the sensor two very different numbers."
+    },
+    {
+      "id": "s1-w06-build-x05",
+      "kind": "bonus",
+      "title": "Watch your own light sensor at work",
+      "minutes": 10,
+      "ideaId": "the-pupil-is-a-sensor-too",
+      "body": "Find out how your own eye's pupil reacts to light, the same job mBot's line follower sensor does.\n\n1. Sit in a normally lit room for two minutes so your eyes settle.\n2. Have a partner look closely at the black centre of your eye, the pupil, in a mirror or up close.\n3. Turn off the lights, or move to a dim room, and wait ten seconds.\n4. Have your partner look at your pupil again right away.\n5. Turn the lights back on and watch your partner's pupil shrink within a second or two.\n\nWhat to notice: a pupil can widen from about 2 millimetres in bright light to about 8 millimetres in the dark. That is the eye's own way of turning its sensor up or down."
+    }
+  ]
+}

@@ -1,0 +1,1046 @@
+{
+  "id": "s3-w06-think",
+  "season": 3,
+  "week": 6,
+  "track": "think",
+  "title": "The count where money in catches money out",
+  "summary": "Put the mystery number in both pans and solve break-even properly, push past it into profit as an inequality, then prove with a crash that the primes never run out.",
+  "minutes": 90,
+  "materials": [
+    "your cost sheet from last week, with the fixed costs and the cost per unit on it",
+    "graph paper, pencil and a ruler",
+    "field journal",
+    "a phone or laptop to record the voice explain"
+  ],
+  "skills": [
+    "think.skills.equations",
+    "think.skills.inequalities",
+    "think.money",
+    "think.proof",
+    "think.skills.primes"
+  ],
+  "completion": "all-steps",
+  "steps": [
+    {
+      "kind": "warmup",
+      "id": "s3-w06-think-01",
+      "variant": "fermi",
+      "problems": [
+        {
+          "id": "s3-w06-think-01-p01",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "A festival food stand serves about 3 customers every minute. Open 6 hours a day for a 5-day festival, about how many customers does it serve in all?",
+          "options": [
+            "about 500",
+            "about 5,000",
+            "about 50,000"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 1
+          },
+          "explanation": [
+            "Climb one hop at a time: 3 customers a minute times 60 minutes is 180 customers an hour.",
+            "180 customers an hour times 6 hours is 1,080 customers a day.",
+            "1,080 customers a day times 5 days is 5,400 customers, which rounds to about 5,000."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a rate has to climb minute to hour to day to a whole run, and only the size of the answer matters.",
+          "hints": [
+            "Turn the rate into customers per hour first, before you touch the days.",
+            "Climb the hops in order: minute to hour, hour to day, day to the whole festival."
+          ],
+          "socraticHint": "If the stand opened for one more hour each day, which single hop in this chain would you redo?",
+          "skills": [
+            "think.number-sense"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A festival food stand serves about 4 customers every minute. Open 7 hours a day for a 4-day festival, about how many customers does it serve in all?",
+            "options": [
+              "about 700",
+              "about 7,000",
+              "about 70,000"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 1
+            }
+          }
+        },
+        {
+          "id": "s3-w06-think-01-p02",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "Suppose one unit of a product takes somewhere between 10 and 20 minutes to make. About how long does a production run of 12 units take?",
+          "options": ["about 3 hours", "about 30 minutes", "about 30 hours"],
+          "answer": { "kind": "choice", "index": 0 },
+          "explanation": [
+            "Take one easy number from the middle of the range: about 15 minutes a unit.",
+            "Twelve units at 15 minutes each is 180 minutes.",
+            "180 minutes is 3 hours.",
+            "The range was there on purpose. A guess with a range still gives a size you can plan an afternoon around."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when a job repeats and you only know roughly how long one go takes.",
+          "hints": [
+            "Pick one easy number out of the middle of the range and work with only that.",
+            "Multiply your one unit time by the number of units, then turn the minutes into hours."
+          ],
+          "socraticHint": "If you had used 10 minutes instead of 20, would your answer land on a different one of these three choices?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "Suppose one unit takes somewhere between 20 and 40 minutes to make. About how long does a run of 20 units take?",
+            "options": ["about 1 hour", "about 10 hours", "about 100 hours"],
+            "answer": { "kind": "choice", "index": 1 }
+          }
+        },
+        {
+          "id": "s3-w06-think-01-p03",
+          "kind": "choice",
+          "lane": "warmup",
+          "prompt": "On a quiet Saturday morning about one person every five minutes walks past a driveway. If a stand stands there for three hours, about how many people go past it?",
+          "options": ["about 3", "about 30", "about 300"],
+          "answer": { "kind": "choice", "index": 1 },
+          "explanation": [
+            "One person every five minutes is twelve an hour, because twelve fives fill an hour.",
+            "Three hours of that is about 36 people.",
+            "Of the sizes offered, 36 sits closest to about 30.",
+            "Notice what this number is not. It counts people who walk past, not people who buy, and those two counts are never the same."
+          ],
+          "ideaId": "guess-and-round",
+          "useAgain": "when you want to size a crowd out of a rate and a stretch of time.",
+          "hints": [
+            "Turn the rate into people per hour before you touch the three hours at all.",
+            "How many five minute gaps fit inside one hour?"
+          ],
+          "socraticHint": "Which would change this answer more: the street being twice as busy, or the stand staying open twice as long?",
+          "skills": ["think.number-sense"],
+          "thinkMinutes": 2,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "At a busy school fair about three people a minute walk past a table beside the main path. If the table is up for three hours, about how many people go past?",
+            "options": ["about 500", "about 5", "about 50"],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "puzzle-of-week",
+      "id": "s3-w06-think-02",
+      "problem": {
+        "id": "s3-w06-think-02-p01",
+        "kind": "number",
+        "lane": "puzzle-of-week",
+        "prompt": "A sheet of card is 24 cm by 18 cm. You want to cut it into identical squares with nothing at all left over, and you want the squares as big as they can be. How many squares do you end up with?",
+        "answer": { "kind": "number", "value": "12" },
+        "explanation": [
+          "A square side that leaves a sliver at an edge breaks the nothing left over rule, so the side has to fit a whole number of times along 24 and along 18.",
+          "Sides that fit along 24 are 1, 2, 3, 4, 6, 8, 12, 24. Sides that fit along 18 are 1, 2, 3, 6, 9, 18.",
+          "The biggest side on both lists is 6 cm.",
+          "Six centimetre squares give 4 across and 3 down, which is 12 squares.",
+          "Check by area: 24 times 18 is 432, and 12 squares of 36 square cm is 432 as well."
+        ],
+        "ideaId": "gcd-and-lcm",
+        "useAgain": "when something has to be cut into equal pieces with no waste along two different edges at once.",
+        "hints": [
+          "Try a 5 cm square on paper and look hard at what happens at the two far edges.",
+          "Write down every side length that fits a whole number of times along 24, then along 18, and look at what the two lists share."
+        ],
+        "socraticHint": "If a square side leaves even a sliver at one edge, has the sheet really been used up? What does that rule out before you try a single number?",
+        "skills": ["think.spatial", "think.skills.gcd-lcm"],
+        "thinkMinutes": 5,
+        "difficulty": 2,
+        "variant": {
+          "prompt": "A sheet of card is 35 cm by 21 cm, cut into identical squares as big as possible with nothing left over. How many squares do you get?",
+          "answer": { "kind": "number", "value": "15" }
+        }
+      }
+    },
+    {
+      "kind": "problem-set",
+      "id": "s3-w06-think-03",
+      "title": "Break-even: the count where money in catches money out",
+      "lane": "skills",
+      "problems": [
+        {
+          "id": "s3-w06-think-03-p01",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Dmitri solved 8n = 42 + 2n like this:\nLine 1: Subtract 2n from both sides: 6n = 42.\nLine 2: Divide both sides by 6: n = 7.\nLine 3: Check the left side: 8 times 7 is 56.\nLine 4: Check the right side: 42 plus 2 times 7 is 60.\nWhich line is wrong?",
+          "options": [
+            "Line 1",
+            "Line 2",
+            "Line 3",
+            "Line 4",
+            "No line is wrong"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 3
+          },
+          "explanation": [
+            "Line 4 is wrong: 42 plus 2 times 7 is 56, not 60.",
+            "Lines 1 to 3 are correct: subtracting 2n gives 6n = 42, dividing by 6 gives n = 7, and 8 times 7 is 56.",
+            "A real check has both sides land on the same number, and line 3 already found it: 56.",
+            "Line 4 does not even agree with line 3, which it was supposed to match."
+          ],
+          "ideaId": "both-sides-balance",
+          "useAgain": "when you check both sides of a solved equation separately, since the two sides have to land on the very same number.",
+          "hints": [
+            "Moving a term across the equals sign changes the count on the other side; a check has to redo every multiplication honestly.",
+            "Redo each line's arithmetic yourself with the same numbers, one line at a time, and mark the first line whose result you cannot reproduce."
+          ],
+          "socraticHint": "When you redo each multiplication and subtraction yourself, which line is the first one your numbers refuse to match?",
+          "skills": [
+            "think.skills.equations"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Dmitri solved 7n = 45 + 2n like this:\nLine 1: Subtract 2n from both sides: 9n = 45.\nLine 2: Divide both sides by 9: n = 5.\nLine 3: Multiply back: 9 times 5 is 45.\nLine 4: 45 divided by 9 is 5, matching line 2.\nWhich line is wrong?",
+            "options": [
+              "Line 1",
+              "Line 2",
+              "Line 3",
+              "Line 4",
+              "No line is wrong"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            }
+          }
+        },
+        {
+          "id": "s3-w06-think-03-p02",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Suppose a cost sheet says the fixed costs are 24 dollars and every unit costs 2 dollars in materials, and the price is 5 dollars a unit. Break-even is the count where money in equals money out: 5n = 24 + 2n. How many units must be sold to break even?",
+          "answer": { "kind": "number", "value": "8" },
+          "explanation": [
+            "The left pan is money in: 5 dollars for each of n units. The right pan is money out: the 24 that happens once, plus 2 dollars for each of n units.",
+            "Take 2n from both pans. The left keeps 3n and the right keeps 24.",
+            "3n is 24, so n is 8.",
+            "That count has a name from today: break-even. Check it. Eight units bring in 40, and 24 plus 16 spent is 40 as well, so every penny in has been matched by a penny out and nothing is left over."
+          ],
+          "ideaId": "break-even",
+          "introducesIdea": true,
+          "useAgain": "when you want to know how many you have to sell before the money coming in has finally caught the money going out.",
+          "hints": [
+            "Two of the three numbers belong on the money out side, and only one of those two repeats with every unit.",
+            "Both pans carry n, so clear n out of the smaller pile first."
+          ],
+          "socraticHint": "At break-even, how much has been earned? Is that the same question as how much has been made?",
+          "skills": ["think.skills.equations", "think.money"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Fixed costs are 30 dollars, every unit costs 3 dollars in materials, and the price is 8 dollars. Solve 8n = 30 + 3n. How many units to break even?",
+            "answer": { "kind": "number", "value": "6" }
+          }
+        },
+        {
+          "id": "s3-w06-think-03-p03",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Now run it the other way. Suppose fixed costs are 20 dollars and every unit costs 2 dollars in materials. You want to break even after selling exactly 10 units. What price must you charge for one unit? Answer in dollars.",
+          "answer": { "kind": "number", "value": "4.00" },
+          "explanation": [
+            "Money out for 10 units is the 20 that happens once, plus 2 dollars ten times over, which is 20 plus 20, so 40 dollars.",
+            "Money in has to match it, so 10 units have to bring in 40 dollars.",
+            "One unit brings in 40 shared into 10 equal parts.",
+            "The price is 4.00 a unit. Check it: 10 times 4 is 40, and 20 plus 20 is 40."
+          ],
+          "ideaId": "break-even",
+          "useAgain": "when the count you must reach is already decided and the price is the thing you get to choose.",
+          "hints": [
+            "This time n is known and the price is the mystery, so finish the money out side completely first.",
+            "Once you know the total that 10 units have to bring in, one unit's share is a sharing question."
+          ],
+          "socraticHint": "If you wanted to break even after 20 units instead of 10, would the price you need go up or down, and what in the sum makes that happen?",
+          "skills": ["think.skills.equations", "think.money"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Fixed costs are 27 dollars and every unit costs 3 dollars in materials. You want to break even after selling exactly 9 units. What price must you charge for one unit? Answer in dollars.",
+            "answer": { "kind": "number", "value": "6.00" }
+          }
+        },
+        {
+          "id": "s3-w06-think-03-p04",
+          "kind": "choice",
+          "lane": "skills",
+          "prompt": "Spot the impostor. Starting from 6n = 15 + n, only one of these is a legal move that still says exactly the same thing. Which one?",
+          "options": [
+            "6n + n = 15",
+            "5n = 15",
+            "6n = 16n",
+            "6n - 15 = n + 15"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 1
+          },
+          "explanation": [
+            "A legal move does the same thing to both pans. Taking n off both pans leaves 5n = 15, the honest one.",
+            "The first option adds n to the left but takes it off the right: two different moves, and the balance is gone.",
+            "The third is the classic trap: 15 + n is not 16n, since 15 is not counting boxes and n is.",
+            "The fourth takes 15 off the left and adds 15 to the right, tipping the scale twice over.",
+            "Test any suspect with a number: put n as 3, and only 5n = 15 also comes out true."
+          ],
+          "ideaId": "both-sides-balance",
+          "useAgain": "when a line of working looks tidy and you want to know whether it is still the same equation.",
+          "hints": [
+            "A legal move is one move done to both pans, not two different moves done to one pan each.",
+            "Pick a number for n that makes the original true, then try that same number in each option."
+          ],
+          "socraticHint": "Three of these change what the equation means. Is there a single number you could test that would expose all three at once?",
+          "skills": [
+            "think.skills.equations"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Starting from 9k = 20 + 4k, which one is a legal move that still says exactly the same thing?",
+            "options": [
+              "9k = 24k",
+              "13k = 20",
+              "5k = 20",
+              "9k - 20 = 4k + 20"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 2
+            }
+          }
+        },
+        {
+          "id": "s3-w06-think-03-p05",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Suppose fixed costs are 24 dollars, every unit costs 2 dollars in materials, and the price is 5 dollars. Profit after n units is what came in take away everything that went out, which tidies to 3n - 24. What is the smallest whole number of units sold that leaves profit greater than zero?",
+          "answer": {
+            "kind": "number",
+            "value": "9"
+          },
+          "explanation": [
+            "Profit greater than zero means 3n - 24 is bigger than 0, so 3n has to be bigger than 24.",
+            "3 times 8 is exactly 24, which leaves profit sitting on zero rather than above it.",
+            "So n has to be past 8, and the first whole number past 8 is 9.",
+            "Check both: at 8 units profit is zero, and at 9 units it is 3 dollars.",
+            "Break-even is a line, not a prize: the point is the ground past it."
+          ],
+          "ideaId": "threshold",
+          "useAgain": "when a question wants not the exact turning point but the first count safely past it.",
+          "hints": [
+            "Greater than zero is not the same as equal to zero, and here the difference is exactly one unit.",
+            "Find the count where profit lands on exactly zero first, then ask what happens at the very next whole number."
+          ],
+          "socraticHint": "Why does this question have to say whole number? What would the answer be if you were allowed to sell part of a unit?",
+          "skills": [
+            "think.skills.inequalities",
+            "think.money"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Fixed costs are 30 dollars, every unit costs 3 dollars and the price is 8 dollars, so profit after n units is 5n - 30. What is the smallest whole number of units sold that leaves profit greater than zero?",
+            "answer": {
+              "kind": "number",
+              "value": "7"
+            }
+          }
+        },
+        {
+          "id": "s3-w06-think-03-p06",
+          "kind": "number",
+          "lane": "skills",
+          "prompt": "Two ways to get the same units. Making them yourself costs 15 dollars once for a tool, plus 2 dollars of materials per unit. A friend will make them for you at 5 dollars each with nothing to pay up front. For how many units do the two plans cost exactly the same?",
+          "answer": { "kind": "number", "value": "5" },
+          "explanation": [
+            "Write both plans as money out. Yours is 15 + 2n. The friend's is 5n, with no fixed part at all.",
+            "The same cost means 15 + 2n = 5n.",
+            "Take 2n off both pans: 15 is left facing 3n, so n is 5.",
+            "Check it. Your way is 15 plus 10, which is 25. The friend's way is 5 times 5, which is 25 too.",
+            "Below 5 units the friend is cheaper, because your tool has not earned its keep yet. Above 5 units you are."
+          ],
+          "ideaId": "both-sides-balance",
+          "useAgain": "when two plans charge in different shapes and you want the count where they meet.",
+          "hints": [
+            "One plan has a cost that happens once and a cost that repeats. The other only has one that repeats.",
+            "Write each plan as an expression in n first, then put an equals sign between them and treat it as one equation."
+          ],
+          "socraticHint": "Before you solve it, which plan do you expect to be cheaper for a single unit, and does that tell you which side of the answer that count lies on?",
+          "skills": ["think.skills.equations", "think.money"],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Making them yourself costs 28 dollars once for a tool plus 3 dollars of materials per unit. A friend charges 7 dollars each with nothing up front. For how many units do the two plans cost exactly the same?",
+            "answer": { "kind": "number", "value": "7" }
+          }
+        },
+        {
+          "id": "s3-w06-think-03-p07",
+          "kind": "truefalse",
+          "lane": "skills",
+          "prompt": "Suppose fixed costs are 20 dollars, every unit costs 4 dollars in materials, and the price is also 4 dollars a unit. True or false: there is some number of units that breaks even.",
+          "answer": { "kind": "boolean", "value": false },
+          "explanation": [
+            "Break-even would mean 4n = 20 + 4n.",
+            "Take 4n off both pans and every box disappears at once, leaving 0 = 20.",
+            "0 is not 20, and no value of n can make it be, because n is not in that sentence any more.",
+            "So no count breaks even. Selling at exactly what a unit costs to make means every sale pays for itself and nothing else, and the 20 dollars is never touched.",
+            "Notice what just happened. You assumed a break-even count existed and the assumption crashed into nonsense. The puzzle lane names that move today."
+          ],
+          "ideaId": "break-even",
+          "useAgain": "when you want to know whether a price can work at all, before asking how many you would have to sell.",
+          "hints": [
+            "Set it up as an equation the same way as always, then watch what happens to the boxes.",
+            "If the letter vanishes from both sides, read whatever is left over very carefully."
+          ],
+          "socraticHint": "When the price and the cost per unit are the same number, what part of each sale is left over to pay the fixed costs?",
+          "skills": ["think.skills.equations", "think.money"],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Fixed costs are 12 dollars, every unit costs 2 dollars in materials, and the price is 5 dollars a unit. True or false: there is a whole number of units that breaks even exactly.",
+            "answer": { "kind": "boolean", "value": true }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "problem-set",
+      "id": "s3-w06-think-07",
+      "title": "Pi fills the circle, and tickets that average out",
+      "lane": "shape",
+      "problems": [
+        {
+          "id": "s3-w06-think-07-p01",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "A circular pizza has a radius of 15 cm. Using pi is about 3.14, what is its area in square cm, to one decimal place?",
+          "answer": {
+            "kind": "number",
+            "value": "706.5"
+          },
+          "explanation": [
+            "A circle's area is pi times the radius squared, never the diameter squared.",
+            "15 squared is 225, and 3.14 times 225 is 706.5 square cm."
+          ],
+          "ideaId": "pi-is-the-wheels-own-number",
+          "useAgain": "when a circle's radius is known and its area is the missing piece.",
+          "hints": [
+            "Square the radius first, before multiplying by pi.",
+            "3.14 times 225 gives the area in square cm."
+          ],
+          "socraticHint": "Does the area formula use the radius once, or does it need the radius multiplied by itself?",
+          "skills": [
+            "think.skills.area"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A circular pizza has a radius of 10 cm. Using pi is about 3.14, what is its area in square cm, to one decimal place?",
+            "answer": {
+              "kind": "number",
+              "value": "314.0"
+            }
+          }
+        },
+        {
+          "id": "s3-w06-think-07-p02",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "A manhole cover is a circle with diameter 60 cm. Using pi is about 3.14, what is its area in square cm?",
+          "answer": {
+            "kind": "number",
+            "value": "2826"
+          },
+          "explanation": [
+            "The area formula needs the radius, which is half the diameter: 30 cm.",
+            "30 squared is 900, and 3.14 times 900 is 2826 square cm.",
+            "Starting from the diameter always costs one extra step: halve it first."
+          ],
+          "ideaId": "pi-is-the-wheels-own-number",
+          "useAgain": "when only the diameter is given and the radius has to be found first before using the area formula.",
+          "hints": [
+            "The area formula needs the radius, not the diameter. Halve the diameter first.",
+            "Square that radius, then multiply by 3.14."
+          ],
+          "socraticHint": "If a problem gives you the diameter but the formula wants the radius, what is the very first step?",
+          "skills": [
+            "think.skills.area"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A manhole cover is a circle with diameter 40 cm. Using pi is about 3.14, what is its area in square cm?",
+            "answer": {
+              "kind": "number",
+              "value": "1256"
+            }
+          }
+        },
+        {
+          "id": "s3-w06-think-07-p03",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "A spinner has 4 equal-sized sections paying 1, 1, 2 and 4 tickets. What is the expected number of tickets per spin?",
+          "answer": {
+            "kind": "number",
+            "value": "2"
+          },
+          "explanation": [
+            "Since every section is equally likely, the expected value is just the average of the payouts.",
+            "1 plus 1 plus 2 plus 4 is 8, and 8 divided by 4 sections is 2.",
+            "Over many spins, 2 tickets a spin is what you would land near."
+          ],
+          "ideaId": "expected-value-is-the-average-payout",
+          "introducesIdea": true,
+          "useAgain": "when a game's outcomes are equally likely, and the average payout across all of them tells you the game's expected value.",
+          "hints": [
+            "If every section is equally likely, how do you average a list of payouts?",
+            "Add all four payouts, then divide by how many sections there are."
+          ],
+          "socraticHint": "If a spin could equally land anywhere, does one section's payout deserve more weight than another's?",
+          "skills": [
+            "think.skills.probability",
+            "think.number-sense"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "A spinner has 4 equal-sized sections paying 2, 2, 2 and 6 tickets. What is the expected number of tickets per spin?",
+            "answer": {
+              "kind": "number",
+              "value": "3"
+            }
+          }
+        },
+        {
+          "id": "s3-w06-think-07-p04",
+          "kind": "number",
+          "lane": "shape",
+          "prompt": "A spinner has 6 equal-sized sections: three pay 0 tickets, two pay 3 tickets, and one pays 12 tickets. What is the expected number of tickets per spin?",
+          "answer": {
+            "kind": "number",
+            "value": "3"
+          },
+          "explanation": [
+            "Add up every section's payout, including the zeros: 0 three times, plus 3 twice, plus 12 once.",
+            "That total is 0 plus 6 plus 12, which is 18.",
+            "18 divided by all 6 sections is 3 tickets a spin, on average."
+          ],
+          "ideaId": "expected-value-is-the-average-payout",
+          "useAgain": "when several sections pay the same amount, so you add each group's total before dividing by the full section count.",
+          "hints": [
+            "Do not forget to count the zero-paying sections in the total number of sections.",
+            "Add every section's payout, then divide by all 6 sections, not just the ones that pay something."
+          ],
+          "socraticHint": "Do the sections that pay nothing still count toward the total number of spins you are averaging over?",
+          "skills": [
+            "think.skills.probability",
+            "think.number-sense"
+          ],
+          "thinkMinutes": 4,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "A spinner has 6 equal-sized sections: four pay 0 tickets, one pays 4 tickets, and one pays 8 tickets. What is the expected number of tickets per spin?",
+            "answer": {
+              "kind": "number",
+              "value": "2"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "warmup",
+      "id": "s3-w06-think-08",
+      "variant": "chess",
+      "problems": [
+        {
+          "id": "s3-w06-think-08-p01",
+          "kind": "choice",
+          "lane": "warmup",
+          "figure": {
+            "kind": "board",
+            "alt": "White to move. A white rook on b1 faces the black king on a4 with a black rook on a8 behind it on the same file.",
+            "spec": {
+              "fen": "r7/8/8/8/k7/8/8/1R5K w - - 0 1"
+            }
+          },
+          "prompt": "White to move. Which move forces the king to move and wins the rook behind it?",
+          "options": [
+            "Ra1",
+            "Rc1",
+            "Rd1",
+            "Rb4"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Black's king on a4 and rook on a8 share the same open file.",
+            "Ra1 checks the king first, so it must move out of the way.",
+            "Once the king steps aside, the rook behind it falls on the same file."
+          ],
+          "ideaId": "skewer",
+          "useAgain": "when a check lines up with a bigger prize sitting further down the same line.",
+          "hints": [
+            "Which file already holds both the black king and the black rook?",
+            "Move your rook onto that file so it checks the king first."
+          ],
+          "socraticHint": "After the king moves out of check, what is still sitting on that file?",
+          "skills": [
+            "think.chess"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "White to move. Which move forces the king to move and wins the rook behind it?",
+            "options": [
+              "Rh1",
+              "Rf1",
+              "Re1",
+              "Rc5"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "figure": {
+              "kind": "board",
+              "alt": "White to move. A white rook on c1 faces the black king on h5 with a black rook on h8 behind it on the same file.",
+              "spec": {
+                "fen": "7r/8/8/7k/8/8/8/K1R5 w - - 0 1"
+              }
+            }
+          },
+          "introducesIdea": true
+        },
+        {
+          "id": "s3-w06-think-08-p02",
+          "kind": "choice",
+          "lane": "warmup",
+          "figure": {
+            "kind": "board",
+            "alt": "White to move. A white pawn on e4 faces two undefended black knights on d6 and f6.",
+            "spec": {
+              "fen": "4k3/8/3n1n2/8/4P3/8/8/4K3 w - - 0 1"
+            }
+          },
+          "prompt": "White to move. Which move attacks two black knights at once?",
+          "options": [
+            "Kd1",
+            "e5",
+            "Kf1",
+            "Ke2"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 1
+          },
+          "explanation": [
+            "Pushing the pawn to e5 attacks both d6 and f6 at the same time.",
+            "Black's two knights sit on exactly those squares.",
+            "Even a pawn can win a piece when it forks two of them."
+          ],
+          "ideaId": "fork",
+          "useAgain": "when a single pawn push can attack two enemy pieces on the squares ahead of it.",
+          "hints": [
+            "Look at the two squares a pawn on e4 would attack if it pushed forward.",
+            "Check what sits on those two squares right now."
+          ],
+          "socraticHint": "Does a pawn attack the square directly ahead of it, or the squares beside that one?",
+          "skills": [
+            "think.chess"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "White to move. Which move attacks two black knights at once?",
+            "options": [
+              "d5",
+              "Kd1",
+              "Kf1",
+              "Ke2"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "figure": {
+              "kind": "board",
+              "alt": "White to move. A white pawn on d4 faces two undefended black knights on c6 and e6.",
+              "spec": {
+                "fen": "4k3/8/2n1n3/8/3P4/8/8/4K3 w - - 0 1"
+              }
+            }
+          }
+        },
+        {
+          "id": "s3-w06-think-08-p03",
+          "kind": "choice",
+          "lane": "warmup",
+          "figure": {
+            "kind": "board",
+            "alt": "White to move. Black's king on g8 has pawns on f7 and h7, a white knight on f5 covers g7, and a white rook stands on d1.",
+            "spec": {
+              "fen": "6k1/5p1p/8/5N2/8/8/8/3R3K w - - 0 1"
+            }
+          },
+          "prompt": "White to move. Which move gives checkmate?",
+          "options": [
+            "Rd8#",
+            "Rd7",
+            "Nd6"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 0
+          },
+          "explanation": [
+            "Black's king on g8 has pawns on f7 and h7, but the square g7 is open.",
+            "Your knight on f5 already covers g7, so that escape is closed too.",
+            "Rd8 checks along the back rank with every square covered, so it is mate."
+          ],
+          "ideaId": "back-rank-mate",
+          "useAgain": "when a knight covers the one square a back rank check would otherwise leave open.",
+          "hints": [
+            "The king's own pawns leave one square open. Does anything else cover it?",
+            "Find the rook move that reaches the back rank next to the king."
+          ],
+          "socraticHint": "If that open square were not covered, could the king have escaped there?",
+          "skills": [
+            "think.chess"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "White to move. Which move gives checkmate?",
+            "options": [
+              "Rh8#",
+              "Rh7",
+              "Nd6"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "figure": {
+              "kind": "board",
+              "alt": "White to move. Black's king on a8 has pawns on b7 and c7, a white knight on b5 covers a7, and a white rook stands on h1.",
+              "spec": {
+                "fen": "k7/1pp5/8/1N6/8/8/8/K6R w - - 0 1"
+              }
+            }
+          }
+        },
+        {
+          "id": "s3-w06-think-08-p04",
+          "kind": "choice",
+          "lane": "warmup",
+          "figure": {
+            "kind": "board",
+            "alt": "White to move. A white queen on b3 faces an undefended black knight on f7 and a black rook on b4 that a pawn on a5 defends.",
+            "spec": {
+              "fen": "2k5/5n2/8/p7/1r6/1Q6/8/7K w - - 0 1"
+            }
+          },
+          "prompt": "White to move. One black piece is undefended and one is defended. Which move wins material safely?",
+          "options": [
+            "Qb5",
+            "Qxb4",
+            "Qxf7",
+            "Qa4"
+          ],
+          "answer": {
+            "kind": "choice",
+            "index": 2
+          },
+          "explanation": [
+            "The rook on b4 is guarded by black's own pawn on a5.",
+            "The knight on f7 has no defender at all.",
+            "Qxf7 wins the knight and keeps the queen safe."
+          ],
+          "ideaId": "hanging-piece",
+          "useAgain": "when more than one enemy piece looks capturable, so check who defends what before you choose.",
+          "hints": [
+            "For each piece you could capture, ask who else is watching that square.",
+            "Pick the capture where nothing can take your queen back."
+          ],
+          "socraticHint": "Which capture leaves nothing of yours for black to win back?",
+          "skills": [
+            "think.chess"
+          ],
+          "thinkMinutes": 2,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "White to move. Which move captures the undefended black queen?",
+            "options": [
+              "Rxc6",
+              "Rc3",
+              "Rc8+",
+              "Rb1"
+            ],
+            "answer": {
+              "kind": "choice",
+              "index": 0
+            },
+            "figure": {
+              "kind": "board",
+              "alt": "White to move. A white rook on c1 faces an undefended black queen on c6.",
+              "spec": {
+                "fen": "7k/8/2q5/8/8/8/8/2R4K w - - 0 1"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "problem-set",
+      "id": "s3-w06-think-04",
+      "title": "Assume the opposite and chase it until it breaks",
+      "lane": "puzzle",
+      "problems": [
+        {
+          "id": "s3-w06-think-04-p01",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "Twenty five things are packed into three boxes. Someone claims every single box holds fewer than 9. Take the claim seriously for a moment: if it were true, what is the largest total the three boxes could hold?",
+          "answer": { "kind": "number", "value": "24" },
+          "explanation": [
+            "Fewer than 9 means 8 at the very most, since these are whole things.",
+            "The greediest version of the claim is 8 in every box, which is 8 plus 8 plus 8, so 24.",
+            "But there are 25 things. The claim's own best case cannot even hold them all.",
+            "So the claim is false and at least one box holds 9 or more. That move has a name: assume the opposite is true and chase it until it breaks. The crash is the proof."
+          ],
+          "ideaId": "impossible-assumption",
+          "introducesIdea": true,
+          "useAgain": "when you want to show something must be true and there is no direct route to it.",
+          "hints": [
+            "Fewer than 9 is a limit. What is the biggest whole number that obeys it?",
+            "Give every box the very most the claim allows, and add those three up."
+          ],
+          "socraticHint": "If you push a claim as hard as it can possibly go and it still falls short, what have you learned about the claim itself?",
+          "skills": ["think.proof", "think.logic"],
+          "thinkMinutes": 5,
+          "difficulty": 1,
+          "variant": {
+            "prompt": "Forty marbles are packed into four bags, and someone claims every bag holds fewer than 10. If that were true, what is the largest total the four bags could hold?",
+            "answer": { "kind": "number", "value": "36" }
+          }
+        },
+        {
+          "id": "s3-w06-think-04-p02",
+          "kind": "truefalse",
+          "lane": "puzzle",
+          "prompt": "Two whole numbers add up to 25. Someone claims both of them are even. True or false: that can happen.",
+          "answer": { "kind": "boolean", "value": false },
+          "explanation": [
+            "Suppose both were even. An even number is a pile of twos, so two even numbers pushed together are still one bigger pile of twos.",
+            "A pile of twos can always be split into two equal halves, so it is even.",
+            "But 25 cannot be split into two equal whole halves. It is odd.",
+            "The assumption forced 25 to be even, which it is not, so the assumption has to go."
+          ],
+          "ideaId": "impossible-assumption",
+          "useAgain": "when a claim is about odd and even and you want to rule it out without checking every pair.",
+          "hints": [
+            "Do not hunt for a pair. Ask what any two even numbers added together must always be.",
+            "Think of an even number as a pile of twos, and push two of those piles together."
+          ],
+          "socraticHint": "You could never test every pair that adds to 25. What is it about even numbers that lets you rule them all out in one go?",
+          "skills": ["think.proof", "think.logic"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Two whole numbers add up to 24 and someone claims both of them are odd. True or false: that can happen.",
+            "answer": { "kind": "boolean", "value": true }
+          }
+        },
+        {
+          "id": "s3-w06-think-04-p03",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "Somebody claims that B is the biggest even number there is. To break the claim you need an even number bigger than B. Which of these is certainly both even and bigger than B?",
+          "options": ["B + 1", "B divided by 2", "B + 2", "B - 2"],
+          "answer": { "kind": "choice", "index": 2 },
+          "explanation": [
+            "B + 2 is bigger than B, and adding two to an even number lands on the next even number, so it is even too.",
+            "B + 1 is bigger, but stepping one on from even lands on odd.",
+            "B - 2 is even but smaller, so it proves nothing.",
+            "Half of B is smaller, and half of an even number is not always even anyway: half of 6 is 3.",
+            "The trick worth keeping is that you never had to know what B was. You only had to build the thing the claim says cannot exist."
+          ],
+          "ideaId": "impossible-assumption",
+          "useAgain": "when someone says a thing is the biggest of its kind and you want to build a bigger one out of it.",
+          "hints": [
+            "You need two things at once: bigger than B, and definitely even. Check each option against both.",
+            "Try each option with B set to 10 and see which one survives."
+          ],
+          "socraticHint": "Does your answer depend on knowing what number B actually is, and what does it mean if it does not?",
+          "skills": ["think.proof", "think.logic"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Somebody claims M is the biggest multiple of 5 there is. Which of these is certainly both a multiple of 5 and bigger than M?",
+            "options": ["M + 5", "M + 1", "M - 5", "5 divided by M"],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        },
+        {
+          "id": "s3-w06-think-04-p04",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "Suppose the only primes in the whole world were 2, 3 and 5, with no others at all. Multiply all of them together and then add 1. What number do you get?",
+          "answer": { "kind": "number", "value": "31" },
+          "explanation": [
+            "2 times 3 is 6, and 6 times 5 is 30. Add 1 and you have 31.",
+            "Now look at what 31 does with the list. Divide by 2 and there is 1 left over. Divide by 3, 1 left over. Divide by 5, 1 left over.",
+            "That is not luck. 30 is built out of 2, 3 and 5, so each of them divides it exactly, and the extra 1 has nowhere to go.",
+            "So 31 is a number that none of the world's supposed primes can divide, and every number is built from primes. The list was not the whole world after all."
+          ],
+          "ideaId": "primes-are-atoms",
+          "useAgain": "when a list claims to be complete and you want to build something the list cannot account for.",
+          "hints": [
+            "Do the multiplying first and keep the product in front of you before you add anything.",
+            "Try dividing your answer by 2, then by 3, then by 5, and write down what is left over each time."
+          ],
+          "socraticHint": "Why does adding exactly 1 spoil every one of those divisions at once, when adding 6 would have spoiled none of them?",
+          "skills": ["think.skills.primes", "think.proof"],
+          "thinkMinutes": 5,
+          "difficulty": 2,
+          "variant": {
+            "prompt": "Suppose the only primes in the world were 2, 3, 5 and 7. Multiply all of them together and add 1. What number do you get?",
+            "answer": { "kind": "number", "value": "211" }
+          }
+        },
+        {
+          "id": "s3-w06-think-04-p05",
+          "kind": "choice",
+          "lane": "puzzle",
+          "prompt": "Careful. Take the primes 2, 3, 5, 7, 11 and 13, multiply them all and add 1, and you get 30031. That number is not prime: 30031 is 59 times 509. Does that wreck the argument that the primes never run out?",
+          "options": [
+            "Yes, because the new number has to come out prime or there is nothing to say",
+            "No, because 59 and 509 are primes themselves and neither one is on the list",
+            "No, because 30031 is an odd number",
+            "Yes, because nobody predicted the 59 and the 509"
+          ],
+          "answer": { "kind": "choice", "index": 1 },
+          "explanation": [
+            "The argument never needed the new number to be prime. It only needed it to be out of reach of every prime on the list.",
+            "30031 still leaves 1 over when divided by 2, 3, 5, 7, 11 or 13, exactly as before.",
+            "Every whole number bigger than 1 is built from primes, so 30031 is built from primes too, and none of its builders can be on the list.",
+            "Sure enough its builders are 59 and 509, and neither is on the list. The list was incomplete, which is the whole claim.",
+            "Being odd is true but useless here. It only rules out the prime 2."
+          ],
+          "ideaId": "impossible-assumption",
+          "useAgain": "when an argument seems to break on one example and you want to check what the argument actually promised.",
+          "hints": [
+            "Go back and ask what the argument really claimed about the new number. Prime, or something weaker than that?",
+            "Divide 30031 by each prime on the list and see whether anything has changed."
+          ],
+          "socraticHint": "What exactly did the argument promise about the new number, and is that promise still being kept here?",
+          "skills": ["think.proof", "think.skills.primes"],
+          "thinkMinutes": 5,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "Take the primes 2, 3, 5, 7, 11, 13 and 17, multiply them all and add 1, and you get 510511, which is 19 times 97 times 277. Which sentence is the one the argument actually needs?",
+            "options": [
+              "Every prime that builds the new number is missing from the list, so the list was never complete",
+              "The new number always comes out prime",
+              "The new number is always odd",
+              "The list has to have at least seven primes on it"
+            ],
+            "answer": { "kind": "choice", "index": 0 }
+          }
+        },
+        {
+          "id": "s3-w06-think-04-p06",
+          "kind": "number",
+          "lane": "puzzle",
+          "prompt": "The peak of the week, untimed, and explained back afterwards. What is the smallest whole number greater than 1 that leaves a remainder of 1 when you divide it by 2, by 3, by 4, by 5 and by 6?",
+          "answer": { "kind": "number", "value": "61" },
+          "explanation": [
+            "Take the 1 away and you are left with a number that 2, 3, 4, 5 and 6 all divide exactly.",
+            "The smallest such number is the one they all fit into. 4 needs two twos, 3 needs a three, 5 needs a five, and 6 is already covered by that three and one of the twos. So 4 times 3 times 5, which is 60.",
+            "Put the 1 back on and you have 61.",
+            "Check it: 61 is 30 twos and 1, 20 threes and 1, 15 fours and 1, 12 fives and 1, 10 sixes and 1.",
+            "The trap is multiplying 2 times 3 times 4 times 5 times 6 to get 720. That number works too, but it is nowhere near the smallest."
+          ],
+          "ideaId": "gcd-and-lcm",
+          "useAgain": "when a number has to leave the same remainder with several different divisors.",
+          "hints": [
+            "The remainder is the same every time. What could you do to the number to make all five divisions come out exact?",
+            "Once the remainder is gone you need the smallest number all five divide into, which is not the same as their product."
+          ],
+          "socraticHint": "If a number is already a multiple of 4 and of 3, do you still have to do anything extra to make it a multiple of 6?",
+          "skills": ["think.skills.gcd-lcm", "think.number-sense"],
+          "thinkMinutes": 5,
+          "difficulty": 3,
+          "variant": {
+            "prompt": "What is the smallest whole number greater than 2 that leaves a remainder of 2 when you divide it by 3, by 4, by 5 and by 6?",
+            "answer": { "kind": "number", "value": "62" }
+          }
+        },
+        {
+          "id": "s3-w06-think-04-p07",
+          "kind": "text",
+          "lane": "puzzle",
+          "prompt": "Write the whole proof in your own words, the way Euclid wrote it about 2300 years ago. Somebody hands you a piece of paper and says it lists every prime there is, with nothing missing. You have not seen the paper and you do not need to. Show that the paper is wrong, whatever is written on it.",
+          "answer": {
+            "kind": "rubric",
+            "mustMention": [
+              "assume the list holds every prime and nothing is missing",
+              "multiply every prime on the list together and add one",
+              "each prime on the list leaves a remainder of one",
+              "a prime that is not on the list, so the list was not complete"
+            ]
+          },
+          "explanation": [
+            "Start by assuming the opposite of what you want: the paper really is complete.",
+            "Multiply every prime on it together and add 1. Call the new number N.",
+            "Every prime on the paper divides the product exactly, so dividing N by any of them leaves a remainder of 1. Not one of them divides N.",
+            "Every whole number bigger than 1 is built out of primes, so N is built out of primes too, and none of its builders can be on the paper.",
+            "That is a prime the complete list is missing, which is nonsense. So no complete list exists, and the primes never run out."
+          ],
+          "ideaId": "impossible-assumption",
+          "useAgain": "when you have to show something goes on forever and you cannot possibly check every case.",
+          "hints": [
+            "You are not being asked to find a new prime. You are being asked to show that whatever the paper says, something is missing from it.",
+            "Build one number out of everything on the paper, then ask what any prime on the paper does when it tries to divide that number."
+          ],
+          "socraticHint": "Is your new number itself guaranteed to be prime, or is something weaker than that already enough to finish the argument?",
+          "skills": ["think.proof", "think.skills.primes"],
+          "thinkMinutes": 5,
+          "difficulty": 3
+        }
+      ]
+    },
+    {
+      "kind": "explain",
+      "id": "s3-w06-think-05",
+      "title": "Explain it in writing: your own break-even",
+      "mode": "written",
+      "prompt": "Write the break-even sentence for your own shop, and then the sentence after it. Take three numbers: the fixed costs from your cost sheet, the cost of the materials in one unit, and the price you settled on this week. Build the equation with them, price times n on one pan and fixed plus unit times n on the other, and solve it with legal moves, writing every move down. Then say what your answer means in a sentence you would be happy to say to a neighbour: at that count the money that came in exactly matches the money that went out, and there is nothing left over. Finish with the inequality. Write the smallest whole number of units that puts your profit above zero, and explain why it is one more than break-even when break-even lands on a whole number, and why it is not one more when break-even lands between two whole numbers."
+    },
+    {
+      "kind": "explain",
+      "id": "s3-w06-think-06",
+      "title": "Explain it out loud",
+      "mode": "voice",
+      "prompt": "Record the primes proof standing up, with your paper in shot. Say the assumption first, in your own words: suppose somebody hands you a list of every prime there is, complete. Then build the new number in front of the camera out of whatever is on that list, and say why not one prime on the list can divide it. Then say the crash. Close with the sentence itself, said slowly, because it is yours now: the primes never run out, and I can prove it.",
+      "problemId": "s3-w06-think-04-p07"
+    }
+  ]
+}

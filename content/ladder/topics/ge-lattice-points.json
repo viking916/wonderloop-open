@@ -1,0 +1,2689 @@
+{
+  "id": "ge-lattice-points",
+  "idea": {
+    "body": "A lattice point is a point with whole-number coordinates. Take a segment between two lattice points, and let dx and dy be its horizontal and vertical gaps. Counting both ends, the segment has gcd(|dx|, |dy|) plus 1 lattice points on it. A segment from (0, 0) to (6, 9) has dx = 6 and dy = 9, so gcd 3. It passes through 4 lattice points in all. Pick's theorem uses this idea to find a lattice polygon's area from counting alone. Area equals I plus B over 2 minus 1. I is the count of lattice points strictly inside the polygon, and B is the count on its boundary. A polygon with 5 interior points and 8 boundary points has area 5 + 8/2 - 1 = 8.",
+    "figure": {
+      "kind": "plane",
+      "alt": "A segment from (0, 0) to (6, 9), passing through 4 lattice points in all.",
+      "spec": {
+        "range": 10,
+        "points": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 6,
+            "y": 9
+          }
+        ],
+        "segments": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              9
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "How many lattice points lie on the segment from (0, 0) to (8, 12), counting both endpoints?",
+    "steps": [
+      "The horizontal gap is 8 and the vertical gap is 12.",
+      "The gcd of 8 and 12 is 4.",
+      "The number of lattice points on the segment, counting both ends, is gcd + 1 = 5."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "A segment from (0, 0) to (8, 12).",
+      "spec": {
+        "range": 12,
+        "points": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 8,
+            "y": 12
+          }
+        ],
+        "segments": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              8,
+              12
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "ge-lattice-points-w1",
+      "name": "gcd of the run and rise",
+      "when": "Use this to count lattice points on a segment between two lattice points.",
+      "steps": [
+        "A segment runs from (0, 0) to (6, 9).",
+        "The horizontal run is 6 and the vertical rise is 9.",
+        "The gcd of 6 and 9 is 3.",
+        "Counting both ends, the segment has 3 + 1, which is 4 lattice points."
+      ],
+      "example": "How many lattice points lie on the segment from (0, 0) to (6, 9)?",
+      "answer": "4",
+      "trap": "Forgetting to add 1 for the endpoints after finding the gcd.",
+      "figure": {
+        "kind": "plane",
+        "alt": "A segment from (0, 0) to (6, 9), passing through 4 lattice points in all.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 6,
+              "y": 9
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                9
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-lattice-points-w2",
+      "name": "Pick's theorem",
+      "when": "Use this to find a lattice polygon's area just by counting its points.",
+      "steps": [
+        "A triangle has vertices (0, 0), (4, 0), (2, 4).",
+        "Count its lattice points: 5 strictly inside, 8 on its boundary.",
+        "Pick's theorem says area equals I plus B over 2, minus 1.",
+        "That is 5 + 8/2 - 1, which is 5 + 4 - 1, or 8."
+      ],
+      "example": "A triangle with vertices (0, 0), (4, 0), (2, 4) has 5 interior points and 8 boundary points. Find its area.",
+      "answer": "8",
+      "trap": "Dividing the interior count by 2 instead of the boundary count.",
+      "figure": {
+        "kind": "plane",
+        "alt": "A triangle with vertices (0, 0), (4, 0), (2, 4), with its interior and boundary lattice points marked.",
+        "spec": {
+          "range": 5,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 1,
+              "y": 0
+            },
+            {
+              "x": 2,
+              "y": 0
+            },
+            {
+              "x": 3,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 0
+            },
+            {
+              "x": 3,
+              "y": 2
+            },
+            {
+              "x": 2,
+              "y": 4
+            },
+            {
+              "x": 1,
+              "y": 2
+            },
+            {
+              "x": 1,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 2
+            },
+            {
+              "x": 2,
+              "y": 3
+            },
+            {
+              "x": 3,
+              "y": 1
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              2,
+              4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-lattice-points-w3",
+      "name": "Count by rows",
+      "when": "Use this to count a segment's lattice points directly, without computing a gcd.",
+      "steps": [
+        "A segment runs from (0, 0) to (4, 6).",
+        "Check each whole step in x from 0 to 4, and see which gives a whole y.",
+        "The segment's slope is 6/4, which simplifies to 3/2.",
+        "Whole y-values occur every 2 steps in x: at x = 0, 2, 4, giving y = 0, 3, 6.",
+        "That gives 3 lattice points on the segment."
+      ],
+      "example": "How many lattice points lie on the segment from (0, 0) to (4, 6)?",
+      "answer": "3",
+      "trap": "Checking every x-value instead of only the ones spaced by the reduced ratio.",
+      "figure": {
+        "kind": "plane",
+        "alt": "A segment from (0, 0) to (4, 6), with its 3 lattice points marked.",
+        "spec": {
+          "range": 6,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 2,
+              "y": 3
+            },
+            {
+              "x": 4,
+              "y": 6
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-ge-lattice-points-p01",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie on the segment from (0, 0) to (4, 6), counting both endpoints?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The gcd of 4 and 6 is 2.",
+        "The count, including both ends, is gcd + 1 = 3."
+      ],
+      "useAgain": "when you need to count every lattice point on a segment between two lattice points.",
+      "hints": [
+        "Find the gcd of the horizontal and vertical gaps first.",
+        "The count of lattice points, both ends included, is that gcd plus 1."
+      ],
+      "socraticHint": "What is the gcd of the two gaps?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lattice points lie on the segment from (0, 0) to (6, 9), counting both endpoints?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The segment from (0, 0) to (4, 6).",
+        "spec": {
+          "range": 7,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 4,
+              "y": 6
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p02",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie on the segment from (0, 0) to (9, 12), counting both endpoints?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The gcd of 9 and 12 is 3.",
+        "The count, including both ends, is gcd + 1 = 4."
+      ],
+      "useAgain": "when you need to count every lattice point on a segment between two lattice points.",
+      "hints": [
+        "Find the gcd of the horizontal and vertical gaps first.",
+        "The count of lattice points, both ends included, is that gcd plus 1."
+      ],
+      "socraticHint": "What is the gcd of the two gaps?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lattice points lie on the segment from (0, 0) to (12, 16), counting both endpoints?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The segment from (0, 0) to (9, 12).",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 9,
+              "y": 12
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                9,
+                12
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p03",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie on the segment from (0, 0) to (6, 10), counting both endpoints?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The gcd of 6 and 10 is 2.",
+        "The count, including both ends, is gcd + 1 = 3."
+      ],
+      "useAgain": "when you need to count every lattice point on a segment between two lattice points.",
+      "hints": [
+        "Find the gcd of the horizontal and vertical gaps first.",
+        "The count of lattice points, both ends included, is that gcd plus 1."
+      ],
+      "socraticHint": "What is the gcd of the two gaps?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lattice points lie on the segment from (0, 0) to (10, 15), counting both endpoints?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The segment from (0, 0) to (6, 10).",
+        "spec": {
+          "range": 11,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 6,
+              "y": 10
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                10
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p04",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie on the segment from (0, 0) to (8, 8), counting both endpoints?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "The gcd of 8 and 8 is 8.",
+        "The count, including both ends, is gcd + 1 = 9."
+      ],
+      "useAgain": "when you need to count every lattice point on a segment between two lattice points.",
+      "hints": [
+        "Find the gcd of the horizontal and vertical gaps first.",
+        "The count of lattice points, both ends included, is that gcd plus 1."
+      ],
+      "socraticHint": "What is the gcd of the two gaps?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lattice points lie on the segment from (0, 0) to (6, 6), counting both endpoints?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The segment from (0, 0) to (8, 8).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 8,
+              "y": 8
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                8,
+                8
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p05",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie on the segment from (0, 0) to (5, 10), counting both endpoints?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The gcd of 5 and 10 is 5.",
+        "The count, including both ends, is gcd + 1 = 6."
+      ],
+      "useAgain": "when you need to count every lattice point on a segment between two lattice points.",
+      "hints": [
+        "Find the gcd of the horizontal and vertical gaps first.",
+        "The count of lattice points, both ends included, is that gcd plus 1."
+      ],
+      "socraticHint": "What is the gcd of the two gaps?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lattice points lie on the segment from (0, 0) to (4, 12), counting both endpoints?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The segment from (0, 0) to (5, 10).",
+        "spec": {
+          "range": 11,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 5,
+              "y": 10
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                10
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p06",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie strictly between (0, 0) and (6, 9), not counting either endpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The gcd of 6 and 9 is 3, so gcd + 1 = 4 points lie on the segment in all.",
+        "Removing the 2 endpoints leaves 4 - 2 = 2."
+      ],
+      "useAgain": "when a problem asks only for the lattice points strictly inside a segment.",
+      "hints": [
+        "First find the total count including both endpoints.",
+        "Then subtract 2 to remove the endpoints themselves."
+      ],
+      "socraticHint": "How many lattice points are on the segment in total, endpoints included?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lattice points lie strictly between (0, 0) and (4, 6), not counting either endpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The segment from (0, 0) to (6, 9).",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 6,
+              "y": 9
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                9
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p07",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie strictly between (0, 0) and (10, 6), not counting either endpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The gcd of 10 and 6 is 2, so gcd + 1 = 3 points lie on the segment in all.",
+        "Removing the 2 endpoints leaves 3 - 2 = 1."
+      ],
+      "useAgain": "when a problem asks only for the lattice points strictly inside a segment.",
+      "hints": [
+        "First find the total count including both endpoints.",
+        "Then subtract 2 to remove the endpoints themselves."
+      ],
+      "socraticHint": "How many lattice points are on the segment in total, endpoints included?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lattice points lie strictly between (0, 0) and (20, 15), not counting either endpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The segment from (0, 0) to (10, 6).",
+        "spec": {
+          "range": 11,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 10,
+              "y": 6
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p08",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie strictly between (0, 0) and (8, 12), not counting either endpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The gcd of 8 and 12 is 4, so gcd + 1 = 5 points lie on the segment in all.",
+        "Removing the 2 endpoints leaves 5 - 2 = 3."
+      ],
+      "useAgain": "when a problem asks only for the lattice points strictly inside a segment.",
+      "hints": [
+        "First find the total count including both endpoints.",
+        "Then subtract 2 to remove the endpoints themselves."
+      ],
+      "socraticHint": "How many lattice points are on the segment in total, endpoints included?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lattice points lie strictly between (0, 0) and (9, 15), not counting either endpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The segment from (0, 0) to (8, 12).",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 8,
+              "y": 12
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                8,
+                12
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p09",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie strictly between (0, 0) and (12, 8), not counting either endpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The gcd of 12 and 8 is 4, so gcd + 1 = 5 points lie on the segment in all.",
+        "Removing the 2 endpoints leaves 5 - 2 = 3."
+      ],
+      "useAgain": "when a problem asks only for the lattice points strictly inside a segment.",
+      "hints": [
+        "First find the total count including both endpoints.",
+        "Then subtract 2 to remove the endpoints themselves."
+      ],
+      "socraticHint": "How many lattice points are on the segment in total, endpoints included?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lattice points lie strictly between (0, 0) and (10, 4), not counting either endpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The segment from (0, 0) to (12, 8).",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 12,
+              "y": 8
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                12,
+                8
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p10",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie strictly between (0, 0) and (9, 6), not counting either endpoint?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The gcd of 9 and 6 is 3, so gcd + 1 = 4 points lie on the segment in all.",
+        "Removing the 2 endpoints leaves 4 - 2 = 2."
+      ],
+      "useAgain": "when a problem asks only for the lattice points strictly inside a segment.",
+      "hints": [
+        "First find the total count including both endpoints.",
+        "Then subtract 2 to remove the endpoints themselves."
+      ],
+      "socraticHint": "How many lattice points are on the segment in total, endpoints included?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many lattice points lie strictly between (0, 0) and (12, 9), not counting either endpoint?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "explanationFigure": {
+        "kind": "plane",
+        "alt": "The segment from (0, 0) to (9, 6).",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 9,
+              "y": 6
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                9,
+                6
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p11",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has 5 interior lattice points and 8 boundary lattice points. What is its area, by Pick's theorem?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Pick's theorem says area = I + B/2 - 1.",
+        "That is 5 + 8/2 - 1 = 8."
+      ],
+      "useAgain": "when you know a lattice polygon's interior and boundary point counts and need its area.",
+      "hints": [
+        "Pick's theorem is area = I + B/2 - 1.",
+        "Substitute the interior and boundary counts directly."
+      ],
+      "socraticHint": "What does Pick's theorem say area equals?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A lattice polygon has 6 interior lattice points and 4 boundary lattice points. What is its area, by Pick's theorem?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p12",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has 3 interior lattice points and 6 boundary lattice points. What is its area, by Pick's theorem?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Pick's theorem says area = I + B/2 - 1.",
+        "That is 3 + 6/2 - 1 = 5."
+      ],
+      "useAgain": "when you know a lattice polygon's interior and boundary point counts and need its area.",
+      "hints": [
+        "Pick's theorem is area = I + B/2 - 1.",
+        "Substitute the interior and boundary counts directly."
+      ],
+      "socraticHint": "What does Pick's theorem say area equals?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A lattice polygon has 4 interior lattice points and 8 boundary lattice points. What is its area, by Pick's theorem?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p13",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has 10 interior lattice points and 4 boundary lattice points. What is its area, by Pick's theorem?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "Pick's theorem says area = I + B/2 - 1.",
+        "That is 10 + 4/2 - 1 = 11."
+      ],
+      "useAgain": "when you know a lattice polygon's interior and boundary point counts and need its area.",
+      "hints": [
+        "Pick's theorem is area = I + B/2 - 1.",
+        "Substitute the interior and boundary counts directly."
+      ],
+      "socraticHint": "What does Pick's theorem say area equals?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A lattice polygon has 8 interior lattice points and 6 boundary lattice points. What is its area, by Pick's theorem?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p14",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has 7 interior lattice points and 10 boundary lattice points. What is its area, by Pick's theorem?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "Pick's theorem says area = I + B/2 - 1.",
+        "That is 7 + 10/2 - 1 = 11."
+      ],
+      "useAgain": "when you know a lattice polygon's interior and boundary point counts and need its area.",
+      "hints": [
+        "Pick's theorem is area = I + B/2 - 1.",
+        "Substitute the interior and boundary counts directly."
+      ],
+      "socraticHint": "What does Pick's theorem say area equals?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A lattice polygon has 9 interior lattice points and 12 boundary lattice points. What is its area, by Pick's theorem?",
+        "answer": {
+          "kind": "number",
+          "value": "14"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p15",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has 2 interior lattice points and 4 boundary lattice points. What is its area, by Pick's theorem?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Pick's theorem says area = I + B/2 - 1.",
+        "That is 2 + 4/2 - 1 = 3."
+      ],
+      "useAgain": "when you know a lattice polygon's interior and boundary point counts and need its area.",
+      "hints": [
+        "Pick's theorem is area = I + B/2 - 1.",
+        "Substitute the interior and boundary counts directly."
+      ],
+      "socraticHint": "What does Pick's theorem say area equals?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A lattice polygon has 5 interior lattice points and 4 boundary lattice points. What is its area, by Pick's theorem?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p16",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie on the segment from (1, 2) to (7, 10), counting both endpoints?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The horizontal gap is 6 and the vertical gap is 8.",
+        "The gcd of 6 and 8 is 2, so the count is 2 + 1 = 3."
+      ],
+      "useAgain": "when a segment's endpoints are not the origin.",
+      "hints": [
+        "Find the horizontal and vertical gaps between the two points first.",
+        "The count, both ends included, is the gcd of those two gaps, plus 1."
+      ],
+      "socraticHint": "What are the horizontal and vertical gaps between the two points?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many lattice points lie on the segment from (2, 1) to (8, 13), counting both endpoints?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A segment from (1, 2) to (7, 10).",
+        "spec": {
+          "range": 11,
+          "points": [
+            {
+              "x": 1,
+              "y": 2,
+              "label": "A"
+            },
+            {
+              "x": 7,
+              "y": 10,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            [
+              [
+                1,
+                2
+              ],
+              [
+                7,
+                10
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p17",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie on the segment from (-2, 3) to (4, 9), counting both endpoints?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "The horizontal gap is 6 and the vertical gap is 6.",
+        "The gcd of 6 and 6 is 6, so the count is 6 + 1 = 7."
+      ],
+      "useAgain": "when a segment's endpoints are not the origin.",
+      "hints": [
+        "Find the horizontal and vertical gaps between the two points first.",
+        "The count, both ends included, is the gcd of those two gaps, plus 1."
+      ],
+      "socraticHint": "What are the horizontal and vertical gaps between the two points?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many lattice points lie on the segment from (-1, 2) to (5, 10), counting both endpoints?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A segment from (-2, 3) to (4, 9).",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": -2,
+              "y": 3,
+              "label": "A"
+            },
+            {
+              "x": 4,
+              "y": 9,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -2,
+                3
+              ],
+              [
+                4,
+                9
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p18",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie on the segment from (0, -4) to (8, 2), counting both endpoints?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The horizontal gap is 8 and the vertical gap is 6.",
+        "The gcd of 8 and 6 is 2, so the count is 2 + 1 = 3."
+      ],
+      "useAgain": "when a segment's endpoints are not the origin.",
+      "hints": [
+        "Find the horizontal and vertical gaps between the two points first.",
+        "The count, both ends included, is the gcd of those two gaps, plus 1."
+      ],
+      "socraticHint": "What are the horizontal and vertical gaps between the two points?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many lattice points lie on the segment from (1, -3) to (7, 9), counting both endpoints?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A segment from (0, -4) to (8, 2).",
+        "spec": {
+          "range": 9,
+          "points": [
+            {
+              "x": 0,
+              "y": -4,
+              "label": "A"
+            },
+            {
+              "x": 8,
+              "y": 2,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                -4
+              ],
+              [
+                8,
+                2
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p19",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "How many lattice points lie on the segment from (-3, -1) to (9, 7), counting both endpoints?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The horizontal gap is 12 and the vertical gap is 8.",
+        "The gcd of 12 and 8 is 4, so the count is 4 + 1 = 5."
+      ],
+      "useAgain": "when a segment's endpoints are not the origin.",
+      "hints": [
+        "Find the horizontal and vertical gaps between the two points first.",
+        "The count, both ends included, is the gcd of those two gaps, plus 1."
+      ],
+      "socraticHint": "What are the horizontal and vertical gaps between the two points?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many lattice points lie on the segment from (-2, -2) to (10, 6), counting both endpoints?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A segment from (-3, -1) to (9, 7).",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": -3,
+              "y": -1,
+              "label": "A"
+            },
+            {
+              "x": 9,
+              "y": 7,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -3,
+                -1
+              ],
+              [
+                9,
+                7
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p20",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has area 12 and 6 boundary lattice points. How many interior lattice points does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "Pick's theorem, area = I + B/2 - 1, rearranges to I = area - B/2 + 1.",
+        "That is 12 - 6/2 + 1 = 10."
+      ],
+      "useAgain": "when you know a lattice polygon's area and boundary count and need its interior count.",
+      "hints": [
+        "Start from Pick's theorem, area = I + B/2 - 1.",
+        "Solve that equation for I instead of area."
+      ],
+      "socraticHint": "How does Pick's theorem rearrange to solve for I?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A lattice polygon has area 10 and 8 boundary lattice points. How many interior lattice points does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p21",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has area 20 and 10 boundary lattice points. How many interior lattice points does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "Pick's theorem, area = I + B/2 - 1, rearranges to I = area - B/2 + 1.",
+        "That is 20 - 10/2 + 1 = 16."
+      ],
+      "useAgain": "when you know a lattice polygon's area and boundary count and need its interior count.",
+      "hints": [
+        "Start from Pick's theorem, area = I + B/2 - 1.",
+        "Solve that equation for I instead of area."
+      ],
+      "socraticHint": "How does Pick's theorem rearrange to solve for I?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A lattice polygon has area 18 and 6 boundary lattice points. How many interior lattice points does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p22",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has area 9 and 8 boundary lattice points. How many interior lattice points does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Pick's theorem, area = I + B/2 - 1, rearranges to I = area - B/2 + 1.",
+        "That is 9 - 8/2 + 1 = 6."
+      ],
+      "useAgain": "when you know a lattice polygon's area and boundary count and need its interior count.",
+      "hints": [
+        "Start from Pick's theorem, area = I + B/2 - 1.",
+        "Solve that equation for I instead of area."
+      ],
+      "socraticHint": "How does Pick's theorem rearrange to solve for I?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A lattice polygon has area 14 and 10 boundary lattice points. How many interior lattice points does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p23",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has area 15 and 4 boundary lattice points. How many interior lattice points does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "Pick's theorem, area = I + B/2 - 1, rearranges to I = area - B/2 + 1.",
+        "That is 15 - 4/2 + 1 = 14."
+      ],
+      "useAgain": "when you know a lattice polygon's area and boundary count and need its interior count.",
+      "hints": [
+        "Start from Pick's theorem, area = I + B/2 - 1.",
+        "Solve that equation for I instead of area."
+      ],
+      "socraticHint": "How does Pick's theorem rearrange to solve for I?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A lattice polygon has area 7 and 4 boundary lattice points. How many interior lattice points does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p24",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has area 10 and 4 interior lattice points. How many boundary lattice points does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "Pick's theorem, area = I + B/2 - 1, rearranges to B = 2(area - I + 1).",
+        "That is 2(10 - 4 + 1) = 14."
+      ],
+      "useAgain": "when you know a lattice polygon's area and interior count and need its boundary count.",
+      "hints": [
+        "Start from Pick's theorem, area = I + B/2 - 1.",
+        "Solve that equation for B instead of area."
+      ],
+      "socraticHint": "How does Pick's theorem rearrange to solve for B?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A lattice polygon has area 9 and 3 interior lattice points. How many boundary lattice points does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "14"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p25",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has area 14 and 6 interior lattice points. How many boundary lattice points does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "Pick's theorem, area = I + B/2 - 1, rearranges to B = 2(area - I + 1).",
+        "That is 2(14 - 6 + 1) = 18."
+      ],
+      "useAgain": "when you know a lattice polygon's area and interior count and need its boundary count.",
+      "hints": [
+        "Start from Pick's theorem, area = I + B/2 - 1.",
+        "Solve that equation for B instead of area."
+      ],
+      "socraticHint": "How does Pick's theorem rearrange to solve for B?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A lattice polygon has area 16 and 7 interior lattice points. How many boundary lattice points does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p26",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has area 8 and 3 interior lattice points. How many boundary lattice points does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Pick's theorem, area = I + B/2 - 1, rearranges to B = 2(area - I + 1).",
+        "That is 2(8 - 3 + 1) = 12."
+      ],
+      "useAgain": "when you know a lattice polygon's area and interior count and need its boundary count.",
+      "hints": [
+        "Start from Pick's theorem, area = I + B/2 - 1.",
+        "Solve that equation for B instead of area."
+      ],
+      "socraticHint": "How does Pick's theorem rearrange to solve for B?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A lattice polygon has area 11 and 5 interior lattice points. How many boundary lattice points does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "14"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p27",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has area 12 and 5 interior lattice points. How many boundary lattice points does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "Pick's theorem, area = I + B/2 - 1, rearranges to B = 2(area - I + 1).",
+        "That is 2(12 - 5 + 1) = 16."
+      ],
+      "useAgain": "when you know a lattice polygon's area and interior count and need its boundary count.",
+      "hints": [
+        "Start from Pick's theorem, area = I + B/2 - 1.",
+        "Solve that equation for B instead of area."
+      ],
+      "socraticHint": "How does Pick's theorem rearrange to solve for B?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A lattice polygon has area 13 and 4 interior lattice points. How many boundary lattice points does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p28",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "choice",
+      "prompt": "Which of these segments has the most lattice points strictly between its endpoints?",
+      "options": [
+        "The segment from (0, 0) to (6, 9)",
+        "The segment from (0, 0) to (8, 10)",
+        "The segment from (0, 0) to (5, 7)",
+        "The segment from (0, 0) to (12, 8)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The count strictly between the endpoints is the gcd of the horizontal and vertical gaps, minus 1.",
+        "That count is largest for the segment with the largest gcd of its gaps."
+      ],
+      "useAgain": "when you must compare several segments' lattice point counts at a glance.",
+      "hints": [
+        "Find the gcd of each segment's horizontal and vertical gap.",
+        "The biggest gcd gives the most interior lattice points."
+      ],
+      "socraticHint": "Which segment's gaps share the largest common factor?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which of these segments has the most lattice points strictly between its endpoints?",
+        "options": [
+          "The segment from (0, 0) to (9, 11)",
+          "The segment from (0, 0) to (6, 8)",
+          "The segment from (0, 0) to (10, 15)",
+          "The segment from (0, 0) to (13, 7)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p29",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "choice",
+      "prompt": "Which of these segments has the most lattice points strictly between its endpoints?",
+      "options": [
+        "The segment from (2, 0) to (8, 6)",
+        "The segment from (1, 1) to (9, 7)",
+        "The segment from (0, 2) to (10, 8)",
+        "The segment from (0, 0) to (11, 5)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The count strictly between the endpoints is the gcd of the horizontal and vertical gaps, minus 1.",
+        "That count is largest for the segment with the largest gcd of its gaps."
+      ],
+      "useAgain": "when you must compare several segments' lattice point counts at a glance.",
+      "hints": [
+        "Find the gcd of each segment's horizontal and vertical gap.",
+        "The biggest gcd gives the most interior lattice points."
+      ],
+      "socraticHint": "Which segment's gaps share the largest common factor?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which of these segments has the most lattice points strictly between its endpoints?",
+        "options": [
+          "The segment from (0, 1) to (12, 7)",
+          "The segment from (2, 1) to (10, 9)",
+          "The segment from (1, 0) to (9, 5)",
+          "The segment from (0, 0) to (13, 6)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p30",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "choice",
+      "prompt": "Which of these segments has the most lattice points strictly between its endpoints?",
+      "options": [
+        "The segment from (0, 0) to (9, 12)",
+        "The segment from (0, 0) to (14, 6)",
+        "The segment from (0, 0) to (15, 10)",
+        "The segment from (0, 0) to (7, 11)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The count strictly between the endpoints is the gcd of the horizontal and vertical gaps, minus 1.",
+        "That count is largest for the segment with the largest gcd of its gaps."
+      ],
+      "useAgain": "when you must compare several segments' lattice point counts at a glance.",
+      "hints": [
+        "Find the gcd of each segment's horizontal and vertical gap.",
+        "The biggest gcd gives the most interior lattice points."
+      ],
+      "socraticHint": "Which segment's gaps share the largest common factor?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which of these segments has the most lattice points strictly between its endpoints?",
+        "options": [
+          "The segment from (0, 0) to (11, 13)",
+          "The segment from (0, 0) to (10, 4)",
+          "The segment from (0, 0) to (9, 15)",
+          "The segment from (0, 0) to (12, 16)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p31",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has vertices (0, 0), (4, 0), (0, 6), in order. How many lattice points lie on its boundary?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Add up the gcd of each edge's horizontal and vertical gap, going all the way around.",
+        "That sum is 4 + 2 + 6 = 12."
+      ],
+      "useAgain": "when you need a lattice polygon's full boundary count, not just one edge's.",
+      "hints": [
+        "Find the gcd of the gaps for each edge separately.",
+        "Add all of those gcds together, including the edge back to the start."
+      ],
+      "socraticHint": "What is the gcd of the gaps for each edge, one at a time?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lattice polygon has vertices (0, 0), (6, 0), (0, 3), in order. How many lattice points lie on its boundary?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A polygon with vertices (0, 0), (4, 0), (0, 6).",
+        "spec": {
+          "range": 7,
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              0,
+              6
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p32",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has vertices (0, 0), (5, 0), (0, 5), in order. How many lattice points lie on its boundary?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Add up the gcd of each edge's horizontal and vertical gap, going all the way around.",
+        "That sum is 5 + 5 + 5 = 15."
+      ],
+      "useAgain": "when you need a lattice polygon's full boundary count, not just one edge's.",
+      "hints": [
+        "Find the gcd of the gaps for each edge separately.",
+        "Add all of those gcds together, including the edge back to the start."
+      ],
+      "socraticHint": "What is the gcd of the gaps for each edge, one at a time?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lattice polygon has vertices (0, 0), (7, 0), (0, 7), in order. How many lattice points lie on its boundary?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A polygon with vertices (0, 0), (5, 0), (0, 5).",
+        "spec": {
+          "range": 6,
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              0,
+              5
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p33",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has vertices (0, 0), (6, 0), (6, 4), (0, 4), in order. How many lattice points lie on its boundary?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "Add up the gcd of each edge's horizontal and vertical gap, going all the way around.",
+        "That sum is 6 + 4 + 6 + 4 = 20."
+      ],
+      "useAgain": "when you need a lattice polygon's full boundary count, not just one edge's.",
+      "hints": [
+        "Find the gcd of the gaps for each edge separately.",
+        "Add all of those gcds together, including the edge back to the start."
+      ],
+      "socraticHint": "What is the gcd of the gaps for each edge, one at a time?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lattice polygon has vertices (0, 0), (8, 0), (8, 6), (0, 6), in order. How many lattice points lie on its boundary?",
+        "answer": {
+          "kind": "number",
+          "value": "28"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A polygon with vertices (0, 0), (6, 0), (6, 4), (0, 4).",
+        "spec": {
+          "range": 7,
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p34",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has vertices (0, 0), (4, 2), (6, 6), (2, 4), in order. How many lattice points lie on its boundary?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Add up the gcd of each edge's horizontal and vertical gap, going all the way around.",
+        "That sum is 2 + 2 + 2 + 2 = 8."
+      ],
+      "useAgain": "when you need a lattice polygon's full boundary count, not just one edge's.",
+      "hints": [
+        "Find the gcd of the gaps for each edge separately.",
+        "Add all of those gcds together, including the edge back to the start."
+      ],
+      "socraticHint": "What is the gcd of the gaps for each edge, one at a time?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lattice polygon has vertices (0, 0), (6, 3), (9, 9), (3, 6), in order. How many lattice points lie on its boundary?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A polygon with vertices (0, 0), (4, 2), (6, 6), (2, 4).",
+        "spec": {
+          "range": 7,
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              2,
+              4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p35",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "order",
+      "prompt": "A lattice polygon has vertices (0, 0), (6, 0), (0, 4), in order, and 7 interior lattice points. Put these steps for finding its area in order.",
+      "items": [
+        "Apply Pick's theorem: area = I + B/2 - 1 = 7 + 12/2 - 1 = 12.",
+        "Add the gcd of each edge's gaps to find the boundary count: B = 12.",
+        "The polygon has 7 interior lattice points, so I = 7."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Find the boundary count first, then use the given interior count, then apply Pick's theorem.",
+        "Pick's theorem needs both I and B before it can give the area."
+      ],
+      "useAgain": "when a polygon's area comes from counting its lattice points rather than measuring.",
+      "hints": [
+        "Which count do you have to compute yourself, and which is already given?",
+        "The boundary count comes from summing gcds; the interior count is stated."
+      ],
+      "socraticHint": "Which of I and B is already given in the prompt?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lattice polygon has vertices (0, 0), (8, 0), (0, 6), in order, and 17 interior lattice points. Put these steps for finding its area in order.",
+        "items": [
+          "Apply Pick's theorem: area = I + B/2 - 1 = 17 + 16/2 - 1 = 24.",
+          "Add the gcd of each edge's gaps to find the boundary count: B = 16.",
+          "The polygon has 17 interior lattice points, so I = 17."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A polygon with vertices (0, 0), (6, 0), (0, 4).",
+        "spec": {
+          "range": 7,
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              0,
+              4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p36",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "order",
+      "prompt": "A lattice polygon has vertices (0, 0), (5, 0), (5, 5), (0, 5), in order, and 16 interior lattice points. Put these steps for finding its area in order.",
+      "items": [
+        "Apply Pick's theorem: area = I + B/2 - 1 = 16 + 20/2 - 1 = 25.",
+        "Add the gcd of each edge's gaps to find the boundary count: B = 20.",
+        "The polygon has 16 interior lattice points, so I = 16."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Find the boundary count first, then use the given interior count, then apply Pick's theorem.",
+        "Pick's theorem needs both I and B before it can give the area."
+      ],
+      "useAgain": "when a polygon's area comes from counting its lattice points rather than measuring.",
+      "hints": [
+        "Which count do you have to compute yourself, and which is already given?",
+        "The boundary count comes from summing gcds; the interior count is stated."
+      ],
+      "socraticHint": "Which of I and B is already given in the prompt?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lattice polygon has vertices (0, 0), (6, 0), (6, 6), (0, 6), in order, and 25 interior lattice points. Put these steps for finding its area in order.",
+        "items": [
+          "Apply Pick's theorem: area = I + B/2 - 1 = 25 + 24/2 - 1 = 36.",
+          "Add the gcd of each edge's gaps to find the boundary count: B = 24.",
+          "The polygon has 25 interior lattice points, so I = 25."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A polygon with vertices (0, 0), (5, 0), (5, 5), (0, 5).",
+        "spec": {
+          "range": 6,
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              0,
+              5
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p37",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "order",
+      "prompt": "A lattice polygon has vertices (0, 0), (4, 2), (6, 6), (2, 4), in order, and 9 interior lattice points. Put these steps for finding its area in order.",
+      "items": [
+        "Apply Pick's theorem: area = I + B/2 - 1 = 9 + 8/2 - 1 = 12.",
+        "Add the gcd of each edge's gaps to find the boundary count: B = 8.",
+        "The polygon has 9 interior lattice points, so I = 9."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "Find the boundary count first, then use the given interior count, then apply Pick's theorem.",
+        "Pick's theorem needs both I and B before it can give the area."
+      ],
+      "useAgain": "when a polygon's area comes from counting its lattice points rather than measuring.",
+      "hints": [
+        "Which count do you have to compute yourself, and which is already given?",
+        "The boundary count comes from summing gcds; the interior count is stated."
+      ],
+      "socraticHint": "Which of I and B is already given in the prompt?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lattice polygon has vertices (0, 0), (6, 3), (9, 9), (3, 6), in order, and 22 interior lattice points. Put these steps for finding its area in order.",
+        "items": [
+          "Apply Pick's theorem: area = I + B/2 - 1 = 22 + 12/2 - 1 = 27.",
+          "Add the gcd of each edge's gaps to find the boundary count: B = 12.",
+          "The polygon has 22 interior lattice points, so I = 22."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            0
+          ]
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A polygon with vertices (0, 0), (4, 2), (6, 6), (2, 4).",
+        "spec": {
+          "range": 7,
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              2,
+              4
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p38",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "truefalse",
+      "prompt": "Does the segment from (2, 3) to (10, 9) pass through any lattice point other than its two endpoints?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The gaps are 8 and 6, with gcd 2.",
+        "A gcd greater than 1 means extra lattice points exist.",
+        "A gcd of exactly 1 means the two endpoints are the only lattice points on the segment."
+      ],
+      "useAgain": "when you need to know whether a segment hides any lattice points besides its ends.",
+      "hints": [
+        "Find the gcd of the segment's horizontal and vertical gaps.",
+        "A gcd of 1 means the two endpoints are the only lattice points on the segment."
+      ],
+      "socraticHint": "Is the gcd of the two gaps equal to 1, or bigger than 1?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Does the segment from (3, 2) to (9, 10) pass through any lattice point other than its two endpoints?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p39",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "truefalse",
+      "prompt": "Does the segment from (1, 4) to (8, 9) pass through any lattice point other than its two endpoints?",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "The gaps are 7 and 5, with gcd 1.",
+        "A gcd greater than 1 means extra lattice points exist.",
+        "A gcd of exactly 1 means the two endpoints are the only lattice points on the segment."
+      ],
+      "useAgain": "when you need to know whether a segment hides any lattice points besides its ends.",
+      "hints": [
+        "Find the gcd of the segment's horizontal and vertical gaps.",
+        "A gcd of 1 means the two endpoints are the only lattice points on the segment."
+      ],
+      "socraticHint": "Is the gcd of the two gaps equal to 1, or bigger than 1?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Does the segment from (2, 5) to (9, 11) pass through any lattice point other than its two endpoints?",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p40",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "truefalse",
+      "prompt": "Does the segment from (0, 0) to (9, 15) pass through any lattice point other than its two endpoints?",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The gaps are 9 and 15, with gcd 3.",
+        "A gcd greater than 1 means extra lattice points exist.",
+        "A gcd of exactly 1 means the two endpoints are the only lattice points on the segment."
+      ],
+      "useAgain": "when you need to know whether a segment hides any lattice points besides its ends.",
+      "hints": [
+        "Find the gcd of the segment's horizontal and vertical gaps.",
+        "A gcd of 1 means the two endpoints are the only lattice points on the segment."
+      ],
+      "socraticHint": "Is the gcd of the two gaps equal to 1, or bigger than 1?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Does the segment from (0, 0) to (10, 15) pass through any lattice point other than its two endpoints?",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p41",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A segment runs from (0, 0) to (n, 8), where n is a positive whole number. It passes through exactly 3 lattice points, counting both ends. What is the smallest possible value of n?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The count is gcd(n, 8) + 1, so gcd(n, 8) must equal 2.",
+        "The smallest positive n with gcd(n, 8) = 2 is n = 2 itself."
+      ],
+      "useAgain": "when a lattice point count is given and a missing coordinate must be found.",
+      "hints": [
+        "The lattice point count means gcd(n, 8) must equal a specific number.",
+        "The smallest n with a given gcd against a fixed number is often that gcd itself."
+      ],
+      "socraticHint": "What must gcd(n, 8) equal for the count to work out?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A segment runs from (0, 0) to (n, 10), where n is a positive whole number. It passes through exactly 3 lattice points, counting both ends. What is the smallest possible value of n?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p42",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A segment runs from (0, 0) to (n, 12), where n is a positive whole number. It passes through exactly 4 lattice points, counting both ends. What is the smallest possible value of n?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The count is gcd(n, 12) + 1, so gcd(n, 12) must equal 3.",
+        "The smallest positive n with gcd(n, 12) = 3 is n = 3 itself."
+      ],
+      "useAgain": "when a lattice point count is given and a missing coordinate must be found.",
+      "hints": [
+        "The lattice point count means gcd(n, 12) must equal a specific number.",
+        "The smallest n with a given gcd against a fixed number is often that gcd itself."
+      ],
+      "socraticHint": "What must gcd(n, 12) equal for the count to work out?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A segment runs from (0, 0) to (n, 9), where n is a positive whole number. It passes through exactly 4 lattice points, counting both ends. What is the smallest possible value of n?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p43",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A segment runs from (0, 0) to (n, 15), where n is a positive whole number. It passes through exactly 6 lattice points, counting both ends. What is the smallest possible value of n?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The count is gcd(n, 15) + 1, so gcd(n, 15) must equal 5.",
+        "The smallest positive n with gcd(n, 15) = 5 is n = 5 itself."
+      ],
+      "useAgain": "when a lattice point count is given and a missing coordinate must be found.",
+      "hints": [
+        "The lattice point count means gcd(n, 15) must equal a specific number.",
+        "The smallest n with a given gcd against a fixed number is often that gcd itself."
+      ],
+      "socraticHint": "What must gcd(n, 15) equal for the count to work out?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A segment runs from (0, 0) to (n, 20), where n is a positive whole number. It passes through exactly 5 lattice points, counting both ends. What is the smallest possible value of n?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p44",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has vertices (0, 0), (4, 0), (0, 3), in order. How many interior lattice points does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The shoelace formula gives its area: 6.",
+        "Summing the gcd of each edge's gaps gives its boundary count: B = 8.",
+        "Pick's theorem rearranges to I = area - B/2 + 1 = 6 - 8/2 + 1 = 3."
+      ],
+      "useAgain": "when a polygon's interior count must be found from its shape alone.",
+      "hints": [
+        "Find the area with the shoelace formula, and the boundary count by summing gcds.",
+        "Then use Pick's theorem, rearranged to solve for I."
+      ],
+      "socraticHint": "What are the polygon's area and boundary count, found separately?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lattice polygon has vertices (0, 0), (6, 0), (0, 4), in order. How many interior lattice points does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A polygon with vertices (0, 0), (4, 0), (0, 3).",
+        "spec": {
+          "range": 5,
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              0,
+              3
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p45",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has vertices (0, 0), (4, 0), (4, 3), (0, 3), in order. How many interior lattice points does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The shoelace formula gives its area: 12.",
+        "Summing the gcd of each edge's gaps gives its boundary count: B = 14.",
+        "Pick's theorem rearranges to I = area - B/2 + 1 = 12 - 14/2 + 1 = 6."
+      ],
+      "useAgain": "when a polygon's interior count must be found from its shape alone.",
+      "hints": [
+        "Find the area with the shoelace formula, and the boundary count by summing gcds.",
+        "Then use Pick's theorem, rearranged to solve for I."
+      ],
+      "socraticHint": "What are the polygon's area and boundary count, found separately?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lattice polygon has vertices (0, 0), (5, 0), (5, 2), (0, 2), in order. How many interior lattice points does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "figure": {
+        "kind": "plane",
+        "alt": "A polygon with vertices (0, 0), (4, 0), (4, 3), (0, 3).",
+        "spec": {
+          "range": 5,
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              0,
+              3
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-ge-lattice-points-p46",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A right triangle has its legs along the axes, with lengths 9 and 4 and gcd(9, 4) = 1. How many lattice points lie strictly inside it?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "The triangle (0, 0), (9, 0), (0, 4) has area 18 and boundary count 14.",
+        "The hypotenuse contributes only its own 2 endpoints, since the legs share no common factor.",
+        "By Pick's theorem, I = area - B/2 + 1 = 18 - 14/2 + 1 = 12."
+      ],
+      "useAgain": "when a right triangle's legs share no common factor and you need its interior lattice points.",
+      "hints": [
+        "Find the triangle's area and boundary count first.",
+        "Coprime legs mean the hypotenuse contributes no extra lattice points beyond its ends."
+      ],
+      "socraticHint": "Why does the hypotenuse add no extra boundary points here?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A right triangle has its legs along the axes, with lengths 11 and 6 and gcd(11, 6) = 1. How many lattice points lie strictly inside it?",
+        "answer": {
+          "kind": "number",
+          "value": "25"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p47",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "For how many n from 1 to 20 does the segment from (0, 0) to (n, 20) have no lattice points besides its endpoints?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "No extra lattice points means gcd(n, 20) = 1.",
+        "Counting every n from 1 to 20 with gcd(n, 20) = 1 gives 8."
+      ],
+      "useAgain": "when you must count how many segments to a fixed point avoid extra lattice points.",
+      "hints": [
+        "The segment has no extra points exactly when n and 20 share no common factor.",
+        "Count how many n in the range satisfy that."
+      ],
+      "socraticHint": "What must gcd(n, 20) equal for the segment to have no extra lattice points?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For how many n from 1 to 18 does the segment from (0, 0) to (n, 18) have no lattice points besides its endpoints?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p48",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A lattice polygon has area 11 and exactly twice as many boundary lattice points as interior ones. How many boundary lattice points does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Let I be the interior count, so B = 2I. Pick's theorem becomes area = I + I - 1 = 2I - 1.",
+        "Solving 11 = 2I - 1 gives I = 6, so B = 2 times 6 = 12."
+      ],
+      "useAgain": "when a polygon's boundary and interior counts are related to each other, not given separately.",
+      "hints": [
+        "Substitute B = 2I directly into Pick's theorem.",
+        "Solve the resulting equation for I first, then double it for B."
+      ],
+      "socraticHint": "What does Pick's theorem become once B is replaced with 2I?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A lattice polygon has area 15 and exactly twice as many boundary lattice points as interior ones. How many boundary lattice points does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p49",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "choice",
+      "prompt": "Which of these could not be the number of boundary lattice points of an actual lattice polygon?",
+      "options": [
+        "3",
+        "2",
+        "4",
+        "6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "A polygon needs at least 3 vertices, so it needs at least 3 boundary lattice points.",
+        "A count of 2 is too few for any real polygon to have."
+      ],
+      "useAgain": "when a stated boundary count is too small to belong to a real polygon.",
+      "hints": [
+        "Think about the smallest number of vertices a polygon can have.",
+        "A boundary count smaller than that minimum is impossible."
+      ],
+      "socraticHint": "What is the fewest vertices any polygon can have?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Which of these could not be the number of boundary lattice points of an actual lattice polygon?",
+        "options": [
+          "1",
+          "4",
+          "5",
+          "8"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-lattice-points-p50",
+      "lane": "skills",
+      "ideaId": "ge-lattice-points",
+      "kind": "number",
+      "prompt": "A segment runs from (3, 5) to (3 + n, 20), where n is a positive whole number. It has exactly 6 lattice points, counting both ends. What is the smallest possible value of n?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The count is gcd(n, 15) + 1, so gcd(n, 15) must equal 5.",
+        "The smallest positive n with gcd(n, 15) = 5 is n = 5 itself."
+      ],
+      "useAgain": "when a lattice point count is given for a segment that does not start at the origin.",
+      "hints": [
+        "The lattice point count means gcd(n, 15) must equal a specific number.",
+        "The smallest n with a given gcd against a fixed number is often that gcd itself."
+      ],
+      "socraticHint": "What must gcd(n, 15) equal for the count to work out?",
+      "skills": [
+        "think.skills.gcd-lcm",
+        "think.skills.coordinates"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A segment runs from (2, 4) to (2 + n, 16), where n is a positive whole number. It has exactly 4 lattice points, counting both ends. What is the smallest possible value of n?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    }
+  ]
+}

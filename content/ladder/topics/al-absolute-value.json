@@ -1,0 +1,2551 @@
+{
+  "id": "al-absolute-value",
+  "idea": {
+    "body": "Absolute value only cares how far a number is from zero, not which direction. |-5| and |5| both equal 5, since -5 and 5 each sit 5 steps from zero. That is why |x| = 5 has two solutions, x = 5 and x = -5. Both are 5 steps from zero, just on opposite sides. To solve |x - 3| = 5, think of x as being 5 steps from 3 instead of from zero. That gives x = 8 or x = -2. An absolute value inequality works the same way. |x| < 5 means every point closer to zero than 5 steps, and |x| > 5 means every point farther away than that.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A number line from -6 to 6: both -5 and 5 sit 5 steps from zero.",
+      "spec": {
+        "w": 300,
+        "h": 110,
+        "items": [
+          {
+            "t": "line",
+            "x1": 30.0,
+            "y1": 64,
+            "x2": 270.0,
+            "y2": 64
+          },
+          {
+            "t": "dot",
+            "cx": 30.0,
+            "cy": 64,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 50.0,
+            "cy": 64,
+            "side": "below",
+            "label": "-5"
+          },
+          {
+            "t": "dot",
+            "cx": 150.0,
+            "cy": 64,
+            "side": "below",
+            "label": "0"
+          },
+          {
+            "t": "dot",
+            "cx": 250.0,
+            "cy": 64,
+            "side": "below",
+            "label": "5"
+          },
+          {
+            "t": "dot",
+            "cx": 270.0,
+            "cy": 64,
+            "side": "below"
+          },
+          {
+            "t": "line",
+            "x1": 50.0,
+            "y1": 30,
+            "x2": 150.0,
+            "y2": 30,
+            "arrow": true,
+            "color": "rust"
+          },
+          {
+            "t": "text",
+            "x": 100.0,
+            "y": 22,
+            "s": "5",
+            "anchor": "middle",
+            "size": 11
+          },
+          {
+            "t": "line",
+            "x1": 150.0,
+            "y1": 30,
+            "x2": 250.0,
+            "y2": 30,
+            "arrow": true,
+            "color": "rust"
+          },
+          {
+            "t": "text",
+            "x": 200.0,
+            "y": 22,
+            "s": "5",
+            "anchor": "middle",
+            "size": 11
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "Solve |x - 3| = 5.",
+    "steps": [
+      "|x - 3| = 5 means x is 5 steps from 3, in either direction.",
+      "Going up from 3: x - 3 = 5, so x = 8.",
+      "Going down from 3: x - 3 = -5, so x = -2.",
+      "Both 8 and -2 are 5 steps from 3, so both are solutions."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "A number line centered at 3: the solutions -2 and 8 both sit 5 steps from 3.",
+      "spec": {
+        "w": 300,
+        "h": 110,
+        "items": [
+          {
+            "t": "line",
+            "x1": 30.0,
+            "y1": 64,
+            "x2": 270.0,
+            "y2": 64
+          },
+          {
+            "t": "dot",
+            "cx": 30.0,
+            "cy": 64,
+            "side": "below"
+          },
+          {
+            "t": "dot",
+            "cx": 50.0,
+            "cy": 64,
+            "side": "below",
+            "label": "-2"
+          },
+          {
+            "t": "dot",
+            "cx": 150.0,
+            "cy": 64,
+            "side": "below",
+            "label": "3"
+          },
+          {
+            "t": "dot",
+            "cx": 250.0,
+            "cy": 64,
+            "side": "below",
+            "label": "8"
+          },
+          {
+            "t": "dot",
+            "cx": 270.0,
+            "cy": 64,
+            "side": "below"
+          },
+          {
+            "t": "line",
+            "x1": 50.0,
+            "y1": 30,
+            "x2": 150.0,
+            "y2": 30,
+            "arrow": true,
+            "color": "rust"
+          },
+          {
+            "t": "text",
+            "x": 100.0,
+            "y": 22,
+            "s": "5",
+            "anchor": "middle",
+            "size": 11
+          },
+          {
+            "t": "line",
+            "x1": 150.0,
+            "y1": 30,
+            "x2": 250.0,
+            "y2": 30,
+            "arrow": true,
+            "color": "rust"
+          },
+          {
+            "t": "text",
+            "x": 200.0,
+            "y": 22,
+            "s": "5",
+            "anchor": "middle",
+            "size": 11
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "al-absolute-value-w1",
+      "name": "The two cases",
+      "when": "Use this for any absolute value equation set equal to a positive number.",
+      "steps": [
+        "|x + 4| = 9 means x + 4 is 9 steps from zero, either positive or negative.",
+        "Case one: x + 4 = 9, so x = 5.",
+        "Case two: x + 4 = -9, so x = -13.",
+        "Check both: |5 + 4| = 9 and |-13 + 4| = 9."
+      ],
+      "example": "|x + 4| = 9",
+      "answer": "x = 5 or x = -13",
+      "trap": "Writing only the positive case and missing the negative one."
+    },
+    {
+      "id": "al-absolute-value-w2",
+      "name": "The distance picture on a number line",
+      "when": "Use this to see the two solutions as points the same distance from a center.",
+      "steps": [
+        "|x - 2| = 7 means x is 7 steps from 2, in either direction.",
+        "Mark 2 on the number line, then count 7 steps right: 2 + 7 = 9.",
+        "Count 7 steps left from 2: 2 - 7 = -5.",
+        "Both 9 and -5 sit exactly 7 steps from 2."
+      ],
+      "example": "|x - 2| = 7",
+      "answer": "x = 9 or x = -5",
+      "trap": "Counting the steps from zero instead of from the number inside the bars.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A number line from -6 to 10: 2 sits in the middle, 9 and -5 each sit 7 steps away.",
+        "spec": {
+          "w": 300,
+          "h": 110,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 64,
+              "x2": 270,
+              "y2": 64
+            },
+            {
+              "t": "dot",
+              "cx": 30,
+              "cy": 64,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 45,
+              "cy": 64,
+              "side": "below",
+              "label": "-5"
+            },
+            {
+              "t": "dot",
+              "cx": 150,
+              "cy": 64,
+              "side": "below",
+              "label": "2"
+            },
+            {
+              "t": "dot",
+              "cx": 255,
+              "cy": 64,
+              "side": "below",
+              "label": "9"
+            },
+            {
+              "t": "dot",
+              "cx": 270,
+              "cy": 64,
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 45,
+              "y1": 30,
+              "x2": 150,
+              "y2": 30,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 97.5,
+              "y": 22,
+              "s": "7",
+              "anchor": "middle",
+              "size": 11
+            },
+            {
+              "t": "line",
+              "x1": 150,
+              "y1": 30,
+              "x2": 255,
+              "y2": 30,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 202.5,
+              "y": 22,
+              "s": "7",
+              "anchor": "middle",
+              "size": 11
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Solve |x - 2| = 7.",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "|x - 2| = 7 means x is",
+              "set": {
+                "2": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Mark 2 on the number line, then count",
+              "set": {
+                "2": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Count 7 steps left from 2: 2 -",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "Both 9 and -5 sit exactly 7 steps",
+              "set": {
+                "6": {
+                  "color": "green"
+                },
+                "8": {
+                  "color": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "kind": "number",
+      "prompt": "What is |-8|?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Absolute value is the distance from zero, so it is never negative.",
+        "-8 sits 8 steps from zero on the number line.",
+        "|-8| = 8."
+      ],
+      "useAgain": "when a problem asks for a distance from zero rather than a signed value.",
+      "hints": [
+        "Absolute value asks how far the number is from zero.",
+        "Drop the sign and count the steps to zero."
+      ],
+      "socraticHint": "Does the sign of the number change how far it is from zero?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is |12|?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A number line from -9 to 1 with a jump of 8 between -8 and 0.",
+        "spec": {
+          "w": 300,
+          "h": 110,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30.0,
+              "y1": 64,
+              "x2": 270.0,
+              "y2": 64
+            },
+            {
+              "t": "dot",
+              "cx": 30.0,
+              "cy": 64,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 54.0,
+              "cy": 64,
+              "side": "below",
+              "label": "-8"
+            },
+            {
+              "t": "dot",
+              "cx": 246.0,
+              "cy": 64,
+              "side": "below",
+              "label": "0"
+            },
+            {
+              "t": "dot",
+              "cx": 270.0,
+              "cy": 64,
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 54.0,
+              "y1": 30,
+              "x2": 246.0,
+              "y2": 30,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 150.0,
+              "y": 22,
+              "s": "8",
+              "anchor": "middle",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "id": "ladder-al-absolute-value-p01",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "What is |15|?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Absolute value is the distance from zero, so it is never negative.",
+        "15 sits 15 steps from zero on the number line.",
+        "|15| = 15."
+      ],
+      "useAgain": "when a problem asks for a distance from zero rather than a signed value.",
+      "hints": [
+        "Absolute value asks how far the number is from zero.",
+        "Drop the sign and count the steps to zero."
+      ],
+      "socraticHint": "Does the sign of the number change how far it is from zero?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is |-21|?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A number line from -1 to 16 with a jump of 15 between 15 and 0.",
+        "spec": {
+          "w": 300,
+          "h": 110,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30.0,
+              "y1": 64,
+              "x2": 270.0,
+              "y2": 64
+            },
+            {
+              "t": "dot",
+              "cx": 30.0,
+              "cy": 64,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 44.1,
+              "cy": 64,
+              "side": "below",
+              "label": "0"
+            },
+            {
+              "t": "dot",
+              "cx": 255.9,
+              "cy": 64,
+              "side": "below",
+              "label": "15"
+            },
+            {
+              "t": "dot",
+              "cx": 270.0,
+              "cy": 64,
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 44.1,
+              "y1": 30,
+              "x2": 255.9,
+              "y2": 30,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 150.0,
+              "y": 22,
+              "s": "15",
+              "anchor": "middle",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "id": "ladder-al-absolute-value-p02",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "What is |-23|?",
+      "answer": {
+        "kind": "number",
+        "value": "23"
+      },
+      "explanation": [
+        "Absolute value is the distance from zero, so it is never negative.",
+        "-23 sits 23 steps from zero on the number line.",
+        "|-23| = 23."
+      ],
+      "useAgain": "when a problem asks for a distance from zero rather than a signed value.",
+      "hints": [
+        "Absolute value asks how far the number is from zero.",
+        "Drop the sign and count the steps to zero."
+      ],
+      "socraticHint": "Does the sign of the number change how far it is from zero?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is |27|?",
+        "answer": {
+          "kind": "number",
+          "value": "27"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A number line from -24 to 1 with a jump of 23 between -23 and 0.",
+        "spec": {
+          "w": 300,
+          "h": 110,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30.0,
+              "y1": 64,
+              "x2": 270.0,
+              "y2": 64
+            },
+            {
+              "t": "dot",
+              "cx": 30.0,
+              "cy": 64,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 39.6,
+              "cy": 64,
+              "side": "below",
+              "label": "-23"
+            },
+            {
+              "t": "dot",
+              "cx": 260.4,
+              "cy": 64,
+              "side": "below",
+              "label": "0"
+            },
+            {
+              "t": "dot",
+              "cx": 270.0,
+              "cy": 64,
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 39.6,
+              "y1": 30,
+              "x2": 260.4,
+              "y2": 30,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 150.0,
+              "y": 22,
+              "s": "23",
+              "anchor": "middle",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "id": "ladder-al-absolute-value-p03",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "What is |31|?",
+      "answer": {
+        "kind": "number",
+        "value": "31"
+      },
+      "explanation": [
+        "Absolute value is the distance from zero, so it is never negative.",
+        "31 sits 31 steps from zero on the number line.",
+        "|31| = 31."
+      ],
+      "useAgain": "when a problem asks for a distance from zero rather than a signed value.",
+      "hints": [
+        "Absolute value asks how far the number is from zero.",
+        "Drop the sign and count the steps to zero."
+      ],
+      "socraticHint": "Does the sign of the number change how far it is from zero?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is |-6|?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "id": "ladder-al-absolute-value-p04",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "What is |-4|?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Absolute value is the distance from zero, so it is never negative.",
+        "-4 sits 4 steps from zero on the number line.",
+        "|-4| = 4."
+      ],
+      "useAgain": "when a problem asks for a distance from zero rather than a signed value.",
+      "hints": [
+        "Absolute value asks how far the number is from zero.",
+        "Drop the sign and count the steps to zero."
+      ],
+      "socraticHint": "Does the sign of the number change how far it is from zero?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is |33|?",
+        "answer": {
+          "kind": "number",
+          "value": "33"
+        }
+      },
+      "id": "ladder-al-absolute-value-p05",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "What is |19|?",
+      "answer": {
+        "kind": "number",
+        "value": "19"
+      },
+      "explanation": [
+        "Absolute value is the distance from zero, so it is never negative.",
+        "19 sits 19 steps from zero on the number line.",
+        "|19| = 19."
+      ],
+      "useAgain": "when a problem asks for a distance from zero rather than a signed value.",
+      "hints": [
+        "Absolute value asks how far the number is from zero.",
+        "Drop the sign and count the steps to zero."
+      ],
+      "socraticHint": "Does the sign of the number change how far it is from zero?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is |-17|?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      },
+      "id": "ladder-al-absolute-value-p06",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "A rover sits at position -6 on a number line marked in meters. Its charging dock is at position 9. What is the distance between the rover and the dock, in meters?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "The distance between two points is the absolute value of their difference.",
+        "-6 - 9 = -15.",
+        "|-15| = 15."
+      ],
+      "useAgain": "when a situation asks how far apart two positions are, not which is bigger.",
+      "hints": [
+        "Subtract the two positions in either order.",
+        "Take the absolute value of that difference."
+      ],
+      "socraticHint": "Does it matter which position you subtract first?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover sits at position -3 on a number line marked in meters. Its charging dock is at position 10. What is the distance between the rover and the dock, in meters?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      },
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A number line from -7 to 10 showing the jump of 15 between -6 and 9.",
+        "spec": {
+          "w": 300,
+          "h": 110,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30.0,
+              "y1": 64,
+              "x2": 270.0,
+              "y2": 64
+            },
+            {
+              "t": "dot",
+              "cx": 30.0,
+              "cy": 64,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 44.1,
+              "cy": 64,
+              "side": "below",
+              "label": "-6"
+            },
+            {
+              "t": "dot",
+              "cx": 255.9,
+              "cy": 64,
+              "side": "below",
+              "label": "9"
+            },
+            {
+              "t": "dot",
+              "cx": 270.0,
+              "cy": 64,
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 44.1,
+              "y1": 30,
+              "x2": 255.9,
+              "y2": 30,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 150.0,
+              "y": 22,
+              "s": "15",
+              "anchor": "middle",
+              "size": 11
+            }
+          ]
+        }
+      },
+      "id": "ladder-al-absolute-value-p07",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "A drone hovers at height 4 meters relative to the rooftop, and a delivery pad sits at height -11 meters relative to the rooftop. What is the distance between the drone and the pad, in meters?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "The distance between two points is the absolute value of their difference.",
+        "4 - (-11) = 15.",
+        "|15| = 15."
+      ],
+      "useAgain": "when a situation asks how far apart two positions are, not which is bigger.",
+      "hints": [
+        "Subtract the two positions in either order.",
+        "Take the absolute value of that difference."
+      ],
+      "socraticHint": "Does it matter which position you subtract first?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A drone hovers at height 7 meters relative to the rooftop, and a delivery pad sits at height -8 meters relative to the rooftop. What is the distance between the drone and the pad, in meters?",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      },
+      "id": "ladder-al-absolute-value-p08",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "On a game's number track, a token starts at -15 and a bonus tile sits at -2. What is the distance between the token and the bonus tile?",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "The distance between two points is the absolute value of their difference.",
+        "-15 - (-2) = -13.",
+        "|-13| = 13."
+      ],
+      "useAgain": "when a situation asks how far apart two positions are, not which is bigger.",
+      "hints": [
+        "Subtract the two positions in either order.",
+        "Take the absolute value of that difference."
+      ],
+      "socraticHint": "Does it matter which position you subtract first?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "On a game's number track, a token starts at -9 and a bonus tile sits at -20. What is the distance between the token and the bonus tile?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      },
+      "id": "ladder-al-absolute-value-p09",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve |x| = 14. What is the positive solution?",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "|x| = 14 means x is 14 steps from zero, in either direction.",
+        "The two solutions are 14 and -14.",
+        "The positive one is 14."
+      ],
+      "useAgain": "when an absolute value equation has two solutions and you need one of them.",
+      "hints": [
+        "An absolute value equation usually has two solutions, one on each side of zero.",
+        "One solution is the number itself, the other is its opposite."
+      ],
+      "socraticHint": "What two numbers are exactly this far from zero?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve |x| = 9. What is the negative solution?",
+        "answer": {
+          "kind": "number",
+          "value": "-9"
+        }
+      },
+      "id": "ladder-al-absolute-value-p10",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve |x| = 20. What is the negative solution?",
+      "answer": {
+        "kind": "number",
+        "value": "-20"
+      },
+      "explanation": [
+        "|x| = 20 means x is 20 steps from zero, in either direction.",
+        "The two solutions are 20 and -20.",
+        "The negative one is -20."
+      ],
+      "useAgain": "when an absolute value equation has two solutions and you need one of them.",
+      "hints": [
+        "An absolute value equation usually has two solutions, one on each side of zero.",
+        "One solution is the number itself, the other is its opposite."
+      ],
+      "socraticHint": "What two numbers are exactly this far from zero?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve |x| = 27. What is the positive solution?",
+        "answer": {
+          "kind": "number",
+          "value": "27"
+        }
+      },
+      "id": "ladder-al-absolute-value-p11",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve |x| = 33. What is the positive solution?",
+      "answer": {
+        "kind": "number",
+        "value": "33"
+      },
+      "explanation": [
+        "|x| = 33 means x is 33 steps from zero, in either direction.",
+        "The two solutions are 33 and -33.",
+        "The positive one is 33."
+      ],
+      "useAgain": "when an absolute value equation has two solutions and you need one of them.",
+      "hints": [
+        "An absolute value equation usually has two solutions, one on each side of zero.",
+        "One solution is the number itself, the other is its opposite."
+      ],
+      "socraticHint": "What two numbers are exactly this far from zero?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Solve |x| = 18. What is the negative solution?",
+        "answer": {
+          "kind": "number",
+          "value": "-18"
+        }
+      },
+      "id": "ladder-al-absolute-value-p12",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "|-9| = 9.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Absolute value strips the sign and gives the distance from zero.",
+        "-9 is 9 steps from zero.",
+        "So |-9| = 9, and the statement is true."
+      ],
+      "useAgain": "when checking whether an absolute value equals the number's size, not its sign.",
+      "hints": [
+        "Absolute value is always zero or positive.",
+        "Compare 9, the distance, with the number on the right side."
+      ],
+      "socraticHint": "Can an absolute value ever come out negative?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "|-15| = 15.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-absolute-value-p13",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "|-15| = -15.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Absolute value can never be negative, since it is a distance.",
+        "|-15| = 15, not -15.",
+        "So the statement is false."
+      ],
+      "useAgain": "when a problem tries to give an absolute value a negative result.",
+      "hints": [
+        "Absolute value measures a distance, and a distance is never negative.",
+        "Find |-15| first, then compare it to -15."
+      ],
+      "socraticHint": "Can a distance ever be a negative number?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "|-22| = -22.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "id": "ladder-al-absolute-value-p14",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "|4| = |-4|.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "4 is 4 steps from zero, and -4 is also 4 steps from zero.",
+        "Both absolute values equal 4.",
+        "So the statement is true."
+      ],
+      "useAgain": "when comparing the absolute values of two opposite numbers.",
+      "hints": [
+        "Find each absolute value separately first.",
+        "Opposite numbers sit the same distance from zero."
+      ],
+      "socraticHint": "Do a number and its opposite sit the same distance from zero?",
+      "difficulty": 1,
+      "variant": {
+        "prompt": "|7| = |-7|.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-absolute-value-p15",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 3
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve |x - 4| = 9. What is the greater solution?",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "|x - 4| = 9 means x is 9 steps from 4, in either direction.",
+        "x - 4 = 9 gives x = 13, or x - 4 = -9 gives x = -5.",
+        "The greater solution is 13."
+      ],
+      "useAgain": "when an absolute value equation is centered away from zero.",
+      "hints": [
+        "x is 9 steps from 4 on either side.",
+        "Add 9 to 4 for one solution, subtract 9 for the other."
+      ],
+      "socraticHint": "What two numbers sit exactly 9 steps from 4?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve |x - 6| = 11. What is the smaller solution?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      },
+      "id": "ladder-al-absolute-value-p16",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A number line centered at 4 with two jumps of 9 landing on -5 and 13.",
+        "spec": {
+          "w": 300,
+          "h": 110,
+          "items": [
+            {
+              "t": "line",
+              "x1": 30.0,
+              "y1": 64,
+              "x2": 270.0,
+              "y2": 64
+            },
+            {
+              "t": "dot",
+              "cx": 30.0,
+              "cy": 64,
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 42.0,
+              "cy": 64,
+              "side": "below",
+              "label": "-5"
+            },
+            {
+              "t": "dot",
+              "cx": 150.0,
+              "cy": 64,
+              "side": "below",
+              "label": "4"
+            },
+            {
+              "t": "dot",
+              "cx": 258.0,
+              "cy": 64,
+              "side": "below",
+              "label": "13"
+            },
+            {
+              "t": "dot",
+              "cx": 270.0,
+              "cy": 64,
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 150.0,
+              "y1": 30,
+              "x2": 258.0,
+              "y2": 30,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 204.0,
+              "y": 22,
+              "s": "9",
+              "anchor": "middle",
+              "size": 11
+            },
+            {
+              "t": "line",
+              "x1": 42.0,
+              "y1": 30,
+              "x2": 150.0,
+              "y2": 30,
+              "arrow": true,
+              "color": "rust"
+            },
+            {
+              "t": "text",
+              "x": 96.0,
+              "y": 22,
+              "s": "9",
+              "anchor": "middle",
+              "size": 11
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve |x - 10| = 6. What is the smaller solution?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "|x - 10| = 6 means x is 6 steps from 10, in either direction.",
+        "x - 10 = 6 gives x = 16, or x - 10 = -6 gives x = 4.",
+        "The smaller solution is 4."
+      ],
+      "useAgain": "when an absolute value equation is centered away from zero.",
+      "hints": [
+        "x is 6 steps from 10 on either side.",
+        "Add 6 to 10 for one solution, subtract 6 for the other."
+      ],
+      "socraticHint": "What two numbers sit exactly 6 steps from 10?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve |x - 12| = 5. What is the greater solution?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      },
+      "id": "ladder-al-absolute-value-p17",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve |x + 3| = 8. What is the greater solution?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "|x + 3| = 8 means x is 8 steps from -3, in either direction.",
+        "x + 3 = 8 gives x = 5, or x + 3 = -8 gives x = -11.",
+        "The greater solution is 5."
+      ],
+      "useAgain": "when an absolute value equation is centered away from zero.",
+      "hints": [
+        "x is 8 steps from -3 on either side.",
+        "Add 8 to -3 for one solution, subtract 8 for the other."
+      ],
+      "socraticHint": "What two numbers sit exactly 8 steps from -3?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve |x + 5| = 9. What is the smaller solution?",
+        "answer": {
+          "kind": "number",
+          "value": "-14"
+        }
+      },
+      "id": "ladder-al-absolute-value-p18",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve |x - 7| = 15. What is the smaller solution?",
+      "answer": {
+        "kind": "number",
+        "value": "-8"
+      },
+      "explanation": [
+        "|x - 7| = 15 means x is 15 steps from 7, in either direction.",
+        "x - 7 = 15 gives x = 22, or x - 7 = -15 gives x = -8.",
+        "The smaller solution is -8."
+      ],
+      "useAgain": "when an absolute value equation is centered away from zero.",
+      "hints": [
+        "x is 15 steps from 7 on either side.",
+        "Add 15 to 7 for one solution, subtract 15 for the other."
+      ],
+      "socraticHint": "What two numbers sit exactly 15 steps from 7?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve |x - 2| = 20. What is the greater solution?",
+        "answer": {
+          "kind": "number",
+          "value": "22"
+        }
+      },
+      "id": "ladder-al-absolute-value-p19",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "order",
+      "prompt": "Order these numbers from smallest absolute value to largest: -7, 3, -2, 5.",
+      "items": [
+        "-7",
+        "3",
+        "-2",
+        "5"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          3,
+          0
+        ]
+      },
+      "explanation": [
+        "Find each number's distance from zero first, ignoring its sign.",
+        "Then line the distances up from smallest to largest.",
+        "Sort the original numbers to match that order."
+      ],
+      "useAgain": "when a problem compares numbers by size rather than by sign.",
+      "hints": [
+        "Absolute value ignores the sign, so compare the sizes only.",
+        "The most negative number can still have the largest absolute value."
+      ],
+      "socraticHint": "Which of these numbers is closest to zero?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Order these numbers from smallest absolute value to largest: -5, 2, 9, -1.",
+        "items": [
+          "-5",
+          "2",
+          "9",
+          "-1"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            1,
+            0,
+            2
+          ]
+        }
+      },
+      "id": "ladder-al-absolute-value-p20",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "order",
+      "prompt": "Order these numbers from smallest absolute value to largest: 6, -9, 1, -4.",
+      "items": [
+        "6",
+        "-9",
+        "1",
+        "-4"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          3,
+          0,
+          1
+        ]
+      },
+      "explanation": [
+        "Find each number's distance from zero first, ignoring its sign.",
+        "Then line the distances up from smallest to largest.",
+        "Sort the original numbers to match that order."
+      ],
+      "useAgain": "when a problem compares numbers by size rather than by sign.",
+      "hints": [
+        "Absolute value ignores the sign, so compare the sizes only.",
+        "The most negative number can still have the largest absolute value."
+      ],
+      "socraticHint": "Which of these numbers is closest to zero?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Order these numbers from smallest absolute value to largest: 4, -8, 6, -2.",
+        "items": [
+          "4",
+          "-8",
+          "6",
+          "-2"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            3,
+            0,
+            2,
+            1
+          ]
+        }
+      },
+      "id": "ladder-al-absolute-value-p21",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "order",
+      "prompt": "Order these numbers from smallest absolute value to largest: -11, 8, -3, 10.",
+      "items": [
+        "-11",
+        "8",
+        "-3",
+        "10"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          3,
+          0
+        ]
+      },
+      "explanation": [
+        "Find each number's distance from zero first, ignoring its sign.",
+        "Then line the distances up from smallest to largest.",
+        "Sort the original numbers to match that order."
+      ],
+      "useAgain": "when a problem compares numbers by size rather than by sign.",
+      "hints": [
+        "Absolute value ignores the sign, so compare the sizes only.",
+        "The most negative number can still have the largest absolute value."
+      ],
+      "socraticHint": "Which of these numbers is closest to zero?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Order these numbers from smallest absolute value to largest: -6, 13, -1, 9.",
+        "items": [
+          "-6",
+          "13",
+          "-1",
+          "9"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            0,
+            3,
+            1
+          ]
+        }
+      },
+      "id": "ladder-al-absolute-value-p22",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Solve the inequality |x - 6| < 5.",
+      "options": [
+        "1 < x < 11",
+        "1 < x < 6",
+        "x < 1 or x > 11",
+        "6 < x < 11"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "|x - 6| < 5 means x is less than 5 steps from 6.",
+        "That gives 6 - 5 < x < 6 + 5.",
+        "1 < x < 11."
+      ],
+      "useAgain": "when an absolute value inequality uses less than, giving one connected range.",
+      "hints": [
+        "x must be within 5 steps of 6 on both sides.",
+        "Write the range from 6 - 5 up to 6 + 5."
+      ],
+      "socraticHint": "Does a less-than absolute value inequality give one range or two separate ones?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve the inequality |x - 8| < 4.",
+        "options": [
+          "4 < x < 8",
+          "4 < x < 12",
+          "x < 4 or x > 12",
+          "8 < x < 12"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-absolute-value-p23",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Solve the inequality |x - 14| < 9.",
+      "options": [
+        "5 < x < 14",
+        "x < 5 or x > 23",
+        "5 < x < 23",
+        "14 < x < 23"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "|x - 14| < 9 means x is less than 9 steps from 14.",
+        "That gives 14 - 9 < x < 14 + 9.",
+        "5 < x < 23."
+      ],
+      "useAgain": "when an absolute value inequality uses less than, giving one connected range.",
+      "hints": [
+        "x must be within 9 steps of 14 on both sides.",
+        "Write the range from 14 - 9 up to 14 + 9."
+      ],
+      "socraticHint": "Does a less-than absolute value inequality give one range or two separate ones?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve the inequality |x - 20| < 6.",
+        "options": [
+          "14 < x < 20",
+          "x < 14 or x > 26",
+          "20 < x < 26",
+          "14 < x < 26"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-absolute-value-p24",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Solve the inequality |x + 2| < 7.",
+      "options": [
+        "-9 < x < 5",
+        "-9 < x < -2",
+        "x < -9 or x > 5",
+        "-2 < x < 5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "|x + 2| < 7 means x is less than 7 steps from -2.",
+        "That gives -2 - 7 < x < -2 + 7.",
+        "-9 < x < 5."
+      ],
+      "useAgain": "when an absolute value inequality uses less than, giving one connected range.",
+      "hints": [
+        "x must be within 7 steps of -2 on both sides.",
+        "Write the range from -2 - 7 up to -2 + 7."
+      ],
+      "socraticHint": "Does a less-than absolute value inequality give one range or two separate ones?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve the inequality |x + 5| < 10.",
+        "options": [
+          "-15 < x < -5",
+          "-15 < x < 5",
+          "x < -15 or x > 5",
+          "-5 < x < 5"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-absolute-value-p25",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "choice",
+      "prompt": "Solve the inequality |x - 10| < 3.",
+      "options": [
+        "7 < x < 10",
+        "x < 7 or x > 13",
+        "7 < x < 13",
+        "10 < x < 13"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "|x - 10| < 3 means x is less than 3 steps from 10.",
+        "That gives 10 - 3 < x < 10 + 3.",
+        "7 < x < 13."
+      ],
+      "useAgain": "when an absolute value inequality uses less than, giving one connected range.",
+      "hints": [
+        "x must be within 3 steps of 10 on both sides.",
+        "Write the range from 10 - 3 up to 10 + 3."
+      ],
+      "socraticHint": "Does a less-than absolute value inequality give one range or two separate ones?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Solve the inequality |x - 15| < 2.",
+        "options": [
+          "13 < x < 15",
+          "x < 13 or x > 17",
+          "15 < x < 17",
+          "13 < x < 17"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-absolute-value-p26",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "number",
+      "prompt": "A drone's altitude must stay within 5 meters of 120 meters. What is the least acceptable value?",
+      "answer": {
+        "kind": "number",
+        "value": "115"
+      },
+      "explanation": [
+        "The acceptable values are within 5 of 120, an absolute value inequality.",
+        "That range runs from 115 to 125.",
+        "The least acceptable value is 115."
+      ],
+      "useAgain": "when a tolerance describes an allowed range around a target value.",
+      "hints": [
+        "The range is 120 minus the tolerance up to 120 plus the tolerance.",
+        "Pick the end of that range the question asks for."
+      ],
+      "socraticHint": "What two values mark the edges of the acceptable range?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone's altitude must stay within 6 meters of 130 meters. What is the least acceptable value?",
+        "answer": {
+          "kind": "number",
+          "value": "124"
+        }
+      },
+      "id": "ladder-al-absolute-value-p27",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "number",
+      "prompt": "A kitchen scale reading must stay within 3 grams of 250 grams. What is the greatest acceptable value?",
+      "answer": {
+        "kind": "number",
+        "value": "253"
+      },
+      "explanation": [
+        "The acceptable values are within 3 of 250, an absolute value inequality.",
+        "That range runs from 247 to 253.",
+        "The greatest acceptable value is 253."
+      ],
+      "useAgain": "when a tolerance describes an allowed range around a target value.",
+      "hints": [
+        "The range is 250 minus the tolerance up to 250 plus the tolerance.",
+        "Pick the end of that range the question asks for."
+      ],
+      "socraticHint": "What two values mark the edges of the acceptable range?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A kitchen scale reading must stay within 4 grams of 300 grams. What is the greatest acceptable value?",
+        "answer": {
+          "kind": "number",
+          "value": "304"
+        }
+      },
+      "id": "ladder-al-absolute-value-p28",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "number",
+      "prompt": "A 3D printer's bed temperature must stay within 2 degrees of 60 degrees. What is the least acceptable value?",
+      "answer": {
+        "kind": "number",
+        "value": "58"
+      },
+      "explanation": [
+        "The acceptable values are within 2 of 60, an absolute value inequality.",
+        "That range runs from 58 to 62.",
+        "The least acceptable value is 58."
+      ],
+      "useAgain": "when a tolerance describes an allowed range around a target value.",
+      "hints": [
+        "The range is 60 minus the tolerance up to 60 plus the tolerance.",
+        "Pick the end of that range the question asks for."
+      ],
+      "socraticHint": "What two values mark the edges of the acceptable range?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer's bed temperature must stay within 3 degrees of 55 degrees. What is the least acceptable value?",
+        "answer": {
+          "kind": "number",
+          "value": "52"
+        }
+      },
+      "id": "ladder-al-absolute-value-p29",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "number",
+      "prompt": "A rocket's burn time must stay within 4 seconds of 42 seconds. What is the greatest acceptable value?",
+      "answer": {
+        "kind": "number",
+        "value": "46"
+      },
+      "explanation": [
+        "The acceptable values are within 4 of 42, an absolute value inequality.",
+        "That range runs from 38 to 46.",
+        "The greatest acceptable value is 46."
+      ],
+      "useAgain": "when a tolerance describes an allowed range around a target value.",
+      "hints": [
+        "The range is 42 minus the tolerance up to 42 plus the tolerance.",
+        "Pick the end of that range the question asks for."
+      ],
+      "socraticHint": "What two values mark the edges of the acceptable range?",
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rocket's burn time must stay within 5 seconds of 38 seconds. What is the greatest acceptable value?",
+        "answer": {
+          "kind": "number",
+          "value": "43"
+        }
+      },
+      "id": "ladder-al-absolute-value-p30",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 4
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve |3x - 6| = 15. What is the positive solution?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Split into two cases: 3x - 6 = 15, or 3x - 6 = -15.",
+        "The first case gives x = 7.",
+        "The second case gives x = -3.",
+        "The positive one is 7."
+      ],
+      "useAgain": "when the unknown inside the absolute value has a coefficient to undo.",
+      "hints": [
+        "Split the equation into two cases before undoing the coefficient.",
+        "Solve each case the same way you solve a two-step equation."
+      ],
+      "socraticHint": "What two equations does an absolute value equation split into?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve |4x - 8| = 20. What is the positive solution?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "id": "ladder-al-absolute-value-p31",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve |2x + 5| = 11. What is the negative solution?",
+      "answer": {
+        "kind": "number",
+        "value": "-8"
+      },
+      "explanation": [
+        "Split into two cases: 2x + 5 = 11, or 2x + 5 = -11.",
+        "The first case gives x = 3.",
+        "The second case gives x = -8.",
+        "The negative one is -8."
+      ],
+      "useAgain": "when the unknown inside the absolute value has a coefficient to undo.",
+      "hints": [
+        "Split the equation into two cases before undoing the coefficient.",
+        "Solve each case the same way you solve a two-step equation."
+      ],
+      "socraticHint": "What two equations does an absolute value equation split into?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve |5x - 10| = 35. What is the negative solution?",
+        "answer": {
+          "kind": "number",
+          "value": "-5"
+        }
+      },
+      "id": "ladder-al-absolute-value-p32",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve |4x - 2| = 18. What is the sum of both solutions?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The two cases give x = 5 and x = -4.",
+        "Add the two solutions: 5 - 4 = 1."
+      ],
+      "useAgain": "when a problem asks for both solutions combined instead of just one.",
+      "hints": [
+        "Find both solutions first, one from each case.",
+        "Then add the two solutions together."
+      ],
+      "socraticHint": "What do you get when you add the two solutions of an absolute value equation?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve |3x - 3| = 15. What is the sum of both solutions?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "id": "ladder-al-absolute-value-p33",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "number",
+      "prompt": "Solve |5x - 10| = 20. What is the sum of both solutions?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The two cases give x = 6 and x = -2.",
+        "Add the two solutions: 6 - 2 = 4."
+      ],
+      "useAgain": "when a problem asks for both solutions combined instead of just one.",
+      "hints": [
+        "Find both solutions first, one from each case.",
+        "Then add the two solutions together."
+      ],
+      "socraticHint": "What do you get when you add the two solutions of an absolute value equation?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve |2x - 6| = 14. What is the sum of both solutions?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "id": "ladder-al-absolute-value-p34",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "Solve the inequality |2x + 3| <= 11.",
+      "options": [
+        "-7 <= x <= 4",
+        "-7 < x < 4",
+        "x <= -7 or x >= 4",
+        "7 <= x <= 4"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "|2x + 3| <= 11 splits into -11 <= 2x + 3 <= 11.",
+        "Undo the addition, then undo the coefficient 2.",
+        "-7 <= x <= 4."
+      ],
+      "useAgain": "when a less-than-or-equal absolute value inequality has a coefficient inside.",
+      "hints": [
+        "Rewrite it as one chain of three inequalities before solving.",
+        "Undo the outer operation, then the coefficient, on all three parts."
+      ],
+      "socraticHint": "What three-part inequality does a less-than-or-equal absolute value unfold into?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve the inequality |3x - 3| <= 15.",
+        "options": [
+          "-4 < x < 6",
+          "-4 <= x <= 6",
+          "x <= -4 or x >= 6",
+          "4 <= x <= 6"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-absolute-value-p35",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "Solve the inequality |3x - 3| <= 18.",
+      "options": [
+        "-5 < x < 7",
+        "x <= -5 or x >= 7",
+        "-5 <= x <= 7",
+        "5 <= x <= 7"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "|3x - 3| <= 18 splits into -18 <= 3x - 3 <= 18.",
+        "Undo the subtraction, then undo the coefficient 3.",
+        "-5 <= x <= 7."
+      ],
+      "useAgain": "when a less-than-or-equal absolute value inequality has a coefficient inside.",
+      "hints": [
+        "Rewrite it as one chain of three inequalities before solving.",
+        "Undo the outer operation, then the coefficient, on all three parts."
+      ],
+      "socraticHint": "What three-part inequality does a less-than-or-equal absolute value unfold into?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve the inequality |2x - 5| <= 15.",
+        "options": [
+          "-5 < x < 10",
+          "x <= -5 or x >= 10",
+          "5 <= x <= 10",
+          "-5 <= x <= 10"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-absolute-value-p36",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "Solve the inequality |5x - 5| <= 20.",
+      "options": [
+        "-3 <= x <= 5",
+        "-3 < x < 5",
+        "x <= -3 or x >= 5",
+        "3 <= x <= 5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "|5x - 5| <= 20 splits into -20 <= 5x - 5 <= 20.",
+        "Undo the subtraction, then undo the coefficient 5.",
+        "-3 <= x <= 5."
+      ],
+      "useAgain": "when a less-than-or-equal absolute value inequality has a coefficient inside.",
+      "hints": [
+        "Rewrite it as one chain of three inequalities before solving.",
+        "Undo the outer operation, then the coefficient, on all three parts."
+      ],
+      "socraticHint": "What three-part inequality does a less-than-or-equal absolute value unfold into?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve the inequality |4x - 4| <= 16.",
+        "options": [
+          "-3 < x < 5",
+          "-3 <= x <= 5",
+          "x <= -3 or x >= 5",
+          "3 <= x <= 5"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-al-absolute-value-p37",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "The equation |2x + 5| = -3 has no solution.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "An absolute value can never equal a negative number.",
+        "-3 is negative, so no value of x can make this true.",
+        "The equation has no solution."
+      ],
+      "useAgain": "when the number on the other side of an absolute value equation is negative.",
+      "hints": [
+        "Check the sign of the number on the right side first.",
+        "An absolute value can only equal zero or a positive number."
+      ],
+      "socraticHint": "Can an absolute value expression ever equal a negative number?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The equation |4x - 1| = -7 has no solution.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-absolute-value-p38",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "The equation |3x - 2| = 0 has exactly one solution.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "|3x - 2| = 0 only happens when 3x - 2 itself is exactly 0.",
+        "That gives one equation, 3x = 2, with one solution.",
+        "So the statement is true."
+      ],
+      "useAgain": "when an absolute value equation is set equal to zero instead of a positive number.",
+      "hints": [
+        "Zero is the only number with just one absolute value equation instead of two.",
+        "Set the inside expression equal to zero and solve."
+      ],
+      "socraticHint": "How many numbers have an absolute value of exactly zero?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The equation |5x + 4| = 0 has exactly one solution.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      },
+      "id": "ladder-al-absolute-value-p39",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which equation has no solution?",
+      "options": [
+        "|x + 4| = 2",
+        "|x - 4| = 2",
+        "|x + 4| = -2",
+        "|2x + 4| = 0"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Check the number on the right side of each equation.",
+        "An absolute value can never equal a negative number.",
+        "Only the equation set equal to a negative number has no solution."
+      ],
+      "useAgain": "when picking out the one absolute value equation that cannot be solved.",
+      "hints": [
+        "Look at the sign of the number each absolute value is set equal to.",
+        "Rule out the equations set equal to zero or a positive number."
+      ],
+      "socraticHint": "Which of these numbers on the right side is negative?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Which of these equations has no solution?",
+        "options": [
+          "|x - 9| = 5",
+          "|x + 9| = 5",
+          "|3x - 9| = 0",
+          "|x - 9| = -5"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-al-absolute-value-p40",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "number",
+      "prompt": "A robot arm's grip force f in newtons satisfies |2f - 30| <= 6. What is the least acceptable value of f?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "Unfold the inequality into -6 <= 2f - 30 <= 6.",
+        "Undo the subtraction across all three parts, then divide by 2.",
+        "That gives 12 <= f <= 18, so the least value is 12."
+      ],
+      "useAgain": "when a real tolerance is written as an absolute value inequality with a coefficient.",
+      "hints": [
+        "Rewrite the inequality as one chain with the absolute value's number in the middle.",
+        "Undo the outer step, then the coefficient, the same as a two-step equation."
+      ],
+      "socraticHint": "What are the two ends of the acceptable range once the inequality is solved?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot arm's grip force f in newtons satisfies |2f - 40| <= 8. What is the least acceptable value of f?",
+        "answer": {
+          "kind": "number",
+          "value": "16"
+        }
+      },
+      "id": "ladder-al-absolute-value-p41",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "number",
+      "prompt": "A rover's wheel speed s in centimeters per second satisfies |3s - 45| <= 12. What is the greatest acceptable value of s?",
+      "answer": {
+        "kind": "number",
+        "value": "19"
+      },
+      "explanation": [
+        "Unfold the inequality into -12 <= 3s - 45 <= 12.",
+        "Undo the subtraction across all three parts, then divide by 3.",
+        "That gives 11 <= s <= 19, so the greatest value is 19."
+      ],
+      "useAgain": "when a real tolerance is written as an absolute value inequality with a coefficient.",
+      "hints": [
+        "Rewrite the inequality as one chain with the absolute value's number in the middle.",
+        "Undo the outer step, then the coefficient, the same as a two-step equation."
+      ],
+      "socraticHint": "What are the two ends of the acceptable range once the inequality is solved?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover's wheel speed s in centimeters per second satisfies |3s - 60| <= 9. What is the greatest acceptable value of s?",
+        "answer": {
+          "kind": "number",
+          "value": "23"
+        }
+      },
+      "id": "ladder-al-absolute-value-p42",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "number",
+      "prompt": "A rocket's thrust t in kilonewtons satisfies |4t - 200| <= 20. What is the least acceptable value of t?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "Unfold the inequality into -20 <= 4t - 200 <= 20.",
+        "Undo the subtraction across all three parts, then divide by 4.",
+        "That gives 45 <= t <= 55, so the least value is 45."
+      ],
+      "useAgain": "when a real tolerance is written as an absolute value inequality with a coefficient.",
+      "hints": [
+        "Rewrite the inequality as one chain with the absolute value's number in the middle.",
+        "Undo the outer step, then the coefficient, the same as a two-step equation."
+      ],
+      "socraticHint": "What are the two ends of the acceptable range once the inequality is solved?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rocket's thrust t in kilonewtons satisfies |4t - 240| <= 24. What is the least acceptable value of t?",
+        "answer": {
+          "kind": "number",
+          "value": "54"
+        }
+      },
+      "id": "ladder-al-absolute-value-p43",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "number",
+      "prompt": "A 3D printer's nozzle temperature n in degrees satisfies |2n - 420| <= 8. What is the greatest acceptable value of n?",
+      "answer": {
+        "kind": "number",
+        "value": "214"
+      },
+      "explanation": [
+        "Unfold the inequality into -8 <= 2n - 420 <= 8.",
+        "Undo the subtraction across all three parts, then divide by 2.",
+        "That gives 206 <= n <= 214, so the greatest value is 214."
+      ],
+      "useAgain": "when a real tolerance is written as an absolute value inequality with a coefficient.",
+      "hints": [
+        "Rewrite the inequality as one chain with the absolute value's number in the middle.",
+        "Undo the outer step, then the coefficient, the same as a two-step equation."
+      ],
+      "socraticHint": "What are the two ends of the acceptable range once the inequality is solved?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printer's nozzle temperature n in degrees satisfies |2n - 500| <= 10. What is the greatest acceptable value of n?",
+        "answer": {
+          "kind": "number",
+          "value": "255"
+        }
+      },
+      "id": "ladder-al-absolute-value-p44",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    },
+    {
+      "kind": "number",
+      "prompt": "A game's difficulty score d satisfies |5d - 100| <= 15. What is the least acceptable value of d?",
+      "answer": {
+        "kind": "number",
+        "value": "17"
+      },
+      "explanation": [
+        "Unfold the inequality into -15 <= 5d - 100 <= 15.",
+        "Undo the subtraction across all three parts, then divide by 5.",
+        "That gives 17 <= d <= 23, so the least value is 17."
+      ],
+      "useAgain": "when a real tolerance is written as an absolute value inequality with a coefficient.",
+      "hints": [
+        "Rewrite the inequality as one chain with the absolute value's number in the middle.",
+        "Undo the outer step, then the coefficient, the same as a two-step equation."
+      ],
+      "socraticHint": "What are the two ends of the acceptable range once the inequality is solved?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game's difficulty score d satisfies |5d - 125| <= 20. What is the least acceptable value of d?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      },
+      "id": "ladder-al-absolute-value-p45",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 5
+    }
+  ],
+  "stretch": [
+    {
+      "kind": "number",
+      "prompt": "How many integers x satisfy |x - 4| <= 6?",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "|x - 4| <= 6 means -6 <= x - 4 <= 6, so -2 <= x <= 10.",
+        "Count the integers from -2 to 10, including both ends.",
+        "That is 13 integers."
+      ],
+      "useAgain": "when a problem counts whole numbers inside an absolute value range instead of solving for one x.",
+      "hints": [
+        "Unfold the inequality into a range for x first.",
+        "Count every integer from one end of the range to the other, including both ends."
+      ],
+      "socraticHint": "How many integers sit between the two ends of the range, counting both ends?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many integers x satisfy |x - 6| <= 8?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      },
+      "id": "ladder-al-absolute-value-p46",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 6
+    },
+    {
+      "kind": "number",
+      "prompt": "How many integers x satisfy |x + 3| < 8?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "|x + 3| < 8 means -8 < x + 3 < 8, so -11 < x < 5.",
+        "The integers strictly between -11 and 5 run from -10 to 4.",
+        "That is 15 integers."
+      ],
+      "useAgain": "when the inequality is strict, so the two end values themselves are not included.",
+      "hints": [
+        "A strict inequality does not include the two boundary values.",
+        "List the range, then count the integers strictly inside it."
+      ],
+      "socraticHint": "Are the two boundary numbers themselves included when the inequality is strict?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many integers x satisfy |x + 5| < 9?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      },
+      "id": "ladder-al-absolute-value-p47",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 6
+    },
+    {
+      "kind": "number",
+      "prompt": "For how many integers x is |x - 3| + |x + 3| = 6?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "|x - 3| + |x + 3| adds x's distance from 3 and from -3.",
+        "That sum equals 6, the distance between 3 and -3, exactly when x sits between them.",
+        "The integers from -3 to 3 are 7 of them."
+      ],
+      "useAgain": "when two absolute values added together equal the distance between their two centers.",
+      "hints": [
+        "Think of each absolute value as a distance to a fixed point.",
+        "The sum is smallest, equal to the gap between the two points, exactly when x is between them."
+      ],
+      "socraticHint": "When is the sum of the two distances exactly equal to the gap between 3 and -3?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For how many integers x is |x - 5| + |x + 5| = 10?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      },
+      "id": "ladder-al-absolute-value-p48",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 6
+    },
+    {
+      "kind": "number",
+      "prompt": "How many integers x satisfy |2x - 5| < 9?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "|2x - 5| < 9 means -9 < 2x - 5 < 9, so -4 < 2x < 14.",
+        "Divide every part by 2 to get -2 < x < 7.",
+        "The integers strictly between -2 and 7 are 8 of them."
+      ],
+      "useAgain": "when the unknown inside the absolute value has a coefficient before you count solutions.",
+      "hints": [
+        "Unfold the inequality, then divide every part by the coefficient.",
+        "Count only the integers strictly inside the resulting range."
+      ],
+      "socraticHint": "What range does x fall in once the coefficient is divided out?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many integers x satisfy |2x - 7| < 11?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      },
+      "id": "ladder-al-absolute-value-p49",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 6
+    },
+    {
+      "kind": "number",
+      "prompt": "The equation |x - 2| = k has exactly one solution for exactly one value of k. What is that value of k?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "Any positive k gives two solutions, one on each side of 2.",
+        "Any negative k gives no solution at all.",
+        "Only k = 0 gives exactly one solution, x = 2."
+      ],
+      "useAgain": "when thinking about how many solutions an absolute value equation has, not just what they are.",
+      "hints": [
+        "Try a positive value of k and count the solutions, then try a negative one.",
+        "One value of k gives neither two solutions nor none."
+      ],
+      "socraticHint": "What happens to the number of solutions as k shrinks toward zero?",
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The equation |x + 5| = k has exactly one solution for exactly one value of k. What is that value of k?",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      },
+      "id": "ladder-al-absolute-value-p50",
+      "lane": "skills",
+      "ideaId": "al-absolute-value",
+      "skills": [
+        "think.skills.absolute-value"
+      ],
+      "thinkMinutes": 6
+    }
+  ]
+}

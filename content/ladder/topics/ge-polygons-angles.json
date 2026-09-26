@@ -1,0 +1,3153 @@
+{
+  "id": "ge-polygons-angles",
+  "idea": {
+    "body": "A polygon's interior angles always add up to a total that depends only on its number of sides. Split it into triangles from one vertex. A polygon with n sides splits into n minus 2 triangles, and each triangle's angles add to 180 degrees. So the interior angle sum is (n minus 2) times 180. A robot's hexagonal base plate has 6 sides, so its angles add up to (6 minus 2) times 180, which is 720 degrees. If the hexagon is regular, every angle is equal, so each one is 720 divided by 6, which is 120 degrees. A polygon's exterior angles, one at each vertex, always add up to 360 degrees, no matter how many sides it has. For a regular polygon, each exterior angle is 360 divided by n.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A regular hexagon with one interior angle marked 120 degrees.",
+      "spec": {
+        "w": 220,
+        "h": 200,
+        "items": [
+          {
+            "t": "poly",
+            "points": [
+              [
+                92.0,
+                160.0
+              ],
+              [
+                143.9,
+                130.0
+              ],
+              [
+                143.9,
+                70.0
+              ],
+              [
+                92.0,
+                40.0
+              ],
+              [
+                40.0,
+                70.0
+              ],
+              [
+                40.0,
+                130.0
+              ]
+            ]
+          },
+          {
+            "t": "text",
+            "x": 91.99249750112146,
+            "y": 142.00000156354145,
+            "s": "120°",
+            "size": 10,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A game piece is shaped like a regular nonagon, a 9-sided polygon. What does each interior angle measure?",
+    "steps": [
+      "The interior angle sum of any polygon is (n minus 2) times 180.",
+      "For n = 9, that is (9 minus 2) times 180, which is 7 times 180, or 1260 degrees.",
+      "A regular polygon splits that sum equally among its 9 angles.",
+      "1260 divided by 9 is 140 degrees."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "A regular nonagon with one interior angle marked.",
+      "spec": {
+        "w": 220,
+        "h": 200,
+        "items": [
+          {
+            "t": "poly",
+            "points": [
+              [
+                100.9,
+                160.0
+              ],
+              [
+                140.7,
+                145.5
+              ],
+              [
+                161.9,
+                108.9
+              ],
+              [
+                154.5,
+                67.2
+              ],
+              [
+                122.1,
+                40.0
+              ],
+              [
+                79.8,
+                40.0
+              ],
+              [
+                47.3,
+                67.2
+              ],
+              [
+                40.0,
+                108.9
+              ],
+              [
+                61.2,
+                145.5
+              ]
+            ]
+          },
+          {
+            "t": "text",
+            "x": 100.90728923861784,
+            "y": 142.00000147591672,
+            "s": "?",
+            "size": 10,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "ge-polygons-angles-w1",
+      "name": "Triangulate from one vertex",
+      "when": "Use this to find a polygon's total interior angle sum from its number of sides.",
+      "steps": [
+        "A base plate is a heptagon, a 7 sided polygon.",
+        "Draw every diagonal from one vertex, splitting the polygon into triangles.",
+        "A polygon with n sides always splits into n minus 2 triangles.",
+        "Here n is 7, so that is 7 minus 2, which is 5 triangles.",
+        "Each triangle's angles add to 180, so 5 times 180 is 900 degrees."
+      ],
+      "example": "A heptagon has 7 sides. Find the sum of its interior angles.",
+      "answer": "900",
+      "trap": "Using n instead of n minus 2 for the number of triangles.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A heptagon with diagonals drawn from one vertex to every other vertex, splitting it into 5 triangles.",
+        "spec": {
+          "w": 250,
+          "h": 250,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  125,
+                  34
+                ],
+                [
+                  62.5,
+                  64.1
+                ],
+                [
+                  47,
+                  131.8
+                ],
+                [
+                  90.3,
+                  186
+                ],
+                [
+                  159.7,
+                  186
+                ],
+                [
+                  203,
+                  131.8
+                ],
+                [
+                  187.5,
+                  64.1
+                ]
+              ]
+            },
+            {
+              "t": "line",
+              "x1": 125,
+              "y1": 34,
+              "x2": 47,
+              "y2": 131.8,
+              "color": "#a89a78"
+            },
+            {
+              "t": "line",
+              "x1": 125,
+              "y1": 34,
+              "x2": 90.3,
+              "y2": 186,
+              "color": "#a89a78"
+            },
+            {
+              "t": "line",
+              "x1": 125,
+              "y1": 34,
+              "x2": 159.7,
+              "y2": 186,
+              "color": "#a89a78"
+            },
+            {
+              "t": "line",
+              "x1": 125,
+              "y1": 34,
+              "x2": 203,
+              "y2": 131.8,
+              "color": "#a89a78"
+            },
+            {
+              "t": "text",
+              "x": 125,
+              "y": 113.97142857142856,
+              "s": "5 triangles",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 125,
+              "y": 225,
+              "s": "5 x 180 = 900 degrees",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "A heptagon, 7 sides.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Heptagon: a 7-sided polygon",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Draw diagonals from one vertex",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "n sides split into n-2 triangles",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "1": {
+                  "color": "accent"
+                },
+                "2": {
+                  "color": "accent"
+                },
+                "3": {
+                  "color": "accent"
+                },
+                "4": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "7 - 2 = 5 triangles",
+              "set": {
+                "6": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "5 x 180 = 900 degrees",
+              "set": {
+                "0": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-polygons-angles-w2",
+      "name": "The exterior angle shortcut",
+      "when": "Use this to find one interior angle of a regular polygon quickly.",
+      "steps": [
+        "A game piece is a regular decagon, a 10 sided polygon.",
+        "A polygon's exterior angles always add up to 360 degrees.",
+        "A regular decagon splits that equally among its 10 vertices.",
+        "Each exterior angle is 360 divided by 10, which is 36 degrees.",
+        "Each interior angle is 180 minus 36, which is 144 degrees."
+      ],
+      "example": "A regular decagon has 10 sides. Use the exterior angles to find each interior angle.",
+      "answer": "144",
+      "trap": "Forgetting to subtract the exterior angle from 180 and stopping at 36.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A regular decagon with one side extended past a vertex, showing the exterior angle formed there.",
+        "spec": {
+          "w": 250,
+          "h": 270,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  125,
+                  34
+                ],
+                [
+                  80.3,
+                  48.5
+                ],
+                [
+                  52.7,
+                  86.5
+                ],
+                [
+                  52.7,
+                  133.5
+                ],
+                [
+                  80.3,
+                  171.5
+                ],
+                [
+                  125,
+                  186
+                ],
+                [
+                  169.7,
+                  171.5
+                ],
+                [
+                  197.3,
+                  133.5
+                ],
+                [
+                  197.3,
+                  86.5
+                ],
+                [
+                  169.7,
+                  48.5
+                ]
+              ]
+            },
+            {
+              "t": "line",
+              "x1": 125,
+              "y1": 34,
+              "x2": 163,
+              "y2": 21.7
+            },
+            {
+              "t": "text",
+              "x": 150.2,
+              "y": 40.6,
+              "s": "ext",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 125,
+              "y": 225,
+              "s": "360 / 10 = 36 degrees each",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 125,
+              "y": 247,
+              "s": "180 - 36 = 144 degrees",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "A regular decagon, 10 sides.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Decagon: a regular 10-sided polygon",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Exterior angles always sum to 360",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "1": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Split equally among the 10 vertices",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "1": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "360 / 10 = 36 degrees each",
+              "set": {
+                "4": {
+                  "hidden": true
+                },
+                "1": {
+                  "color": "accent"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "180 - 36 = 144 degrees interior",
+              "set": {
+                "1": {
+                  "color": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-polygons-angles-w3",
+      "name": "Sum, then subtract the knowns",
+      "when": "Use this when a polygon shows every angle but one.",
+      "steps": [
+        "A pentagon has angles 100, 110, 95 and 130 degrees, plus one unknown angle.",
+        "The interior angle sum of a pentagon is (5 minus 2) times 180, which is 540 degrees.",
+        "Add the four known angles: 100 + 110 + 95 + 130 is 435.",
+        "Subtract from the total: 540 minus 435 is 105."
+      ],
+      "example": "A pentagon has angles 100, 110, 95 and 130 degrees, plus one more. Find the missing angle.",
+      "answer": "105",
+      "trap": "Using the wrong total, like 360, instead of the pentagon's actual angle sum of 540.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A pentagon with four angles labeled 100, 110, 95 and 130 degrees, and a question mark at the fifth corner.",
+        "spec": {
+          "w": 260,
+          "h": 300,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  130,
+                  34
+                ],
+                [
+                  50.1,
+                  92.1
+                ],
+                [
+                  80.6,
+                  186
+                ],
+                [
+                  179.4,
+                  186
+                ],
+                [
+                  209.9,
+                  92.1
+                ]
+              ]
+            },
+            {
+              "t": "text",
+              "x": 130,
+              "y": 60,
+              "s": "100°",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 74.8,
+              "y": 100.1,
+              "s": "110°",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 95.9,
+              "y": 165,
+              "s": "95°",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 164.1,
+              "y": 165,
+              "s": "130°",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 185.2,
+              "y": 100.1,
+              "s": "?",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 130,
+              "y": 228,
+              "s": "Sum = (5 - 2) x 180 = 540 degrees",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 130,
+              "y": 248,
+              "s": "100 + 110 + 95 + 130 = 435",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 130,
+              "y": 268,
+              "s": "540 - 435 = 105 degrees",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "A pentagon, four angles known, one unknown.",
+              "set": {
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Angles 100, 110, 95, 130; one unknown",
+              "set": {
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Sum = (5-2) x 180 = 540 degrees",
+              "set": {
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "100 + 110 + 95 + 130 = 435",
+              "set": {
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "540 - 435 = 105 degrees",
+              "set": {
+                "0": {
+                  "fill": "green"
+                },
+                "5": {
+                  "s": "105°"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-ge-polygons-angles-p01",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A robot's pentagon-shaped sensor cover is a pentagon, a 5-sided polygon. What is the sum of its interior angles, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "540"
+      },
+      "explanation": [
+        "The interior angle sum of any polygon is (n minus 2) times 180.",
+        "For n = 5, that is (5 minus 2) times 180, which is 3 times 180.",
+        "3 times 180 is 540."
+      ],
+      "hints": [
+        "Subtract 2 from the number of sides first.",
+        "Multiply that result by 180."
+      ],
+      "socraticHint": "What do you get when you subtract 2 from the number of sides?",
+      "useAgain": "when a polygon's interior angle sum needs finding from its number of sides.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "figure": {
+        "kind": "diagram",
+        "alt": "A regular pentagon.",
+        "spec": {
+          "w": 220,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  103.1,
+                  160.0
+                ],
+                [
+                  166.2,
+                  114.2
+                ],
+                [
+                  142.1,
+                  40.0
+                ],
+                [
+                  64.1,
+                  40.0
+                ],
+                [
+                  40.0,
+                  114.2
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rover's frame includes a hexagon-shaped panel, a 6-sided polygon. What is the sum of its interior angles, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "720"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p02",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A drone's hexagonal base plate is a hexagon, a 6-sided polygon. What is the sum of its interior angles, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "720"
+      },
+      "explanation": [
+        "The interior angle sum of any polygon is (n minus 2) times 180.",
+        "For n = 6, that is (6 minus 2) times 180, which is 4 times 180.",
+        "4 times 180 is 720."
+      ],
+      "hints": [
+        "Subtract 2 from the number of sides first.",
+        "Multiply that result by 180."
+      ],
+      "socraticHint": "What do you get when you subtract 2 from the number of sides?",
+      "useAgain": "when a polygon's interior angle sum needs finding from its number of sides.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "figure": {
+        "kind": "diagram",
+        "alt": "A regular hexagon.",
+        "spec": {
+          "w": 220,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  92.0,
+                  160.0
+                ],
+                [
+                  143.9,
+                  130.0
+                ],
+                [
+                  143.9,
+                  70.0
+                ],
+                [
+                  92.0,
+                  40.0
+                ],
+                [
+                  40.0,
+                  70.0
+                ],
+                [
+                  40.0,
+                  130.0
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rover's frame includes a heptagon-shaped panel, a 7-sided polygon. What is the sum of its interior angles, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "900"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p03",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A game board's octagon-shaped tile is an octagon, an 8-sided polygon. What is the sum of its interior angles, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "1080"
+      },
+      "explanation": [
+        "The interior angle sum of any polygon is (n minus 2) times 180.",
+        "For n = 8, that is (8 minus 2) times 180, which is 6 times 180.",
+        "6 times 180 is 1080."
+      ],
+      "hints": [
+        "Subtract 2 from the number of sides first.",
+        "Multiply that result by 180."
+      ],
+      "socraticHint": "What do you get when you subtract 2 from the number of sides?",
+      "useAgain": "when a polygon's interior angle sum needs finding from its number of sides.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "figure": {
+        "kind": "diagram",
+        "alt": "A regular octagon.",
+        "spec": {
+          "w": 220,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  100.0,
+                  160.0
+                ],
+                [
+                  142.4,
+                  142.4
+                ],
+                [
+                  160.0,
+                  100.0
+                ],
+                [
+                  142.4,
+                  57.6
+                ],
+                [
+                  100.0,
+                  40.0
+                ],
+                [
+                  57.6,
+                  57.6
+                ],
+                [
+                  40.0,
+                  100.0
+                ],
+                [
+                  57.6,
+                  142.4
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A rover's frame includes a nonagon-shaped panel, a 9-sided polygon. What is the sum of its interior angles, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "1260"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p04",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A rocket's fin cross-section is a decagon, a 10-sided polygon. What is the sum of its interior angles, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "1440"
+      },
+      "explanation": [
+        "The interior angle sum is (n minus 2) times 180.",
+        "For n = 10, that is 8 times 180, which is 1440."
+      ],
+      "hints": [
+        "Subtract 2 from 10 first.",
+        "Multiply that result by 180."
+      ],
+      "socraticHint": "What is 10 minus 2, and what is that times 180?",
+      "useAgain": "when a larger polygon's interior angle sum needs finding.",
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "figure": {
+        "kind": "diagram",
+        "alt": "A regular decagon.",
+        "spec": {
+          "w": 220,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  97.1,
+                  160.0
+                ],
+                [
+                  132.3,
+                  148.5
+                ],
+                [
+                  154.1,
+                  118.5
+                ],
+                [
+                  154.1,
+                  81.5
+                ],
+                [
+                  132.3,
+                  51.5
+                ],
+                [
+                  97.1,
+                  40.0
+                ],
+                [
+                  61.8,
+                  51.5
+                ],
+                [
+                  40.0,
+                  81.5
+                ],
+                [
+                  40.0,
+                  118.5
+                ],
+                [
+                  61.8,
+                  148.5
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A kite's frame includes a dodecagon-shaped panel, a 12-sided polygon. What is the sum of its interior angles, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "1800"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p05",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A 3D-printed part has a cross-section with 15 sides. What is the sum of its interior angles, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "2340"
+      },
+      "explanation": [
+        "The interior angle sum is (n minus 2) times 180.",
+        "For n = 15, that is 13 times 180, which is 2340."
+      ],
+      "hints": [
+        "Subtract 2 from 15 first.",
+        "Multiply that result by 180."
+      ],
+      "socraticHint": "What is 15 minus 2, and what is that times 180?",
+      "useAgain": "when a many-sided polygon's interior angle sum needs finding.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A satellite dish's support frame has a cross-section with 20 sides. What is the sum of its interior angles, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "3240"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p06",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A polygon has twice as many sides as a hexagon. What is the sum of its interior angles, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "1800"
+      },
+      "explanation": [
+        "A hexagon has 6 sides, so twice as many is 12 sides.",
+        "The interior angle sum is (12 minus 2) times 180, which is 10 times 180, or 1800."
+      ],
+      "hints": [
+        "Find the actual number of sides first, from the hexagon comparison.",
+        "Then apply the interior angle sum formula."
+      ],
+      "socraticHint": "How many sides does a polygon with twice as many sides as a hexagon have?",
+      "useAgain": "when a polygon's number of sides is described by comparison before the sum can be found.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A polygon has three times as many sides as a pentagon. What is the sum of its interior angles, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "2340"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p07",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A polygon's interior angles add up to 900 degrees. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "The interior angle sum formula is (n minus 2) times 180 = 900.",
+        "Divide both sides by 180: n minus 2 = 5.",
+        "Add 2: n = 7."
+      ],
+      "hints": [
+        "Divide the angle sum by 180 first.",
+        "Add 2 to that result to find n."
+      ],
+      "socraticHint": "What do you get when you divide the angle sum by 180?",
+      "useAgain": "when a polygon's number of sides needs finding from its interior angle sum.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A polygon's interior angles add up to 1080 degrees. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p08",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A polygon's interior angles add up to 1440 degrees. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The interior angle sum formula is (n minus 2) times 180 = 1440.",
+        "Divide both sides by 180: n minus 2 = 8.",
+        "Add 2: n = 10."
+      ],
+      "hints": [
+        "Divide the angle sum by 180 first.",
+        "Add 2 to that result to find n."
+      ],
+      "socraticHint": "What do you get when you divide the angle sum by 180?",
+      "useAgain": "when a polygon's number of sides needs finding from its interior angle sum.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A polygon's interior angles add up to 1620 degrees. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p09",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A polygon's interior angles add up to 1800 degrees. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "The interior angle sum formula is (n minus 2) times 180 = 1800.",
+        "Divide both sides by 180: n minus 2 = 10.",
+        "Add 2: n = 12."
+      ],
+      "hints": [
+        "Divide the angle sum by 180 first.",
+        "Add 2 to that result to find n."
+      ],
+      "socraticHint": "What do you get when you divide the angle sum by 180?",
+      "useAgain": "when a polygon's number of sides needs finding from its interior angle sum.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A polygon's interior angles add up to 1980 degrees. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p10",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A polygon's interior angles add up to 2520 degrees. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "The interior angle sum formula is (n minus 2) times 180 = 2520.",
+        "Divide both sides by 180: n minus 2 = 14.",
+        "Add 2: n = 16."
+      ],
+      "hints": [
+        "Divide the angle sum by 180 first.",
+        "Add 2 to that result to find n."
+      ],
+      "socraticHint": "What do you get when you divide the angle sum by 180?",
+      "useAgain": "when a many-sided polygon's number of sides needs finding from a large angle sum.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A polygon's interior angles add up to 2700 degrees. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p11",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A polygon's interior angles add up to 3240 degrees. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "The interior angle sum formula is (n minus 2) times 180 = 3240.",
+        "Divide both sides by 180: n minus 2 = 18.",
+        "Add 2: n = 20."
+      ],
+      "hints": [
+        "Divide the angle sum by 180 first.",
+        "Add 2 to that result to find n."
+      ],
+      "socraticHint": "What do you get when you divide the angle sum by 180?",
+      "useAgain": "when a many-sided polygon's number of sides needs finding from a large angle sum.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A polygon's interior angles add up to 3420 degrees. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p12",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A polygon's interior angles add up to 4320 degrees. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "26"
+      },
+      "explanation": [
+        "The interior angle sum formula is (n minus 2) times 180 = 4320.",
+        "Divide both sides by 180: n minus 2 = 24.",
+        "Add 2: n = 26."
+      ],
+      "hints": [
+        "Divide the angle sum by 180 first.",
+        "Add 2 to that result to find n."
+      ],
+      "socraticHint": "What do you get when you divide the angle sum by 180?",
+      "useAgain": "when a many-sided polygon's number of sides needs finding from a large angle sum.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A polygon's interior angles add up to 4500 degrees. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "27"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p13",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "truefalse",
+      "prompt": "The exterior angles of any polygon, one at each vertex, always add up to 360 degrees.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "This is true for every convex polygon, no matter how many sides it has.",
+        "A triangle's exterior angles add to 360, and so does a polygon with 20 sides."
+      ],
+      "hints": [
+        "This fact does not depend on the number of sides.",
+        "Compare it to the interior angle sum, which does depend on the number of sides."
+      ],
+      "socraticHint": "Does the exterior angle sum change if the polygon has more sides?",
+      "useAgain": "when checking whether a polygon's exterior angle sum depends on its number of sides.",
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "The interior angles of any polygon, no matter how many sides, always add up to 360 degrees.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p14",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular pentagon's five exterior angles are all equal. What does each one measure, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "72"
+      },
+      "explanation": [
+        "The exterior angles of any polygon add up to 360 degrees.",
+        "A regular polygon splits that total equally among its angles.",
+        "360 divided by 5 is 72."
+      ],
+      "hints": [
+        "The exterior angle sum is always 360, no matter the polygon.",
+        "Divide 360 by the number of sides."
+      ],
+      "socraticHint": "What do you divide 360 by to find one exterior angle of a regular polygon?",
+      "useAgain": "when a regular polygon's exterior angle needs finding from its number of sides.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "figure": {
+        "kind": "diagram",
+        "alt": "A regular pentagon with one exterior angle marked.",
+        "spec": {
+          "w": 220,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  103.1,
+                  160.0
+                ],
+                [
+                  166.2,
+                  114.2
+                ],
+                [
+                  142.1,
+                  40.0
+                ],
+                [
+                  64.1,
+                  40.0
+                ],
+                [
+                  40.0,
+                  114.2
+                ]
+              ]
+            },
+            {
+              "t": "line",
+              "x1": 103.1,
+              "y1": 160.0,
+              "x2": 124.14154888831133,
+              "y2": 175.27262977947163,
+              "dashed": true
+            },
+            {
+              "t": "text",
+              "x": 121.1,
+              "y": 160.0,
+              "s": "?",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A regular hexagon's six exterior angles are all equal. What does each one measure, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "60"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p15",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular decagon's ten exterior angles are all equal. What does each one measure, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "The exterior angles of any polygon add up to 360 degrees.",
+        "A regular decagon splits that equally among its 10 angles.",
+        "360 divided by 10 is 36."
+      ],
+      "hints": [
+        "The exterior angle sum is always 360.",
+        "Divide 360 by the number of sides."
+      ],
+      "socraticHint": "What is 360 divided by 10?",
+      "useAgain": "when a regular decagon's exterior angle needs finding.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "figure": {
+        "kind": "diagram",
+        "alt": "A regular decagon with one exterior angle marked.",
+        "spec": {
+          "w": 220,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  97.1,
+                  160.0
+                ],
+                [
+                  132.3,
+                  148.5
+                ],
+                [
+                  154.1,
+                  118.5
+                ],
+                [
+                  154.1,
+                  81.5
+                ],
+                [
+                  132.3,
+                  51.5
+                ],
+                [
+                  97.1,
+                  40.0
+                ],
+                [
+                  61.8,
+                  51.5
+                ],
+                [
+                  40.0,
+                  81.5
+                ],
+                [
+                  40.0,
+                  118.5
+                ],
+                [
+                  61.8,
+                  148.5
+                ]
+              ]
+            },
+            {
+              "t": "line",
+              "x1": 97.1,
+              "y1": 160.0,
+              "x2": 121.82121851844653,
+              "y2": 168.05365475813414,
+              "dashed": true
+            },
+            {
+              "t": "text",
+              "x": 126.1178781968343,
+              "y": 159.9878635760254,
+              "s": "?",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A regular 20-gon's twenty exterior angles are all equal. What does each one measure, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p16",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular polygon has an exterior angle of 24 degrees. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "The exterior angles of a regular polygon add to 360, split equally.",
+        "So the number of sides is 360 divided by one exterior angle.",
+        "360 divided by 24 is 15."
+      ],
+      "hints": [
+        "Set up the equation 360 divided by n equals the given exterior angle.",
+        "Solve that equation for n."
+      ],
+      "socraticHint": "What equation connects one exterior angle, 360, and the number of sides?",
+      "useAgain": "when a regular polygon's number of sides needs finding from one exterior angle.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A regular polygon has an exterior angle of 15 degrees. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p17",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular polygon has an exterior angle of 8 degrees. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "The number of sides is 360 divided by one exterior angle.",
+        "360 divided by 8 is 45."
+      ],
+      "hints": [
+        "Divide 360 by the given exterior angle.",
+        "That quotient is the number of sides."
+      ],
+      "socraticHint": "What is 360 divided by 8?",
+      "useAgain": "when a regular polygon's number of sides needs finding from a small exterior angle.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A regular polygon has an exterior angle of 10 degrees. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p18",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "choice",
+      "prompt": "A polygon's interior angle and exterior angle at the same vertex always add up to how many degrees?",
+      "options": [
+        "180 degrees",
+        "360 degrees",
+        "90 degrees",
+        "It depends on the polygon"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "An interior angle and its exterior angle at the same vertex form a straight line.",
+        "Any straight line's angle measures 180 degrees.",
+        "So they always add to 180, no matter the polygon."
+      ],
+      "hints": [
+        "Picture the interior angle and its exterior angle sitting along the same straight side.",
+        "A straight line's angle is always the same fixed number."
+      ],
+      "socraticHint": "What shape do the interior angle and its exterior angle form together at one vertex?",
+      "useAgain": "when relating a polygon's interior angle to its exterior angle at the same vertex.",
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A regular polygon has an interior angle of 150 degrees. What is its exterior angle at the same vertex, in degrees?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "150 degrees",
+          "180 degrees",
+          "30 degrees",
+          "210 degrees"
+        ]
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p19",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular polygon's interior angle is 8 times its exterior angle. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "The interior and exterior angles at a vertex add to 180 degrees.",
+        "If the interior is 8 times the exterior, then 8 times the exterior plus the exterior is 180, so 9 times the exterior is 180.",
+        "The exterior angle is 20 degrees, and 360 divided by 20 is 18 sides."
+      ],
+      "hints": [
+        "Write the interior angle as 8 times the exterior angle, then use the 180 degree sum.",
+        "Once you find the exterior angle, divide 360 by it."
+      ],
+      "socraticHint": "If the interior angle is 8 times the exterior, what equation do their sum give you?",
+      "useAgain": "when a regular polygon's angle is described as a multiple of its exterior angle.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A regular polygon's interior angle is 5 times its exterior angle. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p20",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular polygon's exterior angle is one ninth of its interior angle. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "The interior and exterior angles at a vertex add to 180 degrees.",
+        "If the exterior is one ninth of the interior, the interior is 9 times the exterior.",
+        "9 times the exterior plus the exterior is 180, so 10 times the exterior is 180.",
+        "The exterior angle is 18 degrees, and 360 divided by 18 is 20 sides."
+      ],
+      "hints": [
+        "Write the interior angle as 9 times the exterior angle, then use the 180 degree sum.",
+        "Once you find the exterior angle, divide 360 by it."
+      ],
+      "socraticHint": "If the exterior is one ninth of the interior, how many times bigger is the interior?",
+      "useAgain": "when a regular polygon's exterior angle is described as a fraction of its interior angle.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A regular polygon's exterior angle is one fifth of its interior angle. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p21",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular hexagon has 6 equal angles. What does each interior angle measure, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "120"
+      },
+      "explanation": [
+        "The interior angle sum is (n minus 2) times 180, which is 720 for n = 6.",
+        "A regular polygon splits that equally: 720 divided by 6 is 120."
+      ],
+      "hints": [
+        "Find the total interior angle sum first.",
+        "Divide that total by the number of angles."
+      ],
+      "socraticHint": "What is the interior angle sum, and what do you divide it by?",
+      "useAgain": "when one interior angle of a regular polygon needs finding.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "figure": {
+        "kind": "diagram",
+        "alt": "A regular hexagon with one interior angle marked.",
+        "spec": {
+          "w": 220,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  92.0,
+                  160.0
+                ],
+                [
+                  143.9,
+                  130.0
+                ],
+                [
+                  143.9,
+                  70.0
+                ],
+                [
+                  92.0,
+                  40.0
+                ],
+                [
+                  40.0,
+                  70.0
+                ],
+                [
+                  40.0,
+                  130.0
+                ]
+              ]
+            },
+            {
+              "t": "text",
+              "x": 91.99249750112146,
+              "y": 142.00000156354145,
+              "s": "?",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A regular decagon has 10 equal angles. What does each interior angle measure, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "144"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p22",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular pentagon has 5 equal angles. What does each interior angle measure, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "108"
+      },
+      "explanation": [
+        "The interior angle sum is (n minus 2) times 180, which is 540 for n = 5.",
+        "A regular polygon splits that equally: 540 divided by 5 is 108."
+      ],
+      "hints": [
+        "Find the total interior angle sum first.",
+        "Divide that total by the number of angles."
+      ],
+      "socraticHint": "What is the interior angle sum, and what do you divide it by?",
+      "useAgain": "when one interior angle of a regular polygon needs finding.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "figure": {
+        "kind": "diagram",
+        "alt": "A regular pentagon with one interior angle marked.",
+        "spec": {
+          "w": 220,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  103.1,
+                  160.0
+                ],
+                [
+                  166.2,
+                  114.2
+                ],
+                [
+                  142.1,
+                  40.0
+                ],
+                [
+                  64.1,
+                  40.0
+                ],
+                [
+                  40.0,
+                  114.2
+                ]
+              ]
+            },
+            {
+              "t": "text",
+              "x": 103.1,
+              "y": 142.0,
+              "s": "?",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A regular nonagon has 9 equal angles. What does each interior angle measure, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "140"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p23",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular octagon has 8 equal angles. What does each interior angle measure, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "135"
+      },
+      "explanation": [
+        "The interior angle sum is (n minus 2) times 180, which is 1080 for n = 8.",
+        "A regular polygon splits that equally: 1080 divided by 8 is 135."
+      ],
+      "hints": [
+        "Find the total interior angle sum first.",
+        "Divide that total by the number of angles."
+      ],
+      "socraticHint": "What is the interior angle sum, and what do you divide it by?",
+      "useAgain": "when one interior angle of a regular polygon needs finding.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "figure": {
+        "kind": "diagram",
+        "alt": "A regular octagon with one interior angle marked.",
+        "spec": {
+          "w": 220,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  100.0,
+                  160.0
+                ],
+                [
+                  142.4,
+                  142.4
+                ],
+                [
+                  160.0,
+                  100.0
+                ],
+                [
+                  142.4,
+                  57.6
+                ],
+                [
+                  100.0,
+                  40.0
+                ],
+                [
+                  57.6,
+                  57.6
+                ],
+                [
+                  40.0,
+                  100.0
+                ],
+                [
+                  57.6,
+                  142.4
+                ]
+              ]
+            },
+            {
+              "t": "text",
+              "x": 100.0,
+              "y": 142.0,
+              "s": "?",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A regular dodecagon has 12 equal angles. What does each interior angle measure, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "150"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p24",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular 12-sided polygon has 12 equal angles. What does each interior angle measure, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "150"
+      },
+      "explanation": [
+        "The interior angle sum is (n minus 2) times 180, which is 1800 for n = 12.",
+        "1800 divided by 12 is 150."
+      ],
+      "hints": [
+        "Find the total interior angle sum first, using n = 12.",
+        "Divide that total by 12."
+      ],
+      "socraticHint": "What is the interior angle sum for a 12-sided polygon?",
+      "useAgain": "when a many-sided regular polygon's interior angle needs finding.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "figure": {
+        "kind": "diagram",
+        "alt": "A regular 12-sided polygon with one interior angle marked.",
+        "spec": {
+          "w": 220,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  100.0,
+                  160.0
+                ],
+                [
+                  130.0,
+                  152.0
+                ],
+                [
+                  152.0,
+                  130.0
+                ],
+                [
+                  160.0,
+                  100.0
+                ],
+                [
+                  152.0,
+                  70.0
+                ],
+                [
+                  130.0,
+                  48.0
+                ],
+                [
+                  100.0,
+                  40.0
+                ],
+                [
+                  70.0,
+                  48.0
+                ],
+                [
+                  48.0,
+                  70.0
+                ],
+                [
+                  40.0,
+                  100.0
+                ],
+                [
+                  48.0,
+                  130.0
+                ],
+                [
+                  70.0,
+                  152.0
+                ]
+              ]
+            },
+            {
+              "t": "text",
+              "x": 100.0,
+              "y": 142.0,
+              "s": "?",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A regular 9-sided polygon has 9 equal angles. What does each interior angle measure, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "140"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p25",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "choice",
+      "prompt": "A regular polygon's interior angle is 144 degrees. Which polygon is it?",
+      "options": [
+        "A regular nonagon (9 sides)",
+        "A regular decagon (10 sides)",
+        "A regular octagon (8 sides)",
+        "A regular dodecagon (12 sides)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "The exterior angle is 180 minus 144, which is 36 degrees.",
+        "The number of sides is 360 divided by 36, which is 10.",
+        "A 10-sided polygon is a decagon."
+      ],
+      "hints": [
+        "Find the exterior angle first, using 180 minus the interior angle.",
+        "Divide 360 by that exterior angle to find the number of sides."
+      ],
+      "socraticHint": "What is the exterior angle here, and how does it lead to the number of sides?",
+      "useAgain": "when a regular polygon needs identifying from just its interior angle.",
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A regular polygon's interior angle is 156 degrees. Which polygon is it?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "A regular decagon (10 sides)",
+          "A regular dodecagon (12 sides)",
+          "A regular 20-gon",
+          "A regular 15-gon"
+        ]
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p26",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular polygon has an interior angle of 140 degrees. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "The exterior angle is 180 minus 140, which is 40 degrees.",
+        "The number of sides is 360 divided by 40, which is 9."
+      ],
+      "hints": [
+        "Find the exterior angle first, using 180 minus the interior angle.",
+        "Divide 360 by that exterior angle."
+      ],
+      "socraticHint": "What is 180 minus the given interior angle?",
+      "useAgain": "when a regular polygon's number of sides needs finding from just its interior angle.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A regular polygon has an interior angle of 165 degrees. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p27",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular polygon's interior angle is 20 degrees more than 7 times its exterior angle. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "18"
+      },
+      "explanation": [
+        "Let the exterior angle be e. The interior angle is 7e + 20, and interior plus exterior is 180.",
+        "(7e + 20) + e = 180 simplifies to 8e + 20 = 180.",
+        "8e = 160, so e = 20.",
+        "360 divided by 20 is 18 sides."
+      ],
+      "hints": [
+        "Write the interior angle in terms of the exterior angle, then use the 180 degree sum.",
+        "Solve for the exterior angle first, then divide 360 by it."
+      ],
+      "socraticHint": "What equation do you get by writing the interior angle as 7 times the exterior plus 20?",
+      "useAgain": "when a regular polygon's interior angle is described as a linear expression of its exterior angle.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A regular polygon's interior angle is 30 degrees more than 9 times its exterior angle. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "24"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p28",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular polygon's interior angle is 3 times as large as its exterior angle. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Let the exterior angle be e. The interior angle is 3e, and interior plus exterior is 180.",
+        "3e + e = 180 simplifies to 4e = 180, so e = 45.",
+        "360 divided by 45 is 8 sides."
+      ],
+      "hints": [
+        "Write the interior angle as 3 times the exterior angle, then use the 180 degree sum.",
+        "Solve for the exterior angle first, then divide 360 by it."
+      ],
+      "socraticHint": "What equation do you get by writing the interior angle as 3 times the exterior?",
+      "useAgain": "when a regular polygon's interior angle is described as a multiple of its exterior angle.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A regular polygon's interior angle is 4 times as large as its exterior angle. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p29",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A drone's four-sided landing pad is a quadrilateral with angles 80, 95, 100 and one more unknown angle, all in degrees. What is the unknown angle?",
+      "answer": {
+        "kind": "number",
+        "value": "85"
+      },
+      "explanation": [
+        "The interior angle sum of a quadrilateral is 360 degrees.",
+        "Add the known angles: 80 + 95 + 100 is 275.",
+        "Subtract from the total: 360 minus 275 is 85."
+      ],
+      "hints": [
+        "Find the polygon's interior angle sum first, using its number of sides.",
+        "Subtract the sum of the known angles from that total."
+      ],
+      "socraticHint": "What is the interior angle sum for this polygon, before any angle is subtracted?",
+      "useAgain": "when one angle of a polygon is missing and the rest are known.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A different quadrilateral has angles 85, 100, 105 and one more unknown angle. What is the unknown angle?",
+        "answer": {
+          "kind": "number",
+          "value": "70"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p30",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A rover's five-sided solar array is a pentagon with angles 100, 110, 95, 120 and one more unknown angle, all in degrees. What is the unknown angle?",
+      "answer": {
+        "kind": "number",
+        "value": "115"
+      },
+      "explanation": [
+        "The interior angle sum of a pentagon is 540 degrees.",
+        "Add the known angles: 100 + 110 + 95 + 120 is 425.",
+        "Subtract from the total: 540 minus 425 is 115."
+      ],
+      "hints": [
+        "Find the polygon's interior angle sum first, using its number of sides.",
+        "Subtract the sum of the known angles from that total."
+      ],
+      "socraticHint": "What is the interior angle sum for this polygon, before any angle is subtracted?",
+      "useAgain": "when one angle of a polygon is missing and the rest are known.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A different pentagon has angles 105, 115, 100, 125 and one more unknown angle. What is the unknown angle?",
+        "answer": {
+          "kind": "number",
+          "value": "95"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p31",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A robot's four-sided tray is a quadrilateral with angles 70, 110, 90 and one more unknown angle, all in degrees. What is the unknown angle?",
+      "answer": {
+        "kind": "number",
+        "value": "90"
+      },
+      "explanation": [
+        "The interior angle sum of a quadrilateral is 360 degrees.",
+        "Add the known angles: 70 + 110 + 90 is 270.",
+        "Subtract from the total: 360 minus 270 is 90."
+      ],
+      "hints": [
+        "Find the polygon's interior angle sum first, using its number of sides.",
+        "Subtract the sum of the known angles from that total."
+      ],
+      "socraticHint": "What is the interior angle sum for this polygon, before any angle is subtracted?",
+      "useAgain": "when one angle of a polygon is missing and the rest are known.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A different quadrilateral has angles 75, 115, 95 and one more unknown angle. What is the unknown angle?",
+        "answer": {
+          "kind": "number",
+          "value": "75"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p32",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A game board's six-sided tile is a hexagon with angles 110, 130, 125, 115, 140 and one more unknown angle, all in degrees. What is the unknown angle?",
+      "answer": {
+        "kind": "number",
+        "value": "100"
+      },
+      "explanation": [
+        "The interior angle sum of a hexagon is 720 degrees.",
+        "Add the known angles: their sum is 620.",
+        "Subtract from the total: 720 minus 620 is 100."
+      ],
+      "hints": [
+        "Find the polygon's interior angle sum first, using its number of sides.",
+        "Subtract the sum of the known angles from that total."
+      ],
+      "socraticHint": "How many known angles are there, and what do they add up to?",
+      "useAgain": "when several angles of a polygon are known and one is missing.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A different hexagon has angles 120, 140, 135, 125, 150 and one more unknown angle. What is the unknown angle?",
+        "answer": {
+          "kind": "number",
+          "value": "50"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p33",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A kite's five-sided frame piece is a pentagon with angles 105, 88, 112, 130 and one more unknown angle, all in degrees. What is the unknown angle?",
+      "answer": {
+        "kind": "number",
+        "value": "105"
+      },
+      "explanation": [
+        "The interior angle sum of a pentagon is 540 degrees.",
+        "Add the known angles: their sum is 435.",
+        "Subtract from the total: 540 minus 435 is 105."
+      ],
+      "hints": [
+        "Find the polygon's interior angle sum first, using its number of sides.",
+        "Subtract the sum of the known angles from that total."
+      ],
+      "socraticHint": "How many known angles are there, and what do they add up to?",
+      "useAgain": "when several angles of a polygon are known and one is missing.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A different pentagon has angles 115, 98, 122, 140 and one more unknown angle. What is the unknown angle?",
+        "answer": {
+          "kind": "number",
+          "value": "65"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p34",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A heptagon, a 7-sided polygon, has six equal angles of 130 degrees each and one different angle. What is that different angle, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "120"
+      },
+      "explanation": [
+        "The interior angle sum of a heptagon is (7 minus 2) times 180, which is 900 degrees.",
+        "Six equal angles of 130 degrees add to 6 times 130, which is 780.",
+        "Subtract from the total: 900 minus 780 is 120."
+      ],
+      "hints": [
+        "Find the heptagon's full interior angle sum first.",
+        "Subtract the total of the six equal angles from that sum."
+      ],
+      "socraticHint": "What do the six equal angles add up to, and what is left over for the last one?",
+      "useAgain": "when most of a polygon's angles are equal and one is different.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "An octagon, an 8-sided polygon, has seven equal angles of 140 degrees each and one different angle. What is that different angle, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "100"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p35",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "truefalse",
+      "prompt": "A polygon's interior angle sum grows larger as it gets more sides.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The interior angle sum is (n minus 2) times 180.",
+        "As n grows, (n minus 2) times 180 grows too, so the sum always increases with more sides."
+      ],
+      "hints": [
+        "Compare the sum for a triangle to the sum for a decagon.",
+        "The formula has n growing the total, not shrinking it."
+      ],
+      "socraticHint": "Does a polygon with more sides have a bigger or smaller interior angle sum?",
+      "useAgain": "when checking how a polygon's interior angle sum changes with its number of sides.",
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A regular polygon's exterior angle grows larger as it gets more sides.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p36",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "truefalse",
+      "prompt": "A regular polygon's interior angle gets closer to 180 degrees as it gets more sides.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "A regular polygon's interior angle is 180 minus 360 divided by n.",
+        "As n grows, 360 divided by n shrinks toward 0, so the interior angle gets closer to 180."
+      ],
+      "hints": [
+        "Check what happens to 360 divided by n as n grows very large.",
+        "The interior angle is 180 minus that shrinking amount."
+      ],
+      "socraticHint": "What happens to 360 divided by n as n gets very large?",
+      "useAgain": "when checking how a regular polygon's interior angle changes as its sides increase.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A regular polygon's exterior angle gets closer to 0 degrees as it gets more sides.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p37",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "choice",
+      "prompt": "Which formula gives a polygon's interior angle sum from its number of sides, n?",
+      "options": [
+        "n times 180",
+        "(n - 2) times 360",
+        "(n - 2) times 180",
+        "360 divided by n"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "A polygon splits into (n minus 2) triangles from one vertex.",
+        "Each triangle contributes 180 degrees, so the total is (n minus 2) times 180."
+      ],
+      "hints": [
+        "Think about how many triangles a polygon splits into from one vertex.",
+        "Multiply that count of triangles by 180."
+      ],
+      "socraticHint": "How many triangles does an n-sided polygon split into from one vertex?",
+      "useAgain": "when recalling the interior angle sum formula.",
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Which formula gives a regular polygon's exterior angle from its number of sides, n?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "180 divided by n",
+          "(n - 2) times 180 divided by n",
+          "n divided by 360",
+          "360 divided by n"
+        ]
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p38",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "choice",
+      "prompt": "A student says a polygon's interior angle sum is (n - 2) times 360. What is wrong with this?",
+      "options": [
+        "It should be n times 360.",
+        "It should be (n - 2) times 180, since each triangle contributes 180, not 360.",
+        "Nothing is wrong.",
+        "It should be (n - 2) divided by 180."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Each triangle a polygon splits into contributes 180 degrees, its own angle sum, not 360.",
+        "360 is the exterior angle sum, a different fact entirely.",
+        "So the correct formula multiplies by 180, not 360."
+      ],
+      "hints": [
+        "Think about what one triangle's angles add up to.",
+        "The number 360 belongs to a different fact about polygons."
+      ],
+      "socraticHint": "What do one triangle's three angles add up to?",
+      "useAgain": "when catching a common mix-up between the interior sum formula and the exterior sum fact.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A student says a regular polygon's exterior angle is (n - 2) times 180 divided by n. What is wrong with this?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "That formula gives the interior angle, not the exterior angle.",
+          "Nothing is wrong.",
+          "It should be n times 180 divided by (n - 2).",
+          "It should be 180 divided by n."
+        ]
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p39",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "truefalse",
+      "prompt": "Two different regular polygons can never have the same interior angle.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Each number of sides n gives one specific interior angle, and the formula is one-to-one.",
+        "A different n always gives a different interior angle, so no two different regular polygons share one."
+      ],
+      "hints": [
+        "Check whether the interior angle formula could ever give the same result for two different values of n.",
+        "As n changes, 360 divided by n always changes too."
+      ],
+      "socraticHint": "Could two different values of n ever give the exact same interior angle?",
+      "useAgain": "when checking whether a regular polygon's interior angle uniquely identifies it.",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two different regular polygons can have the same exterior angle, as long as they have the same number of sides.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p40",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "choice",
+      "prompt": "Which of these interior angle sums is impossible for any polygon?",
+      "options": [
+        "900 degrees",
+        "1000 degrees",
+        "1080 degrees",
+        "720 degrees"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Every valid interior angle sum must be a multiple of 180, since it equals (n - 2) times 180.",
+        "1000 divided by 180 is not a whole number, so no polygon has that sum.",
+        "900, 1080 and 720 are all multiples of 180."
+      ],
+      "hints": [
+        "Check which of these numbers divides evenly by 180.",
+        "Only a multiple of 180 can be a valid interior angle sum."
+      ],
+      "socraticHint": "Which of these four numbers does not divide evenly by 180?",
+      "useAgain": "when checking whether a proposed interior angle sum is even possible.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Which of these could NOT be a polygon's interior angle sum?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "1260 degrees",
+          "1440 degrees",
+          "1500 degrees",
+          "1620 degrees"
+        ]
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p41",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "choice",
+      "prompt": "Which of these could NOT be the exterior angle of a regular polygon?",
+      "options": [
+        "7 degrees",
+        "40 degrees",
+        "15 degrees",
+        "9 degrees"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "A regular polygon's number of sides is 360 divided by its exterior angle, which must be a whole number.",
+        "360 divided by 7 is not a whole number, so 7 degrees is impossible.",
+        "360 divides evenly by 40, 15 and 9."
+      ],
+      "hints": [
+        "Divide 360 by each option and check for a whole number result.",
+        "Only an exterior angle that divides evenly into 360 is possible."
+      ],
+      "socraticHint": "Which of these numbers does not divide evenly into 360?",
+      "useAgain": "when checking whether a proposed exterior angle is even possible for a regular polygon.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Which of these degree measures could NOT be a regular polygon's exterior angle?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "20 degrees",
+          "30 degrees",
+          "45 degrees",
+          "11 degrees"
+        ]
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p42",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "order",
+      "prompt": "Put these steps in order to prove a hexagon's interior angle sum is 720 degrees, by splitting it into triangles from one vertex.",
+      "items": [
+        "This splits the hexagon into 4 triangles, since a hexagon has 6 vertices and 2 are already connected to the chosen one by a side.",
+        "Each of the 4 triangles has an angle sum of 180 degrees.",
+        "The hexagon's interior angle sum is the total of all 4 triangles' angles.",
+        "4 times 180 is 720 degrees.",
+        "Pick one vertex of the hexagon and draw a diagonal from it to each vertex that is not already next to it."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          4,
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "explanation": [
+        "The proof first draws the diagonals that split the shape into triangles.",
+        "It counts how many triangles that makes, then uses that every triangle's angles add to 180.",
+        "Multiplying the triangle count by 180 gives the polygon's whole interior angle sum."
+      ],
+      "hints": [
+        "The diagonals have to be drawn before the triangles can be counted.",
+        "The multiplication by 180 always comes last, once the triangle count is known."
+      ],
+      "socraticHint": "What has to be drawn before the hexagon can be split into triangles?",
+      "useAgain": "when a proof of a specific polygon's interior angle sum needs its steps in order.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "figure": {
+        "kind": "diagram",
+        "alt": "A hexagon with diagonals drawn from one vertex to the three vertices that are not next to it, splitting it into 4 triangles.",
+        "spec": {
+          "w": 220,
+          "h": 200,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  92.0,
+                  160.0
+                ],
+                [
+                  143.9,
+                  130.0
+                ],
+                [
+                  143.9,
+                  70.0
+                ],
+                [
+                  92.0,
+                  40.0
+                ],
+                [
+                  40.0,
+                  70.0
+                ],
+                [
+                  40.0,
+                  130.0
+                ]
+              ]
+            },
+            {
+              "t": "line",
+              "x1": 92.0,
+              "y1": 160.0,
+              "x2": 143.9,
+              "y2": 70.0,
+              "dashed": true
+            },
+            {
+              "t": "line",
+              "x1": 92.0,
+              "y1": 160.0,
+              "x2": 92.0,
+              "y2": 40.0,
+              "dashed": true
+            },
+            {
+              "t": "line",
+              "x1": 92.0,
+              "y1": 160.0,
+              "x2": 40.0,
+              "y2": 70.0,
+              "dashed": true
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Put these steps in order to prove an octagon's interior angle sum is 1080 degrees, by splitting it into triangles from one vertex.",
+        "answer": {
+          "kind": "order",
+          "order": [
+            4,
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "items": [
+          "This splits the octagon into 6 triangles, since an octagon has 8 vertices and 2 are already connected to the chosen one by a side.",
+          "Each of the 6 triangles has an angle sum of 180 degrees.",
+          "The octagon's interior angle sum is the total of all 6 triangles' angles.",
+          "6 times 180 is 1080 degrees.",
+          "Pick one vertex of the octagon and draw a diagonal from it to each vertex that is not already next to it."
+        ]
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p43",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "choice",
+      "prompt": "Drawing every diagonal from one vertex of an n-sided polygon splits it into how many triangles?",
+      "options": [
+        "n triangles",
+        "n - 1 triangles",
+        "n - 2 triangles",
+        "n / 2 triangles"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "A vertex already connects to 2 other vertices by the polygon's own sides.",
+        "Diagonals reach the remaining n - 3 vertices, creating n - 3 diagonals from that one vertex.",
+        "Those diagonals, together with the two sides, split the polygon into n - 2 triangles."
+      ],
+      "hints": [
+        "Count how many vertices are already connected to the chosen one by a side.",
+        "The number of triangles is always 2 fewer than the number of sides."
+      ],
+      "socraticHint": "How many vertices are already connected to the chosen vertex without needing a diagonal?",
+      "useAgain": "when explaining why the interior angle sum formula uses n - 2, not n.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A polygon splits into 10 triangles when every diagonal is drawn from one vertex. How many sides does it have?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "10 sides",
+          "8 sides",
+          "20 sides",
+          "12 sides"
+        ]
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p44",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "choice",
+      "prompt": "Which fact is the key reason a polygon's exterior angle sum is always 360 degrees, no matter its number of sides?",
+      "options": [
+        "Walking all the way around the polygon once turns you through one full rotation.",
+        "Every triangle's angles add to 180 degrees.",
+        "A straight line measures 180 degrees.",
+        "Opposite angles in a parallelogram are equal."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Walking around any convex polygon's boundary, at each vertex you turn through that vertex's exterior angle.",
+        "By the time you return to the start, you have turned exactly once all the way around, 360 degrees.",
+        "So the exterior angles, the turns, always add to 360, no matter how many sides."
+      ],
+      "hints": [
+        "Picture walking around the polygon's edges, turning a little at each corner.",
+        "By the time you finish the walk, how much total turning have you done?"
+      ],
+      "socraticHint": "If you walked all the way around the polygon's edges, how many full turns would you make?",
+      "useAgain": "when explaining why the exterior angle sum is always 360, unlike the interior sum.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Which fact is the key reason a triangle's interior angles always add to 180 degrees?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "Walking around the triangle once turns you through one full rotation.",
+          "A straight line measures 180 degrees, and a line drawn parallel to one side through the opposite vertex reveals the other two angles alongside it.",
+          "Every polygon's exterior angle sum is 360 degrees.",
+          "Opposite angles in a parallelogram are equal."
+        ]
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p45",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "choice",
+      "prompt": "A proof splits a polygon into triangles using diagonals from one vertex. Why must those diagonals not cross each other?",
+      "options": [
+        "Crossing diagonals would make the interior angle sum too small.",
+        "Crossing diagonals would split the polygon into more pieces than triangles, and some pieces would not be triangles.",
+        "Crossing diagonals are not allowed in any polygon.",
+        "Crossing diagonals would double the exterior angle sum."
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Diagonals drawn from a single vertex never cross each other, since they all share that one endpoint.",
+        "This keeps every piece a clean triangle, so the 180 degree fact applies to each one.",
+        "If pieces were not triangles, the simple multiply-by-180 count would not work."
+      ],
+      "hints": [
+        "Diagonals from the very same vertex cannot cross one another.",
+        "The proof needs every piece to be an actual triangle for the 180 degree fact to apply."
+      ],
+      "socraticHint": "Can two diagonals that share the same starting vertex ever cross each other?",
+      "useAgain": "when explaining why diagonals from one single vertex are used, not diagonals from several vertices.",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A proof splits a hexagon into triangles using diagonals from one vertex, giving 4 triangles. Why not use diagonals from two different vertices instead?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "Diagonals from different vertices can cross, creating pieces that are not clean triangles.",
+          "It would give too few triangles.",
+          "It is against the rules of geometry.",
+          "It would change the interior angle sum."
+        ]
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-ge-polygons-angles-p46",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "How many regular polygons with 15 or fewer sides have a whole number of degrees in each interior angle?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "A regular polygon's interior angle is a whole number exactly when 360 divides evenly by its number of sides.",
+        "Check every n from 3 to 15 for whether 360 divided by n comes out whole.",
+        "That happens for 9 values of n in that range."
+      ],
+      "hints": [
+        "A whole-number interior angle needs 360 divided by n to be a whole number too.",
+        "Check each number of sides from 3 to 15 one at a time."
+      ],
+      "socraticHint": "What has to be true about 360 and n for the interior angle to come out a whole number?",
+      "useAgain": "when counting how many regular polygons in a range have whole-degree angles.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many regular polygons with 30 or fewer sides have a whole number of degrees in each interior angle?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p47",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "Polygon A has twice as many sides as polygon B. Polygon A's interior angle sum is 3 times polygon B's. How many sides does polygon B have?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Let polygon B have n sides, so polygon A has 2n sides.",
+        "Polygon B's sum is (n - 2) times 180, and polygon A's is (2n - 2) times 180.",
+        "(2n - 2) is 3 times (n - 2): 2n - 2 = 3n - 6, so n = 4."
+      ],
+      "hints": [
+        "Write both interior angle sums in terms of n, then set up the ratio as an equation.",
+        "Solve the resulting linear equation for n."
+      ],
+      "socraticHint": "What equation do you get by setting polygon A's sum equal to 3 times polygon B's sum?",
+      "useAgain": "when two polygons' side counts are related by both a multiple and an angle-sum ratio.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Polygon A has three times as many sides as polygon B. Polygon A's interior angle sum is 5 times polygon B's. How many sides does polygon B have?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p48",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A regular polygon has an interior angle of (5x - 15) degrees, where 5x - 15 also equals 8 times the polygon's exterior angle. What is the polygon's exterior angle, in degrees?",
+      "answer": {
+        "kind": "number",
+        "value": "20"
+      },
+      "explanation": [
+        "Let the exterior angle be e, so the interior angle is 8e.",
+        "Interior plus exterior is 180: 8e + e = 180, so 9e = 180 and e = 20."
+      ],
+      "hints": [
+        "You do not need x at all here, only the relationship between interior and exterior.",
+        "Use interior plus exterior equals 180, with interior written as 8 times exterior."
+      ],
+      "socraticHint": "Does the value of x actually matter for finding the exterior angle here?",
+      "useAgain": "when a problem includes an extra unused variable alongside the real relationship needed.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A regular polygon has an interior angle of (3x + 20) degrees, where 3x + 20 also equals 9 times the polygon's exterior angle. What is the polygon's exterior angle, in degrees?",
+        "answer": {
+          "kind": "number",
+          "value": "18"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p49",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A triangle and a regular polygon together have interior angle sums adding to 1620 degrees. If the regular polygon has n sides, and its own sum alone is 1440 degrees, what is n?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The triangle's own angle sum is always 180 degrees, which checks against 1620 minus 1440.",
+        "The regular polygon's sum is (n - 2) times 180 = 1440.",
+        "Divide by 180: n - 2 = 8, so n = 10."
+      ],
+      "hints": [
+        "Confirm the triangle contributes 180, then focus on the polygon's own equation.",
+        "Divide the polygon's angle sum by 180 and add 2."
+      ],
+      "socraticHint": "What does a triangle's interior angle sum always equal, regardless of its shape?",
+      "useAgain": "when a total combines a fixed shape's angle sum with an unknown polygon's sum.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A triangle and a regular polygon together have interior angle sums adding to 2160 degrees. If the regular polygon has n sides, and its own sum alone is 1980 degrees, what is n?",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-ge-polygons-angles-p50",
+      "lane": "skills",
+      "ideaId": "ge-polygons-angles",
+      "skills": [
+        "think.skills.polygons",
+        "think.skills.angles"
+      ],
+      "kind": "number",
+      "prompt": "A convex polygon's interior angles are in arithmetic progression: evenly spaced from a smallest angle of 100 degrees to a largest angle of 140 degrees. How many sides does it have?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "In an evenly spaced list, the average equals the average of the smallest and largest: (100 + 140) divided by 2 is 120.",
+        "The sum of all n angles is n times 120, and that must equal (n - 2) times 180.",
+        "120n = 180n - 360 simplifies to 360 = 60n, so n = 6."
+      ],
+      "hints": [
+        "The average of an evenly spaced list is just the average of its first and last terms.",
+        "Set n times that average equal to the interior angle sum formula, then solve for n."
+      ],
+      "socraticHint": "What is the average of the smallest and largest angle here?",
+      "useAgain": "when a polygon's angles are evenly spaced and the number of sides needs finding from the average.",
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A convex polygon's interior angles are in arithmetic progression: evenly spaced from a smallest angle of 120 degrees to a largest angle of 160 degrees. How many sides does it have?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    }
+  ]
+}

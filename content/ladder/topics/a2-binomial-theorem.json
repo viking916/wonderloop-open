@@ -1,0 +1,2160 @@
+{
+  "id": "a2-binomial-theorem",
+  "idea": {
+    "body": "Pascal's triangle is a stack of rows of numbers. Each row starts and ends in 1, and every other entry is the sum of the two above it. Row n of the triangle gives the coefficients for expanding (x + y)^n. Row 3 is 1, 3, 3, 1. That makes (x + 3)^3 equal x^3 + 9x^2 + 27x + 27, one term per entry of the row. Each coefficient can also be written as C(n, k), the count of ways to choose k items from n. That count is exactly why it appears: choosing which k of the n factors contribute a y builds the x^(n-k) y^k term. The binomial theorem states this directly: (x + y)^n is the sum, over k from 0 to n, of C(n, k) x^(n-k) y^k.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "Pascal's triangle, rows 0 through 6, each row centered under the one above.",
+      "spec": {
+        "w": 280,
+        "h": 190,
+        "items": [
+          {
+            "t": "text",
+            "x": 140,
+            "y": 22,
+            "s": "1",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 140,
+            "y": 46,
+            "s": "1  1",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 140,
+            "y": 70,
+            "s": "1  2  1",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 140,
+            "y": 94,
+            "s": "1  3  3  1",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 140,
+            "y": 118,
+            "s": "1  4  6  4  1",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 140,
+            "y": 142,
+            "s": "1  5  10  10  5  1",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 140,
+            "y": 166,
+            "s": "1  6  15  20  15  6  1",
+            "size": 12,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "Expand (x + 3)^3 using Pascal's triangle.",
+    "steps": [
+      "Row 3 of Pascal's triangle is 1, 3, 3, 1.",
+      "Match each entry to a term: 1 times x^3, 3 times x^2 times 3, 3 times x times 3^2, 1 times 3^3.",
+      "Simplify each term: x^3, 9x^2, 27x, 27.",
+      "(x + 3)^3 = x^3 + 9x^2 + 27x + 27."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "Row 3 of Pascal's triangle, 1, 3, 3, 1, shown above the four terms it builds.",
+      "spec": {
+        "w": 280,
+        "h": 90,
+        "items": [
+          {
+            "t": "text",
+            "x": 140,
+            "y": 22,
+            "s": "1   3   3   1",
+            "size": 12,
+            "anchor": "middle"
+          },
+          {
+            "t": "text",
+            "x": 140,
+            "y": 60,
+            "s": "x^3 + 9x^2 + 27x + 27",
+            "size": 12,
+            "anchor": "middle"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "a2-binomial-theorem-w1",
+      "name": "Pascal's triangle",
+      "when": "Expand a binomial to a small power by reading coefficients from Pascal's triangle.",
+      "steps": [
+        "Find row n of Pascal's triangle, where n is the exponent.",
+        "Row 3 is 1, 3, 3, 1. These are the coefficients of (x + y)^3.",
+        "Pair each coefficient with powers: x^3, x^2 y, x y^2, y^3.",
+        "For (x + 2)^3: coefficients are 1, 3, 3, 1.",
+        "Expansion: 1 x^3 + 3 x^2 (2) + 3 x (4) + 1 (8) = x^3 + 6x^2 + 12x + 8."
+      ],
+      "example": "Expand (x + 2)^3 using row 3 of Pascal's triangle.",
+      "answer": "x^3 + 6x^2 + 12x + 8",
+      "trap": "Reading the wrong row of Pascal's triangle or forgetting to raise the constant term to its power.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Pascal's triangle, rows 0 through 5, each row centered; every entry is the sum of the two above it.",
+        "spec": {
+          "w": 300,
+          "h": 260,
+          "items": [
+            {
+              "t": "text",
+              "x": 150,
+              "y": 30,
+              "s": "1",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 60,
+              "s": "1   1",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 90,
+              "s": "1   2   1",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 120,
+              "s": "1   3   3   1",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 150,
+              "s": "1   4   6   4   1",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 180,
+              "s": "1   5   10   10   5   1",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 205,
+              "s": "n = 3: use row 3",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 225,
+              "s": "x^3   x^2 y   x y^2   y^3",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 247,
+              "s": "(x+2)^3 = x^3 + 6x^2 + 12x + 8",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Expand (x + 2)^3 with Pascal's triangle.",
+              "set": {
+                "6": {
+                  "hidden": true
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Find row n of Pascal's triangle.",
+              "set": {
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Row 3 is 1, 3, 3, 1: the coefficients.",
+              "set": {
+                "3": {
+                  "s": "[1   3   3   1]"
+                },
+                "7": {
+                  "hidden": true
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Pair coefficients with powers of x and y.",
+              "set": {
+                "3": {
+                  "s": "[1   3   3   1]"
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "For (x + 2)^3, coefficients are 1, 3, 3, 1.",
+              "set": {
+                "3": {
+                  "s": "[1   3   3   1]"
+                },
+                "7": {
+                  "s": "x^3   x^2(2)   x(4)   (8)"
+                },
+                "8": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1500,
+              "caption": "Expansion: x^3 + 6x^2 + 12x + 8.",
+              "set": {
+                "3": {
+                  "s": "[1   3   3   1]"
+                },
+                "7": {
+                  "s": "x^3   x^2(2)   x(4)   (8)"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a2-binomial-theorem-w2",
+      "name": "The general term formula",
+      "when": "Find one specific term of a binomial expansion without expanding the whole thing.",
+      "steps": [
+        "The k-th term of (a + b)^n has the form C(n, k) a^(n-k) b^k.",
+        "For (x + 2)^5, find the term with x^2: n = 5, n - k = 2, so k = 3.",
+        "Coefficient: C(5, 3) = 10. Term: 10 x^2 (2^3) = 10 x^2 (8) = 80x^2.",
+        "Check: C(5, 3) = 5! / (3! 2!) = 120 / 12 = 10. "
+      ],
+      "example": "Find the x^2 term in the expansion of (x + 2)^5.",
+      "answer": "80x^2",
+      "trap": "Confusing which of x and 2 gets raised to which power; using n - k incorrectly for the exponent on b."
+    },
+    {
+      "id": "a2-binomial-theorem-w3",
+      "name": "Combination count",
+      "when": "Use C(n, k) directly when the binomial has symmetric or repeated structure.",
+      "steps": [
+        "C(n, k) is the number of ways to choose k items from n.",
+        "C(n, k) = n! / (k! (n-k)!).",
+        "C(5, 2) = 5! / (2! 3!) = (5 times 4) / (2 times 1) = 10.",
+        "In (x + y)^5, the term x^3 y^2 has coefficient C(5, 2) = 10.",
+        "This makes sense: we choose which 2 of the 5 factors contribute a y."
+      ],
+      "example": "Why is the coefficient of x^3 y^2 in (x + y)^5 equal to C(5, 2)?",
+      "answer": "10, because C(5, 2) counts ways to choose which 2 factors give y.",
+      "trap": "Thinking C(n, k) is the exponent rather than a count; computing it incorrectly."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-binomial-theorem-p01",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In Pascal's triangle, row 4 (counting the top row as row 0) has entries C(4, 0) up to C(4, 4). What is C(4, 2), the entry k = 2 places from the start?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "C(4, 2) counts the ways to choose 2 items from 4.",
+        "C(4, 2) = 4! / (2! times 2!) = 6."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need one entry of Pascal's triangle without writing out the whole row.",
+      "hints": [
+        "Pascal's triangle row n lists C(n, 0) through C(n, n) in order.",
+        "C(n, k) = n! / (k! times (n - k)!)."
+      ],
+      "socraticHint": "What does C(4, 2) count?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In Pascal's triangle, row 5 (counting the top row as row 0) has entries C(5, 0) up to C(5, 5). What is C(5, 2), the entry k = 2 places from the start?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p02",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In Pascal's triangle, row 5 (counting the top row as row 0) has entries C(5, 0) up to C(5, 5). What is C(5, 1), the entry k = 1 places from the start?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "C(5, 1) counts the ways to choose 1 items from 5.",
+        "C(5, 1) = 5! / (1! times 4!) = 5."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need one entry of Pascal's triangle without writing out the whole row.",
+      "hints": [
+        "Pascal's triangle row n lists C(n, 0) through C(n, n) in order.",
+        "C(n, k) = n! / (k! times (n - k)!)."
+      ],
+      "socraticHint": "What does C(5, 1) count?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In Pascal's triangle, row 6 (counting the top row as row 0) has entries C(6, 0) up to C(6, 6). What is C(6, 1), the entry k = 1 places from the start?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In Pascal's triangle, row 5 (counting the top row as row 0) has entries C(5, 0) up to C(5, 5). What is C(5, 3), the entry k = 3 places from the start?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "C(5, 3) counts the ways to choose 3 items from 5.",
+        "C(5, 3) = 5! / (3! times 2!) = 10."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need one entry of Pascal's triangle without writing out the whole row.",
+      "hints": [
+        "Pascal's triangle row n lists C(n, 0) through C(n, n) in order.",
+        "C(n, k) = n! / (k! times (n - k)!)."
+      ],
+      "socraticHint": "What does C(5, 3) count?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In Pascal's triangle, row 6 (counting the top row as row 0) has entries C(6, 0) up to C(6, 6). What is C(6, 3), the entry k = 3 places from the start?",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p04",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In Pascal's triangle, row 6 (counting the top row as row 0) has entries C(6, 0) up to C(6, 6). What is C(6, 2), the entry k = 2 places from the start?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "C(6, 2) counts the ways to choose 2 items from 6.",
+        "C(6, 2) = 6! / (2! times 4!) = 15."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need one entry of Pascal's triangle without writing out the whole row.",
+      "hints": [
+        "Pascal's triangle row n lists C(n, 0) through C(n, n) in order.",
+        "C(n, k) = n! / (k! times (n - k)!)."
+      ],
+      "socraticHint": "What does C(6, 2) count?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In Pascal's triangle, row 7 (counting the top row as row 0) has entries C(7, 0) up to C(7, 7). What is C(7, 2), the entry k = 2 places from the start?",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p05",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "True or false: C(7, 3) is the same value as C(7, 4).",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "C(n, k) always equals C(n, n - k), since choosing k items to include is the same as choosing n - k to leave out.",
+        "Here 7 - 3 = 4, so C(7, 3) = C(7, 4).",
+        "The statement is true."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you want to check whether two Pascal's triangle entries must match without computing both.",
+      "hints": [
+        "Compare k to n - k for the two values given.",
+        "C(n, k) = C(n, n - k) is a symmetry of every row of Pascal's triangle."
+      ],
+      "socraticHint": "What is 7 minus 3?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: C(8, 2) is the same value as C(8, 5).",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In Pascal's triangle, row 7 (counting the top row as row 0) has entries C(7, 0) up to C(7, 7). What is C(7, 3), the entry k = 3 places from the start?",
+      "answer": {
+        "kind": "number",
+        "value": "35"
+      },
+      "explanation": [
+        "C(7, 3) counts the ways to choose 3 items from 7.",
+        "C(7, 3) = 7! / (3! times 4!) = 35."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need one entry of Pascal's triangle without writing out the whole row.",
+      "hints": [
+        "Pascal's triangle row n lists C(n, 0) through C(n, n) in order.",
+        "C(n, k) = n! / (k! times (n - k)!)."
+      ],
+      "socraticHint": "What does C(7, 3) count?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "In Pascal's triangle, row 8 (counting the top row as row 0) has entries C(8, 0) up to C(8, 8). What is C(8, 3), the entry k = 3 places from the start?",
+        "answer": {
+          "kind": "number",
+          "value": "56"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p07",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Use Pascal's triangle to expand (x + y)^2. What is the coefficient of x^1 y^1?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Row 2 of Pascal's triangle gives the coefficients of (x + y)^2.",
+        "The term with y^1 (and x^1) has coefficient C(2, 1) = 2."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you expand a binomial with whole-number exponents and need one term's coefficient.",
+      "hints": [
+        "Row 2 of Pascal's triangle has 3 entries, one per term.",
+        "The term x^1 y^1 is the one with y raised to the 1 power, so its coefficient is C(2, 1)."
+      ],
+      "socraticHint": "Which entry of row 2 matches y^1?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Use Pascal's triangle to expand (x + y)^3. What is the coefficient of x^1 y^2?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Use Pascal's triangle to expand (x + y)^3. What is the coefficient of x^2 y^1?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Row 3 of Pascal's triangle gives the coefficients of (x + y)^3.",
+        "The term with y^1 (and x^2) has coefficient C(3, 1) = 3."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you expand a binomial with whole-number exponents and need one term's coefficient.",
+      "hints": [
+        "Row 3 of Pascal's triangle has 4 entries, one per term.",
+        "The term x^2 y^1 is the one with y raised to the 1 power, so its coefficient is C(3, 1)."
+      ],
+      "socraticHint": "Which entry of row 3 matches y^1?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Use Pascal's triangle to expand (x + y)^4. What is the coefficient of x^1 y^3?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p09",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "Put these steps for finding the coefficient of x^3 in (x + 2)^5 in the order you would do them.",
+      "items": [
+        "Compute C(5, 2) = 10.",
+        "Find k: since the power on x is 3, k = 5 - 3 = 2.",
+        "Notice the term needed has a power of x and a power of 2 that add to 5.",
+        "Multiply 10 by 2^2 = 4 to get the coefficient 40."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0,
+          3
+        ]
+      },
+      "explanation": [
+        "Find k, the power on the constant 2, from n minus the power on x.",
+        "Compute C(5, k) for that k.",
+        "Notice the expansion needs a general term with a power of x and a power of 2.",
+        "Multiply C(5, k) by 2 raised to the k power to get the final coefficient."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you want to keep the steps of a binomial term problem straight.",
+      "hints": [
+        "Naming what you need comes before solving for k.",
+        "The multiplication by the constant's power is the very last step."
+      ],
+      "socraticHint": "What do you need to find before you can compute anything?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Put these steps for finding the coefficient of x^2 in (x + 3)^4 in the order you would do them.",
+        "items": [
+          "Compute C(4, 2) = 6.",
+          "Find k: since the power on x is 2, k = 4 - 2 = 2.",
+          "Notice the term needed has a power of x and a power of 3 that add to 4.",
+          "Multiply 6 by 3^2 = 9 to get the coefficient 54."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p10",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Use Pascal's triangle to expand (x + y)^4. What is the coefficient of x^2 y^2?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Row 4 of Pascal's triangle gives the coefficients of (x + y)^4.",
+        "The term with y^2 (and x^2) has coefficient C(4, 2) = 6."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you expand a binomial with whole-number exponents and need one term's coefficient.",
+      "hints": [
+        "Row 4 of Pascal's triangle has 5 entries, one per term.",
+        "The term x^2 y^2 is the one with y raised to the 2 power, so its coefficient is C(4, 2)."
+      ],
+      "socraticHint": "Which entry of row 4 matches y^2?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Use Pascal's triangle to expand (x + y)^5. What is the coefficient of x^2 y^3?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p11",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Use Pascal's triangle to expand (x + y)^4. What is the coefficient of x^3 y^1?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Row 4 of Pascal's triangle gives the coefficients of (x + y)^4.",
+        "The term with y^1 (and x^3) has coefficient C(4, 1) = 4."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you expand a binomial with whole-number exponents and need one term's coefficient.",
+      "hints": [
+        "Row 4 of Pascal's triangle has 5 entries, one per term.",
+        "The term x^3 y^1 is the one with y raised to the 1 power, so its coefficient is C(4, 1)."
+      ],
+      "socraticHint": "Which entry of row 4 matches y^1?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Use Pascal's triangle to expand (x + y)^5. What is the coefficient of x^4 y^1?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p12",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the sum of all the entries in row 3 of Pascal's triangle: C(3, 0) + C(3, 1) + ... + C(3, 3)?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "The sum of row n of Pascal's triangle is always 2^n.",
+        "Row 3: sum = 2^3 = 8."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need the total of a whole row of Pascal's triangle at once.",
+      "hints": [
+        "Setting x = y = 1 in (x + y)^n turns every term into just its coefficient.",
+        "Adding all the coefficients that way gives (1 + 1)^n = 2^n."
+      ],
+      "socraticHint": "What does (1 + 1)^n equal?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the sum of all the entries in row 7 of Pascal's triangle: C(7, 0) + C(7, 1) + ... + C(7, 7)?",
+        "answer": {
+          "kind": "number",
+          "value": "128"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p13",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the sum of all the entries in row 4 of Pascal's triangle: C(4, 0) + C(4, 1) + ... + C(4, 4)?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "The sum of row n of Pascal's triangle is always 2^n.",
+        "Row 4: sum = 2^4 = 16."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need the total of a whole row of Pascal's triangle at once.",
+      "hints": [
+        "Setting x = y = 1 in (x + y)^n turns every term into just its coefficient.",
+        "Adding all the coefficients that way gives (1 + 1)^n = 2^n."
+      ],
+      "socraticHint": "What does (1 + 1)^n equal?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the sum of all the entries in row 8 of Pascal's triangle: C(8, 0) + C(8, 1) + ... + C(8, 8)?",
+        "answer": {
+          "kind": "number",
+          "value": "256"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p14",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the sum of all the entries in row 5 of Pascal's triangle: C(5, 0) + C(5, 1) + ... + C(5, 5)?",
+      "answer": {
+        "kind": "number",
+        "value": "32"
+      },
+      "explanation": [
+        "The sum of row n of Pascal's triangle is always 2^n.",
+        "Row 5: sum = 2^5 = 32."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need the total of a whole row of Pascal's triangle at once.",
+      "hints": [
+        "Setting x = y = 1 in (x + y)^n turns every term into just its coefficient.",
+        "Adding all the coefficients that way gives (1 + 1)^n = 2^n."
+      ],
+      "socraticHint": "What does (1 + 1)^n equal?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the sum of all the entries in row 9 of Pascal's triangle: C(9, 0) + C(9, 1) + ... + C(9, 9)?",
+        "answer": {
+          "kind": "number",
+          "value": "512"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p15",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the sum of all the entries in row 6 of Pascal's triangle: C(6, 0) + C(6, 1) + ... + C(6, 6)?",
+      "answer": {
+        "kind": "number",
+        "value": "64"
+      },
+      "explanation": [
+        "The sum of row n of Pascal's triangle is always 2^n.",
+        "Row 6: sum = 2^6 = 64."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need the total of a whole row of Pascal's triangle at once.",
+      "hints": [
+        "Setting x = y = 1 in (x + y)^n turns every term into just its coefficient.",
+        "Adding all the coefficients that way gives (1 + 1)^n = 2^n."
+      ],
+      "socraticHint": "What does (1 + 1)^n equal?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the sum of all the entries in row 10 of Pascal's triangle: C(10, 0) + C(10, 1) + ... + C(10, 10)?",
+        "answer": {
+          "kind": "number",
+          "value": "1024"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p16",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x + 2)^5, what is the coefficient of x^3?",
+      "answer": {
+        "kind": "number",
+        "value": "40"
+      },
+      "explanation": [
+        "The term with x^3 has y-part 2^2, since the exponents add to 5.",
+        "Its coefficient is C(5, 2) times 2^2 = 10 times 4 = 40."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when one term of the binomial carries a plain number and you need one coefficient.",
+      "hints": [
+        "The exponent on 2 is n minus the exponent on x: 5 - 3 = 2.",
+        "Multiply C(n, k) by 2 raised to that power."
+      ],
+      "socraticHint": "What power of 2 pairs with x^3?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In the expansion of (x + 2)^6, what is the coefficient of x^3?",
+        "answer": {
+          "kind": "number",
+          "value": "160"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p17",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x + 2)^6, what is the coefficient of x^4?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "The term with x^4 has y-part 2^2, since the exponents add to 6.",
+        "Its coefficient is C(6, 2) times 2^2 = 15 times 4 = 60."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when one term of the binomial carries a plain number and you need one coefficient.",
+      "hints": [
+        "The exponent on 2 is n minus the exponent on x: 6 - 4 = 2.",
+        "Multiply C(n, k) by 2 raised to that power."
+      ],
+      "socraticHint": "What power of 2 pairs with x^4?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In the expansion of (x + 2)^5, what is the coefficient of x^4?",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p18",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x + 3)^5, what is the coefficient of x^2?",
+      "answer": {
+        "kind": "number",
+        "value": "270"
+      },
+      "explanation": [
+        "The term with x^2 has y-part 3^3, since the exponents add to 5.",
+        "Its coefficient is C(5, 3) times 3^3 = 10 times 27 = 270."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when one term of the binomial carries a plain number and you need one coefficient.",
+      "hints": [
+        "The exponent on 3 is n minus the exponent on x: 5 - 2 = 3.",
+        "Multiply C(n, k) by 3 raised to that power."
+      ],
+      "socraticHint": "What power of 3 pairs with x^2?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In the expansion of (x + 4)^6, what is the coefficient of x^2?",
+        "answer": {
+          "kind": "number",
+          "value": "3840"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p19",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x + 3)^6, what is the coefficient of x^2?",
+      "answer": {
+        "kind": "number",
+        "value": "1215"
+      },
+      "explanation": [
+        "The term with x^2 has y-part 3^4, since the exponents add to 6.",
+        "Its coefficient is C(6, 4) times 3^4 = 15 times 81 = 1215."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when one term of the binomial carries a plain number and you need one coefficient.",
+      "hints": [
+        "The exponent on 3 is n minus the exponent on x: 6 - 2 = 4.",
+        "Multiply C(n, k) by 3 raised to that power."
+      ],
+      "socraticHint": "What power of 3 pairs with x^2?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In the expansion of (x + 3)^7, what is the coefficient of x^2?",
+        "answer": {
+          "kind": "number",
+          "value": "5103"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p20",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x + 2)^7, what is the coefficient of x^5?",
+      "answer": {
+        "kind": "number",
+        "value": "84"
+      },
+      "explanation": [
+        "The term with x^5 has y-part 2^2, since the exponents add to 7.",
+        "Its coefficient is C(7, 2) times 2^2 = 21 times 4 = 84."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when one term of the binomial carries a plain number and you need one coefficient.",
+      "hints": [
+        "The exponent on 2 is n minus the exponent on x: 7 - 5 = 2.",
+        "Multiply C(n, k) by 2 raised to that power."
+      ],
+      "socraticHint": "What power of 2 pairs with x^5?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In the expansion of (x + 2)^6, what is the coefficient of x^5?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p21",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x + y)^6, the terms are written from x^6 y^0 up to x^0 y^6. Which term number (the first term is term 1) has x raised to the 4 power?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The term with x^4 has y raised to the 6 - 4 = 2 power.",
+        "That is the (k + 1)-th term, counting from term 1: term 2 + 1 = 3."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need to locate a term of a binomial expansion by its position.",
+      "hints": [
+        "The first term has y^0, the second has y^1, and so on.",
+        "Find k, the power on y, first: k = 6 - 4."
+      ],
+      "socraticHint": "What power of y goes with this power of x?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In the expansion of (x + y)^7, the terms are written from x^7 y^0 up to x^0 y^7. Which term number (the first term is term 1) has x raised to the 4 power?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x + y)^7, the terms are written from x^7 y^0 up to x^0 y^7. Which term number (the first term is term 1) has x raised to the 3 power?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The term with x^3 has y raised to the 7 - 3 = 4 power.",
+        "That is the (k + 1)-th term, counting from term 1: term 4 + 1 = 5."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need to locate a term of a binomial expansion by its position.",
+      "hints": [
+        "The first term has y^0, the second has y^1, and so on.",
+        "Find k, the power on y, first: k = 7 - 3."
+      ],
+      "socraticHint": "What power of y goes with this power of x?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In the expansion of (x + y)^8, the terms are written from x^8 y^0 up to x^0 y^8. Which term number (the first term is term 1) has x raised to the 3 power?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p23",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "True or false: in the expansion of (x + y)^6, the coefficients of the first and last terms are both 1.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The first term is x^6 y^0 with coefficient C(6, 0) = 1.",
+        "The last term is x^0 y^6 with coefficient C(6, 6) = 1.",
+        "Both really are 1, so the statement is true."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you want a fast check on the ends of a binomial expansion.",
+      "hints": [
+        "C(n, 0) and C(n, n) are the two ends of every row.",
+        "Choosing 0 items from n, or all n items from n, can each be done exactly one way."
+      ],
+      "socraticHint": "What is C(n, 0) for any n?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "True or false: in the expansion of (x + y)^5, the coefficients of the first and last terms are both 2.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p24",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x + y)^5, the terms are written from x^5 y^0 up to x^0 y^5. Which term number (the first term is term 1) has x raised to the 2 power?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The term with x^2 has y raised to the 5 - 2 = 3 power.",
+        "That is the (k + 1)-th term, counting from term 1: term 3 + 1 = 4."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need to locate a term of a binomial expansion by its position.",
+      "hints": [
+        "The first term has y^0, the second has y^1, and so on.",
+        "Find k, the power on y, first: k = 5 - 2."
+      ],
+      "socraticHint": "What power of y goes with this power of x?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In the expansion of (x + y)^6, the terms are written from x^6 y^0 up to x^0 y^6. Which term number (the first term is term 1) has x raised to the 2 power?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p25",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x + y)^6, the terms are written from x^6 y^0 up to x^0 y^6. Which term number (the first term is term 1) has x raised to the 1 power?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The term with x^1 has y raised to the 6 - 1 = 5 power.",
+        "That is the (k + 1)-th term, counting from term 1: term 5 + 1 = 6."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need to locate a term of a binomial expansion by its position.",
+      "hints": [
+        "The first term has y^0, the second has y^1, and so on.",
+        "Find k, the power on y, first: k = 6 - 1."
+      ],
+      "socraticHint": "What power of y goes with this power of x?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "In the expansion of (x + y)^5, the terms are written from x^5 y^0 up to x^0 y^5. Which term number (the first term is term 1) has x raised to the 1 power?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p26",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Find the term with x^2 in the expansion of (2x + 3)^4.",
+      "options": [
+        "54 x^2",
+        "-216 x^2",
+        "216 x^2",
+        "217 x^2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "x^2 pairs with the constant raised to the 4 - 2 = 2 power.",
+        "The coefficient is C(4, 2) times 2^2 times 3^2.",
+        "C(4, 2) = 6, 2^2 = 4, 3^2 = 9.",
+        "Multiplying: 6 times 4 times 9 = 216. The term is 216 x^2."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when both parts of the binomial carry a numeric coefficient and you need one term.",
+      "hints": [
+        "Find k, the power on the constant term, first: k = 4 - 2.",
+        "The coefficient is C(n, k) times 2^2 times 3^k; do not drop the power on 2x."
+      ],
+      "socraticHint": "What power does the constant term carry here?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the term with x^2 in the expansion of (2x + 3)^5.",
+        "options": [
+          "1080 x^2",
+          "270 x^2",
+          "360 x^2",
+          "-1080 x^2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p27",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Find the term with x^2 in the expansion of (3x + 1)^5.",
+      "options": [
+        "10 x^2",
+        "-90 x^2",
+        "91 x^2",
+        "90 x^2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "x^2 pairs with the constant raised to the 5 - 2 = 3 power.",
+        "The coefficient is C(5, 3) times 3^2 times 1^3.",
+        "C(5, 3) = 10, 3^2 = 9, 1^3 = 1.",
+        "Multiplying: 10 times 9 times 1 = 90. The term is 90 x^2."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when both parts of the binomial carry a numeric coefficient and you need one term.",
+      "hints": [
+        "Find k, the power on the constant term, first: k = 5 - 2.",
+        "The coefficient is C(n, k) times 3^2 times 1^k; do not drop the power on 3x."
+      ],
+      "socraticHint": "What power does the constant term carry here?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the term with x^2 in the expansion of (3x + 1)^4.",
+        "options": [
+          "6 x^2",
+          "54 x^2",
+          "-54 x^2",
+          "55 x^2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p28",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Find the term with x^1 in the expansion of (2x + 5)^4.",
+      "options": [
+        "500 x^1",
+        "40 x^1",
+        "1000 x^1",
+        "-1000 x^1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "x^1 pairs with the constant raised to the 4 - 1 = 3 power.",
+        "The coefficient is C(4, 3) times 2^1 times 5^3.",
+        "C(4, 3) = 4, 2^1 = 2, 5^3 = 125.",
+        "Multiplying: 4 times 2 times 125 = 1000. The term is 1000 x^1."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when both parts of the binomial carry a numeric coefficient and you need one term.",
+      "hints": [
+        "Find k, the power on the constant term, first: k = 4 - 1.",
+        "The coefficient is C(n, k) times 2^1 times 5^k; do not drop the power on 2x."
+      ],
+      "socraticHint": "What power does the constant term carry here?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the term with x^1 in the expansion of (2x + 5)^5.",
+        "options": [
+          "3125 x^1",
+          "6250 x^1",
+          "50 x^1",
+          "-6250 x^1"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p29",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Find the term with x^3 in the expansion of (x + 2)^5.",
+      "options": [
+        "40 x^3",
+        "80 x^3",
+        "-40 x^3",
+        "41 x^3"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "x^3 pairs with the constant raised to the 5 - 3 = 2 power.",
+        "The coefficient is C(5, 2) times 1^3 times 2^2.",
+        "C(5, 2) = 10, 1^3 = 1, 2^2 = 4.",
+        "Multiplying: 10 times 1 times 4 = 40. The term is 40 x^3."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when both parts of the binomial carry a numeric coefficient and you need one term.",
+      "hints": [
+        "Find k, the power on the constant term, first: k = 5 - 3.",
+        "The coefficient is C(n, k) times 1^3 times 2^k; do not drop the power on x."
+      ],
+      "socraticHint": "What power does the constant term carry here?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the term with x^3 in the expansion of (x + 2)^4.",
+        "options": [
+          "32 x^3",
+          "-8 x^3",
+          "9 x^3",
+          "8 x^3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p30",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "Put these steps for building row 5 of Pascal's triangle from row 4 (1, 4, 6, 4, 1) in the order you would do them.",
+      "items": [
+        "Add each adjacent pair from row 4 (1+4, 4+6, 6+4, 4+1) to fill in the middle.",
+        "Write a 1 at the start and end of the new row.",
+        "Start from row 4's entries: 1, 4, 6, 4, 1.",
+        "Read off row 5: 1, 5, 10, 10, 5, 1."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0,
+          3
+        ]
+      },
+      "explanation": [
+        "Write a 1 at the start and end of the new row.",
+        "Add each adjacent pair from row 4 to fill in the middle.",
+        "Start from row 4's entries: 1, 4, 6, 4, 1.",
+        "Read off row 5: 1, 5, 10, 10, 5, 1."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you build a new row of Pascal's triangle by hand.",
+      "hints": [
+        "Every row of Pascal's triangle starts from the row above it.",
+        "The ends of a row are always 1, decided before the middle entries."
+      ],
+      "socraticHint": "What are the two entries you never have to add for?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Put these steps for building row 4 of Pascal's triangle from row 3 (1, 3, 3, 1) in the order you would do them.",
+        "items": [
+          "Add each adjacent pair from row 3 (1+3, 3+3, 3+1) to fill in the middle.",
+          "Write a 1 at the start and end of the new row.",
+          "Start from row 3's entries: 1, 3, 3, 1.",
+          "Read off row 4: 1, 4, 6, 4, 1."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p31",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x - 2)^6, what is the coefficient of x^4?",
+      "answer": {
+        "kind": "number",
+        "value": "60"
+      },
+      "explanation": [
+        "Write x - 2 as x + (-2), so the constant term is -2.",
+        "The x^4 term carries (-2)^2 with C(6, 2).",
+        "C(6, 2) times (-2)^2 = 15 times 4 = 60."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when the binomial has a minus sign and you need a coefficient's exact sign.",
+      "hints": [
+        "Treat the minus sign as part of the constant: -c, not c.",
+        "An odd power of a negative number stays negative; an even power turns positive."
+      ],
+      "socraticHint": "Is 2 even or odd, and what does that do to the sign?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "In the expansion of (x - 2)^7, what is the coefficient of x^4?",
+        "answer": {
+          "kind": "number",
+          "value": "-280"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p32",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x - 1)^7, what is the coefficient of x^5?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "Write x - 1 as x + (-1), so the constant term is -1.",
+        "The x^5 term carries (-1)^2 with C(7, 2).",
+        "C(7, 2) times (-1)^2 = 21 times 1 = 21."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when the binomial has a minus sign and you need a coefficient's exact sign.",
+      "hints": [
+        "Treat the minus sign as part of the constant: -c, not c.",
+        "An odd power of a negative number stays negative; an even power turns positive."
+      ],
+      "socraticHint": "Is 2 even or odd, and what does that do to the sign?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "In the expansion of (x - 1)^6, what is the coefficient of x^5?",
+        "answer": {
+          "kind": "number",
+          "value": "-6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x - 3)^6, what is the coefficient of x^2?",
+      "answer": {
+        "kind": "number",
+        "value": "1215"
+      },
+      "explanation": [
+        "Write x - 3 as x + (-3), so the constant term is -3.",
+        "The x^2 term carries (-3)^4 with C(6, 4).",
+        "C(6, 4) times (-3)^4 = 15 times 81 = 1215."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when the binomial has a minus sign and you need a coefficient's exact sign.",
+      "hints": [
+        "Treat the minus sign as part of the constant: -c, not c.",
+        "An odd power of a negative number stays negative; an even power turns positive."
+      ],
+      "socraticHint": "Is 4 even or odd, and what does that do to the sign?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "In the expansion of (x - 3)^7, what is the coefficient of x^2?",
+        "answer": {
+          "kind": "number",
+          "value": "-5103"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p34",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x - 1)^8, what is the coefficient of x^6?",
+      "answer": {
+        "kind": "number",
+        "value": "28"
+      },
+      "explanation": [
+        "Write x - 1 as x + (-1), so the constant term is -1.",
+        "The x^6 term carries (-1)^2 with C(8, 2).",
+        "C(8, 2) times (-1)^2 = 28 times 1 = 28."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when the binomial has a minus sign and you need a coefficient's exact sign.",
+      "hints": [
+        "Treat the minus sign as part of the constant: -c, not c.",
+        "An odd power of a negative number stays negative; an even power turns positive."
+      ],
+      "socraticHint": "Is 2 even or odd, and what does that do to the sign?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "In the expansion of (x - 1)^7, what is the coefficient of x^6?",
+        "answer": {
+          "kind": "number",
+          "value": "-7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "In the expansion of (x - 2)^7, what is the coefficient of x^3?",
+      "answer": {
+        "kind": "number",
+        "value": "560"
+      },
+      "explanation": [
+        "Write x - 2 as x + (-2), so the constant term is -2.",
+        "The x^3 term carries (-2)^4 with C(7, 4).",
+        "C(7, 4) times (-2)^4 = 35 times 16 = 560."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when the binomial has a minus sign and you need a coefficient's exact sign.",
+      "hints": [
+        "Treat the minus sign as part of the constant: -c, not c.",
+        "An odd power of a negative number stays negative; an even power turns positive."
+      ],
+      "socraticHint": "Is 4 even or odd, and what does that do to the sign?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "In the expansion of (x - 2)^8, what is the coefficient of x^3?",
+        "answer": {
+          "kind": "number",
+          "value": "-1792"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the constant term (the term with no x) in the expansion of (x + 2/x)^8.",
+      "answer": {
+        "kind": "number",
+        "value": "1120"
+      },
+      "explanation": [
+        "A general term is C(8, k) x^(8-k) (2/x)^k = C(8, k) 2^k x^(8-2k).",
+        "The term is constant when 8 - 2k = 0, so k = 4.",
+        "C(8, 4) times 2^4 = 70 times 16 = 1120."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when a binomial mixes x and 1/x and you need the term where x cancels out.",
+      "hints": [
+        "Write the general term's power of x as 8 - 2k and set it to 0.",
+        "Solve that equation for k, then plug k back into C(n, k) times the constant's power."
+      ],
+      "socraticHint": "What power of x does the general term carry, in terms of k?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the constant term (the term with no x) in the expansion of (x + 2/x)^16.",
+        "answer": {
+          "kind": "number",
+          "value": "3294720"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the constant term (the term with no x) in the expansion of (x + 3/x)^10.",
+      "answer": {
+        "kind": "number",
+        "value": "61236"
+      },
+      "explanation": [
+        "A general term is C(10, k) x^(10-k) (3/x)^k = C(10, k) 3^k x^(10-2k).",
+        "The term is constant when 10 - 2k = 0, so k = 5.",
+        "C(10, 5) times 3^5 = 252 times 243 = 61236."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when a binomial mixes x and 1/x and you need the term where x cancels out.",
+      "hints": [
+        "Write the general term's power of x as 10 - 2k and set it to 0.",
+        "Solve that equation for k, then plug k back into C(n, k) times the constant's power."
+      ],
+      "socraticHint": "What power of x does the general term carry, in terms of k?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the constant term (the term with no x) in the expansion of (x + 3/x)^18.",
+        "answer": {
+          "kind": "number",
+          "value": "956987460"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p38",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the constant term (the term with no x) in the expansion of (x + 2/x)^6.",
+      "answer": {
+        "kind": "number",
+        "value": "160"
+      },
+      "explanation": [
+        "A general term is C(6, k) x^(6-k) (2/x)^k = C(6, k) 2^k x^(6-2k).",
+        "The term is constant when 6 - 2k = 0, so k = 3.",
+        "C(6, 3) times 2^3 = 20 times 8 = 160."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when a binomial mixes x and 1/x and you need the term where x cancels out.",
+      "hints": [
+        "Write the general term's power of x as 6 - 2k and set it to 0.",
+        "Solve that equation for k, then plug k back into C(n, k) times the constant's power."
+      ],
+      "socraticHint": "What power of x does the general term carry, in terms of k?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the constant term (the term with no x) in the expansion of (x + 2/x)^14.",
+        "answer": {
+          "kind": "number",
+          "value": "439296"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p39",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the constant term (the term with no x) in the expansion of (x + 3/x)^8.",
+      "answer": {
+        "kind": "number",
+        "value": "5670"
+      },
+      "explanation": [
+        "A general term is C(8, k) x^(8-k) (3/x)^k = C(8, k) 3^k x^(8-2k).",
+        "The term is constant when 8 - 2k = 0, so k = 4.",
+        "C(8, 4) times 3^4 = 70 times 81 = 5670."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when a binomial mixes x and 1/x and you need the term where x cancels out.",
+      "hints": [
+        "Write the general term's power of x as 8 - 2k and set it to 0.",
+        "Solve that equation for k, then plug k back into C(n, k) times the constant's power."
+      ],
+      "socraticHint": "What power of x does the general term carry, in terms of k?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the constant term (the term with no x) in the expansion of (x + 4/x)^16.",
+        "answer": {
+          "kind": "number",
+          "value": "843448320"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p40",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the constant term (the term with no x) in the expansion of (x + 2/x)^12.",
+      "answer": {
+        "kind": "number",
+        "value": "59136"
+      },
+      "explanation": [
+        "A general term is C(12, k) x^(12-k) (2/x)^k = C(12, k) 2^k x^(12-2k).",
+        "The term is constant when 12 - 2k = 0, so k = 6.",
+        "C(12, 6) times 2^6 = 924 times 64 = 59136."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when a binomial mixes x and 1/x and you need the term where x cancels out.",
+      "hints": [
+        "Write the general term's power of x as 12 - 2k and set it to 0.",
+        "Solve that equation for k, then plug k back into C(n, k) times the constant's power."
+      ],
+      "socraticHint": "What power of x does the general term carry, in terms of k?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the constant term (the term with no x) in the expansion of (x + 3/x)^20.",
+        "answer": {
+          "kind": "number",
+          "value": "10909657044"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p41",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Find the term with x^2 in the expansion of (2x - 3)^5.",
+      "options": [
+        "1080 x^2",
+        "-1080 x^2",
+        "-270 x^2",
+        "360 x^2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Write 2x - 3 as 2x + (-3), so the constant part is -3.",
+        "x^2 pairs with a power of 3 on the constant part.",
+        "C(5, 3) times 2^2 times (-3)^3 = 10 times 4 times -27 = -1080.",
+        "The term is -1080 x^2."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when a binomial has a minus sign and a numeric coefficient on x, together.",
+      "hints": [
+        "Keep the minus sign attached to the constant term all the way through.",
+        "Check whether the power on the negative constant is even or odd before finalizing the sign."
+      ],
+      "socraticHint": "Is the power 3 on the negative constant even or odd?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the term with x^2 in the expansion of (2x - 3)^8.",
+        "options": [
+          "20412 x^2",
+          "1008 x^2",
+          "81649 x^2",
+          "81648 x^2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p42",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Find the term with x^4 in the expansion of (x - 2)^6.",
+      "options": [
+        "240 x^4",
+        "61 x^4",
+        "60 x^4",
+        "59 x^4"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Write x - 2 as x + (-2), so the constant part is -2.",
+        "x^4 pairs with a power of 2 on the constant part.",
+        "C(6, 2) times 1^4 times (-2)^2 = 15 times 1 times 4 = 60.",
+        "The term is 60 x^4."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when a binomial has a minus sign and a numeric coefficient on x, together.",
+      "hints": [
+        "Keep the minus sign attached to the constant term all the way through.",
+        "Check whether the power on the negative constant is even or odd before finalizing the sign."
+      ],
+      "socraticHint": "Is the power 2 on the negative constant even or odd?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the term with x^4 in the expansion of (x - 2)^9.",
+        "options": [
+          "-4032 x^4",
+          "4032 x^4",
+          "2016 x^4",
+          "-4031 x^4"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p43",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Find the term with x^3 in the expansion of (3x - 1)^5.",
+      "options": [
+        "10 x^3",
+        "270 x^3",
+        "-270 x^3",
+        "271 x^3"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Write 3x - 1 as 3x + (-1), so the constant part is -1.",
+        "x^3 pairs with a power of 2 on the constant part.",
+        "C(5, 2) times 3^3 times (-1)^2 = 10 times 27 times 1 = 270.",
+        "The term is 270 x^3."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when a binomial has a minus sign and a numeric coefficient on x, together.",
+      "hints": [
+        "Keep the minus sign attached to the constant term all the way through.",
+        "Check whether the power on the negative constant is even or odd before finalizing the sign."
+      ],
+      "socraticHint": "Is the power 2 on the negative constant even or odd?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the term with x^3 in the expansion of (3x - 1)^8.",
+        "options": [
+          "1512 x^3",
+          "-56 x^3",
+          "-1512 x^3",
+          "-1511 x^3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p44",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Find the term with x^2 in the expansion of (2x - 3)^6.",
+      "options": [
+        "4860 x^2",
+        "1215 x^2",
+        "540 x^2",
+        "4861 x^2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Write 2x - 3 as 2x + (-3), so the constant part is -3.",
+        "x^2 pairs with a power of 4 on the constant part.",
+        "C(6, 4) times 2^2 times (-3)^4 = 15 times 4 times 81 = 4860.",
+        "The term is 4860 x^2."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when a binomial has a minus sign and a numeric coefficient on x, together.",
+      "hints": [
+        "Keep the minus sign attached to the constant term all the way through.",
+        "Check whether the power on the negative constant is even or odd before finalizing the sign."
+      ],
+      "socraticHint": "Is the power 4 on the negative constant even or odd?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the term with x^2 in the expansion of (2x - 3)^9.",
+        "options": [
+          "314928 x^2",
+          "-78732 x^2",
+          "1296 x^2",
+          "-314928 x^2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p45",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Find the term with x^5 in the expansion of (x - 2)^7.",
+      "options": [
+        "84 x^5",
+        "-672 x^5",
+        "85 x^5",
+        "83 x^5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Write x - 2 as x + (-2), so the constant part is -2.",
+        "x^5 pairs with a power of 2 on the constant part.",
+        "C(7, 2) times 1^5 times (-2)^2 = 21 times 1 times 4 = 84.",
+        "The term is 84 x^5."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when a binomial has a minus sign and a numeric coefficient on x, together.",
+      "hints": [
+        "Keep the minus sign attached to the constant term all the way through.",
+        "Check whether the power on the negative constant is even or odd before finalizing the sign."
+      ],
+      "socraticHint": "Is the power 2 on the negative constant even or odd?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the term with x^5 in the expansion of (x - 2)^10.",
+        "options": [
+          "8064 x^5",
+          "-8064 x^5",
+          "-8063 x^5",
+          "-8065 x^5"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-binomial-theorem-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the constant term (the term with no x) in the expansion of (x + 2/x)^10.",
+      "answer": {
+        "kind": "number",
+        "value": "8064"
+      },
+      "explanation": [
+        "A general term is C(10, k) x^(10-k) (2/x)^k = C(10, k) 2^k x^(10-2k).",
+        "The term is constant when 10 - 2k = 0, so k = 5.",
+        "C(10, 5) times 2^5 = 252 times 32 = 8064."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when a binomial mixes x with 1/x and you need the term where x disappears.",
+      "hints": [
+        "Set the exponent of x in the general term to 0 and solve for k.",
+        "Plug that k into C(n, k) times the constant's power."
+      ],
+      "socraticHint": "What value of k makes the power of x equal to 0?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the constant term (the term with no x) in the expansion of (x + 3/x)^4.",
+        "answer": {
+          "kind": "number",
+          "value": "54"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the coefficient of x^4 in the expansion of (1 + x)^5 (1 + 2x)^3.",
+      "answer": {
+        "kind": "number",
+        "value": "225"
+      },
+      "explanation": [
+        "Expand each factor's relevant terms and match every pair of powers that adds to 4.",
+        "From (1 + x)^5, the x^k term has coefficient C(5, k); from (1 + 2x)^3, the x^j term has coefficient C(3, j) times 2^j.",
+        "Add C(5, k) times C(3, 4-k) times 2^(4-k) for k from 1 to 3.",
+        "k = 0 would need a power of 4 from the second factor, which only goes up to 3, so it contributes nothing.",
+        "The total works out to 225."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need one coefficient from a product of two binomial expansions.",
+      "hints": [
+        "Every pair of powers from the two factors that adds to 4 contributes one term.",
+        "Multiply the two factors' coefficients for each matching pair, then add every contribution."
+      ],
+      "socraticHint": "Which pairs of powers, one from each factor, add to 4?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the coefficient of x^3 in the expansion of (1 + x)^4 (1 + 2x)^4.",
+        "answer": {
+          "kind": "number",
+          "value": "180"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p48",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the largest coefficient in row 10 of Pascal's triangle, C(10, k)?",
+      "answer": {
+        "kind": "number",
+        "value": "252"
+      },
+      "explanation": [
+        "In row n, the coefficients rise to a peak in the middle and fall again.",
+        "For an even n like 10, the single largest entry is at k = n/2 = 5.",
+        "C(10, 5) = 252."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need the largest entry of a Pascal's triangle row without checking every one.",
+      "hints": [
+        "Pascal's triangle rows are symmetric and rise to one peak (or two, for odd n).",
+        "For an even row, the peak sits at exactly the middle entry."
+      ],
+      "socraticHint": "For an even n, where does the middle of the row fall?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the largest coefficient in row 12 of Pascal's triangle, C(12, k)?",
+        "answer": {
+          "kind": "number",
+          "value": "924"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p49",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is the sum of the coefficients of the odd-power terms in the expansion of (1 + x)^7: C(7,1) + C(7,3) + C(7,5) + C(7,7)?",
+      "answer": {
+        "kind": "number",
+        "value": "64"
+      },
+      "explanation": [
+        "Setting x = 1 in (1 + x)^7 gives the sum of all coefficients: 2^7.",
+        "Setting x = -1 gives the alternating sum: (1 - 1)^7 = 0, so the even-power sum minus the odd-power sum is 0.",
+        "That means the even-power sum equals the odd-power sum, so each is half of 2^7.",
+        "Half of 2^7 = 128 is 64."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when you need half a row of Pascal's triangle split by whether the power is even or odd.",
+      "hints": [
+        "Compare (1 + 1)^n and (1 - 1)^n: one adds every coefficient, the other alternates their signs.",
+        "Subtracting those two results isolates the odd-power terms."
+      ],
+      "socraticHint": "What does (1 - 1)^7 equal, and what does that tell you about the even and odd sums?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the sum of the coefficients of the odd-power terms in the expansion of (1 + x)^9: C(9,1) + C(9,3) + ... + C(9,9)?",
+        "answer": {
+          "kind": "number",
+          "value": "256"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-binomial-theorem-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "C(n, 2) = 45 for a positive integer n. What is n?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "C(n, 2) = n(n - 1)/2.",
+        "Set n(n - 1)/2 = 45, so n(n - 1) = 90.",
+        "Testing whole numbers, n = 10 works: 10 times 9 = 90."
+      ],
+      "ideaId": "a2-binomial-theorem",
+      "useAgain": "when a combination count is given and you need to find n itself.",
+      "hints": [
+        "Write C(n, 2) using its formula n(n - 1)/2 before solving.",
+        "n(n - 1) = 90 has one positive whole-number solution; try nearby values of n."
+      ],
+      "socraticHint": "What does C(n, 2) equal in terms of n alone?",
+      "skills": [
+        "think.skills.permutations"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "C(n, 2) = 66 for a positive integer n. What is n?",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    }
+  ]
+}

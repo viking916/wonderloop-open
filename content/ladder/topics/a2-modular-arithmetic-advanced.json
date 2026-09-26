@@ -1,0 +1,1868 @@
+{
+  "id": "a2-modular-arithmetic-advanced",
+  "idea": {
+    "body": "Modular arithmetic tracks only the remainder after dividing by some number m. Raising a number to a power mod m means multiplying and reducing one step at a time. For a big exponent, find the repeating cycle the remainders fall into instead. Fermat's little theorem gives a shortcut when the modulus p is prime and does not divide the base a: a^(p-1) mod p always equals 1. Any exponent can then be reduced modulo p - 1 first. A number a has an inverse mod m, written a^(-1), exactly when gcd(a, m) = 1. Multiplying by that inverse undoes multiplying by a, which solves a congruence like ax = b for x. A remainder system asks for one number that satisfies several remainder conditions at once. Checking candidates below the product of the moduli always finds it."
+  },
+  "workedExample": {
+    "prompt": "Find the inverse of 5 mod 11: the number x with 0 <= x < 11 where 5x mod 11 = 1.",
+    "steps": [
+      "Test x = 1, 2, 3, ... and compute 5 times x mod 11 for each.",
+      "The remainders come out 5, 10, 4, 9, 3, 8, 2, 7, 1 for x = 1 through 9.",
+      "The first remainder of 1 appears at x = 9.",
+      "So x = 9 is the inverse of 5 mod 11."
+    ]
+  },
+  "ways": [
+    {
+      "id": "a2-modular-arithmetic-advanced-w1",
+      "name": "Repeated squaring",
+      "when": "Reduce a modular exponent by multiplying and cutting down after every step.",
+      "steps": [
+        "Compute 3^5 mod 7 by multiplying one step at a time.",
+        "3 mod 7 = 3. 3 times 3 = 9 mod 7 = 2. 2 times 3 = 6 mod 7 = 6.",
+        "6 times 3 = 18 mod 7 = 4. 4 times 3 = 12 mod 7 = 5.",
+        "3^5 mod 7 = 5."
+      ],
+      "example": "Find 3^5 mod 7 using repeated squaring.",
+      "answer": "5",
+      "trap": "Forgetting to reduce after each multiplication; computing the full power before taking mod."
+    },
+    {
+      "id": "a2-modular-arithmetic-advanced-w2",
+      "name": "Fermat's little theorem",
+      "when": "When the modulus p is prime, a^(p-1) mod p = 1 shortcut applies.",
+      "steps": [
+        "7 is prime. Compute 3^6 mod 7 using Fermat: 3^(7-1) = 3^6.",
+        "Fermat says 3^6 mod 7 = 1 (since 7 is prime and 7 does not divide 3).",
+        "So 3^100 mod 7: reduce 100 mod 6 to get 100 = 16(6) + 4.",
+        "3^100 mod 7 = 3^4 mod 7 = 81 mod 7 = 4."
+      ],
+      "example": "Find 3^100 mod 7 using Fermat's little theorem.",
+      "answer": "4",
+      "trap": "Forgetting to reduce the exponent modulo (p-1) first; assuming Fermat works when p is composite."
+    },
+    {
+      "id": "a2-modular-arithmetic-advanced-w3",
+      "name": "Inverse by trial",
+      "when": "Find the modular inverse of small numbers by testing x = 1, 2, 3, ... until ax mod m = 1.",
+      "steps": [
+        "Find the inverse of 3 mod 7: test x = 1, 2, 3, ...",
+        "3 times 1 = 3 mod 7 = 3. 3 times 2 = 6 mod 7 = 6. 3 times 3 = 9 mod 7 = 2.",
+        "3 times 4 = 12 mod 7 = 5. 3 times 5 = 15 mod 7 = 1. ",
+        "The inverse of 3 mod 7 is 5."
+      ],
+      "example": "Find the inverse of 3 mod 7.",
+      "answer": "5",
+      "trap": "Stopping too early; computing ax incorrectly before taking mod."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p01",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is 3^5 mod 7?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Multiply by 3 one step at a time, reducing mod 7 after every step.",
+        "Running remainders: 3, 2, 6, 4, 5.",
+        "3^5 mod 7 = 5."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is small enough to reduce one multiplication at a time.",
+      "hints": [
+        "Multiply by 3 and reduce mod 7 after each single multiplication, not just at the end.",
+        "Keeping the running remainder small avoids ever multiplying large numbers."
+      ],
+      "socraticHint": "What is the remainder after multiplying by 3 just once?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 3^4 mod 7?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p02",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is 2^6 mod 5?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Multiply by 2 one step at a time, reducing mod 5 after every step.",
+        "Running remainders: 2, 4, 3, 1, 2, 4.",
+        "2^6 mod 5 = 4."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is small enough to reduce one multiplication at a time.",
+      "hints": [
+        "Multiply by 2 and reduce mod 5 after each single multiplication, not just at the end.",
+        "Keeping the running remainder small avoids ever multiplying large numbers."
+      ],
+      "socraticHint": "What is the remainder after multiplying by 2 just once?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 2^5 mod 5?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is 4^4 mod 9?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Multiply by 4 one step at a time, reducing mod 9 after every step.",
+        "Running remainders: 4, 7, 1, 4.",
+        "4^4 mod 9 = 4."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is small enough to reduce one multiplication at a time.",
+      "hints": [
+        "Multiply by 4 and reduce mod 9 after each single multiplication, not just at the end.",
+        "Keeping the running remainder small avoids ever multiplying large numbers."
+      ],
+      "socraticHint": "What is the remainder after multiplying by 4 just once?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 4^3 mod 9?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p04",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is 5^3 mod 11?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Multiply by 5 one step at a time, reducing mod 11 after every step.",
+        "Running remainders: 5, 3, 4.",
+        "5^3 mod 11 = 4."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is small enough to reduce one multiplication at a time.",
+      "hints": [
+        "Multiply by 5 and reduce mod 11 after each single multiplication, not just at the end.",
+        "Keeping the running remainder small avoids ever multiplying large numbers."
+      ],
+      "socraticHint": "What is the remainder after multiplying by 5 just once?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 5^4 mod 11?",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p05",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is 2^8 mod 13?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Multiply by 2 one step at a time, reducing mod 13 after every step.",
+        "Running remainders: 2, 4, 8, 3, 6, 12, 11, 9.",
+        "2^8 mod 13 = 9."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is small enough to reduce one multiplication at a time.",
+      "hints": [
+        "Multiply by 2 and reduce mod 13 after each single multiplication, not just at the end.",
+        "Keeping the running remainder small avoids ever multiplying large numbers."
+      ],
+      "socraticHint": "What is the remainder after multiplying by 2 just once?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is 2^7 mod 13?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the inverse of 3 mod 7: the number x with 0 <= x < 7 where 3x mod 7 = 1.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Try small values of x and check 3 times x mod 7.",
+        "3 times 5 = 15, and 15 mod 7 = 1.",
+        "So x = 5."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when you need to undo multiplication by a number inside a modular equation.",
+      "hints": [
+        "Test x = 1, 2, 3, ... and compute 3x mod 7 for each.",
+        "Stop at the first x where that product's remainder is exactly 1."
+      ],
+      "socraticHint": "What is 3 times 1, mod 7?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the inverse of 3 mod 11: the number x with 0 <= x < 11 where 3x mod 11 = 1.",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p07",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "True or false: since 7 is prime and does not divide 3, Fermat's little theorem gives 3^6 mod 7 = 1.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "7 is prime and does not divide 3, so Fermat's little theorem applies.",
+        "It states 3^(7-1) mod 7 = 1, and 7 - 1 = 6.",
+        "So the statement is true."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when you want a fast check on whether Fermat's little theorem applies here.",
+      "hints": [
+        "Check that the modulus is prime and does not divide the base.",
+        "Fermat's theorem always uses the exponent p minus 1."
+      ],
+      "socraticHint": "Is 7 prime, and does it divide 3?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "True or false: since 11 is prime and does not divide 4, Fermat's little theorem gives 4^10 mod 11 = 1.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the inverse of 4 mod 11: the number x with 0 <= x < 11 where 4x mod 11 = 1.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Try small values of x and check 4 times x mod 11.",
+        "4 times 3 = 12, and 12 mod 11 = 1.",
+        "So x = 3."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when you need to undo multiplication by a number inside a modular equation.",
+      "hints": [
+        "Test x = 1, 2, 3, ... and compute 4x mod 11 for each.",
+        "Stop at the first x where that product's remainder is exactly 1."
+      ],
+      "socraticHint": "What is 4 times 1, mod 11?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the inverse of 4 mod 9: the number x with 0 <= x < 9 where 4x mod 9 = 1.",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the inverse of 3 mod 8: the number x with 0 <= x < 8 where 3x mod 8 = 1.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Try small values of x and check 3 times x mod 8.",
+        "3 times 3 = 9, and 9 mod 8 = 1.",
+        "So x = 3."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when you need to undo multiplication by a number inside a modular equation.",
+      "hints": [
+        "Test x = 1, 2, 3, ... and compute 3x mod 8 for each.",
+        "Stop at the first x where that product's remainder is exactly 1."
+      ],
+      "socraticHint": "What is 3 times 1, mod 8?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the inverse of 3 mod 13: the number x with 0 <= x < 13 where 3x mod 13 = 1.",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p10",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the inverse of 5 mod 13: the number x with 0 <= x < 13 where 5x mod 13 = 1.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Try small values of x and check 5 times x mod 13.",
+        "5 times 8 = 40, and 40 mod 13 = 1.",
+        "So x = 8."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when you need to undo multiplication by a number inside a modular equation.",
+      "hints": [
+        "Test x = 1, 2, 3, ... and compute 5x mod 13 for each.",
+        "Stop at the first x where that product's remainder is exactly 1."
+      ],
+      "socraticHint": "What is 5 times 1, mod 13?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the inverse of 5 mod 8: the number x with 0 <= x < 8 where 5x mod 8 = 1.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p11",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "Put these steps for finding the inverse of 3 mod 11 by trial in the order you would do them.",
+      "items": [
+        "Stop at the first x where 3 times x mod 11 is exactly 1: x = 4.",
+        "Test x = 1, 2, 3, 4, ... and compute 3 times x mod 11 for each.",
+        "Set up the goal: find x with 3x leaving remainder 1 mod 11.",
+        "Report x = 4 as the inverse of 3 mod 11."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          1,
+          0,
+          3
+        ]
+      },
+      "explanation": [
+        "Test x = 1, 2, 3, ... and compute 3 times x mod 11 for each.",
+        "Stop at the first x where that remainder is exactly 1.",
+        "Set up the goal: find x with 3x leaving remainder 1 mod 11.",
+        "Report that x as the inverse of 3 mod 11."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when you want to keep the steps of a trial-based inverse search straight.",
+      "hints": [
+        "The goal has to be stated before any testing can start.",
+        "Testing continues only until the remainder 1 first appears."
+      ],
+      "socraticHint": "What are you testing for at each value of x?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Put these steps for finding the inverse of 2 mod 9 by trial in the order you would do them.",
+        "items": [
+          "Stop at the first x where 2 times x mod 9 is exactly 1: x = 5.",
+          "Test x = 1, 2, 3, 4, 5, ... and compute 2 times x mod 9 for each.",
+          "Set up the goal: find x with 2x leaving remainder 1 mod 9.",
+          "Report x = 5 as the inverse of 2 mod 9."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            1,
+            0,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p12",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A count x below 12 satisfies x mod 4 = 2 and x mod 3 = 1. Find x.",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "List numbers from 0 up to 11 that leave remainder 2 when divided by 4.",
+        "Check each of those against the second condition, remainder 1 mod 3.",
+        "Only x = 10 satisfies both."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a count must satisfy two different remainder conditions at once.",
+      "hints": [
+        "Write out the numbers that satisfy x mod 4 = 2 first; there are only a few below 12.",
+        "Test each of those candidates against the second condition."
+      ],
+      "socraticHint": "Which numbers below 12 leave remainder 2 when divided by 4?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A count x below 12 satisfies x mod 4 = 1 and x mod 3 = 2. Find x.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p13",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A count x below 12 satisfies x mod 3 = 0 and x mod 4 = 3. Find x.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "List numbers from 0 up to 11 that leave remainder 0 when divided by 3.",
+        "Check each of those against the second condition, remainder 3 mod 4.",
+        "Only x = 3 satisfies both."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a count must satisfy two different remainder conditions at once.",
+      "hints": [
+        "Write out the numbers that satisfy x mod 3 = 0 first; there are only a few below 12.",
+        "Test each of those candidates against the second condition."
+      ],
+      "socraticHint": "Which numbers below 12 leave remainder 0 when divided by 3?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A count x below 12 satisfies x mod 3 = 1 and x mod 4 = 2. Find x.",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p14",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A count x below 15 satisfies x mod 5 = 1 and x mod 3 = 2. Find x.",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "List numbers from 0 up to 14 that leave remainder 1 when divided by 5.",
+        "Check each of those against the second condition, remainder 2 mod 3.",
+        "Only x = 11 satisfies both."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a count must satisfy two different remainder conditions at once.",
+      "hints": [
+        "Write out the numbers that satisfy x mod 5 = 1 first; there are only a few below 15.",
+        "Test each of those candidates against the second condition."
+      ],
+      "socraticHint": "Which numbers below 15 leave remainder 1 when divided by 5?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A count x below 15 satisfies x mod 5 = 2 and x mod 3 = 1. Find x.",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p15",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A count x below 20 satisfies x mod 4 = 3 and x mod 5 = 1. Find x.",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "List numbers from 0 up to 19 that leave remainder 3 when divided by 4.",
+        "Check each of those against the second condition, remainder 1 mod 5.",
+        "Only x = 11 satisfies both."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a count must satisfy two different remainder conditions at once.",
+      "hints": [
+        "Write out the numbers that satisfy x mod 4 = 3 first; there are only a few below 20.",
+        "Test each of those candidates against the second condition."
+      ],
+      "socraticHint": "Which numbers below 20 leave remainder 3 when divided by 4?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A count x below 20 satisfies x mod 4 = 1 and x mod 5 = 3. Find x.",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p16",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "What is 3^20 mod 7?",
+      "options": [
+        "3",
+        "6",
+        "4",
+        "2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "The remainders of powers of 3 mod 7 repeat in a cycle; list them until one repeats.",
+        "The cycle found is 3, 2, 6, 4, 5, 1, 3 (repeating from position 1), length 6.",
+        "Reduce the exponent 20 within that cycle to find the matching remainder.",
+        "3^20 mod 7 = 2."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is too large to multiply out one step at a time.",
+      "hints": [
+        "List consecutive powers' remainders until you see one repeat.",
+        "Once you know the cycle length, only the exponent's position in that cycle matters."
+      ],
+      "socraticHint": "How long is the repeating cycle of remainders here?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is 3^22 mod 7?",
+        "options": [
+          "6",
+          "4",
+          "5",
+          "3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p17",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is 2^25 mod 11?",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The remainders of powers of 2 mod 11 repeat in a cycle; list them until one repeats.",
+        "The cycle found is 2, 4, 8, 5, 10, 9, 7, 3, 6, 1, 2 (repeating from position 1), length 10.",
+        "Reduce the exponent 25 within that cycle to find the matching remainder.",
+        "2^25 mod 11 = 10."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is too large to multiply out one step at a time.",
+      "hints": [
+        "List consecutive powers' remainders until you see one repeat.",
+        "Once you know the cycle length, only the exponent's position in that cycle matters."
+      ],
+      "socraticHint": "How long is the repeating cycle of remainders here?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is 2^27 mod 11?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p18",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "What is 5^18 mod 13?",
+      "options": [
+        "5",
+        "8",
+        "12",
+        "13"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The remainders of powers of 5 mod 13 repeat in a cycle; list them until one repeats.",
+        "The cycle found is 5, 12, 8, 1, 5 (repeating from position 1), length 4.",
+        "Reduce the exponent 18 within that cycle to find the matching remainder.",
+        "5^18 mod 13 = 12."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is too large to multiply out one step at a time.",
+      "hints": [
+        "List consecutive powers' remainders until you see one repeat.",
+        "Once you know the cycle length, only the exponent's position in that cycle matters."
+      ],
+      "socraticHint": "How long is the repeating cycle of remainders here?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is 5^20 mod 13?",
+        "options": [
+          "1",
+          "8",
+          "5",
+          "9"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p19",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is 4^30 mod 9?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "The remainders of powers of 4 mod 9 repeat in a cycle; list them until one repeats.",
+        "The cycle found is 4, 7, 1, 4 (repeating from position 1), length 3.",
+        "Reduce the exponent 30 within that cycle to find the matching remainder.",
+        "4^30 mod 9 = 1."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is too large to multiply out one step at a time.",
+      "hints": [
+        "List consecutive powers' remainders until you see one repeat.",
+        "Once you know the cycle length, only the exponent's position in that cycle matters."
+      ],
+      "socraticHint": "How long is the repeating cycle of remainders here?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is 4^28 mod 9?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p20",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "What is 7^22 mod 15?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The remainders of powers of 7 mod 15 repeat in a cycle; list them until one repeats.",
+        "The cycle found is 7, 4, 13, 1, 7 (repeating from position 1), length 4.",
+        "Reduce the exponent 22 within that cycle to find the matching remainder.",
+        "7^22 mod 15 = 4."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is too large to multiply out one step at a time.",
+      "hints": [
+        "List consecutive powers' remainders until you see one repeat.",
+        "Once you know the cycle length, only the exponent's position in that cycle matters."
+      ],
+      "socraticHint": "How long is the repeating cycle of remainders here?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "What is 7^24 mod 15?",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p21",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Here 7 is prime. Find 3^6 mod 7 using Fermat's little theorem.",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Fermat's little theorem: if p is prime and does not divide a, then a^(p-1) mod p = 1.",
+        "Here p = 7 is prime and does not divide 3.",
+        "So 3^6 mod 7 = 1."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when the exponent is exactly one less than a prime modulus.",
+      "hints": [
+        "Fermat's little theorem applies whenever the modulus is prime and does not divide the base.",
+        "The exponent p - 1 always gives remainder 1 under those conditions."
+      ],
+      "socraticHint": "Is 7 prime, and does it divide 3?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Here 7 is prime. Find 4^6 mod 7 using Fermat's little theorem.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p22",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Here 11 is prime. Find 5^10 mod 11 using Fermat's little theorem.",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Fermat's little theorem: if p is prime and does not divide a, then a^(p-1) mod p = 1.",
+        "Here p = 11 is prime and does not divide 5.",
+        "So 5^10 mod 11 = 1."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when the exponent is exactly one less than a prime modulus.",
+      "hints": [
+        "Fermat's little theorem applies whenever the modulus is prime and does not divide the base.",
+        "The exponent p - 1 always gives remainder 1 under those conditions."
+      ],
+      "socraticHint": "Is 11 prime, and does it divide 5?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Here 11 is prime. Find 3^10 mod 11 using Fermat's little theorem.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p23",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "True or false: 4 has an inverse mod 8.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "A number a has an inverse mod m only when gcd(a, m) = 1.",
+        "gcd(4, 8) = 4, not 1.",
+        "So 4 has no inverse mod 8: the statement is false."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when you want to check an inverse can exist before searching for one.",
+      "hints": [
+        "Check gcd(a, m) before searching for an inverse.",
+        "An inverse exists only when that gcd is exactly 1."
+      ],
+      "socraticHint": "What is gcd(4, 8)?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "True or false: 6 has an inverse mod 9.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p24",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Here 17 is prime. Find 4^16 mod 17 using Fermat's little theorem.",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Fermat's little theorem: if p is prime and does not divide a, then a^(p-1) mod p = 1.",
+        "Here p = 17 is prime and does not divide 4.",
+        "So 4^16 mod 17 = 1."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when the exponent is exactly one less than a prime modulus.",
+      "hints": [
+        "Fermat's little theorem applies whenever the modulus is prime and does not divide the base.",
+        "The exponent p - 1 always gives remainder 1 under those conditions."
+      ],
+      "socraticHint": "Is 17 prime, and does it divide 4?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Here 17 is prime. Find 2^16 mod 17 using Fermat's little theorem.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p25",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Here 19 is prime. Find 6^18 mod 19 using Fermat's little theorem.",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Fermat's little theorem: if p is prime and does not divide a, then a^(p-1) mod p = 1.",
+        "Here p = 19 is prime and does not divide 6.",
+        "So 6^18 mod 19 = 1."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when the exponent is exactly one less than a prime modulus.",
+      "hints": [
+        "Fermat's little theorem applies whenever the modulus is prime and does not divide the base.",
+        "The exponent p - 1 always gives remainder 1 under those conditions."
+      ],
+      "socraticHint": "Is 19 prime, and does it divide 6?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Here 19 is prime. Find 7^18 mod 19 using Fermat's little theorem.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p26",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the inverse of 7 mod 26: the number x with 0 <= x < 26 where 7x mod 26 = 1.",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "The extended Euclidean algorithm on 7 and 26 finds integers x, y with 7x + 26y = 1.",
+        "That x, reduced to fall between 0 and 25, is the inverse.",
+        "Checking: 7 times 15 = 105, and 105 mod 26 = 1."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when the modulus is too large to find an inverse by quick trial.",
+      "hints": [
+        "The extended Euclidean algorithm on a and m produces the inverse directly.",
+        "Once you have a candidate x, always check a times x mod m equals 1."
+      ],
+      "socraticHint": "What does the extended Euclidean algorithm find for gcd(7, 26)?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the inverse of 7 mod 31: the number x with 0 <= x < 31 where 7x mod 31 = 1.",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p27",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the inverse of 9 mod 31: the number x with 0 <= x < 31 where 9x mod 31 = 1.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "The extended Euclidean algorithm on 9 and 31 finds integers x, y with 9x + 31y = 1.",
+        "That x, reduced to fall between 0 and 30, is the inverse.",
+        "Checking: 9 times 7 = 63, and 63 mod 31 = 1."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when the modulus is too large to find an inverse by quick trial.",
+      "hints": [
+        "The extended Euclidean algorithm on a and m produces the inverse directly.",
+        "Once you have a candidate x, always check a times x mod m equals 1."
+      ],
+      "socraticHint": "What does the extended Euclidean algorithm find for gcd(9, 31)?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the inverse of 9 mod 26: the number x with 0 <= x < 26 where 9x mod 26 = 1.",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p28",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the inverse of 11 mod 29: the number x with 0 <= x < 29 where 11x mod 29 = 1.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "The extended Euclidean algorithm on 11 and 29 finds integers x, y with 11x + 29y = 1.",
+        "That x, reduced to fall between 0 and 28, is the inverse.",
+        "Checking: 11 times 8 = 88, and 88 mod 29 = 1."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when the modulus is too large to find an inverse by quick trial.",
+      "hints": [
+        "The extended Euclidean algorithm on a and m produces the inverse directly.",
+        "Once you have a candidate x, always check a times x mod m equals 1."
+      ],
+      "socraticHint": "What does the extended Euclidean algorithm find for gcd(11, 29)?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the inverse of 11 mod 23: the number x with 0 <= x < 23 where 11x mod 23 = 1.",
+        "answer": {
+          "kind": "number",
+          "value": "21"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p29",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the inverse of 6 mod 23: the number x with 0 <= x < 23 where 6x mod 23 = 1.",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The extended Euclidean algorithm on 6 and 23 finds integers x, y with 6x + 23y = 1.",
+        "That x, reduced to fall between 0 and 22, is the inverse.",
+        "Checking: 6 times 4 = 24, and 24 mod 23 = 1."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when the modulus is too large to find an inverse by quick trial.",
+      "hints": [
+        "The extended Euclidean algorithm on a and m produces the inverse directly.",
+        "Once you have a candidate x, always check a times x mod m equals 1."
+      ],
+      "socraticHint": "What does the extended Euclidean algorithm find for gcd(6, 23)?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the inverse of 6 mod 29: the number x with 0 <= x < 29 where 6x mod 29 = 1.",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p30",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the inverse of 8 mod 27: the number x with 0 <= x < 27 where 8x mod 27 = 1.",
+      "answer": {
+        "kind": "number",
+        "value": "17"
+      },
+      "explanation": [
+        "The extended Euclidean algorithm on 8 and 27 finds integers x, y with 8x + 27y = 1.",
+        "That x, reduced to fall between 0 and 26, is the inverse.",
+        "Checking: 8 times 17 = 136, and 136 mod 27 = 1."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when the modulus is too large to find an inverse by quick trial.",
+      "hints": [
+        "The extended Euclidean algorithm on a and m produces the inverse directly.",
+        "Once you have a candidate x, always check a times x mod m equals 1."
+      ],
+      "socraticHint": "What does the extended Euclidean algorithm find for gcd(8, 27)?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the inverse of 8 mod 25: the number x with 0 <= x < 25 where 8x mod 25 = 1.",
+        "answer": {
+          "kind": "number",
+          "value": "22"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p31",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Here 11 is prime. Use Fermat's little theorem to reduce the exponent, then find 3^200 mod 11.",
+      "options": [
+        "9",
+        "3",
+        "1",
+        "6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Since 11 is prime, 3^10 mod 11 = 1, so exponents repeat every 10.",
+        "Reduce the exponent: 200 mod 10 = 0.",
+        "So 3^200 mod 11 = 3^0 mod 11.",
+        "Computing that smaller power gives 1."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is far too large to compute one multiplication at a time.",
+      "hints": [
+        "Reduce the exponent 200 modulo 10, the cycle length Fermat's theorem guarantees.",
+        "Then compute the much smaller power directly."
+      ],
+      "socraticHint": "What is 200 mod 10?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Here 11 is prime. Use Fermat's little theorem to reduce the exponent, then find 3^220 mod 11.",
+        "options": [
+          "3",
+          "0",
+          "2",
+          "1"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p32",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Here 13 is prime. Use Fermat's little theorem to reduce the exponent, then find 2^500 mod 13.",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Since 13 is prime, 2^12 mod 13 = 1, so exponents repeat every 12.",
+        "Reduce the exponent: 500 mod 12 = 8.",
+        "So 2^500 mod 13 = 2^8 mod 13.",
+        "Computing that smaller power gives 9."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is far too large to compute one multiplication at a time.",
+      "hints": [
+        "Reduce the exponent 500 modulo 12, the cycle length Fermat's theorem guarantees.",
+        "Then compute the much smaller power directly."
+      ],
+      "socraticHint": "What is 500 mod 12?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Here 13 is prime. Use Fermat's little theorem to reduce the exponent, then find 2^520 mod 13.",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Here 17 is prime. Use Fermat's little theorem to reduce the exponent, then find 5^300 mod 17.",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "Since 17 is prime, 5^16 mod 17 = 1, so exponents repeat every 16.",
+        "Reduce the exponent: 300 mod 16 = 12.",
+        "So 5^300 mod 17 = 5^12 mod 17.",
+        "Computing that smaller power gives 4."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is far too large to compute one multiplication at a time.",
+      "hints": [
+        "Reduce the exponent 300 modulo 16, the cycle length Fermat's theorem guarantees.",
+        "Then compute the much smaller power directly."
+      ],
+      "socraticHint": "What is 300 mod 16?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Here 17 is prime. Use Fermat's little theorem to reduce the exponent, then find 5^320 mod 17.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p34",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Here 19 is prime. Use Fermat's little theorem to reduce the exponent, then find 4^250 mod 19.",
+      "options": [
+        "7",
+        "6",
+        "5",
+        "12"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Since 19 is prime, 4^18 mod 19 = 1, so exponents repeat every 18.",
+        "Reduce the exponent: 250 mod 18 = 16.",
+        "So 4^250 mod 19 = 4^16 mod 19.",
+        "Computing that smaller power gives 6."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is far too large to compute one multiplication at a time.",
+      "hints": [
+        "Reduce the exponent 250 modulo 18, the cycle length Fermat's theorem guarantees.",
+        "Then compute the much smaller power directly."
+      ],
+      "socraticHint": "What is 250 mod 18?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Here 19 is prime. Use Fermat's little theorem to reduce the exponent, then find 4^270 mod 19.",
+        "options": [
+          "1",
+          "9",
+          "4",
+          "16"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Here 23 is prime. Use Fermat's little theorem to reduce the exponent, then find 7^400 mod 23.",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "Since 23 is prime, 7^22 mod 23 = 1, so exponents repeat every 22.",
+        "Reduce the exponent: 400 mod 22 = 4.",
+        "So 7^400 mod 23 = 7^4 mod 23.",
+        "Computing that smaller power gives 9."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is far too large to compute one multiplication at a time.",
+      "hints": [
+        "Reduce the exponent 400 modulo 22, the cycle length Fermat's theorem guarantees.",
+        "Then compute the much smaller power directly."
+      ],
+      "socraticHint": "What is 400 mod 22?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Here 23 is prime. Use Fermat's little theorem to reduce the exponent, then find 7^420 mod 23.",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Solve 5x = 3 mod 11 for x, with 0 <= x < 11.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "Find the inverse of 5 mod 11: that is 9, since 5 times 9 mod 11 = 1.",
+        "Multiply both sides by that inverse: x = 9 times 3 mod 11.",
+        "9 times 3 = 27, and 27 mod 11 = 5."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a congruence has a coefficient in front of x that needs undoing.",
+      "hints": [
+        "Find the inverse of 5 mod 11 first.",
+        "Multiply both sides of the congruence by that inverse to isolate x."
+      ],
+      "socraticHint": "What is the inverse of 5 mod 11?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve 5x = 2 mod 13 for x, with 0 <= x < 13.",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Solve 7x = 4 mod 13 for x, with 0 <= x < 13.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Find the inverse of 7 mod 13: that is 2, since 7 times 2 mod 13 = 1.",
+        "Multiply both sides by that inverse: x = 2 times 4 mod 13.",
+        "2 times 4 = 8, and 8 mod 13 = 8."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a congruence has a coefficient in front of x that needs undoing.",
+      "hints": [
+        "Find the inverse of 7 mod 13 first.",
+        "Multiply both sides of the congruence by that inverse to isolate x."
+      ],
+      "socraticHint": "What is the inverse of 7 mod 13?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve 7x = 3 mod 11 for x, with 0 <= x < 11.",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p38",
+      "kind": "order",
+      "lane": "skills",
+      "prompt": "Put these steps for reducing 3^100 mod 11 with Fermat's little theorem in the order you would do them.",
+      "items": [
+        "Reduce the exponent 100 modulo 10 to get 0.",
+        "Compute 3^10 mod 11 directly, which equals 1.",
+        "Confirm 11 is prime, so 3^10 mod 11 = 1 by Fermat's little theorem.",
+        "Since the reduced exponent is 0, use the cycle length itself, 10, instead."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          0,
+          3,
+          1
+        ]
+      },
+      "explanation": [
+        "Reduce the exponent 100 modulo 10 to get 0.",
+        "Since the reduced exponent is 0, use the cycle length itself, 10, instead.",
+        "Confirm 11 is prime, so 3^10 mod 11 = 1 by Fermat's little theorem.",
+        "Compute 3^10 mod 11 directly, which equals 1."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when you want to keep the steps of a Fermat-based reduction straight.",
+      "hints": [
+        "Confirming the theorem applies comes before doing anything with the exponent.",
+        "A reduced exponent of 0 is a special case needing one extra step."
+      ],
+      "socraticHint": "What has to be true about the modulus before you can use Fermat's theorem?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps for reducing 2^200 mod 13 with Fermat's little theorem in the order you would do them.",
+        "items": [
+          "Reduce the exponent 200 modulo 12 to get 8.",
+          "Compute 2^8 mod 13 directly, which equals 9.",
+          "Confirm 13 is prime, so 2^12 mod 13 = 1 by Fermat's little theorem.",
+          "Use the reduced exponent 8 in place of the original 200."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            2,
+            0,
+            3,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p39",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Solve 6x = 2 mod 17 for x, with 0 <= x < 17.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Find the inverse of 6 mod 17: that is 3, since 6 times 3 mod 17 = 1.",
+        "Multiply both sides by that inverse: x = 3 times 2 mod 17.",
+        "3 times 2 = 6, and 6 mod 17 = 6."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a congruence has a coefficient in front of x that needs undoing.",
+      "hints": [
+        "Find the inverse of 6 mod 17 first.",
+        "Multiply both sides of the congruence by that inverse to isolate x."
+      ],
+      "socraticHint": "What is the inverse of 6 mod 17?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve 6x = 5 mod 17 for x, with 0 <= x < 17.",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p40",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Solve 3x = 7 mod 19 for x, with 0 <= x < 19.",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Find the inverse of 3 mod 19: that is 13, since 3 times 13 mod 19 = 1.",
+        "Multiply both sides by that inverse: x = 13 times 7 mod 19.",
+        "13 times 7 = 91, and 91 mod 19 = 15."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a congruence has a coefficient in front of x that needs undoing.",
+      "hints": [
+        "Find the inverse of 3 mod 19 first.",
+        "Multiply both sides of the congruence by that inverse to isolate x."
+      ],
+      "socraticHint": "What is the inverse of 3 mod 19?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve 3x = 4 mod 19 for x, with 0 <= x < 19.",
+        "answer": {
+          "kind": "number",
+          "value": "14"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p41",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A count x below 60 satisfies x mod 3 = 1, x mod 4 = 2, and x mod 5 = 1. Find x.",
+      "answer": {
+        "kind": "number",
+        "value": "46"
+      },
+      "explanation": [
+        "First solve the first two conditions together to narrow x down mod 12.",
+        "Then check each of those candidates against the third condition, mod 5.",
+        "Only x = 46 (below 60) satisfies all three."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a count must satisfy three different remainder conditions at once.",
+      "hints": [
+        "Combine two of the three conditions first, then bring in the third.",
+        "Checking every candidate below the product of all three moduli always finds it."
+      ],
+      "socraticHint": "Which candidates satisfy the first two conditions together, mod 12?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A count x below 60 satisfies x mod 3 = 2, x mod 4 = 1, and x mod 5 = 4. Find x.",
+        "answer": {
+          "kind": "number",
+          "value": "29"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p42",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A count x below 60 satisfies x mod 3 = 2, x mod 4 = 1, and x mod 5 = 3. Find x.",
+      "answer": {
+        "kind": "number",
+        "value": "53"
+      },
+      "explanation": [
+        "First solve the first two conditions together to narrow x down mod 12.",
+        "Then check each of those candidates against the third condition, mod 5.",
+        "Only x = 53 (below 60) satisfies all three."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a count must satisfy three different remainder conditions at once.",
+      "hints": [
+        "Combine two of the three conditions first, then bring in the third.",
+        "Checking every candidate below the product of all three moduli always finds it."
+      ],
+      "socraticHint": "Which candidates satisfy the first two conditions together, mod 12?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A count x below 60 satisfies x mod 3 = 1, x mod 4 = 3, and x mod 5 = 2. Find x.",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p43",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A count x below 105 satisfies x mod 3 = 0, x mod 5 = 2, and x mod 7 = 4. Find x.",
+      "answer": {
+        "kind": "number",
+        "value": "102"
+      },
+      "explanation": [
+        "First solve the first two conditions together to narrow x down mod 15.",
+        "Then check each of those candidates against the third condition, mod 7.",
+        "Only x = 102 (below 105) satisfies all three."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a count must satisfy three different remainder conditions at once.",
+      "hints": [
+        "Combine two of the three conditions first, then bring in the third.",
+        "Checking every candidate below the product of all three moduli always finds it."
+      ],
+      "socraticHint": "Which candidates satisfy the first two conditions together, mod 15?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A count x below 105 satisfies x mod 3 = 1, x mod 5 = 4, and x mod 7 = 2. Find x.",
+        "answer": {
+          "kind": "number",
+          "value": "79"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p44",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A count x below 60 satisfies x mod 4 = 1, x mod 5 = 3, and x mod 3 = 2. Find x.",
+      "answer": {
+        "kind": "number",
+        "value": "53"
+      },
+      "explanation": [
+        "First solve the first two conditions together to narrow x down mod 20.",
+        "Then check each of those candidates against the third condition, mod 3.",
+        "Only x = 53 (below 60) satisfies all three."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a count must satisfy three different remainder conditions at once.",
+      "hints": [
+        "Combine two of the three conditions first, then bring in the third.",
+        "Checking every candidate below the product of all three moduli always finds it."
+      ],
+      "socraticHint": "Which candidates satisfy the first two conditions together, mod 20?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A count x below 60 satisfies x mod 4 = 2, x mod 5 = 1, and x mod 3 = 1. Find x.",
+        "answer": {
+          "kind": "number",
+          "value": "46"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p45",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A count x below 140 satisfies x mod 4 = 2, x mod 5 = 0, and x mod 7 = 3. Find x.",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "First solve the first two conditions together to narrow x down mod 20.",
+        "Then check each of those candidates against the third condition, mod 7.",
+        "Only x = 10 (below 140) satisfies all three."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a count must satisfy three different remainder conditions at once.",
+      "hints": [
+        "Combine two of the three conditions first, then bring in the third.",
+        "Checking every candidate below the product of all three moduli always finds it."
+      ],
+      "socraticHint": "Which candidates satisfy the first two conditions together, mod 20?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A count x below 140 satisfies x mod 4 = 3, x mod 5 = 2, and x mod 7 = 1. Find x.",
+        "answer": {
+          "kind": "number",
+          "value": "127"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find the last digit of 7^123 (its remainder mod 10).",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The last digits of powers of 7 cycle: 7, 9, 3, 1, then repeat, a cycle of length 4.",
+        "Reduce the exponent: 123 mod 4 = 3.",
+        "The 3rd number in the cycle (7, 9, 3, 1) is 3, so 7^123 mod 10 = 3."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when you need only the last digit of a very large power.",
+      "hints": [
+        "List the last digits of 7^1, 7^2, 7^3, 7^4 to find the cycle.",
+        "Reduce the exponent modulo the cycle's length before reading off the answer."
+      ],
+      "socraticHint": "What is 123 mod 4?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find the last digit of 3^151 (its remainder mod 10).",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Find 2^1000 mod 13.",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "13 is prime and does not divide 2, so Fermat's little theorem applies: 2^12 mod 13 = 1.",
+        "Reduce the exponent: 1000 mod 12 = 4.",
+        "2^1000 mod 13 = 2^4 mod 13 = 3."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when an exponent is far too large for direct computation but the modulus is prime.",
+      "hints": [
+        "Reduce the huge exponent modulo p - 1 = 12 first.",
+        "Then compute the much smaller power directly."
+      ],
+      "socraticHint": "What is 1000 mod 12?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Find 3^2000 mod 17.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p48",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A count x satisfies x mod 3 = 2, x mod 5 = 3, and x mod 7 = 4. Find the smallest positive x.",
+      "answer": {
+        "kind": "number",
+        "value": "53"
+      },
+      "explanation": [
+        "Combine the first two conditions: x mod 15 must give remainder 2 mod 3 and remainder 3 mod 5.",
+        "Checking values below 15 finds x mod 15 = 8 works for both.",
+        "Now combine with the third condition mod 7, checking values of the form 8 + 15k below 105.",
+        "The smallest match is x = 53."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when three remainder conditions must all hold at the same time.",
+      "hints": [
+        "Combine two congruences at a time rather than all three at once.",
+        "The final search only needs to check multiples of the first combined modulus."
+      ],
+      "socraticHint": "What single number below 15 satisfies both of the first two conditions?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A count x satisfies x mod 4 = 1, x mod 5 = 2, and x mod 7 = 3. Find the smallest positive x.",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p49",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Solve 9x = 5 mod 26 for x, with 0 <= x < 26.",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "Find the inverse of 9 mod 26 using the extended Euclidean algorithm.",
+        "That inverse is 3, since 9 times 3 mod 26 = 1.",
+        "Multiply both sides by it: x = 3 times 5 mod 26 = 15."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when a linear congruence has larger numbers than a quick trial can handle.",
+      "hints": [
+        "Find the inverse of 9 mod 26 first, even though the numbers are larger.",
+        "Multiply both sides of the congruence by that inverse."
+      ],
+      "socraticHint": "What is the inverse of 9 mod 26?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Solve 7x = 4 mod 30 for x, with 0 <= x < 30.",
+        "answer": {
+          "kind": "number",
+          "value": "22"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-modular-arithmetic-advanced-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many whole numbers x with 0 <= x < 200 satisfy both x mod 7 = 3 and x mod 11 = 5?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The two conditions together pin x down to one residue mod 7 times 11 = 77.",
+        "Count how many multiples of that combined cycle length fit below 200.",
+        "There are 3 such x below 200."
+      ],
+      "ideaId": "a2-modular-arithmetic-advanced",
+      "useAgain": "when you need to count, not just find, the solutions to a pair of remainder conditions.",
+      "hints": [
+        "Two coprime-modulus conditions combine into one condition mod their product.",
+        "Count how many full cycles of that combined modulus fit in the given range."
+      ],
+      "socraticHint": "What is the combined modulus, 7 times 11?",
+      "skills": [
+        "think.skills.modular"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers x with 0 <= x < 300 satisfy both x mod 8 = 2 and x mod 9 = 4?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    }
+  ]
+}

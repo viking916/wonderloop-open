@@ -1,0 +1,252 @@
+{
+  "id": "s4-w04-build",
+  "season": 4,
+  "week": 4,
+  "track": "build",
+  "title": "Oasis One: one program, two costumes",
+  "summary": "They run the same plan twice, once in Python and once compiled, while the family hunts every difference between the two costumes, read out the race numbers from their own stopwatch, and then give the guided tour of their Error Bestiary.",
+  "minutes": 60,
+  "materials": [
+    "the laptop, with the dice game open in both languages",
+    "the compiled C++ program already built, so no build happens in front of an audience",
+    "the race programs and the stopwatch numbers you wrote down in week 3",
+    "the Error Bestiary, your own field guide, open at every page",
+    "the bug diary, at the compile-error chapter",
+    "the stopwatch, and a chair for everyone",
+    "paper and pencil for the family's difference list",
+    "phone to record",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "build.cpp",
+    "build.python",
+    "build.debugging"
+  ],
+  "showcase": true,
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s4-w04-build-01",
+      "title": "Oasis One",
+      "body": "Three weeks ago the compiler was a stranger who refused to talk to you. Today you introduce it to the family.\n\nThree things happen, in this order. First the two costumes: your Season 1 dice game, running once from Python and once as a compiled program, and the family hunting for every difference they can see. Second the race, live, with your week 3 stopwatch numbers on the table beside it. Third the Error Bestiary tour: five entries, in your words, and what each one taught you.\n\nThe design loop still runs the hour, pointed at a new question today. Ask: can somebody who has never met either language tell these two programs apart, and what would they notice first? Imagine the places they will look, and the places they will not: the screen, the wait before anything appears, the words on the screen, the two files side by side. Plan: decide before anyone sits down which differences you want them to find on their own, and which one you will show them yourself at the end because nobody ever finds it.\n\nOne rule for the demo, and it is yours now. The keyboard is yours the whole hour. The belay retired in week 1 and it does not come back for an audience. If something goes wrong in front of everybody, you debug it in front of everybody, and that is a better demo than one that works.\n\nHand the device to a grown-up when you reach the next step. It is addressed to them."
+    },
+    {
+      "kind": "instruction",
+      "id": "s4-w04-build-02",
+      "title": "For the family only",
+      "body": "Family, this step is for you. Hand the device back after reading it.\n\nYour job today is to hunt differences between two runs of the same program, and to say what you notice out loud even when you are sure it is nothing. Write your list down as you go; the list is the point.\n\nGood things to notice: how long you wait before anything appears on the screen. Whether the numbers come out the same or different. Whether anything is spelled differently on screen. What the two files look like beside each other, even if you cannot read a line of either. Whether one of them makes you wait every time and the other only waits once.\n\nQuestions that help: what is that line for? Why does that one need a word in front of the box and the other does not? What happens if you type something silly into it? Ask them to break it on purpose and show you.\n\nOne thing to leave alone: which language is better. That is not a question with an answer and it turns a demo into an argument. The interesting question is what each one makes easy and what each one makes you say out loud.\n\nAnd if the program falls over in front of you, please do not rescue them or apologise for them. Wait. Watching a child this age read an error message and fix it with everybody looking is the whole reason you were invited."
+    },
+    {
+      "kind": "typing",
+      "id": "s4-w04-build-03",
+      "minutes": 5,
+      "body": "Five minutes on the typing site before anybody sits down. Home row first, then this sprint's own words, ten times each and no looking down: include, iostream, int, long, double, string, cout, endl, return, vector. Every one of them is about to be typed in front of an audience, and a demo goes better on fingers that are already warm."
+    },
+    {
+      "kind": "science",
+      "id": "s4-w04-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two number lines showing the same slash sign giving different answers. For 7 / 2, Python gives 3.5 while C++ chops the fraction off toward zero and gives 3. For -7 / 2, Python's floor division goes down the number line to -4, while C++ still chops toward zero and stops at -3. Nothing crashes and nothing warns; the two languages simply round differently.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 30,
+              "y": 45,
+              "s": "7 / 2",
+              "size": 11
+            },
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 60,
+              "x2": 330,
+              "y2": 60
+            },
+            {
+              "t": "dot",
+              "cx": 230,
+              "cy": 60,
+              "label": "C++: 3",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 270,
+              "cy": 60,
+              "label": "Python: 3.5",
+              "side": "above"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 145,
+              "s": "-7 / 2",
+              "size": 11
+            },
+            {
+              "t": "line",
+              "x1": 30,
+              "y1": 160,
+              "x2": 330,
+              "y2": 160
+            },
+            {
+              "t": "dot",
+              "cx": 150,
+              "cy": 160,
+              "label": "Python //: -4",
+              "side": "below"
+            },
+            {
+              "t": "dot",
+              "cx": 190,
+              "cy": 160,
+              "label": "C++: -3",
+              "side": "above"
+            }
+          ]
+        }
+      },
+      "title": "Where the same plan stops being the same",
+      "body": "Two programs can follow the same plan, run without complaint, print numbers, and disagree. Here is the cleanest place it happens, and it is worth knowing before the hunting starts.\n\nIn Python, 7 / 2 is 3.5. In C++, if both 7 and 2 are ints, 7 / 2 is 3. Not rounded, chopped: the fraction is thrown away, because the answer has to fit back into an int and an int has no room for a half. Python has a separate operator for that chopping, written 7 // 2, and it also gives 3. So the same slash means two different jobs in the two languages.\n\nThen it gets stranger, and this is the part worth showing the family. Take minus seven divided by two. Python's -7 // 2 gives -4, because it goes down the number line, away from zero. C++ chops toward zero instead, so -7 / 2 gives -3. Same two numbers, same slash, two different answers, and neither language is broken. Each one is doing exactly what its own rules say.\n\nRun both today if you can, and write down what your machine actually prints, because a fact you have seen is worth more than a fact you were told.\n\nHere is why it matters more than a curiosity. Nothing crashed. Nothing warned you. It compiled, it ran, it printed a number, and for one of the two plans that number was wrong. That is the mirage, and there is only one way to catch it: check the output against what you actually meant, not against whether the thing ran."
+    },
+    {
+      "kind": "task",
+      "id": "s4-w04-build-05",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The Oasis One demo table: a laptop showing the Python dice game and the compiled C++ version side by side, screen turned to face the family's chairs. A stopwatch sits on the table for the race, and a notepad in front of the family holds their difference list. The presenter sits at the keyboard the whole hour.",
+        "spec": {
+          "w": 380,
+          "h": 230,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 40,
+              "y": 150,
+              "w": 320,
+              "h": 20,
+              "label": "table",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 120,
+              "y": 60,
+              "w": 160,
+              "h": 70,
+              "label": "laptop",
+              "sub": "Python | C++, split screen"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 85,
+              "w": 90,
+              "h": 35,
+              "label": "notepad",
+              "sub": "difference list"
+            },
+            {
+              "t": "box",
+              "x": 285,
+              "y": 85,
+              "w": 75,
+              "h": 35,
+              "label": "stopwatch"
+            },
+            {
+              "t": "circle",
+              "cx": 200,
+              "cy": 195,
+              "r": 10
+            },
+            {
+              "t": "text",
+              "x": 200,
+              "y": 222,
+              "s": "you (keyboard)",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "circle",
+              "cx": 270,
+              "cy": 195,
+              "r": 10
+            },
+            {
+              "t": "circle",
+              "cx": 300,
+              "cy": 200,
+              "r": 10
+            },
+            {
+              "t": "text",
+              "x": 285,
+              "y": 222,
+              "s": "family",
+              "size": 10,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Two costumes, and the race",
+      "body": "Open both versions of the dice game side by side on the screen, run the Python one, then run the compiled one, and say nothing about the differences. Let the family hunt first.\n\nWhen their list is finished, add yours. Point at the three places your program had to say something out loud that Python let you leave unsaid: the type in front of every box, the semicolon at the end of every statement, and the fact that one of these two ran through a compiler before anybody saw it. Then say the sentence the whole demo is for: the plan is the same in both, and the language is the costume it is wearing.\n\nThen the race. The two programs do not do the same amount of work, and saying that out loud first is what makes the number honest: the Python one runs ten million turns and the C++ one runs a thousand million, because at ten million C++ finishes before your thumb comes off the button and a stopwatch that cannot see the thing has no number to give you. So run both live, write down the two stopwatch readings in seconds, and then do the same sum you did in week 3. Python's ten million divided by its seconds is one turns per second number. C++'s thousand million divided by its seconds is the other. Divide the second by the first, and that is the gap, read out as a number of times faster, not as a word like huge. Put your week 3 numbers on the table beside today's, and if they disagree, say so and say by how much; a measurement that moved is data, not an embarrassment.\n\nOne honest catch to check before you run it, and it is a good one to explain out loud. A C++ compiler is allowed to notice that a loop's total is never used and skip the entire loop, which would give you a race time near zero and a completely fake result. So the program must print the total at the end. If a time comes out impossibly fast, that is the first thing to suspect, and it is a mirage of exactly the kind the science moment warned about.",
+      "checklist": [
+        "The family watched the same plan run twice, once from Python and once from the compiled program",
+        "Somebody in the room found a difference that was not on my own list",
+        "I said out loud that the two programs run different numbers of turns, worked out turns per second for each, and read the gap out as a number of times faster",
+        "I checked that the race program prints its total, so the loop could not have been skipped",
+        "I said out loud which parts of the two programs are the same plan and which parts are only costume"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s4-w04-build-06",
+      "title": "The Error Bestiary tour",
+      "body": "Now the tour. Five entries from the Bestiary, your five favourites, and for each one you say three things: what you typed, what the compiler said back, and what it actually meant.\n\nRead the compiler's own line off the page, not a remembered version of it. The Bestiary is a record of what your compiler said on your machine, and that is exactly what makes it worth keeping. A different compiler will complain about the same mistake in different words, so somebody else's field guide would not fit your desk.\n\nTwo things to point out while you have an audience. First, the shape of a message: the file name, then a line number and a column number, then the word error, then the complaint. Lines that begin with note are the compiler adding detail to the error above them, not fresh errors of their own. Second, fix the first error first. One missing semicolon or one missing include can throw a dozen complaints that all disappear together the moment you fix the one at the top, and counting them is how people talk themselves into panic.\n\nFinish on the entry you are proudest of: one error you now see coming before you press compile. Say what the tell is, in your own words. That sentence is the whole reason the Bestiary exists.",
+      "checklist": [
+        "I read five entries out loud, each with what I typed, the compiler's own line, and what it meant",
+        "I said out loud that these are my compiler's words and another compiler would say it differently",
+        "I showed the shape of a message: file, line, column, error, and the note lines underneath it",
+        "I explained why the first error is the one to fix",
+        "I named one error I now catch before I compile, and said what the tell is"
+      ]
+    },
+    {
+      "kind": "artifact",
+      "id": "s4-w04-build-07",
+      "title": "Show it",
+      "prompt": "Record the two costumes running back to back, with the family's difference list read out over the top. If a camera is awkward, photograph the two source files side by side and the Bestiary page you are proudest of, or paste both programs in as text.\n\nAdd two lines. One: which difference did somebody else find that you had missed? Two: what did the race actually measure today, in numbers, including whether it agreed with week 3.",
+      "accepts": [
+        "recording",
+        "photo",
+        "code",
+        "text"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s4-w04-build-08",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s4-w04-build-x01",
+      "kind": "bonus",
+      "title": "Rewrite your best log",
+      "minutes": 15,
+      "body": "Your logs are the writing you do here, and writing gets better by rewriting, not by more of it. Pick your best log from this sprint and rewrite it once.\n\n1. Read the log out loud. Mark every sentence that tries to say two things.\n2. Rewrite so each sentence carries one idea. Split, do not shorten.\n3. Find every adjective (hard, cool, weird) and replace it with a number or a fact: how many tries, how long, what broke.\n4. Put the reason before the claim: \"the loop ran twice, so the heart flashed twice\" rather than \"the heart flashed twice, because the loop ran twice\".\n5. Read both versions to someone and ask which one they could follow without you in the room.\n\nWhat to notice: the rewrite is usually shorter and says more. That is the whole trick."
+    }
+  ]
+}

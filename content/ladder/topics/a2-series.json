@@ -1,0 +1,2461 @@
+{
+  "id": "a2-series",
+  "idea": {
+    "body": "A series adds up every term of a sequence. Sigma notation writes that sum compactly. The sum from k = 1 to 4 of 2k + 1 means add up 2k + 1 for every k from 1 to 4. That is 3 + 5 + 7 + 9, which is 24. An arithmetic series has the shortcut n/2 times (first term plus last term). A geometric series has the shortcut a_1 times (r^n - 1)/(r - 1). When a geometric series keeps going forever with a ratio smaller than 1 in size, it still settles on one exact number, a_1/(1 - r). A telescoping sum is a different trick. Its terms split apart so that most of them cancel, leaving only a few pieces standing.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A row of boxes for the sequence 3, 5, 7, 9, with a plus sign implied between them, summing to 24.",
+      "spec": {
+        "w": 192,
+        "h": 40,
+        "items": [
+          {
+            "t": "box",
+            "x": 0,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "3",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 48,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "5",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 96,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "7",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 144,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "9",
+            "fill": "paper"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "A savings jar starts with 10 dollars and gets 5 more dollars every week.\nWhat is the running total after 6 weeks, including the start?",
+    "steps": [
+      "This is an arithmetic series with a_1 = 10 and common difference 5.",
+      "Week 6's amount is a_6 = 10 + (6 - 1)(5) = 35.",
+      "The sum is 6/2 times (10 + 35) = 135.",
+      "The running total after 6 weeks is 135 dollars."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "A row of boxes for the weekly amounts, 10, 15, 20, 25, 30, 35.",
+      "spec": {
+        "w": 288,
+        "h": 40,
+        "items": [
+          {
+            "t": "box",
+            "x": 0,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "10",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 48,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "15",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 96,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "20",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 144,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "25",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 192,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "30",
+            "fill": "paper"
+          },
+          {
+            "t": "box",
+            "x": 240,
+            "y": 0,
+            "w": 48,
+            "h": 40,
+            "label": "35",
+            "fill": "paper"
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "a2-series-w1",
+      "name": "Write and read sigma notation",
+      "when": "Use this to write sums compactly or expand a sum from sigma notation.",
+      "steps": [
+        "Sigma notation: sum from k = 1 to 4 of 2k + 1.",
+        "Plug k = 1, 2, 3, 4 into 2k + 1: get 3, 5, 7, 9.",
+        "Add them: 3 + 5 + 7 + 9 = 24.",
+        "The sum is 24."
+      ],
+      "example": "sum from k = 1 to 4 of 2k + 1. What is the sum?",
+      "answer": "24",
+      "trap": "Forgetting to plug in every value of k or adding terms with the wrong expression."
+    },
+    {
+      "id": "a2-series-w2",
+      "name": "The arithmetic sum formula",
+      "when": "Use this shortcut when adding an arithmetic sequence.",
+      "steps": [
+        "Arithmetic sequence 2, 5, 8, 11, 14.",
+        "Sum = n/2 times (first plus last) = 5/2 times (2 + 14) = 2.5 times 16 = 40.",
+        "No need to add each term one by one."
+      ],
+      "example": "Sum 2 + 5 + 8 + 11 + 14.",
+      "answer": "40",
+      "trap": "Using the formula with wrong first or last term, or forgetting the n/2 factor."
+    },
+    {
+      "id": "a2-series-w3",
+      "name": "Pair the ends like Gauss",
+      "when": "Use this to see why the arithmetic sum formula works.",
+      "steps": [
+        "Sum: 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10.",
+        "Pair the ends: (1 + 10) = 11, (2 + 9) = 11, (3 + 8) = 11, (4 + 7) = 11, (5 + 6) = 11.",
+        "Five pairs, each sum 11, so 5 times 11 = 55.",
+        "That is n/2 times (first plus last)."
+      ],
+      "example": "Sum 1 + 2 + 3 + ... + 10.",
+      "answer": "55",
+      "trap": "Forgetting to pair opposite ends or counting the pairs wrong.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two rows showing numbers 1 to 10 and 10 to 1, with sums between them.",
+        "spec": {
+          "w": 300,
+          "h": 128,
+          "items": [
+            {
+              "t": "text",
+              "x": 10,
+              "y": 16,
+              "s": "1   2   3   4   5   6   7   8   9  10",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 38,
+              "s": "10  9   8   7   6   5   4   3   2   1",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 62,
+              "s": "11  11  11  11  11  11  11  11  11  11",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 86,
+              "s": "5 pairs of 11: 5 x 11 = 55",
+              "size": 12,
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 10,
+              "y": 108,
+              "s": "That is n/2 x (first + last) = 55",
+              "size": 12,
+              "anchor": "start"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Sum 1 + 2 + 3 + ... + 10.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Sum: 1 + 2 + 3 + ... + 10.",
+              "set": {
+                "1": {
+                  "hidden": true
+                },
+                "2": {
+                  "hidden": true
+                },
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Pair the ends: each pair sums to 11.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Five pairs, each 11: 5 x 11 = 55.",
+              "set": {
+                "4": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "That is n/2 times (first plus last).",
+              "set": {}
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-a2-series-p01",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "An arithmetic sequence has a_1 = 3 and common difference 4.\nWhat is the sum of the first 4 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "36"
+      },
+      "explanation": [
+        "The last of the 4 terms is a_4 = 3 + (4 - 1)(4) = 15.",
+        "The sum is 4/2 times (3 + 15) = 36."
+      ],
+      "useAgain": "when adding up a run of terms that increase or decrease by the same amount.",
+      "hints": [
+        "Find the last term being added first.",
+        "The sum of an arithmetic series is n/2 times (first term plus last term)."
+      ],
+      "socraticHint": "What is term 4 of this sequence?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the terms being added, 3, 7, 11, 15.",
+        "spec": {
+          "w": 192,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "7",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "11",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "15",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "An arithmetic sequence has a_1 = 6 and common difference 3.\nWhat is the sum of the first 5 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "60"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p02",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "An arithmetic sequence has a_1 = 5 and common difference 3.\nWhat is the sum of the first 4 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "38"
+      },
+      "explanation": [
+        "The last of the 4 terms is a_4 = 5 + (4 - 1)(3) = 14.",
+        "The sum is 4/2 times (5 + 14) = 38."
+      ],
+      "useAgain": "when adding up a run of terms that increase or decrease by the same amount.",
+      "hints": [
+        "Find the last term being added first.",
+        "The sum of an arithmetic series is n/2 times (first term plus last term)."
+      ],
+      "socraticHint": "What is term 4 of this sequence?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the terms being added, 5, 8, 11, 14.",
+        "spec": {
+          "w": 192,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "5",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "8",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "11",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "14",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "An arithmetic sequence has a_1 = 2 and common difference 5.\nWhat is the sum of the first 4 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "38"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p03",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "An arithmetic sequence has a_1 = 2 and common difference 6.\nWhat is the sum of the first 5 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "70"
+      },
+      "explanation": [
+        "The last of the 5 terms is a_5 = 2 + (5 - 1)(6) = 26.",
+        "The sum is 5/2 times (2 + 26) = 70."
+      ],
+      "useAgain": "when adding up a run of terms that increase or decrease by the same amount.",
+      "hints": [
+        "Find the last term being added first.",
+        "The sum of an arithmetic series is n/2 times (first term plus last term)."
+      ],
+      "socraticHint": "What is term 5 of this sequence?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the terms being added, 2, 8, 14, 20, 26.",
+        "spec": {
+          "w": 240,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "2",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "8",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "14",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "20",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 192,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "26",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "An arithmetic sequence has a_1 = 8 and common difference 2.\nWhat is the sum of the first 5 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "60"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p04",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "An arithmetic sequence has a_1 = 7 and common difference 2.\nWhat is the sum of the first 4 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "40"
+      },
+      "explanation": [
+        "The last of the 4 terms is a_4 = 7 + (4 - 1)(2) = 13.",
+        "The sum is 4/2 times (7 + 13) = 40."
+      ],
+      "useAgain": "when adding up a run of terms that increase or decrease by the same amount.",
+      "hints": [
+        "Find the last term being added first.",
+        "The sum of an arithmetic series is n/2 times (first term plus last term)."
+      ],
+      "socraticHint": "What is term 4 of this sequence?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the terms being added, 7, 9, 11, 13.",
+        "spec": {
+          "w": 192,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "7",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "9",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "11",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "13",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "An arithmetic sequence has a_1 = 3 and common difference 6.\nWhat is the sum of the first 4 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "48"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p05",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "An arithmetic sequence has a_1 = 1 and common difference 5.\nWhat is the sum of the first 5 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "55"
+      },
+      "explanation": [
+        "The last of the 5 terms is a_5 = 1 + (5 - 1)(5) = 21.",
+        "The sum is 5/2 times (1 + 21) = 55."
+      ],
+      "useAgain": "when adding up a run of terms that increase or decrease by the same amount.",
+      "hints": [
+        "Find the last term being added first.",
+        "The sum of an arithmetic series is n/2 times (first term plus last term)."
+      ],
+      "socraticHint": "What is term 5 of this sequence?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the terms being added, 1, 6, 11, 16, 21.",
+        "spec": {
+          "w": 240,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "1",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "6",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "11",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "16",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 192,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "21",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "An arithmetic sequence has a_1 = 5 and common difference 4.\nWhat is the sum of the first 4 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "44"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p06",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "An arithmetic sequence has a_1 = 4 and common difference 4.\nWhat is the sum of the first 4 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "40"
+      },
+      "explanation": [
+        "The last of the 4 terms is a_4 = 4 + (4 - 1)(4) = 16.",
+        "The sum is 4/2 times (4 + 16) = 40."
+      ],
+      "useAgain": "when adding up a run of terms that increase or decrease by the same amount.",
+      "hints": [
+        "Find the last term being added first.",
+        "The sum of an arithmetic series is n/2 times (first term plus last term)."
+      ],
+      "socraticHint": "What is term 4 of this sequence?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the terms being added, 4, 8, 12, 16.",
+        "spec": {
+          "w": 192,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "4",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "8",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "12",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "16",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "An arithmetic sequence has a_1 = 1 and common difference 7.\nWhat is the sum of the first 5 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "75"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p07",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "A geometric sequence has a_1 = 2 and common ratio 3.\nWhat is the sum of the first 4 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "80"
+      },
+      "explanation": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "That is 2 times (3^4 - 1)/(3 - 1) = 80."
+      ],
+      "useAgain": "when adding up a run of terms that multiply by the same ratio.",
+      "hints": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "Compute 3^4 first, then finish the formula."
+      ],
+      "socraticHint": "What is 3 raised to the power 4?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A geometric sequence has a_1 = 4 and common ratio 2.\nWhat is the sum of the first 4 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "60"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p08",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "A geometric sequence has a_1 = 3 and common ratio 2.\nWhat is the sum of the first 4 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "That is 3 times (2^4 - 1)/(2 - 1) = 45."
+      ],
+      "useAgain": "when adding up a run of terms that multiply by the same ratio.",
+      "hints": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "Compute 2^4 first, then finish the formula."
+      ],
+      "socraticHint": "What is 2 raised to the power 4?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A geometric sequence has a_1 = 2 and common ratio 5.\nWhat is the sum of the first 3 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "62"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p09",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "A geometric sequence has a_1 = 1 and common ratio 4.\nWhat is the sum of the first 3 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "21"
+      },
+      "explanation": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "That is 1 times (4^3 - 1)/(4 - 1) = 21."
+      ],
+      "useAgain": "when adding up a run of terms that multiply by the same ratio.",
+      "hints": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "Compute 4^3 first, then finish the formula."
+      ],
+      "socraticHint": "What is 4 raised to the power 3?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A geometric sequence has a_1 = 3 and common ratio 3.\nWhat is the sum of the first 3 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "39"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p10",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "A geometric sequence has a_1 = 5 and common ratio 2.\nWhat is the sum of the first 3 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "35"
+      },
+      "explanation": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "That is 5 times (2^3 - 1)/(2 - 1) = 35."
+      ],
+      "useAgain": "when adding up a run of terms that multiply by the same ratio.",
+      "hints": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "Compute 2^3 first, then finish the formula."
+      ],
+      "socraticHint": "What is 2 raised to the power 3?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A geometric sequence has a_1 = 1 and common ratio 2.\nWhat is the sum of the first 6 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "63"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p11",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "A geometric sequence has a_1 = 2 and common ratio 2.\nWhat is the sum of the first 5 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "62"
+      },
+      "explanation": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "That is 2 times (2^5 - 1)/(2 - 1) = 62."
+      ],
+      "useAgain": "when adding up a run of terms that multiply by the same ratio.",
+      "hints": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "Compute 2^5 first, then finish the formula."
+      ],
+      "socraticHint": "What is 2 raised to the power 5?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A geometric sequence has a_1 = 6 and common ratio 2.\nWhat is the sum of the first 3 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "42"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p12",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "A geometric sequence has a_1 = 1 and common ratio 3.\nWhat is the sum of the first 4 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "40"
+      },
+      "explanation": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "That is 1 times (3^4 - 1)/(3 - 1) = 40."
+      ],
+      "useAgain": "when adding up a run of terms that multiply by the same ratio.",
+      "hints": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "Compute 3^4 first, then finish the formula."
+      ],
+      "socraticHint": "What is 3 raised to the power 4?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A geometric sequence has a_1 = 2 and common ratio 4.\nWhat is the sum of the first 3 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "42"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p13",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "What is the sum from k = 1 to 4 of 2k + 1?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "The terms are 3, 5, 7, 9.",
+        "Adding them gives 24."
+      ],
+      "useAgain": "when a sum is written in sigma notation with a small range.",
+      "hints": [
+        "Write out each term from k = 1 to k = 4.",
+        "Add all of those terms together."
+      ],
+      "socraticHint": "What is the term when k = 1, and when k = 4?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the terms being added, 3, 5, 7, 9.",
+        "spec": {
+          "w": 192,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "5",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "7",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "9",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "What is the sum from k = 2 to 5 of 2k + 1?",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p14",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "What is the sum from k = 1 to 5 of 3k + 0?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "The terms are 3, 6, 9, 12, 15.",
+        "Adding them gives 45."
+      ],
+      "useAgain": "when a sum is written in sigma notation with a small range.",
+      "hints": [
+        "Write out each term from k = 1 to k = 5.",
+        "Add all of those terms together."
+      ],
+      "socraticHint": "What is the term when k = 1, and when k = 5?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the terms being added, 3, 6, 9, 12, 15.",
+        "spec": {
+          "w": 240,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "6",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "9",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "12",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 192,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "15",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "What is the sum from k = 1 to 3 of 4k + 2?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p15",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "What is the sum from k = 1 to 4 of 2k - 1?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "The terms are 1, 3, 5, 7.",
+        "Adding them gives 16."
+      ],
+      "useAgain": "when a sum is written in sigma notation with a small range.",
+      "hints": [
+        "Write out each term from k = 1 to k = 4.",
+        "Add all of those terms together."
+      ],
+      "socraticHint": "What is the term when k = 1, and when k = 4?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "explanationFigure": {
+        "kind": "diagram",
+        "alt": "A row of boxes for the terms being added, 1, 3, 5, 7.",
+        "spec": {
+          "w": 192,
+          "h": 40,
+          "items": [
+            {
+              "t": "box",
+              "x": 0,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "1",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 48,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "3",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 96,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "5",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 144,
+              "y": 0,
+              "w": 48,
+              "h": 40,
+              "label": "7",
+              "fill": "paper"
+            }
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "What is the sum from k = 1 to 4 of 3k - 2?",
+        "answer": {
+          "kind": "number",
+          "value": "22"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p16",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 4.\na_n = a_(n-1) + (3).\nWhat is the sum of the first 10 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "175"
+      },
+      "explanation": [
+        "Term 10 is a_10 = 4 + (10 - 1)(3) = 31.",
+        "The sum is 10/2 times (4 + 31) = 175."
+      ],
+      "useAgain": "when adding up more terms than are practical to add one at a time.",
+      "hints": [
+        "Find the last term being added first.",
+        "The sum of an arithmetic series is n/2 times (first term plus last term)."
+      ],
+      "socraticHint": "What is term 10 of this sequence?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 8.\na_n = a_(n-1) + (3).\nWhat is the sum of the first 10 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "215"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p17",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 7.\na_n = a_(n-1) + (2).\nWhat is the sum of the first 12 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "216"
+      },
+      "explanation": [
+        "Term 12 is a_12 = 7 + (12 - 1)(2) = 29.",
+        "The sum is 12/2 times (7 + 29) = 216."
+      ],
+      "useAgain": "when adding up more terms than are practical to add one at a time.",
+      "hints": [
+        "Find the last term being added first.",
+        "The sum of an arithmetic series is n/2 times (first term plus last term)."
+      ],
+      "socraticHint": "What is term 12 of this sequence?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 6.\na_n = a_(n-1) + (-3).\nWhat is the sum of the first 8 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "-36"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p18",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 3.\na_n = a_(n-1) + (5).\nWhat is the sum of the first 9 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "207"
+      },
+      "explanation": [
+        "Term 9 is a_9 = 3 + (9 - 1)(5) = 43.",
+        "The sum is 9/2 times (3 + 43) = 207."
+      ],
+      "useAgain": "when adding up more terms than are practical to add one at a time.",
+      "hints": [
+        "Find the last term being added first.",
+        "The sum of an arithmetic series is n/2 times (first term plus last term)."
+      ],
+      "socraticHint": "What is term 9 of this sequence?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 1.\na_n = a_(n-1) + (4).\nWhat is the sum of the first 12 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "276"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p19",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 10.\na_n = a_(n-1) + (-2).\nWhat is the sum of the first 8 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "Term 8 is a_8 = 10 + (8 - 1)(-2) = -4.",
+        "The sum is 8/2 times (10 - 4) = 24."
+      ],
+      "useAgain": "when adding up more terms than are practical to add one at a time.",
+      "hints": [
+        "Find the last term being added first.",
+        "The sum of an arithmetic series is n/2 times (first term plus last term)."
+      ],
+      "socraticHint": "What is term 8 of this sequence?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 9.\na_n = a_(n-1) + (2).\nWhat is the sum of the first 9 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "153"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p20",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 5.\na_n = a_(n-1) + (4).\nWhat is the sum of the first 11 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "275"
+      },
+      "explanation": [
+        "Term 11 is a_11 = 5 + (11 - 1)(4) = 45.",
+        "The sum is 11/2 times (5 + 45) = 275."
+      ],
+      "useAgain": "when adding up more terms than are practical to add one at a time.",
+      "hints": [
+        "Find the last term being added first.",
+        "The sum of an arithmetic series is n/2 times (first term plus last term)."
+      ],
+      "socraticHint": "What is term 11 of this sequence?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 3.\na_n = a_(n-1) + (7).\nWhat is the sum of the first 8 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "220"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p21",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 2.\na_n = a_(n-1) + (6).\nWhat is the sum of the first 9 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "234"
+      },
+      "explanation": [
+        "Term 9 is a_9 = 2 + (9 - 1)(6) = 50.",
+        "The sum is 9/2 times (2 + 50) = 234."
+      ],
+      "useAgain": "when adding up more terms than are practical to add one at a time.",
+      "hints": [
+        "Find the last term being added first.",
+        "The sum of an arithmetic series is n/2 times (first term plus last term)."
+      ],
+      "socraticHint": "What is term 9 of this sequence?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 5.\na_n = a_(n-1) + (-1).\nWhat is the sum of the first 12 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "-6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p22",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 1.\na_n = -2 times a_(n-1).\nWhat is the sum of the first 6 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "-21"
+      },
+      "explanation": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "That is 1 times (-2^6 - 1)/(-2 - 1) = -21."
+      ],
+      "useAgain": "when a geometric series has a negative common ratio.",
+      "hints": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "Watch the signs carefully when the ratio is negative."
+      ],
+      "socraticHint": "What is -2 raised to the power 6?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 4.\na_n = -2 times a_(n-1).\nWhat is the sum of the first 5 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "44"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p23",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 2.\na_n = -2 times a_(n-1).\nWhat is the sum of the first 5 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "22"
+      },
+      "explanation": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "That is 2 times (-2^5 - 1)/(-2 - 1) = 22."
+      ],
+      "useAgain": "when a geometric series has a negative common ratio.",
+      "hints": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "Watch the signs carefully when the ratio is negative."
+      ],
+      "socraticHint": "What is -2 raised to the power 5?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 1.\na_n = 5 times a_(n-1).\nWhat is the sum of the first 4 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "156"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p24",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 3.\na_n = -1 times a_(n-1).\nWhat is the sum of the first 6 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "That is 3 times (-1^6 - 1)/(-1 - 1) = 0."
+      ],
+      "useAgain": "when a geometric series has a negative common ratio.",
+      "hints": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "Watch the signs carefully when the ratio is negative."
+      ],
+      "socraticHint": "What is -1 raised to the power 6?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 2.\na_n = 2 times a_(n-1).\nWhat is the sum of the first 6 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "126"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p25",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 1.\na_n = 2 times a_(n-1).\nWhat is the sum of the first 7 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "127"
+      },
+      "explanation": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "That is 1 times (2^7 - 1)/(2 - 1) = 127."
+      ],
+      "useAgain": "when a geometric series has a negative common ratio.",
+      "hints": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "Watch the signs carefully when the ratio is negative."
+      ],
+      "socraticHint": "What is 2 raised to the power 7?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 3.\na_n = -2 times a_(n-1).\nWhat is the sum of the first 4 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "-15"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p26",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 2.\na_n = -3 times a_(n-1).\nWhat is the sum of the first 4 terms?",
+      "answer": {
+        "kind": "number",
+        "value": "-40"
+      },
+      "explanation": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "That is 2 times (-3^4 - 1)/(-3 - 1) = -40."
+      ],
+      "useAgain": "when a geometric series has a negative common ratio.",
+      "hints": [
+        "The sum of a geometric series is a_1 times (r^n - 1)/(r - 1).",
+        "Watch the signs carefully when the ratio is negative."
+      ],
+      "socraticHint": "What is -3 raised to the power 4?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "a_1 = 1.\na_n = -4 times a_(n-1).\nWhat is the sum of the first 4 terms?",
+        "answer": {
+          "kind": "number",
+          "value": "-51"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p27",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "choice",
+      "prompt": "Which sigma notation equals 3 + 5 + 7 + 9 + 11?",
+      "options": [
+        "sum(k=1..5) (2k + 1)",
+        "sum(k=1..5) (2k + 3)",
+        "sum(k=1..4) (2k + 1)",
+        "sum(k=1..5) (3k + 2)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Term k is 3 + (k - 1)(2), which simplifies to 2k + 1.",
+        "There are 5 terms, so k runs from 1 to 5."
+      ],
+      "useAgain": "when turning a written-out sum into sigma notation.",
+      "hints": [
+        "Write the general term in terms of k first.",
+        "Count exactly how many terms there are to set the upper bound."
+      ],
+      "socraticHint": "What expression in k gives each term as k goes from 1 upward?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which sigma notation equals 4 + 7 + 10 + 13 + 16?",
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        },
+        "options": [
+          "sum(k=1..5) (3k + 1)",
+          "sum(k=1..5) (3k + 4)",
+          "sum(k=1..4) (3k + 1)",
+          "sum(k=1..5) (4k + 3)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-series-p28",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "choice",
+      "prompt": "Which sigma notation equals 2 + 5 + 8 + 11?",
+      "options": [
+        "sum(k=1..4) (3k + 2)",
+        "sum(k=1..4) (3k - 1)",
+        "sum(k=1..3) (3k - 1)",
+        "sum(k=1..4) (2k + 3)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "Term k is 2 + (k - 1)(3), which simplifies to 3k - 1.",
+        "There are 4 terms, so k runs from 1 to 4."
+      ],
+      "useAgain": "when turning a written-out sum into sigma notation.",
+      "hints": [
+        "Write the general term in terms of k first.",
+        "Count exactly how many terms there are to set the upper bound."
+      ],
+      "socraticHint": "What expression in k gives each term as k goes from 1 upward?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which sigma notation equals 2 + 6 + 10 + 14?",
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "options": [
+          "sum(k=1..4) (4k + 2)",
+          "sum(k=1..4) (4k - 2)",
+          "sum(k=1..3) (4k - 2)",
+          "sum(k=1..4) (2k + 4)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-series-p29",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "choice",
+      "prompt": "Which sigma notation equals 5 + 9 + 13 + 17?",
+      "options": [
+        "sum(k=1..4) (4k + 5)",
+        "sum(k=1..3) (4k + 1)",
+        "sum(k=1..4) (4k + 1)",
+        "sum(k=1..4) (5k + 4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "Term k is 5 + (k - 1)(4), which simplifies to 4k + 1.",
+        "There are 4 terms, so k runs from 1 to 4."
+      ],
+      "useAgain": "when turning a written-out sum into sigma notation.",
+      "hints": [
+        "Write the general term in terms of k first.",
+        "Count exactly how many terms there are to set the upper bound."
+      ],
+      "socraticHint": "What expression in k gives each term as k goes from 1 upward?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which sigma notation equals 6 + 8 + 10 + 12?",
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        },
+        "options": [
+          "sum(k=1..4) (2k + 6)",
+          "sum(k=1..3) (2k + 4)",
+          "sum(k=1..4) (2k + 4)",
+          "sum(k=1..4) (6k + 2)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-series-p30",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "choice",
+      "prompt": "Which sigma notation equals 1 + 6 + 11 + 16?",
+      "options": [
+        "sum(k=1..4) (5k + 1)",
+        "sum(k=1..3) (5k - 4)",
+        "sum(k=1..4) (1k + 5)",
+        "sum(k=1..4) (5k - 4)"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Term k is 1 + (k - 1)(5), which simplifies to 5k - 4.",
+        "There are 4 terms, so k runs from 1 to 4."
+      ],
+      "useAgain": "when turning a written-out sum into sigma notation.",
+      "hints": [
+        "Write the general term in terms of k first.",
+        "Count exactly how many terms there are to set the upper bound."
+      ],
+      "socraticHint": "What expression in k gives each term as k goes from 1 upward?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which sigma notation equals 3 + 8 + 13 + 18?",
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "options": [
+          "sum(k=1..4) (5k + 3)",
+          "sum(k=1..3) (5k - 2)",
+          "sum(k=1..4) (3k + 5)",
+          "sum(k=1..4) (5k - 2)"
+        ]
+      }
+    },
+    {
+      "id": "ladder-a2-series-p31",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 4.\na_n = (1/2) times a_(n-1).\nWhat is the sum of the infinite series?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "An infinite geometric series has a sum only when the ratio's size is less than 1, which it is here.",
+        "The sum is a_1/(1 - r) = 4/(1 - 1/2) = 8."
+      ],
+      "useAgain": "when a geometric series keeps going forever but still settles on one number.",
+      "hints": [
+        "Check that the ratio's size is less than 1 before using the infinite sum formula.",
+        "The sum is a_1 divided by (1 minus the ratio)."
+      ],
+      "socraticHint": "Is the size of the common ratio less than 1?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 2.\na_n = (-1/3) times a_(n-1).\nWhat is the sum of the infinite series?",
+        "answer": {
+          "kind": "number",
+          "value": "3/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p32",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 6.\na_n = (1/3) times a_(n-1).\nWhat is the sum of the infinite series?",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "An infinite geometric series has a sum only when the ratio's size is less than 1, which it is here.",
+        "The sum is a_1/(1 - r) = 6/(1 - 1/3) = 9."
+      ],
+      "useAgain": "when a geometric series keeps going forever but still settles on one number.",
+      "hints": [
+        "Check that the ratio's size is less than 1 before using the infinite sum formula.",
+        "The sum is a_1 divided by (1 minus the ratio)."
+      ],
+      "socraticHint": "Is the size of the common ratio less than 1?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 4.\na_n = (2/5) times a_(n-1).\nWhat is the sum of the infinite series?",
+        "answer": {
+          "kind": "number",
+          "value": "20/3"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p33",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 2.\na_n = (2/3) times a_(n-1).\nWhat is the sum of the infinite series?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "An infinite geometric series has a sum only when the ratio's size is less than 1, which it is here.",
+        "The sum is a_1/(1 - r) = 2/(1 - 2/3) = 6."
+      ],
+      "useAgain": "when a geometric series keeps going forever but still settles on one number.",
+      "hints": [
+        "Check that the ratio's size is less than 1 before using the infinite sum formula.",
+        "The sum is a_1 divided by (1 minus the ratio)."
+      ],
+      "socraticHint": "Is the size of the common ratio less than 1?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 3.\na_n = (3/5) times a_(n-1).\nWhat is the sum of the infinite series?",
+        "answer": {
+          "kind": "number",
+          "value": "15/2"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p34",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 3.\na_n = (1/4) times a_(n-1).\nWhat is the sum of the infinite series?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "An infinite geometric series has a sum only when the ratio's size is less than 1, which it is here.",
+        "The sum is a_1/(1 - r) = 3/(1 - 1/4) = 4."
+      ],
+      "useAgain": "when a geometric series keeps going forever but still settles on one number.",
+      "hints": [
+        "Check that the ratio's size is less than 1 before using the infinite sum formula.",
+        "The sum is a_1 divided by (1 minus the ratio)."
+      ],
+      "socraticHint": "Is the size of the common ratio less than 1?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 1.\na_n = (1/5) times a_(n-1).\nWhat is the sum of the infinite series?",
+        "answer": {
+          "kind": "number",
+          "value": "5/4"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p35",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 1.\na_n = (3/4) times a_(n-1).\nWhat is the sum of the infinite series?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "An infinite geometric series has a sum only when the ratio's size is less than 1, which it is here.",
+        "The sum is a_1/(1 - r) = 1/(1 - 3/4) = 4."
+      ],
+      "useAgain": "when a geometric series keeps going forever but still settles on one number.",
+      "hints": [
+        "Check that the ratio's size is less than 1 before using the infinite sum formula.",
+        "The sum is a_1 divided by (1 minus the ratio)."
+      ],
+      "socraticHint": "Is the size of the common ratio less than 1?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 6.\na_n = (-2/3) times a_(n-1).\nWhat is the sum of the infinite series?",
+        "answer": {
+          "kind": "number",
+          "value": "18/5"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p36",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 5.\na_n = (-1/2) times a_(n-1).\nWhat is the sum of the infinite series?",
+      "answer": {
+        "kind": "number",
+        "value": "10/3"
+      },
+      "explanation": [
+        "An infinite geometric series has a sum only when the ratio's size is less than 1, which it is here.",
+        "The sum is a_1/(1 - r) = 5/(1 + 1/2) = 10/3."
+      ],
+      "useAgain": "when a geometric series keeps going forever but still settles on one number.",
+      "hints": [
+        "Check that the ratio's size is less than 1 before using the infinite sum formula.",
+        "The sum is a_1 divided by (1 minus the ratio)."
+      ],
+      "socraticHint": "Is the size of the common ratio less than 1?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 2.\na_n = (3/4) times a_(n-1).\nWhat is the sum of the infinite series?",
+        "answer": {
+          "kind": "number",
+          "value": "8"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p37",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "What is the sum from k = 1 to 6 of 1/(k(k + 1))?",
+      "answer": {
+        "kind": "number",
+        "value": "6/7"
+      },
+      "explanation": [
+        "Each term splits into 1/k - 1/(k + 1), so consecutive terms cancel.",
+        "Only the first and last pieces survive: 1 - 1/(6 + 1) = 6/7."
+      ],
+      "useAgain": "when a sum's terms cancel out almost completely.",
+      "hints": [
+        "Split each term into a difference of two simpler fractions.",
+        "Watch how most of the middle terms cancel out when you add them up."
+      ],
+      "socraticHint": "What two simpler fractions does each term split into?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the sum from k = 1 to 12 of 1/(k(k + 1))?",
+        "answer": {
+          "kind": "number",
+          "value": "12/13"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p38",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "What is the sum from k = 1 to 8 of 1/(k(k + 1))?",
+      "answer": {
+        "kind": "number",
+        "value": "8/9"
+      },
+      "explanation": [
+        "Each term splits into 1/k - 1/(k + 1), so consecutive terms cancel.",
+        "Only the first and last pieces survive: 1 - 1/(8 + 1) = 8/9."
+      ],
+      "useAgain": "when a sum's terms cancel out almost completely.",
+      "hints": [
+        "Split each term into a difference of two simpler fractions.",
+        "Watch how most of the middle terms cancel out when you add them up."
+      ],
+      "socraticHint": "What two simpler fractions does each term split into?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the sum from k = 1 to 15 of 1/(k(k + 1))?",
+        "answer": {
+          "kind": "number",
+          "value": "15/16"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p39",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "What is the sum from k = 1 to 10 of 1/(k(k + 1))?",
+      "answer": {
+        "kind": "number",
+        "value": "10/11"
+      },
+      "explanation": [
+        "Each term splits into 1/k - 1/(k + 1), so consecutive terms cancel.",
+        "Only the first and last pieces survive: 1 - 1/(10 + 1) = 10/11."
+      ],
+      "useAgain": "when a sum's terms cancel out almost completely.",
+      "hints": [
+        "Split each term into a difference of two simpler fractions.",
+        "Watch how most of the middle terms cancel out when you add them up."
+      ],
+      "socraticHint": "What two simpler fractions does each term split into?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the sum from k = 1 to 20 of 1/(k(k + 1))?",
+        "answer": {
+          "kind": "number",
+          "value": "20/21"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p40",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "What is the sum from k = 1 to 5 of 1/((2k - 1)(2k + 1))?",
+      "answer": {
+        "kind": "number",
+        "value": "5/11"
+      },
+      "explanation": [
+        "Each term splits into (1/2)(1/(2k - 1) - 1/(2k + 1)), so consecutive terms cancel.",
+        "Only the first and last pieces survive, leaving 5/11."
+      ],
+      "useAgain": "when a sum's terms cancel out almost completely.",
+      "hints": [
+        "Split each term into a difference of two simpler fractions.",
+        "Watch how most of the middle terms cancel out when you add them up."
+      ],
+      "socraticHint": "What two simpler fractions does each term split into?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the sum from k = 1 to 6 of 1/((2k - 1)(2k + 1))?",
+        "answer": {
+          "kind": "number",
+          "value": "6/13"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p41",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "order",
+      "prompt": "Put the steps in order to find the sum from k = 1 to 7 of 1/((2k - 1)(2k + 1)).",
+      "items": [
+        "Line up the split terms and watch consecutive pieces cancel.",
+        "Split each term 1/((2k - 1)(2k + 1)) into (1/2)(1/(2k - 1) - 1/(2k + 1)).",
+        "Only the very first and very last pieces survive, giving the final sum."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0,
+          2
+        ]
+      },
+      "explanation": [
+        "Splitting each term is the first move in any telescoping sum.",
+        "Once split, most of the pieces cancel, leaving only a few."
+      ],
+      "useAgain": "when evaluating a telescoping sum step by step.",
+      "hints": [
+        "The terms have to be split apart before anything can cancel.",
+        "Cancellation happens once the split terms are lined up in order."
+      ],
+      "socraticHint": "What has to happen to each term before anything can cancel?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put the steps in order to find the sum from k = 1 to 8 of 1/((2k - 1)(2k + 1)).",
+        "items": [
+          "Line up the split terms and watch consecutive pieces cancel.",
+          "Split each term 1/((2k - 1)(2k + 1)) into (1/2)(1/(2k - 1) - 1/(2k + 1)).",
+          "Only the very first and very last pieces survive, giving the final sum."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p42",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "order",
+      "prompt": "Put the steps in order to find the sum from k = 1 to 9 of 1/((2k - 1)(2k + 1)).",
+      "items": [
+        "Line up the split terms and watch consecutive pieces cancel.",
+        "Split each term 1/((2k - 1)(2k + 1)) into (1/2)(1/(2k - 1) - 1/(2k + 1)).",
+        "Only the very first and very last pieces survive, giving the final sum."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          0,
+          2
+        ]
+      },
+      "explanation": [
+        "Splitting each term is the first move in any telescoping sum.",
+        "Once split, most of the pieces cancel, leaving only a few."
+      ],
+      "useAgain": "when evaluating a telescoping sum step by step.",
+      "hints": [
+        "The terms have to be split apart before anything can cancel.",
+        "Cancellation happens once the split terms are lined up in order."
+      ],
+      "socraticHint": "What has to happen to each term before anything can cancel?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put the steps in order to find the sum from k = 1 to 10 of 1/((2k - 1)(2k + 1)).",
+        "items": [
+          "Line up the split terms and watch consecutive pieces cancel.",
+          "Split each term 1/((2k - 1)(2k + 1)) into (1/2)(1/(2k - 1) - 1/(2k + 1)).",
+          "Only the very first and very last pieces survive, giving the final sum."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            0,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p43",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "A savings jar starts with 20 dollars and gets 5 more dollars every week.\nHow much total has been added after 8 weeks, including the start?",
+      "answer": {
+        "kind": "number",
+        "value": "300"
+      },
+      "explanation": [
+        "After 8 weeks the jar has a_8 = 20 + (8 - 1)(5) = 55 dollars that week.",
+        "The running total is 8/2 times (20 + 55) = 300 dollars."
+      ],
+      "useAgain": "when a saved or collected amount grows by the same amount every period.",
+      "hints": [
+        "This is an arithmetic series: find the last week's amount first.",
+        "Then use the arithmetic series sum formula."
+      ],
+      "socraticHint": "How much is added on the last week?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A savings jar starts with 15 dollars and gets 4 more dollars every week.\nHow much total has been added after 9 weeks, including the start?",
+        "answer": {
+          "kind": "number",
+          "value": "279"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p44",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "A rover uses 3 units of fuel on its first leg, and each later leg uses 2 times as much as the one before.\nHow much total fuel is used over 5 legs?",
+      "answer": {
+        "kind": "number",
+        "value": "93"
+      },
+      "explanation": [
+        "This is a geometric series.",
+        "The total is 3 times (2^5 - 1)/(2 - 1) = 93 units."
+      ],
+      "useAgain": "when a total grows by multiplying the same amount every step.",
+      "hints": [
+        "This is a geometric series with a_1 equal to the first leg's fuel.",
+        "Use the geometric series sum formula."
+      ],
+      "socraticHint": "What is the common ratio between one leg's fuel and the next?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rover uses 2 units of fuel on its first leg, and each later leg uses 3 times as much as the one before.\nHow much total fuel is used over 4 legs?",
+        "answer": {
+          "kind": "number",
+          "value": "80"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p45",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "truefalse",
+      "prompt": "a_n = (2/3) times a_(n-1).\nTrue or false: the infinite geometric series with this ratio has a finite sum.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The size of the ratio is 2/3.",
+        "An infinite geometric series has a finite sum exactly when that size is less than 1, so this does."
+      ],
+      "useAgain": "when checking whether an infinite geometric series settles on a number at all.",
+      "hints": [
+        "Find the size of the common ratio, ignoring its sign.",
+        "Compare that size to 1."
+      ],
+      "socraticHint": "Is the size of this ratio less than 1?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_n = (4/3) times a_(n-1).\nTrue or false: the infinite geometric series with this ratio has a finite sum.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-a2-series-p46",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "A ball is dropped from 8 meters.\nEach bounce reaches 1/2 of the height of the bounce before it.\nWhat is the total distance the ball travels, forever?",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "The ball falls 8, then bounces up and back down 8 times 1/2, then up and down that much times the ratio again, forever.",
+        "That is 8 plus an infinite geometric series with first term 8 and ratio 1/2, totaling 24 meters."
+      ],
+      "useAgain": "when something bounces or repeats by the same fraction forever.",
+      "hints": [
+        "The first fall only happens once; every bounce after that happens twice (up and down).",
+        "Add the first fall to an infinite geometric series for the up-and-down bounces."
+      ],
+      "socraticHint": "After the first fall, does each bounce height appear once or twice in the total distance?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A ball is dropped from 6 meters.\nEach bounce reaches 2/3 of the height of the bounce before it.\nWhat is the total distance the ball travels, forever?",
+        "answer": {
+          "kind": "number",
+          "value": "30"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p47",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "What is the sum from k = 1 to 20 of 3k - 1?",
+      "answer": {
+        "kind": "number",
+        "value": "610"
+      },
+      "explanation": [
+        "The terms form an arithmetic sequence: 2, 5, 8, ..., up to k = 20, which gives 59.",
+        "The sum is 20/2 times (2 + 59) = 610."
+      ],
+      "useAgain": "when a sigma sum has too many terms to add one at a time.",
+      "hints": [
+        "This is an arithmetic series once you write out a few terms.",
+        "Find the first term, the last term, and use the arithmetic series formula."
+      ],
+      "socraticHint": "What are the first and last terms of this sum?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the sum from k = 1 to 25 of 2k + 3?",
+        "answer": {
+          "kind": "number",
+          "value": "725"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p48",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "What is the sum from k = 1 to 10 of 1/(k(k + 2))?",
+      "answer": {
+        "kind": "number",
+        "value": "175/264"
+      },
+      "explanation": [
+        "Each term splits into (1/2)(1/k - 1/(k + 2)), so terms two apart cancel instead of adjacent ones.",
+        "Only a few pieces survive at the start and end, leaving 175/264."
+      ],
+      "useAgain": "when a telescoping sum skips by two instead of one.",
+      "hints": [
+        "Split each term into a difference of two fractions two apart, not one apart.",
+        "Two terms cancel a term two steps later instead of the very next one."
+      ],
+      "socraticHint": "Which earlier term does each piece of a term cancel with here?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the sum from k = 1 to 14 of 1/(k(k + 2))?",
+        "answer": {
+          "kind": "number",
+          "value": "329/480"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p49",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "a_1 = 2.\na_n = 3 times a_(n-1).\nThe sum of the first n terms is 728.\nWhat is n?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Set the geometric series formula equal to 728: 2 times (3^n - 1)/(3 - 1) = 728.",
+        "Solving gives 3^n = 729 = 3^6, so n = 6."
+      ],
+      "useAgain": "when you know a geometric series' total but not how many terms it took.",
+      "hints": [
+        "Set the geometric series sum formula equal to the target and simplify.",
+        "You should end up with a power of the ratio equal to a specific number."
+      ],
+      "socraticHint": "What equation in n do you get after setting the sum formula equal to 728?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "a_1 = 3.\na_n = 2 times a_(n-1).\nThe sum of the first n terms is 189.\nWhat is n?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    },
+    {
+      "id": "ladder-a2-series-p50",
+      "lane": "skills",
+      "ideaId": "a2-series",
+      "kind": "number",
+      "prompt": "For how many positive integers n is 1 + 2 + ... + n a three-digit number?",
+      "answer": {
+        "kind": "number",
+        "value": "31"
+      },
+      "explanation": [
+        "1 + 2 + ... + n is n(n + 1)/2.",
+        "Checking where that stays between 100 and 999 gives 31 values of n."
+      ],
+      "useAgain": "when counting how many sums of consecutive integers land in a range.",
+      "hints": [
+        "Write 1 + 2 + ... + n using the arithmetic series formula.",
+        "Find where that formula first reaches 100, and where it first passes 999."
+      ],
+      "socraticHint": "What is 1 + 2 + ... + n as a formula in n?",
+      "skills": [
+        "think.skills.series"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "For how many positive integers n is 1 + 2 + ... + n at least 200 and still a three-digit number?",
+        "answer": {
+          "kind": "number",
+          "value": "25"
+        }
+      }
+    }
+  ]
+}

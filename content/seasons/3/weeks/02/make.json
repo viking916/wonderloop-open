@@ -1,0 +1,336 @@
+{
+  "id": "s3-w02-make",
+  "season": 3,
+  "week": 2,
+  "track": "make",
+  "title": "Schematic to layout in KiCad",
+  "summary": "Redraw the season 2 sensor circuit as a real schematic in KiCad, lay it out as a board, and compare two routes for how much wire they actually need.",
+  "minutes": 60,
+  "materials": [
+    "laptop with KiCad installed (free, at https://www.kicad.org)",
+    "the season 2 breadboard sensor circuit, for reference",
+    "graph paper and pencil",
+    "the Maker's Log"
+  ],
+  "skills": [
+    "make.electronics",
+    "make.measurement"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s3-w02-make-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop moves the season's circuit toward a real board: ask, imagine, plan, build, test, fix.\n\nAsk: a schematic drawn on graph paper or in KiCad shows what connects to what, but it never says where anything sits. Can the same circuit be drawn twice, laid out two different ways, and still work the same?\n\nImagine: a printed circuit board layout, where every wire becomes a copper trace that has to fit in real space, next to other traces, without touching the wrong one.\n\nPlan: open KiCad at https://www.kicad.org and start a new project. Redraw the season 2 sensor circuit as a schematic first, symbols only, no positions decided yet. Pick four connections, called nets, that you will lay out two different ways later and compare."
+    },
+    {
+      "kind": "science",
+      "id": "s3-w02-make-02",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A schematic shows resistor R and LED connected by a plain line with no real distance. The same two parts drawn as a board layout sit far apart, so the copper trace between them is a longer, real path.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 16,
+              "s": "A schematic shows connections, not positions",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 90,
+              "y": 40,
+              "s": "Schematic",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "dot",
+              "cx": 50,
+              "cy": 90,
+              "label": "R",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 130,
+              "cy": 90,
+              "label": "LED",
+              "side": "above"
+            },
+            {
+              "t": "line",
+              "x1": 50,
+              "y1": 90,
+              "x2": 130,
+              "y2": 90,
+              "color": "ink"
+            },
+            {
+              "t": "text",
+              "x": 270,
+              "y": 40,
+              "s": "Board layout",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 210,
+              "y": 70,
+              "w": 40,
+              "h": 30,
+              "label": "R",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 310,
+              "y": 150,
+              "w": 40,
+              "h": 30,
+              "label": "LED",
+              "fill": "accent"
+            },
+            {
+              "t": "line",
+              "x1": 250,
+              "y1": 85,
+              "x2": 310,
+              "y2": 160,
+              "color": "green"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 200,
+              "s": "Same two connections; the board's trace is longer",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 340,
+              "y": 110,
+              "s": "real trace, longer",
+              "size": 11,
+              "anchor": "end"
+            }
+          ]
+        }
+      },
+      "title": "A schematic is not the board",
+      "ideaId": "schematic-is-not-the-board",
+      "body": "A schematic answers one question: what connects to what. It never says where a part sits, how far apart two parts are, or which wire has to detour around another. That is the layout's job.\n\nMoving from schematic to layout means placing every part in real space, then drawing a copper path, called a trace, for every connection. The same schematic can become many different layouts, each with different trace lengths, because the parts can be arranged in more than one way.\n\nShorter traces are usually better: less copper means less resistance and less chance of picking up stray interference from a nearby wire. Real boards also carry rules a schematic never shows, like how close two traces are allowed to run before they risk touching. KiCad checks those rules for you, but only once the layout exists."
+    },
+    {
+      "kind": "task",
+      "id": "s3-w02-make-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two board layouts for the same four connections: power, switch, resistor and LED. Layout A places the parts in one arrangement with the switch-to-resistor trace crossing diagonally; layout B swaps positions so that trace runs differently, showing the same schematic can produce different, real trace paths.",
+        "spec": {
+          "w": 460,
+          "h": 230,
+          "wide": true,
+          "items": [
+            {
+              "t": "text",
+              "x": 115,
+              "y": 20,
+              "s": "Layout A",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 50,
+              "w": 60,
+              "h": 30,
+              "label": "PWR",
+              "fill": "rust"
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 50,
+              "w": 60,
+              "h": 30,
+              "label": "SW",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 140,
+              "w": 60,
+              "h": 30,
+              "label": "R",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 140,
+              "w": 60,
+              "h": 30,
+              "label": "LED",
+              "fill": "accent"
+            },
+            {
+              "t": "line",
+              "x1": 90,
+              "y1": 65,
+              "x2": 130,
+              "y2": 65,
+              "color": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 160,
+              "y1": 80,
+              "x2": 60,
+              "y2": 140,
+              "color": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 90,
+              "y1": 155,
+              "x2": 130,
+              "y2": 155,
+              "color": "ink"
+            },
+            {
+              "t": "text",
+              "x": 345,
+              "y": 20,
+              "s": "Layout B",
+              "size": 12,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 260,
+              "y": 50,
+              "w": 60,
+              "h": 30,
+              "label": "PWR",
+              "fill": "rust"
+            },
+            {
+              "t": "box",
+              "x": 360,
+              "y": 50,
+              "w": 60,
+              "h": 30,
+              "label": "R",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 260,
+              "y": 140,
+              "w": 60,
+              "h": 30,
+              "label": "SW",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 360,
+              "y": 140,
+              "w": 60,
+              "h": 30,
+              "label": "LED",
+              "fill": "accent"
+            },
+            {
+              "t": "line",
+              "x1": 290,
+              "y1": 80,
+              "x2": 290,
+              "y2": 140,
+              "color": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 320,
+              "y1": 155,
+              "x2": 420,
+              "y2": 65,
+              "color": "ink"
+            },
+            {
+              "t": "line",
+              "x1": 390,
+              "y1": 80,
+              "x2": 390,
+              "y2": 140,
+              "color": "ink"
+            },
+            {
+              "t": "text",
+              "x": 230,
+              "y": 210,
+              "s": "Same four nets (PWR, SW, R, LED), two different trace paths",
+              "size": 11,
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Lay it out two ways",
+      "body": "In KiCad's schematic editor, place symbols for the season 2 sensor circuit: the switch, the resistor, the LED and the power connection. Wire them with the same connections the breadboard version used, then assign a footprint to each part so KiCad knows its real size.\n\nOpen the board layout view. Place the parts in a first arrangement and route the four chosen nets, letting KiCad's length readout tell you each trace's length in millimetres.\n\nNow move the parts into a second arrangement, deliberately different, for example with two parts swapped or spread further apart, and route the same four nets again. Write both lengths for each net side by side.",
+      "checklist": [
+        "The schematic in KiCad matches the season 2 breadboard circuit's connections",
+        "Every part in the layout has a footprint assigned before routing",
+        "The same four nets were routed in two different part arrangements",
+        "Each net's length was read from KiCad, not guessed, for both layouts"
+      ]
+    },
+    {
+      "kind": "data",
+      "id": "s3-w02-make-04",
+      "title": "Layout A versus layout B trace length",
+      "ideaId": "schematic-is-not-the-board",
+      "body": "The schematic and the parts stay exactly the same between the two layouts. Only where the parts sit, and so how the traces are routed, changes.\n\nFour rows, one per net. For each row, write the net's name and its routed length in millimetres in layout A and in layout B.",
+      "columns": [
+        "Net",
+        "Layout A length (mm)",
+        "Layout B length (mm)"
+      ],
+      "minRows": 4,
+      "question": "Which net got shorter in layout B, and by how many millimetres?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s3-w02-make-05",
+      "title": "Bug diary",
+      "body": "One line for each thing that did not work the first time and what you tried. Classics this week: a net that will not route because two parts were placed too close together for a trace to fit between their pads.\n\nAlso watch for a part with no footprint assigned, which blocks the layout view from opening at all. And watch for a trace that reads suspiciously long, since it probably looped around instead of running direct."
+    },
+    {
+      "kind": "artifact",
+      "id": "s3-w02-make-06",
+      "title": "Show it",
+      "prompt": "Screenshot or photo of both layouts side by side in KiCad, plus your table of the four nets and their two lengths",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s3-w02-make-07",
+      "variant": "maker"
+    }
+  ]
+}

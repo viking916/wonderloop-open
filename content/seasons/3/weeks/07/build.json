@@ -1,0 +1,437 @@
+{
+  "id": "s3-w07-build",
+  "season": 3,
+  "week": 7,
+  "track": "build",
+  "title": "Dress the stand",
+  "summary": "Tags, a price list and a float counted twice, a Python tally that shows cash and profit while the customer is still standing there, the micro:bit back as a scrolling OPEN sign, and a rehearsal against the hardest customers in the house.",
+  "minutes": 60,
+  "materials": [
+    "the finished stock from last week, however many units there are",
+    "card, markers, scissors and tape for the sign and the price tags",
+    "the cash box and the coin float, in change",
+    "laptop with Python and the editor from week 1",
+    "your cost sheet from week 5 and the price you chose in week 6",
+    "micro:bit v2, its battery pack and the USB cable",
+    "the actual table you will sell from",
+    "a timer or a phone stopwatch for the rehearsal"
+  ],
+  "skills": ["build.python", "build.blocks", "build.variables", "build.design"],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s3-w07-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop, same six moves: ask, imagine, plan, build, test, fix. This week the test move is the big one, so leave room for it.\n\nAsk: the thing is made and the price is chosen. What is left? Everything a customer meets before they meet the product. A sign they can read from further away than you think. A tag on every unit so nobody has to ask what it costs. A box with change already in it, because a customer holding a large note and waiting is a customer walking off. And a way to know, while the day is still happening, whether you are making money or losing it.\n\nImagine: a person you do not know walks up while you are already serving someone else. In fifteen seconds they have to work out what you sell, what it costs, and whether the stand is open. If any of those three take longer, they drift. Everything you build today is aimed at those fifteen seconds.\n\nPlan: four jobs in this order. Dress the stand, which is tags, the price list, the float counted twice, and the micro:bit back on duty as the OPEN sign. Then the tally program, which reads one typed line per sale and keeps cash and profit running in front of you. Then the rehearsal, where the family plays the worst customers they can invent and nobody rescues you. Then the bug diary, which this week will be long, and that is the point.\n\nOne thing worth saying out loud before you start. The tally program is not new. Back in week 2 you wrote a loop that read many lines and kept a running answer: count, sum, largest. This is that same loop. The only change is where the lines come from. Then they came from a file that was already written. Now they arrive one at a time from a person standing in front of you, and the running answer is your own money."
+    },
+    {
+      "kind": "typing",
+      "id": "s3-w07-build-02",
+      "minutes": 5,
+      "body": "Five minutes on your typing site. Home row first, then this week's words until your fingers stop hunting: input, split, float, int, while, True, break, round, print.\n\nThen the punctuation the week actually breaks on. The colon that ends a line like while True, the four spaces that push the next lines in under it, the square brackets in parts[0], and the pair of quotes that has to close as well as open. Type the line parts = line.split() ten times, then type the line if line == \"done\": ten times, with two equals signs, because one equals sign there is a different instruction entirely."
+    },
+    {
+      "kind": "science",
+      "id": "s3-w07-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A timeline of customer arrivals against how long each sale takes: when three arrivals bunch up faster than sales finish, a queue forms and the later sale still has to wait, even though the average sale is faster than the average gap.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "items": [
+            {
+              "t": "line",
+              "x1": 20,
+              "y1": 55,
+              "x2": 340,
+              "y2": 55,
+              "color": "muted",
+              "label": "time"
+            },
+            {
+              "t": "dot",
+              "cx": 40,
+              "cy": 55,
+              "label": "arrive",
+              "side": "above"
+            },
+            {
+              "t": "dot",
+              "cx": 60,
+              "cy": 55
+            },
+            {
+              "t": "dot",
+              "cx": 80,
+              "cy": 55
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 75,
+              "w": 70,
+              "h": 25,
+              "label": "sale 1",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 115,
+              "y": 75,
+              "w": 70,
+              "h": 25,
+              "label": "sale 2",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 75,
+              "w": 70,
+              "h": 25,
+              "label": "sale 3",
+              "sub": "waiting",
+              "fill": "rust"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 150,
+              "s": "three arrivals bunch up; the third sale still waits",
+              "size": 12
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 170,
+              "s": "even though you are faster than average",
+              "size": 12
+            }
+          ]
+        }
+      },
+      "title": "Why a queue forms",
+      "body": "Your stand has one server: you. Two numbers decide whether a line forms, and they are the only two.\n\nThe first is how often a customer arrives. The second is how long one whole sale takes, from hello to change in hand. If a sale takes longer than the average gap between arrivals, the line grows and never stops growing, because you fall behind faster than you catch up. That part is obvious once you say it.\n\nHere is the part that is not obvious. Even when you are faster on average, a line still forms, because arrivals are lumpy. Suppose someone comes every four minutes on average and a sale takes one minute. You have masses of room. But an average is not a timetable: three people can arrive in the same minute and then nobody comes for ten. The queue is simply where that lumpiness gets stored while you catch up. The closer your sale time creeps toward the gap between arrivals, the longer the queue gets when a lump lands, and it gets worse much faster than you would guess.\n\nThat gives you exactly two levers. Make one sale shorter: bag or wrap in advance, choose prices that make change easy, keep the typing down to one short line. Or add a second server: somebody else takes the money while you hand over the goods. Big shops pull both levers all day, and now you know what they are doing.\n\nMeasure your own number today. Time one whole sale in the rehearsal, hello to change in hand, and write the seconds down. That single number decides how long your line gets on Market Day, and it is the only number in this science moment you have to find out for yourself."
+    },
+    {
+      "kind": "science",
+      "id": "s3-w07-build-10",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The micro:bit never slides a letter sideways: it lights one column of five dots, then a slightly shifted column, dozens of times a second. Each frame lingers in your vision and blends into the next, so your eyes supply the motion.",
+        "spec": {
+          "w": 360,
+          "h": 200,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 60,
+              "w": 60,
+              "h": 60,
+              "label": "frame 1",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 100,
+              "y": 60,
+              "w": 60,
+              "h": 60,
+              "label": "frame 2",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 180,
+              "y": 60,
+              "w": 60,
+              "h": 60,
+              "label": "frame 3",
+              "fill": "sand"
+            },
+            {
+              "t": "line",
+              "x1": 80,
+              "y1": 90,
+              "x2": 100,
+              "y2": 90,
+              "arrow": true
+            },
+            {
+              "t": "line",
+              "x1": 160,
+              "y1": 90,
+              "x2": 180,
+              "y2": 90,
+              "arrow": true
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 35,
+              "s": "still columns, each shown for under 20 ms",
+              "size": 12
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 150,
+              "s": "your eyes blend them into a moving letter",
+              "size": 12
+            }
+          ]
+        }
+      },
+      "title": "Why a scrolling sign looks like it moves",
+      "body": "Your micro:bit sign will not actually move any letters across its screen. It lights one column of five dots, then a slightly shifted column, then another, dozens of times a second, never once sliding a letter sideways.\n\nYour eyes are doing the moving. This is persistence of vision, the idea from week one of season one. A picture changing faster than about 20 milliseconds per step reads as smooth motion instead of separate flashes. Each frame lingers in your vision just long enough to blend into the next one.\n\nFilm, television and every scrolling LED sign rely on this same gap in human eyesight. None of them contain real motion. They contain a fast enough sequence of still pictures, and your own visual system supplies the illusion for free.\n\nSlow your sign's scroll speed down on purpose this week. Watch for the moment it stops looking like motion and starts looking like separate flashing columns.",
+      "ideaId": "persistence-of-vision"
+    },
+    {
+      "kind": "task",
+      "id": "s3-w07-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The dressed stand: the price list sign is largest and readable from a distance, a tag sits on every unit with cost and markup on the back, the float sits counted in the cash box, and the micro:bit scrolls OPEN or CLOSED, flipped by button A.",
+        "spec": {
+          "w": 420,
+          "h": 220,
+          "items": [
+            {
+              "t": "box",
+              "x": 20,
+              "y": 165,
+              "w": 380,
+              "h": 20,
+              "label": "table",
+              "fill": "sand"
+            },
+            {
+              "t": "box",
+              "x": 30,
+              "y": 60,
+              "w": 100,
+              "h": 40,
+              "label": "price list",
+              "sub": "largest text"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 105,
+              "w": 55,
+              "h": 40,
+              "label": "unit",
+              "sub": "tag: price"
+            },
+            {
+              "t": "box",
+              "x": 215,
+              "y": 105,
+              "w": 55,
+              "h": 40,
+              "label": "unit",
+              "sub": "tag: price"
+            },
+            {
+              "t": "box",
+              "x": 280,
+              "y": 105,
+              "w": 65,
+              "h": 40,
+              "label": "cash box",
+              "sub": "float x2"
+            },
+            {
+              "t": "box",
+              "x": 345,
+              "y": 55,
+              "w": 70,
+              "h": 50,
+              "label": "micro:bit",
+              "sub": "OPEN"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 30,
+              "s": "button A flips open",
+              "size": 11
+            }
+          ],
+          "wide": true
+        }
+      },
+      "title": "Dress the stand",
+      "body": "Tags first. One tag per unit, every tag written the same way, and big enough to read from a step back rather than from where you are standing. On the back of each tag, in small writing for you and not for the customer, put the two numbers the price came from: what one unit costs you to make, and the markup you added. When somebody asks why it costs what it costs, and somebody will, you can answer with numbers instead of a shrug.\n\nThen the price list sign. Every price on one board, readable from further away than the tags. If you sell one thing at one price, the sign says it once, in the largest letters on the table. Same three privacy rules as the repo: no last name, no school, no address, anywhere on the stand.\n\nThe float. The float is the change money that goes into the box before a single sale. Count it. Write the total down. Hand the box to somebody else and have them count it without seeing your number, and write theirs down too. If the two numbers disagree, count together until they agree. This is not fussiness: at the end of the day you work out what you took by subtracting the float from what is in the box, so a wrong float quietly poisons every money number that comes after it, including the profit you report and the loan you repay.\n\nLast, the OPEN sign, and it is your first machine coming back for a cameo. In MakeCode, on start, use set open to true. In forever, put an if open then show string \"OPEN\" else show string \"CLOSED\". Then on button A pressed, set open to not open, so one press flips the sign. Download it, then run the micro:bit from the battery pack rather than the laptop cable, so there is no wire stretched across the table for somebody to catch a foot on.",
+      "checklist": [
+        "Every unit has a tag, all tags are written the same way, and one price list sign shows every price at once",
+        "The cost of one unit and the markup are written on the back of the tags, where I can find them and a customer cannot",
+        "The float was counted, written down, counted again by somebody else, and the two counts agree",
+        "The micro:bit scrolls OPEN on its battery pack, and button A flips it to CLOSED and back",
+        "Nothing on the table shows my last name, my school or where we live"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s3-w07-build-05",
+      "figure": {
+        "kind": "diagram",
+        "alt": "tally.py loops with while True, reading one sale line each time. If the line is done it breaks out; otherwise it splits the line into a count and a price, adds them into cash and units, and prints the running totals before asking for the next sale.",
+        "spec": {
+          "w": 360,
+          "h": 280,
+          "items": [
+            {
+              "t": "box",
+              "x": 100,
+              "y": 10,
+              "w": 160,
+              "h": 25,
+              "label": "while True:"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 35,
+              "x2": 180,
+              "y2": 55,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 100,
+              "y": 55,
+              "w": 160,
+              "h": 25,
+              "label": "read a sale line"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 80,
+              "x2": 180,
+              "y2": 100,
+              "arrow": true
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  180,
+                  100
+                ],
+                [
+                  245,
+                  122
+                ],
+                [
+                  180,
+                  144
+                ],
+                [
+                  115,
+                  122
+                ]
+              ],
+              "label": "line == 'done'?"
+            },
+            {
+              "t": "line",
+              "x1": 245,
+              "y1": 122,
+              "x2": 300,
+              "y2": 122,
+              "arrow": true,
+              "label": "yes: break"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 144,
+              "x2": 180,
+              "y2": 164,
+              "arrow": true,
+              "label": "no"
+            },
+            {
+              "t": "box",
+              "x": 100,
+              "y": 164,
+              "w": 160,
+              "h": 30,
+              "label": "cash += n*price",
+              "sub": "units += n"
+            },
+            {
+              "t": "line",
+              "x1": 140,
+              "y1": 194,
+              "x2": 140,
+              "y2": 214,
+              "arrow": true
+            },
+            {
+              "t": "box",
+              "x": 100,
+              "y": 214,
+              "w": 160,
+              "h": 25,
+              "label": "print totals",
+              "fill": "green"
+            },
+            {
+              "t": "text",
+              "x": 20,
+              "y": 260,
+              "s": "then loops back for the next sale",
+              "size": 12
+            }
+          ]
+        }
+      },
+      "title": "The tally program",
+      "body": "Paper first, before any typing. Decide what one sale looks like as one typed line. The rest of the program depends on that decision, so make it deliberately: a sale is how many units, then a space, then the price each. Two units at three dollars fifty is the line 2 3.50. That shape works whatever you sell and however many prices you have, because it never needs to know what the thing is.\n\nWhy one line per sale, instead of keeping a total in your head? Because a head total cannot be checked, and a list of sales can. Everything typed is a record you still have tomorrow.\n\nNow write tally.py yourself, week two's loop-over-data shape again: ask once for the unit cost and fixed costs, loop reading sale lines until done, keep running cash and units totals, and print units sold, cash in the box, and profit so far after each sale.\n\nGive it a real, focused 15 minutes; if it still is not running by then, move to the version below rather than losing the whole hour to one line of code:\n\n```python\nunit_cost = float(input(\"cost to make one unit: \"))\nfixed = float(input(\"fixed costs for the whole stand: \"))\n\ncash = 0.0\nunits = 0\n\nwhile True:\n    line = input(\"sale, how many then price each, or done: \")\n    if line == \"done\":\n        break\n    parts = line.split()\n    n = int(parts[0])\n    price = float(parts[1])\n    cash = cash + n * price\n    units = units + n\n    profit = cash - unit_cost * units - fixed\n    print(\"units sold:\", units)\n    print(\"cash in the box:\", round(cash, 2))\n    print(\"profit so far:\", round(profit, 2))\n```\n\nThree pieces are new and worth naming. while True with a break is a loop that runs until you tell it to stop, which is right when you do not know in advance how many sales there will be. line.split() cuts what you typed at the spaces and hands back the pieces as a list, so parts[0] is the count and parts[1] is the price. And float, rather than the int you used in week 1, because prices have a decimal point in them and int would refuse one.\n\nNow test it before any human sees it. Run it, answer the two opening questions with your real numbers from week 5, and type four made up sales. Watch the profit line: it starts negative, because the fixed costs are paid before anything is sold, and it climbs. The sale where it crosses zero is your break-even from last week, happening in front of you instead of on paper. Check the cash total against the same sums done by hand on the back of a tag, and do not move on until the two agree.",
+      "checklist": [
+        "The shape of one sale line was written on paper before any code: how many units, then the price each",
+        "I wrote my own tally.py, using week two's loop-over-data shape, before I looked at the given code",
+        "Typing done ends the run cleanly instead of crashing it",
+        "After every sale it prints units sold, cash in the box and profit so far",
+        "I ran at least four made up sales and checked its cash total against the same sums done by hand"
+      ]
+    },
+    {
+      "kind": "task",
+      "id": "s3-w07-build-06",
+      "title": "Difficult customers",
+      "body": "Dress rehearsal, at the real table, with the sign on and the tally running. The family are the customers and their job is to be difficult, not kind. Six characters, and they may come in any order:\n\nThe one who pays with a note far too large and waits for change. The one who asks what it is made of and what it cost you to make. The one who wants two and asks for a deal on the pair. The one who changes their mind after you have already typed the sale. The one who walks up while you are still serving somebody else and stands there. And the one who asks for something you do not sell.\n\nYour rules: you keep the tally, you handle the money, you answer every question yourself, and nobody rescues you. If you do not know an answer, the honest sentence is I do not know, and here is what I do know.\n\nThe deal on the pair is where the Think lane pays rent. You may say yes and you may say no, but you say it with a number: work out what that discount does to the profit line before you agree to it, out loud if you can. If you say yes, type the discounted price into the tally, because the tally has to hold what actually happened, not what you meant to charge.\n\nAnd time one whole sale, hello to change in hand, with the stopwatch. Write the seconds in your log. Then look at the two slowest parts of that sale and fix one of them before you pack up.",
+      "checklist": [
+        "At least five different difficult customers were played and none of them were let off easily",
+        "I timed one whole sale from hello to change in hand and wrote the seconds in the log",
+        "Somebody paid with a large note and got the right change out of the float",
+        "Somebody asked for a deal and I answered with a number rather than a shrug",
+        "Every rehearsal sale went through the tally, and I wrote down what happened when one was cancelled after it was typed"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s3-w07-build-07",
+      "title": "Bug diary",
+      "body": "One line each for what did not work the first time and what you tried. Today's usual suspects, none of which mean anything is broken.\n\nYou typed a price as a word and Python stopped with ValueError: could not convert string to float: 'two'. It is telling you the exact text it choked on, in quotes. Digits only in that slot.\n\nYou typed a count with a decimal point and got ValueError: invalid literal for int() with base 10: '2.5'. int refuses half of anything, which is correct here, because half a unit is not a thing you sell.\n\nYou typed a count and forgot the price, so the line held one piece instead of two, and asking for parts[1] gave IndexError: list index out of range. There was no second piece to fetch.\n\nThe lines under while True are not pushed in, and Python answers with a message beginning IndentationError: expected an indented block. Newer versions of Python add which line it was expecting the block after, which is a gift when the file is long. Four spaces, every line inside the loop.\n\nThe program stopped on the very word you meant to end it with: ValueError: invalid literal for int() with base 10: 'Done'. You typed Done with a capital D, and the test in the code is line == \"done\". Those are two different pieces of text as far as Python is concerned, so the line was never the stop word at all: it carried on and was read as a sale, and int cannot make a number out of a word. Type done all in small letters. If you would rather the program forgave it, the one line fix is if line.lower() == \"done\":, which stops it on done, Done and DONE alike.\n\nThe money looks wrong on screen: it prints 0.9 rather than 0.90, and 7.0 rather than 7.00. Nothing is broken. round hands back a number, and a number has no opinion about trailing zeros. If it bothers you at the stand, the one line fix is print(f\"cash in the box: {cash:.2f}\"), which asks for exactly two decimal places. The coins in the box are still the truth either way; the screen is the running check.\n\nThe micro:bit shows nothing: the battery pack switch, or the program went to a different micro:bit than the one on the table."
+    },
+    {
+      "kind": "artifact",
+      "id": "s3-w07-build-08",
+      "title": "Show it",
+      "prompt": "A photo of the dressed stand taken from where a customer stands, with the price list, a tag and the micro:bit sign all in shot. Plus your tally.py file. Plus a photo of the screen at the end of the rehearsal, showing the last units sold, cash in the box and profit so far lines.",
+      "accepts": ["photo", "code"]
+    },
+    {
+      "kind": "log",
+      "id": "s3-w07-build-09",
+      "variant": "maker"
+    }
+  ]
+}

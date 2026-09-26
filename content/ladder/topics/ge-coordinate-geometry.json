@@ -1,0 +1,3078 @@
+{
+  "id": "ge-coordinate-geometry",
+  "idea": {
+    "body": "Coordinates turn a picture into numbers. The distance between two points is the square root of the squared x-difference plus the squared y-difference. That comes straight from the Pythagorean theorem. The midpoint between two points averages their x-coordinates and averages their y-coordinates. The slope of the line through two points is the change in y over the change in x. Once you can find these three things, you can tell what shape a set of coordinates makes. Equal side lengths, right-angle slopes, or diagonals that share a midpoint each say something exact.",
+    "figure": {
+      "kind": "plane",
+      "alt": "Points A and B on the coordinate plane, with the segment between them.",
+      "spec": {
+        "range": 12,
+        "points": [
+          {
+            "x": 1,
+            "y": 1,
+            "label": "A"
+          },
+          {
+            "x": 7,
+            "y": 9,
+            "label": "B"
+          }
+        ],
+        "segments": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "Triangle ABC has A(0, 0), B(6, 0) and C(6, 8). Find its perimeter, and say what kind of triangle it is.",
+    "steps": [
+      "AB lies flat on the x-axis, length 6, and BC is vertical, length 8.",
+      "AC is the square root of 6 squared plus 8 squared, which is the square root of 100, or 10.",
+      "AB and BC meet at a right angle, since one is horizontal and the other vertical, so ABC is a right triangle.",
+      "The perimeter is 6 + 8 + 10 = 24."
+    ],
+    "figure": {
+      "kind": "plane",
+      "alt": "Triangle ABC on the coordinate plane.",
+      "spec": {
+        "range": 12,
+        "points": [
+          {
+            "x": 0,
+            "y": 0,
+            "label": "A"
+          },
+          {
+            "x": 6,
+            "y": 0,
+            "label": "B"
+          },
+          {
+            "x": 6,
+            "y": 8,
+            "label": "C"
+          }
+        ],
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            6,
+            8
+          ]
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "ge-coordinate-geometry-w1",
+      "name": "The right triangle under the segment",
+      "when": "Use this to find a distance by drawing the horizontal and vertical legs first.",
+      "steps": [
+        "A(2, 1) and B(8, 9) are two points on the plane.",
+        "Draw the horizontal leg from A to the point below B: length 8 minus 2, which is 6.",
+        "Draw the vertical leg up to B: length 9 minus 1, which is 8.",
+        "These two legs meet at a right angle, so use the Pythagorean theorem.",
+        "6 squared plus 8 squared is 36 plus 64, which is 100; the square root of 100 is 10."
+      ],
+      "example": "Find the distance between A(2, 1) and B(8, 9).",
+      "answer": "10",
+      "trap": "Subtracting the coordinates in the wrong order and losing track of which leg is which.",
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A and B on the plane, with the right triangle formed under the segment between them.",
+        "spec": {
+          "range": 10,
+          "points": [
+            {
+              "x": 2,
+              "y": 1,
+              "label": "A"
+            },
+            {
+              "x": 8,
+              "y": 9,
+              "label": "B"
+            },
+            {
+              "x": 8,
+              "y": 1
+            }
+          ],
+          "segments": [
+            [
+              [
+                2,
+                1
+              ],
+              [
+                8,
+                9
+              ]
+            ],
+            [
+              [
+                2,
+                1
+              ],
+              [
+                8,
+                1
+              ]
+            ],
+            [
+              [
+                8,
+                1
+              ],
+              [
+                8,
+                9
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ge-coordinate-geometry-w2",
+      "name": "The distance formula",
+      "when": "Use this to find a distance straight from the coordinates, without drawing a triangle.",
+      "steps": [
+        "P(-3, 4) and Q(5, -2) are two points on the plane.",
+        "Find the difference in x: 5 minus negative 3 is 8.",
+        "Find the difference in y: negative 2 minus 4 is negative 6.",
+        "Square both differences and add: 8 squared plus negative 6 squared is 64 plus 36, which is 100.",
+        "The distance is the square root of 100, which is 10."
+      ],
+      "example": "Find the distance between P(-3, 4) and Q(5, -2).",
+      "answer": "10",
+      "trap": "Forgetting to square the differences before adding, and adding the plain differences instead."
+    },
+    {
+      "id": "ge-coordinate-geometry-w3",
+      "name": "The midpoint as the average",
+      "when": "Use this to find the point exactly halfway between two given points.",
+      "steps": [
+        "M(-4, 6) and N(10, -2) are the endpoints of a segment.",
+        "Average the x-coordinates: (-4 + 10)/2 = 3.",
+        "Average the y-coordinates: (6 + (-2))/2 = 2.",
+        "The midpoint is the point (3, 2)."
+      ],
+      "example": "Find the midpoint of the segment from M(-4, 6) to N(10, -2).",
+      "answer": "(3, 2)",
+      "trap": "Adding the coordinates but forgetting to divide by two."
+    },
+    {
+      "id": "ge-coordinate-geometry-w4",
+      "name": "Slopes for parallel and perpendicular",
+      "when": "Use this to tell how two lines relate, or to check a right angle in a figure.",
+      "steps": [
+        "Line RS runs through R(0, 1) and S(4, 3); line TU runs through T(0, 5) and U(4, -3).",
+        "Find the first slope: change in y over change in x is (3 - 1)/(4 - 0) = 1/2.",
+        "Find the second slope: (-3 - 5)/(4 - 0) = -2.",
+        "Multiply the two slopes: 1/2 times -2 is -1.",
+        "Slopes that multiply to -1 belong to perpendicular lines."
+      ],
+      "example": "Line RS runs through R(0, 1) and S(4, 3). Line TU runs through T(0, 5) and U(4, -3). Are the lines parallel, perpendicular, or neither?",
+      "answer": "perpendicular",
+      "trap": "Checking whether the slopes are equal instead of checking whether their product is -1.",
+      "figure": {
+        "kind": "plane",
+        "alt": "Two lines on the plane, through R and S, and through T and U.",
+        "spec": {
+          "range": 6,
+          "points": [
+            {
+              "x": 0,
+              "y": 1,
+              "label": "R"
+            },
+            {
+              "x": 4,
+              "y": 3,
+              "label": "S"
+            },
+            {
+              "x": 0,
+              "y": 5,
+              "label": "T"
+            },
+            {
+              "x": 4,
+              "y": -3,
+              "label": "U"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                1
+              ],
+              [
+                4,
+                3
+              ]
+            ],
+            [
+              [
+                0,
+                5
+              ],
+              [
+                4,
+                -3
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "kind": "number",
+      "prompt": "Find the distance between A(0, 0) and B(3, 4).",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The distance formula is the square root of (x2 - x1) squared plus (y2 - y1) squared.",
+        "The differences are 3 and 4, and their squares add to 25.",
+        "The square root of 25 is 5."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Subtract the x-coordinates and the y-coordinates.",
+        "Square both differences, add them, then take the square root."
+      ],
+      "socraticHint": "What do you do to the two differences before adding them?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A and B on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 3,
+              "y": 4,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                4
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Find the distance between A(1, 0) and B(4, 4).",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Points A and B on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": 1,
+                "y": 0,
+                "label": "A"
+              },
+              {
+                "x": 4,
+                "y": 4,
+                "label": "B"
+              }
+            ],
+            "segments": [
+              [
+                [
+                  1,
+                  0
+                ],
+                [
+                  4,
+                  4
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p01",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Find the distance between A(1, 1) and B(7, 9).",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The distance formula is the square root of (x2 - x1) squared plus (y2 - y1) squared.",
+        "The differences are 6 and 8, and their squares add to 100.",
+        "The square root of 100 is 10."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Subtract the x-coordinates and the y-coordinates.",
+        "Square both differences, add them, then take the square root."
+      ],
+      "socraticHint": "What do you do to the two differences before adding them?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A and B on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 1,
+              "y": 1,
+              "label": "A"
+            },
+            {
+              "x": 7,
+              "y": 9,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                7,
+                9
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Find the distance between A(2, 1) and B(8, 9).",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Points A and B on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": 2,
+                "y": 1,
+                "label": "A"
+              },
+              {
+                "x": 8,
+                "y": 9,
+                "label": "B"
+              }
+            ],
+            "segments": [
+              [
+                [
+                  2,
+                  1
+                ],
+                [
+                  8,
+                  9
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p02",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Find the distance between A(2, -1) and B(-4, 7).",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The distance formula is the square root of (x2 - x1) squared plus (y2 - y1) squared.",
+        "The differences are -6 and 8, and their squares add to 100.",
+        "The square root of 100 is 10."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Subtract the x-coordinates and the y-coordinates.",
+        "Square both differences, add them, then take the square root."
+      ],
+      "socraticHint": "What do you do to the two differences before adding them?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A and B on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 2,
+              "y": -1,
+              "label": "A"
+            },
+            {
+              "x": -4,
+              "y": 7,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            [
+              [
+                2,
+                -1
+              ],
+              [
+                -4,
+                7
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Find the distance between A(3, -1) and B(-3, 7).",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Points A and B on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": 3,
+                "y": -1,
+                "label": "A"
+              },
+              {
+                "x": -3,
+                "y": 7,
+                "label": "B"
+              }
+            ],
+            "segments": [
+              [
+                [
+                  3,
+                  -1
+                ],
+                [
+                  -3,
+                  7
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p03",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Find the distance between P(0, 0) and Q(6, 8).",
+      "options": [
+        "10",
+        "100",
+        "12",
+        "20"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The differences are 6 and 8, squared and added give 100.",
+        "The square root of 100 is 10.",
+        "Leaving the answer un-rooted, or doubling it, gives the wrong length."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Add the squared differences first.",
+        "Do not forget to take the square root at the end."
+      ],
+      "socraticHint": "Did you take the square root of the sum, or leave it un-rooted?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "figure": {
+        "kind": "plane",
+        "alt": "Points P and Q on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "P"
+            },
+            {
+              "x": 6,
+              "y": 8,
+              "label": "Q"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                8
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Find the distance between P(0, -1) and Q(6, 7).",
+        "options": [
+          "100",
+          "10",
+          "13",
+          "20"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Points P and Q on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "P"
+              },
+              {
+                "x": 6,
+                "y": 7,
+                "label": "Q"
+              }
+            ],
+            "segments": [
+              [
+                [
+                  0,
+                  -1
+                ],
+                [
+                  6,
+                  7
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p04",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Find the x-coordinate of the midpoint of the segment from A(0, 0) to B(6, 8).",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "The midpoint's x-coordinate is the average of the two x-coordinates.",
+        "(0 + 6) / 2 = 3.",
+        "The midpoint's x-coordinate is 3."
+      ],
+      "useAgain": "when you need the point exactly halfway between two coordinates.",
+      "hints": [
+        "Add the two x-coordinates.",
+        "Divide that sum by 2."
+      ],
+      "socraticHint": "What do you average to get the midpoint's x-coordinate?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the y-coordinate of the midpoint of the segment from A(0, 0) to B(6, 8).",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p05",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Find the x-coordinate of the midpoint of the segment from A(-3, 5) to B(7, -1).",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The midpoint's x-coordinate is the average of the two x-coordinates.",
+        "(-3 + 7) / 2 = 2.",
+        "The midpoint's x-coordinate is 2."
+      ],
+      "useAgain": "when you need the point exactly halfway between two coordinates.",
+      "hints": [
+        "Add the two x-coordinates.",
+        "Divide that sum by 2."
+      ],
+      "socraticHint": "What do you average to get the midpoint's x-coordinate?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the y-coordinate of the midpoint of the segment from A(-3, 5) to B(7, -1).",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p06",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Find the x-coordinate of the midpoint of the segment from A(2, 2) to B(2, 10).",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "The midpoint's x-coordinate is the average of the two x-coordinates.",
+        "(2 + 2) / 2 = 2.",
+        "The midpoint's x-coordinate is 2."
+      ],
+      "useAgain": "when you need the point exactly halfway between two coordinates.",
+      "hints": [
+        "Add the two x-coordinates.",
+        "Divide that sum by 2."
+      ],
+      "socraticHint": "What do you average to get the midpoint's x-coordinate?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the y-coordinate of the midpoint of the segment from A(2, 2) to B(2, 10).",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p07",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Find the x-coordinate of the midpoint of the segment from A(-4, -4) to B(4, 4).",
+      "answer": {
+        "kind": "number",
+        "value": "0"
+      },
+      "explanation": [
+        "The midpoint's x-coordinate is the average of the two x-coordinates.",
+        "(-4 + 4) / 2 = 0.",
+        "The midpoint's x-coordinate is 0."
+      ],
+      "useAgain": "when you need the point exactly halfway between two coordinates.",
+      "hints": [
+        "Add the two x-coordinates.",
+        "Divide that sum by 2."
+      ],
+      "socraticHint": "What do you average to get the midpoint's x-coordinate?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the y-coordinate of the midpoint of the segment from A(-4, -4) to B(4, 4).",
+        "answer": {
+          "kind": "number",
+          "value": "0"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p08",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Find the slope of the line through A(1, 1) and B(4, 7).",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Slope is the change in y over the change in x.",
+        "The change in y is 6 and the change in x is 3.",
+        "6 / 3 = 2."
+      ],
+      "useAgain": "when you need the steepness of the line through two points.",
+      "hints": [
+        "Subtract the y-coordinates for the rise.",
+        "Subtract the x-coordinates, in the same order, for the run."
+      ],
+      "socraticHint": "Which order do you subtract the coordinates in, for both rise and run?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A and B on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 1,
+              "y": 1,
+              "label": "A"
+            },
+            {
+              "x": 4,
+              "y": 7,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                4,
+                7
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Find the slope of the line through A(1, 3) and B(4, 9).",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Points A and B on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": 1,
+                "y": 3,
+                "label": "A"
+              },
+              {
+                "x": 4,
+                "y": 9,
+                "label": "B"
+              }
+            ],
+            "segments": [
+              [
+                [
+                  1,
+                  3
+                ],
+                [
+                  4,
+                  9
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p09",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Find the slope of the line through A(-2, 5) and B(2, -3).",
+      "answer": {
+        "kind": "number",
+        "value": "-2"
+      },
+      "explanation": [
+        "Slope is the change in y over the change in x.",
+        "The change in y is -8 and the change in x is 4.",
+        "-8 / 4 = -2."
+      ],
+      "useAgain": "when you need the steepness of the line through two points.",
+      "hints": [
+        "Subtract the y-coordinates for the rise.",
+        "Subtract the x-coordinates, in the same order, for the run."
+      ],
+      "socraticHint": "Which order do you subtract the coordinates in, for both rise and run?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A and B on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": -2,
+              "y": 5,
+              "label": "A"
+            },
+            {
+              "x": 2,
+              "y": -3,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            [
+              [
+                -2,
+                5
+              ],
+              [
+                2,
+                -3
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Find the slope of the line through A(-2, 7) and B(2, -1).",
+        "answer": {
+          "kind": "number",
+          "value": "-2"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Points A and B on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": -2,
+                "y": 7,
+                "label": "A"
+              },
+              {
+                "x": 2,
+                "y": -1,
+                "label": "B"
+              }
+            ],
+            "segments": [
+              [
+                [
+                  -2,
+                  7
+                ],
+                [
+                  2,
+                  -1
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p10",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Find the slope of the line through A(0, -3) and B(6, 0).",
+      "answer": {
+        "kind": "number",
+        "value": "0.5"
+      },
+      "explanation": [
+        "Slope is the change in y over the change in x.",
+        "The change in y is 3 and the change in x is 6.",
+        "3 / 6 = 0.5."
+      ],
+      "useAgain": "when you need the steepness of the line through two points.",
+      "hints": [
+        "Subtract the y-coordinates for the rise.",
+        "Subtract the x-coordinates, in the same order, for the run."
+      ],
+      "socraticHint": "Which order do you subtract the coordinates in, for both rise and run?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A and B on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": -3,
+              "label": "A"
+            },
+            {
+              "x": 6,
+              "y": 0,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                -3
+              ],
+              [
+                6,
+                0
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Find the slope of the line through A(0, -1) and B(6, 2).",
+        "answer": {
+          "kind": "number",
+          "value": "0.5"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Points A and B on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": 0,
+                "y": -1,
+                "label": "A"
+              },
+              {
+                "x": 6,
+                "y": 2,
+                "label": "B"
+              }
+            ],
+            "segments": [
+              [
+                [
+                  0,
+                  -1
+                ],
+                [
+                  6,
+                  2
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p11",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "A vertical line through A(3, 4) and B(3, -2) has no defined slope.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Slope is the change in y over the change in x.",
+        "A vertical line has zero change in x, and dividing by zero is undefined.",
+        "So the claim is true."
+      ],
+      "useAgain": "when you need the steepness of the line through two points.",
+      "hints": [
+        "Find the change in x between the two points.",
+        "What happens when you divide by zero?"
+      ],
+      "socraticHint": "What is the change in x for a vertical line?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A and B on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 3,
+              "y": 4,
+              "label": "A"
+            },
+            {
+              "x": 3,
+              "y": -2,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            [
+              [
+                3,
+                4
+              ],
+              [
+                3,
+                -2
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "A horizontal line through C(1, 5) and D(8, 5) has no defined slope.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p12",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "The midpoint formula averages the two x-coordinates and averages the two y-coordinates.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The midpoint's x-coordinate is the average of the two x-coordinates.",
+        "The midpoint's y-coordinate is the average of the two y-coordinates.",
+        "So the claim is true."
+      ],
+      "useAgain": "when you need the point exactly halfway between two coordinates.",
+      "hints": [
+        "Write out the midpoint formula.",
+        "Check what operation it uses on each pair of coordinates."
+      ],
+      "socraticHint": "What operation does the midpoint formula use?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "The midpoint formula adds the two x-coordinates and adds the two y-coordinates, without dividing.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p13",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Which formula correctly gives the distance between (x1, y1) and (x2, y2)?",
+      "options": [
+        "(x2 - x1) + (y2 - y1)",
+        "sqrt((x2 - x1) + (y2 - y1))",
+        "sqrt((x2 - x1)^2 + (y2 - y1)^2)",
+        "(x2 - x1)^2 + (y2 - y1)^2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "The distance formula squares both differences before adding them.",
+        "It then takes the square root of that sum.",
+        "Adding without squaring, or forgetting the square root, are the common slips."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Square both differences before adding.",
+        "Do not forget the square root at the very end."
+      ],
+      "socraticHint": "Does the formula square the differences before or after adding them?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Which formula correctly gives the slope between (x1, y1) and (x2, y2)?",
+        "options": [
+          "(x2 - x1) / (y2 - y1)",
+          "(y2 - y1) times (x2 - x1)",
+          "(y2 + y1) / (x2 + x1)",
+          "(y2 - y1) / (x2 - x1)"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p14",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Find the distance between A(-3, 2) and B(5, 2).",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Both points share the same y-coordinate, 2, so they lie on a horizontal line.",
+        "The distance is just the difference in x-coordinates: 5 - (-3) = 8.",
+        "The distance is 8."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Check whether the two points share an x-coordinate or a y-coordinate.",
+        "On a horizontal or vertical line, the distance is just the difference of the other coordinate."
+      ],
+      "socraticHint": "Do these two points lie on a horizontal or a vertical line?",
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Find the distance between C(4, -1) and D(4, 6).",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p15",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "M(4, 3) is the midpoint of segment AB. A is at (1, 1). Find the x-coordinate of B.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "The midpoint's x-coordinate is the average of A's and B's x-coordinates.",
+        "4 = (1 + x) / 2, so 1 + x = 8.",
+        "x = 7."
+      ],
+      "useAgain": "when you need the point exactly halfway between two coordinates.",
+      "hints": [
+        "Double the midpoint's x-coordinate to undo the averaging.",
+        "Subtract A's x-coordinate from that doubled value."
+      ],
+      "socraticHint": "What do you do to the midpoint's coordinate to undo the averaging?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "M(-2, 5) is the midpoint of segment AB. A is at (3, 1). Find the x-coordinate of B.",
+        "answer": {
+          "kind": "number",
+          "value": "-7"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p16",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "M(4, 3) is the midpoint of segment AB. A is at (1, 1). Find the y-coordinate of B.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "The midpoint's y-coordinate is the average of A's and B's y-coordinates.",
+        "3 = (1 + y) / 2, so 1 + y = 6.",
+        "y = 5."
+      ],
+      "useAgain": "when you need the point exactly halfway between two coordinates.",
+      "hints": [
+        "Double the midpoint's y-coordinate to undo the averaging.",
+        "Subtract A's y-coordinate from that doubled value."
+      ],
+      "socraticHint": "What do you do to the midpoint's coordinate to undo the averaging?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "M(-2, 5) is the midpoint of segment AB. A is at (3, 1). Find the y-coordinate of B.",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p17",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A line through A(2, 1) has slope 3. It passes through B(4, y). Find y.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "Slope is the change in y over the change in x.",
+        "3 = (y - 1) / (4 - 2), so y - 1 = 6.",
+        "y = 7."
+      ],
+      "useAgain": "when you need the steepness of the line through two points.",
+      "hints": [
+        "Multiply the slope by the change in x.",
+        "Add that to A's y-coordinate."
+      ],
+      "socraticHint": "What do you multiply the slope by, to find the change in y?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A line through A(1, 2) has slope -2. It passes through B(5, y). Find y.",
+        "answer": {
+          "kind": "number",
+          "value": "-6"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p18",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Find the distance between A(0, 0) and B(3, 5).",
+      "options": [
+        "sqrt(34)",
+        "34",
+        "sqrt(15)",
+        "8"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "The differences are 3 and 5.",
+        "3 squared plus 5 squared is 9 + 25, which is 34.",
+        "34 is not a perfect square, so the distance stays as sqrt(34)."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Square and add the two differences.",
+        "If that sum is not a perfect square, leave the answer as a square root."
+      ],
+      "socraticHint": "Is 34 a perfect square?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "figure": {
+        "kind": "plane",
+        "alt": "Points A and B on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 3,
+              "y": 5,
+              "label": "B"
+            }
+          ],
+          "segments": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                5
+              ]
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Find the distance between A(0, 0) and B(2, 5).",
+        "options": [
+          "29",
+          "sqrt(29)",
+          "sqrt(13)",
+          "7"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Points A and B on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "A"
+              },
+              {
+                "x": 2,
+                "y": 5,
+                "label": "B"
+              }
+            ],
+            "segments": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  2,
+                  5
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p19",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Find the square of the distance between A(1, 2) and B(6, 5).",
+      "answer": {
+        "kind": "number",
+        "value": "34"
+      },
+      "explanation": [
+        "The differences are 5 and 3.",
+        "5 squared plus 3 squared is 25 + 9.",
+        "The squared distance is 34."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Square both coordinate differences.",
+        "Add the two squares together; do not take a square root."
+      ],
+      "socraticHint": "Does this question ask for the distance, or the distance squared?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Find the square of the distance between A(2, 1) and B(7, 4).",
+        "answer": {
+          "kind": "number",
+          "value": "34"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p20",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Triangle ABC has A(0, 0), B(4, 0) and C(0, 3). Is it a right triangle?",
+      "options": [
+        "No, none of the angles are 90 degrees",
+        "Yes, but the right angle is at B",
+        "Yes, the right angle is at A, since AB is horizontal and AC is vertical",
+        "Yes, but the right angle is at C"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "AB runs along the x-axis, and AC runs along the y-axis.",
+        "A horizontal segment and a vertical segment meeting at A are perpendicular.",
+        "So the right angle is at A."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "Check which two sides meet at each vertex.",
+        "A horizontal and a vertical segment are always perpendicular."
+      ],
+      "socraticHint": "Which two sides are horizontal and vertical here?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "figure": {
+        "kind": "plane",
+        "alt": "Triangle ABC on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 4,
+              "y": 0,
+              "label": "B"
+            },
+            {
+              "x": 0,
+              "y": 3,
+              "label": "C"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              0,
+              3
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Triangle DEF has D(0, 0), E(5, 0) and F(5, 4). Is it a right triangle?",
+        "options": [
+          "No, none of the angles are 90 degrees",
+          "Yes, but the right angle is at D",
+          "Yes, but the right angle is at F",
+          "Yes, the right angle is at E, since DE is horizontal and EF is vertical"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Triangle DEF on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "D"
+              },
+              {
+                "x": 5,
+                "y": 0,
+                "label": "E"
+              },
+              {
+                "x": 5,
+                "y": 4,
+                "label": "F"
+              }
+            ],
+            "polygon": [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                4
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p21",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "Two lines with slopes 2 and -1/2 are perpendicular.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Perpendicular lines have slopes that multiply to -1.",
+        "2 times -1/2 is -1.",
+        "So the claim is true."
+      ],
+      "useAgain": "when you need the steepness of the line through two points.",
+      "hints": [
+        "Multiply the two slopes together.",
+        "Compare the product to -1."
+      ],
+      "socraticHint": "What do the slopes of perpendicular lines multiply to?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two lines with slopes 3 and 1/3 are perpendicular.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p22",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A line has slope 4. A perpendicular line has what slope, as a fraction?",
+      "answer": {
+        "kind": "number",
+        "value": "-0.25"
+      },
+      "explanation": [
+        "Perpendicular slopes multiply to -1.",
+        "So the perpendicular slope is -1 divided by 4.",
+        "That is -1/4."
+      ],
+      "useAgain": "when you need the steepness of the line through two points.",
+      "hints": [
+        "Perpendicular slopes are negative reciprocals of each other.",
+        "Flip the fraction and change its sign."
+      ],
+      "socraticHint": "What operation turns one slope into its perpendicular partner?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A line has slope -3/5. A perpendicular line has what slope, as a fraction?",
+        "answer": {
+          "kind": "number",
+          "value": "5/3"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p23",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A drone starts at A(2, 3) and flies to B(2, 11) in a straight line. Find the distance it flies, in grid units.",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "Both points share the same x-coordinate, 2, so the path is vertical.",
+        "The distance is the difference in y-coordinates: 11 - 3 = 8.",
+        "The drone flies 8 grid units."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Check whether the path is horizontal or vertical.",
+        "On a vertical path, the distance is just the difference in y-coordinates."
+      ],
+      "socraticHint": "Do these two points share an x-coordinate or a y-coordinate?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A drone starts at A(-3, 5) and flies to B(9, 5) in a straight line. Find the distance it flies, in grid units.",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p24",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A robot's charging station is exactly halfway between two docking bays at (2, 6) and (10, 2). Find the y-coordinate of the charging station.",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The midpoint's y-coordinate is the average of the two y-coordinates.",
+        "(6 + 2) / 2 = 4.",
+        "The charging station's y-coordinate is 4."
+      ],
+      "useAgain": "when you need the point exactly halfway between two coordinates.",
+      "hints": [
+        "Add the two y-coordinates.",
+        "Divide that sum by 2."
+      ],
+      "socraticHint": "What do you average to find the halfway point's y-coordinate?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A robot's charging station is exactly halfway between two docking bays at (1, 9) and (7, 3). Find the y-coordinate of the charging station.",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p25",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A rover's path from A(1, 2) to B(9, 6) has a constant slope. Find that slope, as a fraction in lowest terms.",
+      "answer": {
+        "kind": "number",
+        "value": "0.5"
+      },
+      "explanation": [
+        "Slope is the change in y over the change in x.",
+        "The changes are 4 and 8.",
+        "4/8 simplifies to 1/2."
+      ],
+      "useAgain": "when you need the steepness of the line through two points.",
+      "hints": [
+        "Subtract the coordinates for the rise and the run.",
+        "Simplify the resulting fraction."
+      ],
+      "socraticHint": "Does the fraction 4/8 simplify further?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A rover's path from A(2, 1) to B(8, 9) has a constant slope. Find that slope, as a fraction in lowest terms.",
+        "answer": {
+          "kind": "number",
+          "value": "4/3"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p26",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Quadrilateral ABCD has A(0, 0), B(4, 0), C(6, 3) and D(2, 3). Which fact shows ABCD is a parallelogram?",
+      "options": [
+        "The midpoint of diagonal AC equals the midpoint of diagonal BD",
+        "All four sides have the same length",
+        "AB and CD are both vertical",
+        "The diagonals are the same length"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "A quadrilateral is a parallelogram exactly when its diagonals bisect each other.",
+        "The midpoint of AC is (3, 1.5), and the midpoint of BD is also (3, 1.5).",
+        "Equal side lengths, vertical sides, or equal diagonals are not the test being used here."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "Find the midpoint of each diagonal.",
+        "Compare the two midpoints."
+      ],
+      "socraticHint": "What must be true about a parallelogram's two diagonals?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "figure": {
+        "kind": "plane",
+        "alt": "Quadrilateral ABCD on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 4,
+              "y": 0,
+              "label": "B"
+            },
+            {
+              "x": 6,
+              "y": 3,
+              "label": "C"
+            },
+            {
+              "x": 2,
+              "y": 3,
+              "label": "D"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Quadrilateral PQRS has P(0, 0), Q(5, 0), R(8, 4) and S(3, 4). Which fact shows PQRS is a parallelogram?",
+        "options": [
+          "All four sides have the same length",
+          "The midpoint of diagonal PR equals the midpoint of diagonal QS",
+          "PQ and RS are both vertical",
+          "The diagonals are the same length"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Quadrilateral PQRS on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "P"
+              },
+              {
+                "x": 5,
+                "y": 0,
+                "label": "Q"
+              },
+              {
+                "x": 8,
+                "y": 4,
+                "label": "R"
+              },
+              {
+                "x": 3,
+                "y": 4,
+                "label": "S"
+              }
+            ],
+            "polygon": [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                0
+              ],
+              [
+                8,
+                4
+              ],
+              [
+                3,
+                4
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p27",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A game map has a treasure at the midpoint of the path from (0, 0) to (14, 22). Find the x-coordinate of the treasure.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "The midpoint's x-coordinate is the average of the two x-coordinates.",
+        "(0 + 14) / 2 = 7.",
+        "The treasure's x-coordinate is 7."
+      ],
+      "useAgain": "when you need the point exactly halfway between two coordinates.",
+      "hints": [
+        "Add the two x-coordinates.",
+        "Divide that sum by 2."
+      ],
+      "socraticHint": "What do you average to find the midpoint's x-coordinate?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A game map has a treasure at the midpoint of the path from (0, 0) to (18, 10). Find the x-coordinate of the treasure.",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p28",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A 3D printer's build plate has corners at (0, 0) and (20, 15). Find the distance across the diagonal, in grid units.",
+      "answer": {
+        "kind": "number",
+        "value": "25"
+      },
+      "explanation": [
+        "The differences are 20 and 15.",
+        "20 squared plus 15 squared is 400 + 225, which is 625.",
+        "The square root of 625 is 25."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Square and add the two differences.",
+        "Take the square root of that sum."
+      ],
+      "socraticHint": "Do 20, 15 and the diagonal form a familiar triple?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A 3D printer's build plate has corners at (0, 0) and (9, 12). Find the distance across the diagonal, in grid units.",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p29",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Two lines cross at right angles. One has slope 5. Find the other line's slope, as a fraction.",
+      "answer": {
+        "kind": "number",
+        "value": "-0.2"
+      },
+      "explanation": [
+        "Perpendicular slopes multiply to -1.",
+        "So the other slope is -1 divided by 5.",
+        "That is -1/5."
+      ],
+      "useAgain": "when you need the steepness of the line through two points.",
+      "hints": [
+        "Flip the given slope and change its sign.",
+        "That gives the perpendicular slope."
+      ],
+      "socraticHint": "What operation turns a slope into its perpendicular partner?",
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two lines cross at right angles. One has slope -2/3. Find the other line's slope, as a fraction.",
+        "answer": {
+          "kind": "number",
+          "value": "1.5"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p30",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Quadrilateral ABCD has A(0, 0), B(4, 0), C(4, 4) and D(0, 4). What is the most precise name for this shape?",
+      "options": [
+        "Rectangle",
+        "Rhombus",
+        "Square",
+        "Parallelogram"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "All four sides have length 4, so it is a rhombus.",
+        "All four angles are right angles, since every side is horizontal or vertical, so it is also a rectangle.",
+        "A shape that is both a rectangle and a rhombus is a square, the most precise name."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "Check the side lengths and the angles.",
+        "The most precise name uses both facts at once."
+      ],
+      "socraticHint": "Is this shape both equal-sided and right-angled?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "figure": {
+        "kind": "plane",
+        "alt": "Quadrilateral ABCD on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 4,
+              "y": 0,
+              "label": "B"
+            },
+            {
+              "x": 4,
+              "y": 4,
+              "label": "C"
+            },
+            {
+              "x": 0,
+              "y": 4,
+              "label": "D"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Quadrilateral PQRS has P(0, 0), Q(6, 0), R(6, 3) and S(0, 3). What is the most precise name for this shape?",
+        "options": [
+          "Square",
+          "Rhombus",
+          "Parallelogram",
+          "Rectangle"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Quadrilateral PQRS on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "P"
+              },
+              {
+                "x": 6,
+                "y": 0,
+                "label": "Q"
+              },
+              {
+                "x": 6,
+                "y": 3,
+                "label": "R"
+              },
+              {
+                "x": 0,
+                "y": 3,
+                "label": "S"
+              }
+            ],
+            "polygon": [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                3
+              ],
+              [
+                0,
+                3
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p31",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Triangle ABC has A(0, 0), B(4, 0) and C(2, 5). What kind of triangle is it, by its side lengths?",
+      "options": [
+        "Isosceles",
+        "Equilateral",
+        "Scalene",
+        "Right"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "AB has length 4.",
+        "AC and BC both have length the square root of 4 squared plus 5 squared, which is the same for both.",
+        "Two equal sides and one different side make it isosceles."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "Find all three side lengths using the distance formula.",
+        "Compare them to see which, if any, match."
+      ],
+      "socraticHint": "Do AC and BC come out to the same length here?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "figure": {
+        "kind": "plane",
+        "alt": "Triangle ABC on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 4,
+              "y": 0,
+              "label": "B"
+            },
+            {
+              "x": 2,
+              "y": 5,
+              "label": "C"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              2,
+              5
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Triangle DEF has D(0, 0), E(6, 0) and F(3, 4). What kind of triangle is it, by its side lengths?",
+        "options": [
+          "Equilateral",
+          "Isosceles",
+          "Scalene",
+          "Right"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Triangle DEF on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "D"
+              },
+              {
+                "x": 6,
+                "y": 0,
+                "label": "E"
+              },
+              {
+                "x": 3,
+                "y": 4,
+                "label": "F"
+              }
+            ],
+            "polygon": [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                4
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p32",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Triangle ABC has A(0, 0), B(6, 0) and C(6, 8). Find its perimeter.",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "AB has length 6, and BC has length 8, both read straight from the grid.",
+        "AC has length the square root of 6 squared plus 8 squared, which is 10.",
+        "The perimeter is 6 + 8 + 10 = 24."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "Find each side's length; two of them are easy grid distances.",
+        "Add all three side lengths together."
+      ],
+      "socraticHint": "Which two sides can you read straight off the grid, without the distance formula?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "figure": {
+        "kind": "plane",
+        "alt": "Triangle ABC on the coordinate plane.",
+        "spec": {
+          "range": 12,
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 6,
+              "y": 0,
+              "label": "B"
+            },
+            {
+              "x": 6,
+              "y": 8,
+              "label": "C"
+            }
+          ],
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      "variant": {
+        "prompt": "Triangle DEF has D(0, 0), E(9, 0) and F(9, 12). Find its perimeter.",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        },
+        "figure": {
+          "kind": "plane",
+          "alt": "Triangle DEF on the coordinate plane.",
+          "spec": {
+            "range": 12,
+            "points": [
+              {
+                "x": 0,
+                "y": 0,
+                "label": "D"
+              },
+              {
+                "x": 9,
+                "y": 0,
+                "label": "E"
+              },
+              {
+                "x": 9,
+                "y": 12,
+                "label": "F"
+              }
+            ],
+            "polygon": [
+              [
+                0,
+                0
+              ],
+              [
+                9,
+                0
+              ],
+              [
+                9,
+                12
+              ]
+            ]
+          }
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p33",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Rectangle ABCD has A(0, 0), B(5, 0), C(5, 12) and D(0, 12). Find the length of diagonal AC.",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "The diagonal's differences are 5 and 12.",
+        "5 squared plus 12 squared is 25 + 144, which is 169.",
+        "The square root of 169 is 13."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Use the distance formula between the two opposite corners.",
+        "Check whether the result under the square root is a perfect square."
+      ],
+      "socraticHint": "Do 5, 12 and 13 form a familiar Pythagorean triple?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Rectangle PQRS has P(0, 0), Q(8, 0), R(8, 15) and S(0, 15). Find the length of diagonal PR.",
+        "answer": {
+          "kind": "number",
+          "value": "17"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p34",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A triangle has vertices at (1, 1), (1, 9) and (7, 1). Find its area, in square units.",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "Two sides are vertical and horizontal, from the grid: length 8 and length 6.",
+        "That makes this a right triangle with those two sides as legs.",
+        "Its area is half of 8 times 6, which is 24 square units."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "Check whether two of the sides are horizontal and vertical.",
+        "If so, treat them as the base and height of a right triangle."
+      ],
+      "socraticHint": "Are two of the sides horizontal and vertical here?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A triangle has vertices at (2, 2), (2, 10), (10, 2). Find its area, in square units.",
+        "answer": {
+          "kind": "number",
+          "value": "32"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p35",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "order",
+      "prompt": "Put these steps in order to prove triangle ABC is a right triangle using the distance formula: A(0, 0), B(4, 0), C(0, 3).",
+      "items": [
+        "Check the converse of the Pythagorean theorem: does the sum of the two shorter sides squared equal the longest side squared?",
+        "Since the two sides match, triangle ABC is a right triangle.",
+        "Find all three side lengths: AB = 4 and AC = 3. BC is the square root of 4 squared plus 3 squared, which is 5.",
+        "4 squared plus 3 squared is 16 + 9, which is 25, and 5 squared is also 25."
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          2,
+          0,
+          3,
+          1
+        ]
+      },
+      "explanation": [
+        "The proof starts by finding all three side lengths with the distance formula.",
+        "The Pythagorean converse checks whether the two shorter sides squared add to the longest squared.",
+        "When they match, as here, the triangle is confirmed to be right."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "Start by finding every side length.",
+        "The last step should state the conclusion."
+      ],
+      "socraticHint": "What theorem's converse tests whether a triangle is right, once you know all three sides?",
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Put these steps in order to prove triangle DEF is a right triangle using the distance formula: D(0, 0), E(5, 0), F(0, 12).",
+        "items": [
+          "Since the two sides match, triangle DEF is a right triangle.",
+          "Find all three side lengths: DE = 5 and DF = 12. EF is the square root of 5 squared plus 12 squared, which is 13.",
+          "Check the converse of the Pythagorean theorem: does the sum of the two shorter sides squared equal the longest side squared?",
+          "5 squared plus 12 squared is 25 + 144, which is 169, and 13 squared is also 169."
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            3,
+            0
+          ]
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p36",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "To prove quadrilateral ABCD is a rectangle using slopes, which reason is needed beyond showing it is a parallelogram?",
+      "options": [
+        "All four sides have the same slope",
+        "The two diagonals have the same slope",
+        "Two adjacent sides have slopes that multiply to -1, showing a right angle",
+        "Opposite sides are the same length"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "A parallelogram becomes a rectangle exactly when it also has a right angle.",
+        "Perpendicular adjacent sides have slopes multiplying to -1.",
+        "Equal side lengths alone give a rhombus, not necessarily a rectangle."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "Think about what extra property turns a parallelogram into a rectangle.",
+        "That property is about the angle between adjacent sides."
+      ],
+      "socraticHint": "What extra fact, beyond being a parallelogram, makes a shape a rectangle?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "To prove quadrilateral PQRS is a rhombus using distances, which reason is needed beyond showing it is a parallelogram?",
+        "options": [
+          "All four angles are right angles",
+          "The two diagonals have the same length",
+          "Opposite sides are parallel",
+          "Two adjacent sides have equal length"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p37",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A game character walks from (2, 3) to (2, 9), then from (2, 9) to (10, 9). Find the total distance walked, in grid units.",
+      "answer": {
+        "kind": "number",
+        "value": "14"
+      },
+      "explanation": [
+        "The first leg is vertical, length 9 - 3 = 6.",
+        "The second leg is horizontal, length 10 - 2 = 8.",
+        "The total distance is 6 + 8 = 14."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Find each leg's length separately using the grid.",
+        "Add the two leg lengths together."
+      ],
+      "socraticHint": "Are both legs horizontal or vertical, so you can read them off the grid?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A game character walks from (1, 4) to (1, 11), then from (1, 11) to (13, 11). Find the total distance walked, in grid units.",
+        "answer": {
+          "kind": "number",
+          "value": "19"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p38",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A line segment has one endpoint at (3, -2) and midpoint (7, 1). Find the sum of the other endpoint's coordinates.",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "The other endpoint's x-coordinate is 2 times 7 minus 3, which is 11.",
+        "Its y-coordinate is 2 times 1 minus -2, which is 4.",
+        "The sum of the coordinates is 11 + 4 = 15."
+      ],
+      "useAgain": "when you need the point exactly halfway between two coordinates.",
+      "hints": [
+        "Find the missing endpoint's x-coordinate and y-coordinate separately.",
+        "Add those two coordinates together at the end."
+      ],
+      "socraticHint": "What formula finds a missing endpoint from one endpoint and the midpoint?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A line segment has one endpoint at (-1, 4) and midpoint (2, 0). Find the sum of the other endpoint's coordinates.",
+        "answer": {
+          "kind": "number",
+          "value": "1"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p39",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Points A(1, 2), B(5, 2) and C(5, 8) are three corners of a rectangle. Find the fourth corner's coordinates, given as the sum of its two coordinates.",
+      "answer": {
+        "kind": "number",
+        "value": "9"
+      },
+      "explanation": [
+        "In a rectangle, the fourth corner shares its x-coordinate with A and its y-coordinate with C.",
+        "That makes the fourth corner (1, 8).",
+        "The sum of its coordinates is 1 + 8 = 9."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "The fourth corner matches A's x-coordinate and C's y-coordinate.",
+        "Add those two coordinates together."
+      ],
+      "socraticHint": "Which corner shares an x-coordinate with the fourth corner, and which shares a y-coordinate?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Points D(2, 1), E(6, 1) and F(6, 9) are three corners of a rectangle. Find the fourth corner's coordinates, given as the sum of its two coordinates.",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p40",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "truefalse",
+      "prompt": "Triangle ABC has A(0, 0), B(4, 0) and C(2, 3). Since AC and BC are not equal, the triangle cannot be isosceles.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "AC has length the square root of 2 squared plus 3 squared.",
+        "BC has length the square root of 2 squared plus 3 squared too, since C is centered above AB.",
+        "AC and BC are actually equal, so the claim is false."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "Find AC and BC using the distance formula.",
+        "Check whether they really are unequal before concluding."
+      ],
+      "socraticHint": "Are AC and BC actually different lengths here?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Triangle DEF has D(0, 0), E(6, 0) and F(3, 4). Since DF and EF are not equal, the triangle cannot be isosceles.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p41",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A square has three corners at (1, 1), (1, 5) and (5, 5). Find the sum of the fourth corner's coordinates.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "The sides shown are horizontal and vertical, each of length 4.",
+        "The fourth corner shares its x-coordinate with (5, 5) and its y-coordinate with (1, 1), giving (5, 1).",
+        "The sum of its coordinates is 5 + 1 = 6."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "Find which x-coordinate and which y-coordinate the fourth corner must share.",
+        "Add those two coordinates together."
+      ],
+      "socraticHint": "Which existing corner shares an x-coordinate with the missing one, and which shares a y-coordinate?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A square has three corners at (2, 2), (2, 7), (7, 7). Find the sum of the fourth corner's coordinates.",
+        "answer": {
+          "kind": "number",
+          "value": "9"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p42",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A triangle has vertices A(0, 0), B(8, 2) and C(8, 10). Find the length of the median from A to the midpoint of BC.",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The midpoint of BC is (8, 6).",
+        "The distance from A(0, 0) to (8, 6) has differences 8 and 6, squared and added: 64 + 36 = 100.",
+        "The square root of 100 is 10."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Find the midpoint of BC first.",
+        "Then find the distance from A to that midpoint."
+      ],
+      "socraticHint": "What is the midpoint of BC?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A triangle has vertices A(0, 0), B(12, 3) and C(12, 15). Find the length of the median from A to the midpoint of BC.",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p43",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A rhombus's diagonals meet at the origin. One runs from (-4, 0) to (4, 0), the other from (0, -3) to (0, 3). Find the length of one side.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "A rhombus's diagonals cross at right angles and bisect each other, so each side is a right-triangle hypotenuse.",
+        "The legs are half of each diagonal: 4 and 3.",
+        "The hypotenuse is the square root of 4 squared plus 3 squared, which is 5."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "Use half of each diagonal as the two legs of a right triangle.",
+        "Apply the distance formula, or the Pythagorean theorem, to those legs."
+      ],
+      "socraticHint": "What are the two legs of the right triangle formed by half of each diagonal?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A rhombus's diagonals meet at the origin. One runs from (-6, 0) to (6, 0), the other from (0, -8) to (0, 8). Find the length of one side.",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p44",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A circle is centered at the origin and passes through (6, 8). Find the circle's radius.",
+      "answer": {
+        "kind": "number",
+        "value": "10"
+      },
+      "explanation": [
+        "The radius is the distance from the center to any point on the circle.",
+        "The distance from (0, 0) to (6, 8) has differences 6 and 8, squared and added: 36 + 64 = 100.",
+        "The square root of 100 is 10."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Use the distance formula between the center and the given point.",
+        "Check whether the sum under the square root is a perfect square."
+      ],
+      "socraticHint": "What is the radius of a circle, in terms of its center and any point on it?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A circle is centered at the origin and passes through (9, 12). Find the circle's radius.",
+        "answer": {
+          "kind": "number",
+          "value": "15"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p45",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    }
+  ],
+  "stretch": [
+    {
+      "kind": "number",
+      "prompt": "A triangle has vertices A(0, 0), B(10, 0) and C(3, 4). Find the length of the shortest side.",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "AB has length 10, read straight from the grid.",
+        "AC has length the square root of 3 squared plus 4 squared, which is 5.",
+        "BC has length the square root of 7 squared plus 4 squared, which is larger than 5, so AC is the shortest side, at 5."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Find all three side lengths.",
+        "Compare them to find the shortest."
+      ],
+      "socraticHint": "Which side looks shortest just from the picture, before you compute?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A triangle has vertices A(0, 0), B(13, 0) and C(5, 12). Find the length of the shortest side.",
+        "answer": {
+          "kind": "number",
+          "value": "13"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p46",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "choice",
+      "prompt": "Points A(0, 0), B(4, 0), C(4, 4) and D(0, 4) form a square. Find the perimeter of the smaller square formed by joining the midpoints of each side.",
+      "options": [
+        "8 sqrt(2)",
+        "16",
+        "4 sqrt(2)",
+        "32"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "Each midpoint-to-midpoint side has differences 2 and 2, so its length is the square root of 8, which is 2 sqrt(2).",
+        "The smaller square has 4 equal sides.",
+        "Its perimeter is 4 times 2 sqrt(2), which is 8 sqrt(2)."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Find one midpoint-to-midpoint side length using the distance formula.",
+        "Multiply that one side by 4 for the perimeter."
+      ],
+      "socraticHint": "What is the distance between two adjacent midpoints?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Points P(0, 0), Q(6, 0), R(6, 6) and S(0, 6) form a square. Find the perimeter of the smaller square formed by joining the midpoints of each side.",
+        "options": [
+          "24",
+          "12 sqrt(2)",
+          "6 sqrt(2)",
+          "48"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p47",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A square's diagonal has endpoints (1, 1) and (7, 9). Find the square's area, in square units.",
+      "answer": {
+        "kind": "number",
+        "value": "50"
+      },
+      "explanation": [
+        "The diagonal's differences are 6 and 8, so its length is the square root of 36 + 64, which is 10.",
+        "A square's area from its diagonal d is d squared over 2.",
+        "10 squared over 2 is 100 / 2 = 50."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Find the diagonal's length with the distance formula first.",
+        "Use the area-from-diagonal formula: d squared over 2."
+      ],
+      "socraticHint": "What formula turns a square's diagonal into its area?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A square's diagonal has endpoints (2, 1) and (8, 9). Find the square's area, in square units.",
+        "answer": {
+          "kind": "number",
+          "value": "50"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p48",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "Triangle ABC has A(0, 0), B(8, 0) and C(3, 6). Find its area, in square units.",
+      "answer": {
+        "kind": "number",
+        "value": "24"
+      },
+      "explanation": [
+        "AB lies on the x-axis, so it is the base, with length 8.",
+        "The height is how far C sits above the x-axis, which is 6.",
+        "The area is half of 8 times 6, which is 24 square units."
+      ],
+      "useAgain": "when a shape's corners are given as coordinates and you need to know what shape it is.",
+      "hints": [
+        "Use the side on the x-axis as the base.",
+        "The height is the other point's y-coordinate."
+      ],
+      "socraticHint": "Which side lies flat on the x-axis, making it easy to use as a base?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Triangle DEF has D(0, 0), E(10, 0) and F(4, 5). Find its area, in square units.",
+        "answer": {
+          "kind": "number",
+          "value": "25"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p49",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    },
+    {
+      "kind": "number",
+      "prompt": "A(3, 4) and B(-3, 4) both lie on a circle centered at the origin. Find the distance AB.",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Both points share the same y-coordinate, 4, so AB is a horizontal segment.",
+        "The distance is just the difference in x-coordinates: 3 - (-3) = 6.",
+        "The distance AB is 6."
+      ],
+      "useAgain": "when you need the straight-line length between two points from their coordinates.",
+      "hints": [
+        "Check whether the two points share a coordinate.",
+        "On a horizontal segment, the distance is just the difference of the x-coordinates."
+      ],
+      "socraticHint": "Do A and B share an x-coordinate or a y-coordinate?",
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "C(5, 12) and D(-5, 12) both lie on a circle centered at the origin. Find the distance CD.",
+        "answer": {
+          "kind": "number",
+          "value": "10"
+        }
+      },
+      "id": "ladder-ge-coordinate-geometry-p50",
+      "lane": "skills",
+      "ideaId": "ge-coordinate-geometry",
+      "skills": [
+        "think.skills.coordinates",
+        "think.skills.linear"
+      ]
+    }
+  ]
+}

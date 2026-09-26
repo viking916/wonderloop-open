@@ -1,0 +1,1975 @@
+{
+  "id": "pa-complementary-counting",
+  "idea": {
+    "body": "Sometimes the outcomes you want are hard to count directly, but the ones you do not want are easy. Count the whole set, count the ones you do not want, and subtract: total minus not wanted equals wanted. A rover's toolkit has 20 parts, and 3 are damaged. Instead of counting the 17 good parts one at a time, subtract: 20 minus 3 is 17. The trick pays off most on questions with the word at least, like at least one match rolling two dice. Counting every way to avoid a match is one clean case, while counting every way to get a match directly means checking many cases.",
+    "figure": {
+      "kind": "diagram",
+      "alt": "A box for all outcomes, minus a box for the ones not wanted, equals a box for the ones wanted.",
+      "spec": {
+        "w": 376,
+        "h": 100,
+        "items": [
+          {
+            "t": "box",
+            "x": 10,
+            "y": 20,
+            "w": 92,
+            "h": 60,
+            "label": "All outcomes"
+          },
+          {
+            "t": "text",
+            "x": 122,
+            "y": 55,
+            "s": "-",
+            "size": 16,
+            "anchor": "middle"
+          },
+          {
+            "t": "box",
+            "x": 142,
+            "y": 20,
+            "w": 92,
+            "h": 60,
+            "label": "Not wanted"
+          },
+          {
+            "t": "text",
+            "x": 254,
+            "y": 55,
+            "s": "=",
+            "size": 16,
+            "anchor": "middle"
+          },
+          {
+            "t": "box",
+            "x": 274,
+            "y": 20,
+            "w": 92,
+            "h": 60,
+            "label": "Wanted"
+          }
+        ]
+      }
+    }
+  },
+  "workedExample": {
+    "prompt": "Two dice are rolled. In how many of the 36 outcomes does at least one die show a 6?",
+    "steps": [
+      "There are 6 times 6, or 36, total outcomes for two dice.",
+      "Counting every way to get at least one 6 directly means checking several overlapping cases.",
+      "It is easier to count the outcomes with no 6 at all: 5 choices for each die, so 5 times 5 is 25.",
+      "The outcomes with at least one 6 are the rest: 36 minus 25 is 11."
+    ]
+  },
+  "ways": [
+    {
+      "id": "pa-complementary-counting-w1",
+      "name": "Total minus not wanted",
+      "when": "Use this when you already know the total and the count you do not want.",
+      "steps": [
+        "A 3D print farm has 45 jobs queued in total.",
+        "8 of them are rush jobs, the ones not wanted here.",
+        "Subtract: 45 minus 8 is 37.",
+        "37 jobs are not rush jobs."
+      ],
+      "example": "A 3D print farm has 45 jobs queued. 8 are rush jobs. How many are not rush jobs?",
+      "answer": "37",
+      "trap": "Adding the two counts together instead of subtracting.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A box for total 45 minus rush 8 equals not rush 37.",
+        "spec": {
+          "w": 376,
+          "h": 100,
+          "items": [
+            {
+              "t": "box",
+              "x": 10,
+              "y": 20,
+              "w": 92,
+              "h": 60,
+              "label": "Total: 45"
+            },
+            {
+              "t": "text",
+              "x": 122,
+              "y": 55,
+              "s": "-",
+              "size": 16,
+              "anchor": "middle",
+              "hidden": true
+            },
+            {
+              "t": "box",
+              "x": 142,
+              "y": 20,
+              "w": 92,
+              "h": 60,
+              "label": "Rush: 8",
+              "hidden": true
+            },
+            {
+              "t": "text",
+              "x": 254,
+              "y": 55,
+              "s": "=",
+              "size": 16,
+              "anchor": "middle",
+              "hidden": true
+            },
+            {
+              "t": "box",
+              "x": 274,
+              "y": 20,
+              "w": 92,
+              "h": 60,
+              "label": "Not rush: 37",
+              "hidden": true
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "A 3D farm has 45 jobs total.",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "45 jobs are queued in total.",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "8 of them are rush jobs.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Subtract: 45 minus 8 is 37.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "hidden": false
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "37 jobs are not rush jobs.",
+              "set": {
+                "1": {
+                  "hidden": false
+                },
+                "2": {
+                  "hidden": false
+                },
+                "3": {
+                  "hidden": false
+                },
+                "4": {
+                  "hidden": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pa-complementary-counting-w2",
+      "name": "None at all, then subtract",
+      "when": "Use this when at least one of something is hard to count directly.",
+      "steps": [
+        "A 3-digit code uses digits 0 to 9, repeats allowed, so there are 1000 codes in all.",
+        "Codes with no 7 anywhere use only 9 choices per digit: 9 times 9 times 9 is 729.",
+        "Subtract: 1000 minus 729 is 271.",
+        "271 codes have at least one digit equal to 7."
+      ],
+      "example": "A 3-digit code uses digits 0 to 9, repeats allowed. How many codes have at least one 7?",
+      "answer": "271",
+      "trap": "Counting only codes that start with 7, missing the ones with a 7 in another spot."
+    },
+    {
+      "id": "pa-complementary-counting-w3",
+      "name": "Neither condition, by overlap",
+      "when": "Use this when neither of two conditions is easier to count directly than at least one of them.",
+      "steps": [
+        "Count the whole numbers from 1 to 60 divisible by 4: 15 of them.",
+        "Count the ones divisible by 6: 10 of them.",
+        "Numbers divisible by both 4 and 6 are divisible by 12, their shared multiple: 5 of them, counted twice above.",
+        "Divisible by 4 or 6 is 15 plus 10 minus 5, which is 20.",
+        "Neither: 60 minus 20 is 40."
+      ],
+      "example": "How many whole numbers from 1 to 60 are divisible by neither 4 nor 6?",
+      "answer": "40",
+      "trap": "Adding the two counts without subtracting the overlap, double counting the shared multiples."
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-pa-complementary-counting-p01",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover's toolkit has 20 parts. 3 are damaged. How many are not damaged?",
+      "answer": {
+        "kind": "number",
+        "value": "17"
+      },
+      "explanation": [
+        "The total is 20, and 3 of them are damaged.",
+        "20 minus 3 is 17, the ones that are not damaged."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when you know a total and one part of it, and need the rest by subtracting.",
+      "hints": [
+        "Start from the total, 20.",
+        "Subtract the 3 that are damaged."
+      ],
+      "socraticHint": "If you already know the total and how many are damaged, what is left for everything else?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rover's toolkit has 25 parts. 5 are damaged. How many are not damaged?",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p02",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A game's card deck has 40 cards. 6 are wild cards. How many are not wild cards?",
+      "answer": {
+        "kind": "number",
+        "value": "34"
+      },
+      "explanation": [
+        "The total is 40, and 6 of them are wild cards.",
+        "40 minus 6 is 34, the ones that are not wild cards."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when you know a total and one part of it, and need the rest by subtracting.",
+      "hints": [
+        "Start from the total, 40.",
+        "Subtract the 6 that are wild cards."
+      ],
+      "socraticHint": "If you already know the total and how many are wild cards, what is left for everything else?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A game's card deck has 45 cards. 8 are wild cards. How many are not wild cards?",
+        "answer": {
+          "kind": "number",
+          "value": "37"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p03",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D print tray holds 30 parts. 4 failed the print. How many are not failed?",
+      "answer": {
+        "kind": "number",
+        "value": "26"
+      },
+      "explanation": [
+        "The total is 30, and 4 of them are failed.",
+        "30 minus 4 is 26, the ones that are not failed."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when you know a total and one part of it, and need the rest by subtracting.",
+      "hints": [
+        "Start from the total, 30.",
+        "Subtract the 4 that are failed."
+      ],
+      "socraticHint": "If you already know the total and how many are failed, what is left for everything else?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A 3D print tray holds 35 parts. 6 failed the print. How many are not failed?",
+        "answer": {
+          "kind": "number",
+          "value": "29"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p04",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A drone's flight log has 50 entries. 7 are error entries. How many are not errors?",
+      "answer": {
+        "kind": "number",
+        "value": "43"
+      },
+      "explanation": [
+        "The total is 50, and 7 of them are errors.",
+        "50 minus 7 is 43, the ones that are not errors."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when you know a total and one part of it, and need the rest by subtracting.",
+      "hints": [
+        "Start from the total, 50.",
+        "Subtract the 7 that are errors."
+      ],
+      "socraticHint": "If you already know the total and how many are errors, what is left for everything else?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A drone's flight log has 55 entries. 9 are error entries. How many are not errors?",
+        "answer": {
+          "kind": "number",
+          "value": "46"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p05",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A piano practice set has 25 pieces. 9 are review pieces. How many are not review pieces?",
+      "answer": {
+        "kind": "number",
+        "value": "16"
+      },
+      "explanation": [
+        "The total is 25, and 9 of them are review pieces.",
+        "25 minus 9 is 16, the ones that are not review pieces."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when you know a total and one part of it, and need the rest by subtracting.",
+      "hints": [
+        "Start from the total, 25.",
+        "Subtract the 9 that are review pieces."
+      ],
+      "socraticHint": "If you already know the total and how many are review pieces, what is left for everything else?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A piano practice set has 30 pieces. 11 are review pieces. How many are not review pieces?",
+        "answer": {
+          "kind": "number",
+          "value": "19"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p06",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rocket's parts bin holds 60 bolts. 11 are oversized. How many are not oversized?",
+      "answer": {
+        "kind": "number",
+        "value": "49"
+      },
+      "explanation": [
+        "The total is 60, and 11 of them are oversized.",
+        "60 minus 11 is 49, the ones that are not oversized."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when you know a total and one part of it, and need the rest by subtracting.",
+      "hints": [
+        "Start from the total, 60.",
+        "Subtract the 11 that are oversized."
+      ],
+      "socraticHint": "If you already know the total and how many are oversized, what is left for everything else?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A rocket's parts bin holds 65 bolts. 13 are oversized. How many are not oversized?",
+        "answer": {
+          "kind": "number",
+          "value": "52"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p07",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers are not divisible by 2?",
+      "answer": {
+        "kind": "number",
+        "value": "45"
+      },
+      "explanation": [
+        "There are 90 two-digit numbers in all, from 10 to 99.",
+        "45 of them are divisible by 2.",
+        "90 minus 45 is 45, the ones not divisible by 2."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the numbers divisible by something are easy to count, and you want everything else.",
+      "hints": [
+        "Start from all 90 two-digit numbers.",
+        "Subtract the ones that are divisible by 2."
+      ],
+      "socraticHint": "Counting the numbers divisible by 2 is easy. How does that help count the ones that are not?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many two-digit numbers are not divisible by 3?",
+        "answer": {
+          "kind": "number",
+          "value": "60"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p08",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers are not divisible by 4?",
+      "answer": {
+        "kind": "number",
+        "value": "68"
+      },
+      "explanation": [
+        "There are 90 two-digit numbers in all, from 10 to 99.",
+        "22 of them are divisible by 4.",
+        "90 minus 22 is 68, the ones not divisible by 4."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the numbers divisible by something are easy to count, and you want everything else.",
+      "hints": [
+        "Start from all 90 two-digit numbers.",
+        "Subtract the ones that are divisible by 4."
+      ],
+      "socraticHint": "Counting the numbers divisible by 4 is easy. How does that help count the ones that are not?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many two-digit numbers are not divisible by 5?",
+        "answer": {
+          "kind": "number",
+          "value": "72"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p09",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers are not divisible by 6?",
+      "answer": {
+        "kind": "number",
+        "value": "75"
+      },
+      "explanation": [
+        "There are 90 two-digit numbers in all, from 10 to 99.",
+        "15 of them are divisible by 6.",
+        "90 minus 15 is 75, the ones not divisible by 6."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the numbers divisible by something are easy to count, and you want everything else.",
+      "hints": [
+        "Start from all 90 two-digit numbers.",
+        "Subtract the ones that are divisible by 6."
+      ],
+      "socraticHint": "Counting the numbers divisible by 6 is easy. How does that help count the ones that are not?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many two-digit numbers are not divisible by 7?",
+        "answer": {
+          "kind": "number",
+          "value": "77"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p10",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers are not divisible by 8?",
+      "answer": {
+        "kind": "number",
+        "value": "79"
+      },
+      "explanation": [
+        "There are 90 two-digit numbers in all, from 10 to 99.",
+        "11 of them are divisible by 8.",
+        "90 minus 11 is 79, the ones not divisible by 8."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the numbers divisible by something are easy to count, and you want everything else.",
+      "hints": [
+        "Start from all 90 two-digit numbers.",
+        "Subtract the ones that are divisible by 8."
+      ],
+      "socraticHint": "Counting the numbers divisible by 8 is easy. How does that help count the ones that are not?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many two-digit numbers are not divisible by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "80"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p11",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers are not divisible by 10?",
+      "answer": {
+        "kind": "number",
+        "value": "81"
+      },
+      "explanation": [
+        "There are 90 two-digit numbers in all, from 10 to 99.",
+        "9 of them are divisible by 10.",
+        "90 minus 9 is 81, the ones not divisible by 10."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the numbers divisible by something are easy to count, and you want everything else.",
+      "hints": [
+        "Start from all 90 two-digit numbers.",
+        "Subtract the ones that are divisible by 10."
+      ],
+      "socraticHint": "Counting the numbers divisible by 10 is easy. How does that help count the ones that are not?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many two-digit numbers are not divisible by 11?",
+        "answer": {
+          "kind": "number",
+          "value": "81"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p12",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "The wanted count and the not-wanted count always add up to the total.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Take a bag of 20 marbles where 6 are wanted and 14 are not.",
+        "6 plus 14 is 20, the whole bag.",
+        "Every marble is either wanted or not wanted, never both, so the two counts always add back to the total."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when you need to reason about how a total splits between wanted and not wanted.",
+      "hints": [
+        "Try the statement on a small, concrete total and part.",
+        "The wanted count and the not-wanted count always add back up to the total."
+      ],
+      "socraticHint": "Does the wanted count plus the not-wanted count always equal the whole total?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "18 wanted plus 12 not wanted equals a total of 30.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p13",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "Complementary counting only works when the not-wanted count is bigger than the wanted count.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Take a bag of 20 marbles where 15 are wanted and only 5 are not wanted.",
+        "Here the not-wanted count, 5, is smaller than the wanted count, not bigger.",
+        "Subtracting the not-wanted count from the total still gives the correct wanted count, no matter which count is bigger."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when you need to reason about how a total splits between wanted and not wanted.",
+      "hints": [
+        "Try the statement on a small, concrete total and part.",
+        "The wanted count and the not-wanted count always add back up to the total."
+      ],
+      "socraticHint": "Does the wanted count plus the not-wanted count always equal the whole total?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Complementary counting still works even when the wanted count is bigger than the not-wanted count.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p14",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "If you already know the total and the not-wanted count, subtracting gives the wanted count.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Take a bag of 20 marbles where 5 are not wanted.",
+        "20 minus 5 is 15, the wanted count.",
+        "That subtraction always works, since the wanted and not-wanted counts together make up the whole total."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when you need to reason about how a total splits between wanted and not wanted.",
+      "hints": [
+        "Try the statement on a small, concrete total and part.",
+        "The wanted count and the not-wanted count always add back up to the total."
+      ],
+      "socraticHint": "Does the wanted count plus the not-wanted count always equal the whole total?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A bag has 25 tokens in all, and 9 are not wanted, so subtracting gives 16 wanted.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p15",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "Complementary counting means counting the wanted outcomes twice to be sure.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Complementary counting means counting the not-wanted outcomes once, then subtracting that from the total.",
+        "It never counts the wanted outcomes directly, let alone twice.",
+        "Counting something twice would only make a count too big, not give the wanted count."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when you need to reason about how a total splits between wanted and not wanted.",
+      "hints": [
+        "Try the statement on a small, concrete total and part.",
+        "The wanted count and the not-wanted count always add back up to the total."
+      ],
+      "socraticHint": "Does the wanted count plus the not-wanted count always equal the whole total?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Complementary counting means counting the not-wanted outcomes instead of the wanted ones.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p16",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. In how many of the 36 outcomes does at least one die show a 6?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "There are 36 total outcomes for two dice.",
+        "Outcomes with no 6 at all have 5 choices for each die, so 5 times 5 is 25.",
+        "36 minus 25 is 11, the outcomes with at least one 6."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one of something is hard to count directly, but none at all is easy.",
+      "hints": [
+        "Count the outcomes where neither die shows the face you want, first.",
+        "Subtract that count from the total 36 outcomes."
+      ],
+      "socraticHint": "Is it easier to count every way to get at least one 6 directly, or every way to get none at all?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two dice are rolled. In how many of the 36 outcomes does at least one die show a 5?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p17",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. In how many of the 36 outcomes does at least one die show a 4?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "There are 36 total outcomes for two dice.",
+        "Outcomes with no 4 at all have 5 choices for each die, so 5 times 5 is 25.",
+        "36 minus 25 is 11, the outcomes with at least one 4."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one of something is hard to count directly, but none at all is easy.",
+      "hints": [
+        "Count the outcomes where neither die shows the face you want, first.",
+        "Subtract that count from the total 36 outcomes."
+      ],
+      "socraticHint": "Is it easier to count every way to get at least one 4 directly, or every way to get none at all?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two dice are rolled. In how many of the 36 outcomes does at least one die show a 3?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p18",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coin is flipped 4 times. In how many of the outcomes does it land heads at least once?",
+      "answer": {
+        "kind": "number",
+        "value": "15"
+      },
+      "explanation": [
+        "There are 16 total outcomes for 4 flips.",
+        "Only 1 of those outcomes has no heads at all: every flip lands tails.",
+        "16 minus 1 is 15, the outcomes with at least one heads."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one success among several tries has exactly one way to fail completely.",
+      "hints": [
+        "Count the one outcome where every single flip lands tails.",
+        "Subtract that from the total 16 outcomes."
+      ],
+      "socraticHint": "How many outcomes have zero heads among all the flips?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A coin is flipped 5 times. In how many of the outcomes does it land heads at least once?",
+        "answer": {
+          "kind": "number",
+          "value": "31"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p19",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coin is flipped 6 times. In how many of the outcomes does it land heads at least once?",
+      "answer": {
+        "kind": "number",
+        "value": "63"
+      },
+      "explanation": [
+        "There are 64 total outcomes for 6 flips.",
+        "Only 1 of those outcomes has no heads at all: every flip lands tails.",
+        "64 minus 1 is 63, the outcomes with at least one heads."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one success among several tries has exactly one way to fail completely.",
+      "hints": [
+        "Count the one outcome where every single flip lands tails.",
+        "Subtract that from the total 64 outcomes."
+      ],
+      "socraticHint": "How many outcomes have zero heads among all the flips?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A coin is flipped 7 times. In how many of the outcomes does it land heads at least once?",
+        "answer": {
+          "kind": "number",
+          "value": "127"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p20",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Out of 80 toy robots, 12 are defective. How many are not defective?",
+      "options": [
+        "12",
+        "80",
+        "92",
+        "68"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "80 minus 12 is 68, the ones that are not defective.",
+        "12 is the count of defective itself, not its complement.",
+        "80 is the whole total, not what is left after subtracting.",
+        "92 adds the two counts instead of subtracting."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the not-wanted count and the total get confused with the wanted count itself.",
+      "hints": [
+        "Subtract the not-wanted count from the total, not the other way around.",
+        "Do not just add the two counts together."
+      ],
+      "socraticHint": "Which operation, adding or subtracting, actually connects a total, a part, and the rest?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Out of 90 toy robots, 15 are defective. How many are not defective?",
+        "options": [
+          "15",
+          "90",
+          "75",
+          "105"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p21",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Out of 64 game tokens, 9 are unused. How many are not unused?",
+      "options": [
+        "55",
+        "9",
+        "64",
+        "73"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "64 minus 9 is 55, the ones that are not unused.",
+        "9 is the count of unused itself, not its complement.",
+        "64 is the whole total, not what is left after subtracting.",
+        "73 adds the two counts instead of subtracting."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the not-wanted count and the total get confused with the wanted count itself.",
+      "hints": [
+        "Subtract the not-wanted count from the total, not the other way around.",
+        "Do not just add the two counts together."
+      ],
+      "socraticHint": "Which operation, adding or subtracting, actually connects a total, a part, and the rest?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Out of 74 game tokens, 12 are unused. How many are not unused?",
+        "options": [
+          "74",
+          "62",
+          "86",
+          "12"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p22",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Out of 45 delivery vans, 8 are late. How many are not late?",
+      "options": [
+        "37",
+        "45",
+        "53",
+        "8"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "45 minus 8 is 37, the ones that are not late.",
+        "8 is the count of late itself, not its complement.",
+        "45 is the whole total, not what is left after subtracting.",
+        "53 adds the two counts instead of subtracting."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the not-wanted count and the total get confused with the wanted count itself.",
+      "hints": [
+        "Subtract the not-wanted count from the total, not the other way around.",
+        "Do not just add the two counts together."
+      ],
+      "socraticHint": "Which operation, adding or subtracting, actually connects a total, a part, and the rest?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Out of 55 delivery vans, 11 are late. How many are not late?",
+        "options": [
+          "66",
+          "11",
+          "44",
+          "55"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p23",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers are not divisible by 12?",
+      "answer": {
+        "kind": "number",
+        "value": "82"
+      },
+      "explanation": [
+        "There are 90 two-digit numbers in all, from 10 to 99.",
+        "8 of them are divisible by 12.",
+        "90 minus 8 is 82, the ones not divisible by 12."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the numbers divisible by something are easy to count, and you want everything else.",
+      "hints": [
+        "Start from all 90 two-digit numbers.",
+        "Subtract the ones that are divisible by 12."
+      ],
+      "socraticHint": "Counting the numbers divisible by 12 is easy. How does that help count the ones that are not?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many two-digit numbers are not divisible by 13?",
+        "answer": {
+          "kind": "number",
+          "value": "83"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p24",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many two-digit numbers are not divisible by 14?",
+      "answer": {
+        "kind": "number",
+        "value": "83"
+      },
+      "explanation": [
+        "There are 90 two-digit numbers in all, from 10 to 99.",
+        "7 of them are divisible by 14.",
+        "90 minus 7 is 83, the ones not divisible by 14."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the numbers divisible by something are easy to count, and you want everything else.",
+      "hints": [
+        "Start from all 90 two-digit numbers.",
+        "Subtract the ones that are divisible by 14."
+      ],
+      "socraticHint": "Counting the numbers divisible by 14 is easy. How does that help count the ones that are not?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many two-digit numbers are not divisible by 15?",
+        "answer": {
+          "kind": "number",
+          "value": "84"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p25",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many whole numbers from 100 to 300 are not divisible by 6?",
+      "answer": {
+        "kind": "number",
+        "value": "167"
+      },
+      "explanation": [
+        "There are 201 whole numbers from 100 to 300.",
+        "34 of them are divisible by 6.",
+        "201 minus 34 is 167."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the numbers that fail a divisibility check are easy to count, and the rest is wanted.",
+      "hints": [
+        "Count all the numbers from 100 to 300 first.",
+        "Subtract the ones divisible by 6."
+      ],
+      "socraticHint": "Which is easier to count directly: numbers divisible by 6, or numbers that are not?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many whole numbers from 150 to 350 are not divisible by 6?",
+        "answer": {
+          "kind": "number",
+          "value": "167"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p26",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many whole numbers from 200 to 400 are not divisible by 9?",
+      "answer": {
+        "kind": "number",
+        "value": "179"
+      },
+      "explanation": [
+        "There are 201 whole numbers from 200 to 400.",
+        "22 of them are divisible by 9.",
+        "201 minus 22 is 179."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the numbers that fail a divisibility check are easy to count, and the rest is wanted.",
+      "hints": [
+        "Count all the numbers from 200 to 400 first.",
+        "Subtract the ones divisible by 9."
+      ],
+      "socraticHint": "Which is easier to count directly: numbers divisible by 9, or numbers that are not?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many whole numbers from 250 to 450 are not divisible by 9?",
+        "answer": {
+          "kind": "number",
+          "value": "178"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p27",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. In how many of the 36 outcomes does at least one die show a 2?",
+      "answer": {
+        "kind": "number",
+        "value": "11"
+      },
+      "explanation": [
+        "There are 36 total outcomes for two dice.",
+        "Outcomes with no 2 at all have 5 choices for each die, so 5 times 5 is 25.",
+        "36 minus 25 is 11, the outcomes with at least one 2."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one of something is hard to count directly, but none at all is easy.",
+      "hints": [
+        "Count the outcomes where neither die shows the face you want, first.",
+        "Subtract that count from the total 36 outcomes."
+      ],
+      "socraticHint": "Is it easier to count every way to get at least one 2 directly, or every way to get none at all?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Two dice are rolled. In how many of the 36 outcomes does at least one die show a 1?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p28",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coin is flipped 2 times. In how many of the outcomes does it land heads at least once?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "There are 4 total outcomes for 2 flips.",
+        "Only 1 of those outcomes has no heads at all: every flip lands tails.",
+        "4 minus 1 is 3, the outcomes with at least one heads."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one success among several tries has exactly one way to fail completely.",
+      "hints": [
+        "Count the one outcome where every single flip lands tails.",
+        "Subtract that from the total 4 outcomes."
+      ],
+      "socraticHint": "How many outcomes have zero heads among all the flips?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A coin is flipped 3 times. In how many of the outcomes does it land heads at least once?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p29",
+      "kind": "choice",
+      "lane": "skills",
+      "prompt": "Out of 50 clay tiles, 6 are cracked. How many are not cracked?",
+      "options": [
+        "50",
+        "44",
+        "56",
+        "6"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "50 minus 6 is 44, the ones that are not cracked.",
+        "6 is the count of cracked itself, not its complement.",
+        "50 is the whole total, not what is left after subtracting.",
+        "56 adds the two counts instead of subtracting."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the not-wanted count and the total get confused with the wanted count itself.",
+      "hints": [
+        "Subtract the not-wanted count from the total, not the other way around.",
+        "Do not just add the two counts together."
+      ],
+      "socraticHint": "Which operation, adding or subtracting, actually connects a total, a part, and the rest?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Out of 60 clay tiles, 9 are cracked. How many are not cracked?",
+        "options": [
+          "69",
+          "9",
+          "60",
+          "51"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p30",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many whole numbers from 150 to 350 are not divisible by 4?",
+      "answer": {
+        "kind": "number",
+        "value": "151"
+      },
+      "explanation": [
+        "There are 201 whole numbers from 150 to 350.",
+        "50 of them are divisible by 4.",
+        "201 minus 50 is 151."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the numbers that fail a divisibility check are easy to count, and the rest is wanted.",
+      "hints": [
+        "Count all the numbers from 150 to 350 first.",
+        "Subtract the ones divisible by 4."
+      ],
+      "socraticHint": "Which is easier to count directly: numbers divisible by 4, or numbers that are not?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many whole numbers from 200 to 400 are not divisible by 4?",
+        "answer": {
+          "kind": "number",
+          "value": "150"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p31",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many whole numbers from 1 to 100 are divisible by neither 2 nor 5?",
+      "answer": {
+        "kind": "number",
+        "value": "40"
+      },
+      "explanation": [
+        "There are 100 whole numbers from 1 to 100.",
+        "60 of them are divisible by 2, by 5, or by both.",
+        "100 minus 60 is 40, the ones divisible by neither."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when neither of two conditions is easier to count directly than at least one of them.",
+      "hints": [
+        "First count every number divisible by 2 or 5, without double counting the ones divisible by both.",
+        "Subtract that count from the total."
+      ],
+      "socraticHint": "Is it easier to count numbers divisible by 2 or 5, or numbers divisible by neither, directly?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers from 101 to 200 are divisible by neither 2 nor 5?",
+        "answer": {
+          "kind": "number",
+          "value": "40"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p32",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many whole numbers from 1 to 150 are divisible by neither 3 nor 4?",
+      "answer": {
+        "kind": "number",
+        "value": "75"
+      },
+      "explanation": [
+        "There are 150 whole numbers from 1 to 150.",
+        "75 of them are divisible by 3, by 4, or by both.",
+        "150 minus 75 is 75, the ones divisible by neither."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when neither of two conditions is easier to count directly than at least one of them.",
+      "hints": [
+        "First count every number divisible by 3 or 4, without double counting the ones divisible by both.",
+        "Subtract that count from the total."
+      ],
+      "socraticHint": "Is it easier to count numbers divisible by 3 or 4, or numbers divisible by neither, directly?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers from 101 to 250 are divisible by neither 3 nor 4?",
+        "answer": {
+          "kind": "number",
+          "value": "75"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p33",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many 3-digit numbers have at least one repeated digit?",
+      "answer": {
+        "kind": "number",
+        "value": "252"
+      },
+      "explanation": [
+        "There are 900 3-digit numbers in all.",
+        "648 of them have every digit different, counted by picking each digit from what is left.",
+        "900 minus 648 is 252, the ones with a repeated digit somewhere."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one repeat is hard to count directly, but all different is one clean count.",
+      "hints": [
+        "Count the numbers where every digit is different first, choosing each digit from what has not been used.",
+        "Subtract that count from the total."
+      ],
+      "socraticHint": "Counting a repeated digit directly means checking many different patterns. What is the one clean case for the complement?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many 4-digit numbers have at least one repeated digit?",
+        "answer": {
+          "kind": "number",
+          "value": "4464"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p34",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many 5-digit numbers have at least one repeated digit?",
+      "answer": {
+        "kind": "number",
+        "value": "62784"
+      },
+      "explanation": [
+        "There are 90000 5-digit numbers in all.",
+        "27216 of them have every digit different, counted by picking each digit from what is left.",
+        "90000 minus 27216 is 62784, the ones with a repeated digit somewhere."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one repeat is hard to count directly, but all different is one clean count.",
+      "hints": [
+        "Count the numbers where every digit is different first, choosing each digit from what has not been used.",
+        "Subtract that count from the total."
+      ],
+      "socraticHint": "Counting a repeated digit directly means checking many different patterns. What is the one clean case for the complement?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many 6-digit numbers have at least one repeated digit?",
+        "answer": {
+          "kind": "number",
+          "value": "763920"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p35",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Three dice are rolled. In how many of the 216 outcomes does at least one die show a 6?",
+      "answer": {
+        "kind": "number",
+        "value": "91"
+      },
+      "explanation": [
+        "There are 6 times 6 times 6, or 216, total outcomes.",
+        "Outcomes with no 6 at all have 5 choices for each die, so 5 times 5 times 5 is 125.",
+        "216 minus 125 is 91, the outcomes with at least one 6."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one success among several independent tries is easiest by first counting none at all.",
+      "hints": [
+        "Count the outcomes where none of the three dice shows the face you want.",
+        "Subtract that from the total 216 outcomes."
+      ],
+      "socraticHint": "With three dice instead of two, does counting none at all still stay the easier case for a 6?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Three dice are rolled. In how many of the 216 outcomes does at least one die show a 5?",
+        "answer": {
+          "kind": "number",
+          "value": "91"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p36",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Three dice are rolled. In how many of the 216 outcomes does at least one die show a 1?",
+      "answer": {
+        "kind": "number",
+        "value": "91"
+      },
+      "explanation": [
+        "There are 6 times 6 times 6, or 216, total outcomes.",
+        "Outcomes with no 1 at all have 5 choices for each die, so 5 times 5 times 5 is 125.",
+        "216 minus 125 is 91, the outcomes with at least one 1."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one success among several independent tries is easiest by first counting none at all.",
+      "hints": [
+        "Count the outcomes where none of the three dice shows the face you want.",
+        "Subtract that from the total 216 outcomes."
+      ],
+      "socraticHint": "With three dice instead of two, does counting none at all still stay the easier case?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Three dice are rolled. In how many of the 216 outcomes does at least one die show a 2?",
+        "answer": {
+          "kind": "number",
+          "value": "91"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p37",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A code is 2 letters long, each letter from A to Z, repeats allowed. In how many of the 676 codes does at least one letter appear from A, E, I, O, U?",
+      "answer": {
+        "kind": "number",
+        "value": "235"
+      },
+      "explanation": [
+        "There are 676 total codes of length 2.",
+        "Codes with no vowel at all use only the 21 consonants, so 21 to the power 2 is 441.",
+        "676 minus 441 is 235, the codes with at least one vowel."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one letter of a kind is hard to count directly, but none of that kind is one clean count.",
+      "hints": [
+        "Count the codes made only from consonants first.",
+        "Subtract that count from the total 676 codes."
+      ],
+      "socraticHint": "Is it easier to count codes with at least one vowel directly, or codes with no vowel at all?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A code is 3 letters long, each letter from A to Z, repeats allowed. In how many of the 17576 codes does at least one letter appear from A, E, I, O, U?",
+        "answer": {
+          "kind": "number",
+          "value": "8315"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p38",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coin is flipped 7 times. In how many of the outcomes does it land heads at least twice?",
+      "answer": {
+        "kind": "number",
+        "value": "120"
+      },
+      "explanation": [
+        "There are 128 total outcomes for 7 flips.",
+        "Outcomes with fewer than two heads are zero heads (1 way) or exactly one heads (7 ways), so 8 in all.",
+        "128 minus 8 is 120, the outcomes with heads at least twice."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the not-wanted side is itself a small handful of cases to add up before subtracting.",
+      "hints": [
+        "Count the outcomes with zero heads, then the outcomes with exactly one heads.",
+        "Add those two counts and subtract from the total 128 outcomes."
+      ],
+      "socraticHint": "Fewer than two heads means which two separate cases, and how many outcomes does each case have?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A coin is flipped 8 times. In how many of the outcomes does it land heads at least twice?",
+        "answer": {
+          "kind": "number",
+          "value": "247"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p39",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A coin is flipped 9 times. In how many of the outcomes does it land heads at least twice?",
+      "answer": {
+        "kind": "number",
+        "value": "502"
+      },
+      "explanation": [
+        "There are 512 total outcomes for 9 flips.",
+        "Outcomes with fewer than two heads are zero heads (1 way) or exactly one heads (9 ways), so 10 in all.",
+        "512 minus 10 is 502, the outcomes with heads at least twice."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the not-wanted side is itself a small handful of cases to add up before subtracting.",
+      "hints": [
+        "Count the outcomes with zero heads, then the outcomes with exactly one heads.",
+        "Add those two counts and subtract from the total 512 outcomes."
+      ],
+      "socraticHint": "Fewer than two heads means which two separate cases, and how many outcomes does each case have?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A coin is flipped 10 times. In how many of the outcomes does it land heads at least twice?",
+        "answer": {
+          "kind": "number",
+          "value": "1013"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p40",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A 3D printer numbers every finished print from 1000 to 9999. Out of the 9000 possible numbers, how many contain the digit 7 at least once?",
+      "answer": {
+        "kind": "number",
+        "value": "3168"
+      },
+      "explanation": [
+        "There are 9000 four-digit numbers from 1000 to 9999.",
+        "A number with no 7 anywhere has 8 choices for its first digit and 9 choices for each of the other three.",
+        "8 times 9 times 9 times 9 is 5832 numbers with no 7 at all.",
+        "9000 minus 5832 is 3168 numbers that do contain a 7."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when counting at least one of something directly is messy, so you count the numbers that avoid it completely and subtract.",
+      "hints": [
+        "Count how many of the 9000 numbers have no 7 in any digit.",
+        "Subtract that no-7 count from the 9000 total."
+      ],
+      "socraticHint": "Is it easier to count the numbers with a 7 somewhere, or the numbers with no 7 at all?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A 3D printer numbers every finished print from 1000 to 9999. Out of the 9000 possible numbers, how many contain the digit 0 at least once?",
+        "answer": {
+          "kind": "number",
+          "value": "2439"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p41",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot flips a coin 5 times to pick a random patrol route. Out of the 32 possible outcomes, how many land heads at least twice?",
+      "answer": {
+        "kind": "number",
+        "value": "26"
+      },
+      "explanation": [
+        "There are 32 total outcomes for 5 coin flips.",
+        "The not-wanted outcomes are the ones with fewer than 2 heads: 0 heads or exactly 1 head.",
+        "0 heads happens 1 way, and exactly 1 head happens 5 ways, for 6 not-wanted outcomes.",
+        "32 minus 6 is 26 outcomes with heads at least twice."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the not-wanted side of at least is itself two cases that need adding before you subtract.",
+      "hints": [
+        "The complement of at least 2 heads is 0 heads or exactly 1 head, not just 1 head.",
+        "Add the 0-heads and 1-head counts, then subtract that from 32."
+      ],
+      "socraticHint": "What are all the ways to get fewer than 2 heads in 5 flips?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot flips a coin 6 times to pick a random patrol route. Out of the 64 possible outcomes, how many land heads at least twice?",
+        "answer": {
+          "kind": "number",
+          "value": "57"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p42",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many whole numbers from 500 to 900 are not divisible by 12?",
+      "answer": {
+        "kind": "number",
+        "value": "367"
+      },
+      "explanation": [
+        "There are 401 whole numbers from 500 to 900.",
+        "34 of them are divisible by 12.",
+        "401 minus 34 is 367."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the numbers that fail a divisibility check are easy to count, and the rest is wanted.",
+      "hints": [
+        "Count all the numbers from 500 to 900 first.",
+        "Subtract the ones divisible by 12."
+      ],
+      "socraticHint": "Which is easier to count directly: numbers divisible by 12, or numbers that are not?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers from 550 to 950 are not divisible by 12?",
+        "answer": {
+          "kind": "number",
+          "value": "367"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p43",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many whole numbers from 300 to 700 are not divisible by 8?",
+      "answer": {
+        "kind": "number",
+        "value": "351"
+      },
+      "explanation": [
+        "There are 401 whole numbers from 300 to 700.",
+        "50 of them are divisible by 8.",
+        "401 minus 50 is 351."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the numbers that fail a divisibility check are easy to count, and the rest is wanted.",
+      "hints": [
+        "Count all the numbers from 300 to 700 first.",
+        "Subtract the ones divisible by 8."
+      ],
+      "socraticHint": "Which is easier to count directly: numbers divisible by 8, or numbers that are not?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers from 350 to 750 are not divisible by 8?",
+        "answer": {
+          "kind": "number",
+          "value": "351"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p44",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "Two dice are rolled. In how many of the 36 outcomes does at least one die show an odd number?",
+      "answer": {
+        "kind": "number",
+        "value": "27"
+      },
+      "explanation": [
+        "There are 36 total outcomes for two dice.",
+        "Outcomes with no odd number at all need both dice even, so 3 times 3 is 9.",
+        "36 minus 9 is 27, the outcomes with at least one odd number."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one of something is hard to count directly, but none at all is easy.",
+      "hints": [
+        "Count the outcomes where both dice land on even numbers, first.",
+        "Subtract that count from the total 36 outcomes."
+      ],
+      "socraticHint": "Is it easier to count every way to get at least one odd number directly, or every way to get no odd numbers at all?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Two dice are rolled. In how many of the 36 outcomes does at least one die show a number greater than 4?",
+        "answer": {
+          "kind": "number",
+          "value": "20"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p45",
+      "kind": "truefalse",
+      "lane": "skills",
+      "prompt": "Counting the outcomes that satisfy neither condition can be found by counting the outcomes satisfying at least one and subtracting from the total.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Take 50 items where 14 are divisible by 2 or by 5.",
+        "Those 14 are exactly the items satisfying at least one of the two conditions.",
+        "50 minus 14 is 36, the items satisfying neither condition."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when you need to reason about how a total splits between wanted and not wanted.",
+      "hints": [
+        "Try the statement on a small, concrete total and part.",
+        "The wanted count and the not-wanted count always add back up to the total."
+      ],
+      "socraticHint": "Does the wanted count plus the not-wanted count always equal the whole total?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Out of 50 items, 14 are divisible by 2 or 5, so 36 are divisible by neither.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-pa-complementary-counting-p46",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many whole numbers from 1 to 1000 are divisible by none of 2, 3, or 5?",
+      "answer": {
+        "kind": "number",
+        "value": "266"
+      },
+      "explanation": [
+        "Numbers divisible by 2, 3, or 5 are the not-wanted ones here.",
+        "There are 500 multiples of 2, 333 of 3, and 200 of 5 from 1 to 1000.",
+        "Counting the overlaps carefully, for pairs and all three together, gives 734 numbers divisible by at least one.",
+        "1000 minus 734 is 266 numbers divisible by none of the three."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the not-wanted count itself has overlapping cases that need their own careful counting first.",
+      "hints": [
+        "First count how many from 1 to 1000 are divisible by at least one of 2, 3, or 5.",
+        "Watch for numbers counted more than once, like multiples of 6, 10, 15, or 30."
+      ],
+      "socraticHint": "A number divisible by both 2 and 3 gets counted in two lists. How do you fix that before subtracting?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many whole numbers from 1 to 900 are divisible by none of 2, 3, or 7?",
+        "answer": {
+          "kind": "number",
+          "value": "257"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p47",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "How many seven-digit numbers have at least one repeated digit?",
+      "answer": {
+        "kind": "number",
+        "value": "8455680"
+      },
+      "explanation": [
+        "There are 9000000 seven-digit numbers in all, from 1000000 to 9999999.",
+        "Numbers with seven different digits: 9 choices for the first, then 9, 8, 7, 6, 5, and 4 for the rest.",
+        "9 times 9 times 8 times 7 times 6 times 5 times 4 is 544320, so 9000000 minus 544320 is 8455680 numbers with a repeat."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one repeated digit is easiest to count by subtracting the all-different count from the total.",
+      "hints": [
+        "Count the seven-digit numbers with every digit different first.",
+        "Subtract that count from the 9000000 total seven-digit numbers."
+      ],
+      "socraticHint": "Counting a repeated digit directly covers many different patterns. Which complement count is a single clean rule?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many eight-digit numbers have at least one repeated digit?",
+        "answer": {
+          "kind": "number",
+          "value": "88367040"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p48",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A rover has 10 numbered sample tubes, 1 through 10. It can bring home any group of them, from none to all, giving 1024 possible groups. In how many of those groups is there at least one even-numbered tube?",
+      "answer": {
+        "kind": "number",
+        "value": "992"
+      },
+      "explanation": [
+        "There are 1024 possible groups in all, since each of the 10 tubes is either in or out.",
+        "The not-wanted groups are the ones with no even-numbered tube at all, so every tube in them is odd.",
+        "There are 5 odd-numbered tubes, and each is in or out on its own, giving 32 all-odd groups.",
+        "1024 minus 32 is 992 groups with at least one even-numbered tube."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when the not-wanted case is a whole smaller counting problem of its own, like choosing only from a smaller pile.",
+      "hints": [
+        "The not-wanted groups are the ones built only from the 5 odd-numbered tubes.",
+        "Count how many groups you can make from just those 5 tubes, then subtract from 1024."
+      ],
+      "socraticHint": "If a group has no even-numbered tube, which tubes could it still contain?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A robot has 12 numbered spare parts, 1 through 12. It can load any group of them, from none to all, giving 4096 possible groups. In how many of those groups is there at least one even-numbered part?",
+        "answer": {
+          "kind": "number",
+          "value": "4032"
+        }
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p49",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A team of 3 is chosen from 4 rovers and 5 robots. In how many ways does the team include at least one rover and at least one robot?",
+      "answer": {
+        "kind": "number",
+        "value": "70"
+      },
+      "explanation": [
+        "There are 84 ways to choose any team of 3 from all 9.",
+        "10 of those teams have no rover at all, and 4 have no robot at all.",
+        "84 minus 10 minus 4 is 70, the teams with at least one of each."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when a mixed-group condition is easiest by subtracting the all-one-kind cases from the total.",
+      "hints": [
+        "Count every possible team of 3 first, ignoring the mix.",
+        "Subtract the teams with no rover, then subtract the teams with no robot."
+      ],
+      "socraticHint": "A team with no rover and a team with no robot never overlap here, since the team only has 3 spots. Why does that make simple subtraction work?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "96"
+        },
+        "prompt": "A team of 3 is chosen from 4 rovers and 6 robots. In how many ways does the team include at least one rover and at least one robot?"
+      }
+    },
+    {
+      "id": "ladder-pa-complementary-counting-p50",
+      "kind": "number",
+      "lane": "skills",
+      "prompt": "A robot's access code is 4 digits, each from 0 to 9, repeats allowed. Out of the 10,000 possible codes, how many have at least one repeated digit?",
+      "answer": {
+        "kind": "number",
+        "value": "4960"
+      },
+      "explanation": [
+        "There are 10000 total codes of 4 digits.",
+        "Codes with four different digits: 10 choices for the first, 9 for the second, 8 for the third, 7 for the fourth.",
+        "10 times 9 times 8 times 7 is 5040, so 10000 minus 5040 is 4960."
+      ],
+      "ideaId": "pa-complementary-counting",
+      "useAgain": "when at least one repeat among several picks is easiest by subtracting the all-different count from the total.",
+      "hints": [
+        "Count the codes with every digit different first.",
+        "Subtract that count from the 10000 total codes."
+      ],
+      "socraticHint": "Counting a repeated digit directly covers many different patterns. Which complement count is one clean rule?",
+      "skills": [
+        "think.skills.counting"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "answer": {
+          "kind": "number",
+          "value": "69760"
+        },
+        "prompt": "A robot's access code is 5 digits, each from 0 to 9, repeats allowed. Out of the 100,000 possible codes, how many have at least one repeated digit?"
+      }
+    }
+  ]
+}

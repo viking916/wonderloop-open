@@ -1,0 +1,828 @@
+{
+  "id": "s1-w05-build",
+  "season": 1,
+  "week": 5,
+  "track": "build",
+  "title": "Drive a square",
+  "summary": "Connect mBot to mBlock and drive a real robot for the first time: a square, then the first letter of your name.",
+  "minutes": 60,
+  "sittings": 2,
+  "materials": [
+    "mBot v1.2",
+    "USB cable",
+    "mBot's battery, charged, or 4 AA batteries",
+    "laptop with Chrome",
+    "mBlock",
+    "any paper notebook, for your Problem Notebook"
+  ],
+  "skills": [
+    "build.loops",
+    "build.sensors",
+    "build.ai"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s1-w05-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop again: ask, imagine, plan, build, test, fix. This week you drive a real robot on the floor for the first time.\n\nAsk: what should the robot actually do the first time it drives on its own? Trace a square on the floor using both wheels together. Then trace the first letter of your name, using the same kind of moves in a different order.\n\nImagine before you build. Sketch two things on paper. A square, drawn as forward, turn, forward, turn, four times back to where it started. The first letter of your name, drawn the same way, as straight lines and turns.\n\nPlan the pieces before you open mBlock:\n\n1. A block that drives mBot forward for a measured amount of time.\n2. A block that turns mBot instead of driving straight.\n3. A time on every move, so each move finishes before the next one starts.\n4. A prediction: how long, in seconds, do you think a quarter turn will take?"
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w05-build-11",
+      "title": "Build your mBot",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A labelled top-down view of the built mBot, front at the top. mCore, the main board, sits in the middle. The ultrasonic sensor is mounted at the front, port 3. Underneath the front, shown as a shaded box since it cannot be seen from above, sits the line follower, port 2. Two wheels stick out to the left and right, each wired back to mCore at M1 and M2. The battery holder sits underneath, also shaded. A note just under mCore says the switch, USB port and power socket are somewhere along that edge, without pointing at an exact spot.",
+        "spec": {
+          "w": 380,
+          "h": 332,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 190,
+              "y": 14,
+              "s": "mBot, top view: check these before you switch on",
+              "anchor": "middle"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  90,
+                  55
+                ],
+                [
+                  290,
+                  55
+                ],
+                [
+                  290,
+                  265
+                ],
+                [
+                  90,
+                  265
+                ]
+              ],
+              "fill": "none"
+            },
+            {
+              "t": "box",
+              "x": 145,
+              "y": 135,
+              "w": 90,
+              "h": 70,
+              "label": "mCore",
+              "sub": "main board",
+              "fill": "paper"
+            },
+            {
+              "t": "box",
+              "x": 135,
+              "y": 36,
+              "w": 110,
+              "h": 38,
+              "label": "ultrasonic",
+              "sub": "port 3, front",
+              "fill": "accent"
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 84,
+              "w": 120,
+              "h": 36,
+              "label": "line follower",
+              "sub": "underneath, port 2",
+              "fill": "muted"
+            },
+            {
+              "t": "box",
+              "x": 135,
+              "y": 264,
+              "w": 110,
+              "h": 36,
+              "label": "battery holder",
+              "sub": "underneath",
+              "fill": "muted"
+            },
+            {
+              "t": "circle",
+              "cx": 58,
+              "cy": 220,
+              "r": 24,
+              "label": "L wheel"
+            },
+            {
+              "t": "circle",
+              "cx": 322,
+              "cy": 220,
+              "r": 24,
+              "label": "R wheel"
+            },
+            {
+              "t": "line",
+              "x1": 82,
+              "y1": 210,
+              "x2": 145,
+              "y2": 195,
+              "arrow": false,
+              "label": "M1"
+            },
+            {
+              "t": "line",
+              "x1": 298,
+              "y1": 210,
+              "x2": 235,
+              "y2": 195,
+              "arrow": false,
+              "label": "M2"
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 222,
+              "s": "switch, USB port,",
+              "anchor": "middle",
+              "size": 10
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 236,
+              "s": "and power socket:",
+              "anchor": "middle",
+              "size": 10
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 250,
+              "s": "somewhere on mCore's edge",
+              "anchor": "middle",
+              "size": 10
+            },
+            {
+              "t": "text",
+              "x": 190,
+              "y": 318,
+              "s": "both shaded parts sit underneath, out of sight",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "body": "If your mBot arrived already built, start at action 3 below: it still needs batteries and its first power-up.\n\nmBot ships as a kit: about 30 minutes of building with the screwdriver already in the box. AA batteries are not included.\n\nWhat is in the box: check the parts against the list printed in the booklet. It includes mCore, the main circuit board, two motors and two wheels, the ultrasonic sensor, the line follower module, the battery holder, the USB cable, a small remote control, a bag of screws and the screwdriver.\n\nThe tools: only the screwdriver from the box. Keep the small screws in the box lid while you build, away from small children and pets.\n\n1. Open the booklet and build stage by stage, matching your build to its picture each time before you turn the page.\n2. Watch for three things as you go. Each motor's shaft has a flat side: line up the wheel's hole with the flat before you push the wheel on. Each motor's cable goes into the motor socket the picture shows, M1 or M2. The ultrasonic sensor's cable goes into port 3, the port with the yellow tag on mCore, and the line follower's cable into port 2, the port with the blue tag.\n3. Load 4 AA batteries into the battery holder, matching the plus and minus marks printed inside. If the booklet has already fixed the holder in place, slide it out to load it, then put it back.\n4. Push the holder's round plug fully into the round power socket on mCore.\n5. Find the power switch on mCore, near the power socket, and leave it off for now.\n6. Set mBot down on a flat, open patch of floor, not on a table or bench.\n7. Slide the power switch on. Do not press the small button on top of mCore yet: in mBot's built-in program it starts a mode that drives on its own.\n\nWhat you should see: mBot standing on its two wheels and its front support, the ultrasonic sensor facing forward, the line follower facing down at the front, every cable plugged in where the booklet shows, the lights on mCore lit, and mBot staying where it is.\n\nIf it does not work:\n1. A wheel will not go on, or wobbles once it is on: its hole is not lined up with the flat on the motor shaft; pull it off, turn it until it lines up, and push it on again, without forcing it.\n2. No light when switched on: check every battery is the right way round, plus to plus, and that the round plug is pushed fully into mCore.\n3. mBot starts driving by itself the moment it is switched on: the small button on top of mCore got pressed. Switch mBot off, then on again.\n\nSafety: switch mBot on only once it is down on the floor, and keep fingers clear of the wheels whenever it is on."
+    },
+    {
+      "kind": "typing",
+      "id": "s1-w05-build-02",
+      "minutes": 5,
+      "body": "Pick a typing site you like, whichever one feels right to you, and use it for five minutes. Start on the home row, the row your fingers rest on: a s d f and j k l semicolon. Once your fingers know the home row without looking down, spend the rest of the five minutes on four symbols: ( ) : =. Python needs all four of them constantly, parentheses to call something, a colon to start a block of code, and an equals sign to store a value, so your fingers need to find them without hunting."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w05-build-09",
+      "ideaId": "current-into-a-push",
+      "title": "How a motor spins",
+      "body": "A motor turns current into a turning push, and it does it with magnets.\n\nInside each of mBot's motors are two parts. Around the outside sit magnets that never move. In the middle, fixed to the shaft, sits a coil: copper wire wound around and around many times.\n\nCurrent flowing through a wire makes the wire magnetic, for as long as the current flows. So the moment current runs through the coil, the coil becomes a magnet too. The fixed magnets push one side of it and pull the other, and that shoves the coil around.\n\nJust as the coil turns far enough to settle, a little switch on the shaft, called the commutator, flips the way the current runs through it. The coil's magnet flips too, the push starts again, and the shaft keeps spinning.\n\nSend the current the other way and the motor spins the other way. That is how mBot drives backward: its board reverses the current."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w05-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "Two meshed gears: a small motor gear with 10 teeth spinning fast, and a big wheel gear with 40 teeth turning slower but harder. Arrows show the motor gear spinning quickly and the wheel gear turning slowly and strongly. A caption gives the 4 to 1 ratio: speed trades for push.",
+        "spec": {
+          "w": 360,
+          "h": 250,
+          "wide": false,
+          "items": [
+            {
+              "t": "circle",
+              "cx": 90,
+              "cy": 130,
+              "r": 40,
+              "label": "motor gear"
+            },
+            {
+              "t": "circle",
+              "cx": 200,
+              "cy": 130,
+              "r": 70,
+              "label": "wheel gear"
+            },
+            {
+              "t": "text",
+              "x": 90,
+              "y": 180,
+              "s": "10 teeth",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 200,
+              "y": 210,
+              "s": "40 teeth",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "line",
+              "x1": 70,
+              "y1": 82,
+              "x2": 110,
+              "y2": 82,
+              "arrow": true,
+              "color": "accent",
+              "label": "fast spin"
+            },
+            {
+              "t": "line",
+              "x1": 170,
+              "y1": 45,
+              "x2": 230,
+              "y2": 45,
+              "arrow": true,
+              "color": "green",
+              "label": "slow, strong turn"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 232,
+              "s": "4:1 ratio: speed trades for push",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 20,
+              "s": "motor spins fast; gears trade speed for push",
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 700,
+              "caption": "motor gear spins fast",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                }
+              }
+            },
+            {
+              "ms": 900,
+              "caption": "wheel gear turns, slower",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                },
+                "1": {
+                  "fill": "green"
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "speed trades for push",
+              "set": {
+                "1": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "ideaId": "current-into-a-push",
+      "title": "Motors and gears",
+      "body": "The motor inside mBot spins fast, hundreds of times every minute, much faster than the wheels actually turn. Between the motor and the wheel sits a small stack of gears, and by the time the spin reaches the wheel it has already been slowed down a lot.\n\nA gear ratio is just how many times the small gear has to spin to turn the big gear once. If the small gear has 10 teeth and the big gear has 40 teeth, the small gear has to spin four times for every one turn the big gear makes, a four to one ratio.\n\nSlowing the spin down does not waste the motor's effort, it trades speed for push. The same turning force, spread thin over four fast turns of the small gear, gets packed into one slow turn of the big gear. That is why the wheel turns slower than the motor but pushes much harder, which is exactly what a robot needs to get its own weight rolling instead of just spinning in place."
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w05-build-08",
+      "title": "Three words you have been using",
+      "body": "Three words have been in your programs since your first weeks. Time to name them.\n\nAn event is something that happens, and the code waiting for it runs the moment it does. `on button A pressed` in week 1 and `on shake` in week 2 were events, and so is `when mBot(mcore) starts up`, which you will use next week. Real life: the doorbell rings, so someone goes to the door.\n\nA variable is a labeled box that holds one number. `roll` in week 2 was a variable. The label stays the same; the number inside can change. Real life: the score box on a scoreboard.\n\nIf, then, else makes the program choose one path out of two, and only one ever runs. You used `if then` for doubles in week 2, and `if then else` first appeared for the button in week 3. Real life: if it is raining, take the umbrella, else take the sunglasses."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w05-build-10",
+      "title": "Two kinds of loop",
+      "body": "A loop runs the same blocks again and again, and there are two kinds.\n\nA `forever` loop repeats with no end. Your week 1 heartbeat used one: big heart, pause, small heart, back to the top, until the battery ran out. Real life: a lighthouse turning all night.\n\nA counted loop repeats an exact number of times, then moves on to the next block. The square's `repeat` block, with 4 typed in, is one: four sides of the square, then it stops and goes on to your letter. Real life: laps of a track. Run 4 laps, then go home.\n\nPick the kind by asking one question: do I know how many times? If you do, count it. If it should keep going as long as the robot is on, make it forever."
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w05-build-12",
+      "title": "Connect mBot to mBlock, step by step",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A mock of the mBlock window: the Devices panel under the stage with its add button, mBot picked in the Device Library then OK, the Connect button with the USB tab and a COM port, and Disconnect showing once mBot answers. A note says pick only mBot, not CyberPi or mBot Ranger.",
+        "spec": {
+          "w": 360,
+          "h": 270,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 16,
+              "s": "mBlock 5: add mBot, then Connect",
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 34,
+              "w": 150,
+              "h": 50,
+              "label": "Devices panel",
+              "sub": "under the stage"
+            },
+            {
+              "t": "dot",
+              "cx": 95,
+              "cy": 104,
+              "label": "+ add",
+              "side": "below"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 34,
+              "w": 150,
+              "h": 50,
+              "label": "mBot",
+              "sub": "picked, then OK"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 160,
+              "w": 150,
+              "h": 50,
+              "label": "Connect",
+              "sub": "USB tab, COM port"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 160,
+              "w": 150,
+              "h": 50,
+              "label": "Disconnect",
+              "sub": "shown once mBot answers"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 245,
+              "s": "only mBot: not CyberPi, not mBot Ranger",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "body": "mBlock 5 is the app you build mBot's programs in, one block at a time. This step gets it talking to the real mBot for the first time.\n\n1. If mBlock 5 is not on the laptop yet, a grown-up installs it once from https://mblock.cc/pages/downloads and says yes when the installer offers to install the USB driver.\n2. Open mBlock 5. Under the stage, in the bottom left, click the `Devices` tab.\n3. If a robot you do not own is already there, such as `CyberPi` or `Codey`, select it and delete it.\n4. Click `+ add`, click `mBot` in the Device Library, then click `OK`. Pick the one named exactly `mBot`, not `mBot Ranger` or `mBot Mega`: they are different robots with different blocks.\n5. With mBot switched on and sitting on the floor, plug the USB cable into mBot and into the laptop.\n6. Click `Connect`. In the window that opens, stay on the `USB` tab, check the port it suggests, a name like COM3, and click `Connect` in that window.\n7. Next to `Connect` is the mode switch. Click it so it shows `Upload`. The block that starts every program this week only appears in `Events` once `Upload` is on.\n\nWhat you should see: a message says mBot is connected, and `Events` now shows `when mBot(mcore) starts up`.\n\nIf it does not work:\n1. `Connect` stays grey, or mBlock keeps saying it is scanning for a serial port: the USB driver is missing, or the cable only charges. Try a cable that has moved files to a phone or tablet before; if that does not help, a grown-up reinstalls mBlock and accepts the driver.\n2. mBlock asks to update the firmware: let it, keep the cable in until it says it is done, then click `Connect` again.\n3. The port is found but the connection fails: switch mBot off and on, plug the cable into a different USB port on the laptop, and click `Connect` again."
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w05-build-14",
+      "title": "Good place to stop",
+      "body": "mBot is built, powered up, and connected to mBlock in Upload mode, so this is a good end to week one of this quest; the rest is next week.\n\nBefore you stop:\n\n1. Switch mBot off and set it somewhere flat where the wheels will not get bumped.\n2. Unplug the USB cable.\n3. Write in the Maker's Log what you found in the box and how long the build took you.\n\nWeek two starts at the next step, Upload and run, where you send mBot its first program.\n\nWhen you come back, switch mBot on on the floor, plug the USB cable back in, and open mBlock. If `mBot` is not in `Devices`, add it again with `+ add`. Click `Connect`, and set the mode switch to `Upload`. If mBlock asks to update the firmware, let it, keep the cable in until it says it is done, then click `Connect` again."
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w05-build-13",
+      "title": "Upload and run",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A mock of the mode switch in mBlock's Devices panel, Live and Upload, with Upload highlighted and the Upload button under it. Live runs when you click, wired to the laptop; Upload sends the whole program and mBot runs it at once, so its wheels are held up off the table, then it is switched off, unplugged, set on the floor and switched on.",
+        "spec": {
+          "w": 360,
+          "h": 250,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 18,
+              "s": "the mode switch, then the Upload button",
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 36,
+              "w": 120,
+              "h": 40,
+              "label": "Live"
+            },
+            {
+              "t": "box",
+              "x": 200,
+              "y": 36,
+              "w": 120,
+              "h": 40,
+              "label": "Upload",
+              "fill": "accent"
+            },
+            {
+              "t": "text",
+              "x": 100,
+              "y": 98,
+              "s": "wired to the laptop",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 100,
+              "y": 113,
+              "s": "runs when you click",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 260,
+              "y": 98,
+              "s": "sends the whole program",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 260,
+              "y": 113,
+              "s": "mBot runs it at once",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 200,
+              "y": 132,
+              "w": 120,
+              "h": 34,
+              "label": "Upload button"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 200,
+              "s": "wheels up during upload, then switch off",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 218,
+              "s": "unplug, set it on the floor, switch on",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "body": "You are about to build your first mBot program. This step is how you will send it to mBot every time you test it.\n\n`Live` mode runs a block when you click it, and mBot must stay wired to the laptop the whole time. `Upload` mode copies your whole program onto mBot once, so it can drive on battery power alone, with no cable. Your programs this week use `Upload`.\n\n1. Check the mode switch next to `Connect` shows `Upload`.\n2. Sit mBot on top of a roll of tape or a mug on the floor, so both wheels hang in the air. The moment an upload finishes, mBot starts running the program.\n3. Click the `Upload` button.\n4. Wait for mBlock to say the upload is complete. If the wheels spin in the air, that is your program running.\n5. Switch mBot off and unplug the USB cable.\n6. Set mBot down on the floor at your start mark, with open space in front.\n7. Switch mBot on and watch it drive.\n\nWhat you should see: mBlock says the upload is complete, and once mBot is on the floor and switched on, it drives your program with no cable attached. Switching it off and on again runs the program again from the start.\n\nIf it does not work:\n1. Nothing happens when mBot is switched on: check every block hangs under `when mBot(mcore) starts up`; a block left loose on the canvas is never uploaded. Fix it and upload again.\n2. The upload stops with an error: the cable was bumped or mBot was switched off. Check both and click `Upload` again.\n3. mBot spins in a circle or goes backward when it should go forward: the motor cables are in the wrong sockets; check M1 and M2 against the booklet's picture. If it drives but slows or stops right away, the batteries are low.\n\nSafety: during an upload the wheels are always up in the air, and mBot goes onto the floor only while it is switched off. Keep fingers clear of the wheels whenever it is on."
+    },
+    {
+      "kind": "task",
+      "id": "s1-w05-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A top-down path of mBot's square: four forward legs at power 50% for 1 second, each followed by a tested turn left at power 50% for about half a second, closing back to the start and finish point. A footer notes the same forward and turn moves trace the letter.",
+        "spec": {
+          "w": 320,
+          "h": 250,
+          "wide": false,
+          "items": [
+            {
+              "t": "poly",
+              "points": [
+                [
+                  80,
+                  60
+                ],
+                [
+                  220,
+                  60
+                ],
+                [
+                  220,
+                  200
+                ],
+                [
+                  80,
+                  200
+                ]
+              ],
+              "color": "ink"
+            },
+            {
+              "t": "dot",
+              "cx": 80,
+              "cy": 60,
+              "label": "start/finish",
+              "side": "left"
+            },
+            {
+              "t": "dot",
+              "cx": 220,
+              "cy": 60
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 45,
+              "s": "forward: power 50%, 1 sec",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 78,
+              "s": "turn left",
+              "size": 11,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 150,
+              "y": 93,
+              "s": "power 50%, ~0.5s",
+              "size": 10,
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 20,
+              "s": "square: forward, turn, x4, back to start",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 160,
+              "y": 225,
+              "s": "same forward/turn moves trace your letter",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "title": "Build the square and your letter in mBlock",
+      "body": "Getting ready:\n\n1. Before this step, mBot is switched on and connected, and the mode switch shows `Upload`, from the steps Build your mBot, and Connect mBot to mBlock, step by step.\n2. Coming back later: switch mBot on on the floor, plug the USB cable back in, open your project with `File`, then `Load from your computer`, click `Connect`, and check the mode switch still shows `Upload`.\n\nBuild the square:\n\n1. From `Events`, drag `when mBot(mcore) starts up` onto the canvas.\n2. From `Control`, drag a `repeat` block under it and type 4 into it.\n3. From `Action`, drag `move forward at power 50 % for 1 secs` inside `repeat`.\n4. Predict first: how many seconds do you think a quarter turn at 50 % power takes?\n5. Under it, drag `turn left at power 50 % for 1 secs` and type your guess in place of 1, or 0.5 if unsure.\n6. Test it the way Upload and run showed you, then change the turn's seconds until four repeats trace a square.\n\nBuild your letter:\n\n1. Under the `repeat` block, still under `when mBot(mcore) starts up`, add a second sequence.\n2. Use move forward and turn blocks to trace the first letter of your name, using only straight lines, like L, T or I.\n3. Finish with `stop moving` from `Action`.\n4. Save it: in mBlock's `File` menu, choose `Save to your computer`, and name it square.\n\nWhat you should see: mBot traces a square back to its own starting point, comes to a stop, then drives the shape of your letter in a new direction, both running on battery power with no cable attached.\n\nIf it does not work:\n1. mBot drives a rhombus, not a square: the turn's seconds are off; change them, upload and test again on the floor.\n2. Nothing happens when mBot is switched on: check every block hangs under `when mBot(mcore) starts up`, then upload again.\n3. `when mBot(mcore) starts up` is missing from `Events`: the mode switch is on `Live`; click it to `Upload`.\n\nYou are done when: your square closes back to its own start and your letter is recognisably yours, both running with no cable attached.",
+      "checklist": [
+        "I picked my own turn seconds by testing on the floor, and wrote down the number I chose and why",
+        "Each side of the square is one move forward block then one turn block, with no separate stop or wait block needed",
+        "Four forward-and-turn moves trace a square back to where mBot started",
+        "A second sequence drives the first letter of my name, finishing with stop moving",
+        "I uploaded with mBot's wheels off the ground, then switched it off before unplugging the cable and setting it on the floor"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w05-build-15",
+      "title": "How to ask AI a good question",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A mock of the Ask panel as it opens under a step. Above it, the Stuck? Ask button, and a note: not just, my robot won't work. Inside the panel, the word Ask, then its three standing lines: Ask can explain this step or a mistake, it never writes your program for you; AI can be wrong, check what it tells you; never type your name, school or address. Below them, the Ask about this step box holds one message on five lines: building, expected, happened, tried, then one question. Beside the box, the Send button. Under it: Enter starts a new line; Ctrl or Cmd+Enter sends. 25 asks left on this step.",
+        "spec": {
+          "w": 500,
+          "h": 300,
+          "wide": true,
+          "items": [
+            {
+              "t": "text",
+              "x": 250,
+              "y": 16,
+              "s": "the Ask panel: one good question, ready to send",
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 28,
+              "w": 110,
+              "h": 28,
+              "label": "Stuck? Ask"
+            },
+            {
+              "t": "text",
+              "x": 480,
+              "y": 46,
+              "s": "not just: \"My robot won't work.\"",
+              "anchor": "end",
+              "size": 11
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  20,
+                  66
+                ],
+                [
+                  480,
+                  66
+                ],
+                [
+                  480,
+                  292
+                ],
+                [
+                  20,
+                  292
+                ]
+              ],
+              "fill": "sand"
+            },
+            {
+              "t": "text",
+              "x": 32,
+              "y": 86,
+              "s": "Ask",
+              "anchor": "start"
+            },
+            {
+              "t": "text",
+              "x": 32,
+              "y": 106,
+              "s": "Ask can explain this step or a mistake. It never writes your program for you.",
+              "anchor": "start",
+              "size": 10
+            },
+            {
+              "t": "text",
+              "x": 32,
+              "y": 122,
+              "s": "AI can be wrong. Check what it tells you.",
+              "anchor": "start",
+              "size": 10
+            },
+            {
+              "t": "text",
+              "x": 32,
+              "y": 138,
+              "s": "Never type your name, school or address.",
+              "anchor": "start",
+              "size": 10
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  32,
+                  150
+                ],
+                [
+                  380,
+                  150
+                ],
+                [
+                  380,
+                  262
+                ],
+                [
+                  32,
+                  262
+                ]
+              ],
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 42,
+              "y": 168,
+              "s": "Building: my square.",
+              "anchor": "start",
+              "size": 10
+            },
+            {
+              "t": "text",
+              "x": 42,
+              "y": 187,
+              "s": "Expected: it ends back at the start.",
+              "anchor": "start",
+              "size": 10
+            },
+            {
+              "t": "text",
+              "x": 42,
+              "y": 206,
+              "s": "Happened: it stops short of the start.",
+              "anchor": "start",
+              "size": 10
+            },
+            {
+              "t": "text",
+              "x": 42,
+              "y": 225,
+              "s": "Tried: turn seconds 0.5, then 0.6.",
+              "anchor": "start",
+              "size": 10
+            },
+            {
+              "t": "text",
+              "x": 42,
+              "y": 248,
+              "s": "Why does it still not close?",
+              "anchor": "start",
+              "size": 10
+            },
+            {
+              "t": "box",
+              "x": 392,
+              "y": 190,
+              "w": 76,
+              "h": 32,
+              "label": "Send",
+              "fill": "accent"
+            },
+            {
+              "t": "text",
+              "x": 32,
+              "y": 280,
+              "s": "Enter starts a new line; Ctrl or Cmd+Enter sends. 25 asks left on this step",
+              "anchor": "start",
+              "size": 9
+            }
+          ]
+        }
+      },
+      "body": "Starting this week, a helper called Ask is on your Build steps. It can explain what is going on or why something is not working. It never writes your program for you and never designs your project; that part stays yours.\n\nAsk only knows what you tell it, so a good question gets a much better answer than a vague one. Try it now on the square you just built.\n\n1. Before you type anything, get four things straight, in this order: what you are building, what you expected to happen, what actually happened, and what you already tried. Write them in the Maker's Log first if that helps.\n2. Click `Stuck? Ask` under this step. The Ask panel opens.\n3. Read the three lines at the top of the panel. They are the rules: Ask explains and never writes your program, AI can be wrong so check what it tells you, and never type your name, school or address.\n4. Click in the box that says `Ask about this step` and type the four things, one on each line, then your one question on the last line. Enter only starts a new line; nothing is sent until you press `Send`. Press `Send` when your question is ready.\n5. If mBlock shows an error message, copy its exact words into your message instead of describing it from memory.\n6. Never type your name, your school, your town, your address, a password or anything else that could find you. Ask does not need any of that to help with a robot.\n7. Read Ask's answer, then check it before you trust it: run the change on the real mBot, look it up in the booklet, or, when the question is about voltage or current, check it with the multimeter.\n\nUnder the box, a line ends with `25 asks left on this step`, and the number counts down each time you send. Twenty five is plenty when every message is a good one; when it reaches zero, Ask tells you to try the next small piece yourself and show a grown-up.\n\nWhat you should see: Ask answers in a few short sentences, explaining the idea or the mistake in plain words, sometimes with a tiny example, never with your whole program written out.\n\nIf it does not work:\n\n1. Ask answers with a question instead of explaining: it is still missing one of the four things. Answer whichever one it asks for.\n2. Ask's answer does not fix the problem: AI can be wrong, like anyone. Test it on the real mBot, then tell Ask what actually happened.\n3. There is no `Stuck? Ask` button: it shows on the reading and task steps of a Build quest from week 5 on, not on typing, Show it or Maker's Log steps. If the panel says Ask is not switched on for your family yet, a grown-up adds an AI key in the Parent view.\n\nYou are done when: you have sent Ask one real question about your own square program, in the four-part shape, and checked its answer by running mBot on the floor."
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w05-build-05",
+      "title": "Bug diary",
+      "body": "Print what it sees still applies, it just works differently, since mBot has no screen the way the micro:bit does.\n\n1. From `Variables`, make a variable called `turnTime`.\n2. Right after `when mBot(mcore) starts up`, set `turnTime` to 0.5.\n3. In your `turn left at power 50 % for 1 secs` block, drag the `turnTime` variable into its seconds slot, instead of typing a number directly.\n4. Check the box next to `turnTime` in the `Variables` palette, so a readout appears on the stage.\n5. Switch to `Live` mode, with mBot still wired to the laptop. If mBlock asks to update the firmware when you switch to `Live`, let it, keep the cable in until it is done, then click `Connect` again.\n6. From `Events`, drag `when green flag clicked` onto the canvas, and move your whole program from under `when mBot(mcore) starts up` across to it.\n7. Set mBot on the floor next to the laptop with the cable slack, click the green flag above the stage, and watch the square and the `turnTime` number together. Change `turnTime` and click the green flag again.\n8. Once the square closes cleanly, move the program back under `when mBot(mcore) starts up`, delete `when green flag clicked`, switch back to `Upload` mode, and upload the finished program the safe way, wheels up.\n\nWrite down the `turnTime` you settled on, and why that number made the square close cleanly.\n\nWrite one line for each thing that did not work the first time and what you tried. A slanted rhombus instead of a square usually means mBot's wheels slipped a little on the turn instead of gripping and pivoting cleanly. That makes the turn cover less angle than the seconds suggest. A longer `turnTime`, or a floor with more grip, fixes it."
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w05-build-16",
+      "title": "Start your Problem Notebook",
+      "body": "Your robot drives. Time for a different kind of hunt.\n\nReal builders rarely start with a robot. They start with a problem. Something bugs somebody, and they build the fix. From today you collect problems in a Problem Notebook. Your own projects will come from it.\n\nThe idea:\n\nA real problem is something annoying, slow, unsafe or missing, for a real person you know. That person can be you, someone at home, a friend, or someone at school.\n\nTwo made-up entries, just to show the shape. They are examples, not yours:\n\nMade-up example 1. Who: a grown-up at home. The problem: the keys go missing right before everyone leaves. Why it matters: the whole family waits while they hunt.\n\nMade-up example 2. Who: a friend. The problem: their bike light runs flat, and they only find out after dark. Why it matters: riding at night with no light is unsafe.\n\nStart yours now:\n\n1. Find any paper notebook. A few spare pages at the back of one you already use work too.\n2. Write Problem Notebook on the cover or the first page.\n3. Write your first real entry: the date, who, the problem, and why it matters.\n4. Keep the notebook next to mBot, so it is there when a problem shows up.\n\nTrick: Listen for the grumble. \"Ugh\", \"not again\" and \"I wish\" usually mean a problem just walked past. Write it down.\n\nTrap: Writing the fix instead of the problem. \"The keys go missing\" is a problem. \"A key-finding robot\" is a fix. Write the problem. Fixes come later, and there is always more than one.\n\nRemember: Write \"a grown-up at home\" or \"a friend\", never a full name, and nothing private. This notebook may end up in your portfolio one day.\n\nFrom now on, add an entry whenever you notice a problem. Some weeks bring three, some bring none. Every entry is a build you might make one day.\n\nYou are done when: your Problem Notebook has its name on it and one real entry of your own: who, the problem, and why it matters."
+    },
+    {
+      "kind": "artifact",
+      "id": "s1-w05-build-06",
+      "title": "Show it",
+      "prompt": "Photo of mBot driving on the floor, and either the saved .mblock project file or a screenshot of your finished blocks",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s1-w05-build-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s1-w05-build-x01",
+      "kind": "bonus",
+      "title": "Drive a triangle",
+      "minutes": 15,
+      "body": "Use the same forward-turn pattern to trace a triangle instead of a square. A triangle's three turns add up to 360 degrees, more per turn than a square's quarter turn.\n\n1. Open your square project in mBlock.\n2. Add a new sequence below your square, still under `when mBot(mcore) starts up`.\n3. Use a `repeat` block set to 3, instead of 4.\n4. Keep `move forward at power 50 % for 1 secs` the same as your square.\n5. Change the turn block's seconds to about one third longer than your square's turn.\n6. Upload and test on the floor, adjusting the turn's seconds until three repeats close into a triangle.\n\nWhat to notice: a bigger turn angle takes noticeably longer than a quarter turn did."
+    },
+    {
+      "id": "s1-w05-build-x02",
+      "kind": "bonus",
+      "title": "Spell two letters",
+      "minutes": 20,
+      "body": "Extend your letter drawing to two letters instead of one, like your initials.\n\n1. Keep the square and single-letter sequences you already built.\n2. Add a `wait 1 seconds` block, from `Control`, after your first letter finishes.\n3. Add a `stop moving` block, from `Action`, right after that wait.\n4. Add a second sequence of move forward and turn blocks for your second letter, finishing with another `stop moving`.\n5. Upload with mBot's wheels off the ground, then switch it off, unplug the cable, set it on the floor, and switch it on.\n\nWhat to notice: the pause between letters matters as much as the moves inside each letter."
+    },
+    {
+      "id": "s1-w05-build-x03",
+      "kind": "invent",
+      "title": "Design your own shape",
+      "minutes": 25,
+      "body": "What shape or letter have you always wanted a robot to draw on the floor?\n\nDesign your own shape or letter using this week's driving blocks.\n\nIt must use the forward, turn and wait blocks from this week's build.\nIt must have one number you choose by testing, like a turn time or a speed.\nIt must be shown driving on the real floor to someone in your house.\n\nSketch your shape on paper first.\n\nHow to know it works: the shape closes back to where mBot started, or matches your sketch closely."
+    },
+    {
+      "id": "s1-w05-build-x04",
+      "kind": "bonus",
+      "title": "Weigh what mBot can push",
+      "minutes": 25,
+      "ideaId": "trade-speed-for-strength",
+      "body": "Find out how heavy a load mBot's motor can push before it stalls.\n\n1. Predict first: guess the heaviest load, in the number of identical books, mBot can push forward without stalling. Write your number in the Maker's Log.\n2. Line up identical books on a smooth floor in mBot's path.\n3. Program mBot to drive forward and let it push into the stack of books.\n4. Add one book at a time and try again, until mBot cannot push the stack any further.\n5. Count and write down the number of books in the stack it could still push.\n\nCompare: was your prediction close to the number mBot actually pushed, higher, or lower?\n\nTeach it: tell a grown-up in two sentences why a motor that spins fast can still run out of push against a heavy enough load."
+    },
+    {
+      "id": "s1-w05-build-x05",
+      "kind": "bonus",
+      "title": "Drive by compass headings",
+      "minutes": 15,
+      "ideaId": "a-square-turn-is-90-degrees",
+      "body": "Find out how mBot's own turns match the four main compass directions.\n\n1. Set mBot facing one direction and mark it with a piece of tape as north.\n2. Turn mBot 90 degrees to the right and call this direction east.\n3. Turn another 90 degrees right for south, then once more for west.\n4. Turn 90 degrees right one final time and check that mBot faces north again.\n5. Count how many 90 degree turns you made in total to complete the full circle.\n\nWhat to notice: a compass has four main directions, each exactly 90 degrees apart. A full turn all the way around is 360 degrees, the same number mBot's own turn block uses."
+    }
+  ]
+}

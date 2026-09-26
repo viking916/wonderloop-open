@@ -1,0 +1,2692 @@
+{
+  "id": "ar-primes-factor-trees",
+  "idea": {
+    "body": "A prime number has exactly two factors, 1 and itself: 2, 3, 5, 7, 11, and so on. A composite number has more than two factors, and it can always be broken into primes by a factor tree. Start 12 as 2 x 6, then split 6 into 2 x 3, both prime. Every branch keeps splitting until every leaf is prime; the leaves are always the same primes, however you start the split. 1 is neither prime nor composite, since it only has one factor. A factor tree for a game score of 60 might branch into 6 and 10 first. Splitting those further gives four prime leaves: 2, 3, 2, 5."
+  },
+  "workedExample": {
+    "prompt": "Build a factor tree for 90 and write its prime factorization.",
+    "steps": [
+      "Split 90 into 9 x 10, two factors that are easier to work with than 90 itself.",
+      "9 is not prime, so split it further into 3 x 3, both prime.",
+      "10 is not prime, so split it further into 2 x 5, both prime.",
+      "Every branch now ends in a prime leaf: 3, 3, 2, 5.",
+      "Multiply the leaves back together to check: 2 x 3 x 3 x 5 is 90.",
+      "The prime factorization of 90 is 2 x 3^2 x 5."
+    ],
+    "figure": {
+      "kind": "diagram",
+      "alt": "A factor tree for 90, branching into 9 and 10, then 9 branching into 3 and 3, and 10 branching into 2 and 5.",
+      "spec": {
+        "w": 360,
+        "h": 220,
+        "items": [
+          {
+            "t": "box",
+            "x": 150,
+            "y": 10,
+            "w": 60,
+            "h": 30,
+            "label": "90"
+          },
+          {
+            "t": "box",
+            "x": 70,
+            "y": 80,
+            "w": 50,
+            "h": 30,
+            "label": "9"
+          },
+          {
+            "t": "box",
+            "x": 230,
+            "y": 80,
+            "w": 50,
+            "h": 30,
+            "label": "10"
+          },
+          {
+            "t": "box",
+            "x": 40,
+            "y": 150,
+            "w": 40,
+            "h": 30,
+            "label": "3"
+          },
+          {
+            "t": "box",
+            "x": 100,
+            "y": 150,
+            "w": 40,
+            "h": 30,
+            "label": "3"
+          },
+          {
+            "t": "box",
+            "x": 200,
+            "y": 150,
+            "w": 40,
+            "h": 30,
+            "label": "2"
+          },
+          {
+            "t": "box",
+            "x": 260,
+            "y": 150,
+            "w": 40,
+            "h": 30,
+            "label": "5"
+          },
+          {
+            "t": "line",
+            "x1": 180,
+            "y1": 40,
+            "x2": 95,
+            "y2": 80
+          },
+          {
+            "t": "line",
+            "x1": 180,
+            "y1": 40,
+            "x2": 255,
+            "y2": 80
+          },
+          {
+            "t": "line",
+            "x1": 95,
+            "y1": 110,
+            "x2": 60,
+            "y2": 150
+          },
+          {
+            "t": "line",
+            "x1": 95,
+            "y1": 110,
+            "x2": 120,
+            "y2": 150
+          },
+          {
+            "t": "line",
+            "x1": 255,
+            "y1": 110,
+            "x2": 220,
+            "y2": 150
+          },
+          {
+            "t": "line",
+            "x1": 255,
+            "y1": 110,
+            "x2": 280,
+            "y2": 150
+          }
+        ]
+      }
+    }
+  },
+  "ways": [
+    {
+      "id": "ar-primes-factor-trees-w1",
+      "name": "Factor tree",
+      "when": "Use this when you want to see every branch down to the prime leaves.",
+      "steps": [
+        "Split 60 into two factors: 6 and 10.",
+        "6 is not prime, so split it into 2 and 3, both prime.",
+        "10 is not prime, so split it into 2 and 5, both prime.",
+        "Every branch now ends in a prime leaf: 2, 3, 2, 5.",
+        "Multiply the leaves to check: 2 times 3 times 2 times 5 is 60."
+      ],
+      "example": "factor tree for 60",
+      "answer": "2 x 2 x 3 x 5",
+      "trap": "Stopping the tree before every leaf is a prime number.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A factor tree for 60, branching into 6 and 10, then 6 branching into 2 and 3, and 10 branching into 2 and 5.",
+        "spec": {
+          "w": 360,
+          "h": 220,
+          "items": [
+            {
+              "t": "box",
+              "x": 150,
+              "y": 10,
+              "w": 60,
+              "h": 30,
+              "label": "60"
+            },
+            {
+              "t": "box",
+              "x": 70,
+              "y": 80,
+              "w": 50,
+              "h": 30,
+              "label": "6"
+            },
+            {
+              "t": "box",
+              "x": 230,
+              "y": 80,
+              "w": 50,
+              "h": 30,
+              "label": "10"
+            },
+            {
+              "t": "box",
+              "x": 40,
+              "y": 150,
+              "w": 40,
+              "h": 30,
+              "label": "2"
+            },
+            {
+              "t": "box",
+              "x": 100,
+              "y": 150,
+              "w": 40,
+              "h": 30,
+              "label": "3"
+            },
+            {
+              "t": "box",
+              "x": 200,
+              "y": 150,
+              "w": 40,
+              "h": 30,
+              "label": "2"
+            },
+            {
+              "t": "box",
+              "x": 260,
+              "y": 150,
+              "w": 40,
+              "h": 30,
+              "label": "5"
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 40,
+              "x2": 95,
+              "y2": 80
+            },
+            {
+              "t": "line",
+              "x1": 180,
+              "y1": 40,
+              "x2": 255,
+              "y2": 80
+            },
+            {
+              "t": "line",
+              "x1": 95,
+              "y1": 110,
+              "x2": 60,
+              "y2": 150
+            },
+            {
+              "t": "line",
+              "x1": 95,
+              "y1": 110,
+              "x2": 120,
+              "y2": 150
+            },
+            {
+              "t": "line",
+              "x1": 255,
+              "y1": 110,
+              "x2": 220,
+              "y2": 150
+            },
+            {
+              "t": "line",
+              "x1": 255,
+              "y1": 110,
+              "x2": 280,
+              "y2": 150
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "Split 60 into two factors: 6 and 10.",
+              "set": {
+                "3": {
+                  "hidden": true
+                },
+                "4": {
+                  "hidden": true
+                },
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "9": {
+                  "hidden": true
+                },
+                "10": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "6 splits into 2 and 3, prime.",
+              "set": {
+                "5": {
+                  "hidden": true
+                },
+                "6": {
+                  "hidden": true
+                },
+                "11": {
+                  "hidden": true
+                },
+                "12": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "10 splits into 2 and 5, prime.",
+              "set": {}
+            },
+            {
+              "ms": 1300,
+              "caption": "Every branch ends in a prime leaf.",
+              "set": {
+                "3": {
+                  "fill": "green"
+                },
+                "4": {
+                  "fill": "green"
+                },
+                "5": {
+                  "fill": "green"
+                },
+                "6": {
+                  "fill": "green"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Multiply leaves: 2x3x2x5 is 60.",
+              "set": {
+                "0": {
+                  "fill": "green"
+                },
+                "3": {
+                  "fill": "green"
+                },
+                "4": {
+                  "fill": "green"
+                },
+                "5": {
+                  "fill": "green"
+                },
+                "6": {
+                  "fill": "green"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ar-primes-factor-trees-w2",
+      "name": "Repeated division by primes",
+      "when": "Use this when you would rather divide in a straight line than branch a tree.",
+      "steps": [
+        "Divide by the smallest prime that fits: 84 divided by 2 is 42.",
+        "Divide by 2 again: 42 divided by 2 is 21.",
+        "21 does not divide by 2, so try the next prime: 21 divided by 3 is 7.",
+        "7 is already prime, so stop.",
+        "The prime factors are 2, 2, 3, 7."
+      ],
+      "example": "prime factors of 84",
+      "answer": "2 x 2 x 3 x 7",
+      "trap": "Moving to the next prime too soon, before checking it fully divides."
+    },
+    {
+      "id": "ar-primes-factor-trees-w3",
+      "name": "The sieve picture",
+      "when": "Use this when you need every prime up to a limit, not just one number's factors.",
+      "steps": [
+        "List every whole number from 2 to 20.",
+        "Cross out every multiple of 2 after 2 itself.",
+        "Cross out every multiple of 3 after 3 itself that is still left.",
+        "Cross out every multiple of 5 after 5 itself that is still left.",
+        "The numbers left uncrossed are prime: 2, 3, 5, 7, 11, 13, 17, 19."
+      ],
+      "example": "primes up to 20",
+      "answer": "2, 3, 5, 7, 11, 13, 17, 19",
+      "trap": "Forgetting to cross out a multiple because it looks prime at a glance.",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A grid of numbers 2 to 20, sieved a multiple at a time until only the primes stay highlighted: 2, 3, 5, 7, 11, 13, 17, 19.",
+        "spec": {
+          "w": 320,
+          "h": 220,
+          "items": [
+            {
+              "t": "box",
+              "x": 10,
+              "y": 10,
+              "w": 50,
+              "h": 40,
+              "fill": "accent",
+              "label": "2"
+            },
+            {
+              "t": "box",
+              "x": 70,
+              "y": 10,
+              "w": 50,
+              "h": 40,
+              "fill": "accent",
+              "label": "3"
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 10,
+              "w": 50,
+              "h": 40,
+              "fill": "muted",
+              "label": "4"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 10,
+              "w": 50,
+              "h": 40,
+              "fill": "accent",
+              "label": "5"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 10,
+              "w": 50,
+              "h": 40,
+              "fill": "muted",
+              "label": "6"
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 60,
+              "w": 50,
+              "h": 40,
+              "fill": "accent",
+              "label": "7"
+            },
+            {
+              "t": "box",
+              "x": 70,
+              "y": 60,
+              "w": 50,
+              "h": 40,
+              "fill": "muted",
+              "label": "8"
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 60,
+              "w": 50,
+              "h": 40,
+              "fill": "muted",
+              "label": "9"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 60,
+              "w": 50,
+              "h": 40,
+              "fill": "muted",
+              "label": "10"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 60,
+              "w": 50,
+              "h": 40,
+              "fill": "accent",
+              "label": "11"
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 110,
+              "w": 50,
+              "h": 40,
+              "fill": "muted",
+              "label": "12"
+            },
+            {
+              "t": "box",
+              "x": 70,
+              "y": 110,
+              "w": 50,
+              "h": 40,
+              "fill": "accent",
+              "label": "13"
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 110,
+              "w": 50,
+              "h": 40,
+              "fill": "muted",
+              "label": "14"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 110,
+              "w": 50,
+              "h": 40,
+              "fill": "muted",
+              "label": "15"
+            },
+            {
+              "t": "box",
+              "x": 250,
+              "y": 110,
+              "w": 50,
+              "h": 40,
+              "fill": "muted",
+              "label": "16"
+            },
+            {
+              "t": "box",
+              "x": 10,
+              "y": 160,
+              "w": 50,
+              "h": 40,
+              "fill": "accent",
+              "label": "17"
+            },
+            {
+              "t": "box",
+              "x": 70,
+              "y": 160,
+              "w": 50,
+              "h": 40,
+              "fill": "muted",
+              "label": "18"
+            },
+            {
+              "t": "box",
+              "x": 130,
+              "y": 160,
+              "w": 50,
+              "h": 40,
+              "fill": "accent",
+              "label": "19"
+            },
+            {
+              "t": "box",
+              "x": 190,
+              "y": 160,
+              "w": 50,
+              "h": 40,
+              "fill": "muted",
+              "label": "20"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 900,
+              "caption": "List every number from 2 to 20.",
+              "set": {
+                "0": {
+                  "fill": "paper"
+                },
+                "1": {
+                  "fill": "paper"
+                },
+                "2": {
+                  "fill": "paper"
+                },
+                "3": {
+                  "fill": "paper"
+                },
+                "4": {
+                  "fill": "paper"
+                },
+                "5": {
+                  "fill": "paper"
+                },
+                "6": {
+                  "fill": "paper"
+                },
+                "7": {
+                  "fill": "paper"
+                },
+                "8": {
+                  "fill": "paper"
+                },
+                "9": {
+                  "fill": "paper"
+                },
+                "10": {
+                  "fill": "paper"
+                },
+                "11": {
+                  "fill": "paper"
+                },
+                "12": {
+                  "fill": "paper"
+                },
+                "13": {
+                  "fill": "paper"
+                },
+                "14": {
+                  "fill": "paper"
+                },
+                "15": {
+                  "fill": "paper"
+                },
+                "16": {
+                  "fill": "paper"
+                },
+                "17": {
+                  "fill": "paper"
+                },
+                "18": {
+                  "fill": "paper"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Cross out multiples of 2 after 2.",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                },
+                "1": {
+                  "fill": "paper"
+                },
+                "2": {
+                  "fill": "muted"
+                },
+                "3": {
+                  "fill": "paper"
+                },
+                "4": {
+                  "fill": "muted"
+                },
+                "5": {
+                  "fill": "paper"
+                },
+                "6": {
+                  "fill": "muted"
+                },
+                "7": {
+                  "fill": "paper"
+                },
+                "8": {
+                  "fill": "muted"
+                },
+                "9": {
+                  "fill": "paper"
+                },
+                "10": {
+                  "fill": "muted"
+                },
+                "11": {
+                  "fill": "paper"
+                },
+                "12": {
+                  "fill": "muted"
+                },
+                "13": {
+                  "fill": "paper"
+                },
+                "14": {
+                  "fill": "muted"
+                },
+                "15": {
+                  "fill": "paper"
+                },
+                "16": {
+                  "fill": "muted"
+                },
+                "17": {
+                  "fill": "paper"
+                },
+                "18": {
+                  "fill": "muted"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Cross out multiples of 3 still left.",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                },
+                "1": {
+                  "fill": "accent"
+                },
+                "2": {
+                  "fill": "muted"
+                },
+                "3": {
+                  "fill": "paper"
+                },
+                "4": {
+                  "fill": "muted"
+                },
+                "5": {
+                  "fill": "paper"
+                },
+                "6": {
+                  "fill": "muted"
+                },
+                "7": {
+                  "fill": "muted"
+                },
+                "8": {
+                  "fill": "muted"
+                },
+                "9": {
+                  "fill": "paper"
+                },
+                "10": {
+                  "fill": "muted"
+                },
+                "11": {
+                  "fill": "paper"
+                },
+                "12": {
+                  "fill": "muted"
+                },
+                "13": {
+                  "fill": "muted"
+                },
+                "14": {
+                  "fill": "muted"
+                },
+                "15": {
+                  "fill": "paper"
+                },
+                "16": {
+                  "fill": "muted"
+                },
+                "17": {
+                  "fill": "paper"
+                },
+                "18": {
+                  "fill": "muted"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Cross out multiples of 5 still left.",
+              "set": {
+                "0": {
+                  "fill": "accent"
+                },
+                "1": {
+                  "fill": "accent"
+                },
+                "2": {
+                  "fill": "muted"
+                },
+                "3": {
+                  "fill": "accent"
+                },
+                "4": {
+                  "fill": "muted"
+                },
+                "5": {
+                  "fill": "paper"
+                },
+                "6": {
+                  "fill": "muted"
+                },
+                "7": {
+                  "fill": "muted"
+                },
+                "8": {
+                  "fill": "muted"
+                },
+                "9": {
+                  "fill": "paper"
+                },
+                "10": {
+                  "fill": "muted"
+                },
+                "11": {
+                  "fill": "paper"
+                },
+                "12": {
+                  "fill": "muted"
+                },
+                "13": {
+                  "fill": "muted"
+                },
+                "14": {
+                  "fill": "muted"
+                },
+                "15": {
+                  "fill": "paper"
+                },
+                "16": {
+                  "fill": "muted"
+                },
+                "17": {
+                  "fill": "paper"
+                },
+                "18": {
+                  "fill": "muted"
+                }
+              }
+            },
+            {
+              "ms": 1300,
+              "caption": "Numbers left uncrossed are prime.",
+              "set": {}
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "bank": [
+    {
+      "id": "ladder-ar-primes-factor-trees-p01",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "truefalse",
+      "prompt": "7 is a prime number.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "A prime number has exactly two factors, 1 and itself.",
+        "7 divides evenly only by 1 and 7.",
+        "So 7 is prime."
+      ],
+      "useAgain": "when you need to check if a small number has only two factors.",
+      "hints": [
+        "List the factors of 7.",
+        "A prime number's only factors are 1 and itself."
+      ],
+      "socraticHint": "Does any whole number other than 1 and 7 divide evenly into 7?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "11 is a prime number.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p02",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "truefalse",
+      "prompt": "9 is a prime number.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "9 divides evenly by 1, 3, and 9, three factors in total.",
+        "A prime number has exactly two factors, so 9 does not qualify.",
+        "9 is composite, not prime."
+      ],
+      "useAgain": "when a number has a factor between 1 and itself, so it cannot be prime.",
+      "hints": [
+        "List every factor of 9.",
+        "Prime numbers have exactly two factors, no more."
+      ],
+      "socraticHint": "Nine divides evenly by three. What does having a factor besides 1 and itself tell you?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "15 is a prime number.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p03",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "truefalse",
+      "prompt": "2 is the only even prime number.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Every even number bigger than 2 divides evenly by 2, giving it at least three factors.",
+        "That means no even number bigger than 2 can be prime.",
+        "2 itself only has factors 1 and 2, so it is prime, and the only even one."
+      ],
+      "useAgain": "when you want to quickly rule out even numbers bigger than 2 from being prime.",
+      "hints": [
+        "Check whether every even number bigger than 2 has 2 as an extra factor.",
+        "A number with an extra factor besides 1 and itself cannot be prime."
+      ],
+      "socraticHint": "Every even number divides evenly by 2. Why does that stop any even number bigger than 2 from being prime?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Every prime number is odd.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p04",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "What is the 4th prime number, counting 2 as the 1st?",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "List the primes in order: 2, 3, 5, 7.",
+        "The 1st is 2, the 2nd is 3, the 3rd is 5, and the 4th is 7."
+      ],
+      "useAgain": "when a prime is asked for by its position in the counting order, not by its value.",
+      "hints": [
+        "List out primes in order starting from 2.",
+        "Stop counting once you reach the position asked for."
+      ],
+      "socraticHint": "One is skipped because it is not prime at all. Does that change where 2 falls in your count?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the 5th prime number, counting 2 as the 1st?",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p05",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "What is the 7th prime number, counting 2 as the 1st?",
+      "answer": {
+        "kind": "number",
+        "value": "17"
+      },
+      "explanation": [
+        "List the primes in order: 2, 3, 5, 7, 11, 13, 17.",
+        "The 7th one in that list is 17."
+      ],
+      "useAgain": "when counting further into the list of primes than the first few.",
+      "hints": [
+        "Write out primes in order, one at a time, until you reach the 7th.",
+        "Do not accidentally count a composite number like 9 as prime."
+      ],
+      "socraticHint": "You already know the first four primes. How many more do you need to list to reach the 7th?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the 8th prime number, counting 2 as the 1st?",
+        "answer": {
+          "kind": "number",
+          "value": "19"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p06",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "How many prime numbers are there from 1 to 20?",
+      "answer": {
+        "kind": "number",
+        "value": "8"
+      },
+      "explanation": [
+        "The primes from 1 to 20 are 2, 3, 5, 7, 11, 13, 17, 19.",
+        "Count them: 8 primes in total."
+      ],
+      "useAgain": "when counting how many primes fall inside a range of numbers.",
+      "hints": [
+        "Check every number from 1 to 20 for exactly two factors.",
+        "Remember that 1 does not count as prime."
+      ],
+      "socraticHint": "Two is the only even one in this range. Does that help you rule out half the numbers quickly?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many prime numbers are there from 1 to 10?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p07",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "How many prime numbers are there from 20 to 40?",
+      "answer": {
+        "kind": "number",
+        "value": "4"
+      },
+      "explanation": [
+        "The primes from 20 to 40 are 23, 29, 31, 37.",
+        "Count them: 4 primes in total."
+      ],
+      "useAgain": "when counting primes in a range that no longer starts at 1.",
+      "hints": [
+        "Skip every even number right away, except checking none of them sneak in as prime.",
+        "Test the odd numbers one at a time for exactly two factors."
+      ],
+      "socraticHint": "Odd numbers are not automatically prime. Which odd numbers in this range still have a small factor besides 1 and themselves?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "How many prime numbers are there from 40 to 60?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p08",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "choice",
+      "prompt": "Which of these numbers is prime?",
+      "options": [
+        "21",
+        "29",
+        "27",
+        "33"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "21 is 3 x 7, so it has more than two factors.",
+        "27 is 3 x 3 x 3, so it has more than two factors.",
+        "33 is 3 x 11, so it has more than two factors.",
+        "29 divides evenly only by 1 and 29, so it is the prime one."
+      ],
+      "useAgain": "when several options are all multiples of the same small number except for the one prime answer.",
+      "hints": [
+        "Check each option for a factor of 3 first.",
+        "The one option that does not divide evenly by 3 is the prime one."
+      ],
+      "socraticHint": "Three of these four options divide evenly by 3. What does that tell you about the fourth one?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Which of these numbers is prime?",
+        "options": [
+          "31",
+          "22",
+          "26",
+          "34"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p09",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "choice",
+      "prompt": "Which of these numbers is composite?",
+      "options": [
+        "11",
+        "13",
+        "15",
+        "17"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "11, 13 and 17 each divide evenly only by 1 and themselves.",
+        "15 divides evenly by 1, 3, 5 and 15, more than two factors.",
+        "15 is the composite one."
+      ],
+      "useAgain": "when a list of primes hides one composite number that looks similar in size.",
+      "hints": [
+        "Try dividing each option by small numbers like 3 and 5.",
+        "The composite option has a factor besides 1 and itself."
+      ],
+      "socraticHint": "Fifteen divides evenly by five. What does that tell you about how many factors it has?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Which of these numbers is composite?",
+        "options": [
+          "19",
+          "23",
+          "29",
+          "25"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p10",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "choice",
+      "prompt": "A factor tree for 20 starts 20 = 2 x 10. What two primes does 10 split into?",
+      "options": [
+        "2 and 5",
+        "2 and 3",
+        "3 and 5",
+        "2 and 7"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "10 splits into two factors that multiply back to 10.",
+        "2 x 5 is 10, and both 2 and 5 are prime.",
+        "The other pairs either do not multiply to 10 or are not both prime."
+      ],
+      "useAgain": "when a branch of a factor tree needs to be split one more level into two primes.",
+      "hints": [
+        "Find two numbers that multiply together to make 10.",
+        "Check that both of those numbers are prime."
+      ],
+      "socraticHint": "Which two prime numbers multiply together to give exactly 10?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A factor tree for 28 starts 28 = 2 x 14. What two primes does 14 split into?",
+        "options": [
+          "2 and 3",
+          "2 and 5",
+          "3 and 5",
+          "2 and 7"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 3
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p11",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "choice",
+      "prompt": "A factor tree for 45 starts 45 = 5 x 9. What is 9 as two primes multiplied together?",
+      "options": [
+        "3 x 5",
+        "3 x 3",
+        "2 x 5",
+        "9 x 1"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "9 splits into two factors that multiply back to 9.",
+        "3 x 3 is 9, and 3 is prime.",
+        "9 x 1 keeps 9 whole instead of splitting it, and the other pairs do not multiply to 9 at all."
+      ],
+      "useAgain": "when a branch of a factor tree is a square number that splits into the same prime twice.",
+      "hints": [
+        "Find two identical numbers that multiply together to make 9.",
+        "Splitting into 9 x 1 does not count, since 9 is not fully broken down and 1 is not prime."
+      ],
+      "socraticHint": "Nine is 3 times 3. Why does writing it as 9 times 1 not finish the factor tree?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "A factor tree for 63 starts 63 = 7 x 9. What is 9 as two primes multiplied together?",
+        "options": [
+          "3 x 7",
+          "2 x 7",
+          "3 x 3",
+          "9 x 1"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p12",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "8 written as prime factors is 2 x 2 x 2. How many prime factors does 8 have, counting repeats?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "8 breaks down into 2 x 2 x 2, three prime factors written out.",
+        "Counting repeats means every 2 counts on its own.",
+        "8 has 3 prime factors when repeats are counted."
+      ],
+      "useAgain": "when a number's prime factorization repeats the same prime more than once.",
+      "hints": [
+        "Write out 8 as primes multiplied together completely.",
+        "Count every prime in that list, even the repeated ones."
+      ],
+      "socraticHint": "Eight is two times itself twice more. How many twos does that put in the list?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "16 written as prime factors is 2 x 2 x 2 x 2. How many prime factors does 16 have, counting repeats?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p13",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "12 written as prime factors is 2 x 2 x 3. How many prime factors does 12 have, counting repeats?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "12 breaks down into 2 x 2 x 3, three prime factors written out.",
+        "Counting repeats means both 2s count separately.",
+        "12 has 3 prime factors when repeats are counted."
+      ],
+      "useAgain": "when a factor tree ends with more than one leaf being the same prime number.",
+      "hints": [
+        "Write out 12 as primes multiplied together completely.",
+        "Count every prime in the list, even ones that repeat."
+      ],
+      "socraticHint": "Twelve has two 2s and one 3 in its prime factorization. How many primes is that altogether?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "18 written as prime factors is 2 x 3 x 3. How many prime factors does 18 have, counting repeats?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p14",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "What is the 3rd prime number, counting 2 as the 1st?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "List the primes in order: 2, 3, 5.",
+        "The 3rd one in that list is 5."
+      ],
+      "useAgain": "when a prime is asked for early in the counting order.",
+      "hints": [
+        "Write primes in order starting from 2.",
+        "Count up to the position asked for."
+      ],
+      "socraticHint": "You already know the first two primes. What comes right after them?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 2,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "What is the 2nd prime number, counting 2 as the 1st?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p15",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "truefalse",
+      "prompt": "Every prime number greater than 2 is odd.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "Every even number bigger than 2 divides evenly by 2, giving it an extra factor.",
+        "That extra factor means it cannot be prime.",
+        "So every prime number bigger than 2 must be odd."
+      ],
+      "useAgain": "when checking whether a bigger prime candidate could possibly be even.",
+      "hints": [
+        "Think about what having a factor of 2 does to a number's total factor count.",
+        "Only one prime number is even; is it bigger than 2 or equal to it?"
+      ],
+      "socraticHint": "You already know 2 is the only even prime. What does that tell you about every prime number after it?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 3,
+      "difficulty": 1,
+      "variant": {
+        "prompt": "Every odd number greater than 2 is prime.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p16",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "The prime factorization of 36 is 2^2 x 3^2. What is the exponent on 2?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Break 36 into primes: 2^2 x 3^2.",
+        "The exponent on 2 shows how many times 2 appears, which is 2."
+      ],
+      "useAgain": "when a prime factorization uses exponents and you need to read off one prime's count.",
+      "hints": [
+        "Build the factor tree for 36 down to its prime leaves.",
+        "Count how many times 2 shows up among those leaves."
+      ],
+      "socraticHint": "Thirty-six splits evenly by two, twice in a row. What exponent shows that?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "The prime factorization of 48 is 2^4 x 3. What is the exponent on 2?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p17",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "The prime factorization of 60 is 2^2 x 3 x 5. What is the exponent on 3?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Break 60 into primes: 2^2 x 3 x 5.",
+        "The exponent on 3 shows how many times 3 appears, which is 1."
+      ],
+      "useAgain": "when a prime factorization lists several different primes and only one exponent is asked for.",
+      "hints": [
+        "Build the factor tree for 60 down to its prime leaves.",
+        "Count how many times 3 shows up among those leaves."
+      ],
+      "socraticHint": "Sixty has three different prime factors. How many times does 3 itself show up among them?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "The prime factorization of 90 is 2 x 3^2 x 5. What is the exponent on 3?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p18",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "The prime factorization of 100 is 2^2 x 5^2. What is the exponent on 5?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Break 100 into primes: 2^2 x 5^2.",
+        "The exponent on 5 shows how many times 5 appears, which is 2."
+      ],
+      "useAgain": "when a bigger number's prime factorization needs one exponent read off carefully.",
+      "hints": [
+        "Build the factor tree for 100 down to its prime leaves.",
+        "Count how many times 5 shows up among those leaves."
+      ],
+      "socraticHint": "A hundred is ten times ten, and ten is two times five. How many fives does that put into a hundred's factor tree?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "The prime factorization of 200 is 2^3 x 5^2. What is the exponent on 5?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p19",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "How many DIFFERENT prime factors does 30 have (count each prime once, even if it repeats)?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "30 breaks down into 2 x 3 x 5.",
+        "Counting each different prime once gives 3 different prime factors."
+      ],
+      "useAgain": "when a question asks for different primes, not the total count with repeats.",
+      "hints": [
+        "Build the factor tree for 30 all the way down.",
+        "Count each different prime that shows up only once, even if it repeats in the tree."
+      ],
+      "socraticHint": "This time repeats do not count extra. How is that different from counting every leaf on the tree?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many DIFFERENT prime factors does 90 have (count each prime once, even if it repeats)?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p20",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "How many DIFFERENT prime factors does 84 have (count each prime once, even if it repeats)?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "84 breaks down into 2^2 x 3 x 7.",
+        "Counting each different prime once gives 3 different prime factors."
+      ],
+      "useAgain": "when a bigger number's different prime factors need counting, not its total factor leaves.",
+      "hints": [
+        "Build the factor tree for 84 all the way down to primes.",
+        "List each different prime only once, no matter how many times it shows up."
+      ],
+      "socraticHint": "84 has one prime that only shows up once and two that might repeat or not. Which primes actually appear at all?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "How many DIFFERENT prime factors does 120 have (count each prime once, even if it repeats)?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p21",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "choice",
+      "prompt": "Which is the correct prime factorization of 48?",
+      "options": [
+        "2^3 x 3^2",
+        "2^4 x 3^2",
+        "2^4 x 3",
+        "2 x 3^4"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 2
+      },
+      "explanation": [
+        "2^4 x 3 is 16 x 3, which is 48.",
+        "2^3 x 3^2 is 8 x 9, which is 72, not 48.",
+        "2^4 x 3^2 is 16 x 9, which is 144, not 48.",
+        "2 x 3^4 is 2 x 81, which is 162, not 48."
+      ],
+      "useAgain": "when checking a prime factorization by multiplying it back out to see if it matches the original number.",
+      "hints": [
+        "Multiply each option back out to check if it equals 48.",
+        "Only one option's exponents multiply back to exactly 48."
+      ],
+      "socraticHint": "Multiplying an option's primes back out is the fastest way to check it. Which option actually multiplies to 48?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which is the correct prime factorization of 72?",
+        "options": [
+          "2^2 x 3^3",
+          "2^3 x 3^2",
+          "2^4 x 3",
+          "2^3 x 3"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p22",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "choice",
+      "prompt": "Which is the correct prime factorization of 90?",
+      "options": [
+        "2^2 x 3 x 5",
+        "2 x 3 x 5^2",
+        "3^2 x 5^2",
+        "2 x 3^2 x 5"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "2 x 3^2 x 5 is 2 x 9 x 5, which is 90.",
+        "2^2 x 3 x 5 is 4 x 3 x 5, which is 60, not 90.",
+        "2 x 3 x 5^2 is 2 x 3 x 25, which is 150, not 90.",
+        "3^2 x 5^2 is 9 x 25, which is 225, not 90."
+      ],
+      "useAgain": "when three primes are involved and a small exponent slip changes the product completely.",
+      "hints": [
+        "Multiply each option back out fully.",
+        "Watch for options that leave out a factor of 2 entirely."
+      ],
+      "socraticHint": "One of these options is missing the factor of 2 altogether. What number does it multiply to instead?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which is the correct prime factorization of 150?",
+        "options": [
+          "2 x 3 x 5^2",
+          "2^2 x 3 x 5",
+          "2 x 3^2 x 5",
+          "3 x 5^2"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p23",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "choice",
+      "prompt": "Which of these numbers is divisible by 9? Use the digit-sum rule: a number is divisible by 9 exactly when its digit sum is.",
+      "options": [
+        "122",
+        "117",
+        "134",
+        "146"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "117's digits add to 1 + 1 + 7, which is 9, divisible by 9.",
+        "122's digits add to 5, not divisible by 9.",
+        "134's digits add to 8, not divisible by 9.",
+        "146's digits add to 11, not divisible by 9."
+      ],
+      "useAgain": "when checking divisibility by 9 quickly using the digit-sum shortcut instead of long division.",
+      "hints": [
+        "Add up the digits of each number.",
+        "Only the number whose digit sum is a multiple of 9 is divisible by 9."
+      ],
+      "socraticHint": "You do not need to divide any of these numbers by 9 directly. What shortcut checks it instead?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which of these numbers is divisible by 9? Use the digit-sum rule.",
+        "options": [
+          "135",
+          "128",
+          "142",
+          "151"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p24",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "truefalse",
+      "prompt": "63 is divisible by 3 because its digits, 6 and 3, add up to 9, which is divisible by 3.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "The digit-sum rule says a number is divisible by 3 exactly when its digit sum is.",
+        "6 plus 3 is 9, and 9 is divisible by 3.",
+        "So 63 is divisible by 3, and the rule was used correctly."
+      ],
+      "useAgain": "when the digit-sum shortcut for divisibility by 3 needs a quick check.",
+      "hints": [
+        "Add up the digits of 63.",
+        "Check whether that digit sum divides evenly by 3."
+      ],
+      "socraticHint": "Nine divides evenly by three. Does that settle whether 63 does too?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "84 is divisible by 3 because its digits, 8 and 4, add up to 12, which is divisible by 3.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p25",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "truefalse",
+      "prompt": "84 is divisible by 9 because its digits, 8 and 4, add up to 12, which is divisible by 3.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "The digit-sum rule for 9 needs the digit sum itself to be divisible by 9, not just by 3.",
+        "8 plus 4 is 12, and 12 is divisible by 3 but not by 9.",
+        "So 84 is divisible by 3, but not by 9."
+      ],
+      "useAgain": "when the divisibility rule for 3 is mixed up with the stricter rule for 9.",
+      "hints": [
+        "Check whether the digit sum itself, 12, divides evenly by 9.",
+        "Divisible by 3 is not the same claim as divisible by 9."
+      ],
+      "socraticHint": "Twelve divides evenly by three but not by nine. What does that tell you about eighty-four and the number nine?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "135 is divisible by 9 because its digits, 1, 3 and 5, add up to 9, which is divisible by 9.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p26",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "Is 91 prime? Test dividing it by small primes up to 9. If it is composite, give the smaller of its two factors.",
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "explanation": [
+        "91 does not divide evenly by 2, 3 or 5.",
+        "91 divides evenly by 7: 91 divided by 7 is 13.",
+        "91 is composite, and its smaller factor is 7."
+      ],
+      "useAgain": "when a number looks like it might be prime but a slightly bigger small prime still divides it evenly.",
+      "hints": [
+        "Try dividing 91 by small primes, starting from 2, and keep testing upward.",
+        "The first small prime that divides evenly gives you the factor you need."
+      ],
+      "socraticHint": "91 does not divide evenly by 2, 3 or 5. Which small prime should you try next?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Is 77 prime? Test dividing it by small primes up to 8. If it is composite, give the smaller of its two factors.",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p27",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "Is 221 prime? Test dividing it by small primes up to 14. If it is composite, give the smaller of its two factors.",
+      "answer": {
+        "kind": "number",
+        "value": "13"
+      },
+      "explanation": [
+        "221 does not divide evenly by 2, 3, 5, 7 or 11.",
+        "221 divides evenly by 13: 221 divided by 13 is 17.",
+        "221 is composite, and its smaller factor is 13."
+      ],
+      "useAgain": "when a number needs several small primes tried before one finally divides it evenly.",
+      "hints": [
+        "Try dividing 221 by primes in order, starting from 2, and keep testing upward.",
+        "The first one that divides evenly is the factor you need."
+      ],
+      "socraticHint": "You only need to test primes up to the square root of 221, which is a little under 15. How many primes is that to check?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Is 187 prime? Test dividing it by small primes up to 14. If it is composite, give the smaller of its two factors.",
+        "answer": {
+          "kind": "number",
+          "value": "11"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p28",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "200 written as prime factors is 2 x 2 x 2 x 5 x 5. How many prime factors does 200 have, counting repeats?",
+      "answer": {
+        "kind": "number",
+        "value": "5"
+      },
+      "explanation": [
+        "200 breaks down into 2 x 2 x 2 x 5 x 5.",
+        "Counting repeats means every leaf on the factor tree counts on its own.",
+        "200 has 5 prime factors when repeats are counted."
+      ],
+      "useAgain": "when a bigger number's full list of prime leaves, repeats included, needs counting.",
+      "hints": [
+        "Write out 200 as primes multiplied together completely.",
+        "Count every prime in that list, including repeats."
+      ],
+      "socraticHint": "200 has three 2s and two 5s in its prime factorization. How many primes is that altogether?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "300 written as prime factors is 2 x 2 x 3 x 5 x 5. How many prime factors does 300 have, counting repeats?",
+        "answer": {
+          "kind": "number",
+          "value": "5"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p29",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "A factor tree for 84 ends in the prime leaves 2, 2, 3, 7. Multiply those leaves together. What product do you get?",
+      "answer": {
+        "kind": "number",
+        "value": "84"
+      },
+      "explanation": [
+        "Multiply the leaves in order: 2 x 2 is 4.",
+        "4 x 3 is 12.",
+        "12 x 7 is 84, matching the number the tree started from."
+      ],
+      "useAgain": "when checking a finished factor tree by multiplying its leaves back together.",
+      "hints": [
+        "Multiply the leaves two at a time, in any order.",
+        "The final product should match the number the tree started from."
+      ],
+      "socraticHint": "A factor tree's leaves should multiply back to the starting number. Does 2 x 2 x 3 x 7 land back on 84?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 4,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "A factor tree for 90 ends in the prime leaves 2, 3, 3, 5. Multiply those leaves together. What product do you get?",
+        "answer": {
+          "kind": "number",
+          "value": "90"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p30",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "choice",
+      "prompt": "Which is the correct prime factorization of 100?",
+      "options": [
+        "2 x 5^3",
+        "2^3 x 5",
+        "2^2 x 5^3",
+        "2^2 x 5^2"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "2^2 x 5^2 is 4 x 25, which is 100.",
+        "2 x 5^3 is 2 x 125, which is 250, not 100.",
+        "2^3 x 5 is 8 x 5, which is 40, not 100.",
+        "2^2 x 5^3 is 4 x 125, which is 500, not 100."
+      ],
+      "useAgain": "when a common round number's prime factorization needs to be checked exponent by exponent.",
+      "hints": [
+        "Multiply each option back out to check if it equals 100.",
+        "Only one option's exponents multiply back to exactly 100."
+      ],
+      "socraticHint": "A hundred is ten times ten. How many 2s and how many 5s does that give you?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 2,
+      "variant": {
+        "prompt": "Which is the correct prime factorization of 400?",
+        "options": [
+          "2^2 x 5^4",
+          "2^3 x 5^2",
+          "2^4 x 5^2",
+          "2^4 x 5"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p31",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "The prime factorization of 216 is 2^3 x 3^3. What is the exponent on 2?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Break 216 into primes: 2^3 x 3^3.",
+        "The exponent on 2 shows how many times 2 appears, which is 3."
+      ],
+      "useAgain": "when a larger number's prime factorization has more than one prime raised to a power bigger than 1.",
+      "hints": [
+        "Build the factor tree for 216 all the way down.",
+        "Count how many times 2 shows up among the prime leaves."
+      ],
+      "socraticHint": "216 is 6 x 6 x 6, and 6 is 2 x 3. How many 2s does that put into 216's factor tree?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The prime factorization of 128 is 2^7. What is the exponent on 2?",
+        "answer": {
+          "kind": "number",
+          "value": "7"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p32",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "The prime factorization of 500 is 2^2 x 5^3. What is the exponent on 5?",
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "explanation": [
+        "Break 500 into primes: 2^2 x 5^3.",
+        "The exponent on 5 shows how many times 5 appears, which is 3."
+      ],
+      "useAgain": "when a bigger number mixes a small exponent on one prime with a larger exponent on another.",
+      "hints": [
+        "Build the factor tree for 500 all the way down.",
+        "Count how many times 5 shows up among the prime leaves."
+      ],
+      "socraticHint": "500 is 5 times 100, and 100 itself has two more 5s inside it. How many 5s does that total?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The prime factorization of 250 is 2 x 5^3. What is the exponent on 5?",
+        "answer": {
+          "kind": "number",
+          "value": "3"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p33",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "The prime factorization of 720 is 2^4 x 3^2 x 5. What is the exponent on 3?",
+      "answer": {
+        "kind": "number",
+        "value": "2"
+      },
+      "explanation": [
+        "Break 720 into primes: 2^4 x 3^2 x 5.",
+        "The exponent on 3 shows how many times 3 appears, which is 2."
+      ],
+      "useAgain": "when a number's prime factorization has three different primes and only the middle one is asked for.",
+      "hints": [
+        "Build the factor tree for 720 all the way down.",
+        "Count how many times 3 shows up among the prime leaves."
+      ],
+      "socraticHint": "720 has three different prime factors. Which exponent belongs to the one in the middle, 3?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "The prime factorization of 360 is 2^3 x 3^2 x 5. What is the exponent on 3?",
+        "answer": {
+          "kind": "number",
+          "value": "2"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p34",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "choice",
+      "prompt": "Which of these numbers is prime?",
+      "options": [
+        "91",
+        "127",
+        "119",
+        "143"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 1
+      },
+      "explanation": [
+        "91 is 7 x 13, composite.",
+        "119 is 7 x 17, composite.",
+        "143 is 11 x 13, composite.",
+        "127 divides evenly only by 1 and 127, so it is prime."
+      ],
+      "useAgain": "when a list of numbers all look similar in size but only one resists every small prime test.",
+      "hints": [
+        "Test each option against small primes: 2, 3, 5, 7, 11.",
+        "The one option that never divides evenly is the prime one."
+      ],
+      "socraticHint": "Every wrong option here divides evenly by 7, 11 or 13. Does the correct one divide evenly by any small prime?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Which of these numbers is prime?",
+        "options": [
+          "151",
+          "133",
+          "161",
+          "187"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p35",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "truefalse",
+      "prompt": "289 is a prime number.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "289 is 17 x 17, so it has 1, 17 and 289 as factors, at least three of them.",
+        "A prime number has exactly two factors, so 289 does not qualify.",
+        "289 is composite."
+      ],
+      "useAgain": "when a number that looks unfamiliar turns out to be a smaller prime multiplied by itself.",
+      "hints": [
+        "Try dividing 289 by primes near its square root, around 17.",
+        "A number that is a prime multiplied by itself is never prime."
+      ],
+      "socraticHint": "289 is seventeen times seventeen. What does a number squared always have besides 1 and itself?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "361 is a prime number.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p36",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "truefalse",
+      "prompt": "196 is a perfect square, because its prime factorization is 2^2 x 7^2, with every exponent even.",
+      "answer": {
+        "kind": "boolean",
+        "value": true
+      },
+      "explanation": [
+        "196 breaks down into 2^2 x 7^2.",
+        "Both exponents, on 2 and on 7, are even.",
+        "A number is a perfect square exactly when every exponent in its prime factorization is even, so 196 is a perfect square."
+      ],
+      "useAgain": "when checking if a number is a perfect square using its prime factorization instead of guessing a square root.",
+      "hints": [
+        "Break 196 into its prime factorization.",
+        "Check whether every exponent in that factorization is even."
+      ],
+      "socraticHint": "A perfect square's prime factorization always pairs up evenly. Do both of 196's exponents come in pairs?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "225 is a perfect square, because its prime factorization is 3^2 x 5^2, with every exponent even.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p37",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "truefalse",
+      "prompt": "180 is a perfect square, because its prime factorization is 2^2 x 3^2 x 5.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "180 breaks down into 2^2 x 3^2 x 5.",
+        "The exponent on 5 is 1, which is odd.",
+        "Since not every exponent is even, 180 is not a perfect square."
+      ],
+      "useAgain": "when most exponents in a factorization are even but one odd exponent breaks the perfect-square pattern.",
+      "hints": [
+        "Check every exponent in 180's prime factorization, not just the first one or two.",
+        "A single odd exponent is enough to rule out a perfect square."
+      ],
+      "socraticHint": "Two of 180's three exponents are even. Does having most exponents even count as good enough?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "150 is a perfect square, because its prime factorization is 2 x 3 x 5^2.",
+        "answer": {
+          "kind": "boolean",
+          "value": false
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p38",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "60 is 2^2 x 3 x 5. Add 1 to each exponent, then multiply the results, to find its total number of factors.",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "60 is 2^2 x 3 x 5, with exponents 2, 1 and 1.",
+        "Add 1 to each exponent: 3, 2 and 2.",
+        "Multiply those together: 3 x 2 x 2 is 12."
+      ],
+      "useAgain": "when the total number of factors of a number is needed straight from its prime factorization.",
+      "hints": [
+        "Add 1 to every exponent in the prime factorization first.",
+        "Multiply all of those results together for the total factor count."
+      ],
+      "socraticHint": "Each exponent tells you one more than how many choices you have for that prime in a factor. Why do you add 1 before multiplying?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "90 is 2 x 3^2 x 5. Add 1 to each exponent, then multiply the results, to find its total number of factors.",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p39",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "72 is 2^3 x 3^2. Add 1 to each exponent, then multiply the results, to find its total number of factors.",
+      "answer": {
+        "kind": "number",
+        "value": "12"
+      },
+      "explanation": [
+        "72 is 2^3 x 3^2, with exponents 3 and 2.",
+        "Add 1 to each exponent: 4 and 3.",
+        "Multiply those together: 4 x 3 is 12."
+      ],
+      "useAgain": "when only two different primes are in a factorization and their exponent-plus-one values need multiplying.",
+      "hints": [
+        "Add 1 to each of the two exponents.",
+        "Multiply the two results together."
+      ],
+      "socraticHint": "72 has only two different primes in its factorization. How many numbers do you need to multiply together for the total factor count?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "200 is 2^3 x 5^2. Add 1 to each exponent, then multiply the results, to find its total number of factors.",
+        "answer": {
+          "kind": "number",
+          "value": "12"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p40",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "order",
+      "prompt": "Order these numbers by how many DIFFERENT prime factors they have, fewest to most: 210, 8, 30, 12.",
+      "items": [
+        "210",
+        "8",
+        "30",
+        "12"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          3,
+          2,
+          0
+        ]
+      },
+      "explanation": [
+        "8 is 2^3, 1 different prime.",
+        "12 is 2^2 x 3, 2 different primes.",
+        "30 is 2 x 3 x 5, 3 different primes.",
+        "210 is 2 x 3 x 5 x 7, 4 different primes."
+      ],
+      "useAgain": "when numbers must be sorted by how many different primes build them, not by their size.",
+      "hints": [
+        "Break each number into its prime factorization first.",
+        "Count only the different primes in each one, ignoring repeats."
+      ],
+      "socraticHint": "The biggest number here does not necessarily have the most different prime factors. Why not?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Order these numbers by how many DIFFERENT prime factors they have, fewest to most: 30, 16, 210, 6.",
+        "items": [
+          "30",
+          "16",
+          "210",
+          "6"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            3,
+            0,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p41",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "order",
+      "prompt": "Order these numbers by their TOTAL number of factors, fewest to most: 100, 7, 16, 12.",
+      "items": [
+        "100",
+        "7",
+        "16",
+        "12"
+      ],
+      "answer": {
+        "kind": "order",
+        "order": [
+          1,
+          2,
+          3,
+          0
+        ]
+      },
+      "explanation": [
+        "7 is prime, so it has 2 factors.",
+        "16 is 2^4, with 5 factors.",
+        "12 is 2^2 x 3, with 6 factors.",
+        "100 is 2^2 x 5^2, with 9 factors."
+      ],
+      "useAgain": "when numbers must be sorted by their whole factor count instead of by size or by different primes.",
+      "hints": [
+        "Find the total factor count of each number using its prime factorization.",
+        "Sort the four totals from smallest to largest."
+      ],
+      "socraticHint": "A prime number always has the fewest possible factors, exactly two. Does that fix its place in the order?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Order these numbers by their TOTAL number of factors, fewest to most: 36, 11, 8, 20.",
+        "items": [
+          "36",
+          "11",
+          "8",
+          "20"
+        ],
+        "answer": {
+          "kind": "order",
+          "order": [
+            1,
+            2,
+            3,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p42",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "What is the smallest prime number greater than 100?",
+      "answer": {
+        "kind": "number",
+        "value": "101"
+      },
+      "explanation": [
+        "100 is not prime, so start testing the numbers right after it.",
+        "101 does not divide evenly by 2, 3, 5 or 7.",
+        "101 is prime, and it is the very next number after 100."
+      ],
+      "useAgain": "when the next prime after a round number needs to be found by testing upward.",
+      "hints": [
+        "Start testing at the number right after 100, since 100 itself is not prime.",
+        "Check that number against small primes up to its square root, about 10."
+      ],
+      "socraticHint": "The number right after 100 is 101. Does it divide evenly by any prime smaller than about 10?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the smallest prime number greater than 200?",
+        "answer": {
+          "kind": "number",
+          "value": "211"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p43",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "What is the largest prime number less than 150?",
+      "answer": {
+        "kind": "number",
+        "value": "149"
+      },
+      "explanation": [
+        "150 itself is not prime, so start testing the numbers right before it.",
+        "149 does not divide evenly by 2, 3, 5, 7 or 11.",
+        "149 is prime, and it is the closest one below 150."
+      ],
+      "useAgain": "when the prime just below a round number needs to be found by testing downward.",
+      "hints": [
+        "Start testing at the number right before 150.",
+        "Check that number against small primes up to its square root, about 12."
+      ],
+      "socraticHint": "149 is the number right before 150. Does it divide evenly by any small prime?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 5,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the largest prime number less than 200?",
+        "answer": {
+          "kind": "number",
+          "value": "199"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p44",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "choice",
+      "prompt": "What is the total number of factors of 2^3 x 5^2?",
+      "options": [
+        "8",
+        "7",
+        "20",
+        "12"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 3
+      },
+      "explanation": [
+        "Add 1 to each exponent: 3 becomes 4, and 2 becomes 3.",
+        "Multiply those results: 4 x 3 is 12, the real total factor count.",
+        "8 comes from forgetting to add 1 to the second exponent before multiplying.",
+        "20 comes from mistakenly adding more than 1 to the exponents before multiplying."
+      ],
+      "useAgain": "when the add-1-then-multiply rule for counting factors gets a step skipped or a number changed.",
+      "hints": [
+        "Add exactly 1 to each exponent before multiplying, no more and no less.",
+        "Multiply the two adjusted numbers together for the total."
+      ],
+      "socraticHint": "Each exponent needs exactly 1 added to it before multiplying. What happens to the total if you forget that step on one of them?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "What is the total number of factors of 2^2 x 3^3?",
+        "options": [
+          "9",
+          "8",
+          "12",
+          "15"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 2
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p45",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "How many prime numbers are there from 100 to 130?",
+      "answer": {
+        "kind": "number",
+        "value": "6"
+      },
+      "explanation": [
+        "Test each number from 100 to 130 against small primes up to about 11.",
+        "Only 101, 103, 107, 109, 113, 127 survive every test.",
+        "That is 6 prime numbers in the range."
+      ],
+      "useAgain": "when counting primes gets slower because more numbers in the range need several small-prime tests before failing or surviving.",
+      "hints": [
+        "Skip every even number in the range right away.",
+        "Test the remaining odd numbers against 3, 7 and 11."
+      ],
+      "socraticHint": "Numbers in the 100s need testing against more small primes than numbers in the 20s. Why does that happen as numbers grow?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many prime numbers are there from 130 to 160?",
+        "answer": {
+          "kind": "number",
+          "value": "6"
+        }
+      }
+    }
+  ],
+  "stretch": [
+    {
+      "id": "ladder-ar-primes-factor-trees-p46",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "29 and 31 are twin primes, prime numbers that differ by 2. The next twin prime pair after that is 41 and 43. What is their sum?",
+      "answer": {
+        "kind": "number",
+        "value": "84"
+      },
+      "explanation": [
+        "Check that 41 and 43 are both prime: neither divides evenly by 2, 3, 5 or the other small primes below its square root.",
+        "They differ by exactly 2, so they are twin primes.",
+        "Their sum is 41 + 43, which is 84."
+      ],
+      "useAgain": "when a pair of primes exactly 2 apart, twin primes, need a further calculation done on them.",
+      "hints": [
+        "Confirm both 41 and 43 are prime first.",
+        "Add the two numbers together once you have confirmed they are twin primes."
+      ],
+      "socraticHint": "Twin primes are two primes exactly 2 apart. What do you do with the pair once you have found them?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "17 and 19 are twin primes. What is their sum?",
+        "answer": {
+          "kind": "number",
+          "value": "36"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p47",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "How many prime numbers are there from 90 to 100?",
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "explanation": [
+        "Test each number from 90 to 100 for small prime factors.",
+        "Only 97 survives every test.",
+        "There is 1 prime number in that range."
+      ],
+      "useAgain": "when primes get rarer in a range and most numbers there fail quickly on small prime tests.",
+      "hints": [
+        "Skip every even number in the range right away.",
+        "Test the remaining odd numbers against 3, 7 and 11."
+      ],
+      "socraticHint": "This range has far fewer primes than a range near 20. Why does that make sense as numbers get bigger?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "How many prime numbers are there from 190 to 200?",
+        "answer": {
+          "kind": "number",
+          "value": "4"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p48",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "choice",
+      "prompt": "A number less than 20 has exactly 4 factors. Which of these could it be?",
+      "options": [
+        "6",
+        "9",
+        "16",
+        "25"
+      ],
+      "answer": {
+        "kind": "choice",
+        "index": 0
+      },
+      "explanation": [
+        "6 has factors 1, 2, 3, 6, exactly 4.",
+        "9 has factors 1, 3, 9, exactly 3.",
+        "16 has 5 factors, and 25 has 3 factors.",
+        "Only 6 has exactly 4."
+      ],
+      "useAgain": "when a factor-count clue rules out numbers that look similar but come from different prime shapes.",
+      "hints": [
+        "List the factors of each option completely.",
+        "Only one option lands on exactly 4 factors."
+      ],
+      "socraticHint": "A number with exactly 4 factors is either a prime cubed or two different primes multiplied together. Which of these options fits that shape?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "A number less than 30 has exactly 4 factors. Which of these could it be?",
+        "options": [
+          "9",
+          "22",
+          "16",
+          "25"
+        ],
+        "answer": {
+          "kind": "choice",
+          "index": 1
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p49",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "number",
+      "prompt": "Multiply the first 5 prime numbers together: 2 x 3 x 5 x 7 x 11. What product do you get?",
+      "answer": {
+        "kind": "number",
+        "value": "2310"
+      },
+      "explanation": [
+        "Multiply step by step: 2 x 3 is 6.",
+        "6 x 5 is 30.",
+        "30 x 7 is 210.",
+        "210 x 11 is 2310."
+      ],
+      "useAgain": "when several primes need multiplying together in one long chain, one step at a time.",
+      "hints": [
+        "Multiply two numbers at a time, keeping a running total.",
+        "Double check each small multiplication before moving to the next one."
+      ],
+      "socraticHint": "Multiplying five numbers in a row is really just four separate multiplications. What running total do you have after the first three primes?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Multiply the first 4 prime numbers together: 2 x 3 x 5 x 7. What product do you get?",
+        "answer": {
+          "kind": "number",
+          "value": "210"
+        }
+      }
+    },
+    {
+      "id": "ladder-ar-primes-factor-trees-p50",
+      "lane": "skills",
+      "ideaId": "ar-primes-factor-trees",
+      "kind": "truefalse",
+      "prompt": "There is a largest prime number.",
+      "answer": {
+        "kind": "boolean",
+        "value": false
+      },
+      "explanation": [
+        "Multiply every prime on a list together and add 1.",
+        "The result is either prime itself, or it has a new prime factor that was not on the list.",
+        "That means another prime always exists beyond any list, so there is no largest prime number."
+      ],
+      "useAgain": "when a claim about primes running out or stopping needs checking against how factor trees always find a new prime.",
+      "hints": [
+        "Imagine multiplying every prime on a very long list together, then adding 1.",
+        "Think about whether that new number could possibly be divisible by any prime already on the list."
+      ],
+      "socraticHint": "If you multiplied every prime on a list together and added 1, could any prime already on your list divide that new number evenly?",
+      "skills": [
+        "think.skills.primes"
+      ],
+      "thinkMinutes": 6,
+      "difficulty": 3,
+      "variant": {
+        "prompt": "Every prime number can be found somewhere in a long enough factor tree of some composite number.",
+        "answer": {
+          "kind": "boolean",
+          "value": true
+        }
+      }
+    }
+  ]
+}

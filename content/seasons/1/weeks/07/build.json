@@ -1,0 +1,515 @@
+{
+  "id": "s1-w07-build",
+  "season": 1,
+  "week": 7,
+  "track": "build",
+  "title": "Obstacle avoidance",
+  "summary": "Add the ultrasonic sensor so mBot senses what is in front of it, then build a shoebox course for it to survive.",
+  "minutes": 60,
+  "materials": [
+    "mBot v1.2",
+    "USB cable",
+    "mBot's battery, charged, or 4 AA batteries",
+    "laptop with Chrome",
+    "mBlock",
+    "4 to 6 empty shoeboxes or small boxes",
+    "tape measure for the physics extra"
+  ],
+  "skills": [
+    "build.sensors",
+    "build.debugging"
+  ],
+  "completion": "artifact-and-log",
+  "steps": [
+    {
+      "kind": "instruction",
+      "id": "s1-w07-build-01",
+      "title": "Ask, imagine, plan",
+      "body": "The design loop again: ask, imagine, plan, build, test, fix. This week the robot has to notice something in front of it before it becomes a crash.\n\nAsk: what should the robot do the instant something gets close, a wall, a box, a hand? Driving forward until it slams into something is not obstacle avoidance, it is just driving blind. mBot needs to check the distance in front of it constantly, and change what it does the moment that distance gets small.\n\nImagine before you build. Picture mBot cruising forward, then a box appears ahead. It stops, backs away a little, turns to face a new direction, then keeps going, all without you touching it. Sketch that path on paper: straight, then a kink where it backs up and turns, then straight again in a new direction.\n\nPlan the pieces before you open mBlock:\n\n1. A way to read the distance to whatever is in front of mBot, in centimeters.\n2. An `if then else` check that compares that distance to a cutoff.\n3. Two things mBot can do depending on the result: back up and turn, or keep driving.\n4. A prediction: how close, in centimeters, should something get before mBot reacts?\n5. A shoebox course: four or five boxes stood up, spaced so mBot has room to turn."
+    },
+    {
+      "kind": "typing",
+      "id": "s1-w07-build-02",
+      "minutes": 5,
+      "body": "Five more minutes on the same site you have been using. Warm up on the home row, a s d f and j k l semicolon, then spend the rest of the time on two more symbols Python code leans on: the quotation mark \" for writing text, and the period . for reaching inside something, like `robot.stop()`. Try to find both without looking down."
+    },
+    {
+      "kind": "science",
+      "id": "s1-w07-build-03",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The ultrasonic sensor sending a dashed click arrow out toward an obstacle, and a dashed echo arrow bouncing back. A caption explains distance is half the round-trip time times the speed of sound.",
+        "spec": {
+          "w": 360,
+          "h": 210,
+          "wide": false,
+          "items": [
+            {
+              "t": "box",
+              "x": 15,
+              "y": 90,
+              "w": 125,
+              "h": 40,
+              "label": "ultrasonic sensor",
+              "sub": "port 3"
+            },
+            {
+              "t": "box",
+              "x": 275,
+              "y": 80,
+              "w": 65,
+              "h": 60,
+              "label": "obstacle"
+            },
+            {
+              "t": "line",
+              "x1": 140,
+              "y1": 100,
+              "x2": 275,
+              "y2": 100,
+              "arrow": true,
+              "dashed": true,
+              "color": "accent",
+              "label": "click out"
+            },
+            {
+              "t": "line",
+              "x1": 275,
+              "y1": 125,
+              "x2": 140,
+              "y2": 125,
+              "arrow": true,
+              "dashed": true,
+              "color": "green",
+              "label": "echo back"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 180,
+              "s": "distance = half the round-trip time x speed of sound",
+              "anchor": "middle"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 20,
+              "s": "click out, echo back: timing the round trip",
+              "anchor": "middle"
+            }
+          ],
+          "frames": [
+            {
+              "ms": 700,
+              "caption": "click leaves the sensor",
+              "set": {
+                "2": {
+                  "x2": 207
+                },
+                "3": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "click reaches the obstacle",
+              "set": {
+                "3": {
+                  "hidden": true
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "echo starts bouncing back",
+              "set": {
+                "3": {
+                  "x1": 207
+                }
+              }
+            },
+            {
+              "ms": 700,
+              "caption": "echo returns, distance timed",
+              "set": {}
+            }
+          ]
+        }
+      },
+      "ideaId": "time-the-bounce",
+      "title": "Sound and echoes",
+      "body": "The ultrasonic sensor plugged into mBot sends out a short click, pitched so high that no person can hear it, well above the highest note your own ears can pick up.\n\nThat click travels out through the air until it hits something solid, a wall, a hand, a shoebox, and bounces back as an echo. A tiny microphone right next to the sensor's speaker catches that echo the moment it returns, and the sensor measures exactly how long the whole round trip took, out and back.\n\nSound travels through air at a steady, known speed, so knowing how long the trip took tells you how far away the object is, since half that time was the click going out and half was the echo coming back. A bat hunting at night does the exact same thing, clicking as it flies and listening for the echo, to tell how far away a moth or a wall is without needing to see it at all."
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w07-build-08",
+      "title": "Meet the ultrasonic block",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A top-down mBot with the ultrasonic sensor at the front, port 3, highlighted, next to a mock of the stage showing a live distance readout. A dashed line from a hand icon to the sensor shows the hand moving closer and farther, with a caption that the number gets smaller as the hand gets closer.",
+        "spec": {
+          "w": 360,
+          "h": 260,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 15,
+              "s": "watch the number change as your hand moves",
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 45,
+              "y": 30,
+              "w": 80,
+              "h": 34,
+              "label": "ultrasonic",
+              "sub": "port 3"
+            },
+            {
+              "t": "box",
+              "x": 20,
+              "y": 70,
+              "w": 130,
+              "h": 90,
+              "label": "mBot",
+              "sub": "top view",
+              "fill": "paper"
+            },
+            {
+              "t": "dot",
+              "cx": 250,
+              "cy": 53,
+              "label": "your hand",
+              "side": "right"
+            },
+            {
+              "t": "line",
+              "x1": 238,
+              "y1": 53,
+              "x2": 130,
+              "y2": 53,
+              "arrow": true,
+              "dashed": true,
+              "color": "green",
+              "label": "hand moves"
+            },
+            {
+              "t": "box",
+              "x": 150,
+              "y": 180,
+              "w": 140,
+              "h": 45,
+              "label": "stage",
+              "sub": "distance: 42",
+              "fill": "accent"
+            },
+            {
+              "t": "text",
+              "x": 180,
+              "y": 245,
+              "s": "closer = smaller number; farther = bigger number",
+              "anchor": "middle"
+            }
+          ]
+        }
+      },
+      "body": "Before this week's build, meet the one new block by itself: `ultrasonic sensor port (3) distance`. It measures how far away something is, in centimeters, by timing an echo. Get comfortable with what it reports before you wire it into a program that reacts to it.\n\n1. Connect mBot the way you did last week: switch it on, USB in, `Devices`, `Connect`.\n2. Check the ultrasonic sensor, the two round eyes at the front of mBot, faces forward and its cable is in port 3, the socket with a 3 printed beside it on mCore. It was fitted when you built mBot.\n3. Click the mode switch so it shows `Live`, with mBot still wired to the laptop. If mBlock asks to update the firmware, let it, keep the cable in until it is done, then click `Connect` again.\n4. From `Variables`, make a variable called `distance`.\n5. From `Events`, drag `when green flag clicked` onto the canvas.\n6. From `Control`, drag a `forever` block under it, and inside it set `distance` to `ultrasonic sensor port (3) distance`.\n7. Check the box next to `distance` in the `Variables` palette, so a readout appears on the stage.\n8. Click the green flag above the stage, then wave your hand toward and away from the sensor and watch the number.\n\nWhat you should see: the number on the stage gets smaller as your hand gets closer, and bigger as it moves away, changing several times a second.\n\nIf it does not work:\n\n1. The number never changes: the sensor's cable is loose or in the wrong socket; check it is pushed fully into port 3.\n2. The number jumps to about 400 or sticks when your hand is very close: the sensor sees from about 3 cm to 400 cm, and 400 means nothing is in range; keep your hand between a few centimeters and a meter away, flat and straight in front of the two eyes.\n3. Nothing shows on the stage: the box next to `distance` in the `Variables` palette is unchecked; check it.\n\nOne more block for later: from `Show`, drag in `play note (C4) for (0.25) beats` and click it once by itself, off to the side of your other blocks, to hear mBot's own buzzer play a note. Your turn, from a one-line spec, the finish-line challenge at the end of this quest, uses this same block.\n\nCheck the AI, a practice round. The answer below was made up for this exercise, with two mistakes planted in it on purpose. The real Ask did not write it, but any AI, like any person, can be wrong in just this way, and testing is how you catch it.\n\n\"The ultrasonic sensor on mBot plugs into port 2, and its block reports the distance in millimeters.\"\n\n1. In your `set distance to` block, change the port from 3 to 2, click the green flag, and wave your hand. Write down what the number does.\n2. Change the port back to 3 and click the green flag again.\n3. Lay a ruler or the tape measure straight out from the sensor, hold your hand flat at the 30 cm mark, and write down the number on the stage.\n4. For each claim, the port and the unit, write whether your test backs it up or catches it.\n\nBefore the next step, delete these blocks but keep the `distance` variable, and click the mode switch back to `Upload`. The next step, Build the obstacle avoider, starts fresh under `when mBot(mcore) starts up`.\n\nYou are done when: you can make the stage number change just by moving your hand, and you have caught both planted mistakes by testing them yourself and can say which test caught which."
+    },
+    {
+      "kind": "task",
+      "id": "s1-w07-build-04",
+      "figure": {
+        "kind": "diagram",
+        "alt": "A top-down path showing mBot moving forward at power 50% toward a shoebox, stopping when the distance drops under 15 centimetres, backing up at power 40% for 0.4 seconds, turning left at power 50% for 0.3 seconds, then moving forward again in a new direction.",
+        "spec": {
+          "w": 340,
+          "h": 245,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 170,
+              "y": 15,
+              "s": "distance under 15 cm: stop, back up, turn, go",
+              "anchor": "middle"
+            },
+            {
+              "t": "box",
+              "x": 248,
+              "y": 50,
+              "w": 60,
+              "h": 60,
+              "label": "shoebox"
+            },
+            {
+              "t": "dot",
+              "cx": 40,
+              "cy": 80,
+              "label": "start",
+              "side": "below"
+            },
+            {
+              "t": "line",
+              "x1": 40,
+              "y1": 80,
+              "x2": 210,
+              "y2": 80,
+              "arrow": true,
+              "color": "green",
+              "label": "power 50%"
+            },
+            {
+              "t": "dot",
+              "cx": 210,
+              "cy": 80
+            },
+            {
+              "t": "dim",
+              "x1": 248,
+              "y1": 45,
+              "x2": 210,
+              "y2": 45,
+              "label": "15 cm"
+            },
+            {
+              "t": "line",
+              "x1": 210,
+              "y1": 80,
+              "x2": 210,
+              "y2": 150,
+              "arrow": true,
+              "color": "rust",
+              "label": "back up, 0.4s"
+            },
+            {
+              "t": "line",
+              "x1": 210,
+              "y1": 150,
+              "x2": 130,
+              "y2": 150,
+              "arrow": true,
+              "color": "accent",
+              "label": "turn left, 0.3s"
+            },
+            {
+              "t": "dot",
+              "cx": 130,
+              "cy": 150,
+              "label": "new heading",
+              "side": "above"
+            },
+            {
+              "t": "line",
+              "x1": 130,
+              "y1": 150,
+              "x2": 60,
+              "y2": 210,
+              "arrow": true,
+              "color": "green",
+              "label": "drive forward again"
+            },
+            {
+              "t": "dot",
+              "cx": 60,
+              "cy": 210,
+              "label": "continues",
+              "side": "below"
+            }
+          ]
+        }
+      },
+      "title": "Build the obstacle avoider in mBlock",
+      "body": "Getting ready:\n\n1. Continue from Meet the ultrasonic block, or connect mBot the same way: switch it on, USB in, `Devices`, `Connect`, pick `mBot`, and check the mode switch shows `Upload`.\n2. `<` means less than. `distance < 15` is true when distance is smaller than 15; the narrow point of `<` faces the smaller side.\n\nBuild the obstacle avoider:\n\n1. From `Events`, drag `when mBot(mcore) starts up` onto the canvas.\n2. From `Variables`, use the `distance` variable you made in Meet the ultrasonic block; if it is not there, make it now.\n3. From `Control`, drag a `forever` block under it.\n4. At the top of `forever`, set `distance` to `ultrasonic sensor port (3) distance`.\n5. Predict first: how close, in centimeters, should something get before mBot needs to react?\n6. From `Control`, drag an `if then else` block under the `set distance` block.\n7. Build the condition `distance <` your predicted number, using an `Operators` block, or 15 if unsure.\n8. Inside the `if`, drag in `move backward at power 40 % for 0.4 secs`.\n9. Under that, drag in `turn left at power 50 % for 0.3 secs`.\n10. Inside the `else`, drag in `move forward at power 50 % for 0.1 secs`, so mBot re-checks the distance about ten times a second while it drives straight.\n\nTest and build the course:\n\n1. Upload with mBot's wheels off the ground, then switch it off, unplug the cable, and set it on open floor.\n2. Switch mBot on and test, backing away from your hand.\n3. Once it reliably backs up and turns, stand four or five shoeboxes around the floor as a course.\n4. See how far mBot gets before it needs a rescue.\n\nWhat you should see: mBot drives forward on open floor, and the moment something gets inside your chosen distance, it stops driving forward, backs up briefly, turns, and carries on in a new direction, all with no cable attached.\n\nIf it does not work:\n\n1. mBot backs away from nothing, or drives straight into a box: the cutoff number is wrong for your course, or the sensor is reading oddly; go back to Meet the ultrasonic block's readout and watch the number near the spot where it should react.\n2. mBot reacts but never gets moving again: the `else` branch is missing, or the move forward block inside it has 0 for power or time; check both.\n3. Nothing happens at all when mBot is switched on: check every block hangs under `when mBot(mcore) starts up`, then upload again.\n\nYou are done when: mBot gets through a course of four or five shoeboxes on its own, backing up and turning away from each one, and you have written down the cutoff distance you chose and why.",
+      "checklist": [
+        "mBot drives forward when nothing is within about 15 cm in front of it",
+        "When something is within 15 cm, mBot backs up for under half a second before it does anything else",
+        "After backing up, mBot turns before it drives forward again",
+        "mBot makes it through a course of shoeboxes without getting stuck against one",
+        "I wrote down the cutoff distance I chose and why that number, not another, worked for my course"
+      ]
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w07-build-09",
+      "title": "The finished program",
+      "figure": {
+        "kind": "diagram",
+        "alt": "The finished obstacle-avoider block stack. when mBot(mcore) starts up, then forever. Inside forever, set distance to ultrasonic sensor port (3) distance, then if distance < 15 then, else. The if branch holds move backward at power 40 % for 0.4 secs, then turn left at power 50 % for 0.3 secs. The else branch holds move forward at power 50 % for 0.1 secs.",
+        "spec": {
+          "w": 360,
+          "h": 250,
+          "wide": false,
+          "items": [
+            {
+              "t": "text",
+              "x": 180,
+              "y": 14,
+              "s": "the finished program, branch by branch",
+              "anchor": "middle"
+            },
+            {
+              "t": "poly",
+              "points": [
+                [
+                  20,
+                  26
+                ],
+                [
+                  340,
+                  26
+                ],
+                [
+                  340,
+                  236
+                ],
+                [
+                  20,
+                  236
+                ]
+              ],
+              "fill": "sand"
+            },
+            {
+              "t": "text",
+              "x": 30,
+              "y": 44,
+              "s": "when mBot(mcore) starts up",
+              "anchor": "start",
+              "size": 11
+            },
+            {
+              "t": "text",
+              "x": 40,
+              "y": 62,
+              "s": "forever",
+              "anchor": "start",
+              "size": 11
+            },
+            {
+              "t": "box",
+              "x": 50,
+              "y": 70,
+              "w": 280,
+              "h": 38,
+              "label": "set distance to",
+              "sub": "ultrasonic sensor port (3) distance",
+              "fill": "paper"
+            },
+            {
+              "t": "text",
+              "x": 117,
+              "y": 126,
+              "s": "if distance < 15 then",
+              "anchor": "middle",
+              "size": 10
+            },
+            {
+              "t": "text",
+              "x": 262,
+              "y": 126,
+              "s": "else",
+              "anchor": "middle",
+              "size": 10
+            },
+            {
+              "t": "box",
+              "x": 50,
+              "y": 134,
+              "w": 135,
+              "h": 40,
+              "label": "move backward",
+              "sub": "power 40 %, 0.4 secs"
+            },
+            {
+              "t": "box",
+              "x": 50,
+              "y": 182,
+              "w": 135,
+              "h": 40,
+              "label": "turn left",
+              "sub": "power 50 %, 0.3 secs"
+            },
+            {
+              "t": "box",
+              "x": 195,
+              "y": 134,
+              "w": 135,
+              "h": 40,
+              "label": "move forward",
+              "sub": "power 50 %, 0.1 secs"
+            }
+          ]
+        }
+      },
+      "body": "Here is what the finished program looks like, blocks and all, so you can check yours against it before moving on.\n\nCompare your blocks to the figure: one `forever` loop, one `set distance to ultrasonic sensor port (3) distance` at the top of it, one `if distance < (your number) then else`, backing up and turning inside the `if`, and driving forward inside the `else`.\n\nIf a block is missing or in the wrong branch, mBot will still upload and run, just not the way you expect: a backward move in the `else` branch, for instance, sends mBot away from open floor instead of toward it.\n\nYou are done when: your own blocks match the shape in the figure, branch for branch."
+    },
+    {
+      "kind": "instruction",
+      "id": "s1-w07-build-05",
+      "title": "Bug diary",
+      "body": "Print what it sees, same trick as always, through the stage instead of a screen.\n\n1. Check the box next to `distance` in the `Variables` palette.\n2. Switch to `Live` mode, with mBot still wired to the laptop. If mBlock asks to update the firmware when you switch to `Live`, let it, keep the cable in until it is done, then click `Connect` again.\n3. From `Events`, drag `when green flag clicked` onto the canvas, and move your whole program from under `when mBot(mcore) starts up` across to it.\n4. Set mBot on the floor next to the laptop with the cable slack, click the green flag above the stage, and move your hand toward and away from the sensor while you watch the number on the stage.\n5. Settle on a cutoff that feels right, and write down why you picked it over 15.\n6. Click the red stop button, move the program back under `when mBot(mcore) starts up`, delete `when green flag clicked`, switch back to `Upload` mode, and upload the finished program the safe way, wheels up.\n\nWrite one line for each thing that did not work the first time and what you tried. If mBot backs away from nothing, or drives straight into a box, check that number. It tells you whether the sensor read wrong, or 15 is the wrong cutoff for your course.\n\nTwo things the ultrasonic sensor is bad at: a soft surface, like a stuffed animal, can soak up the click instead of bouncing it back. Stick to hard box surfaces for the course. An angled box can bounce the click off to the side, so square the boxes so a flat side faces mBot's path. The sensor also cannot reliably see anything closer than about 3 cm, so give mBot a little open floor to start from."
+    },
+    {
+      "kind": "task",
+      "id": "s1-w07-build-10",
+      "title": "Your turn, from a one-line spec",
+      "body": "The one-line spec: right before mBot backs away from something close, it beeps once, and when it turns, it picks left or right at random instead of always the same way.\n\nYou already have everything this needs: the `if` branch from your obstacle avoider, the `play note (C4) for (0.25) beats` block from `Show`, the purple group, which plays a note on mBot's own buzzer, `pick random` from `Operators`, and an `if then else` to act on the random pick. Give it a real, focused 15 minutes.\n\nIf you want the guide instead: `Beep before it backs up` and `Turn a random direction instead of always left`, below in this quest's extras, walk through each piece separately.\n\nYou are done when: mBot beeps the instant it reacts to something close, and it turns a different way run to run through your shoebox course, not always the same side.",
+      "checklist": [
+        "mBot plays a short note the instant it reacts to something close, before it backs up",
+        "mBot picks left or right at random each time it turns, not always the same side",
+        "I ran the course at least three times and saw mBot turn both ways",
+        "I wrote down which extra, if either, I needed to look at"
+      ]
+    },
+    {
+      "kind": "artifact",
+      "id": "s1-w07-build-06",
+      "title": "Show it",
+      "prompt": "Photo of the shoebox course with mBot in it, and either the saved .mblock project file or a screenshot of your finished blocks",
+      "accepts": [
+        "photo",
+        "code"
+      ]
+    },
+    {
+      "kind": "log",
+      "id": "s1-w07-build-07",
+      "variant": "maker"
+    }
+  ],
+  "extras": [
+    {
+      "id": "s1-w07-build-x01",
+      "kind": "bonus",
+      "title": "Beep before it backs up",
+      "minutes": 15,
+      "body": "This is the step-by-step version of the beep half of Your turn, from a one-line spec. Use it if 15 minutes were not enough on your own.\n\n1. Open your obstacle avoider project in mBlock.\n2. Inside the `if` branch, right before `move backward at power 40 % for 0.4 secs`, add a `play note (A4) for (0.2) beats` block from `Show`.\n3. Upload with mBot's wheels off the ground, then switch it off, unplug the cable, set it on the floor, and switch it on to test near your hand.\n\nWhat to notice: the sound plays every time mBot reacts, even the times you do not see it clearly."
+    },
+    {
+      "id": "s1-w07-build-x02",
+      "kind": "bonus",
+      "title": "Turn a random direction instead of always left",
+      "minutes": 20,
+      "body": "This is the step-by-step version of the random-turn half of Your turn, from a one-line spec. Use it if 15 minutes were not enough on your own.\n\n1. Open your obstacle avoider project in mBlock.\n2. From `Variables`, make a variable called `turnPick`.\n3. Inside the `if` branch, before the turn, add `set turnPick to pick random 1 to 2`.\n4. Add an `if then else` block checking `turnPick = 1`.\n5. In that `if`, keep `turn left at power 50 % for 0.3 secs`; in the `else`, use `turn right at power 50 % for 0.3 secs`.\n6. Upload with mBot's wheels off the ground, then switch it off, unplug the cable, set it on the floor, switch it on, and run mBot through your shoebox course again.\n\nWhat to notice: mBot finds a different path through the same course almost every run."
+    },
+    {
+      "id": "s1-w07-build-x03",
+      "kind": "invent",
+      "title": "Design a harder course",
+      "minutes": 25,
+      "body": "What is the trickiest shoebox course you can imagine mBot getting through?\n\nDesign a harder obstacle course using the boxes you already have.\n\nIt must use the obstacle avoider code from this week's build, unchanged or lightly adjusted.\nIt must have one number you choose by testing, like the cutoff distance or a turn time.\nIt must be run for someone in your house, success or not.\n\nSketch the course layout first.\n\nHow to know it works: mBot gets through your course, or you can point to where it got stuck."
+    },
+    {
+      "id": "s1-w07-build-x04",
+      "kind": "bonus",
+      "title": "Time the echo against the speed of sound",
+      "minutes": 20,
+      "ideaId": "time-the-bounce",
+      "body": "Find out how well the speed of sound predicts what mBot's ultrasonic sensor reports.\n\n1. Predict first: guess the distance, in centimeters, mBot's ultrasonic sensor will report when a wall is exactly where you measure it with a tape measure. Write your number in the Maker's Log.\n2. Use a tape measure to set an obstacle at a distance you choose, at least 50 centimeters away.\n3. mBot has no display, so read the sensor through the stage instead: make a variable called `sonarReading`. From `Events`, drag `when green flag clicked` onto the canvas, put a `forever` block under it, and inside it set `sonarReading` to `ultrasonic sensor port (3) distance`. Check its box in the `Variables` palette, switch to `Live` mode, and click the green flag so the number shows on the stage.\n4. Place mBot facing the obstacle and read the number on the stage.\n5. Compare that number to the tape measure's real distance.\n\nCompare: was your prediction close to the tape measure's real distance, and was the sensor's own reading close too?\n\nTeach it: tell a grown-up in two sentences why timing a sound's round trip can tell you how far away something is."
+    }
+  ]
+}
